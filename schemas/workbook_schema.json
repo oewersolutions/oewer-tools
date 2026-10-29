@@ -1,6 +1,6 @@
 {
   "$comment": "Machine-readable definition of data/oewer_database.xlsx. Consumed by scripts/validate_workbook.py and export_content.py. One worksheet per table, fixed header row in row 1, no merged cells, no formulas.",
-  "schema_version": "1.0.0",
+  "schema_version": "1.0.1",
   "types": {
     "id": "Stable immutable identifier matching the sheet's id_pattern. Never a row number.",
     "string": "Single-line literal text. No newlines, no leading '=', '+', '-', '@' formula characters.",
@@ -109,7 +109,7 @@
         { "name": "setting_id", "type": "id", "required": true, "unique": true },
         { "name": "tool_id", "type": "ref", "ref": "tools.tool_id", "required": true },
         { "name": "setting_key", "type": "string", "required": true, "pattern": "^[a-z][a-z0-9_]*$", "max_length": 64 },
-        { "name": "setting_value", "type": "string", "required": false, "default": "" },
+        { "name": "setting_value", "type": "text", "required": false, "default": "", "max_length": 6000, "note": "Keys help, examples, faq and related hold the tool page content (see docs/tool-content.md)." },
         { "name": "value_type", "type": "enum", "enum": "value_type", "required": true, "default": "string" }
       ]
     },

@@ -9,6 +9,7 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { checkWorkbook, formatIssue, schema } from "../lib/workbook";
+import { TOOL_COMPONENT_KEYS } from "../lib/tools/keys";
 import { buildContent, serialize } from "../lib/workbook/export";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
@@ -25,6 +26,17 @@ if (issues.length > 0) {
 }
 
 const content = buildContent(data, schema);
+
+// For test builds only: show every tool that has a component, so browser tests can exercise them while they are still drafts.
+if (process.env.OEWER_PREVIEW_ALL_TOOLS === "1") {
+  if (process.env.GITHUB_WORKFLOW === "Deploy to GitHub Pages") {
+    console.error("OEWER_PREVIEW_ALL_TOOLS must never be set for a deploy build.");
+    process.exit(1);
+  }
+  const known: readonly string[] = TOOL_COMPONENT_KEYS;
+  for (const tool of content.sheets.tools ?? []) if (known.includes(String(tool.component_key))) tool.status = "published";
+  console.warn("PREVIEW BUILD: every tool with a component is shown as published. Do not deploy this build.");
+}
 await mkdir(dirname(output), { recursive: true });
 await writeFile(output, serialize(content), "utf-8");
 

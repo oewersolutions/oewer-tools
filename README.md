@@ -30,7 +30,9 @@ npm install
 npm run typecheck
 npm run lint
 npm test
-npm run test:e2e   # accessibility (axe) + responsive checks on out/; run npm run build first; needs Google Chrome
+npm run build:preview   # test build: shows every tool that has a component as published (never deploy this)
+npm run test:e2e   # browser tests on out/ (accessibility, responsive, tools, privacy, mobile performance); needs Google Chrome
+CROSS_BROWSER=1 npm run test:e2e   # also Firefox and WebKit (run `npx playwright install firefox webkit` once)
 npm run dev      # export content, then start the dev server
 npm run build    # export content, then build the static site into out/
 npm run validate [path]   # validate the workbook (exit 1 on any issue)
@@ -49,7 +51,7 @@ Two workflows in `.github/workflows/`:
 One-time setup: in the repository go to Settings > Pages and set Source to "GitHub Actions". Optionally add repository variables `SITE_URL` (e.g. `https://example.com`) and `BASE_PATH` (`/<repo-name>` for a github.io project site; leave unset for a custom domain).
 
 ## Status
-Phase 1 (workbook schema, validator, export, versioning) and Phase 2 (site shell, page templates, SEO, accessibility tests, CI/deploy workflows) are done. Tools, the blog content, the admin page and analytics are next. See `TASKS.md` and `docs/schema-versioning.md`.
+Phase 1 (workbook schema, validator, export, versioning) and Phase 2 (site shell, page templates, SEO, accessibility tests, CI/deploy workflows) are done. Phase 3 (tool registry and the 10 MVP tools, published) is done. The blog content, the admin page and analytics are next. See `TASKS.md` and `docs/schema-versioning.md`.
 
 ## Security
 The workbook is public: put only public content in it. Never commit tokens, credentials or exports. The admin GitHub token is entered in the browser at run time and is never stored in the repo or the bundle. Copy `.env.example` to `.env` locally; `.env` is git-ignored.

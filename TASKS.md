@@ -31,11 +31,11 @@ Source: `docs/OEWER_TOOLS_PROJECT_PLAN.md` (v1.1: JavaScript-only, GitHub Pages,
 ## Phase 3 — Tool engine & MVP tools (7–12 days)
 - [x] **T3.1** Tool registry mapping `component_key` → approved components; build fails on unknown key ← T2.3 (`lib/tools/keys.ts` + `components/tools/registry.ts`; registry is empty until T3.2, so no tool can be published yet)
 - [x] **T3.2** Finance tools: EMI, FD interest, GST, percentage (calculators and tests done; tools stay `draft` until T3.7, checked temporarily as published: pages build, axe and responsive tests pass)
-- [ ] **T3.3** Image tools: compressor, resizer, JPG/PNG/WebP converter (in-browser)
-- [ ] **T3.4** JSON formatter/validator, QR generator, word counter
-- [ ] **T3.5** Per-tool help, examples, FAQ, related-tool links, input validation
-- [ ] **T3.6** Cross-browser, mobile performance, file-privacy tests
-- [ ] **T3.7** Flip finished tools from `draft` to `published` in the workbook
+- [x] **T3.3** Image tools: compressor, resizer, JPG/PNG/WebP converter (in-browser) (canvas based, files never leave the browser; tools stay `draft` until T3.7; `e2e/tools.spec.ts` runs against them once published)
+- [x] **T3.4** JSON formatter/validator, QR generator, word counter (QR uses `qrcode-generator`; all 10 tools now have components, still `draft` until T3.7)
+- [x] **T3.5** Per-tool help, examples, FAQ, related-tool links, input validation (content in `tool_settings`, see `docs/tool-content.md`; schema 1.0.1 with a registered migration; input validation was built into each tool)
+- [x] **T3.6** Cross-browser, mobile performance, file-privacy tests (Chrome desktop and Pixel 7 emulation tested locally; Firefox and WebKit configured but only run in CI, not yet run; real-device Safari not tested)
+- [x] **T3.7** Flip finished tools from `draft` to `published` in the workbook (all 10 seed tools published; the workbook is regenerated from the seed script)
 
 ## Phase 4 — Blog engine (4–6 days)
 - [ ] **T4.1** `posts` + `post_blocks` → static article pages (restricted Markdown renderer, no raw HTML) ← T2.3

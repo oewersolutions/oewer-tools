@@ -32,10 +32,20 @@ export interface Migration {
 }
 
 /**
- * Registered migrations, oldest first. Empty while the schema is still 1.0.0.
+ * Registered migrations, oldest first.
  * See docs/schema-versioning.md for how to add one.
  */
-export const migrations: Migration[] = [];
+export const migrations: Migration[] = [
+  {
+    from: "1.0.0",
+    to: "1.0.1",
+    description: "Allow longer tool_settings values (up to 6000 characters) for tool help and FAQ content",
+    up(workbook) {
+      const row = workbook.sheets.site_settings?.rows.find((r) => r.setting_key === "schema_version");
+      if (row) row.setting_value = "1.0.1";
+    },
+  },
+];
 
 /** Ordered chain of migrations from `from` to `to`, or null when no chain exists. */
 export function planMigrations(from: string, to: string, available: Migration[] = migrations): Migration[] | null {

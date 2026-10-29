@@ -6,6 +6,7 @@
  *
  *   npx tsx scripts/create-seed-workbook.ts [outputPath]
  */
+import { TOOL_CONTENT } from "./tool-content";
 import { readFileSync } from "node:fs";
 import { mkdir } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
@@ -46,9 +47,22 @@ const TOOLS: Row[] = [
   ["TOOL0010", "TCAT0004", "Word Counter", "word-counter", "Count words, characters, sentences and reading time as you type.", "word-counter", false, 2],
 ];
 
+/** help, examples, FAQ and related-tool rows for every tool, numbered from `first`. */
+function toolContentRows(first: number): Row[] {
+  const rows: Row[] = [];
+  const add = (toolId: string, key: string, value: string, type: string) => rows.push([`TSET${String(first + rows.length).padStart(4, "0")}`, toolId, key, value, type]);
+  for (const [toolId, c] of Object.entries(TOOL_CONTENT)) {
+    add(toolId, "help", c.help, "string");
+    add(toolId, "examples", JSON.stringify(c.examples), "json");
+    add(toolId, "faq", JSON.stringify(c.faq), "json");
+    add(toolId, "related", JSON.stringify(c.related), "json");
+  }
+  return rows;
+}
+
 const SEED: Record<string, Row[]> = {
   site_settings: [
-    ["schema_version", "1.0.0", "string", NOW],
+    ["schema_version", "1.0.1", "string", NOW],
     ["site_name", "OEWER Tools", "string", NOW],
     ["site_tagline", "Free online tools that respect your privacy", "string", NOW],
     ["site_url", "https://example.com", "string", NOW],
@@ -72,13 +86,14 @@ const SEED: Record<string, Row[]> = {
     ["NAV0006", "Terms of Use", "/terms", "footer_legal", 2, true],
   ],
   tool_categories: TOOL_CATEGORIES.map((c) => [...c, true]),
-  // All tools start as draft: components are built in Phase 3 (T3.x).
-  tools: TOOLS.map((t) => [t[0]!, t[1]!, t[2]!, t[3]!, t[4]!, t[5]!, "draft", t[6]!, t[7]!]),
+  // Every tool has a component (Phase 3), so all are published.
+  tools: TOOLS.map((t) => [t[0]!, t[1]!, t[2]!, t[3]!, t[4]!, t[5]!, "published", t[6]!, t[7]!]),
   tool_settings: [
-    ["TSET0001", "TOOL0001", "max_file_size_mb", "20", "int"],
+    ["TSET0001", "TOOL0001", "max_file_size_mb", "25", "int"],
     ["TSET0002", "TOOL0001", "default_quality", "80", "int"],
     ["TSET0003", "TOOL0004", "default_currency_symbol", "₹", "string"],
     ["TSET0004", "TOOL0006", "default_gst_rate", "18", "int"],
+    ...toolContentRows(5),
   ],
   blog_categories: [
     ["BCAT0001", "Money Guides", "money-guides", "Plain-language guides to loans, savings and tax."],

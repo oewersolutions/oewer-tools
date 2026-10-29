@@ -2,7 +2,13 @@ import type { ComponentType } from "react";
 import EmiCalculator from "./EmiCalculator";
 import FdCalculator from "./FdCalculator";
 import GstCalculator from "./GstCalculator";
+import ImageCompressor from "./ImageCompressor";
+import ImageConverter from "./ImageConverter";
+import ImageResizer from "./ImageResizer";
+import JsonFormatter from "./JsonFormatter";
 import PercentageCalculator from "./PercentageCalculator";
+import QrCodeGenerator from "./QrCodeGenerator";
+import WordCounter from "./WordCounter";
 import type { ToolComponentKey } from "../../lib/tools/keys";
 
 /**
@@ -15,6 +21,12 @@ export const toolComponents: { [K in ToolComponentKey]: ComponentType } = {
   "fd-calculator": FdCalculator,
   "gst-calculator": GstCalculator,
   "percentage-calculator": PercentageCalculator,
+  "image-compressor": ImageCompressor,
+  "image-resizer": ImageResizer,
+  "image-converter": ImageConverter,
+  "json-formatter": JsonFormatter,
+  "qr-code-generator": QrCodeGenerator,
+  "word-counter": WordCounter,
 };
 
 export function getToolComponent(key: string): ComponentType {

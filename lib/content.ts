@@ -1,5 +1,6 @@
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
+import { parseToolContent, pickRelated, type ToolContent } from "./tools/content";
 import type { ContentExport } from "./workbook/export";
 
 export interface ToolCategory {
@@ -112,6 +113,17 @@ export function getToolBySlug(categorySlug: string, toolSlug: string): { tool: T
   const category = getToolCategoryBySlug(categorySlug);
   const tool = category && getToolsInCategory(category.category_id).find((t) => t.slug === toolSlug);
   return category && tool ? { tool, category } : undefined;
+}
+
+export function getToolContent(toolId: string): ToolContent {
+  return parseToolContent(sheet("tool_settings"), toolId);
+}
+
+export function getRelatedTools(tool: Tool, chosenIds: string[]): { tool: Tool; category: ToolCategory }[] {
+  return pickRelated(tool, chosenIds, getPublishedTools()).flatMap((t) => {
+    const category = getToolCategory(t.category_id);
+    return category ? [{ tool: t, category }] : [];
+  });
 }
 
 // Static pages

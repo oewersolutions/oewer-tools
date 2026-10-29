@@ -29,9 +29,14 @@ jobs:
       - run: npm run typecheck
       - run: npm run lint
       - run: npm test
-      - name: Build static site
-        run: npm run build
-      - name: Accessibility and responsive tests
+      # A test build: every tool with a component is shown as published so the browser tests can use it.
+      # This build is never deployed; deploy.yml builds from the workbook as it is.
+      - name: Build static site (preview of all tools)
+        run: npm run build:preview
+      - name: Install Firefox and WebKit
+        run: npx playwright install --with-deps firefox webkit
+      - name: Browser tests (Chrome, Chrome mobile, Firefox, Safari engine)
         run: npm run test:e2e
         env:
           CI: "true"
+          CROSS_BROWSER: "1"

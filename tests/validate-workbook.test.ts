@@ -6,6 +6,7 @@ import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { buildSeedWorkbook } from "../scripts/create-seed-workbook";
 import { checkWorkbook, readWorkbook, schema, validateWorkbook } from "../lib/workbook";
 import type { Issue, WorkbookData } from "../lib/workbook";
+import { TOOL_COMPONENT_KEYS } from "../lib/tools/keys";
 
 let dir: string;
 let seedBuffer: Buffer;
@@ -280,22 +281,60 @@ describe("reading the .xlsx file", () => {
 });
 
 describe("tool component registry", () => {
-  const publish = (d: WorkbookData) => (row(d, "tools").values.status = "published");
-  const run = (keys: string[], mutate: (d: WorkbookData) => void) => {
+  const without = (key: string) => TOOL_COMPONENT_KEYS.filter((k) => k !== key);
+  const run = (keys: readonly string[], mutate: (d: WorkbookData) => void = () => undefined) => {
     const data = structuredClone(baseline);
     mutate(data);
     return validateWorkbook(data, schema, { toolComponentKeys: keys });
   };
 
-  it("rejects a published tool whose component_key is not registered", () => {
-    expect(has(run([], publish), "unknown_component", "tools", "component_key")).toBe(true);
+  it("accepts the seed, where every published tool has a component", () => {
+    expect(run(TOOL_COMPONENT_KEYS)).toEqual([]);
   });
 
-  it("accepts a published tool whose component_key is registered", () => {
-    expect(run(["image-compressor"], publish)).toEqual([]);
+  it("rejects a published tool whose component_key is not registered", () => {
+    expect(has(run(without("image-compressor")), "unknown_component", "tools", "component_key")).toBe(true);
   });
 
   it("ignores draft tools", () => {
-    expect(run([], () => undefined)).toEqual([]);
+    const issues = run(without("image-compressor"), (d) => {
+      const tool = d.tools!.find((t) => t.values.component_key === "image-compressor")!;
+      tool.values.status = "draft";
+    });
+    expect(issues).toEqual([]);
+  });
+});
+
+describe("tool page content", () => {
+  const settingsFor = (d: WorkbookData, key: string) => d.tool_settings!.find((r) => r.values.setting_key === key)!;
+  const bad = (key: string, value: string, type = "json") =>
+    validateWith((d) => {
+      const r = settingsFor(d, key);
+      r.values.setting_value = value;
+      r.values.value_type = type;
+    });
+
+  it("accepts the seed content", () => {
+    expect(validateWith(() => undefined)).toEqual([]);
+  });
+  it("rejects malformed faq and examples", () => {
+    expect(has(bad("faq", '[{"q":"Why?"}]'), "invalid_tool_content", "tool_settings", "setting_value")).toBe(true);
+    expect(has(bad("faq", '{"q":"x"}'), "invalid_tool_content", "tool_settings")).toBe(true);
+    expect(has(bad("examples", '[{"title":"A"}]'), "invalid_tool_content", "tool_settings")).toBe(true);
+  });
+  it("rejects the wrong value_type", () => {
+    expect(has(bad("faq", "[]", "string"), "invalid_tool_content", "tool_settings")).toBe(true);
+    expect(has(bad("help", "Text", "json"), "invalid_value", "tool_settings")).toBe(true);
+  });
+  it("rejects related ids that do not exist or point at the tool itself", () => {
+    expect(has(bad("related", '["TOOL9999"]'), "unknown_ref", "tool_settings")).toBe(true);
+    const own = validateWith((d) => {
+      const r = settingsFor(d, "related");
+      r.values.setting_value = JSON.stringify([r.values.tool_id]);
+    });
+    expect(has(own, "invalid_tool_content", "tool_settings")).toBe(true);
+  });
+  it("rejects HTML in help", () => {
+    expect(has(bad("help", "<script>x</script>", "string"), "invalid_value", "tool_settings", "setting_value")).toBe(true);
   });
 });

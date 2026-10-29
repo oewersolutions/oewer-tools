@@ -1,3 +1,4 @@
+import { checkToolContentSetting, isToolContentKey } from "../tools/content";
 import type { ColumnDef, Issue, Schema, SheetDef, SheetRow, WorkbookData } from "./types";
 
 const FORMULA_START = /^[=+\-@]/;
@@ -206,6 +207,22 @@ export function validateWorkbook(data: WorkbookData, schema: Schema, options: Va
     for (const row of rowsOf(sheet)) {
       const problem = checkTypedSetting(row.values.setting_value, row.values.value_type);
       if (problem) add(sheet, row, "setting_value", "invalid_value", `${problem}.`);
+    }
+  }
+
+  // Tool page content (help, examples, FAQ, related tools)
+  const toolIds = keyIndex("tools", "tool_id");
+  for (const row of rowsOf("tool_settings")) {
+    const key = String(row.values.setting_key ?? "");
+    if (!isToolContentKey(key)) continue;
+    const value = String(row.values.setting_value ?? "");
+    const problem = checkToolContentSetting(key, value, String(row.values.value_type ?? ""));
+    if (problem) add("tool_settings", row, "setting_value", "invalid_tool_content", `${problem}.`);
+    if (key === "related" && !problem && row.values.value_type === "json") {
+      for (const id of JSON.parse(value) as string[]) {
+        if (!toolIds.has(id)) add("tool_settings", row, "setting_value", "unknown_ref", `'${id}' is not a tool_id in the tools sheet.`);
+        if (id === row.values.tool_id) add("tool_settings", row, "setting_value", "invalid_tool_content", "A tool cannot be related to itself.");
+      }
     }
   }
 

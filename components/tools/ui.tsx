@@ -1,4 +1,6 @@
-import { useId, type ReactNode } from "react";
+"use client";
+
+import { useId, useState, type ReactNode } from "react";
 
 const control =
   "mt-1 block w-full rounded border border-slate-400 bg-white px-3 py-2 text-base text-slate-900 aria-[invalid=true]:border-red-700";
@@ -107,5 +109,73 @@ export function Results({ headline, rows, emptyMessage }: { headline?: { label: 
         </div>
       ))}
     </dl>
+  );
+}
+
+export function TextAreaField({
+  label,
+  value,
+  onChange,
+  rows = 10,
+  placeholder,
+  readOnly,
+  mono,
+  describedBy,
+}: {
+  label: string;
+  value: string;
+  onChange?: (value: string) => void;
+  rows?: number;
+  placeholder?: string;
+  readOnly?: boolean;
+  mono?: boolean;
+  describedBy?: string;
+}) {
+  const id = useId();
+  return (
+    <div>
+      <label htmlFor={id} className="block text-sm font-medium text-slate-800">
+        {label}
+      </label>
+      <textarea
+        id={id}
+        rows={rows}
+        value={value}
+        readOnly={readOnly}
+        placeholder={placeholder}
+        onChange={(e) => onChange?.(e.target.value)}
+        aria-describedby={describedBy}
+        spellCheck={false}
+        className={`${control} ${mono ? "font-mono text-sm" : ""}`}
+      />
+    </div>
+  );
+}
+
+/** Copies text to the clipboard and says so; stays quiet if the browser blocks clipboard access. */
+export function CopyButton({ text, label = "Copy" }: { text: string; label?: string }) {
+  const [state, setState] = useState<"idle" | "copied" | "failed">("idle");
+  return (
+    <>
+      <button
+        type="button"
+        disabled={text === ""}
+        onClick={async () => {
+          try {
+            await navigator.clipboard.writeText(text);
+            setState("copied");
+          } catch {
+            setState("failed");
+          }
+          setTimeout(() => setState("idle"), 2000);
+        }}
+        className="rounded border border-brand px-3 py-1.5 text-sm font-medium text-brand hover:bg-brand-50 disabled:opacity-50"
+      >
+        {label}
+      </button>
+      <span role="status" className="ml-2 text-sm text-slate-700">
+        {state === "copied" ? "Copied" : state === "failed" ? "Could not copy. Select the text and copy it yourself." : ""}
+      </span>
+    </>
   );
 }
