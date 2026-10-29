@@ -1,0 +1,270 @@
+{
+  "$comment": "Machine-readable definition of data/oewer_database.xlsx. Consumed by scripts/validate_workbook.py and export_content.py. One worksheet per table, fixed header row in row 1, no merged cells, no formulas.",
+  "schema_version": "1.0.0",
+  "types": {
+    "id": "Stable immutable identifier matching the sheet's id_pattern. Never a row number.",
+    "string": "Single-line literal text. No newlines, no leading '=', '+', '-', '@' formula characters.",
+    "text": "Multi-line literal text. Restricted Markdown only; raw HTML is rejected.",
+    "slug": "Lowercase a-z, 0-9 and single hyphens. Pattern ^[a-z0-9]+(-[a-z0-9]+)*$",
+    "path": "Site-relative path starting with '/'. No scheme, no '..'.",
+    "url": "Absolute https:// URL, or a site-relative path. javascript:, data: and other schemes are rejected.",
+    "int": "Whole number.",
+    "bool": "TRUE or FALSE (stored as a boolean cell, not text).",
+    "datetime": "UTC ISO 8601, e.g. 2026-10-29T08:30:00Z.",
+    "enum": "One of the listed values.",
+    "ref": "Foreign key: must match the primary key of an existing row in the referenced sheet."
+  },
+  "limits": {
+    "max_workbook_bytes": 5242880,
+    "max_rows_per_sheet": 20000,
+    "max_string_length": 300,
+    "max_text_length": 20000,
+    "max_block_length": 8000
+  },
+  "enums": {
+    "status": ["draft", "published", "archived"],
+    "value_type": ["string", "int", "bool", "json"],
+    "nav_location": ["header", "footer", "footer_legal"],
+    "block_type": ["paragraph", "heading", "list", "image", "quote", "code", "callout"],
+    "ad_page_type": ["home", "tool_category", "tool", "blog_index", "blog_category", "blog_post", "page"],
+    "redirect_type": ["301", "302"],
+    "seo_entity_type": ["page", "tool_category", "tool", "post", "blog_category"]
+  },
+  "sheets": {
+    "site_settings": {
+      "purpose": "Site name, theme, feature flags, schema version.",
+      "primary_key": "setting_key",
+      "required_keys": ["schema_version", "site_name", "site_url", "primary_color"],
+      "columns": [
+        { "name": "setting_key", "type": "string", "required": true, "unique": true, "pattern": "^[a-z][a-z0-9_]*$", "max_length": 64 },
+        { "name": "setting_value", "type": "string", "required": false, "default": "" },
+        { "name": "value_type", "type": "enum", "enum": "value_type", "required": true, "default": "string" },
+        { "name": "updated_at", "type": "datetime", "required": true }
+      ]
+    },
+    "pages": {
+      "purpose": "Static pages: About, Privacy, Contact, Terms.",
+      "primary_key": "page_id",
+      "id_pattern": "^PAGE\\d{4}$",
+      "unique_slug": "page",
+      "columns": [
+        { "name": "page_id", "type": "id", "required": true, "unique": true },
+        { "name": "slug", "type": "slug", "required": true, "unique": true },
+        { "name": "title", "type": "string", "required": true },
+        { "name": "content", "type": "text", "required": true },
+        { "name": "status", "type": "enum", "enum": "status", "required": true, "default": "draft" },
+        { "name": "updated_at", "type": "datetime", "required": true }
+      ]
+    },
+    "navigation": {
+      "purpose": "Menus and footer links.",
+      "primary_key": "nav_id",
+      "id_pattern": "^NAV\\d{4}$",
+      "columns": [
+        { "name": "nav_id", "type": "id", "required": true, "unique": true },
+        { "name": "label", "type": "string", "required": true, "max_length": 60 },
+        { "name": "url", "type": "url", "required": true },
+        { "name": "location", "type": "enum", "enum": "nav_location", "required": true },
+        { "name": "sort_order", "type": "int", "required": true, "default": 0, "min": 0 },
+        { "name": "enabled", "type": "bool", "required": true, "default": true }
+      ]
+    },
+    "tool_categories": {
+      "purpose": "Tool categories (Image, Finance, Developer, Utilities).",
+      "primary_key": "category_id",
+      "id_pattern": "^TCAT\\d{4}$",
+      "unique_slug": "tool_category",
+      "columns": [
+        { "name": "category_id", "type": "id", "required": true, "unique": true },
+        { "name": "name", "type": "string", "required": true, "unique": true },
+        { "name": "slug", "type": "slug", "required": true, "unique": true },
+        { "name": "description", "type": "text", "required": true },
+        { "name": "sort_order", "type": "int", "required": true, "default": 0, "min": 0 },
+        { "name": "enabled", "type": "bool", "required": true, "default": true }
+      ]
+    },
+    "tools": {
+      "purpose": "Tool registry. A row configures an existing implemented component; it never creates executable code.",
+      "primary_key": "tool_id",
+      "id_pattern": "^TOOL\\d{4}$",
+      "unique_slug": "tool",
+      "columns": [
+        { "name": "tool_id", "type": "id", "required": true, "unique": true },
+        { "name": "category_id", "type": "ref", "ref": "tool_categories.category_id", "required": true },
+        { "name": "name", "type": "string", "required": true },
+        { "name": "slug", "type": "slug", "required": true, "unique": true },
+        { "name": "description", "type": "text", "required": true },
+        { "name": "component_key", "type": "string", "required": true, "unique": true, "pattern": "^[a-z][a-z0-9-]*$", "max_length": 64, "note": "Must exist in the code-side tool registry (checked by build, not by Excel)." },
+        { "name": "status", "type": "enum", "enum": "status", "required": true, "default": "draft" },
+        { "name": "featured", "type": "bool", "required": true, "default": false },
+        { "name": "sort_order", "type": "int", "required": true, "default": 0, "min": 0 }
+      ]
+    },
+    "tool_settings": {
+      "purpose": "Configurable tool behavior (limits, defaults, FAQ text).",
+      "primary_key": "setting_id",
+      "id_pattern": "^TSET\\d{4}$",
+      "unique_together": [["tool_id", "setting_key"]],
+      "columns": [
+        { "name": "setting_id", "type": "id", "required": true, "unique": true },
+        { "name": "tool_id", "type": "ref", "ref": "tools.tool_id", "required": true },
+        { "name": "setting_key", "type": "string", "required": true, "pattern": "^[a-z][a-z0-9_]*$", "max_length": 64 },
+        { "name": "setting_value", "type": "string", "required": false, "default": "" },
+        { "name": "value_type", "type": "enum", "enum": "value_type", "required": true, "default": "string" }
+      ]
+    },
+    "blog_categories": {
+      "purpose": "Blog categories.",
+      "primary_key": "category_id",
+      "id_pattern": "^BCAT\\d{4}$",
+      "unique_slug": "blog_category",
+      "columns": [
+        { "name": "category_id", "type": "id", "required": true, "unique": true },
+        { "name": "name", "type": "string", "required": true, "unique": true },
+        { "name": "slug", "type": "slug", "required": true, "unique": true },
+        { "name": "description", "type": "text", "required": false, "default": "" }
+      ]
+    },
+    "authors": {
+      "purpose": "Public author profiles.",
+      "primary_key": "author_id",
+      "id_pattern": "^AUTH\\d{4}$",
+      "columns": [
+        { "name": "author_id", "type": "id", "required": true, "unique": true },
+        { "name": "display_name", "type": "string", "required": true },
+        { "name": "bio", "type": "text", "required": false, "default": "" },
+        { "name": "avatar_path", "type": "path", "required": false, "default": "" }
+      ]
+    },
+    "posts": {
+      "purpose": "Blog post metadata. Body lives in post_blocks.",
+      "primary_key": "post_id",
+      "id_pattern": "^POST\\d{4}$",
+      "unique_slug": "post",
+      "columns": [
+        { "name": "post_id", "type": "id", "required": true, "unique": true },
+        { "name": "title", "type": "string", "required": true },
+        { "name": "slug", "type": "slug", "required": true, "unique": true },
+        { "name": "excerpt", "type": "string", "required": true, "max_length": 300 },
+        { "name": "category_id", "type": "ref", "ref": "blog_categories.category_id", "required": true },
+        { "name": "author_id", "type": "ref", "ref": "authors.author_id", "required": true },
+        { "name": "status", "type": "enum", "enum": "status", "required": true, "default": "draft" },
+        { "name": "published_at", "type": "datetime", "required": false, "note": "Required when status is 'published'." },
+        { "name": "updated_at", "type": "datetime", "required": true }
+      ]
+    },
+    "post_blocks": {
+      "purpose": "Ordered article body blocks.",
+      "primary_key": "block_id",
+      "id_pattern": "^BLK\\d{5}$",
+      "unique_together": [["post_id", "sort_order"]],
+      "columns": [
+        { "name": "block_id", "type": "id", "required": true, "unique": true },
+        { "name": "post_id", "type": "ref", "ref": "posts.post_id", "required": true },
+        { "name": "sort_order", "type": "int", "required": true, "min": 0 },
+        { "name": "block_type", "type": "enum", "enum": "block_type", "required": true },
+        { "name": "content", "type": "text", "required": false, "default": "", "max_length_key": "max_block_length", "note": "Required unless block_type is 'image'." },
+        { "name": "asset_path", "type": "path", "required": false, "default": "", "note": "Required when block_type is 'image'." }
+      ]
+    },
+    "tags": {
+      "purpose": "Reusable tags.",
+      "primary_key": "tag_id",
+      "id_pattern": "^TAG\\d{4}$",
+      "columns": [
+        { "name": "tag_id", "type": "id", "required": true, "unique": true },
+        { "name": "name", "type": "string", "required": true, "unique": true },
+        { "name": "slug", "type": "slug", "required": true, "unique": true }
+      ]
+    },
+    "post_tags": {
+      "purpose": "Many-to-many link between posts and tags.",
+      "primary_key": "relation_id",
+      "id_pattern": "^PTAG\\d{4}$",
+      "unique_together": [["post_id", "tag_id"]],
+      "columns": [
+        { "name": "relation_id", "type": "id", "required": true, "unique": true },
+        { "name": "post_id", "type": "ref", "ref": "posts.post_id", "required": true },
+        { "name": "tag_id", "type": "ref", "ref": "tags.tag_id", "required": true }
+      ]
+    },
+    "seo_metadata": {
+      "purpose": "Search metadata for any content entity.",
+      "primary_key": "seo_id",
+      "id_pattern": "^SEO\\d{4}$",
+      "unique_together": [["entity_type", "entity_id"]],
+      "polymorphic_ref": {
+        "type_column": "entity_type",
+        "id_column": "entity_id",
+        "targets": {
+          "page": "pages.page_id",
+          "tool_category": "tool_categories.category_id",
+          "tool": "tools.tool_id",
+          "post": "posts.post_id",
+          "blog_category": "blog_categories.category_id"
+        }
+      },
+      "columns": [
+        { "name": "seo_id", "type": "id", "required": true, "unique": true },
+        { "name": "entity_type", "type": "enum", "enum": "seo_entity_type", "required": true },
+        { "name": "entity_id", "type": "string", "required": true, "max_length": 32 },
+        { "name": "meta_title", "type": "string", "required": true, "max_length": 70 },
+        { "name": "meta_description", "type": "string", "required": true, "max_length": 170 },
+        { "name": "canonical_url", "type": "url", "required": false, "default": "" },
+        { "name": "noindex", "type": "bool", "required": true, "default": false }
+      ]
+    },
+    "advertisements": {
+      "purpose": "Ad placements. Never store private credentials here.",
+      "primary_key": "ad_id",
+      "id_pattern": "^AD\\d{4}$",
+      "unique_together": [["placement_key", "page_type"]],
+      "columns": [
+        { "name": "ad_id", "type": "id", "required": true, "unique": true },
+        { "name": "placement_key", "type": "string", "required": true, "pattern": "^[a-z][a-z0-9_]*$", "max_length": 64 },
+        { "name": "page_type", "type": "enum", "enum": "ad_page_type", "required": true },
+        { "name": "enabled", "type": "bool", "required": true, "default": false },
+        { "name": "ad_unit_id", "type": "string", "required": false, "default": "", "pattern": "^\\d{6,20}$", "note": "Public AdSense slot id only." }
+      ]
+    },
+    "redirects": {
+      "purpose": "URL migrations.",
+      "primary_key": "redirect_id",
+      "id_pattern": "^RED\\d{4}$",
+      "checks": ["source_path unique", "no redirect loops or chains", "source_path must not equal target_path"],
+      "columns": [
+        { "name": "redirect_id", "type": "id", "required": true, "unique": true },
+        { "name": "source_path", "type": "path", "required": true, "unique": true },
+        { "name": "target_path", "type": "url", "required": true },
+        { "name": "redirect_type", "type": "enum", "enum": "redirect_type", "required": true, "default": "301" },
+        { "name": "enabled", "type": "bool", "required": true, "default": true }
+      ]
+    },
+    "admin_settings": {
+      "purpose": "Non-sensitive admin UI preferences only. No secrets.",
+      "primary_key": "setting_key",
+      "columns": [
+        { "name": "setting_key", "type": "string", "required": true, "unique": true, "pattern": "^[a-z][a-z0-9_]*$", "max_length": 64 },
+        { "name": "setting_value", "type": "string", "required": false, "default": "" },
+        { "name": "updated_at", "type": "datetime", "required": true }
+      ]
+    }
+  },
+  "route_namespaces": {
+    "$comment": "Slugs must be unique within a namespace, and each namespace maps to one URL prefix.",
+    "page": "/{slug}",
+    "tool_category": "/tools/{slug}",
+    "tool": "/tools/{category_slug}/{slug}",
+    "post": "/blog/{slug}",
+    "blog_category": "/blog/category/{slug}"
+  },
+  "global_rules": [
+    "Header row 1 must exactly match the column names, in order; unknown or missing columns fail validation.",
+    "No merged cells, formulas, external links, or hidden sheets.",
+    "Primary keys are immutable once published; archive instead of deleting published rows.",
+    "published posts must have published_at, an existing author and category, and at least one post_block.",
+    "Cells beginning with '=', '+', '-' or '@' are rejected in string/text fields.",
+    "Non-site-relative links must use https://.",
+    "Unsupported HTML in any text field is rejected."
+  ]
+}

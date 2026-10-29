@@ -1,0 +1,41 @@
+# Secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Private data — never commit
+visitor_data*.xlsx
+exports/
+backups/
+analytics-data/
+audit-logs/
+
+# Generated from the workbook at build time
+generated/
+
+# Dependencies and build output
+node_modules/
+.next/
+out/
+dist/
+build/
+coverage/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+
+# Excel temp/lock files
+~$*.xlsx
+.~lock.*
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+*.log
