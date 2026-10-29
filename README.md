@@ -30,13 +30,18 @@ npm install
 npm run typecheck
 npm run lint
 npm test
+npm run dev      # export content, then start the dev server
+npm run build    # export content, then build the static site into out/
 npm run validate [path]   # validate the workbook (exit 1 on any issue)
 npm run export   # validate, then write generated/content.json (git-ignored, deterministic)
 npm run seed   # regenerate data/oewer_database.xlsx with example content (overwrites it)
 ```
 
+### GitHub Pages base path
+A project site is served under `/<repo-name>`. Build it with `NEXT_PUBLIC_BASE_PATH=/<repo-name> npm run build`. Leave it unset for a custom domain or local development.
+
 ## Status
-Phase 1 done (T1.1–T1.6): skeleton, schema, seed workbook, Node/TypeScript tooling, the workbook validator, the JSON export and schema versioning (`lib/workbook/`, shared by the CLIs, CI and the future admin page). See `docs/schema-versioning.md`.
+Phase 1 done (T1.1–T1.6) and T2.1 (Next.js static scaffold; placeholder home page reads the site name from the workbook): skeleton, schema, seed workbook, Node/TypeScript tooling, the workbook validator, the JSON export and schema versioning (`lib/workbook/`, shared by the CLIs, CI and the future admin page). See `docs/schema-versioning.md`.
 
 ## Security
 The workbook is public: put only public content in it. Never commit tokens, credentials or exports. The admin GitHub token is entered in the browser at run time and is never stored in the repo or the bundle. Copy `.env.example` to `.env` locally; `.env` is git-ignored.

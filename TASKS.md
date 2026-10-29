@@ -21,10 +21,10 @@ Source: `docs/OEWER_TOOLS_PROJECT_PLAN.md` (v1.1: JavaScript-only, GitHub Pages,
 - [x] **T1.6** Schema versioning + migration approach (`docs/schema-versioning.md`; migration reader/writer/CLI deferred until the first real migration)
 
 ## Phase 2 — Website shell & design system (4–6 days)
-- [ ] **T2.1** Scaffold Next.js + TypeScript + Tailwind with static export and GitHub Pages `basePath` handling ← T1.3b
-- [ ] **T2.2** OEWER design tokens/theme (`#174f49`), header, footer, search ← T2.1
-- [ ] **T2.3** Page templates: home, category, tool, blog index/category/article, About/Contact/Privacy/Terms, 404 ← T1.5
-- [ ] **T2.4** Metadata, canonical URLs, sitemap script, robots.txt, breadcrumbs, static redirect pages from `redirects` sheet
+- [x] **T2.1** Scaffold Next.js + TypeScript + Tailwind with static export and GitHub Pages `basePath` handling ← T1.3b
+- [x] **T2.2** OEWER design tokens/theme (`#174f49`), header, footer, search ← T2.1 (home page and search checked in the browser)
+- [x] **T2.3** Page templates: home, category, tool, blog index/category/article, About/Contact/Privacy/Terms, 404 ← T1.5 (tool pages need published tools; Privacy/Terms pages and their footer links appear once published in T7.1)
+- [x] **T2.4** Metadata, canonical URLs, sitemap script, robots.txt, breadcrumbs, static redirect pages from `redirects` sheet (redirect pages are written to `out/` by `scripts/write-redirects.ts` after the build; GitHub Pages cannot send real 301s)
 - [ ] **T2.5** Accessibility + responsive tests
 - [ ] **T2.6** GitHub Actions `validate.yml` and Pages deploy (`deploy.yml`) ← T1.4
 

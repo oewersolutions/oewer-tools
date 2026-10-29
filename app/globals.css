@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+/* OEWER design tokens. brand-800 is the primary brand color (#174f49). */
+@theme {
+  --color-brand-50: #effaf8;
+  --color-brand-100: #d3f0ec;
+  --color-brand-200: #a9e0d9;
+  --color-brand-300: #74c9bf;
+  --color-brand-400: #45aca1;
+  --color-brand-500: #2d9087;
+  --color-brand-600: #247269;
+  --color-brand-700: #1e5c56;
+  --color-brand-800: #174f49;
+  --color-brand-900: #11403b;
+  --color-brand: #174f49;
+
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --container-page: 72rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Visible keyboard focus everywhere */
+:focus-visible {
+  outline: 3px solid var(--color-brand-400);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

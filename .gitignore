@@ -18,6 +18,8 @@ generated/
 # Dependencies and build output
 node_modules/
 .next/
+next-env.d.ts
+*.tsbuildinfo
 out/
 dist/
 build/
