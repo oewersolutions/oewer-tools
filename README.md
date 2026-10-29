@@ -41,8 +41,15 @@ npm run seed   # regenerate data/oewer_database.xlsx with example content (overw
 ### GitHub Pages base path
 A project site is served under `/<repo-name>`. Build it with `NEXT_PUBLIC_BASE_PATH=/<repo-name> npm run build`. Leave it unset for a custom domain or local development.
 
+### Deploying
+Two workflows in `.github/workflows/`:
+- `validate.yml` runs on pull requests and non-main branches: workbook validation, typecheck, lint, tests, build and the browser tests.
+- `deploy.yml` runs on every push to `main` (including admin workbook commits): validate, test, build, then publish. The publish job only starts if the build succeeded, so a failed build never replaces the live site.
+
+One-time setup: in the repository go to Settings > Pages and set Source to "GitHub Actions". Optionally add repository variables `SITE_URL` (e.g. `https://example.com`) and `BASE_PATH` (`/<repo-name>` for a github.io project site; leave unset for a custom domain).
+
 ## Status
-Phase 1 done (T1.1–T1.6) and T2.1 (Next.js static scaffold; placeholder home page reads the site name from the workbook): skeleton, schema, seed workbook, Node/TypeScript tooling, the workbook validator, the JSON export and schema versioning (`lib/workbook/`, shared by the CLIs, CI and the future admin page). See `docs/schema-versioning.md`.
+Phase 1 (workbook schema, validator, export, versioning) and Phase 2 (site shell, page templates, SEO, accessibility tests, CI/deploy workflows) are done. Tools, the blog content, the admin page and analytics are next. See `TASKS.md` and `docs/schema-versioning.md`.
 
 ## Security
 The workbook is public: put only public content in it. Never commit tokens, credentials or exports. The admin GitHub token is entered in the browser at run time and is never stored in the repo or the bundle. Copy `.env.example` to `.env` locally; `.env` is git-ignored.

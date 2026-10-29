@@ -1,0 +1,37 @@
+name: Validate
+
+# Checks every pull request and every branch push except main (main is checked by the deploy workflow).
+on:
+  pull_request:
+  push:
+    branches-ignore: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: validate-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - name: Validate workbook
+        run: npm run validate
+      - run: npm run typecheck
+      - run: npm run lint
+      - run: npm test
+      - name: Build static site
+        run: npm run build
+      - name: Accessibility and responsive tests
+        run: npm run test:e2e
+        env:
+          CI: "true"
