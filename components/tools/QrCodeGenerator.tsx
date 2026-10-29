@@ -79,12 +79,12 @@ export default function QrCodeGenerator() {
         qr.ok ? (
           <div className="space-y-3">
             {/* A data URL image: the SVG is generated here from numbers and fixed colours only. */}
-            <img src={`data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`} alt="QR code for your text" width={256} height={256} className="h-auto max-w-full rounded border border-brand-200" />
+            <img src={`data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`} alt="QR code for your text" width={256} height={256} className="h-auto max-w-full rounded-xl border border-brand-200" />
             <div className="flex flex-wrap gap-2">
-              <button type="button" onClick={downloadPng} className="rounded bg-brand px-4 py-2 font-medium text-white hover:bg-brand-800">
+              <button type="button" onClick={downloadPng} className="rounded-xl bg-brand px-5 py-2.5 font-medium text-white shadow-soft transition hover:bg-brand-700">
                 Download PNG
               </button>
-              <button type="button" onClick={downloadSvg} className="rounded border border-brand px-4 py-2 font-medium text-brand hover:bg-brand-50">
+              <button type="button" onClick={downloadSvg} className="rounded-xl border border-brand px-5 py-2.5 font-medium text-brand transition hover:bg-brand-50">
                 Download SVG
               </button>
             </div>

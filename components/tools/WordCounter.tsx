@@ -22,7 +22,7 @@ export default function WordCounter() {
     <div className="space-y-4">
       <TextAreaField label="Type or paste your text" value={text} onChange={setText} rows={12} placeholder="Start typing…" describedBy="word-stats" />
       <div className="flex justify-end">
-        <button type="button" disabled={text === ""} onClick={() => setText("")} className="rounded border border-brand px-3 py-1.5 text-sm font-medium text-brand hover:bg-brand-50 disabled:opacity-50">
+        <button type="button" disabled={text === ""} onClick={() => setText("")} className="rounded-lg border border-brand px-3.5 py-1.5 text-sm font-medium text-brand transition hover:bg-brand-50 disabled:opacity-50">
           Clear text
         </button>
       </div>

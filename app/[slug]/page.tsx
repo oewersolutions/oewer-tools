@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Breadcrumbs from "../../components/Breadcrumbs";
+import { Container, PageBand } from "../../components/layout";
 import { Prose } from "../../components/Prose";
 import { pageMetadata } from "../../lib/metadata";
 import { getPageBySlug, getPublishedPages } from "../../lib/content";
@@ -24,10 +25,13 @@ export default async function StaticPage({ params }: Props) {
   if (!page) notFound();
 
   return (
-    <article className="space-y-6">
-      <Breadcrumbs trail={[{ label: page.title }]} />
-      <h1 className="text-3xl font-bold text-brand">{page.title}</h1>
-      <Prose source={page.content} />
+    <article>
+      <PageBand breadcrumbs={<Breadcrumbs trail={[{ label: page.title }]} />} title={page.title} />
+      <Container className="py-12">
+        <div className="max-w-3xl rounded-3xl border border-brand-100 bg-white p-6 shadow-soft sm:p-10">
+          <Prose source={page.content} />
+        </div>
+      </Container>
     </article>
   );
 }

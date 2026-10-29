@@ -12,14 +12,34 @@
   --color-brand-700: #1e5c56;
   --color-brand-800: #174f49;
   --color-brand-900: #11403b;
+  --color-brand-950: #0a2623;
   --color-brand: #174f49;
 
-  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --container-page: 72rem;
+  /* Warm gold accent: decoration and text on dark backgrounds only (it is too light for text on white). */
+  --color-gold-300: #f0d08c;
+  --color-gold-400: #e4b95f;
+  --color-gold-500: #c8963e;
+  --color-gold-600: #a67a2c;
+  --color-gold-700: #7a5614;
+
+  --color-cream: #faf8f3;
+  --color-ink: #14211f;
+
+  --font-sans: var(--font-inter), system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
+  --container-page: 74rem;
+
+  --shadow-soft: 0 1px 2px rgb(20 33 31 / 0.04), 0 8px 24px -8px rgb(20 33 31 / 0.12);
+  --shadow-lift: 0 2px 4px rgb(20 33 31 / 0.05), 0 20px 40px -12px rgb(23 79 73 / 0.25);
 }
 
 html {
   scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-cream);
+  color: var(--color-ink);
 }
 
 /* Visible keyboard focus everywhere */
@@ -28,8 +48,48 @@ html {
   outline-offset: 2px;
 }
 
+/* Dark hero: layered glows and a faint grid. Purely decorative. */
+.hero-bg {
+  background:
+    radial-gradient(60rem 28rem at 85% -10%, rgb(228 185 95 / 0.22), transparent 60%),
+    radial-gradient(48rem 30rem at -10% 110%, rgb(69 172 161 / 0.35), transparent 60%),
+    linear-gradient(160deg, var(--color-brand-950) 0%, var(--color-brand-900) 45%, var(--color-brand-800) 100%);
+}
+.hero-grid {
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.05) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+}
+
+/* Soft light header band for inner pages */
+.band-bg {
+  background:
+    radial-gradient(40rem 16rem at 100% 0%, rgb(228 185 95 / 0.16), transparent 60%),
+    radial-gradient(36rem 18rem at 0% 100%, rgb(69 172 161 / 0.16), transparent 60%),
+    linear-gradient(180deg, #ffffff, var(--color-cream));
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, var(--color-gold-300), var(--color-gold-400));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+details > summary {
+  list-style: none;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+  * {
+    transition: none !important;
   }
 }

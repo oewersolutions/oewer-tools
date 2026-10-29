@@ -160,7 +160,7 @@ export function ImageOutput({
       )}
       {encoded && (
         // A plain <img>: this is a local blob URL, which next/image cannot optimise.
-        <img src={encoded.url} alt="Preview of the processed image" className="max-h-72 w-auto max-w-full rounded border border-brand-200 bg-white object-contain" />
+        <img src={encoded.url} alt="Preview of the processed image" className="max-h-72 w-auto max-w-full rounded-xl border border-brand-200 bg-white object-contain" />
       )}
       <dl className="space-y-2 text-sm">
         <Row label="Original" value={`${formatBytes(source.file.size)} · ${source.bitmap.width} × ${source.bitmap.height}`} />
@@ -177,7 +177,7 @@ export function ImageOutput({
         <a
           href={encoded.url}
           download={outputName(source.file.name, outType, suffix)}
-          className="inline-block rounded bg-brand px-4 py-2 font-medium text-white hover:bg-brand-800"
+          className="inline-block rounded-xl bg-brand px-5 py-2.5 font-medium text-white shadow-soft transition hover:bg-brand-700"
         >
           Download image
         </a>

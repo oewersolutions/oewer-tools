@@ -6,6 +6,7 @@
  *
  *   npx tsx scripts/create-seed-workbook.ts [outputPath]
  */
+import { SEED_POSTS } from "./blog-content";
 import { TOOL_CONTENT } from "./tool-content";
 import { readFileSync } from "node:fs";
 import { mkdir } from "node:fs/promises";
@@ -72,10 +73,10 @@ const SEED: Record<string, Row[]> = {
     ["ads_enabled", "false", "bool", NOW],
   ],
   pages: [
-    ["PAGE0001", "about", "About OEWER Tools", "OEWER Tools is a collection of free, fast online tools. Most tools run entirely in your browser, so your files and numbers stay on your device.\n\nWe publish practical guides alongside each tool so you understand how the results are calculated.", "published", NOW],
+    ["PAGE0001", "about", "About OEWER Tools", "OEWER Tools is a collection of free, fast online tools for everyday jobs: shrinking an image, working out a loan EMI, tidying JSON or making a QR code.\n\nWe built it because too many online tools ask you to upload your files, sign up for an account or sit through pop-ups just to do something simple. Ours do not.\n\n# What makes us different\n\n- **Private by design.** Our tools run in your browser. Your images, text and numbers stay on your device and are never uploaded to our servers.\n- **No sign-up.** Open a tool and use it.\n- **Explained, not just answered.** Each tool comes with how-to steps, worked examples and answers to common questions, and our guides explain the formulas behind the results.\n- **Made for every device.** The site works on phones, tablets and computers, and with a keyboard or a screen reader.\n\n# How we keep our word\n\nWe test the privacy promise. Our automated tests watch the network while each tool is used and fail if anything is sent anywhere. The calculators use standard published formulas, and we check their results against worked examples.\n\n# What is next\n\nWe are adding more tools and more guides. If there is a tool you wish existed, tell us on the contact page.", "published", NOW],
     ["PAGE0002", "privacy-policy", "Privacy Policy", "Draft placeholder. Replace with the final privacy policy before launch (see task T7.1).", "draft", NOW],
     ["PAGE0003", "terms", "Terms of Use", "Draft placeholder. Replace with the final terms of use before launch (see task T7.1).", "draft", NOW],
-    ["PAGE0004", "contact", "Contact Us", "Questions or feedback? Email us at hello@example.com.", "published", NOW],
+    ["PAGE0004", "contact", "Contact Us", "Questions, bug reports or ideas for a new tool? We would like to hear from you.\n\nEmail us at hello@example.com.\n\n# Helpful details to include\n\n- The name of the tool and what you were trying to do.\n- What you expected to happen, and what happened instead.\n- Your browser and device, for example Chrome on Android.\n\nPlease do not send passwords, bank details or files containing personal information. We do not need them to help.\n\n# Suggest a tool\n\nTell us what you would use it for and how often. Tools that save people the most time go to the top of our list.", "published", NOW],
   ],
   navigation: [
     ["NAV0001", "Tools", "/tools", "header", 1, true],
@@ -106,6 +107,7 @@ const SEED: Record<string, Row[]> = {
       "Understand the formula behind your loan EMI and how interest and tenure change what you pay.",
       "BCAT0001", "AUTH0001", "published", NOW, NOW,
     ],
+    ...SEED_POSTS.map((p): Row => [p.id, p.title, p.slug, p.excerpt, p.categoryId, "AUTH0001", "published", p.publishedAt, p.publishedAt]),
   ],
   post_blocks: [
     ["BLK00001", "POST0001", 1, "paragraph", "An EMI, or equated monthly instalment, is the fixed amount you pay each month until a loan is cleared. Each payment covers part of the interest and part of the principal.", ""],
@@ -113,18 +115,27 @@ const SEED: Record<string, Row[]> = {
     ["BLK00003", "POST0001", 3, "paragraph", "EMI = P x r x (1 + r)^n / ((1 + r)^n - 1), where P is the loan amount, r is the monthly interest rate (annual rate divided by 12 and by 100) and n is the number of monthly instalments.", ""],
     ["BLK00004", "POST0001", 4, "heading", "What changes your EMI", ""],
     ["BLK00005", "POST0001", 5, "list", "A higher loan amount raises the EMI.\nA higher interest rate raises the EMI.\nA longer tenure lowers the EMI but increases the total interest paid.", ""],
+    ...SEED_POSTS.flatMap((p, pi) =>
+      p.blocks.map((b, i): Row => [`BLK${String(10 + pi * 20 + i).padStart(5, "0")}`, p.id, i + 1, b[0], b[1], ""]),
+    ),
   ],
   tags: [
     ["TAG0001", "Loans", "loans"],
     ["TAG0002", "Calculators", "calculators"],
+    ["TAG0003", "Images", "images"],
+    ["TAG0004", "Tax", "tax"],
+    ["TAG0005", "Savings", "savings"],
+    ["TAG0006", "Privacy", "privacy"],
   ],
   post_tags: [
     ["PTAG0001", "POST0001", "TAG0001"],
     ["PTAG0002", "POST0001", "TAG0002"],
+    ...SEED_POSTS.flatMap((p, pi) => p.tags.map((t, i): Row => [`PTAG${String(10 + pi * 4 + i).padStart(4, "0")}`, p.id, t])),
   ],
   seo_metadata: [
     ["SEO0001", "tool", "TOOL0004", "EMI Calculator - Monthly Loan Payment", "Calculate your monthly loan EMI, total interest and total payment with this free EMI calculator.", "", false],
     ["SEO0002", "post", "POST0001", "How EMI Is Calculated - Formula Explained", "Learn the EMI formula and how loan amount, interest rate and tenure change your monthly payment.", "", false],
+    ...SEED_POSTS.map((p, i): Row => [`SEO${String(10 + i).padStart(4, "0")}`, "post", p.id, p.seo.title, p.seo.description, "", false]),
     ["SEO0003", "page", "PAGE0001", "About OEWER Tools", "OEWER Tools offers free, privacy-friendly online tools and practical guides.", "", false],
   ],
   advertisements: [

@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Breadcrumbs from "../../../../components/Breadcrumbs";
 import { PostCard } from "../../../../components/Cards";
+import { Container, PageBand } from "../../../../components/layout";
 import { pageMetadata } from "../../../../lib/metadata";
-import { getBlogCategories, getBlogCategoryBySlug, getPostsInCategory } from "../../../../lib/content";
+import { getBlogCategories, getBlogCategoryBySlug, getPostReadingMinutes, getPostsInCategory } from "../../../../lib/content";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -32,16 +33,23 @@ export default async function BlogCategoryPage({ params }: Props) {
   const category = getBlogCategoryBySlug((await params).slug);
   if (!category) notFound();
 
+  const posts = getPostsInCategory(category.category_id);
+
   return (
-    <div className="space-y-6">
-      <Breadcrumbs trail={[{ label: "Blog", path: "/blog/" }, { label: category.name }]} />
-      <h1 className="text-3xl font-bold text-brand">{category.name}</h1>
-      {category.description && <p className="max-w-prose text-slate-700">{category.description}</p>}
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {getPostsInCategory(category.category_id).map((p) => (
-          <PostCard key={p.post_id} post={p} />
-        ))}
-      </div>
-    </div>
+    <>
+      <PageBand
+        breadcrumbs={<Breadcrumbs trail={[{ label: "Blog", path: "/blog/" }, { label: category.name }]} />}
+        eyebrow={posts.length === 1 ? "1 article" : `${posts.length} articles`}
+        title={category.name}
+        description={category.description || undefined}
+      />
+      <Container className="py-14">
+        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {posts.map((p) => (
+            <PostCard key={p.post_id} post={p} categoryName={category.name} minutes={getPostReadingMinutes(p.post_id)} />
+          ))}
+        </div>
+      </Container>
+    </>
   );
 }

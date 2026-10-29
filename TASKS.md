@@ -27,6 +27,7 @@ Source: `docs/OEWER_TOOLS_PROJECT_PLAN.md` (v1.1: JavaScript-only, GitHub Pages,
 - [x] **T2.4** Metadata, canonical URLs, sitemap script, robots.txt, breadcrumbs, static redirect pages from `redirects` sheet (redirect pages are written to `out/` by `scripts/write-redirects.ts` after the build; GitHub Pages cannot send real 301s)
 - [x] **T2.5** Accessibility + responsive tests (Playwright + axe in `e2e/`, `npm run test:e2e` after a build; tool pages are not covered until tools are published)
 - [x] **T2.6** GitHub Actions `validate.yml` and Pages deploy (`deploy.yml`) ← T1.4 (`.github/workflows/`; needs repo Pages source set to "GitHub Actions" and optional variables SITE_URL, BASE_PATH; not yet run on GitHub)
+- [x] **T2.7** Premium visual redesign and more content: fonts (Inter + Fraunces, self-hosted at build), icons, new home page sections, redesigned header/footer/cards/tool/blog/static pages, 5 more articles, richer About and Contact (added after Phase 3 at the owner's request)
 
 ## Phase 3 — Tool engine & MVP tools (7–12 days)
 - [x] **T3.1** Tool registry mapping `component_key` → approved components; build fails on unknown key ← T2.3 (`lib/tools/keys.ts` + `components/tools/registry.ts`; registry is empty until T3.2, so no tool can be published yet)

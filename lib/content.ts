@@ -1,5 +1,6 @@
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
+import { readingMinutes } from "./format";
 import { parseToolContent, pickRelated, type ToolContent } from "./tools/content";
 import type { ContentExport } from "./workbook/export";
 
@@ -139,6 +140,8 @@ export const getPostBlocks = (postId: string): PostBlock[] =>
   sheet<PostBlock>("post_blocks")
     .filter((b) => b.post_id === postId)
     .sort((a, b) => a.sort_order - b.sort_order);
+/** Minutes to read a published post, from its blocks. */
+export const getPostReadingMinutes = (postId: string): number => readingMinutes(getPostBlocks(postId).map((b) => b.content).join(" "));
 export const getAuthor = (id: string): Author | undefined => sheet<Author>("authors").find((a) => a.author_id === id);
 export const getBlogCategories = (): BlogCategory[] => sheet<BlogCategory>("blog_categories");
 export const getBlogCategory = (id: string): BlogCategory | undefined => getBlogCategories().find((c) => c.category_id === id);

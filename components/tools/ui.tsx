@@ -3,7 +3,7 @@
 import { useId, useState, type ReactNode } from "react";
 
 const control =
-  "mt-1 block w-full rounded border border-slate-400 bg-white px-3 py-2 text-base text-slate-900 aria-[invalid=true]:border-red-700";
+  "mt-1.5 block w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-base text-slate-900 shadow-sm transition focus:border-brand-500 aria-[invalid=true]:border-red-700";
 
 export function NumberField({
   label,
@@ -24,7 +24,7 @@ export function NumberField({
   const describedBy = [error ? `${id}-error` : "", hint ? `${id}-hint` : ""].filter(Boolean).join(" ") || undefined;
   return (
     <div>
-      <label htmlFor={id} className="block text-sm font-medium text-slate-800">
+      <label htmlFor={id} className="block text-sm font-semibold text-slate-800">
         {label}
       </label>
       <input
@@ -67,7 +67,7 @@ export function SelectField<T extends string>({
   const id = useId();
   return (
     <div>
-      <label htmlFor={id} className="block text-sm font-medium text-slate-800">
+      <label htmlFor={id} className="block text-sm font-semibold text-slate-800">
         {label}
       </label>
       <select id={id} value={value} onChange={(e) => onChange(e.target.value as T)} className={control}>
@@ -84,10 +84,10 @@ export function SelectField<T extends string>({
 export function ToolLayout({ inputs, results }: { inputs: ReactNode; results: ReactNode }) {
   return (
     <div className="grid gap-6 md:grid-cols-2">
-      <form onSubmit={(e) => e.preventDefault()} className="space-y-4 rounded-lg border border-slate-300 p-5">
+      <form onSubmit={(e) => e.preventDefault()} className="space-y-5 rounded-2xl border border-brand-100 bg-white p-6 shadow-soft">
         {inputs}
       </form>
-      <div role="status" aria-live="polite" className="rounded-lg bg-brand-50 p-5">
+      <div role="status" aria-live="polite" className="rounded-2xl border border-brand-100 bg-gradient-to-br from-brand-50 to-white p-6 shadow-soft">
         {results}
       </div>
     </div>
@@ -100,7 +100,7 @@ export function Results({ headline, rows, emptyMessage }: { headline?: { label: 
     <dl className="space-y-3">
       <div>
         <dt className="text-sm text-slate-700">{headline.label}</dt>
-        <dd className="text-3xl font-bold text-brand">{headline.value}</dd>
+        <dd className="font-display text-4xl font-semibold text-brand">{headline.value}</dd>
       </div>
       {rows?.map((r) => (
         <div key={r.label} className="flex justify-between gap-4 border-t border-brand-200 pt-2">
@@ -134,7 +134,7 @@ export function TextAreaField({
   const id = useId();
   return (
     <div>
-      <label htmlFor={id} className="block text-sm font-medium text-slate-800">
+      <label htmlFor={id} className="block text-sm font-semibold text-slate-800">
         {label}
       </label>
       <textarea
@@ -169,7 +169,7 @@ export function CopyButton({ text, label = "Copy" }: { text: string; label?: str
           }
           setTimeout(() => setState("idle"), 2000);
         }}
-        className="rounded border border-brand px-3 py-1.5 text-sm font-medium text-brand hover:bg-brand-50 disabled:opacity-50"
+        className="rounded-lg border border-brand px-3.5 py-1.5 text-sm font-medium text-brand transition hover:bg-brand-50 disabled:opacity-50"
       >
         {label}
       </button>

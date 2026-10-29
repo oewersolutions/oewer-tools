@@ -52,8 +52,10 @@ describe("buildContent", () => {
     const { sheets } = buildContent(clone(), schema);
     const tools = sheets.tools!.map((t) => t.tool_id);
     expect(tools).toEqual([...tools].sort());
-    const orders = sheets.post_blocks!.map((b) => b.sort_order);
-    expect(orders).toEqual([...orders].sort((a, b) => Number(a) - Number(b)));
+    for (const postId of new Set(sheets.post_blocks!.map((b) => b.post_id))) {
+      const orders = sheets.post_blocks!.filter((b) => b.post_id === postId).map((b) => b.sort_order);
+      expect(orders).toEqual([...orders].sort((a, b) => Number(a) - Number(b)));
+    }
   });
 
   it("orders posts newest first", () => {
@@ -61,20 +63,22 @@ describe("buildContent", () => {
     const first = data.posts![0]!;
     data.posts!.push({
       row: 99,
-      values: { ...first.values, post_id: "POST0002", slug: "newer-post", published_at: "2026-11-01T00:00:00Z" },
+      values: { ...first.values, post_id: "POST0099", slug: "newer-post", published_at: "2099-11-01T00:00:00Z" },
     });
-    const ids = buildContent(data, schema).sheets.posts!.map((p) => p.post_id);
-    expect(ids).toEqual(["POST0002", "POST0001"]);
+    const posts = buildContent(data, schema).sheets.posts!;
+    expect(posts[0]!.post_id).toBe("POST0099");
+    const dates = posts.map((p) => String(p.published_at));
+    expect(dates).toEqual([...dates].sort().reverse());
   });
 
   it("applies schema defaults and nulls to empty optional cells", () => {
     const data = clone();
     data.authors![0]!.values.bio = "";
-    data.posts![0]!.values.published_at = "";
+    data.posts!.find((p) => p.values.post_id === "POST0001")!.values.published_at = "";
     data.tools![0]!.values.featured = "";
     const { sheets } = buildContent(data, schema);
     expect(sheets.authors![0]!.bio).toBe("");
-    expect(sheets.posts![0]!.published_at).toBeNull();
+    expect(sheets.posts!.find((p) => p.post_id === "POST0001")!.published_at).toBeNull();
     expect(sheets.tools!.find((t) => t.tool_id === "TOOL0001")!.featured).toBe(false);
   });
 

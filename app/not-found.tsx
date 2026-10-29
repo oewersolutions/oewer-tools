@@ -1,20 +1,30 @@
 import Link from "next/link";
+import { ArrowRight } from "../components/icons";
+import { Container } from "../components/layout";
+import SearchBox from "../components/SearchBox";
 
 export default function NotFound() {
   return (
-    <section className="max-w-xl space-y-4">
-      <h1 className="text-3xl font-bold text-brand">Page not found</h1>
-      <p className="text-slate-700">We couldn’t find the page you were looking for. It may have moved, or the address may be mistyped.</p>
-      <p>
-        <Link href="/" className="text-brand-700 underline">
-          Go to the home page
-        </Link>{" "}
-        or{" "}
-        <Link href="/tools/" className="text-brand-700 underline">
-          browse all tools
-        </Link>
-        .
-      </p>
+    <section className="band-bg">
+      <Container className="py-20 text-center sm:py-28">
+        <p className="font-display text-7xl font-semibold text-brand-300 sm:text-9xl" aria-hidden="true">
+          404
+        </p>
+        <h1 className="mt-4 font-display text-3xl font-semibold text-ink sm:text-5xl">Page not found</h1>
+        <p className="mx-auto mt-4 max-w-xl text-lg text-slate-700">We couldn’t find the page you were looking for. It may have moved, or the address may be mistyped.</p>
+        <div className="mx-auto mt-8 flex max-w-2xl justify-center">
+          <SearchBox large />
+        </div>
+        <p className="mt-8 flex flex-wrap justify-center gap-3">
+          <Link href="/" className="inline-flex items-center gap-2 rounded-xl bg-brand px-6 py-3 font-semibold text-white shadow-soft transition hover:bg-brand-700">
+            Go to the home page
+          </Link>
+          <Link href="/tools/" className="inline-flex items-center gap-2 rounded-xl border border-brand px-6 py-3 font-semibold text-brand transition hover:bg-brand-50">
+            Browse all tools
+            <ArrowRight aria-hidden="true" className="size-4" />
+          </Link>
+        </p>
+      </Container>
     </section>
   );
 }
