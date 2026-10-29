@@ -25,7 +25,7 @@ Source: `docs/OEWER_TOOLS_PROJECT_PLAN.md` (v1.1: JavaScript-only, GitHub Pages,
 - [x] **T2.2** OEWER design tokens/theme (`#174f49`), header, footer, search ← T2.1 (home page and search checked in the browser)
 - [x] **T2.3** Page templates: home, category, tool, blog index/category/article, About/Contact/Privacy/Terms, 404 ← T1.5 (tool pages need published tools; Privacy/Terms pages and their footer links appear once published in T7.1)
 - [x] **T2.4** Metadata, canonical URLs, sitemap script, robots.txt, breadcrumbs, static redirect pages from `redirects` sheet (redirect pages are written to `out/` by `scripts/write-redirects.ts` after the build; GitHub Pages cannot send real 301s)
-- [ ] **T2.5** Accessibility + responsive tests
+- [x] **T2.5** Accessibility + responsive tests (Playwright + axe in `e2e/`, `npm run test:e2e` after a build; tool pages are not covered until tools are published)
 - [ ] **T2.6** GitHub Actions `validate.yml` and Pages deploy (`deploy.yml`) ← T1.4
 
 ## Phase 3 — Tool engine & MVP tools (7–12 days)

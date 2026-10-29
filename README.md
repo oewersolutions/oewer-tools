@@ -30,6 +30,7 @@ npm install
 npm run typecheck
 npm run lint
 npm test
+npm run test:e2e   # accessibility (axe) + responsive checks on out/; run npm run build first; needs Google Chrome
 npm run dev      # export content, then start the dev server
 npm run build    # export content, then build the static site into out/
 npm run validate [path]   # validate the workbook (exit 1 on any issue)
