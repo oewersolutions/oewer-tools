@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Breadcrumbs from "../../../../components/Breadcrumbs";
 import { pageMetadata } from "../../../../lib/metadata";
+import { getToolComponent } from "../../../../components/tools/registry";
 import { getPublishedTools, getToolBySlug, getToolCategory } from "../../../../lib/content";
 
 type Props = { params: Promise<{ category: string; tool: string }> };
@@ -36,6 +37,7 @@ export default async function ToolPage({ params }: Props) {
   const found = getToolBySlug(categorySlug, toolSlug);
   if (!found) notFound();
   const { tool, category } = found;
+  const ToolComponent = getToolComponent(tool.component_key); // throws, failing the build, for an unregistered key
 
   return (
     <article className="space-y-6">
@@ -43,9 +45,8 @@ export default async function ToolPage({ params }: Props) {
       <h1 className="text-3xl font-bold text-brand">{tool.name}</h1>
       <p className="max-w-prose text-lg text-slate-700">{tool.description}</p>
 
-      {/* The working tool is mounted here from the component registry (T3.1). */}
-      <section aria-label={tool.name} data-component={tool.component_key} className="rounded-lg border border-dashed border-brand-300 bg-brand-50 p-6">
-        <p className="text-slate-700">This tool is being built and will be available soon.</p>
+      <section aria-label={tool.name} data-component={tool.component_key}>
+        <ToolComponent />
       </section>
     </article>
   );

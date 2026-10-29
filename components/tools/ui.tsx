@@ -1,0 +1,111 @@
+import { useId, type ReactNode } from "react";
+
+const control =
+  "mt-1 block w-full rounded border border-slate-400 bg-white px-3 py-2 text-base text-slate-900 aria-[invalid=true]:border-red-700";
+
+export function NumberField({
+  label,
+  value,
+  onChange,
+  error,
+  hint,
+  placeholder,
+}: {
+  label: string;
+  value: string;
+  onChange: (value: string) => void;
+  error?: string;
+  hint?: string;
+  placeholder?: string;
+}) {
+  const id = useId();
+  const describedBy = [error ? `${id}-error` : "", hint ? `${id}-hint` : ""].filter(Boolean).join(" ") || undefined;
+  return (
+    <div>
+      <label htmlFor={id} className="block text-sm font-medium text-slate-800">
+        {label}
+      </label>
+      <input
+        id={id}
+        type="text"
+        inputMode="decimal"
+        autoComplete="off"
+        value={value}
+        placeholder={placeholder}
+        onChange={(e) => onChange(e.target.value)}
+        aria-invalid={error ? true : undefined}
+        aria-describedby={describedBy}
+        className={control}
+      />
+      {hint && (
+        <p id={`${id}-hint`} className="mt-1 text-xs text-slate-600">
+          {hint}
+        </p>
+      )}
+      {error && (
+        <p id={`${id}-error`} className="mt-1 text-sm text-red-800">
+          {error}
+        </p>
+      )}
+    </div>
+  );
+}
+
+export function SelectField<T extends string>({
+  label,
+  value,
+  onChange,
+  options,
+}: {
+  label: string;
+  value: T;
+  onChange: (value: T) => void;
+  options: { value: T; label: string }[];
+}) {
+  const id = useId();
+  return (
+    <div>
+      <label htmlFor={id} className="block text-sm font-medium text-slate-800">
+        {label}
+      </label>
+      <select id={id} value={value} onChange={(e) => onChange(e.target.value as T)} className={control}>
+        {options.map((o) => (
+          <option key={o.value} value={o.value}>
+            {o.label}
+          </option>
+        ))}
+      </select>
+    </div>
+  );
+}
+
+export function ToolLayout({ inputs, results }: { inputs: ReactNode; results: ReactNode }) {
+  return (
+    <div className="grid gap-6 md:grid-cols-2">
+      <form onSubmit={(e) => e.preventDefault()} className="space-y-4 rounded-lg border border-slate-300 p-5">
+        {inputs}
+      </form>
+      <div role="status" aria-live="polite" className="rounded-lg bg-brand-50 p-5">
+        {results}
+      </div>
+    </div>
+  );
+}
+
+export function Results({ headline, rows, emptyMessage }: { headline?: { label: string; value: string }; rows?: { label: string; value: string }[]; emptyMessage: string }) {
+  if (!headline) return <p className="text-slate-700">{emptyMessage}</p>;
+  return (
+    <dl className="space-y-3">
+      <div>
+        <dt className="text-sm text-slate-700">{headline.label}</dt>
+        <dd className="text-3xl font-bold text-brand">{headline.value}</dd>
+      </div>
+      {rows?.map((r) => (
+        <div key={r.label} className="flex justify-between gap-4 border-t border-brand-200 pt-2">
+          <dt className="text-slate-700">{r.label}</dt>
+          <dd className="font-medium text-slate-900">{r.value}</dd>
+        </div>
+      ))}
+    </dl>
+  );
+}

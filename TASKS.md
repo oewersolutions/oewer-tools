@@ -29,8 +29,8 @@ Source: `docs/OEWER_TOOLS_PROJECT_PLAN.md` (v1.1: JavaScript-only, GitHub Pages,
 - [x] **T2.6** GitHub Actions `validate.yml` and Pages deploy (`deploy.yml`) ← T1.4 (`.github/workflows/`; needs repo Pages source set to "GitHub Actions" and optional variables SITE_URL, BASE_PATH; not yet run on GitHub)
 
 ## Phase 3 — Tool engine & MVP tools (7–12 days)
-- [ ] **T3.1** Tool registry mapping `component_key` → approved components; build fails on unknown key ← T2.3
-- [ ] **T3.2** Finance tools: EMI, FD interest, GST, percentage
+- [x] **T3.1** Tool registry mapping `component_key` → approved components; build fails on unknown key ← T2.3 (`lib/tools/keys.ts` + `components/tools/registry.ts`; registry is empty until T3.2, so no tool can be published yet)
+- [x] **T3.2** Finance tools: EMI, FD interest, GST, percentage (calculators and tests done; tools stay `draft` until T3.7, checked temporarily as published: pages build, axe and responsive tests pass)
 - [ ] **T3.3** Image tools: compressor, resizer, JPG/PNG/WebP converter (in-browser)
 - [ ] **T3.4** JSON formatter/validator, QR generator, word counter
 - [ ] **T3.5** Per-tool help, examples, FAQ, related-tool links, input validation

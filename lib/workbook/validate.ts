@@ -109,7 +109,12 @@ function checkTypedSetting(value: unknown, valueType: unknown): string | null {
   }
 }
 
-export function validateWorkbook(data: WorkbookData, schema: Schema): Issue[] {
+export interface ValidateOptions {
+  /** Component keys that exist in the tool registry. When given, every published tool must use one of them. */
+  toolComponentKeys?: readonly string[];
+}
+
+export function validateWorkbook(data: WorkbookData, schema: Schema, options: ValidateOptions = {}): Issue[] {
   const issues: Issue[] = [];
   const add = (sheet: string, row: SheetRow | undefined, column: string | undefined, code: string, message: string) =>
     issues.push({ sheet, row: row?.row, column, code, message });
@@ -201,6 +206,16 @@ export function validateWorkbook(data: WorkbookData, schema: Schema): Issue[] {
     for (const row of rowsOf(sheet)) {
       const problem = checkTypedSetting(row.values.setting_value, row.values.value_type);
       if (problem) add(sheet, row, "setting_value", "invalid_value", `${problem}.`);
+    }
+  }
+
+  // Published tools must have an approved component
+  if (options.toolComponentKeys) {
+    const known = new Set(options.toolComponentKeys);
+    for (const tool of rowsOf("tools")) {
+      if (tool.values.status === "published" && !known.has(String(tool.values.component_key))) {
+        add("tools", tool, "component_key", "unknown_component", `'${String(tool.values.component_key)}' has no tool component, so the tool cannot be published.`);
+      }
     }
   }
 

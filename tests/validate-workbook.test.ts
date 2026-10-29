@@ -278,3 +278,24 @@ describe("reading the .xlsx file", () => {
     expect(codes(result.issues)).toEqual(["unreadable"]);
   });
 });
+
+describe("tool component registry", () => {
+  const publish = (d: WorkbookData) => (row(d, "tools").values.status = "published");
+  const run = (keys: string[], mutate: (d: WorkbookData) => void) => {
+    const data = structuredClone(baseline);
+    mutate(data);
+    return validateWorkbook(data, schema, { toolComponentKeys: keys });
+  };
+
+  it("rejects a published tool whose component_key is not registered", () => {
+    expect(has(run([], publish), "unknown_component", "tools", "component_key")).toBe(true);
+  });
+
+  it("accepts a published tool whose component_key is registered", () => {
+    expect(run(["image-compressor"], publish)).toEqual([]);
+  });
+
+  it("ignores draft tools", () => {
+    expect(run([], () => undefined)).toEqual([]);
+  });
+});

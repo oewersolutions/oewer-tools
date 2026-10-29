@@ -2,6 +2,7 @@ import { checkWorkbookVersion } from "./migrate";
 import { readWorkbook, type ReadResult } from "./read";
 import { schema } from "./schema";
 import type { Issue, WorkbookData } from "./types";
+import { TOOL_COMPONENT_KEYS } from "../tools/keys";
 import { validateWorkbook } from "./validate";
 
 export { checkWorkbookVersion, compareVersions, parseVersion, planMigrations, readWorkbookVersion } from "./migrate";
@@ -10,6 +11,7 @@ export { schema } from "./schema";
 export { formatIssue } from "./types";
 export type { Issue, Schema, SheetRow, WorkbookData } from "./types";
 export { validateWorkbook } from "./validate";
+export type { ValidateOptions } from "./validate";
 
 export interface CheckResult extends ReadResult {
   data: WorkbookData;
@@ -28,6 +30,6 @@ export async function checkWorkbook(buffer: Parameters<typeof readWorkbook>[0], 
   const version = checkWorkbookVersion(read.data, schema.schema_version);
   return {
     data: read.data,
-    issues: [...(version ? [version] : []), ...read.issues, ...validateWorkbook(read.data, schema)],
+    issues: [...(version ? [version] : []), ...read.issues, ...validateWorkbook(read.data, schema, { toolComponentKeys: TOOL_COMPONENT_KEYS })],
   };
 }
