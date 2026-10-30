@@ -13,6 +13,7 @@ export default function GstCalculator() {
 
   return (
     <ToolLayout
+      dark
       inputs={
         <>
           <SelectField

@@ -2,39 +2,42 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { ArrowRight } from "./icons";
 
-export function Container({ children, className = "" }: { children: ReactNode; className?: string }) {
-  return <div className={`mx-auto w-full max-w-page px-4 sm:px-6 ${className}`}>{children}</div>;
+export function Container({
+  children,
+  className = "",
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
+  return (
+    <div className={`mx-auto w-full max-w-page px-4 sm:px-6 ${className}`}>
+      {children}
+    </div>
+  );
 }
 
-/** Header band for inner pages: breadcrumbs above, then icon, title and intro. */
+/** Quiet band at the top of an inner page: breadcrumbs, a small label, a large title and an intro. */
 export function PageBand({
   breadcrumbs,
   eyebrow,
   title,
   description,
-  icon,
   children,
 }: {
   breadcrumbs?: ReactNode;
   eyebrow?: string;
   title: string;
   description?: string;
-  icon?: ReactNode;
   children?: ReactNode;
 }) {
   return (
-    <div className="band-bg border-b border-brand-100/70">
+    <div className="band-bg">
       <Container className="py-8 sm:py-12">
         {breadcrumbs}
-        <div className="flex items-start gap-4 sm:gap-5">
-          {icon && <span className="mt-1 hidden size-14 shrink-0 items-center justify-center rounded-2xl bg-brand text-gold-300 shadow-soft sm:flex">{icon}</span>}
-          <div className="min-w-0">
-            {eyebrow && <p className="text-sm font-semibold uppercase tracking-wider text-brand-600">{eyebrow}</p>}
-            <h1 className="font-display text-3xl font-semibold tracking-tight text-ink sm:text-5xl">{title}</h1>
-            {description && <p className="mt-3 max-w-2xl text-lg leading-relaxed text-slate-700">{description}</p>}
-            {children}
-          </div>
-        </div>
+        {eyebrow && <p className="t-eyebrow !text-brand">{eyebrow}</p>}
+        <h1 className="t-title mt-2 text-ink">{title}</h1>
+        {description && <p className="t-lead mt-3 max-w-2xl">{description}</p>}
+        {children}
       </Container>
     </div>
   );
@@ -62,10 +65,15 @@ export function SectionHeading({
         <h2 id={id} className="t-heading mt-2 text-ink">
           {title}
         </h2>
-        {description && <p className="mt-2 max-w-xl text-muted">{description}</p>}
+        {description && (
+          <p className="mt-2 max-w-xl text-muted">{description}</p>
+        )}
       </div>
       {href && (
-        <Link href={href} className="group inline-flex items-center gap-2 font-medium text-brand transition-[gap] hover:gap-3">
+        <Link
+          href={href}
+          className="group inline-flex items-center gap-2 font-medium text-brand transition-[gap] hover:gap-3"
+        >
           {hrefLabel ?? "See all"}
           <ArrowRight aria-hidden="true" className="size-4" />
         </Link>

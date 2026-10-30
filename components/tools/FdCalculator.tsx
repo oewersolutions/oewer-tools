@@ -11,6 +11,7 @@ export default function FdCalculator() {
 
   return (
     <ToolLayout
+      dark
       inputs={
         <>
           <NumberField label="Deposit amount (₹)" value={raw.principal} onChange={(v) => set("principal", v)} error={errors.principal} />

@@ -23,13 +23,16 @@ export default function Breadcrumbs({ trail }: { trail: Crumb[] }) {
   };
 
   return (
-    <nav aria-label="Breadcrumb" className="mb-5 text-sm text-slate-600">
+    <nav aria-label="Breadcrumb" className="t-meta mb-5 !text-sm">
       <ol className="flex flex-wrap gap-x-2">
         {all.map((c, i) => (
           <li key={c.label} className="flex gap-x-2">
             {i > 0 && <span aria-hidden="true">/</span>}
             {c.path ? (
-              <Link href={c.path} className="font-medium text-brand-700 hover:underline">
+              <Link
+                href={c.path}
+                className="font-medium text-brand hover:underline"
+              >
                 {c.label}
               </Link>
             ) : (
@@ -38,7 +41,12 @@ export default function Breadcrumbs({ trail }: { trail: Crumb[] }) {
           </li>
         ))}
       </ol>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+        }}
+      />
     </nav>
   );
 }

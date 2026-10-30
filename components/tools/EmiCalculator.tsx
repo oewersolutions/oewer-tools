@@ -11,6 +11,7 @@ export default function EmiCalculator() {
 
   return (
     <ToolLayout
+      dark
       inputs={
         <>
           <NumberField label="Loan amount (₹)" value={raw.principal} onChange={(v) => set("principal", v)} error={errors.principal} />

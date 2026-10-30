@@ -12,6 +12,7 @@ export default function PercentageCalculator() {
 
   return (
     <ToolLayout
+      dark
       inputs={
         <>
           <SelectField

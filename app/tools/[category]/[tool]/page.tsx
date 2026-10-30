@@ -7,11 +7,19 @@ import { nonEmptyParams } from "../../../../lib/static";
 import { getToolComponent } from "../../../../components/tools/registry";
 import { Prose } from "../../../../components/Prose";
 import { PostCard, ToolCard } from "../../../../components/Cards";
-import { ToolIcon } from "../../../../components/icons";
 import { Container, PageBand } from "../../../../components/layout";
 import { Check } from "lucide-react";
 import { ToolEvents } from "../../../../components/tools/ToolEvents";
-import { getBlogCategory, getGuidesForTool, getPostReadingMinutes, getPublishedTools, getRelatedTools, getToolBySlug, getToolCategory, getToolContent } from "../../../../lib/content";
+import {
+  getBlogCategory,
+  getGuidesForTool,
+  getPostReadingMinutes,
+  getPublishedTools,
+  getRelatedTools,
+  getToolBySlug,
+  getToolCategory,
+  getToolContent,
+} from "../../../../lib/content";
 
 type Props = { params: Promise<{ category: string; tool: string }> };
 
@@ -43,7 +51,11 @@ function faqJsonLd(faq: { q: string; a: string }[]): string {
   const data = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: faq.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+    mainEntity: faq.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
   };
   return JSON.stringify(data).replace(/</g, "\\u003c");
 }
@@ -61,26 +73,42 @@ export default async function ToolPage({ params }: Props) {
   return (
     <>
       <PageBand
-        breadcrumbs={<Breadcrumbs trail={[{ label: "Tools", path: "/tools/" }, { label: category.name, path: `/tools/${category.slug}/` }, { label: tool.name }]} />}
+        breadcrumbs={
+          <Breadcrumbs
+            trail={[
+              { label: "Tools", path: "/tools/" },
+              { label: category.name, path: `/tools/${category.slug}/` },
+              { label: tool.name },
+            ]}
+          />
+        }
         eyebrow={category.name}
         title={tool.name}
         description={tool.description}
-        icon={<ToolIcon componentKey={tool.component_key} className="size-7" />}
       >
-        <ul className="mt-5 flex flex-wrap gap-2 text-sm" aria-label="Highlights">
+        <ul
+          className="mt-5 flex flex-wrap gap-2 text-sm"
+          aria-label="Highlights"
+        >
           {["Free", "No sign-up", "Runs in your browser"].map((label) => (
-            <li key={label} className="inline-flex items-center gap-1.5 rounded-full border border-brand-200 bg-white px-3 py-1 font-medium text-brand-800">
-              <Check aria-hidden="true" className="size-3.5 text-brand-600" />
+            <li
+              key={label}
+              className="inline-flex items-center gap-1.5 rounded-full border border-line bg-white px-3.5 py-1 font-medium text-ink-2"
+            >
+              <Check aria-hidden="true" className="size-3.5 text-brand" />
               {label}
             </li>
           ))}
         </ul>
       </PageBand>
 
-      <Container className="space-y-16 py-12 [overflow-wrap:anywhere]">
+      <Container className="space-y-20 py-12 sm:py-16 [overflow-wrap:anywhere]">
         <section aria-label={tool.name} data-component={tool.component_key}>
           <noscript>
-            <p className="rounded-2xl border border-gold-500/40 bg-cream p-5 text-slate-800">This tool runs in your browser and needs JavaScript. Turn JavaScript on to use it. The guide below works without it.</p>
+            <p className="panel bg-surface p-5 text-ink-2">
+              This tool runs in your browser and needs JavaScript. Turn
+              JavaScript on to use it. The guide below works without it.
+            </p>
           </noscript>
           <ToolEvents tool={tool.slug}>
             <ToolComponent />
@@ -90,8 +118,11 @@ export default async function ToolPage({ params }: Props) {
         <AdSlot placement="below_tool" pageType="tool" />
 
         {content.help && (
-          <section aria-labelledby="help-heading" className="max-w-3xl space-y-4">
-            <h2 id="help-heading" className="font-display text-3xl font-semibold tracking-tight text-ink">
+          <section
+            aria-labelledby="help-heading"
+            className="max-w-3xl space-y-5"
+          >
+            <h2 id="help-heading" className="t-heading text-ink">
               How to use {tool.name}
             </h2>
             <Prose source={content.help} />
@@ -100,19 +131,22 @@ export default async function ToolPage({ params }: Props) {
 
         {content.examples.length > 0 && (
           <section aria-labelledby="examples-heading">
-            <h2 id="examples-heading" className="font-display text-3xl font-semibold tracking-tight text-ink">
+            <h2 id="examples-heading" className="t-heading text-ink">
               Examples
             </h2>
             <ul className="mt-6 grid gap-4 md:grid-cols-2">
               {content.examples.map((e, i) => (
-                <li key={e.title} className="rounded-2xl border border-brand-100 bg-white p-6 shadow-soft">
-                  <p className="flex items-center gap-3 font-semibold text-ink">
-                    <span aria-hidden="true" className="flex size-8 items-center justify-center rounded-lg bg-gold-300/40 font-display text-gold-700">
+                <li key={e.title} className="card p-6">
+                  <p className="t-subheading flex items-center gap-3 text-ink">
+                    <span
+                      aria-hidden="true"
+                      className="flex size-8 items-center justify-center rounded-lg bg-tint text-sm font-semibold text-brand"
+                    >
                       {i + 1}
                     </span>
                     {e.title}
                   </p>
-                  <p className="mt-3 leading-relaxed text-slate-700">{e.text}</p>
+                  <p className="mt-3 leading-relaxed text-muted">{e.text}</p>
                 </li>
               ))}
             </ul>
@@ -121,29 +155,50 @@ export default async function ToolPage({ params }: Props) {
 
         {content.faq.length > 0 && (
           <section aria-labelledby="faq-heading" className="max-w-3xl">
-            <h2 id="faq-heading" className="font-display text-3xl font-semibold tracking-tight text-ink">
+            <h2 id="faq-heading" className="t-heading text-ink">
               Frequently asked questions
             </h2>
-            <div className="mt-6 space-y-3">
+            <div className="mt-6">
               {content.faq.map((f) => (
-                <div key={f.q} className="rounded-2xl border border-brand-100 bg-white p-5">
-                  <h3 className="font-semibold text-ink">{f.q}</h3>
-                  <p className="mt-2 leading-relaxed text-slate-700">{f.a}</p>
-                </div>
+                <details
+                  key={f.q}
+                  className="group rule py-5 last:border-b last:border-line"
+                >
+                  <summary className="flex cursor-pointer items-center justify-between gap-6 font-medium text-ink">
+                    <h3 className="font-medium">{f.q}</h3>
+                    <span
+                      aria-hidden="true"
+                      className="flex size-7 shrink-0 items-center justify-center rounded-full border border-line text-lg leading-none transition-transform group-open:rotate-45"
+                    >
+                      +
+                    </span>
+                  </summary>
+                  <p className="mt-3 max-w-2xl leading-relaxed text-muted">
+                    {f.a}
+                  </p>
+                </details>
               ))}
             </div>
-            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd(content.faq) }} />
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{ __html: faqJsonLd(content.faq) }}
+            />
           </section>
         )}
 
         {guides.length > 0 && (
           <section aria-labelledby="guides-heading">
-            <h2 id="guides-heading" className="font-display text-3xl font-semibold tracking-tight text-ink">
+            <h2 id="guides-heading" className="t-heading text-ink">
               Guides about {tool.name}
             </h2>
             <div className="mt-6 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
               {guides.map((p) => (
-                <PostCard key={p.post_id} post={p} categoryName={getBlogCategory(p.category_id)?.name} minutes={getPostReadingMinutes(p.post_id)} />
+                <PostCard
+                  key={p.post_id}
+                  post={p}
+                  categoryName={getBlogCategory(p.category_id)?.name}
+                  minutes={getPostReadingMinutes(p.post_id)}
+                />
               ))}
             </div>
           </section>
@@ -151,12 +206,16 @@ export default async function ToolPage({ params }: Props) {
 
         {related.length > 0 && (
           <section aria-labelledby="related-heading">
-            <h2 id="related-heading" className="font-display text-3xl font-semibold tracking-tight text-ink">
+            <h2 id="related-heading" className="t-heading text-ink">
               Related tools
             </h2>
             <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {related.map((r) => (
-                <ToolCard key={r.tool.tool_id} tool={r.tool} category={r.category} />
+                <ToolCard
+                  key={r.tool.tool_id}
+                  tool={r.tool}
+                  category={r.category}
+                />
               ))}
             </div>
           </section>

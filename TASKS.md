@@ -84,7 +84,7 @@ Source: `docs/OEWER_TOOLS_PROJECT_PLAN.md` (v1.1: JavaScript-only, GitHub Pages,
 - [x] **T9.1** Design system: Poppins, colour and type tokens, spacing, buttons, cards, motion rules; replace Inter and Fraunces; contrast checked; `docs/design.md`
 - [x] **T9.2** Header, mobile menu, search and footer redesigned
 - [x] **T9.3** Home page redesigned: hero with search, featured tools, popular tools, latest articles, short trust and FAQ sections
-- [ ] **T9.4** Tools index, category pages and the tool page layout redesigned
+- [x] **T9.4** Tools index, category pages and the tool page layout redesigned
 - [ ] **T9.5** Blog index and category, tag and author pages redesigned (big title, category chips, image cards)
 - [ ] **T9.6** Article page redesigned: cover image, contents list beside the text, author card, related tools and articles
 - [ ] **T9.7** Article images in the data: cover image, alt text and image captions (schema 1.0.2 with migration), seed covers, validation, export

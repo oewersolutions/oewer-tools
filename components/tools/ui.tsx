@@ -1,6 +1,12 @@
 "use client";
 
-import { useId, useState, type ReactNode } from "react";
+import {
+  createContext,
+  useContext,
+  useId,
+  useState,
+  type ReactNode,
+} from "react";
 import { useReportResult } from "./ToolEvents";
 
 const control =
@@ -24,10 +30,16 @@ export function NumberField({
   readOnly?: boolean;
 }) {
   const id = useId();
-  const describedBy = [error ? `${id}-error` : "", hint ? `${id}-hint` : ""].filter(Boolean).join(" ") || undefined;
+  const describedBy =
+    [error ? `${id}-error` : "", hint ? `${id}-hint` : ""]
+      .filter(Boolean)
+      .join(" ") || undefined;
   return (
     <div>
-      <label htmlFor={id} className="block text-sm font-semibold text-slate-800">
+      <label
+        htmlFor={id}
+        className="block text-sm font-semibold text-slate-800"
+      >
         {label}
       </label>
       <input
@@ -71,10 +83,18 @@ export function SelectField<T extends string>({
   const id = useId();
   return (
     <div>
-      <label htmlFor={id} className="block text-sm font-semibold text-slate-800">
+      <label
+        htmlFor={id}
+        className="block text-sm font-semibold text-slate-800"
+      >
         {label}
       </label>
-      <select id={id} value={value} onChange={(e) => onChange(e.target.value as T)} className={control}>
+      <select
+        id={id}
+        value={value}
+        onChange={(e) => onChange(e.target.value as T)}
+        className={control}
+      >
         {options.map((o) => (
           <option key={o.value} value={o.value}>
             {o.label}
@@ -85,32 +105,84 @@ export function SelectField<T extends string>({
   );
 }
 
-export function ToolLayout({ inputs, results }: { inputs: ReactNode; results: ReactNode }) {
+const ToneContext = createContext(false);
+
+/**
+ * The tool's two panels: the inputs, and the result. Calculators pass `dark` for a dark result panel with the answer
+ * in large white type; tools that show images or text keep a light panel.
+ */
+export function ToolLayout({
+  inputs,
+  results,
+  dark = false,
+}: {
+  inputs: ReactNode;
+  results: ReactNode;
+  dark?: boolean;
+}) {
   return (
     <div className="grid gap-6 md:grid-cols-2">
-      <form onSubmit={(e) => e.preventDefault()} className="space-y-5 rounded-2xl border border-brand-100 bg-white p-6 shadow-soft">
+      <form
+        onSubmit={(e) => e.preventDefault()}
+        className="panel space-y-5 p-6 sm:p-8"
+      >
         {inputs}
       </form>
-      <div role="status" aria-live="polite" className="rounded-2xl border border-brand-100 bg-gradient-to-br from-brand-50 to-white p-6 shadow-soft">
-        {results}
-      </div>
+      <ToneContext.Provider value={dark}>
+        <div
+          role="status"
+          aria-live="polite"
+          className={
+            dark
+              ? "hero-bg on-dark rounded-[1.5rem] p-6 text-white sm:p-8"
+              : "panel bg-surface p-6 sm:p-8"
+          }
+        >
+          {results}
+        </div>
+      </ToneContext.Provider>
     </div>
   );
 }
 
-export function Results({ headline, rows, emptyMessage }: { headline?: { label: string; value: string }; rows?: { label: string; value: string }[]; emptyMessage: string }) {
+export function Results({
+  headline,
+  rows,
+  emptyMessage,
+}: {
+  headline?: { label: string; value: string };
+  rows?: { label: string; value: string }[];
+  emptyMessage: string;
+}) {
+  const dark = useContext(ToneContext);
   useReportResult(Boolean(headline));
-  if (!headline) return <p className="text-slate-700">{emptyMessage}</p>;
+  if (!headline)
+    return (
+      <p className={dark ? "text-white/80" : "text-muted"}>{emptyMessage}</p>
+    );
   return (
     <dl className="space-y-3">
       <div>
-        <dt className="text-sm text-slate-700">{headline.label}</dt>
-        <dd className="font-display text-4xl font-semibold text-brand">{headline.value}</dd>
+        <dt className={`t-eyebrow ${dark ? "!text-white/70" : ""}`}>
+          {headline.label}
+        </dt>
+        <dd
+          className={`mt-1 text-4xl font-semibold tracking-tight sm:text-5xl ${dark ? "text-white" : "text-brand"}`}
+        >
+          {headline.value}
+        </dd>
       </div>
       {rows?.map((r) => (
-        <div key={r.label} className="flex justify-between gap-4 border-t border-brand-200 pt-2">
-          <dt className="text-slate-700">{r.label}</dt>
-          <dd className="shrink-0 whitespace-nowrap font-medium text-slate-900">{r.value}</dd>
+        <div
+          key={r.label}
+          className={`flex justify-between gap-4 border-t pt-3 text-sm ${dark ? "border-white/15" : "border-line"}`}
+        >
+          <dt className={dark ? "text-white/75" : "text-muted"}>{r.label}</dt>
+          <dd
+            className={`shrink-0 whitespace-nowrap font-medium ${dark ? "text-white" : "text-ink"}`}
+          >
+            {r.value}
+          </dd>
         </div>
       ))}
     </dl>
@@ -139,7 +211,10 @@ export function TextAreaField({
   const id = useId();
   return (
     <div>
-      <label htmlFor={id} className="block text-sm font-semibold text-slate-800">
+      <label
+        htmlFor={id}
+        className="block text-sm font-semibold text-slate-800"
+      >
         {label}
       </label>
       <textarea
@@ -158,7 +233,13 @@ export function TextAreaField({
 }
 
 /** Copies text to the clipboard and says so; stays quiet if the browser blocks clipboard access. */
-export function CopyButton({ text, label = "Copy" }: { text: string; label?: string }) {
+export function CopyButton({
+  text,
+  label = "Copy",
+}: {
+  text: string;
+  label?: string;
+}) {
   const [state, setState] = useState<"idle" | "copied" | "failed">("idle");
   return (
     <>
@@ -179,7 +260,11 @@ export function CopyButton({ text, label = "Copy" }: { text: string; label?: str
         {label}
       </button>
       <span role="status" className="ml-2 text-sm text-slate-700">
-        {state === "copied" ? "Copied" : state === "failed" ? "Could not copy. Select the text and copy it yourself." : ""}
+        {state === "copied"
+          ? "Copied"
+          : state === "failed"
+            ? "Could not copy. Select the text and copy it yourself."
+            : ""}
       </span>
     </>
   );

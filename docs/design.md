@@ -90,3 +90,11 @@ Shared parts that changed with it, so every page using them changes too:
 - `PostCard` is image-led: a cover, then the category, date and reading time, the title and a two-line summary.
 - `Cover` (`components/Cover.tsx`) draws a generated cover from the article's address, the same each time. It is a stand-in until articles carry their own cover image (T9.7).
 - `SectionHeading` is the small label, large heading and link pattern used in every section.
+
+## Tools pages (T9.4)
+
+- **Title band** (`PageBand` in `components/layout.tsx`, used by every inner page): a quiet grey band with breadcrumbs, a small green label, a large title and a muted intro. No icon tile any more.
+- **Tools index:** the band holds the large search field and category chips that jump down the page; each category is a section with its tool count, name, description, a "View all" link and a row of four tool cards.
+- **Category pages:** the same band, then the category's tools in the card grid, an ad slot at the bottom, and "More categories".
+- **Tool page:** the band, three outline badges (Free, No sign-up, Runs in your browser), then the tool in two panels. The left panel holds the inputs. The calculators (`ToolLayout dark`) show the answer in a dark green panel with large white type; tools that handle images or text use a light grey result panel, so pictures and text are not on a dark background. Below the tool, in this order: how to use (reading column), examples as cards, questions as an open-and-close list (structured data unchanged), guides, related tools.
+- **For the tool components:** `ToolLayout` takes `dark` for calculators; `Results` reads the same setting, so it picks white or ink text itself. Tools that need other result content use the light panel by default.
