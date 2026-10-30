@@ -62,7 +62,7 @@ Source: `docs/OEWER_TOOLS_PROJECT_PLAN.md` (v1.1: JavaScript-only, GitHub Pages,
 - [x] **T6.4** Link or embed the analytics dashboard in admin
 
 ## Phase 7 — AdSense readiness, QA & launch (5–8 days)
-- [ ] **T7.1** Finalize Privacy, Terms, Contact, About
+- [x] **T7.1** Finalize Privacy, Terms, Contact, About
 - [ ] **T7.2** Ad placements via `advertisements` sheet; test mobile and desktop
 - [ ] **T7.3** Audit SEO, security, accessibility, Core Web Vitals
 - [ ] **T7.4** Confirm failed builds never replace the live site

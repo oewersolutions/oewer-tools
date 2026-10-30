@@ -33,9 +33,9 @@ export function parseMarkdown(source: string): MarkdownBlock[] {
   return blocks;
 }
 
-/** Links are kept only when they are site-relative or https; anything else becomes plain text. */
+/** Links are kept only when they are site-relative, https or a plain mailto address; anything else becomes plain text. */
 function isSafeHref(href: string): boolean {
-  return (href.startsWith("/") && !href.startsWith("//")) || href.startsWith("https://");
+  return (href.startsWith("/") && !href.startsWith("//")) || href.startsWith("https://") || /^mailto:[^\s@?&<>"']+@[^\s@?&<>"']+\.[^\s@?&<>"']+$/.test(href);
 }
 
 const INLINE = /(\*\*[^*]+\*\*|\*[^*\s][^*]*\*|`[^`]+`|\[[^\]]+\]\([^)\s]+\))/;

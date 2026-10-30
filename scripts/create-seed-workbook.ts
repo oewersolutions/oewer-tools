@@ -7,6 +7,7 @@
  *   npx tsx scripts/create-seed-workbook.ts [outputPath]
  */
 import { SEED_POSTS } from "./blog-content";
+import { CONTACT_EMAIL, CONTACT_PAGE, PRIVACY_PAGE, TERMS_PAGE } from "./site-pages";
 import { TOOL_CONTENT } from "./tool-content";
 import { readFileSync } from "node:fs";
 import { mkdir } from "node:fs/promises";
@@ -69,7 +70,7 @@ const SEED: Record<string, Row[]> = {
     ["site_tagline", "Free online tools that respect your privacy", "string", NOW],
     ["site_url", "https://example.com", "string", NOW],
     ["primary_color", "#174f49", "string", NOW],
-    ["contact_email", "hello@example.com", "string", NOW],
+    ["contact_email", CONTACT_EMAIL, "string", NOW],
     ["search_enabled", "true", "bool", NOW],
     ["ads_enabled", "false", "bool", NOW],
     ["analytics_measurement_id", "", "string", NOW],
@@ -77,9 +78,9 @@ const SEED: Record<string, Row[]> = {
   ],
   pages: [
     ["PAGE0001", "about", "About OEWER Tools", "OEWER Tools is a collection of free, fast online tools for everyday jobs: shrinking an image, working out a loan EMI, tidying JSON or making a QR code.\n\nWe built it because too many online tools ask you to upload your files, sign up for an account or sit through pop-ups just to do something simple. Ours do not.\n\n# What makes us different\n\n- **Private by design.** Our tools run in your browser. Your images, text and numbers stay on your device and are never uploaded to our servers.\n- **No sign-up.** Open a tool and use it.\n- **Explained, not just answered.** Each tool comes with how-to steps, worked examples and answers to common questions, and our guides explain the formulas behind the results.\n- **Made for every device.** The site works on phones, tablets and computers, and with a keyboard or a screen reader.\n\n# How we keep our word\n\nWe test the privacy promise. Our automated tests watch the network while each tool is used and fail if anything is sent anywhere. The calculators use standard published formulas, and we check their results against worked examples.\n\n# What is next\n\nWe are adding more tools and more guides. If there is a tool you wish existed, tell us on the contact page.", "published", NOW],
-    ["PAGE0002", "privacy-policy", "Privacy Policy", "Draft placeholder. Replace with the final privacy policy before launch (see task T7.1).", "draft", NOW],
-    ["PAGE0003", "terms", "Terms of Use", "Draft placeholder. Replace with the final terms of use before launch (see task T7.1).", "draft", NOW],
-    ["PAGE0004", "contact", "Contact Us", "Questions, bug reports or ideas for a new tool? We would like to hear from you.\n\nEmail us at hello@example.com.\n\n# Helpful details to include\n\n- The name of the tool and what you were trying to do.\n- What you expected to happen, and what happened instead.\n- Your browser and device, for example Chrome on Android.\n\nPlease do not send passwords, bank details or files containing personal information. We do not need them to help.\n\n# Suggest a tool\n\nTell us what you would use it for and how often. Tools that save people the most time go to the top of our list.", "published", NOW],
+    ["PAGE0002", "privacy-policy", "Privacy Policy", PRIVACY_PAGE, "published", NOW],
+    ["PAGE0003", "terms", "Terms of Use", TERMS_PAGE, "published", NOW],
+    ["PAGE0004", "contact", "Contact Us", CONTACT_PAGE, "published", NOW],
   ],
   navigation: [
     ["NAV0001", "Tools", "/tools", "header", 1, true],
