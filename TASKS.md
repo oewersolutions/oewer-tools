@@ -81,7 +81,7 @@ Source: `docs/OEWER_TOOLS_PROJECT_PLAN.md` (v1.1: JavaScript-only, GitHub Pages,
 - [ ] **T8.8+** (later, optional) Batch D: PDF and image tools (merge and split PDF, image to PDF, crop and rotate, EXIF remover); Batch C: developer tools (Base64, URL, UUID, hash, colour, timestamp, regex, JWT)
 
 ## Phase 9 — Modern minimal redesign and article images (plan: `docs/redesign-plan.md`)
-- [ ] **T9.1** Design system: Poppins, colour and type tokens, spacing, buttons, cards, motion rules; replace Inter and Fraunces; contrast checked; `docs/design.md`
+- [x] **T9.1** Design system: Poppins, colour and type tokens, spacing, buttons, cards, motion rules; replace Inter and Fraunces; contrast checked; `docs/design.md`
 - [ ] **T9.2** Header, mobile menu, search and footer redesigned
 - [ ] **T9.3** Home page redesigned: hero with search, featured tools, popular tools, latest articles, short trust and FAQ sections
 - [ ] **T9.4** Tools index, category pages and the tool page layout redesigned

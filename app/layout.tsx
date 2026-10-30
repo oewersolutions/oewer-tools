@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fraunces, Inter } from "next/font/google";
+import { Poppins } from "next/font/google";
 import type { ReactNode } from "react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
@@ -12,8 +12,8 @@ import { getAdConfig, getMeasurementId, getNavigation, getOptionalSetting, getSe
 import "./globals.css";
 
 // Fonts are downloaded at build time and served from this site, so visitors make no request to Google.
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
-const fraunces = Fraunces({ subsets: ["latin"], variable: "--font-fraunces", display: "swap" });
+// Three weights only (regular, medium, semibold): every extra weight is another file for every visitor to download.
+const poppins = Poppins({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--font-poppins", display: "swap" });
 
 export function generateMetadata(): Metadata {
   return {
@@ -26,7 +26,7 @@ export function generateMetadata(): Metadata {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${fraunces.variable}`}>
+    <html lang="en" className={poppins.variable}>
       <body className="flex min-h-screen flex-col font-sans antialiased">
         <a
           href="#main"

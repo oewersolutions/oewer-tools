@@ -1,7 +1,12 @@
 @import "tailwindcss";
 
-/* OEWER design tokens. brand-800 is the primary brand color (#174f49). */
+/*
+ * OEWER design system (T9.1). Poppins, near-white surfaces, ink for text and primary buttons, and one green accent.
+ * `docs/design.md` explains the rules; `docs/design-preview/` shows the approved look. The old token names
+ * (brand-*, gold-*, cream, ink, font-display, shadow-*) still work so pages can move over one task at a time.
+ */
 @theme {
+  /* Green accent. brand-800 is the brand color (#174f49). */
   --color-brand-50: #effaf8;
   --color-brand-100: #d3f0ec;
   --color-brand-200: #a9e0d9;
@@ -14,23 +19,35 @@
   --color-brand-900: #11403b;
   --color-brand-950: #0a2623;
   --color-brand: #174f49;
+  --color-tint: #e9f2f0;
 
-  /* Warm gold accent: decoration and text on dark backgrounds only (it is too light for text on white). */
+  /* Neutrals: ink for text and primary buttons, muted for secondary text, line for borders, surface for quiet panels. */
+  --color-ink: #0e1513;
+  --color-ink-2: #2a3532;
+  --color-muted: #5a6764;
+  --color-line: #e4e8e7;
+  --color-surface: #f5f7f6;
+  --color-cream: #f5f7f6;
+
+  /* Warm gold: retired from the new look except tiny touches on dark backgrounds. Too light for text on white. */
   --color-gold-300: #f0d08c;
   --color-gold-400: #e4b95f;
   --color-gold-500: #c8963e;
   --color-gold-600: #a67a2c;
   --color-gold-700: #7a5614;
 
-  --color-cream: #faf8f3;
-  --color-ink: #14211f;
-
-  --font-sans: var(--font-inter), system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-poppins), system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  /* Same family: headings are Poppins too. Kept so the existing `font-display` classes keep working. */
+  --font-display: var(--font-poppins), system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --container-page: 74rem;
 
-  --shadow-soft: 0 1px 2px rgb(20 33 31 / 0.04), 0 8px 24px -8px rgb(20 33 31 / 0.12);
-  --shadow-lift: 0 2px 4px rgb(20 33 31 / 0.05), 0 20px 40px -12px rgb(23 79 73 / 0.25);
+  /* Almost flat: structure comes from thin lines, not shadows. */
+  --shadow-soft: 0 1px 2px rgb(14 21 19 / 0.04);
+  --shadow-lift: 0 1px 2px rgb(14 21 19 / 0.05), 0 18px 36px -16px rgb(14 21 19 / 0.22);
+
+  --radius-card: 1rem;
+  --radius-panel: 1.5rem;
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
 html {
@@ -38,37 +55,177 @@ html {
 }
 
 body {
-  background: var(--color-cream);
+  background: #ffffff;
   color: var(--color-ink);
+  font-feature-settings: "kern", "liga";
 }
 
-/* Visible keyboard focus everywhere */
+/* Headings: tight, confident, never loose. */
+h1,
+h2,
+h3 {
+  letter-spacing: -0.025em;
+}
+
+/* Visible keyboard focus everywhere; white on the dark sections. */
 :focus-visible {
-  outline: 3px solid var(--color-brand-400);
-  outline-offset: 2px;
+  outline: 2px solid var(--color-brand-600);
+  outline-offset: 3px;
+}
+.on-dark :focus-visible,
+.hero-bg :focus-visible {
+  outline-color: #ffffff;
 }
 
-/* Dark hero: layered glows and a faint grid. Purely decorative. */
+/* ---- Type scale (use these instead of one-off sizes) ---- */
+@utility t-display {
+  font-size: clamp(2.5rem, 6vw + 0.5rem, 4.25rem);
+  line-height: 1.05;
+  font-weight: 600;
+  letter-spacing: -0.035em;
+}
+@utility t-title {
+  font-size: clamp(2rem, 3.5vw + 0.5rem, 3.25rem);
+  line-height: 1.1;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+@utility t-heading {
+  font-size: clamp(1.5rem, 1.6vw + 0.9rem, 2.125rem);
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+@utility t-subheading {
+  font-size: 1.125rem;
+  line-height: 1.4;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+@utility t-lead {
+  font-size: 1.125rem;
+  line-height: 1.65;
+  color: var(--color-muted);
+}
+@utility t-meta {
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  color: var(--color-muted);
+}
+@utility t-eyebrow {
+  font-size: 0.75rem;
+  line-height: 1.4;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+/* ---- Shared parts ---- */
+@layer components {
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border: 1px solid var(--color-ink);
+    border-radius: 0.75rem;
+    background: var(--color-ink);
+    color: #ffffff;
+    padding: 0.75rem 1.375rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.25rem;
+    transition:
+      background-color 0.2s var(--ease-out),
+      border-color 0.2s var(--ease-out),
+      color 0.2s var(--ease-out);
+  }
+  .btn:hover {
+    background: var(--color-brand);
+    border-color: var(--color-brand);
+  }
+  .btn:disabled {
+    opacity: 0.5;
+  }
+  .btn-ghost {
+    background: transparent;
+    color: var(--color-ink);
+    border-color: var(--color-line);
+  }
+  .btn-ghost:hover {
+    background: transparent;
+    color: var(--color-ink);
+    border-color: var(--color-ink);
+  }
+  .btn-light {
+    background: #ffffff;
+    color: var(--color-ink);
+    border-color: #ffffff;
+  }
+  .btn-light:hover {
+    background: var(--color-tint);
+    color: var(--color-ink);
+    border-color: var(--color-tint);
+  }
+
+  .pill {
+    display: inline-block;
+    border-radius: 9999px;
+    background: var(--color-tint);
+    color: var(--color-brand);
+    padding: 0.25rem 0.875rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    line-height: 1.25rem;
+  }
+
+  /* A card is a thin outline; hovering a linked card draws the outline in ink and lifts it a little. */
+  .card {
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-card);
+    background: #ffffff;
+  }
+  a.card,
+  .card-link {
+    transition:
+      border-color 0.2s var(--ease-out),
+      transform 0.2s var(--ease-out);
+  }
+  a.card:hover,
+  .card-link:hover {
+    border-color: var(--color-ink);
+    transform: translateY(-2px);
+  }
+  .panel {
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-panel);
+    background: #ffffff;
+  }
+  .rule {
+    border-top: 1px solid var(--color-line);
+  }
+}
+
+/* Dark hero: a flat deep-green field with soft light, never a busy picture. Purely decorative. */
 .hero-bg {
   background:
-    radial-gradient(60rem 28rem at 85% -10%, rgb(228 185 95 / 0.22), transparent 60%),
-    radial-gradient(48rem 30rem at -10% 110%, rgb(69 172 161 / 0.35), transparent 60%),
-    linear-gradient(160deg, var(--color-brand-950) 0%, var(--color-brand-900) 45%, var(--color-brand-800) 100%);
+    radial-gradient(56rem 26rem at 85% -10%, rgb(240 208 140 / 0.24), transparent 60%),
+    radial-gradient(44rem 28rem at 5% 110%, rgb(45 144 135 / 0.5), transparent 60%),
+    linear-gradient(160deg, #08201d 0%, #0d2f2b 55%, #123f39 100%);
 }
 .hero-grid {
   background-image:
     linear-gradient(to right, rgb(255 255 255 / 0.05) 1px, transparent 1px),
     linear-gradient(to bottom, rgb(255 255 255 / 0.05) 1px, transparent 1px);
-  background-size: 48px 48px;
-  mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse at 50% 40%, black 20%, transparent 75%);
 }
 
-/* Soft light header band for inner pages */
+/* Quiet band behind the title of an inner page */
 .band-bg {
-  background:
-    radial-gradient(40rem 16rem at 100% 0%, rgb(228 185 95 / 0.16), transparent 60%),
-    radial-gradient(36rem 18rem at 0% 100%, rgb(69 172 161 / 0.16), transparent 60%),
-    linear-gradient(180deg, #ffffff, var(--color-cream));
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-line);
 }
 
 .gradient-text {
