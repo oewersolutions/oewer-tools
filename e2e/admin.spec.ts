@@ -136,7 +136,7 @@ test("signing out forgets the token", async ({ page }) => {
   expect(stored).not.toContain("github_pat");
 });
 
-test("the token is never written to browser storage", async ({ page }) => {
+test("the token is never written to browser storage by default", async ({ page }) => {
   await fakeGithub(page);
   await signIn(page);
   await expect(page.getByRole("heading", { name: "Signed in to acme/site" })).toBeVisible();
@@ -152,4 +152,122 @@ test("the admin page has no accessibility violations, signed out or signed in", 
   await signIn(page);
   await expect(page.getByRole("heading", { name: "Signed in to acme/site" })).toBeVisible();
   expect(await scan()).toEqual([]);
+});
+
+// ---- Token handling and Content Security Policy (T5.2) ----
+
+const csp = (page: Page) => page.locator('meta[http-equiv="Content-Security-Policy"]').getAttribute("content");
+
+test("the admin page has a strict Content Security Policy", async ({ page }) => {
+  await page.goto("/admin/");
+  const policy = (await csp(page))!;
+  expect(policy).toContain("default-src 'none'");
+  expect(policy).toContain("connect-src 'self' https://api.github.com");
+  expect(policy).not.toContain("unsafe-inline");
+  expect(policy).not.toContain("unsafe-eval");
+  expect(policy).toMatch(/script-src 'self' 'sha256-/);
+});
+
+test("the whole sign-in and save flow runs without breaking the policy", async ({ page }) => {
+  await page.addInitScript(() => {
+    (window as unknown as { __violations: string[] }).__violations = [];
+    document.addEventListener("securitypolicyviolation", (e) => (window as unknown as { __violations: string[] }).__violations.push(`${e.violatedDirective}: ${e.blockedURI}`));
+  });
+  const consoleErrors: string[] = [];
+  page.on("pageerror", (e) => consoleErrors.push(e.message));
+  await fakeGithub(page);
+  await signIn(page);
+  await page.getByLabel("Sheet").selectOption("tools");
+  await page.getByLabel("Column").selectOption("name");
+  await page.getByLabel("New value").fill("Policy check");
+  await page.getByRole("button", { name: "Check this change" }).click();
+  await page.getByRole("button", { name: "Save to GitHub" }).click();
+  await expect(page.getByText("View the commit on GitHub")).toBeVisible();
+  expect(await page.evaluate(() => (window as unknown as { __violations: string[] }).__violations)).toEqual([]);
+  expect(consoleErrors).toEqual([]);
+});
+
+test("an inline script that is not part of the page cannot run", async ({ page }) => {
+  await page.goto("/admin/");
+  const ran = await page.evaluate(async () => {
+    const w = window as unknown as { __injected?: boolean };
+    const s = document.createElement("script");
+    s.textContent = "window.__injected = true";
+    document.head.appendChild(s);
+    await new Promise((r) => setTimeout(r, 200));
+    return w.__injected === true;
+  });
+  expect(ran).toBe(false);
+});
+
+test("the admin page loads no third-party scripts and talks only to itself and GitHub", async ({ page }) => {
+  const origins = new Set<string>();
+  page.on("request", (r) => {
+    if (/^https?:/.test(r.url())) origins.add(new URL(r.url()).origin);
+  });
+  await fakeGithub(page);
+  await signIn(page);
+  await expect(page.getByRole("heading", { name: "Signed in to acme/site" })).toBeVisible();
+  const scriptSources = await page.locator("script[src]").evaluateAll((els) => els.map((e) => (e as HTMLScriptElement).src));
+  const own = new URL(page.url()).origin;
+  expect(scriptSources.length).toBeGreaterThan(0);
+  expect(scriptSources.filter((s) => new URL(s).origin !== own)).toEqual([]);
+  expect([...origins].filter((o) => o !== own).sort()).toEqual(["https://api.github.com"]);
+});
+
+test("leaving the admin page starts the next page clean, without the admin policy", async ({ page }) => {
+  await page.goto("/admin/");
+  expect(await csp(page)).toBeTruthy();
+  await page.getByRole("navigation", { name: "Main" }).getByRole("link", { name: "Tools" }).click();
+  await expect(page).toHaveURL(/\/tools\/$/);
+  await expect(page.getByRole("heading", { level: 1, name: "All tools" })).toBeVisible();
+  await expect(page.locator('meta[http-equiv="Content-Security-Policy"]')).toHaveCount(0);
+});
+
+test("the token is not remembered unless you ask, and 'remember' uses this tab's session storage only", async ({ page }) => {
+  await fakeGithub(page);
+  await signIn(page);
+  await expect(page.getByRole("heading", { name: "Signed in to acme/site" })).toBeVisible();
+  expect(await page.evaluate(() => sessionStorage.length + localStorage.length)).toBe(0);
+  await page.getByRole("button", { name: "Sign out" }).click();
+
+  await page.getByLabel("Repository (owner/name)").fill("acme/site");
+  await page.getByLabel("GitHub token").fill("github_pat_GOOD");
+  await page.getByLabel(/Keep me signed in/).check();
+  await page.getByRole("button", { name: "Sign in" }).click();
+  await expect(page.getByRole("heading", { name: "Signed in to acme/site" })).toBeVisible();
+  expect(await page.evaluate(() => Object.keys(sessionStorage))).toEqual(["oewer-admin-session"]);
+  expect(await page.evaluate(() => localStorage.length + document.cookie.length)).toBe(0);
+
+  await page.reload(); // still signed in after a reload of this tab
+  await expect(page.getByRole("heading", { name: "Signed in to acme/site" })).toBeVisible();
+
+  await page.getByRole("button", { name: "Sign out" }).click();
+  expect(await page.evaluate(() => sessionStorage.length)).toBe(0);
+  await page.reload();
+  await expect(page.getByLabel("GitHub token")).toBeVisible();
+});
+
+test("a remembered token that GitHub no longer accepts is discarded", async ({ page }) => {
+  await fakeGithub(page, { token: "github_pat_NEW" });
+  await page.goto("/admin/");
+  await page.evaluate(() => sessionStorage.setItem("oewer-admin-session", JSON.stringify({ repo: "acme/site", branch: "main", token: "github_pat_OLD" })));
+  await page.reload();
+  await expect(page.getByText(/saved session was not used.*did not accept the token/)).toBeVisible();
+  expect(await page.evaluate(() => sessionStorage.getItem("oewer-admin-session"))).toBeNull(); // the old token is gone
+});
+
+test("you are signed out after 30 minutes without activity", async ({ page }) => {
+  await page.clock.install();
+  await fakeGithub(page);
+  await signIn(page);
+  await expect(page.getByRole("heading", { name: "Signed in to acme/site" })).toBeVisible();
+  await page.clock.fastForward("29:00");
+  await expect(page.getByRole("heading", { name: "Signed in to acme/site" })).toBeVisible();
+  await page.keyboard.press("Shift"); // activity resets the clock
+  await page.clock.fastForward("29:00");
+  await expect(page.getByRole("heading", { name: "Signed in to acme/site" })).toBeVisible();
+  await page.clock.fastForward("02:00");
+  await expect(page.getByText("You were signed out after 30 minutes without activity.")).toBeVisible();
+  await expect(page.getByLabel("GitHub token")).toBeVisible();
 });

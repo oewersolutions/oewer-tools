@@ -3,6 +3,7 @@ import { Fraunces, Inter } from "next/font/google";
 import type { ReactNode } from "react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+import LeaveAdmin from "../components/LeaveAdmin";
 import { getSetting } from "../lib/content";
 import "./globals.css";
 
@@ -27,6 +28,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         >
           Skip to content
         </a>
+        <LeaveAdmin />
         <Header />
         <main id="main" className="flex-1">
           {children}

@@ -1,12 +1,52 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { NumberField, SelectField, TextAreaField } from "../../components/tools/ui";
 import { loadWorkbook, readCell, saveWorkbook, setCell, EditError } from "../../lib/admin/edit";
 import { commitWorkbook, GithubError, parseRepo, readWorkbookFile, verifySession, type GithubSession } from "../../lib/admin/github";
 import { checkWorkbook, formatIssue, schema, type Issue } from "../../lib/workbook";
 
 const WORKBOOK_PATH = "data/oewer_database.xlsx";
+const STORAGE_KEY = "oewer-admin-session";
+/** Sign out after this long without a click or key press. */
+export const IDLE_MS = 30 * 60 * 1000;
+
+// "Remember for this tab" keeps the token in sessionStorage: it survives a reload of this tab only, never reaches other tabs
+// or later visits, and is removed on sign-out. It is off by default, because anything stored can be read by a script on the page.
+function readRemembered(): { repo: string; branch: string; token: string } | undefined {
+  try {
+    const value = JSON.parse(sessionStorage.getItem(STORAGE_KEY) ?? "null") as { repo?: string; branch?: string; token?: string } | null;
+    return value?.repo && value.branch && value.token ? { repo: value.repo, branch: value.branch, token: value.token } : undefined;
+  } catch {
+    return undefined;
+  }
+}
+// Why a remembered session was dropped. Kept in session storage too, because the page can start up twice and the second
+// start must still be able to tell the person; it is cleared when they sign in again.
+const NOTICE_KEY = "oewer-admin-notice";
+function readNotice(): string | undefined {
+  try {
+    return sessionStorage.getItem(NOTICE_KEY) ?? undefined;
+  } catch {
+    return undefined;
+  }
+}
+function writeNotice(text: string | undefined) {
+  try {
+    if (text) sessionStorage.setItem(NOTICE_KEY, text);
+    else sessionStorage.removeItem(NOTICE_KEY);
+  } catch {
+    // ignore
+  }
+}
+function remember(value: { repo: string; branch: string; token: string } | undefined) {
+  try {
+    if (value) sessionStorage.setItem(STORAGE_KEY, JSON.stringify(value));
+    else sessionStorage.removeItem(STORAGE_KEY);
+  } catch {
+    // storage unavailable: the session simply is not remembered
+  }
+}
 
 interface Loaded {
   session: GithubSession;
@@ -25,6 +65,37 @@ function describe(e: unknown): string {
   return "Something went wrong. Please try again.";
 }
 
+/** Check the token, download the workbook and check it. Throws a GithubError for anything the person should be told. */
+async function openSession(session: GithubSession): Promise<Loaded> {
+  const { canPush } = await verifySession(session);
+  const file = await readWorkbookFile(session);
+  return { session, canPush, bytes: file.bytes, sha: file.sha, ...(await analyse(file.bytes)) };
+}
+
+// Resuming a remembered session happens once per page load. The framework can mount this component twice while the page starts
+// up, so both mounts share one attempt (and one result) instead of each making its own.
+type Resume = { loaded: Loaded; saved: { repo: string; branch: string } } | { error: string; saved: { repo: string; branch: string } };
+let resuming: Promise<Resume | undefined> | undefined;
+function resumeOnce(): Promise<Resume | undefined> {
+  resuming ??= (async () => {
+    const saved = readRemembered();
+    if (!saved) return undefined;
+    const repo = parseRepo(saved.repo);
+    if (!repo) {
+      remember(undefined);
+      return undefined;
+    }
+    try {
+      return { loaded: await openSession({ ...repo, branch: saved.branch, path: WORKBOOK_PATH, token: saved.token }), saved };
+    } catch (e) {
+      remember(undefined); // the token no longer works, so stop keeping it
+      writeNotice(describe(e));
+      return { error: describe(e), saved };
+    }
+  })();
+  return resuming;
+}
+
 async function analyse(bytes: Uint8Array) {
   const result = await checkWorkbook(bytes as unknown as ArrayBuffer, bytes.byteLength);
   const rowCounts = Object.entries(result.data).map(([sheet, rows]): [string, number] => [sheet, rows.length]);
@@ -39,26 +110,75 @@ export default function AdminApp({ defaultRepo, defaultBranch }: { defaultRepo: 
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string>();
   const [loaded, setLoaded] = useState<Loaded>();
+  const [keep, setKeep] = useState(false);
+  const [notice, setNotice] = useState<string>();
+  useEffect(() => {
+    const dropped = readNotice();
+    if (dropped) setNotice(`Your saved session was not used. ${dropped}`);
+  }, []);
 
-  async function signIn() {
+  async function signIn(values = { repo: repoText, branch, token }) {
     setError(undefined);
-    const repo = parseRepo(repoText);
+    setNotice(undefined);
+    writeNotice(undefined);
+    const repo = parseRepo(values.repo);
     if (!repo) return setError("Enter the repository as owner/name, for example oewersolutions/oewer-tools.");
-    if (!branch.trim()) return setError("Enter the branch name.");
-    if (!token.trim()) return setError("Paste your GitHub token.");
-    const session: GithubSession = { ...repo, branch: branch.trim(), path: WORKBOOK_PATH, token: token.trim() };
+    if (!values.branch.trim()) return setError("Enter the branch name.");
+    if (!values.token.trim()) return setError("Paste your GitHub token.");
+    const session: GithubSession = { ...repo, branch: values.branch.trim(), path: WORKBOOK_PATH, token: values.token.trim() };
     setBusy(true);
     try {
-      const { canPush } = await verifySession(session);
-      const file = await readWorkbookFile(session);
-      setLoaded({ session, canPush, bytes: file.bytes, sha: file.sha, ...(await analyse(file.bytes)) });
+      setLoaded(await openSession(session));
       setToken("");
+      if (keep) remember({ repo: values.repo, branch: values.branch.trim(), token: session.token });
     } catch (e) {
       setError(describe(e));
     } finally {
       setBusy(false);
     }
   }
+
+  // Pick up a session remembered for this tab (after a reload).
+  useEffect(() => {
+    let current = true;
+    setBusy(true);
+    void resumeOnce().then((result) => {
+      if (!current) return;
+      setBusy(false);
+      if (!result) return;
+      setRepoText(result.saved.repo);
+      setBranch(result.saved.branch);
+      if ("loaded" in result) {
+        setKeep(true);
+        setLoaded(result.loaded);
+      } else {
+        setNotice(`Your saved session was not used. ${result.error}`);
+      }
+    });
+    return () => {
+      current = false;
+    };
+  }, []);
+
+  // Sign out after a period without activity.
+  useEffect(() => {
+    if (!loaded) return;
+    let timer = setTimeout(expire, IDLE_MS);
+    function expire() {
+      signOut();
+      setNotice("You were signed out after 30 minutes without activity.");
+    }
+    const reset = () => {
+      clearTimeout(timer);
+      timer = setTimeout(expire, IDLE_MS);
+    };
+    const events = ["pointerdown", "keydown"] as const;
+    events.forEach((e) => window.addEventListener(e, reset));
+    return () => {
+      clearTimeout(timer);
+      events.forEach((e) => window.removeEventListener(e, reset));
+    };
+  }, [loaded]);
 
   async function reload() {
     if (!loaded) return;
@@ -75,8 +195,11 @@ export default function AdminApp({ defaultRepo, defaultBranch }: { defaultRepo: 
   }
 
   function signOut() {
+    resuming = Promise.resolve(undefined); // a later mount must not bring the old session back
+    remember(undefined);
     setLoaded(undefined);
     setToken("");
+    setKeep(false);
     setError(undefined);
   }
 
@@ -105,9 +228,18 @@ export default function AdminApp({ defaultRepo, defaultBranch }: { defaultRepo: 
             className="mt-1.5 block w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 font-mono text-base shadow-sm"
           />
           <p className="mt-2 text-sm text-slate-700">
-            Use a fine-grained token limited to this one repository, with <strong>Contents: Read and write</strong> and nothing else. It stays in this page only and is forgotten when you sign out or close the tab.
+            Use a fine-grained token limited to this one repository, with <strong>Contents: Read and write</strong> and nothing else. It stays in this page only and is forgotten when you sign out, after 30 minutes without activity, or when you close the tab.
           </p>
+          <label className="mt-3 flex items-start gap-2 text-sm text-slate-800">
+            <input type="checkbox" checked={keep} onChange={(e) => setKeep(e.target.checked)} className="mt-1" />
+            <span>Keep me signed in if I reload this tab. The token is then kept in this tab&rsquo;s session storage until you sign out. Leave this off on a shared computer.</span>
+          </label>
         </div>
+        {notice && (
+          <p role="status" className="text-slate-800">
+            {notice}
+          </p>
+        )}
         {error && (
           <p role="alert" className="text-red-800">
             {error}
