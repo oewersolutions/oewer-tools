@@ -102,6 +102,12 @@ export function getOptionalSetting(key: string): string {
   return row ? String(row.setting_value ?? "").trim() : "";
 }
 
+/**
+ * The GA4 Measurement ID, or "" when analytics is off. The NEXT_PUBLIC_ANALYTICS_ID environment value wins over the
+ * `analytics_measurement_id` setting, which lets a test build switch analytics on without touching the workbook.
+ */
+export const getMeasurementId = (): string => (process.env.NEXT_PUBLIC_ANALYTICS_ID || getOptionalSetting("analytics_measurement_id")).trim();
+
 /** Enabled navigation links for a menu location. Links to pages that are not published are left out. */
 export function getNavigation(location: "header" | "footer" | "footer_legal"): { label: string; url: string }[] {
   const unpublished = new Set(sheet<Page>("pages").filter((p) => p.status !== "published").map((p) => `/${p.slug}`));

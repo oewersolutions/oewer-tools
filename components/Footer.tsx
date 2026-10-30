@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { getNavigation, getPublishedTools, getSetting, getToolCategories, getToolCategory } from "../lib/content";
+import { getMeasurementId, getNavigation, getPublishedTools, getSetting, getToolCategories, getToolCategory } from "../lib/content";
 import { toolUrl } from "../lib/search";
+import ConsentSettingsButton from "./ConsentSettingsButton";
 import { Container } from "./layout";
 
 function Column({ title, links }: { title: string; links: { label: string; url: string }[] }) {
@@ -53,9 +54,12 @@ export default function Footer() {
             <Column title="Legal" links={getNavigation("footer_legal")} />
           </div>
         </div>
-        <p className="mt-12 border-t border-white/10 pt-6 text-xs text-brand-200">
-          © {year} {name}. All rights reserved.
-        </p>
+        <div className="mt-12 flex flex-wrap items-center justify-between gap-3 border-t border-white/10 pt-6">
+          <p className="text-xs text-brand-200">
+            © {year} {name}. All rights reserved.
+          </p>
+          <ConsentSettingsButton measurementId={getMeasurementId()} />
+        </div>
       </Container>
     </footer>
   );

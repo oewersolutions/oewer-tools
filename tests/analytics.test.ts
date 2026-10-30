@@ -9,7 +9,9 @@ function fakeBrowser(storage: Record<string, string> = {}) {
   vi.stubGlobal("window", win);
   vi.stubGlobal("CustomEvent", class { constructor(public type: string, public init?: unknown) {} });
   vi.stubGlobal("localStorage", { getItem: (k: string) => storage[k] ?? null, setItem: (k: string, v: string) => void (storage[k] = v) });
+  vi.stubGlobal("location", { hostname: "localhost" });
   vi.stubGlobal("document", {
+    cookie: "",
     head: { appendChild: (s: { src: string; async: boolean }) => scripts.push(s) },
     createElement: () => ({ src: "", async: false }),
   });
@@ -107,5 +109,28 @@ describe("events", () => {
   });
   it("exports stable names", () => {
     expect([loadAnalytics, stopAnalytics, trackPageView, trackToolEvent].every((f) => typeof f === "function")).toBe(true);
+  });
+});
+
+describe("analytics cookies", () => {
+  it("recognises only Google Analytics cookie names", async () => {
+    const { analyticsCookieNames } = await import("../lib/analytics");
+    expect(analyticsCookieNames("a=1; _ga=GA1.1.2; _ga_ABC123XYZ4=GS1; _gat=1; theme=dark; mygame=1")).toEqual(["_ga", "_ga_ABC123XYZ4"]);
+    expect(analyticsCookieNames("")).toEqual([]);
+  });
+  it("expires them on the host and its parent domains when consent is withdrawn", async () => {
+    const m = await import("../lib/analytics");
+    const written: string[] = [];
+    fakeBrowser();
+    vi.stubGlobal("location", { hostname: "oewersolutions.github.io" });
+    vi.stubGlobal("document", {
+      get cookie() { return "_ga=GA1.1.2; keep=1"; },
+      set cookie(v: string) { written.push(v); },
+    });
+    m.stopAnalytics(ID);
+    expect(written.every((w) => w.startsWith("_ga=; expires=Thu, 01 Jan 1970"))).toBe(true);
+    expect(written.filter((w) => w.includes("domain=")).map((w) => w.split("domain=")[1])).toEqual([".oewersolutions.github.io", ".github.io"]);
+    expect(written.some((w) => !w.includes("domain="))).toBe(true);
+    expect(written.some((w) => w.startsWith("keep="))).toBe(false);
   });
 });

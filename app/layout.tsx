@@ -5,7 +5,8 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import LeaveAdmin from "../components/LeaveAdmin";
 import Analytics from "../components/Analytics";
-import { getOptionalSetting, getSetting } from "../lib/content";
+import ConsentBanner from "../components/ConsentBanner";
+import { getMeasurementId, getNavigation, getSetting } from "../lib/content";
 import "./globals.css";
 
 // Fonts are downloaded at build time and served from this site, so visitors make no request to Google.
@@ -30,12 +31,13 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           Skip to content
         </a>
         <LeaveAdmin />
-        <Analytics measurementId={getOptionalSetting("analytics_measurement_id")} />
+        <Analytics measurementId={getMeasurementId()} />
         <Header />
         <main id="main" className="flex-1">
           {children}
         </main>
         <Footer />
+        <ConsentBanner measurementId={getMeasurementId()} privacyPath={getNavigation("footer_legal").find((l) => /privacy/i.test(l.label))?.url} />
       </body>
     </html>
   );

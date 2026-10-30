@@ -6,6 +6,8 @@
 
 export const CONSENT_KEY = "oewer-consent";
 export const CONSENT_EVENT = "oewer-consent-change";
+/** Asks the consent banner to open so a visitor can change their choice. */
+export const CONSENT_OPEN_EVENT = "oewer-consent-open";
 
 /** A GA4 Measurement ID such as G-ABC123XYZ4. Empty means analytics is switched off. */
 export const isMeasurementId = (value: string): boolean => /^G-[A-Z0-9]{6,12}$/.test(value);
@@ -64,9 +66,27 @@ export function loadAnalytics(measurementId: string, consent: boolean | undefine
   return true;
 }
 
-/** Stop sending, e.g. when consent is withdrawn. Already-loaded scripts stay but receive nothing further. */
+/** Names of Google Analytics cookies in a `document.cookie` string: `_ga` and `_ga_<container>`. */
+export const analyticsCookieNames = (cookie: string): string[] =>
+  cookie
+    .split(";")
+    .map((c) => c.split("=")[0]!.trim())
+    .filter((name) => name === "_ga" || name.startsWith("_ga_"));
+
+/** Expire the analytics cookies on this host and its parent domains, so withdrawing consent leaves none behind. */
+export function clearAnalyticsCookies(): void {
+  const host = location.hostname;
+  const parts = host.split(".");
+  const domains = [undefined, ...parts.slice(0, -1).map((_, i) => `.${parts.slice(i).join(".")}`)];
+  for (const name of analyticsCookieNames(document.cookie)) {
+    for (const domain of domains) document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/${domain ? `; domain=${domain}` : ""}`;
+  }
+}
+
+/** Stop sending, e.g. when consent is withdrawn, and remove the analytics cookies. */
 export function stopAnalytics(measurementId: string): void {
   (window as unknown as Record<string, unknown>)[`ga-disable-${measurementId}`] = true;
+  clearAnalyticsCookies();
 }
 
 const active = (): boolean => loadedId !== undefined && typeof window.gtag === "function" && readConsent() === true;
