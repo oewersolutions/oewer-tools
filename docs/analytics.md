@@ -45,7 +45,22 @@ Checked by hand with a test ID and a stubbed Google script: one `page_view`, one
 The normal build has analytics off, so the banner tests need a build with an ID. They use a test ID and a stub in place of Google's script, so nothing leaves the machine:
 
 ```bash
-NEXT_PUBLIC_ANALYTICS_ID=G-TEST123456 npm run build && CONSENT_E2E=1 npx playwright test e2e/consent.spec.ts
+NEXT_PUBLIC_ANALYTICS_ID=G-TEST123456 npm run build && CONSENT_E2E=1 npx playwright test e2e/consent.spec.ts e2e/analytics-blocked.spec.ts
 ```
 
 `NEXT_PUBLIC_ANALYTICS_ID` overrides the workbook setting for that build only; the deploy workflow does not set it. The tests check: asked first and nothing loaded before the answer, the tool works while the banner is open, accept loads one script and sends a page view, decline loads nothing and is remembered, the footer link reopens it with focus inside, withdrawing stops events and removes cookies, the admin page has no banner, and the banner has no accessibility violations. They are skipped in a normal run. Run `npm run build` again afterwards to go back to the real site.
+
+## When analytics is blocked (T6.3)
+
+Analytics is never allowed to affect the site. `e2e/analytics-blocked.spec.ts` turns analytics on with consent already given and then makes Google's script fail in each realistic way, checking each time that the calculator, word counter, image compressor and blog still work and that no page error or console error appears:
+
+- **An ad blocker** cancels the request.
+- **Google is down** and answers with an error.
+- **Google never answers**: the page still loads and works within a few seconds, because the tag is added with `async` and nothing waits for it.
+- **The script loads but is broken** (no `gtag`): every analytics call checks that `gtag` exists first, so nothing throws.
+- **The browser blocks storage** (strict privacy modes): reading and writing the choice are wrapped, the banner still appears and closes, and the site works.
+- **No consent at all**: no request goes to Google.
+
+Each blocked test also checks that the page really asked for the script, so a block that never happened cannot pass by accident.
+
+Good to know: if storage is blocked, a visitor who clicks Allow analytics cannot have the choice remembered, so analytics stays off (it fails closed) and they are asked again on the next visit. Blocking also loses their visits from your figures, as with any analytics, so treat the numbers as a lower bound.
