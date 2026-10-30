@@ -6,6 +6,7 @@ import { GithubError, parseRepo, readWorkbookFile, verifySession, type GithubSes
 import { EditError } from "../../lib/admin/edit";
 import { checkWorkbook, formatIssue, type Issue, type WorkbookData } from "../../lib/workbook";
 import BuildStatus from "./BuildStatus";
+import Dashboard from "./Dashboard";
 import History from "./History";
 import Manager from "./Manager";
 import { absoluteUrl } from "../../lib/seo";
@@ -321,6 +322,8 @@ function Workbook({
           </ul>
         )}
       </section>
+
+      <Dashboard session={loaded.session} data={loaded.data} refreshKey={loaded.sha} />
 
       <BuildStatus session={loaded.session} watchSha={watchSha} siteUrl={siteUrl} />
 

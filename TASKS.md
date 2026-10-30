@@ -53,7 +53,7 @@ Source: `docs/OEWER_TOOLS_PROJECT_PLAN.md` (v1.1: JavaScript-only, GitHub Pages,
 - [x] **T5.5** Forms: tools, categories, blog block editor, SEO, ad placements (editors for tools, categories, articles with a block editor, search settings and ad placements; see `docs/admin.md`; adding a tool needs a component written in code first)
 - [x] **T5.6** Publish flow: draft/preview/publish, show Actions build status and errors (site status panel following the deploy run, plain-language failure reasons, live-site change summary before saving, article preview; reading build status needs the token to have Actions: Read; see `docs/admin.md`)
 - [x] **T5.7** History and restore from Git commits, with confirmation
-- [ ] **T5.8** Dashboard: content counts, recent commits, latest deployment
+- [x] **T5.8** Dashboard: content counts, recent commits, latest deployment
 
 ## Phase 6 — Analytics (2–3 days)
 - [ ] **T6.1** Integrate chosen analytics service; custom events `tool_open` / `tool_complete`

@@ -895,3 +895,22 @@ test("a previous version can be restored, after a confirmation, as a new commit"
   expect(fake.puts[1]!.body.message).toBe("Restore workbook to version 1111111: Add workbook");
   expect(Buffer.from(fake.puts[1]!.body.content, "base64").equals(WORKBOOK)).toBe(true);
 });
+
+test("the dashboard shows content counts, recent saves and the latest site update", async ({ page }) => {
+  await fakeGithub(page);
+  await signIn(page);
+  const dash = page.getByRole("region", { name: "Dashboard" });
+  await expect(dash.getByRole("group", { name: "Tools" })).toContainText("published");
+  await expect(dash.getByRole("group", { name: "Articles" })).toBeVisible();
+  await expect(dash.getByRole("list", { name: "Recent saves" })).toContainText("Add workbook");
+  await expect(dash).toContainText("Live");
+  await expect(dash).toContainText("Earlier update");
+});
+
+test("the dashboard still shows counts when the token cannot read site updates", async ({ page }) => {
+  await fakeGithub(page, { deploy: "forbidden" });
+  await signIn(page);
+  const dash = page.getByRole("region", { name: "Dashboard" });
+  await expect(dash.getByRole("group", { name: "Tools" })).toBeVisible();
+  await expect(dash).toContainText("Actions: Read");
+});

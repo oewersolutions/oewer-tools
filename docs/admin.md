@@ -26,7 +26,7 @@ A save is a normal commit on the branch, so the deploy workflow rebuilds the sit
 - **CORS is fine.** `api.github.com` accepts browser requests with an `Authorization` header.
 - **Cost:** `/admin/` ships about 1.5 MB of JavaScript (mostly `exceljs`, uncompressed). Only the admin page pays this; the public pages are unchanged. It could be loaded only after sign-in if it matters.
 - **Read-only tokens** are detected and the save button stays disabled.
-- **Not covered yet** (later tasks): hardening the token handling and a strict Content Security Policy (T5.2), editing whole rows with proper forms (T5.4 and T5.5), a conflict screen that keeps your edit (T5.3), publishing and build status (T5.6), and a dashboard (T5.8).
+- **Not covered yet** (later tasks): hardening the token handling and a strict Content Security Policy (T5.2), editing whole rows with proper forms (T5.4 and T5.5), a conflict screen that keeps your edit (T5.3), and publishing and build status (T5.6).
 
 ## How it is tested
 
@@ -122,3 +122,13 @@ Git is the backup: every save, and every restore, is a commit that changed the w
 - **Pending changes** in the editor stay where they are and apply on top of the restored version.
 
 Code: `lib/admin/history.ts` (unit tested in `tests/admin-history.test.ts`) and `app/admin/History.tsx`; the browser test confirms nothing is committed before the confirmation and that the restored bytes equal the old version.
+
+## Dashboard (T5.8)
+
+The first panel after sign-in gives an overview without opening any sheet.
+
+- **Content counts.** Tools, articles and pages, each with published, draft and archived numbers, plus totals for tool and article categories, tags, authors and redirects. They come from the workbook as loaded, so they update after a save or a restore.
+- **Recent saves.** The last five commits that changed the workbook, linked to GitHub.
+- **Latest site update.** The state of the newest deploy run (*Live*, *Updating the site*, *Failed*…), its commit and time, with a link to the run. Without the **Actions: Read** permission this line says so and the rest of the dashboard still works.
+
+Code: `lib/admin/dashboard.ts` (counts, unit tested in `tests/admin-dashboard.test.ts`) and `app/admin/Dashboard.tsx`, which reuses the history and deploy-run clients.
