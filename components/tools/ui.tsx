@@ -110,7 +110,7 @@ export function Results({ headline, rows, emptyMessage }: { headline?: { label: 
       {rows?.map((r) => (
         <div key={r.label} className="flex justify-between gap-4 border-t border-brand-200 pt-2">
           <dt className="text-slate-700">{r.label}</dt>
-          <dd className="font-medium text-slate-900">{r.value}</dd>
+          <dd className="shrink-0 whitespace-nowrap font-medium text-slate-900">{r.value}</dd>
         </div>
       ))}
     </dl>

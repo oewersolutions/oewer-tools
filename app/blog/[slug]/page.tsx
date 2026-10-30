@@ -1,3 +1,4 @@
+import AdSlot from "../../../components/AdSlot";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
@@ -6,6 +7,7 @@ import { ArrowRight } from "../../../components/icons";
 import { Container, PageBand } from "../../../components/layout";
 import { PostCard, ToolCard } from "../../../components/Cards";
 import { PostBody } from "../../../components/Prose";
+import { articleAdIndex } from "../../../lib/ads";
 import { authorSlug, getAuthor, getBlogCategory, getRelatedPosts, getToolsForPost, getPostBlocks, getPostBySlug, getPostReadingMinutes, getPostTags, getPostsWithPages, getSetting } from "../../../lib/content";
 import { BASE_PATH, getSiteUrl, pageMetadata } from "../../../lib/metadata";
 import { formatDate } from "../../../lib/format";
@@ -39,6 +41,7 @@ export default async function PostPage({ params }: Props) {
   const minutes = getPostReadingMinutes(post.post_id);
   const blocks = getPostBlocks(post.post_id);
   const outline = buildOutline(blocks);
+  const adIndex = articleAdIndex(blocks.map((b) => b.block_type));
   const notice = statusNotice(post.status);
   const tools = getToolsForPost(post.post_id);
   const readNext = post.status === "published" ? getRelatedPosts(post) : [];
@@ -109,7 +112,7 @@ export default async function PostPage({ params }: Props) {
               </ol>
             </nav>
           )}
-          <PostBody blocks={blocks} />
+          <PostBody blocks={blocks} adAfter={adIndex === null ? undefined : { index: adIndex, node: <AdSlot placement="in_article" pageType="blog_post" /> }} />
           {tags.length > 0 && (
             <ul aria-label="Tags" className="mt-10 flex flex-wrap gap-2 text-sm">
               {tags.map((t) => (

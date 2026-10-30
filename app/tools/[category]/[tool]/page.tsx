@@ -1,3 +1,4 @@
+import AdSlot from "../../../../components/AdSlot";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Breadcrumbs from "../../../../components/Breadcrumbs";
@@ -82,6 +83,8 @@ export default async function ToolPage({ params }: Props) {
             <ToolComponent />
           </ToolEvents>
         </section>
+
+        <AdSlot placement="below_tool" pageType="tool" />
 
         {content.help && (
           <section aria-labelledby="help-heading" className="max-w-3xl space-y-4">

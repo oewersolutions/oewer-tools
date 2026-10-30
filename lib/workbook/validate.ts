@@ -1,3 +1,4 @@
+import { isPublisherId, isSupportedPlacement, SUPPORTED_PLACEMENTS } from "../ads";
 import { isDashboardUrl, isMeasurementId } from "../analytics";
 import { slugify } from "../posts";
 import { checkToolContentSetting, isToolContentKey } from "../tools/content";
@@ -223,6 +224,24 @@ export function validateWorkbook(data: WorkbookData, schema: Schema, options: Va
   const dashboardValue = String(dashboardRow?.values.setting_value ?? "").trim();
   if (dashboardRow && dashboardValue !== "" && !isDashboardUrl(dashboardValue)) {
     add("site_settings", dashboardRow, "setting_value", "invalid_value", "must be a full https:// address of the analytics reports, or empty.");
+  }
+
+  // Ads: a placement must be somewhere the pages can really show it, and an enabled one needs its slot number
+  for (const row of rowsOf("advertisements")) {
+    const key = String(row.values.placement_key ?? "");
+    const pageType = String(row.values.page_type ?? "");
+    if (key !== "" && pageType !== "" && !isSupportedPlacement(key, pageType)) {
+      const options = (SUPPORTED_PLACEMENTS[pageType] ?? []).join(", ");
+      add("advertisements", row, "placement_key", "unsupported_placement", `'${key}' is not a place the site can show an ad on '${pageType}' pages.${options ? ` Available: ${options}.` : " No ads are shown on this type of page."}`);
+    }
+    if (row.values.enabled === true && String(row.values.ad_unit_id ?? "").trim() === "") {
+      add("advertisements", row, "ad_unit_id", "missing_slot_id", "An enabled placement needs its ad slot number.");
+    }
+  }
+  const publisher = rowsOf("site_settings").find((r) => r.values.setting_key === "adsense_publisher_id");
+  const publisherValue = String(publisher?.values.setting_value ?? "").trim();
+  if (publisher && publisherValue !== "" && !isPublisherId(publisherValue)) {
+    add("site_settings", publisher, "setting_value", "invalid_value", "must be an AdSense publisher ID such as ca-pub-1234567890123456, or empty.");
   }
 
   // Author pages are addressed by a slug made from the display name, so it must be usable and unique

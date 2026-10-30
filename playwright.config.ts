@@ -16,7 +16,7 @@ export default defineConfig({
     {
       name: "chrome-mobile",
       use: { ...devices["Pixel 7"], channel: "chrome" },
-      testMatch: ["tools.spec.ts", "privacy.spec.ts", "performance.spec.ts"],
+      testMatch: ["tools.spec.ts", "privacy.spec.ts", "performance.spec.ts", "ads.spec.ts"],
     },
     ...(crossBrowser
       ? [

@@ -37,6 +37,14 @@ if (process.env.OEWER_PREVIEW_DRAFTS === "1") {
   console.warn("PREVIEW BUILD: draft articles get a page. Do not deploy this build.");
 }
 
+if (process.env.OEWER_PREVIEW_ADS === "1") {
+  if (process.env.GITHUB_WORKFLOW === "Deploy to GitHub Pages") {
+    console.error("OEWER_PREVIEW_ADS must never be set for a deploy build.");
+    process.exit(1);
+  }
+  console.warn("PREVIEW BUILD: every supported ad placement shows an 'Ad space' box. Do not deploy this build.");
+}
+
 // Images referenced by articles must exist under public/, or the build would publish broken images.
 const missing = missingImageFiles(
   (content.sheets.post_blocks ?? []).map((b) => ({ block_id: String(b.block_id), block_type: String(b.block_type), content: String(b.content), asset_path: String(b.asset_path) })),

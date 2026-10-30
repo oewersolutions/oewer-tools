@@ -1,3 +1,4 @@
+import AdSlot from "../components/AdSlot";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, ToolIcon } from "../components/icons";
@@ -166,6 +167,10 @@ export default function HomePage() {
         </Container>
       </section>
 
+      <Container>
+        <AdSlot placement="top_banner" pageType="home" />
+      </Container>
+
       {/* Categories */}
       <section aria-labelledby="categories-heading" className="py-20">
         <Container>
@@ -222,6 +227,10 @@ export default function HomePage() {
           </div>
         </Container>
       </section>
+
+      <Container>
+        <AdSlot placement="mid_page" pageType="home" />
+      </Container>
 
       {/* How it works */}
       <section aria-labelledby="how-heading" className="hero-bg relative isolate overflow-hidden py-20 text-white">

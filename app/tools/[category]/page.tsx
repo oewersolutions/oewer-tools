@@ -1,3 +1,4 @@
+import AdSlot from "../../../components/AdSlot";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Breadcrumbs from "../../../components/Breadcrumbs";
@@ -48,6 +49,7 @@ export default async function ToolCategoryPage({ params }: Props) {
         ) : (
           <p className="text-slate-600">Tools in this category are coming soon.</p>
         )}
+        <AdSlot placement="list_bottom" pageType="tool_category" />
         {others.length > 0 && (
           <section aria-labelledby="other-heading">
             <SectionHeading id="other-heading" title="More categories" />

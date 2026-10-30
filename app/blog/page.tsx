@@ -1,3 +1,4 @@
+import AdSlot from "../../components/AdSlot";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Breadcrumbs from "../../components/Breadcrumbs";
@@ -74,6 +75,7 @@ export default function BlogIndexPage() {
         ) : (
           <p className="text-slate-600">No articles yet.</p>
         )}
+        <AdSlot placement="list_bottom" pageType="blog_index" />
         {tags.length > 0 && (
           <section aria-labelledby="topics-heading" className="border-t border-brand-100 pt-10">
             <h2 id="topics-heading" className="font-display text-2xl font-semibold text-ink">

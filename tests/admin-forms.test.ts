@@ -188,19 +188,25 @@ describe("advertisements", () => {
   it("reads placements and the site-wide switch", () => {
     const ads = readAds(data);
     expect(ads.adsEnabled).toBe(false);
-    expect(ads.placements.map((p) => p.placement_key)).toEqual(["top_banner", "below_tool", "in_article"]);
+    expect(ads.placements.map((p) => p.placement_key)).toEqual(["top_banner", "below_tool", "in_article", "mid_page", "list_bottom", "list_bottom"]);
   });
-  it("turns ads on, enables one placement with its slot ID, and adds another", async () => {
+  it("turns ads on and enables one placement with its slot ID", async () => {
     const ads = readAds(data);
     ads.adsEnabled = true;
     ads.placements[0] = { ...ads.placements[0]!, enabled: true, ad_unit_id: "1234567890" };
-    ads.placements.push({ ad_id: "", placement_key: "sidebar", page_type: "home", enabled: false, ad_unit_id: "" });
     const result = await after(planAds(data, ads, NOW));
     expect(result.issues).toEqual([]);
     const next = readAds(result.data);
     expect(next.adsEnabled).toBe(true);
     expect(next.placements[0]).toMatchObject({ enabled: true, ad_unit_id: "1234567890" });
-    expect(next.placements).toHaveLength(4);
+    expect(next.placements).toHaveLength(6);
+  });
+  it("rejects a placement the pages cannot show, and an enabled one with no slot number", async () => {
+    const ads = readAds(data);
+    ads.placements.push({ ad_id: "", placement_key: "sidebar", page_type: "home", enabled: true, ad_unit_id: "" });
+    const issues = (await after(planAds(data, ads, NOW))).issues;
+    expect(issues.some((i) => i.code === "unsupported_placement" && /Available: top_banner, mid_page/.test(i.message))).toBe(true);
+    expect(issues.some((i) => i.code === "missing_slot_id")).toBe(true);
   });
   it("rejects an ad unit ID that is not a public slot number", async () => {
     const ads = readAds(data);
