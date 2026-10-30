@@ -80,5 +80,17 @@ Source: `docs/OEWER_TOOLS_PROJECT_PLAN.md` (v1.1: JavaScript-only, GitHub Pages,
 - [ ] **T8.7** Wrap-up: home page and counts, search index, rerun SEO / accessibility / privacy audits, update docs
 - [ ] **T8.8+** (later, optional) Batch D: PDF and image tools (merge and split PDF, image to PDF, crop and rotate, EXIF remover); Batch C: developer tools (Base64, URL, UUID, hash, colour, timestamp, regex, JWT)
 
+## Phase 9 — Modern minimal redesign and article images (plan: `docs/redesign-plan.md`)
+- [ ] **T9.1** Design system: Poppins, colour and type tokens, spacing, buttons, cards, motion rules; replace Inter and Fraunces; contrast checked; `docs/design.md`
+- [ ] **T9.2** Header, mobile menu, search and footer redesigned
+- [ ] **T9.3** Home page redesigned: hero with search, featured tools, popular tools, latest articles, short trust and FAQ sections
+- [ ] **T9.4** Tools index, category pages and the tool page layout redesigned
+- [ ] **T9.5** Blog index and category, tag and author pages redesigned (big title, category chips, image cards)
+- [ ] **T9.6** Article page redesigned: cover image, contents list beside the text, author card, related tools and articles
+- [ ] **T9.7** Article images in the data: cover image, alt text and image captions (schema 1.0.2 with migration), seed covers, validation, export
+- [ ] **T9.8** Admin image upload for articles: choose, resize and compress in the browser, commit to the repository, insert as cover or inline image
+- [ ] **T9.9** About, Contact, Privacy and Terms pages restyled; the About page gets the editorial treatment
+- [ ] **T9.10** Redesign QA: accessibility, contrast, performance budgets, Safari, mobile, SEO audit, image rules, docs
+
 ## Suggested next order
 T1.3b → T1.3a → T1.4 → T1.5 → T2.1/T2.2 → T3.1 + first calculator → T4.1 first article → T2.6 → T5.1 spike
