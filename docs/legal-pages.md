@@ -18,4 +18,4 @@ I am not a lawyer. These pages are a careful, plain-language draft written to ma
 
 - **Governing law and who is the operator.** The terms do not name a legal entity, country or court. Add them if you operate as a registered business.
 - **Data protection law that applies to your visitors** (for example India's DPDP Act, the EU/UK GDPR). The policy lists rights and a contact route but does not name a data controller or a grievance officer; some laws require one.
-- **Advertising wording.** When AdSense is switched on (T7.7), check the Advertising section against Google's current publisher policies, which also require a consent tool for visitors in the EU, UK and Switzerland.
+- **Advertising wording.** The Advertising section says ads are shown only with permission and are non-personalised. Check it against Google's current publisher policies before switching ads on (see `docs/adsense.md`, including the consent-tool point for the EU, UK and Switzerland).

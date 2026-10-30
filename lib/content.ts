@@ -1,5 +1,6 @@
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
+import type { AdConfig } from "./ads";
 import { readingMinutes } from "./format";
 import { hasOwnPage, pickRelatedPosts, slugify } from "./posts";
 
@@ -107,6 +108,15 @@ export function getOptionalSetting(key: string): string {
  * `analytics_measurement_id` setting, which lets a test build switch analytics on without touching the workbook.
  */
 export const getMeasurementId = (): string => (process.env.NEXT_PUBLIC_ANALYTICS_ID || getOptionalSetting("analytics_measurement_id")).trim();
+
+/** Everything the pages need to decide whether and where to show ads. */
+export function getAdConfig(): AdConfig {
+  return {
+    adsEnabled: getOptionalSetting("ads_enabled") === "true",
+    publisherId: getOptionalSetting("adsense_publisher_id"),
+    placements: (getContent().sheets.advertisements ?? []).map((r) => ({ placement_key: String(r.placement_key), page_type: String(r.page_type), enabled: r.enabled === true, ad_unit_id: String(r.ad_unit_id ?? "") })),
+  };
+}
 
 /** Enabled navigation links for a menu location. Links to pages that are not published are left out. */
 export function getNavigation(location: "header" | "footer" | "footer_legal"): { label: string; url: string }[] {

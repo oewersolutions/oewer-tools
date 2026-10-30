@@ -15,7 +15,12 @@ import { TOOL_COMPONENT_KEYS } from "../lib/tools/keys";
 import { buildContent, serialize } from "../lib/workbook/export";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
-const input = process.argv[2] ? resolve(process.argv[2]) : resolve(ROOT, "data/oewer_database.xlsx");
+// OEWER_WORKBOOK points a test build at another workbook (for example one with ads switched on); never for a deploy.
+if (process.env.OEWER_WORKBOOK && process.env.GITHUB_WORKFLOW === "Deploy to GitHub Pages") {
+  console.error("OEWER_WORKBOOK must never be set for a deploy build.");
+  process.exit(1);
+}
+const input = process.argv[2] ? resolve(process.argv[2]) : resolve(process.env.OEWER_WORKBOOK ?? resolve(ROOT, "data/oewer_database.xlsx"));
 const output = process.argv[3] ? resolve(process.argv[3]) : resolve(ROOT, "generated/content.json");
 
 const buffer = await readFile(input);

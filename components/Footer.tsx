@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { getMeasurementId, getNavigation, getPublishedTools, getSetting, getToolCategories, getToolCategory } from "../lib/content";
+import { getAdConfig, getMeasurementId, getNavigation, getPublishedTools, getSetting, getToolCategories, getToolCategory } from "../lib/content";
 import { toolUrl } from "../lib/search";
+import { adsActive } from "../lib/ads";
 import ConsentSettingsButton from "./ConsentSettingsButton";
 import { Container } from "./layout";
 
@@ -58,7 +59,7 @@ export default function Footer() {
           <p className="text-xs text-brand-200">
             © {year} {name}. All rights reserved.
           </p>
-          <ConsentSettingsButton measurementId={getMeasurementId()} />
+          <ConsentSettingsButton measurementId={getMeasurementId()} adsActive={adsActive(getAdConfig())} />
         </div>
       </Container>
     </footer>

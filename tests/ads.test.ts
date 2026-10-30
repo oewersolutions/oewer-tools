@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { articleAdIndex, decideAd, isPublisherId, isSlotId, isSupportedPlacement, SUPPORTED_PLACEMENTS, type AdConfig } from "../lib/ads";
+import { adsActive, adsScriptUrl, articleAdIndex, buildAdsTxt, decideAd, isPublisherId, isSlotId, isSupportedPlacement, SUPPORTED_PLACEMENTS, type AdConfig } from "../lib/ads";
 
 const config = (over: Partial<AdConfig> = {}, row: Partial<AdConfig["placements"][number]> = {}): AdConfig => ({
   adsEnabled: true,
@@ -61,5 +61,31 @@ describe("articleAdIndex", () => {
   });
   it("never puts an ad in the last two blocks", () => {
     expect(articleAdIndex(blocks("paragraph", "paragraph", "heading", "heading", "heading", "paragraph"))).toBeNull();
+  });
+});
+
+describe("adsActive", () => {
+  it("is true only when a placement could really show an ad", () => {
+    expect(adsActive(config())).toBe(true);
+    expect(adsActive(config({ adsEnabled: false }))).toBe(false);
+    expect(adsActive(config({ publisherId: "" }))).toBe(false);
+    expect(adsActive(config({}, { enabled: false }))).toBe(false);
+    expect(adsActive(config({}, { ad_unit_id: "" }))).toBe(false);
+    expect(adsActive(config({}, { placement_key: "sidebar" }))).toBe(false); // a place the pages cannot show
+    expect(adsActive({ adsEnabled: true, publisherId: "ca-pub-1234567890123456", placements: [] })).toBe(false);
+  });
+});
+
+describe("ads.txt and the ad script address", () => {
+  it("publishes the account line Google expects, without the ca- prefix", () => {
+    expect(buildAdsTxt("ca-pub-1234567890123456")).toBe("google.com, pub-1234567890123456, DIRECT, f08c47fec0942fa0\n");
+  });
+  it("says there is no account when none is set or the id is not valid", () => {
+    for (const bad of ["", "ca-pub-1", "pub-1234567890123456"]) expect(buildAdsTxt(bad)).toMatch(/^# No advertising account/);
+  });
+  it("builds Google's script address only for a valid account", () => {
+    expect(adsScriptUrl("ca-pub-1234567890123456")).toBe("https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1234567890123456");
+    expect(adsScriptUrl("ca-pub-1&x=<script>")).toBeNull();
+    expect(adsScriptUrl("")).toBeNull();
   });
 });

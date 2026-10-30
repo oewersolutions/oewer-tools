@@ -39,7 +39,7 @@ Checked by hand with a test ID and a stubbed Google script: one `page_view`, one
 - **Choices.** **Allow analytics** and **Decline** are equally prominent. The banner sits at the bottom of the screen without blocking the page, so tools stay usable while it is open. The choice is stored in the browser (`oewer-consent`) and the visitor is not asked again.
 - **Changing your mind.** A footer link, **Analytics settings**, reopens the panel with the current choice, moves keyboard focus into it, and offers Allow, Decline and Close. Declining stops events at once and deletes the `_ga` cookies (on the site's host and its parent domains).
 - **Nothing before the answer.** No Google script is requested and no cookie is set until the visitor allows analytics.
-- **Ads later.** Advertising consent for AdSense (T7.7) will be added to the same panel; until then advertising storage stays denied.
+- **Ads.** When ads are really switched on (`docs/adsense.md`), the same panel asks about analytics and ads separately, and the footer link becomes **Privacy choices**. Advertising storage stays denied for analytics either way.
 
 ### Testing it
 

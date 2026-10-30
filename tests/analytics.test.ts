@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { CONSENT_EVENT, CONSENT_KEY, isMeasurementId, loadAnalytics, readConsent, saveConsent, stopAnalytics, trackPageView, trackToolEvent } from "../lib/analytics";
+import { CONSENT_EVENT, CONSENT_KEY, isMeasurementId, loadAnalytics, readAdsConsent, readConsent, saveConsent, stopAnalytics, trackPageView, trackToolEvent } from "../lib/analytics";
 
 // A minimal browser: storage, a document that records injected scripts, and a window that records events.
 function fakeBrowser(storage: Record<string, string> = {}) {
@@ -132,5 +132,33 @@ describe("analytics cookies", () => {
     expect(written.filter((w) => w.includes("domain=")).map((w) => w.split("domain=")[1])).toEqual([".oewersolutions.github.io", ".github.io"]);
     expect(written.some((w) => !w.includes("domain="))).toBe(true);
     expect(written.some((w) => w.startsWith("keep="))).toBe(false);
+  });
+});
+
+describe("the advertising choice", () => {
+  it("is separate from the analytics choice and starts unanswered", () => {
+    fakeBrowser();
+    expect(readAdsConsent()).toBeUndefined();
+    saveConsent(true);
+    expect(readConsent()).toBe(true);
+    expect(readAdsConsent()).toBeUndefined();
+  });
+  it("is saved with its own value and survives a later analytics-only change", () => {
+    const b = fakeBrowser();
+    saveConsent(true, false);
+    expect([readConsent(), readAdsConsent()]).toEqual([true, false]);
+    saveConsent(false); // the analytics-only banner leaves the ads choice alone
+    expect([readConsent(), readAdsConsent()]).toEqual([false, false]);
+    saveConsent(false, true);
+    expect(readAdsConsent()).toBe(true);
+    expect(b.events).toHaveLength(3);
+  });
+  it("reads a choice saved before ads existed", () => {
+    fakeBrowser({ [CONSENT_KEY]: JSON.stringify({ analytics: true, at: "2026-10-30T10:00:00Z" }) });
+    expect([readConsent(), readAdsConsent()]).toEqual([true, undefined]);
+  });
+  it("treats anything unreadable as no consent", () => {
+    fakeBrowser({ [CONSENT_KEY]: JSON.stringify({ analytics: "yes", ads: 1 }) });
+    expect([readConsent(), readAdsConsent()]).toEqual([undefined, undefined]);
   });
 });

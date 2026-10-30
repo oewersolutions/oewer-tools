@@ -32,23 +32,35 @@ declare global {
   }
 }
 
-/** The visitor's choice: true accepted, false declined, undefined not asked yet. */
-export function readConsent(): boolean | undefined {
+interface ConsentRecord {
+  analytics?: boolean;
+  ads?: boolean;
+}
+
+function readRecord(): ConsentRecord {
   try {
-    const value = (JSON.parse(localStorage.getItem(CONSENT_KEY) ?? "null") as { analytics?: unknown } | null)?.analytics;
-    return typeof value === "boolean" ? value : undefined;
+    const record = JSON.parse(localStorage.getItem(CONSENT_KEY) ?? "null") as { analytics?: unknown; ads?: unknown } | null;
+    return { analytics: typeof record?.analytics === "boolean" ? record.analytics : undefined, ads: typeof record?.ads === "boolean" ? record.ads : undefined };
   } catch {
-    return undefined; // storage blocked or unreadable: treat as not consented
+    return {}; // storage blocked or unreadable: treat as not consented
   }
 }
 
-export function saveConsent(analytics: boolean): void {
+/** The visitor's analytics choice: true accepted, false declined, undefined not asked yet. */
+export const readConsent = (): boolean | undefined => readRecord().analytics;
+
+/** The visitor's advertising choice, in the same way. */
+export const readAdsConsent = (): boolean | undefined => readRecord().ads;
+
+/** Remember a choice. Leaving `ads` out keeps whatever was chosen for ads before. */
+export function saveConsent(analytics: boolean, ads?: boolean): void {
+  const adsChoice = ads ?? readRecord().ads;
   try {
-    localStorage.setItem(CONSENT_KEY, JSON.stringify({ analytics, at: new Date().toISOString() }));
+    localStorage.setItem(CONSENT_KEY, JSON.stringify({ analytics, ...(adsChoice === undefined ? {} : { ads: adsChoice }), at: new Date().toISOString() }));
   } catch {
     // choice cannot be remembered; it still applies to this page view below
   }
-  window.dispatchEvent(new CustomEvent(CONSENT_EVENT, { detail: { analytics } }));
+  window.dispatchEvent(new CustomEvent(CONSENT_EVENT, { detail: { analytics, ads: adsChoice } }));
 }
 
 let loadedId: string | undefined;

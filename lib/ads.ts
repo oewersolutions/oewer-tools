@@ -61,3 +61,17 @@ export function articleAdIndex(blockTypes: string[]): number | null {
   while (index < blockTypes.length - 2 && blockTypes[index] === "heading") index++;
   return index < blockTypes.length - 2 ? index : null;
 }
+
+/** True when at least one placement could really show an ad, so the site needs to ask about advertising. */
+export function adsActive(config: AdConfig): boolean {
+  return SUPPORTED_ENTRIES.some(([key, pageType]) => decideAd(config, key, pageType) !== null);
+}
+const SUPPORTED_ENTRIES: [string, string][] = Object.entries(SUPPORTED_PLACEMENTS).flatMap(([pageType, keys]) => keys.map((key): [string, string] => [key, pageType]));
+
+/** The line AdSense asks every site to publish at /ads.txt, so only your account can sell your ad space. */
+export function buildAdsTxt(publisherId: string): string {
+  return isPublisherId(publisherId) ? `google.com, ${publisherId.replace(/^ca-/, "")}, DIRECT, f08c47fec0942fa0\n` : "# No advertising account is connected to this site yet.\n";
+}
+
+/** Address of Google's ad script for an account. Never built for an invalid id. */
+export const adsScriptUrl = (publisherId: string): string | null => (isPublisherId(publisherId) ? `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${publisherId}` : null);

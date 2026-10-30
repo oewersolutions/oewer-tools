@@ -6,8 +6,9 @@ import Header from "../components/Header";
 import LeaveAdmin from "../components/LeaveAdmin";
 import Analytics from "../components/Analytics";
 import HydrationFlag from "../components/HydrationFlag";
+import { adsActive, isPublisherId } from "../lib/ads";
 import ConsentBanner from "../components/ConsentBanner";
-import { getMeasurementId, getNavigation, getSetting } from "../lib/content";
+import { getAdConfig, getMeasurementId, getNavigation, getOptionalSetting, getSetting } from "../lib/content";
 import "./globals.css";
 
 // Fonts are downloaded at build time and served from this site, so visitors make no request to Google.
@@ -18,6 +19,8 @@ export function generateMetadata(): Metadata {
   return {
     title: { default: getSetting("site_name"), template: `%s | ${getSetting("site_name")}` },
     description: getSetting("site_tagline"),
+    // Lets Google confirm you own the site for AdSense without loading anything in visitors' browsers.
+    ...(isPublisherId(getOptionalSetting("adsense_publisher_id")) ? { other: { "google-adsense-account": getOptionalSetting("adsense_publisher_id") } } : {}),
   };
 }
 
@@ -39,7 +42,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           {children}
         </main>
         <Footer />
-        <ConsentBanner measurementId={getMeasurementId()} privacyPath={getNavigation("footer_legal").find((l) => /privacy/i.test(l.label))?.url} />
+        <ConsentBanner measurementId={getMeasurementId()} adsActive={adsActive(getAdConfig())} privacyPath={getNavigation("footer_legal").find((l) => /privacy/i.test(l.label))?.url} />
       </body>
     </html>
   );

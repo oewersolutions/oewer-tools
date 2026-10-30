@@ -68,7 +68,7 @@ Source: `docs/OEWER_TOOLS_PROJECT_PLAN.md` (v1.1: JavaScript-only, GitHub Pages,
 - [x] **T7.4** Confirm failed builds never replace the live site
 - [x] **T7.5** Custom domain, HTTPS, verify restore from Git history
 - [x] **T7.6** Run acceptance checklist (plan §12)
-- [ ] **T7.7** Apply for AdSense when eligible
+- [x] **T7.7** Apply for AdSense when eligible (site side done: ads.txt, account tag, consent-gated loader, readiness guide `docs/adsense.md`; applying and approval are the owner's step)
 
 ## Suggested next order
 T1.3b → T1.3a → T1.4 → T1.5 → T2.1/T2.2 → T3.1 + first calculator → T4.1 first article → T2.6 → T5.1 spike

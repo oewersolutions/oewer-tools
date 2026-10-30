@@ -86,6 +86,17 @@ describe("test builds are refused in the deploy workflow", () => {
   });
 });
 
+describe("a test workbook is refused in the deploy workflow", () => {
+  it("OEWER_WORKBOOK stops an export that claims to be the deploy workflow", () => {
+    const result = spawnSync("npx", ["tsx", "scripts/export-content.ts", "data/oewer_database.xlsx", join(dir, "wb.json")], {
+      encoding: "utf-8",
+      env: { ...process.env, OEWER_WORKBOOK: "data/oewer_database.xlsx", GITHUB_WORKFLOW: "Deploy to GitHub Pages" },
+    });
+    expect(result.status).toBe(1);
+    expect(result.stderr).toContain("OEWER_WORKBOOK must never be set for a deploy build");
+  });
+});
+
 describe("checkBuild", () => {
   function site(files: Record<string, string>): string {
     const root = mkdtempSync(join(dir, "site-"));

@@ -34,7 +34,7 @@ function AdsForm({ data, initial, onApply }: { data: WorkbookData; initial: AdsF
       }}
       className="space-y-6"
     >
-      <p className="max-w-2xl text-sm text-slate-700">Places on the site where an ad can appear. Nothing is shown until ads are switched on below, your AdSense publisher ID is set (setting adsense_publisher_id), the placement is enabled, and it has its slot number. Ads are not served until AdSense is set up (T7.7). Use only the public numeric slot ID from your ad account, never a password or key.</p>
+      <p className="max-w-2xl text-sm text-slate-700">Places on the site where an ad can appear. Nothing is shown until ads are switched on below, your AdSense publisher ID is set (setting adsense_publisher_id), the placement is enabled, and it has its slot number. Visitors see an ad only after they choose Ads in the privacy panel. Use only the public numeric slot ID from your ad account, never a password or key.</p>
       <div className="rounded-xl bg-brand-50 p-4">
         <Checkbox label="Show ads on the site" checked={form.adsEnabled} onChange={(v) => setForm({ ...form, adsEnabled: v })} />
       </div>

@@ -1,6 +1,6 @@
 # Ad placements (T7.2)
 
-Ads are **off** and nothing about the pages changes until you switch them on. This task adds the places ads can go and the rules around them. Serving real ads, the AdSense script and ad consent come with T7.7, after AdSense approval.
+Ads are **off** and nothing about the pages changes until you switch them on. This covers the places ads can go and the rules around them. How ads are loaded, consent and what to do after AdSense approval are in `docs/adsense.md`.
 
 ## Where an ad can go
 
@@ -27,7 +27,7 @@ These are the rows in the `advertisements` sheet (edit them in the admin under *
 
 All four: `ads_enabled` = true (Ads page → "Show ads on the site"), `adsense_publisher_id` set in `site_settings` (looks like `ca-pub-1234567890123456`), the placement **enabled**, and its **slot ID** (digits). The publisher ID and slot IDs are public values from your AdSense account, never a password or key.
 
-Until T7.7 adds the AdSense loader, setting all four reserves the labelled space but no ad appears, so leave ads off for now.
+With all four set, a visitor sees an ad only after choosing **Ads** in the privacy choices panel; until then the slot is not shown at all (no empty box). See `docs/adsense.md`.
 
 ## Checking the layout
 

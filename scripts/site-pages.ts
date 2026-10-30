@@ -36,7 +36,7 @@ We built OEWER Tools to be private by design. This page explains, in plain words
 - Our tools run in your browser. The images, text, numbers and files you use in them stay on your device and are never uploaded to us.
 - We do not ask you to create an account.
 - We use Google Analytics to count visits, but only if you say yes. If you decline, the site works exactly the same.
-- We may show ads. Where the law requires it, personalised ads only follow your consent.
+- We may show ads, but only if you allow them, and they are not personalised.
 
 # What stays on your device
 
@@ -54,13 +54,13 @@ If you click **Allow analytics**, we load Google Analytics, a service from Googl
 
 We use these figures to see which tools and guides are useful and what to improve. We do not use them to identify you, and we do not turn on Google's advertising features for analytics.
 
-If you click **Decline**, or do not answer, no analytics script is loaded and no analytics cookies are set. You can change your mind at any time with **Analytics settings** at the bottom of every page. Declining stops counting immediately and removes the analytics cookies.
+If you click **Decline**, or do not answer, no analytics script is loaded and no analytics cookies are set. You can change your mind at any time with **Analytics settings** at the bottom of every page (called **Privacy choices** once ads are switched on). Declining stops counting immediately and removes the analytics cookies.
 
 Google's own handling of this data is described in its privacy policy: [policies.google.com/privacy](https://policies.google.com/privacy).
 
 # Advertising
 
-We may show ads on the site to cover its costs, using Google AdSense. To show ads, Google and its partners may use cookies or similar technologies, and may use your approximate location and the page you are viewing. Personalised ads, where they are offered, are shown only if you consent where the law requires it. You can control Google's ad personalisation at [adssettings.google.com](https://adssettings.google.com).
+We may show ads on the site to cover its costs, using Google AdSense. We ask for your permission first: no ad is shown, and Google's ad script is not loaded, unless you choose **Ads** in the privacy choices panel. We ask Google for non-personalised ads, which are based on the page you are viewing rather than on your browsing history. Google and its partners may still use cookies or similar technologies, and your approximate location, to show and measure ads and to prevent fraud. You can change your choice at any time with **Privacy choices** at the bottom of every page (it appears once ads are switched on), and you can control Google's ad personalisation across the web at [adssettings.google.com](https://adssettings.google.com).
 
 # Where the site is hosted
 
