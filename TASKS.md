@@ -50,7 +50,7 @@ Source: `docs/OEWER_TOOLS_PROJECT_PLAN.md` (v1.1: JavaScript-only, GitHub Pages,
 - [x] **T5.2** Token handling: memory/`sessionStorage` only, sign-out, strict CSP, no third-party scripts on `/admin` (memory by default, optional per-tab sessionStorage, 30-minute idle sign-out, strict CSP with script hashes, no third-party scripts; see `docs/admin.md`)
 - [x] **T5.3** Safe write workflow: validate in browser, commit with SHA, conflict UI (pending-changes list, change-set engine by record ID, rebase onto a newer version, conflict choices that keep your edits; add/delete rows built in the engine, screens in T5.4; see `docs/admin.md`)
 - [x] **T5.4** Spreadsheet manager UI: sheets, pagination/search/filter, add/edit/delete, validation, bulk import/export (tabs for all 16 sheets, search/filter/sort/pages, schema-driven add/edit/delete forms, live validation of pending changes, CSV import/export, workbook download; see `docs/admin.md`)
-- [ ] **T5.5** Forms: tools, categories, blog block editor, SEO, ad placements
+- [x] **T5.5** Forms: tools, categories, blog block editor, SEO, ad placements (editors for tools, categories, articles with a block editor, search settings and ad placements; see `docs/admin.md`; adding a tool needs a component written in code first)
 - [ ] **T5.6** Publish flow: draft/preview/publish, show Actions build status and errors
 - [ ] **T5.7** History and restore from Git commits, with confirmation
 - [ ] **T5.8** Dashboard: content counts, recent commits, latest deployment

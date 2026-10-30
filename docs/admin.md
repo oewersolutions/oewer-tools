@@ -81,3 +81,20 @@ After signing in, the page is a manager for every sheet in the workbook.
 - **Bulk.** *Export as CSV* downloads the current sheet. *Import CSV* reads a file with the same columns: rows with a new ID are added, rows whose ID exists have their changed cells updated, and rows missing from the file are left alone (an import never deletes). The preview says how many of each, or why the file cannot be used, before anything is added to the pending changes. *Download the workbook* saves the whole `.xlsx`.
 
 Limits: an import file can be at most 2 MB and 2000 rows. Everything runs in the browser and nothing leaves it except the final save to GitHub.
+
+## Content forms (T5.5)
+
+After signing in, the admin opens on purpose-built editors, with **All sheets** (the spreadsheet manager above) one tab away for anything the forms do not cover. Every editor builds the same pending changes as the manager, so the live validation, the safe save and the conflict choices all apply unchanged. Nothing is saved until you press Save.
+
+- **Tools.** One form per tool: name and address (the address follows the name until you edit it), category, tool component (a list of the components that exist in code), status, featured, order and description; then the page content: the how-to text, examples and questions with add and remove buttons, related tools and guides as tick lists; then search settings. Add tool is offered only while a tool component exists that no tool uses yet, because the code for a tool has to be written first.
+- **Categories.** Tool categories and article categories, with name, address, description, and for tool categories an order and a show/hide switch; plus search settings.
+- **Articles.** Title, address, status, category, author, publication date (set automatically when you publish an article that has none), summary, tags (tick existing ones or create new ones) and the article body as a **block editor**: each block has a type (paragraph, heading, list, image, quote, code, callout), its text, and buttons to move it up or down or remove it; images take alt text and a file path. Blocks are renumbered in the order shown, and saving an existing article refreshes its "updated" date.
+- **Search settings.** A list of every page, tool, category and article showing whether it uses its default search text, custom text, or is hidden from search engines, with a form for the title (counted against 70 characters), description (170), canonical address and noindex. Emptying the form removes the custom row.
+- **Ads.** The site-wide on/off switch and the placements: name, page type, public slot number (digits only) and an enable switch for each, with add and remove.
+
+Details worth knowing:
+
+- Mistakes show up as you work, not at save time: for example an article marked published with no blocks, a category with no description, or a slot number that is not digits. The Pending changes panel lists them, and Save stays refused until they are fixed.
+- Editing something you added in the same session updates the pending addition instead of stacking changes.
+- Changing an address (slug) breaks existing links to that page; use the `redirects` sheet when you rename one that is already published.
+- The planners that turn forms into changes are plain functions in `lib/admin/forms.ts`, unit tested against the seed workbook, including that the workbook is valid after each kind of edit.

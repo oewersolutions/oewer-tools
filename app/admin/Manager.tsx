@@ -10,7 +10,23 @@ import { saveChanges, type Repo } from "../../lib/admin/save";
 import { cellString, EMPTY_QUERY, filterOptions, filterableColumns, nextId, paginate, queryRows, refOptions, toRows, type Query, type Row } from "../../lib/admin/table";
 import { formatIssue, schema, type Issue, type WorkbookData } from "../../lib/workbook";
 import type { ColumnDef } from "../../lib/workbook/types";
+import { mergeChanges } from "../../lib/admin/forms";
+import AdsEditor from "./editors/AdsEditor";
+import CategoriesEditor from "./editors/CategoriesEditor";
+import PostsEditor from "./editors/PostsEditor";
+import SeoEditor from "./editors/SeoEditor";
+import ToolsEditor from "./editors/ToolsEditor";
 import { useProjection } from "./useProjection";
+
+type View = "tools" | "categories" | "articles" | "seo" | "ads" | "sheets";
+const VIEWS: { id: View; label: string }[] = [
+  { id: "tools", label: "Tools" },
+  { id: "categories", label: "Categories" },
+  { id: "articles", label: "Articles" },
+  { id: "seo", label: "Search settings" },
+  { id: "ads", label: "Ads" },
+  { id: "sheets", label: "All sheets" },
+];
 
 export interface ManagerFile {
   session: GithubSession;
@@ -51,6 +67,7 @@ export default function Manager({
   onSaved: (base: WorkbookFile) => void;
 }) {
   const sheets = Object.keys(schema.sheets);
+  const [tab, setTab] = useState<View>("tools");
   const [sheet, setSheet] = useState(sheets[0]!);
   const def = schema.sheets[sheet]!;
   const [query, setQuery] = useState<Query>(EMPTY_QUERY);
@@ -165,8 +182,43 @@ export default function Manager({
   const unresolved = conflicts.filter((c) => !choices[c.index]);
   const liveIssues = projection.issues;
 
+  const apply = (changes: Change[]) => changePending(mergeChanges(pending, changes));
+  const editorProps = { data: projection.data, onApply: apply };
+
   return (
     <div className="space-y-8">
+      <nav aria-label="Editor" className="rounded-2xl border border-brand-100 bg-white p-4 shadow-soft">
+        <ul className="flex flex-wrap gap-2">
+          {VIEWS.map((v) => (
+            <li key={v.id}>
+              <button
+                type="button"
+                aria-current={v.id === tab ? "page" : undefined}
+                onClick={() => setTab(v.id)}
+                className={`rounded-full px-4 py-1.5 text-sm font-semibold transition ${v.id === tab ? "bg-brand text-white" : "bg-brand-50 text-brand-800 hover:bg-brand-100"}`}
+              >
+                {v.label}
+              </button>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      {tab !== "sheets" && (
+        <section aria-labelledby="editor-heading" className="space-y-5 rounded-2xl border border-brand-100 bg-white p-6 shadow-soft">
+          <h2 id="editor-heading" className="font-display text-2xl font-semibold text-ink">
+            {VIEWS.find((v) => v.id === tab)!.label}
+          </h2>
+          {tab === "tools" && <ToolsEditor {...editorProps} />}
+          {tab === "categories" && <CategoriesEditor {...editorProps} />}
+          {tab === "articles" && <PostsEditor {...editorProps} />}
+          {tab === "seo" && <SeoEditor {...editorProps} />}
+          {tab === "ads" && <AdsEditor {...editorProps} />}
+        </section>
+      )}
+
+      {tab === "sheets" && (
+        <>
       <nav aria-label="Sheets" className="rounded-2xl border border-brand-100 bg-white p-4 shadow-soft">
         <ul className="flex flex-wrap gap-2">
           {sheets.map((name) => {
@@ -358,6 +410,9 @@ export default function Manager({
         </nav>
       </section>
 
+        </>
+      )}
+
       <section aria-labelledby="pending-heading" className="rounded-2xl border border-brand-100 bg-white p-6 shadow-soft">
         <h2 id="pending-heading" className="font-display text-2xl font-semibold text-ink">
           Pending changes ({pending.length})
@@ -377,7 +432,7 @@ export default function Manager({
           </ul>
         )}
 
-        {pending.length > 0 && liveIssues.length > 0 && (
+        {pending.length > 0 && projection.ready && liveIssues.length > 0 && (
           <div role="status" className="mt-5 text-red-800">
             <p className="font-medium">With these changes the workbook would have {liveIssues.length} problem(s), so it cannot be saved yet:</p>
             <ul className="mt-2 list-disc space-y-1 pl-6 text-sm">
@@ -386,6 +441,11 @@ export default function Manager({
               ))}
             </ul>
           </div>
+        )}
+        {pending.length > 0 && !projection.ready && (
+          <p role="status" className="mt-5 text-slate-700">
+            Checking the workbook with these changes…
+          </p>
         )}
         {pending.length > 0 && liveIssues.length === 0 && projection.ready && (
           <p role="status" className="mt-5 font-medium text-brand">

@@ -1,0 +1,191 @@
+"use client";
+
+import { useState } from "react";
+import type { Change } from "../../../lib/admin/changes";
+import { nowIso, planPost, planSeo, readPost, readSeo, type BlockForm, type PostForm, type SeoForm } from "../../../lib/admin/forms";
+import { cellString, toRows } from "../../../lib/admin/table";
+import { slugify } from "../../../lib/posts";
+import { schema, type WorkbookData } from "../../../lib/workbook";
+import { CheckGroup, FormShell, primaryButton, Section, SelectField, SeoFields, smallButton, TextAreaField, TextField } from "./parts";
+
+const BLOCK_HELP: Record<string, string> = {
+  paragraph: "Text. Use **bold**, *italic*, `code` and [links](https://…).",
+  heading: "A section heading.",
+  list: "One item per line.",
+  image: "Alt text: describe the picture for people who cannot see it.",
+  quote: "A pull quote.",
+  code: "Shown as a code block.",
+  callout: "A highlighted note.",
+};
+
+export default function PostsEditor({ data, onApply }: { data: WorkbookData; onApply: (changes: Change[]) => void }) {
+  const posts = toRows(data, "posts", schema.sheets.posts!).sort((a, b) => cellString(b.values.published_at).localeCompare(cellString(a.values.published_at)) || b.id.localeCompare(a.id));
+  const [editing, setEditing] = useState<string | null>(null);
+
+  return (
+    <div className="space-y-5">
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <p className="max-w-2xl text-sm text-slate-700">Articles are written as a list of blocks: paragraphs, headings, lists, images and so on. Only published articles are listed on the site.</p>
+        <button type="button" className={primaryButton} onClick={() => setEditing("new")}>
+          New article
+        </button>
+      </div>
+
+      {editing && (
+        <PostForm
+          key={editing}
+          data={data}
+          postId={editing === "new" ? "" : editing}
+          onCancel={() => setEditing(null)}
+          onSave={(changes) => {
+            onApply(changes);
+            setEditing(null);
+          }}
+        />
+      )}
+
+      <div className="overflow-x-auto rounded-xl border border-brand-100">
+        <table className="w-full text-left text-sm">
+          <caption className="sr-only">Articles</caption>
+          <thead className="bg-brand-50 text-brand-900">
+            <tr>
+              {["Title", "Status", "Published", ""].map((h, i) => (
+                <th key={i} scope="col" className="px-3 py-2 font-semibold">
+                  {h || <span className="sr-only">Actions</span>}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {posts.map((p) => (
+              <tr key={p.id} className="border-t border-brand-100">
+                <td className="px-3 py-2 font-medium">{cellString(p.values.title)}</td>
+                <td className="px-3 py-2">{cellString(p.values.status)}</td>
+                <td className="px-3 py-2">{cellString(p.values.published_at).slice(0, 10)}</td>
+                <td className="px-3 py-2 text-right">
+                  <button type="button" className={smallButton} aria-label={`Edit article ${cellString(p.values.title)}`} onClick={() => setEditing(p.id)}>
+                    Edit
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
+
+function PostForm({ data, postId, onSave, onCancel }: { data: WorkbookData; postId: string; onSave: (c: Change[]) => void; onCancel: () => void }) {
+  const categories = toRows(data, "blog_categories", schema.sheets.blog_categories!);
+  const authors = toRows(data, "authors", schema.sheets.authors!);
+  const tags = toRows(data, "tags", schema.sheets.tags!);
+  const [f, setF] = useState<PostForm>(() => {
+    const form = readPost(data, postId);
+    return postId ? form : { ...form, category_id: categories[0]?.id ?? "", author_id: authors[0]?.id ?? "" };
+  });
+  const [slugTouched, setSlugTouched] = useState(Boolean(postId));
+  const [newTag, setNewTag] = useState("");
+  const [newBlockType, setNewBlockType] = useState("paragraph");
+  const [seo, setSeo] = useState<SeoForm>(() => readSeo(data, "post", postId));
+  const [error, setError] = useState<string>();
+  const set = (patch: Partial<PostForm>) => setF((s) => ({ ...s, ...patch }));
+  const setBlock = (i: number, patch: Partial<BlockForm>) => set({ blocks: f.blocks.map((b, n) => (n === i ? { ...b, ...patch } : b)) });
+  const move = (i: number, by: -1 | 1) => {
+    const next = [...f.blocks];
+    [next[i], next[i + by]] = [next[i + by]!, next[i]!];
+    set({ blocks: next });
+  };
+
+  function save() {
+    const slug = f.slug || slugify(f.title);
+    if (!f.title.trim()) return setError("Give the article a title.");
+    if (!slug) return setError("The address needs at least one letter or number.");
+    if (!f.category_id || !f.author_id) return setError("Choose a category and an author.");
+    const { changes, postId: id } = planPost(data, { ...f, title: f.title.trim(), slug }, nowIso());
+    onSave([...changes, ...planSeo(data, "post", id, seo)]);
+  }
+
+  return (
+    <FormShell title={postId ? `Edit article ${f.title}` : "New article"} onSubmit={save} onCancel={onCancel} submitLabel="Update pending changes" error={error}>
+      <div className="grid gap-5 md:grid-cols-2">
+        <div className="md:col-span-2">
+          <TextField label="Title" value={f.title} onChange={(v) => set({ title: v, ...(slugTouched ? {} : { slug: slugify(v) }) })} />
+        </div>
+        <TextField label="Page address (slug)" value={f.slug} onChange={(v) => { setSlugTouched(true); set({ slug: v }); }} hint="Changing it breaks old links." />
+        <SelectField label="Status" value={f.status} onChange={(v) => set({ status: v })} options={(schema.enums.status ?? []).map((s) => ({ value: s, label: s }))} />
+        <SelectField label="Category" value={f.category_id} onChange={(v) => set({ category_id: v })} options={categories.map((c) => ({ value: c.id, label: cellString(c.values.name) }))} />
+        <SelectField label="Author" value={f.author_id} onChange={(v) => set({ author_id: v })} options={authors.map((a) => ({ value: a.id, label: cellString(a.values.display_name) }))} />
+        <div>
+          <TextField label="Publication date" value={f.published_at} onChange={(v) => set({ published_at: v })} hint="UTC, like 2026-10-29T08:30:00Z. Left empty, it is set when you publish." />
+          <button type="button" className={`${smallButton} mt-2`} onClick={() => set({ published_at: nowIso() })}>
+            Set publication date to now
+          </button>
+        </div>
+        <div className="md:col-span-2">
+          <TextAreaField label="Summary (shown in lists and search results)" value={f.excerpt} onChange={(v) => set({ excerpt: v })} rows={2} />
+        </div>
+      </div>
+
+      <Section title="Tags">
+        <CheckGroup legend="Tags" options={tags.map((t) => ({ value: t.id, label: cellString(t.values.name) }))} selected={f.tagIds} onChange={(v) => set({ tagIds: v })} empty="There are no tags yet." />
+        {f.newTags.length > 0 && <p className="text-sm text-slate-700">New tags to create: {f.newTags.join(", ")}</p>}
+        <div className="flex flex-wrap items-end gap-2">
+          <div className="min-w-48 flex-1">
+            <TextField label="Create a new tag" value={newTag} onChange={setNewTag} />
+          </div>
+          <button
+            type="button"
+            className={smallButton}
+            onClick={() => {
+              if (newTag.trim()) set({ newTags: [...f.newTags, newTag.trim()] });
+              setNewTag("");
+            }}
+          >
+            Add tag
+          </button>
+        </div>
+      </Section>
+
+      <Section title="Article content">
+        {f.blocks.length === 0 && <p className="text-sm text-slate-700">No blocks yet. A published article needs at least one.</p>}
+        <ol className="space-y-4">
+          {f.blocks.map((b, i) => (
+            <li key={i}>
+              <fieldset className="space-y-3 rounded-lg bg-white p-4">
+                <legend className="px-1 text-sm font-semibold text-brand-800">
+                  Block {i + 1} of {f.blocks.length}
+                </legend>
+                <div className="grid gap-4 md:grid-cols-[12rem_1fr]">
+                  <SelectField label={`Block ${i + 1} type`} value={b.block_type} onChange={(v) => setBlock(i, { block_type: v })} options={(schema.enums.block_type ?? []).map((t) => ({ value: t, label: t }))} />
+                  <TextAreaField label={`Block ${i + 1} ${b.block_type === "image" ? "alt text" : "text"}`} value={b.content} onChange={(v) => setBlock(i, { content: v })} rows={b.block_type === "heading" ? 1 : 4} />
+                </div>
+                <p className="text-xs text-slate-600">{BLOCK_HELP[b.block_type]}</p>
+                {b.block_type === "image" && <TextField label={`Block ${i + 1} image file`} value={b.asset_path} onChange={(v) => setBlock(i, { asset_path: v })} hint="Where the file is on the site, like /assets/chart.png. Upload the file to the public/assets folder in the repository." />}
+                <div className="flex flex-wrap gap-2">
+                  <button type="button" className={smallButton} disabled={i === 0} onClick={() => move(i, -1)}>
+                    Move block {i + 1} up
+                  </button>
+                  <button type="button" className={smallButton} disabled={i === f.blocks.length - 1} onClick={() => move(i, 1)}>
+                    Move block {i + 1} down
+                  </button>
+                  <button type="button" className={smallButton} onClick={() => set({ blocks: f.blocks.filter((_, n) => n !== i) })}>
+                    Remove block {i + 1}
+                  </button>
+                </div>
+              </fieldset>
+            </li>
+          ))}
+        </ol>
+        <div className="flex flex-wrap items-end gap-2">
+          <SelectField label="New block type" value={newBlockType} onChange={setNewBlockType} options={(schema.enums.block_type ?? []).map((t) => ({ value: t, label: t }))} />
+          <button type="button" className={smallButton} onClick={() => set({ blocks: [...f.blocks, { block_id: "", block_type: newBlockType, content: "", asset_path: "" }] })}>
+            Add block
+          </button>
+        </div>
+      </Section>
+
+      <SeoFields value={seo} onChange={setSeo} defaults={{ title: f.title, description: f.excerpt }} />
+    </FormShell>
+  );
+}

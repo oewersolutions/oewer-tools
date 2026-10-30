@@ -10,12 +10,18 @@ export interface Projection {
   data: WorkbookData;
   /** Problems the validator finds in that workbook. */
   issues: Issue[];
+  /** False while the latest pending changes are still being applied and checked. */
   ready: boolean;
+}
+
+interface Computed extends Omit<Projection, "ready"> {
+  /** The pending changes this result was worked out for. */
+  for: Change[];
 }
 
 /** The workbook with the pending changes applied and validated, recomputed shortly after either changes. */
 export function useProjection(bytes: Uint8Array, pending: Change[], base: { data: WorkbookData; issues: Issue[] }): Projection {
-  const [state, setState] = useState<Projection>({ data: base.data, issues: base.issues, ready: true });
+  const [state, setState] = useState<Computed>({ data: base.data, issues: base.issues, for: [] });
 
   useEffect(() => {
     if (pending.length === 0) return; // nothing to apply: the workbook as loaded is already checked
@@ -26,9 +32,9 @@ export function useProjection(bytes: Uint8Array, pending: Change[], base: { data
         applyChanges(wb, schema, pending, new Set(pending.keys())); // clashes are dealt with when saving
         const projected = await saveWorkbook(wb);
         const { data, issues } = await checkWorkbook(projected as unknown as ArrayBuffer, projected.byteLength);
-        if (current) setState({ data, issues, ready: true });
+        if (current) setState({ data, issues, for: pending });
       } catch {
-        if (current) setState((s) => ({ ...s, ready: true }));
+        if (current) setState((s) => ({ ...s, for: pending }));
       }
     }, 80);
     return () => {
@@ -37,5 +43,6 @@ export function useProjection(bytes: Uint8Array, pending: Change[], base: { data
     };
   }, [bytes, pending]);
 
-  return pending.length === 0 ? { data: base.data, issues: base.issues, ready: true } : state;
+  if (pending.length === 0) return { data: base.data, issues: base.issues, ready: true };
+  return { data: state.data, issues: state.issues, ready: state.for === pending };
 }

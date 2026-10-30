@@ -9,7 +9,7 @@ const shared = ["accessibility.spec.ts", "responsive.spec.ts", "tools.spec.ts", 
 export default defineConfig({
   testDir: "e2e",
   reporter: "list",
-  use: { baseURL: "http://localhost:4174" },
+  use: { baseURL: "http://localhost:4174", reducedMotion: "reduce" }, // no animations, so colour checks never catch a half-faded state
   webServer: { command: "npx http-server out -p 4174 -s -c-1", url: "http://localhost:4174/", reuseExistingServer: !process.env.CI },
   projects: [
     { name: "chrome", use: { ...devices["Desktop Chrome"], channel: "chrome" }, testIgnore: ["performance.spec.ts"] },

@@ -72,6 +72,7 @@ const withCell = (sheet: string, pk: string, column: string, value: string) => a
 
 /** Open a sheet, edit one cell of a record through the row form, and add it to the pending changes. */
 async function editCell(page: Page, sheet: string, pk: string, column: string, value: string) {
+  await page.getByRole("navigation", { name: "Editor" }).getByRole("button", { name: "All sheets" }).click();
   await page.getByRole("navigation", { name: "Sheets" }).getByRole("button", { name: new RegExp(`^${sheet} `) }).click();
   await page.getByRole("button", { name: `Edit ${pk}` }).click();
   const form = page.getByRole("form", { name: new RegExp(`Edit ${pk}`) });
@@ -375,6 +376,7 @@ const tableRows = (page: Page, sheet: string) => page.getByRole("region", { name
 async function managerPage(page: Page, opts?: Parameters<typeof fakeGithub>[1]) {
   const fake = await fakeGithub(page, opts);
   await signIn(page);
+  await page.getByRole("navigation", { name: "Editor" }).getByRole("button", { name: "All sheets" }).click();
   await expect(page.getByRole("navigation", { name: "Sheets" })).toBeVisible();
   return fake;
 }
@@ -524,4 +526,204 @@ test("the manager has no accessibility violations with a row form open", async (
   await page.getByRole("button", { name: "Edit TOOL0001" }).click();
   const violations = (await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"]).analyze()).violations.map((v) => `${v.id}: ${v.nodes.map((n) => n.target.join(" ")).join(", ")}`);
   expect(violations).toEqual([]);
+});
+
+// ---- Content forms (T5.5) ----
+
+const editor = (page: Page, name: string) => page.getByRole("navigation", { name: "Editor" }).getByRole("button", { name });
+
+/** All rows of a sheet in a saved workbook, as strings keyed by column name. */
+async function rowsOf(buffer: Buffer, sheet: string): Promise<Record<string, string>[]> {
+  const wb = await loadWorkbook(new Uint8Array(buffer));
+  const ws = wb.getWorksheet(sheet)!;
+  const header: string[] = [];
+  ws.getRow(1).eachCell((c, n) => (header[n] = String(c.value)));
+  const rows: Record<string, string>[] = [];
+  ws.eachRow((row, r) => {
+    if (r === 1) return;
+    const out: Record<string, string> = {};
+    header.forEach((h, n) => h && (out[h] = row.getCell(n).value === null ? "" : String(row.getCell(n).value)));
+    rows.push(out);
+  });
+  return rows;
+}
+
+test("the tools editor changes a tool's questions, related tools and search settings in one go", async ({ page }) => {
+  const fake = await fakeGithub(page);
+  await signIn(page);
+  await expect(editor(page, "Tools")).toHaveAttribute("aria-current", "page"); // the friendly editors come first
+  await page.getByRole("button", { name: "Edit tool EMI Calculator" }).click();
+  const form = page.getByRole("form", { name: /Edit tool EMI Calculator/ });
+  await form.getByLabel("Answer 1").fill("It uses the standard reducing-balance formula.");
+  await form.getByRole("group", { name: "Related tools" }).getByLabel("FD Interest Calculator").uncheck();
+  await form.getByLabel("Search title").fill("EMI Calculator: monthly loan payment");
+  await form.getByLabel("Search description").fill("Work out your EMI.");
+  await form.getByRole("button", { name: "Update pending changes" }).click();
+
+  await expect(page.getByText("The workbook is valid with these changes.")).toBeVisible();
+  await page.getByRole("button", { name: /^Save \d+ changes? to GitHub/ }).click();
+  await expect(page.getByText("View the commit on GitHub")).toBeVisible();
+
+  const settings = await rowsOf(fake.current(), "tool_settings");
+  const faq = JSON.parse(settings.find((r) => r.tool_id === "TOOL0004" && r.setting_key === "faq")!.setting_value) as { a: string }[];
+  expect(faq[0]!.a).toBe("It uses the standard reducing-balance formula.");
+  expect(JSON.parse(settings.find((r) => r.tool_id === "TOOL0004" && r.setting_key === "related")!.setting_value)).toEqual(["TOOL0007"]);
+  const seo = (await rowsOf(fake.current(), "seo_metadata")).find((r) => r.entity_id === "TOOL0004")!;
+  expect(seo.meta_title).toBe("EMI Calculator: monthly loan payment");
+});
+
+test("a tool can be hidden from the site by setting it to draft", async ({ page }) => {
+  const fake = await fakeGithub(page);
+  await signIn(page);
+  await page.getByRole("button", { name: "Edit tool Word Counter" }).click();
+  await page.getByRole("form", { name: /Edit tool Word Counter/ }).getByLabel("Status").selectOption("draft");
+  await page.getByRole("form", { name: /Edit tool Word Counter/ }).getByRole("button", { name: "Update pending changes" }).click();
+  await page.getByRole("button", { name: "Save 1 change to GitHub" }).click();
+  await expect(page.getByText("View the commit on GitHub")).toBeVisible();
+  expect((await rowsOf(fake.current(), "tools")).find((r) => r.tool_id === "TOOL0010")!.status).toBe("draft");
+});
+
+test("adding a tool is only offered while an unused tool component exists", async ({ page }) => {
+  await fakeGithub(page);
+  await signIn(page);
+  await expect(page.getByRole("button", { name: "Add tool" })).toBeDisabled();
+  await expect(page.getByText(/Every tool component built so far is in use/)).toBeVisible();
+});
+
+test("a category can be added and gets its address from its name", async ({ page }) => {
+  const fake = await fakeGithub(page);
+  await signIn(page);
+  await editor(page, "Categories").click();
+  await page.getByRole("button", { name: "Add category" }).click();
+  const form = page.getByRole("form", { name: /Add a tool category/ });
+  await form.getByLabel("Name").fill("Health Tools");
+  await expect(form.getByLabel("Page address (slug)")).toHaveValue("health-tools");
+  await form.getByRole("button", { name: "Update pending changes" }).click();
+  await expect(page.getByText(/description: is required/)).toBeVisible(); // caught at once, before any save
+  await page.getByRole("button", { name: "Edit category Health Tools" }).click();
+  await page.getByRole("form", { name: /Edit category Health Tools/ }).getByLabel("Description", { exact: true }).fill("Tools for health and fitness.");
+  await page.getByRole("form", { name: /Edit category Health Tools/ }).getByRole("button", { name: "Update pending changes" }).click();
+  await expect(page.getByText("The workbook is valid with these changes.")).toBeVisible();
+  await page.getByRole("button", { name: "Save 1 change to GitHub" }).click();
+  await expect(page.getByText("View the commit on GitHub")).toBeVisible();
+  const added = (await rowsOf(fake.current(), "tool_categories")).find((r) => r.name === "Health Tools")!;
+  expect(added).toMatchObject({ category_id: "TCAT0005", slug: "health-tools", enabled: "true" });
+});
+
+test("a new article is written block by block, tagged and published", async ({ page }) => {
+  const fake = await fakeGithub(page);
+  await signIn(page);
+  await editor(page, "Articles").click();
+  await page.getByRole("button", { name: "New article" }).click();
+  const form = page.getByRole("form", { name: /New article/ });
+  await form.getByLabel("Title", { exact: true }).fill("Saving on Loan Interest");
+  await expect(form.getByLabel("Page address (slug)")).toHaveValue("saving-on-loan-interest");
+  await form.getByLabel("Summary (shown in lists and search results)").fill("Pay less interest.");
+  await form.getByLabel("Status").selectOption("published");
+  await form.getByLabel("Block 1 text").fill("Start with the basics.");
+  await form.getByLabel("New block type").selectOption("heading");
+  await form.getByRole("button", { name: "Add block" }).click();
+  await form.getByLabel("Block 2 text").fill("Pay early");
+  await form.getByLabel("Create a new tag").fill("Interest");
+  await form.getByRole("button", { name: "Add tag" }).click();
+  await form.getByRole("button", { name: "Update pending changes" }).click();
+
+  await expect(page.getByText("The workbook is valid with these changes.")).toBeVisible();
+  await page.getByRole("button", { name: /^Save \d+ changes? to GitHub/ }).click();
+  await expect(page.getByText("View the commit on GitHub")).toBeVisible();
+
+  const post = (await rowsOf(fake.current(), "posts")).find((r) => r.title === "Saving on Loan Interest")!;
+  expect(post).toMatchObject({ status: "published", slug: "saving-on-loan-interest" });
+  expect(post.published_at).toMatch(/^\d{4}-\d{2}-\d{2}T/); // dated automatically on publishing
+  const blocks = (await rowsOf(fake.current(), "post_blocks")).filter((r) => r.post_id === post.post_id);
+  expect(blocks.map((b) => [b.sort_order, b.block_type, b.content])).toEqual([["1", "paragraph", "Start with the basics."], ["2", "heading", "Pay early"]]);
+  const tag = (await rowsOf(fake.current(), "tags")).find((t) => t.name === "Interest")!;
+  expect((await rowsOf(fake.current(), "post_tags")).some((r) => r.post_id === post.post_id && r.tag_id === tag.tag_id)).toBe(true);
+});
+
+test("blocks of an existing article can be moved, and publishing with no blocks is caught at once", async ({ page }) => {
+  const fake = await fakeGithub(page);
+  await signIn(page);
+  await editor(page, "Articles").click();
+  await page.getByRole("button", { name: "Edit article How EMI Is Calculated" }).click();
+  const form = page.getByRole("form", { name: /Edit article How EMI Is Calculated/ });
+  await form.getByRole("button", { name: "Move block 1 down" }).click();
+  await expect(form.getByLabel("Block 2 text")).toHaveValue(/An EMI, or equated monthly instalment/);
+  await form.getByRole("button", { name: "Update pending changes" }).click();
+  await expect(page.getByText("The workbook is valid with these changes.")).toBeVisible();
+  await page.getByRole("button", { name: /^Save \d+ changes? to GitHub/ }).click();
+  await expect(page.getByText("View the commit on GitHub")).toBeVisible();
+  const blocks = (await rowsOf(fake.current(), "post_blocks")).filter((r) => r.post_id === "POST0001").sort((a, b) => Number(a.sort_order) - Number(b.sort_order));
+  expect(blocks[0]!.block_type).toBe("heading");
+  expect(blocks[1]!.content).toMatch(/An EMI, or equated/);
+});
+
+test("an article published with no blocks is flagged before saving", async ({ page }) => {
+  await fakeGithub(page);
+  await signIn(page);
+  await editor(page, "Articles").click();
+  await page.getByRole("button", { name: "New article" }).click();
+  const form = page.getByRole("form", { name: /New article/ });
+  await form.getByLabel("Title", { exact: true }).fill("Empty");
+  await form.getByLabel("Status").selectOption("published");
+  await form.getByRole("button", { name: "Remove block 1" }).click();
+  await form.getByRole("button", { name: "Update pending changes" }).click();
+  await expect(page.getByText(/cannot be saved yet/)).toBeVisible();
+  await expect(page.getByText(/no post_blocks/)).toBeVisible();
+});
+
+test("search settings are listed for every page and can be edited", async ({ page }) => {
+  const fake = await fakeGithub(page);
+  await signIn(page);
+  await editor(page, "Search settings").click();
+  await expect(page.getByRole("row", { name: /EMI Calculator.*Custom/ })).toBeVisible();
+  await expect(page.getByRole("row", { name: /About OEWER Tools.*Custom/ })).toBeVisible();
+  await page.getByRole("button", { name: "Edit search settings for Contact Us" }).click();
+  const form = page.getByRole("form", { name: /Search settings for Contact Us/ });
+  await form.getByLabel("Search title").fill("Contact OEWER Tools");
+  await expect(form.getByText("19 of 70 characters")).toBeVisible();
+  await form.getByLabel("Search description").fill("Get in touch with the team.");
+  await form.getByRole("button", { name: "Update pending changes" }).click();
+  await page.getByRole("button", { name: "Save 1 change to GitHub" }).click();
+  await expect(page.getByText("View the commit on GitHub")).toBeVisible();
+  expect((await rowsOf(fake.current(), "seo_metadata")).find((r) => r.entity_id === "PAGE0004")).toMatchObject({ meta_title: "Contact OEWER Tools", noindex: "false" });
+});
+
+test("ad placements can be switched on with a slot ID, and a wrong slot ID is caught", async ({ page }) => {
+  const fake = await fakeGithub(page);
+  await signIn(page);
+  await editor(page, "Ads").click();
+  const form = page.getByRole("form", { name: "Ad placements" });
+  await form.getByLabel("Placement 1 slot ID").fill("ca-pub-123");
+  await form.getByRole("button", { name: "Update pending changes" }).click();
+  await expect(page.getByText(/cannot be saved yet/)).toBeVisible();
+  await page.getByRole("button", { name: "Discard all" }).click();
+
+  await form.getByLabel("Show ads on the site").check();
+  await form.getByLabel("Placement 1 slot ID").fill("1234567890");
+  await form.getByLabel("Enable placement 1").check();
+  await form.getByRole("button", { name: "Update pending changes" }).click();
+  await expect(page.getByText("The workbook is valid with these changes.")).toBeVisible();
+  await page.getByRole("button", { name: /^Save \d+ changes? to GitHub/ }).click();
+  await expect(page.getByText("View the commit on GitHub")).toBeVisible();
+  expect((await rowsOf(fake.current(), "site_settings")).find((r) => r.setting_key === "ads_enabled")!.setting_value).toBe("true");
+  expect((await rowsOf(fake.current(), "advertisements")).find((r) => r.ad_id === "AD0001")).toMatchObject({ enabled: "true", ad_unit_id: "1234567890" });
+});
+
+test("the content editors have no accessibility violations", async ({ page }) => {
+  await fakeGithub(page);
+  await signIn(page);
+  const scan = async () => (await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"]).analyze()).violations.map((v) => `${v.id}: ${v.nodes.map((n) => n.target.join(" ")).join(", ")}`);
+  await page.getByRole("button", { name: "Edit tool EMI Calculator" }).click();
+  expect(await scan()).toEqual([]);
+  await editor(page, "Articles").click();
+  await page.getByRole("button", { name: "Edit article How EMI Is Calculated" }).click();
+  expect(await scan()).toEqual([]);
+  await editor(page, "Categories").click();
+  await page.getByRole("button", { name: "Add category" }).click();
+  expect(await scan()).toEqual([]);
+  await editor(page, "Search settings").click();
+  expect(await scan()).toEqual([]);
+  await editor(page, "Ads").click();
+  expect(await scan()).toEqual([]);
 });
