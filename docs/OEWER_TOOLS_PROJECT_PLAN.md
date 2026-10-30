@@ -213,7 +213,7 @@ See `TASKS.md` for the task list.
 ### Website and publishing
 - [ ] Tools work on current Chrome, Safari, Firefox and Edge.
 - [ ] Tool and blog pages render meaningful content without JavaScript.
-- [ ] Failed CI does not replace the working site.
+- [x] Failed CI does not replace the working site (proven on GitHub, see docs/failed-builds.md).
 - [ ] Sitemap, canonical URLs and redirects correct.
 - [ ] Mobile layout and keyboard navigation work.
 

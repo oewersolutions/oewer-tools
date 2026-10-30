@@ -12,6 +12,7 @@
     "build": "npm run export && next build && tsx scripts/write-redirects.ts && tsx scripts/add-admin-csp.ts",
     "build:preview": "OEWER_PREVIEW_ALL_TOOLS=1 OEWER_PREVIEW_DRAFTS=1 npm run build",
     "export": "tsx scripts/export-content.ts",
+    "check-build": "tsx scripts/check-build.ts",
     "validate": "tsx scripts/validate-workbook.ts",
     "seed": "tsx scripts/create-seed-workbook.ts",
     "typecheck": "tsc --noEmit",

@@ -43,6 +43,11 @@ jobs:
           # The admin page edits this repository and branch (public information).
           NEXT_PUBLIC_GITHUB_REPO: ${{ github.repository }}
           NEXT_PUBLIC_GITHUB_BRANCH: ${{ github.ref_name }}
+      # A build can succeed and still be wrong (a missing page, an empty export, a test build). Stop here if so.
+      - name: Check the build is fit to publish
+        run: npm run check-build
+        env:
+          NEXT_PUBLIC_BASE_PATH: ${{ vars.BASE_PATH }}
       - run: touch out/.nojekyll
       - uses: actions/upload-pages-artifact@v3
         with:
