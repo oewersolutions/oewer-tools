@@ -40,6 +40,9 @@ jobs:
           # BASE_PATH   "/<repo>" for a project site on github.io; leave unset for a custom domain
           NEXT_PUBLIC_SITE_URL: ${{ vars.SITE_URL }}
           NEXT_PUBLIC_BASE_PATH: ${{ vars.BASE_PATH }}
+          # The admin page edits this repository and branch (public information).
+          NEXT_PUBLIC_GITHUB_REPO: ${{ github.repository }}
+          NEXT_PUBLIC_GITHUB_BRANCH: ${{ github.ref_name }}
       - run: touch out/.nojekyll
       - uses: actions/upload-pages-artifact@v3
         with:

@@ -20,7 +20,8 @@ const Segmenter = (Intl as unknown as { Segmenter?: SegmenterCtor }).Segmenter;
 function countWords(text: string): number {
   if (Segmenter) {
     let n = 0;
-    for (const s of new Segmenter(undefined, { granularity: "word" }).segment(text)) if (s.isWordLike) n++;
+    // Count segments that contain a letter or digit. `isWordLike` is not used: some engines (WebKit on Linux) report it as false for every word.
+    for (const s of new Segmenter(undefined, { granularity: "word" }).segment(text)) if (/[\p{L}\p{N}]/u.test(s.segment)) n++;
     return n;
   }
   return text.split(/\s+/).filter(Boolean).length;

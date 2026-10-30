@@ -4,7 +4,7 @@ import { defineConfig, devices } from "@playwright/test";
 // Chrome is the one installed on the machine (preinstalled on GitHub-hosted runners), so no browser download is needed.
 // Set CROSS_BROWSER=1 to add Firefox and Safari's engine (WebKit); CI installs them first with `npx playwright install`.
 const crossBrowser = process.env.CROSS_BROWSER === "1";
-const shared = ["accessibility.spec.ts", "responsive.spec.ts", "tools.spec.ts", "privacy.spec.ts"];
+const shared = ["accessibility.spec.ts", "responsive.spec.ts", "tools.spec.ts", "privacy.spec.ts", "admin.spec.ts"];
 
 export default defineConfig({
   testDir: "e2e",

@@ -44,6 +44,7 @@ describe("urls", () => {
   });
   it("points robots.txt at the sitemap", () => {
     expect(buildRobotsTxt("https://a.com", "")).toContain("Sitemap: https://a.com/sitemap.xml");
+    expect(buildRobotsTxt("https://a.com", "/repo")).toContain("Disallow: /repo/admin/");
   });
 });
 

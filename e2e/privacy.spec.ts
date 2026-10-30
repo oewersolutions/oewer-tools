@@ -6,11 +6,21 @@ import { builtPaths } from "./pages";
 // while each tool is used and fail if anything is sent anywhere, or any request goes to another site.
 const published = new Set(builtPaths());
 
-/** Run `action`, and return every http(s) request the page made while it ran and shortly after. */
-async function requestsDuring(page: Page, action: () => Promise<void>): Promise<string[]> {
+/**
+ * Run `action`, and return the requests that could carry the visitor's data out of the page: anything to another
+ * site, anything that sends a body, and any address that contains `secret`. Same-site GET and HEAD requests
+ * without the secret are ignored: those are the framework prefetching other pages of this site (Safari does it
+ * on its own as links come into view), and they carry nothing from the tool.
+ */
+async function requestsDuring(page: Page, action: () => Promise<void>, secret = ""): Promise<string[]> {
+  const origin = new URL(page.url()).origin;
   const seen: string[] = [];
-  const listener = (r: { url(): string; method(): string }) => {
-    if (/^https?:/.test(r.url())) seen.push(`${r.method()} ${r.url()}`);
+  const listener = (r: { url(): string; method(): string; postData(): string | null }) => {
+    if (!/^https?:/.test(r.url())) return;
+    const sameSite = new URL(r.url()).origin === origin;
+    const quiet = ["GET", "HEAD"].includes(r.method()) && !r.postData();
+    const leaks = secret !== "" && decodeURIComponent(r.url()).includes(secret);
+    if (!sameSite || !quiet || leaks) seen.push(`${r.method()} ${r.url()}`);
   };
   page.on("request", listener);
   await action();
@@ -46,9 +56,13 @@ for (const [path, label, text] of TEXT_TOOLS) {
   test(`typing text sends nothing: ${path}`, async ({ page }) => {
     test.skip(!published.has(path), "tool is not published");
     await open(page, path);
-    const requests = await requestsDuring(page, async () => {
-      await page.getByLabel(label).fill(text);
-    });
+    const requests = await requestsDuring(
+      page,
+      async () => {
+        await page.getByLabel(label).fill(text);
+      },
+      text,
+    );
     expect(requests).toEqual([]);
   });
 }
@@ -57,10 +71,14 @@ test("calculators send nothing while you type", async ({ page }) => {
   const path = "/tools/finance-calculators/emi-calculator/";
   test.skip(!published.has(path), "tool is not published");
   await open(page, path);
-  const requests = await requestsDuring(page, async () => {
-    await page.getByLabel("Loan amount (₹)").fill("2500000");
-    await page.getByLabel("Interest rate (% per year)").fill("8.5");
-  });
+  const requests = await requestsDuring(
+    page,
+    async () => {
+      await page.getByLabel("Loan amount (₹)").fill("2500000");
+      await page.getByLabel("Interest rate (% per year)").fill("8.5");
+    },
+    "2500000",
+  );
   expect(requests).toEqual([]);
 });
 

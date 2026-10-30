@@ -35,7 +35,7 @@ Source: `docs/OEWER_TOOLS_PROJECT_PLAN.md` (v1.1: JavaScript-only, GitHub Pages,
 - [x] **T3.3** Image tools: compressor, resizer, JPG/PNG/WebP converter (in-browser) (canvas based, files never leave the browser; tools stay `draft` until T3.7; `e2e/tools.spec.ts` runs against them once published)
 - [x] **T3.4** JSON formatter/validator, QR generator, word counter (QR uses `qrcode-generator`; all 10 tools now have components, still `draft` until T3.7)
 - [x] **T3.5** Per-tool help, examples, FAQ, related-tool links, input validation (content in `tool_settings`, see `docs/tool-content.md`; schema 1.0.1 with a registered migration; input validation was built into each tool)
-- [x] **T3.6** Cross-browser, mobile performance, file-privacy tests (Chrome desktop and Pixel 7 emulation tested locally; Firefox and WebKit configured but only run in CI, not yet run; real-device Safari not tested)
+- [x] **T3.6** Cross-browser, mobile performance, file-privacy tests (Chrome desktop and Pixel 7 emulation tested locally; first CI run (Oct 30): Firefox all passed, WebKit found a word counter bug (fixed, awaiting re-run); real-device Safari not tested)
 - [x] **T3.7** Flip finished tools from `draft` to `published` in the workbook (all 10 seed tools published; the workbook is regenerated from the seed script)
 
 ## Phase 4 — Blog engine (4–6 days)
@@ -46,7 +46,7 @@ Source: `docs/OEWER_TOOLS_PROJECT_PLAN.md` (v1.1: JavaScript-only, GitHub Pages,
 - [ ] **T4.5** Write first original articles
 
 ## Phase 5 — Browser-based admin panel (7–11 days)
-- [ ] **T5.1** Spike: GitHub fine-grained token sign-in; read workbook + SHA via Contents API; edit and commit a cell ← T1.4
+- [x] **T5.1** Spike: GitHub fine-grained token sign-in; read workbook + SHA via Contents API; edit and commit a cell ← T1.4 (works end to end against a pretend GitHub in tests; not yet tried against the real repository; see `docs/admin.md`)
 - [ ] **T5.2** Token handling: memory/`sessionStorage` only, sign-out, strict CSP, no third-party scripts on `/admin`
 - [ ] **T5.3** Safe write workflow: validate in browser, commit with SHA, conflict UI
 - [ ] **T5.4** Spreadsheet manager UI: sheets, pagination/search/filter, add/edit/delete, validation, bulk import/export

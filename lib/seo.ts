@@ -93,7 +93,7 @@ function dateOnly(value: unknown): string | undefined {
 }
 
 export function buildRobotsTxt(siteUrl: string, basePath: string): string {
-  return `User-agent: *\nAllow: /\n\nSitemap: ${absoluteUrl(siteUrl, basePath, "/sitemap.xml")}\n`;
+  return `User-agent: *\nAllow: /\nDisallow: ${trimSlashes(basePath)}/admin/\n\nSitemap: ${absoluteUrl(siteUrl, basePath, "/sitemap.xml")}\n`;
 }
 
 /** Enabled redirects from the `redirects` sheet. */
