@@ -84,6 +84,7 @@ test("calculators send nothing while you type", async ({ page }) => {
 });
 
 test("every page loads only from its own site, with no uploads", async ({ page, baseURL }) => {
+  test.setTimeout(180_000); // it visits every page in one test
   const origin = new URL(baseURL!).origin;
   for (const path of builtPaths()) {
     const bad: string[] = [];

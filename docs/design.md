@@ -60,3 +60,12 @@ Keyboard focus is a 2px green outline with 3px offset (white on dark sections, v
 ## Moving the old pages over
 
 The old token names (`brand-*`, `gold-*`, `cream`, `font-display`, `shadow-soft`, `shadow-lift`) still work, now mapped to the new look, so pages move over one task at a time (T9.2 header and footer, T9.3 home, T9.4 tools, T9.5 and T9.6 blog, T9.9 static pages). Until a page is moved it may mix old layout with the new type and colours. When T9.10 finishes, remove the unused `gold-*` and gradient helpers.
+
+## Header and footer (T9.2)
+
+- **Header** (`components/Header.tsx` supplies the data, `components/HeaderBar.tsx` is the bar): a slim 72px bar that stays at the top while scrolling. Logo on the left; the main menu in the middle (from the workbook's `navigation` sheet, location `header`, with the current section underlined and `aria-current="page"`); on the right a search button and the black **All tools** button.
+- **Search** opens in the browser's own modal dialog: focus moves to the field, Tab stays inside, Escape closes it and focus returns to the button. Pressing `/` anywhere (except while typing in a field) opens it too. Results appear under the field, and choosing one goes to the page and closes the dialog. The home page and the 404 page keep their large inline search field.
+- **On a phone** the menu links sit behind a menu button (`aria-expanded`), close again on choosing a page or pressing Escape, and the search button stays in the bar.
+- **Footer** (`components/Footer.tsx`): the logo and a one-line promise; **Tools** (the categories), **Company** (the header and footer menus, without Tools) and **Legal** (the footer_legal menu, plus **Analytics settings** or **Privacy choices** when they apply); a thin rule; the copyright and the contact email from `contact_email`. All of it comes from the workbook, so changing a menu or the email in the admin changes the footer.
+
+Two Safari details are handled on purpose: Safari does not focus a button when it is clicked (so the search button is given focus back explicitly), and it does not focus a link when the mouse is pressed on it (so the search results keep the field focused while the mouse is down; before this fix, results could not be clicked in Safari).

@@ -88,10 +88,11 @@ test("the word counter and its Clear button work with the keyboard alone", async
 test("site search works with the keyboard and results can be opened with Enter", async ({ page, browserName }) => {
   test.skip(safariOnMac(browserName), "Safari on a Mac does not Tab to links by default");
   await page.goto("/");
-  const search = page.getByRole("searchbox").or(page.getByRole("combobox")).first();
-  await tabTo(page, search);
+  await tabTo(page, page.getByRole("button", { name: "Search" }));
+  await page.keyboard.press("Enter");
+  await expect(page.getByRole("searchbox").first()).toBeFocused();
   await page.keyboard.type("emi");
-  const result = page.getByRole("link", { name: /emi/i }).first();
+  const result = page.getByRole("dialog", { name: "Search" }).getByRole("link", { name: /emi/i }).first();
   await expect(result).toBeVisible();
   await result.focus();
   await page.keyboard.press("Enter");

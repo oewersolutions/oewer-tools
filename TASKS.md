@@ -82,7 +82,7 @@ Source: `docs/OEWER_TOOLS_PROJECT_PLAN.md` (v1.1: JavaScript-only, GitHub Pages,
 
 ## Phase 9 — Modern minimal redesign and article images (plan: `docs/redesign-plan.md`)
 - [x] **T9.1** Design system: Poppins, colour and type tokens, spacing, buttons, cards, motion rules; replace Inter and Fraunces; contrast checked; `docs/design.md`
-- [ ] **T9.2** Header, mobile menu, search and footer redesigned
+- [x] **T9.2** Header, mobile menu, search and footer redesigned
 - [ ] **T9.3** Home page redesigned: hero with search, featured tools, popular tools, latest articles, short trust and FAQ sections
 - [ ] **T9.4** Tools index, category pages and the tool page layout redesigned
 - [ ] **T9.5** Blog index and category, tag and author pages redesigned (big title, category chips, image cards)

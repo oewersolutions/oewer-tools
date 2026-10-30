@@ -6,7 +6,7 @@ import { CONSENT_OPEN_EVENT, isMeasurementId } from "../lib/analytics";
 export default function ConsentSettingsButton({ measurementId, adsActive = false }: { measurementId: string; adsActive?: boolean }) {
   if (!isMeasurementId(measurementId) && !adsActive) return null;
   return (
-    <button type="button" onClick={() => window.dispatchEvent(new CustomEvent(CONSENT_OPEN_EVENT))} className="text-sm text-brand-100 transition hover:text-white hover:underline">
+    <button type="button" onClick={() => window.dispatchEvent(new CustomEvent(CONSENT_OPEN_EVENT))} className="text-sm text-ink-2 transition-colors hover:text-brand">
       {adsActive ? "Privacy choices" : "Analytics settings"}
     </button>
   );

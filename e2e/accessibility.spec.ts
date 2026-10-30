@@ -31,8 +31,36 @@ test("skip link is the first focusable element and targets main", async ({ page,
   await expect(skip).toHaveAttribute("href", "#main");
 });
 
-test("search is usable by keyboard", async ({ page }) => {
-  await page.goto("/");
-  await page.getByRole("searchbox").or(page.getByRole("combobox")).first().fill("emi");
-  await expect(page.getByRole("link", { name: /how emi is calculated/i }).first()).toBeVisible();
+test("search opens from the header, finds things, and closes with Escape", async ({ page }) => {
+  await page.goto("/about/");
+  await page.getByRole("button", { name: "Search" }).click();
+  const dialog = page.getByRole("dialog", { name: "Search" });
+  await expect(dialog).toBeVisible();
+  await expect(dialog.getByRole("searchbox")).toBeFocused(); // typing works straight away
+  await dialog.getByRole("searchbox").fill("emi");
+  await expect(dialog.getByRole("link", { name: /how emi is calculated/i }).first()).toBeVisible();
+  await page.keyboard.press("Escape");
+  await expect(dialog).toBeHidden();
+  await expect(page.getByRole("button", { name: "Search" })).toBeFocused(); // focus returns to the button
+});
+
+test('the "/" key opens the search, unless you are typing in a field', async ({ page }) => {
+  await page.goto("/tools/utilities/word-counter/");
+  await page.keyboard.press("/");
+  await expect(page.getByRole("dialog", { name: "Search" })).toBeVisible();
+  await page.keyboard.press("Escape");
+  const box = page.getByLabel("Type or paste your text");
+  await box.click();
+  await page.keyboard.type("a/b");
+  await expect(box).toHaveValue("a/b");
+  await expect(page.getByRole("dialog", { name: "Search" })).toBeHidden();
+});
+
+test("choosing a search result goes to the page and closes the search", async ({ page }) => {
+  await page.goto("/about/");
+  await page.getByRole("button", { name: "Search" }).click();
+  await page.getByRole("dialog", { name: "Search" }).getByRole("searchbox").fill("emi calculator");
+  await page.getByRole("dialog", { name: "Search" }).getByRole("link", { name: /emi calculator/i }).first().click();
+  await expect(page).toHaveURL(/emi-calculator/);
+  await expect(page.getByRole("dialog", { name: "Search" })).toBeHidden();
 });
