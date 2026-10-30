@@ -12,6 +12,10 @@ The reference pages on Dribbble could not be opened from here (they returned emp
 | **Article page** (Snappy) | Back link; a small category pill; a centred, medium-weight title with the date under it; one wide rounded cover image; below it, a quiet contents list on the left (current section marked with a thin line) beside a narrow, comfortable reading column; "Related articles" cards at the end |
 | **Home page** (URBN) | A full-width dark image hero with one short headline and a single clean search bar; then simple outlined cards with a number as the hero of the card; a "popular" row of image tiles with arrows |
 
+## Approved preview
+
+A static mockup of the agreed look (home, articles, an article, a tool page, phone views) is in `docs/design-preview/`: open `index.html` in a browser, or see `docs/design-preview/images/`. The owner approved it on 30 October 2026; T9.1 to T9.10 turn it into the real site. Its covers are generated placeholders.
+
 ## Design direction
 
 - **Calm and spacious.** Fewer boxes, shadows and gradients than today. Thin lines, generous spacing, one idea per section.
