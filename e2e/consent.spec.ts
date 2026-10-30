@@ -1,5 +1,6 @@
 import AxeBuilder from "@axe-core/playwright";
-import { expect, test, type Page } from "@playwright/test";
+import { type Page } from "@playwright/test";
+import { expect, test } from "./fixtures";
 
 // These tests need a build with analytics switched on, which the normal build is not:
 //   NEXT_PUBLIC_ANALYTICS_ID=G-TEST123456 npm run build && CONSENT_E2E=1 npx playwright test e2e/consent.spec.ts

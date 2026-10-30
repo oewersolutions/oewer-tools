@@ -1,5 +1,9 @@
 import AxeBuilder from "@axe-core/playwright";
-import { expect, test } from "@playwright/test";
+import { expect, test } from "./fixtures";
+
+// Safari on a Mac skips links when you press Tab unless "Press Tab to highlight each item" is on (its own default), so
+// Tab-through tests only mean something on the Linux build of the engine that CI uses.
+const safariOnMac = (browserName: string) => browserName === "webkit" && process.platform === "darwin";
 import { builtPaths } from "./pages";
 
 for (const path of builtPaths()) {
@@ -17,7 +21,8 @@ for (const path of builtPaths()) {
   });
 }
 
-test("skip link is the first focusable element and targets main", async ({ page }) => {
+test("skip link is the first focusable element and targets main", async ({ page, browserName }) => {
+  test.skip(safariOnMac(browserName), "Safari on a Mac does not Tab to links by default");
   await page.goto("/");
   await page.keyboard.press("Tab");
   const skip = page.getByRole("link", { name: "Skip to content" });

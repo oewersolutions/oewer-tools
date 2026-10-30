@@ -1,6 +1,6 @@
 import { existsSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
-import { expect, test } from "@playwright/test";
+import { expect, test } from "./fixtures";
 import { builtPaths } from "./pages";
 
 // A launch audit of every built page: search-engine basics, link health and page structure. Accessibility is

@@ -4,11 +4,14 @@ import { defineConfig, devices } from "@playwright/test";
 // Chrome is the one installed on the machine (preinstalled on GitHub-hosted runners), so no browser download is needed.
 // Set CROSS_BROWSER=1 to add Firefox and Safari's engine (WebKit); CI installs them first with `npx playwright install`.
 const crossBrowser = process.env.CROSS_BROWSER === "1";
-const shared = ["accessibility.spec.ts", "responsive.spec.ts", "tools.spec.ts", "privacy.spec.ts", "admin.spec.ts"];
+const shared = ["accessibility.spec.ts", "responsive.spec.ts", "tools.spec.ts", "privacy.spec.ts", "admin.spec.ts", "keyboard.spec.ts", "no-javascript.spec.ts"];
 
 export default defineConfig({
   testDir: "e2e",
   reporter: "list",
+  // CI machines are slower, and Safari's engine slower still: give pages and checks more time there.
+  timeout: process.env.CI ? 60_000 : 30_000,
+  expect: { timeout: process.env.CI ? 10_000 : 5_000 },
   use: { baseURL: "http://localhost:4174", reducedMotion: "reduce" }, // no animations, so colour checks never catch a half-faded state
   webServer: { command: "npx http-server out -p 4174 -s -c-1", url: "http://localhost:4174/", reuseExistingServer: !process.env.CI },
   projects: [

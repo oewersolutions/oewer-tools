@@ -1,4 +1,5 @@
-import { expect, test, type Page } from "@playwright/test";
+import { type Page } from "@playwright/test";
+import { expect, test } from "./fixtures";
 import { upload } from "./helpers";
 
 // The site must work exactly the same when analytics cannot run: an ad blocker, Google down or slow, or a browser

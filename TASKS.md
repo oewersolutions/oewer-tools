@@ -67,7 +67,7 @@ Source: `docs/OEWER_TOOLS_PROJECT_PLAN.md` (v1.1: JavaScript-only, GitHub Pages,
 - [x] **T7.3** Audit SEO, security, accessibility, Core Web Vitals
 - [x] **T7.4** Confirm failed builds never replace the live site
 - [x] **T7.5** Custom domain, HTTPS, verify restore from Git history
-- [ ] **T7.6** Run acceptance checklist (plan §12)
+- [x] **T7.6** Run acceptance checklist (plan §12)
 - [ ] **T7.7** Apply for AdSense when eligible
 
 ## Suggested next order

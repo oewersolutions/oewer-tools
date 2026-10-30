@@ -29,6 +29,18 @@ export async function encodeImage(bitmap: ImageBitmap, { width, height, type, qu
   return blob;
 }
 
+/** Whether this browser can create files of this type. Safari, for one, cannot create WebP files. */
+export async function canEncode(type: ImageType): Promise<boolean> {
+  try {
+    const canvas = document.createElement("canvas");
+    canvas.width = canvas.height = 1;
+    const blob = await new Promise<Blob | null>((resolve) => canvas.toBlob(resolve, type, 0.9));
+    return blob?.type === type;
+  } catch {
+    return false;
+  }
+}
+
 /** Decode a file, honouring its EXIF rotation. */
 export function decodeImage(file: File): Promise<ImageBitmap> {
   return createImageBitmap(file, { imageOrientation: "from-image" });

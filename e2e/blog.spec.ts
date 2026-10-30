@@ -1,4 +1,4 @@
-import { expect, test } from "@playwright/test";
+import { expect, test } from "./fixtures";
 import { builtPaths } from "./pages";
 
 const articles = builtPaths().filter((p) => /^\/blog\/[^/]+\/$/.test(p));

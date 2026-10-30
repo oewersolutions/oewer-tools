@@ -93,3 +93,19 @@ details > summary::-webkit-details-marker {
     transition: none !important;
   }
 }
+
+/*
+ * Next.js adds a visually hidden element that announces page changes to screen readers, and hides it with an inline
+ * style. The admin page's security policy forbids inline styles, so hide it from here too: it stays hidden either way.
+ */
+next-route-announcer {
+  position: absolute;
+  border: 0;
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}

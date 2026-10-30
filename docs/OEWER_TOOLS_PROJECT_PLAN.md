@@ -199,23 +199,23 @@ See `TASKS.md` for the task list.
 ## 12. Testing and acceptance checklist
 
 ### Data integrity
-- [ ] Duplicate IDs and slugs rejected.
-- [ ] Broken references and malformed fields rejected.
-- [ ] A changed SHA produces a conflict, not data loss.
-- [ ] An older workbook version can be restored from history.
+- [x] Duplicate IDs and slugs rejected. (docs/acceptance.md)
+- [x] Broken references and malformed fields rejected. (docs/acceptance.md)
+- [x] A changed SHA produces a conflict, not data loss. (docs/acceptance.md)
+- [x] An older workbook version can be restored from history. (docs/acceptance.md)
 
 ### Security and privacy
-- [ ] The token never appears in the repo, bundle, logs or URLs.
-- [ ] Token is cleared on sign-out and tab close.
-- [ ] The workbook contains no private data.
-- [ ] Consent and analytics-off behavior tested.
+- [x] The token never appears in the repo, bundle, logs or URLs. (docs/acceptance.md)
+- [x] Token is cleared on sign-out and tab close. (docs/acceptance.md)
+- [x] The workbook contains no private data. (docs/acceptance.md)
+- [x] Consent and analytics-off behavior tested. (docs/acceptance.md)
 
 ### Website and publishing
-- [ ] Tools work on current Chrome, Safari, Firefox and Edge.
-- [ ] Tool and blog pages render meaningful content without JavaScript.
+- [x] Tools work on current Chrome, Safari (engine), Firefox and Edge (Chromium); a real-device Safari check is still yours to do (docs/acceptance.md).
+- [x] Tool and blog pages render meaningful content without JavaScript. (docs/acceptance.md)
 - [x] Failed CI does not replace the working site (proven on GitHub, see docs/failed-builds.md).
-- [ ] Sitemap, canonical URLs and redirects correct.
-- [ ] Mobile layout and keyboard navigation work.
+- [x] Sitemap, canonical URLs and redirects correct. (docs/acceptance.md)
+- [x] Mobile layout and keyboard navigation work. (docs/acceptance.md)
 
 ## 13. Risks and mitigations
 

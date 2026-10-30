@@ -14,7 +14,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  validate:
+  checks:
+    name: Checks and unit tests
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -31,14 +32,37 @@ jobs:
       - run: npm run typecheck
       - run: npm run lint
       - run: npm test
-      # A test build: every tool with a component is shown as published so the browser tests can use it.
-      # This build is never deployed; deploy.yml builds from the workbook as it is.
+
+  # The browser tests take a while, so each browser runs as its own job, in parallel.
+  # They use a test build: every tool with a component is shown as published. That build is never deployed;
+  # deploy.yml builds from the workbook as it is.
+  browsers:
+    name: Browser tests (${{ matrix.name }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: Chrome and Chrome mobile
+            projects: --project=chrome --project=chrome-mobile
+          - name: Firefox
+            projects: --project=firefox
+          - name: Safari engine (WebKit) and iPhone
+            projects: --project=safari-webkit --project=safari-iphone
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
       - name: Build static site (preview of all tools)
         run: npm run build:preview
       - name: Install Firefox and WebKit
         run: npx playwright install --with-deps firefox webkit
-      - name: Browser tests (Chrome, Chrome mobile, Firefox, Safari engine)
-        run: npm run test:e2e
+      - name: Browser tests
+        run: npx playwright test ${{ matrix.projects }}
         env:
           CI: "true"
           CROSS_BROWSER: "1"

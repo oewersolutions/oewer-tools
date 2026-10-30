@@ -79,6 +79,9 @@ export default async function ToolPage({ params }: Props) {
 
       <Container className="space-y-16 py-12 [overflow-wrap:anywhere]">
         <section aria-label={tool.name} data-component={tool.component_key}>
+          <noscript>
+            <p className="rounded-2xl border border-gold-500/40 bg-cream p-5 text-slate-800">This tool runs in your browser and needs JavaScript. Turn JavaScript on to use it. The guide below works without it.</p>
+          </noscript>
           <ToolEvents tool={tool.slug}>
             <ToolComponent />
           </ToolEvents>

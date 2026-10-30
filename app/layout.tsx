@@ -5,6 +5,7 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import LeaveAdmin from "../components/LeaveAdmin";
 import Analytics from "../components/Analytics";
+import HydrationFlag from "../components/HydrationFlag";
 import ConsentBanner from "../components/ConsentBanner";
 import { getMeasurementId, getNavigation, getSetting } from "../lib/content";
 import "./globals.css";
@@ -30,6 +31,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         >
           Skip to content
         </a>
+        <HydrationFlag />
         <LeaveAdmin />
         <Analytics measurementId={getMeasurementId()} />
         <Header />

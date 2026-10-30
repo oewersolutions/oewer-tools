@@ -1,4 +1,4 @@
-import { expect, test } from "@playwright/test";
+import { expect, test } from "./fixtures";
 import { builtPaths } from "./pages";
 
 // Mobile budgets under a throttled connection (about slow 4G) and a CPU 4x slower than this machine.

@@ -1,5 +1,6 @@
 import AxeBuilder from "@axe-core/playwright";
-import { expect, test, type Page } from "@playwright/test";
+import { type Page } from "@playwright/test";
+import { expect, test } from "./fixtures";
 
 // Layout checks for the ad placements on desktop and mobile. The normal build shows no ads, so these need a preview
 // build where every supported placement shows an "Ad space" box (never deployed):
