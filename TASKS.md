@@ -70,5 +70,15 @@ Source: `docs/OEWER_TOOLS_PROJECT_PLAN.md` (v1.1: JavaScript-only, GitHub Pages,
 - [x] **T7.6** Run acceptance checklist (plan §12)
 - [x] **T7.7** Apply for AdSense when eligible (site side done: ads.txt, account tag, consent-gated loader, readiness guide `docs/adsense.md`; applying and approval are the owner's step)
 
+## Phase 8 — More tools (plan: `docs/more-tools-plan.md`)
+- [ ] **T8.1** SIP calculator and lumpsum (mutual fund) calculator, with a shared growth-maths module, tool content, one guide article each
+- [ ] **T8.2** Compound interest and simple interest calculators, with content and articles
+- [ ] **T8.3** Recurring deposit (RD) calculator and discount / sale price calculator, with content and articles
+- [ ] **T8.4** Age calculator and days-between-dates calculator (shared date maths), with content and articles
+- [ ] **T8.5** Unit converter (length, weight, temperature, area, volume, speed), with content and article
+- [ ] **T8.6** Password generator (browser randomness only), with content and article
+- [ ] **T8.7** Wrap-up: home page and counts, search index, rerun SEO / accessibility / privacy audits, update docs
+- [ ] **T8.8+** (later, optional) Batch D: PDF and image tools (merge and split PDF, image to PDF, crop and rotate, EXIF remover); Batch C: developer tools (Base64, URL, UUID, hash, colour, timestamp, regex, JWT)
+
 ## Suggested next order
 T1.3b → T1.3a → T1.4 → T1.5 → T2.1/T2.2 → T3.1 + first calculator → T4.1 first article → T2.6 → T5.1 spike
