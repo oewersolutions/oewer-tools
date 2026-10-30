@@ -68,3 +68,16 @@ Deleting a row that other rows still use (for example a tag that an article carr
 Adding and deleting rows is built and tested in the engine; the screens for them come with the spreadsheet manager (T5.4).
 
 Tests: `tests/admin-changes.test.ts` runs the engine and the whole workflow against an in-memory repository that behaves like GitHub (SHA changes on every save, stale SHAs are refused, another editor can save mid-flight). `e2e/admin.spec.ts` covers the screens, including merge, both conflict choices, invalid changes and read-only tokens.
+
+## Spreadsheet manager (T5.4)
+
+After signing in, the page is a manager for every sheet in the workbook.
+
+- **Browse.** A tab for each of the 16 sheets (with live row counts) opens a table of its rows. Search looks in every column. A filter narrows a column that has a small set of values (statuses, true/false, references), and a sort orders by any column. Long sheets are split into pages (25 rows by default, or the `rows_per_page` row of `admin_settings`, between 5 and 200).
+- **Edit.** Each row has Edit and Delete buttons. The edit form is built from the schema: a text area for long text, a drop-down for statuses and other fixed choices, true/false for flags, a list of existing IDs for references, and a read-only ID. Only the cells you changed become changes.
+- **Add.** Add row opens the same form, with the next free ID filled in (for example `TAG0007`). An ID that is already used is refused.
+- **Delete.** Deleting a row that other rows still use, such as a tag an article carries, is allowed into the pending list but flagged at once, and cannot be saved until the references are removed too.
+- **Live checking.** Every change is applied to a copy of the workbook and validated straight away. The table shows the workbook as it would be after saving (changed rows are marked), and the pending panel says either "The workbook is valid with these changes" or lists the problems. Saving uses the safe workflow from T5.3.
+- **Bulk.** *Export as CSV* downloads the current sheet. *Import CSV* reads a file with the same columns: rows with a new ID are added, rows whose ID exists have their changed cells updated, and rows missing from the file are left alone (an import never deletes). The preview says how many of each, or why the file cannot be used, before anything is added to the pending changes. *Download the workbook* saves the whole `.xlsx`.
+
+Limits: an import file can be at most 2 MB and 2000 rows. Everything runs in the browser and nothing leaves it except the final save to GitHub.

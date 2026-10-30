@@ -147,3 +147,50 @@ export function commitMessageFor(changes: Change[]): string {
     first.type === "set" ? `update ${first.sheet} ${first.pk} ${first.column}` : first.type === "add" ? `add a row to ${first.sheet}` : `delete ${first.sheet} ${first.pk}`;
   return changes.length === 1 ? `Admin: ${what}` : `Admin: ${what} and ${changes.length - 1} more change${changes.length === 2 ? "" : "s"}`;
 }
+
+type AddChange = Extract<Change, { type: "add" }>;
+
+/** Add a new row to the pending changes; adding the same ID again replaces the earlier version. */
+export function queueAdd(pending: Change[], sheet: string, pkColumn: string, values: Record<string, string>): Change[] {
+  const id = values[pkColumn] ?? "";
+  const i = id === "" ? -1 : pending.findIndex((c) => c.type === "add" && c.sheet === sheet && c.values[pkColumn] === id);
+  if (i === -1) return [...pending, { type: "add", sheet, values }];
+  return pending.map((c, n) => (n === i ? { type: "add", sheet, values } : c));
+}
+
+/**
+ * Delete a record. Pending edits to it are dropped. A row that was only added in this session is simply forgotten,
+ * since there is nothing on GitHub to delete.
+ */
+export function queueDelete(pending: Change[], sheet: string, pkColumn: string, pk: string): Change[] {
+  const isAdd = (c: Change): c is AddChange => c.type === "add" && c.sheet === sheet && c.values[pkColumn] === pk;
+  const wasAdded = pending.some(isAdd);
+  const rest = pending.filter((c) => !isAdd(c) && !(c.type === "set" && c.sheet === sheet && c.pk === pk) && !(c.type === "delete" && c.sheet === sheet && c.pk === pk));
+  return wasAdded ? rest : [...rest, { type: "delete", sheet, pk }];
+}
+
+/**
+ * Save an edited row. `current` is what the row holds now (including pending edits) and `after` the whole row as edited.
+ * Only columns that differ become changes. A row added in this session just has its pending "add" updated.
+ */
+export function queueRowEdit(pending: Change[], sheet: string, pkColumn: string, pk: string, current: Record<string, string>, after: Record<string, string>): Change[] {
+  const addIndex = pending.findIndex((c) => c.type === "add" && c.sheet === sheet && c.values[pkColumn] === pk);
+  if (addIndex !== -1) return pending.map((c, n) => (n === addIndex ? { type: "add", sheet, values: { ...after, [pkColumn]: pk } } : c));
+  let next = pending;
+  for (const [column, value] of Object.entries(after)) {
+    if (column === pkColumn || value === (current[column] ?? "")) continue;
+    next = queueSet(next, { type: "set", sheet, pk, column, before: current[column] ?? "", after: value });
+  }
+  return next;
+}
+
+/** Record IDs touched by pending changes in one sheet, for marking rows in the table. */
+export function touchedIds(pending: Change[], sheet: string, pkColumn: string): Map<string, "added" | "changed"> {
+  const map = new Map<string, "added" | "changed">();
+  for (const c of pending) {
+    if (c.sheet !== sheet) continue;
+    if (c.type === "add") map.set(c.values[pkColumn] ?? "", "added");
+    else if (c.type === "set" && !map.has(c.pk)) map.set(c.pk, "changed");
+  }
+  return map;
+}

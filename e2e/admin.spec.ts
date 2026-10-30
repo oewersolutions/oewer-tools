@@ -1,4 +1,5 @@
 import { readFileSync } from "node:fs";
+import { readFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test, type Page } from "@playwright/test";
@@ -69,12 +70,15 @@ const withCell = (sheet: string, pk: string, column: string, value: string) => a
   return Buffer.from(await saveWorkbook(wb));
 };
 
-async function addChange(page: Page, sheet: string, row: string, column: string, value: string) {
-  await page.getByLabel("Sheet").selectOption(sheet);
-  await page.getByLabel("Row", { exact: true }).fill(row);
-  await page.getByLabel("Column").selectOption(column);
-  await page.getByLabel("New value").fill(value);
-  await page.getByRole("button", { name: "Add to pending changes" }).click();
+/** Open a sheet, edit one cell of a record through the row form, and add it to the pending changes. */
+async function editCell(page: Page, sheet: string, pk: string, column: string, value: string) {
+  await page.getByRole("navigation", { name: "Sheets" }).getByRole("button", { name: new RegExp(`^${sheet} `) }).click();
+  await page.getByRole("button", { name: `Edit ${pk}` }).click();
+  const form = page.getByRole("form", { name: new RegExp(`Edit ${pk}`) });
+  const field = form.getByLabel(new RegExp(`^${column}( \\*)?$`));
+  if ((await field.evaluate((el) => el.tagName)) === "SELECT") await field.selectOption(value);
+  else await field.fill(value);
+  await form.getByRole("button", { name: "Update pending changes" }).click();
 }
 
 async function signIn(page: Page, token = "github_pat_GOOD") {
@@ -112,7 +116,7 @@ test("a wrong token gets a clear message and no workbook", async ({ page }) => {
 test("editing a cell saves one commit with the previous version's SHA", async ({ page }) => {
   const fake = await fakeGithub(page);
   await signIn(page);
-  await addChange(page, "tools", "2", "name", "Image Squeezer");
+  await editCell(page, "tools", "TOOL0001", "name", "Image Squeezer");
   await expect(page.getByText(/tools TOOL0001, name: .* → Image Squeezer/)).toBeVisible();
   await page.getByRole("button", { name: "Save 1 change to GitHub" }).click();
   await expect(page.getByText("View the commit on GitHub")).toBeVisible();
@@ -130,9 +134,9 @@ test("editing a cell saves one commit with the previous version's SHA", async ({
 test("several changes are saved together as one commit", async ({ page }) => {
   const fake = await fakeGithub(page);
   await signIn(page);
-  await addChange(page, "tools", "2", "name", "One");
-  await addChange(page, "tools", "3", "name", "Two");
-  await addChange(page, "tools", "2", "name", "One again"); // same cell: replaces the earlier change
+  await editCell(page, "tools", "TOOL0001", "name", "One");
+  await editCell(page, "tools", "TOOL0002", "name", "Two");
+  await editCell(page, "tools", "TOOL0001", "name", "One again"); // same cell: replaces the earlier change
   await expect(page.getByText(/Pending changes \(2\)/)).toBeVisible();
   await page.getByRole("button", { name: "Save 2 changes to GitHub" }).click();
   await expect(page.getByText("View the commit on GitHub")).toBeVisible();
@@ -143,7 +147,7 @@ test("several changes are saved together as one commit", async ({ page }) => {
 test("a pending change can be removed before saving", async ({ page }) => {
   const fake = await fakeGithub(page);
   await signIn(page);
-  await addChange(page, "tools", "2", "name", "One");
+  await editCell(page, "tools", "TOOL0001", "name", "One");
   await page.getByRole("button", { name: "Remove" }).click();
   await expect(page.getByText(/Pending changes \(0\)/)).toBeVisible();
   await expect(page.getByRole("button", { name: /Save .* to GitHub/ })).toHaveCount(0);
@@ -153,9 +157,10 @@ test("a pending change can be removed before saving", async ({ page }) => {
 test("a change that would make the workbook invalid is refused and nothing is sent", async ({ page }) => {
   const fake = await fakeGithub(page);
   await signIn(page);
-  await addChange(page, "tools", "2", "status", "live");
+  await editCell(page, "tools", "TOOL0001", "slug", "Not A Slug!");
+  await expect(page.getByText(/cannot be saved yet/)).toBeVisible(); // shown at once, before saving
   await page.getByRole("button", { name: "Save 1 change to GitHub" }).click();
-  await expect(page.getByText(/would leave \d+ problem/)).toBeVisible();
+  await expect(page.getByText(/so nothing was saved/)).toBeVisible();
   expect(fake.puts).toHaveLength(0);
   await expect(page.getByText(/Pending changes \(1\)/)).toBeVisible(); // your change is kept so you can fix it
 });
@@ -163,15 +168,15 @@ test("a change that would make the workbook invalid is refused and nothing is se
 test("a wrong kind of value is caught as soon as it is added", async ({ page }) => {
   await fakeGithub(page);
   await signIn(page);
-  await addChange(page, "tools", "2", "featured", "maybe");
-  await expect(page.getByText(/must be true or false/)).toBeVisible();
+  await editCell(page, "tools", "TOOL0001", "sort_order", "abc");
+  await expect(page.getByText(/sort_order must be a whole number/)).toBeVisible();
   await expect(page.getByText(/Pending changes \(0\)/)).toBeVisible();
 });
 
 test("when someone saved a different cell first, your change is merged and saved", async ({ page }) => {
   const fake = await fakeGithub(page, { concurrent: withCell("tools", "TOOL0002", "name", "Their edit") });
   await signIn(page);
-  await addChange(page, "tools", "2", "name", "My edit");
+  await editCell(page, "tools", "TOOL0001", "name", "My edit");
   await page.getByRole("button", { name: "Save 1 change to GitHub" }).click();
   await expect(page.getByText(/merged with newer changes made by someone else/)).toBeVisible();
 
@@ -183,7 +188,7 @@ test("when someone saved a different cell first, your change is merged and saved
 test("when someone changed the same cell, you choose and your edit is not lost", async ({ page }) => {
   const fake = await fakeGithub(page, { concurrent: withCell("tools", "TOOL0001", "name", "Their name") });
   await signIn(page);
-  await addChange(page, "tools", "2", "name", "My name");
+  await editCell(page, "tools", "TOOL0001", "name", "My name");
   await page.getByRole("button", { name: "Save 1 change to GitHub" }).click();
 
   await expect(page.getByText(/Someone else changed the workbook on GitHub/)).toBeVisible();
@@ -202,7 +207,7 @@ test("when someone changed the same cell, you choose and your edit is not lost",
 test("choosing to keep their version drops your change", async ({ page }) => {
   const fake = await fakeGithub(page, { concurrent: withCell("tools", "TOOL0001", "name", "Their name") });
   await signIn(page);
-  await addChange(page, "tools", "2", "name", "My name");
+  await editCell(page, "tools", "TOOL0001", "name", "My name");
   await page.getByRole("button", { name: "Save 1 change to GitHub" }).click();
   await page.getByLabel("Keep what is on GitHub (drop my change)").check();
   await page.getByRole("button", { name: "Apply my choices and save" }).click();
@@ -216,7 +221,7 @@ test("a read-only token is told it cannot save", async ({ page }) => {
   await fakeGithub(page, { push: false });
   await signIn(page);
   await expect(page.getByText(/can only read the repository/)).toBeVisible();
-  await addChange(page, "tools", "2", "name", "X");
+  await editCell(page, "tools", "TOOL0001", "name", "X");
   await expect(page.getByRole("button", { name: "Save 1 change to GitHub" })).toBeDisabled();
 });
 
@@ -270,7 +275,7 @@ test("the whole sign-in and save flow runs without breaking the policy", async (
   page.on("pageerror", (e) => consoleErrors.push(e.message));
   await fakeGithub(page);
   await signIn(page);
-  await addChange(page, "tools", "2", "name", "Policy check");
+  await editCell(page, "tools", "TOOL0001", "name", "Policy check");
   await page.getByRole("button", { name: "Save 1 change to GitHub" }).click();
   await expect(page.getByText("View the commit on GitHub")).toBeVisible();
   expect(await page.evaluate(() => (window as unknown as { __violations: string[] }).__violations)).toEqual([]);
@@ -360,4 +365,163 @@ test("you are signed out after 30 minutes without activity", async ({ page }) =>
   await page.clock.fastForward("02:00");
   await expect(page.getByText("You were signed out after 30 minutes without activity.")).toBeVisible();
   await expect(page.getByLabel("GitHub token")).toBeVisible();
+});
+
+// ---- Spreadsheet manager (T5.4) ----
+
+const sheetTab = (page: Page, name: string) => page.getByRole("navigation", { name: "Sheets" }).getByRole("button", { name: new RegExp(`^${name} `) });
+const tableRows = (page: Page, sheet: string) => page.getByRole("region", { name: `${sheet} rows` }).getByRole("row");
+
+async function managerPage(page: Page, opts?: Parameters<typeof fakeGithub>[1]) {
+  const fake = await fakeGithub(page, opts);
+  await signIn(page);
+  await expect(page.getByRole("navigation", { name: "Sheets" })).toBeVisible();
+  return fake;
+}
+
+async function cellOf(buffer: Buffer, sheet: string, pk: string, column: string) {
+  const wb = await loadWorkbook(new Uint8Array(buffer));
+  const row = findRecord(wb, schema, sheet, pk);
+  return row === 0 ? undefined : readCell(wb, schema, { sheet, row, column });
+}
+
+test("every sheet is listed with its row count, and you can switch between them", async ({ page }) => {
+  await managerPage(page);
+  await expect(page.getByRole("navigation", { name: "Sheets" }).getByRole("button")).toHaveCount(16);
+  await expect(sheetTab(page, "tools")).toContainText("(10)");
+  await sheetTab(page, "tags").click();
+  await expect(page.getByRole("heading", { name: "tags", level: 2 })).toBeVisible();
+  await expect(sheetTab(page, "tags")).toHaveAttribute("aria-current", "page");
+  await expect(page.getByRole("button", { name: "Edit TAG0001" })).toBeVisible();
+});
+
+test("rows can be searched, filtered and sorted", async ({ page }) => {
+  await managerPage(page);
+  await sheetTab(page, "tools").click();
+  await expect(tableRows(page, "tools")).toHaveCount(11); // header + 10
+
+  await page.getByLabel("Search rows").fill("calculator");
+  await expect(tableRows(page, "tools")).toHaveCount(5); // header + EMI, FD, GST, percentage
+  await page.getByLabel("Search rows").fill("");
+
+  await page.getByLabel("Filter by").selectOption("category_id");
+  await page.getByLabel("Filter value").selectOption("TCAT0002");
+  await expect(tableRows(page, "tools")).toHaveCount(5);
+  await page.getByLabel("Filter by").selectOption("");
+
+  await page.getByLabel("Sort by").selectOption("name");
+  await expect(tableRows(page, "tools").nth(1)).toContainText("EMI Calculator");
+  await page.getByLabel("Descending").check();
+  await expect(tableRows(page, "tools").nth(1)).toContainText("Word Counter");
+
+  await page.getByLabel("Search rows").fill("zzzz-nothing");
+  await expect(page.getByText("No rows match.")).toBeVisible();
+});
+
+test("long sheets are split into pages", async ({ page }) => {
+  await managerPage(page);
+  await sheetTab(page, "tool_settings").click();
+  await expect(page.getByRole("navigation", { name: "Pages" })).toContainText("page 1 of 3");
+  await expect(tableRows(page, "tool_settings")).toHaveCount(26); // header + 25
+  await expect(page.getByRole("button", { name: "Previous" })).toBeDisabled();
+  await page.getByRole("button", { name: "Next" }).click();
+  await page.getByRole("button", { name: "Next" }).click();
+  await expect(page.getByRole("navigation", { name: "Pages" })).toContainText("page 3 of 3");
+  await expect(tableRows(page, "tool_settings")).toHaveCount(5); // header + the last 4
+  await expect(page.getByRole("button", { name: "Next" })).toBeDisabled();
+});
+
+test("a row can be added, with the next free ID suggested, and is saved", async ({ page }) => {
+  const fake = await managerPage(page);
+  await sheetTab(page, "tags").click();
+  await page.getByRole("button", { name: "Add row" }).click();
+  const form = page.getByRole("form", { name: /Add a row to tags/ });
+  await expect(form.getByLabel(/^tag_id/)).toHaveValue("TAG0007");
+  await form.getByLabel(/^name/).fill("Savings tips");
+  await form.getByLabel(/^slug/).fill("savings-tips");
+  await form.getByRole("button", { name: "Add to pending changes" }).click();
+
+  await expect(page.getByText("tags: add a row (TAG0007)")).toBeVisible();
+  await expect(page.getByText("The workbook is valid with these changes.")).toBeVisible();
+  await expect(page.getByRole("row", { name: /TAG0007/ })).toContainText("New");
+  await page.getByRole("button", { name: "Save 1 change to GitHub" }).click();
+  await expect(page.getByText("View the commit on GitHub")).toBeVisible();
+  expect(fake.puts[0]!.body.message).toBe("Admin: add a row to tags");
+  expect(await cellOf(fake.current(), "tags", "TAG0007", "name")).toBe("Savings tips");
+});
+
+test("an ID that is already used is refused", async ({ page }) => {
+  await managerPage(page);
+  await sheetTab(page, "tags").click();
+  await page.getByRole("button", { name: "Add row" }).click();
+  const form = page.getByRole("form", { name: /Add a row to tags/ });
+  await form.getByLabel(/^tag_id/).fill("TAG0001");
+  await form.getByRole("button", { name: "Add to pending changes" }).click();
+  await expect(page.getByText(/TAG0001 is already used in tags/)).toBeVisible();
+});
+
+test("a row can be deleted, and a row that others still use cannot", async ({ page }) => {
+  const fake = await managerPage(page);
+  await sheetTab(page, "tags").click();
+  await page.getByRole("button", { name: "Delete TAG0002" }).click(); // still carried by articles
+  await expect(page.getByText(/cannot be saved yet/)).toBeVisible();
+  await expect(page.getByText(/TAG0002/).first()).toBeVisible();
+  await page.getByRole("button", { name: "Discard all" }).click();
+
+  await sheetTab(page, "advertisements").click();
+  await page.getByRole("button", { name: "Delete AD0003" }).click();
+  await expect(page.getByText("The workbook is valid with these changes.")).toBeVisible();
+  await expect(page.getByRole("row", { name: /AD0003/ })).toHaveCount(0); // gone from the table at once
+  await page.getByRole("button", { name: "Save 1 change to GitHub" }).click();
+  await expect(page.getByText("View the commit on GitHub")).toBeVisible();
+  expect(await cellOf(fake.current(), "advertisements", "AD0003", "placement_key")).toBeUndefined();
+});
+
+test("a sheet can be exported as CSV and the whole workbook downloaded", async ({ page }) => {
+  await managerPage(page);
+  await sheetTab(page, "tags").click();
+  const [csv] = await Promise.all([page.waitForEvent("download"), page.getByRole("button", { name: "Export tags as CSV" }).click()]);
+  expect(csv.suggestedFilename()).toBe("tags.csv");
+  const text = (await readFile(await csv.path(), "utf-8")).split("\r\n");
+  expect(text[0]).toBe("tag_id,name,slug");
+  expect(text[1]).toBe("TAG0001,Loans,loans");
+
+  const [book] = await Promise.all([page.waitForEvent("download"), page.getByRole("button", { name: "Download the workbook" }).click()]);
+  expect(book.suggestedFilename()).toBe("oewer_database.xlsx");
+  expect((await readFile(await book.path())).length).toBe(WORKBOOK.length);
+});
+
+test("a CSV can be imported: new rows are added, changed cells updated, nothing is deleted", async ({ page }) => {
+  const fake = await managerPage(page);
+  await sheetTab(page, "tags").click();
+  await page.getByLabel("Choose a CSV file to import into tags").setInputFiles({
+    name: "tags.csv",
+    mimeType: "text/csv",
+    buffer: Buffer.from("tag_id,name,slug\nTAG0001,Loan help,loans\nTAG0007,Fresh,fresh\n"),
+  });
+  await expect(page.getByText(/would add 1, update 1 and leave 0 row/)).toBeVisible();
+  await page.getByRole("button", { name: "Add 2 changes to pending" }).click();
+  await expect(page.getByText(/Pending changes \(2\)/)).toBeVisible();
+  await page.getByRole("button", { name: "Save 2 changes to GitHub" }).click();
+  await expect(page.getByText("View the commit on GitHub")).toBeVisible();
+  expect(await cellOf(fake.current(), "tags", "TAG0001", "name")).toBe("Loan help");
+  expect(await cellOf(fake.current(), "tags", "TAG0007", "slug")).toBe("fresh");
+  expect(await cellOf(fake.current(), "tags", "TAG0002", "name")).toBe("Calculators"); // not in the file, still there
+});
+
+test("a CSV that does not fit the sheet is explained and nothing is added", async ({ page }) => {
+  await managerPage(page);
+  await sheetTab(page, "tags").click();
+  await page.getByLabel("Choose a CSV file to import into tags").setInputFiles({ name: "bad.csv", mimeType: "text/csv", buffer: Buffer.from("tag_id,colour\nTAG0009,red\n") });
+  await expect(page.getByText("This file cannot be imported:")).toBeVisible();
+  await expect(page.getByText(/Unknown column: colour/)).toBeVisible();
+  await expect(page.getByText(/Pending changes \(0\)/)).toBeVisible();
+});
+
+test("the manager has no accessibility violations with a row form open", async ({ page }) => {
+  await managerPage(page);
+  await sheetTab(page, "tools").click();
+  await page.getByRole("button", { name: "Edit TOOL0001" }).click();
+  const violations = (await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"]).analyze()).violations.map((v) => `${v.id}: ${v.nodes.map((n) => n.target.join(" ")).join(", ")}`);
+  expect(violations).toEqual([]);
 });

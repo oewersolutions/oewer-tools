@@ -231,3 +231,42 @@ describe("saveChanges", () => {
     expect(check.issues).toEqual([]);
   });
 });
+
+import { queueAdd, queueDelete, queueRowEdit, touchedIds } from "../lib/admin/changes";
+
+describe("pending change helpers for rows", () => {
+  it("queues a row edit as one change per differing column", () => {
+    const q = queueRowEdit([], "tools", "tool_id", "T1", { tool_id: "T1", name: "A", slug: "a" }, { tool_id: "T1", name: "B", slug: "a" });
+    expect(q).toEqual([set("T1", "name", "A", "B")]);
+    expect(queueRowEdit([], "tools", "tool_id", "T1", { name: "A" }, { name: "A" })).toEqual([]);
+  });
+  it("keeps the original 'before' when the same cell is edited again", () => {
+    let q = queueRowEdit([], "tools", "tool_id", "T1", { name: "A" }, { name: "B" });
+    q = queueRowEdit(q, "tools", "tool_id", "T1", { name: "B" }, { name: "C" });
+    expect(q).toEqual([set("T1", "name", "A", "C")]);
+  });
+  it("editing a row added in this session updates the add, not a set", () => {
+    let q = queueAdd([], "tags", "tag_id", { tag_id: "TAG9", name: "One", slug: "one" });
+    q = queueRowEdit(q, "tags", "tag_id", "TAG9", { tag_id: "TAG9", name: "One", slug: "one" }, { tag_id: "TAG9", name: "Two", slug: "two" });
+    expect(q).toEqual([{ type: "add", sheet: "tags", values: { tag_id: "TAG9", name: "Two", slug: "two" } }]);
+  });
+  it("adding the same ID twice replaces the first", () => {
+    let q = queueAdd([], "tags", "tag_id", { tag_id: "TAG9", name: "One" });
+    q = queueAdd(q, "tags", "tag_id", { tag_id: "TAG9", name: "Two" });
+    expect(q).toHaveLength(1);
+    expect((q[0] as unknown as { values: { name: string } }).values.name).toBe("Two");
+  });
+  it("deleting drops pending edits, and forgets a row that was only added here", () => {
+    let q = queueRowEdit([], "tags", "tag_id", "TAG1", { name: "A" }, { name: "B" });
+    q = queueDelete(q, "tags", "tag_id", "TAG1");
+    expect(q).toEqual([{ type: "delete", sheet: "tags", pk: "TAG1" }]);
+    expect(queueDelete(q, "tags", "tag_id", "TAG1")).toEqual(q); // deleting twice is still one delete
+
+    const added = queueAdd([], "tags", "tag_id", { tag_id: "TAG9", name: "x" });
+    expect(queueDelete(added, "tags", "tag_id", "TAG9")).toEqual([]);
+  });
+  it("lists which rows are touched", () => {
+    const q: Change[] = [set("T1", "name", "a", "b", "tools"), { type: "add", sheet: "tools", values: { tool_id: "T9" } }, set("X", "name", "a", "b", "tags")];
+    expect([...touchedIds(q, "tools", "tool_id")]).toEqual([["T1", "changed"], ["T9", "added"]]);
+  });
+});

@@ -12,6 +12,7 @@ export function NumberField({
   error,
   hint,
   placeholder,
+  readOnly,
 }: {
   label: string;
   value: string;
@@ -19,6 +20,7 @@ export function NumberField({
   error?: string;
   hint?: string;
   placeholder?: string;
+  readOnly?: boolean;
 }) {
   const id = useId();
   const describedBy = [error ? `${id}-error` : "", hint ? `${id}-hint` : ""].filter(Boolean).join(" ") || undefined;
@@ -34,6 +36,7 @@ export function NumberField({
         autoComplete="off"
         value={value}
         placeholder={placeholder}
+        readOnly={readOnly}
         onChange={(e) => onChange(e.target.value)}
         aria-invalid={error ? true : undefined}
         aria-describedby={describedBy}
