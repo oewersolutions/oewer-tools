@@ -5,8 +5,9 @@ The site uses **Google Analytics 4** to see which pages and tools are used and, 
 ## Turning it on
 
 1. Create a GA4 property and a web data stream for the site at analytics.google.com. Copy the **Measurement ID** (looks like `G-ABC123XYZ4`).
-2. In the admin, open **All sheets → site_settings**, find `analytics_measurement_id` and paste the ID into `setting_value`. Save.
-3. The site rebuilds. Analytics still sends nothing until a visitor has accepted analytics (see the consent banner below).
+2. Also create a report you can open from the admin: the GA4 *Reports* page, or a Looker Studio report, and copy its address.
+3. In the admin, open **All sheets → site_settings**, find `analytics_measurement_id` and paste the ID into `setting_value`. Save.
+4. The site rebuilds. Analytics still sends nothing until a visitor has accepted analytics (see the consent banner below).
 
 An empty value switches analytics off. Anything that is not a valid ID is rejected by validation, so a typo cannot go live unnoticed.
 
@@ -64,3 +65,11 @@ Analytics is never allowed to affect the site. `e2e/analytics-blocked.spec.ts` t
 Each blocked test also checks that the page really asked for the script, so a block that never happened cannot pass by accident.
 
 Good to know: if storage is blocked, a visitor who clicks Allow analytics cannot have the choice remembered, so analytics stays off (it fails closed) and they are asked again on the next visit. Blocking also loses their visits from your figures, as with any analytics, so treat the numbers as a lower bound.
+
+## Dashboard link in the admin (T6.4)
+
+The admin Dashboard has a **Visitor analytics** box. It says whether counting is on (and with which Measurement ID) and, when `analytics_dashboard_url` is set, shows an **Open analytics reports** button that opens the reports in a new tab.
+
+- **Link, not embed.** Google's report pages do not allow being shown inside other pages, and the admin page's strict Content Security Policy allows no frames at all, so the button opens the reports in a new tab (`noopener`). No visitor data is read into or stored by the admin.
+- **Setting it.** In **All sheets → site_settings**, set `analytics_dashboard_url` to the address of the report. It must be a full `https://` address (anything else, such as `javascript:`, is rejected by validation and ignored by the admin). Leave it empty for no link; the box then explains what to set.
+- **Who can see it.** The reports stay behind Google sign-in, so only people you give access in Google Analytics or Looker Studio can open them. The address itself is stored in the public workbook, so do not use a report link that is public to anyone with the address unless that is what you want.

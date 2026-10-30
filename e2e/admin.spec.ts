@@ -32,9 +32,11 @@ async function fakeGithub(
     concurrent?: (bytes: Buffer) => Promise<Buffer>;
     /** How the site update after a save ends, or that the token cannot read build status at all. */
     deploy?: "success" | "failure" | "forbidden";
+    /** The workbook GitHub starts with, when the test needs something other than the checked-in one. */
+    workbook?: Buffer;
   } = {},
 ): Promise<Fake> {
-  let bytes: Buffer = WORKBOOK;
+  let bytes: Buffer = opts.workbook ?? WORKBOOK;
   let version = 0;
   let concurrentDone = false;
   let savedCommit: string | undefined;
@@ -913,4 +915,27 @@ test("the dashboard still shows counts when the token cannot read site updates",
   const dash = page.getByRole("region", { name: "Dashboard" });
   await expect(dash.getByRole("group", { name: "Tools" })).toBeVisible();
   await expect(dash).toContainText("Actions: Read");
+});
+
+test("the dashboard says analytics is off and how to set the reports link", async ({ page }) => {
+  await fakeGithub(page);
+  await signIn(page);
+  const analytics = page.getByRole("region", { name: "Dashboard" }).getByRole("group", { name: "Analytics" });
+  await expect(analytics).toContainText("Off.");
+  await expect(analytics).toContainText("analytics_dashboard_url");
+  await expect(analytics.getByRole("link")).toHaveCount(0);
+});
+
+test("with analytics set up, the dashboard shows the ID and a link to the reports", async ({ page }) => {
+  const wb = await loadWorkbook(new Uint8Array(WORKBOOK));
+  const setting = (key: string, after: string) => ({ type: "set" as const, sheet: "site_settings", pk: key, column: "setting_value", before: readCell(wb, schema, { sheet: "site_settings", row: findRecord(wb, schema, "site_settings", key), column: "setting_value" }), after });
+  applyChanges(wb, schema, [setting("analytics_measurement_id", "G-ABC123XYZ4"), setting("analytics_dashboard_url", "https://lookerstudio.google.com/reporting/abc")]);
+  await fakeGithub(page, { workbook: Buffer.from(await saveWorkbook(wb)) });
+  await signIn(page);
+  const analytics = page.getByRole("region", { name: "Dashboard" }).getByRole("group", { name: "Analytics" });
+  await expect(analytics).toContainText("G-ABC123XYZ4");
+  const link = analytics.getByRole("link", { name: "Open analytics reports" });
+  await expect(link).toHaveAttribute("href", "https://lookerstudio.google.com/reporting/abc");
+  await expect(link).toHaveAttribute("target", "_blank");
+  await expect(link).toHaveAttribute("rel", /noopener/);
 });

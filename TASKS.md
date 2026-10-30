@@ -59,7 +59,7 @@ Source: `docs/OEWER_TOOLS_PROJECT_PLAN.md` (v1.1: JavaScript-only, GitHub Pages,
 - [x] **T6.1** Integrate chosen analytics service; custom events `tool_open` / `tool_complete`
 - [x] **T6.2** Consent banner; load analytics only as consent rules require
 - [x] **T6.3** Verify site works with analytics blocked
-- [ ] **T6.4** Link or embed the analytics dashboard in admin
+- [x] **T6.4** Link or embed the analytics dashboard in admin
 
 ## Phase 7 — AdSense readiness, QA & launch (5–8 days)
 - [ ] **T7.1** Finalize Privacy, Terms, Contact, About

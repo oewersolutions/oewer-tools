@@ -12,6 +12,16 @@ export const CONSENT_OPEN_EVENT = "oewer-consent-open";
 /** A GA4 Measurement ID such as G-ABC123XYZ4. Empty means analytics is switched off. */
 export const isMeasurementId = (value: string): boolean => /^G-[A-Z0-9]{6,12}$/.test(value);
 
+/** Where a person can read the reports: an https address only, so a setting can never become a script link. */
+export function isDashboardUrl(value: string): boolean {
+  try {
+    const url = new URL(value);
+    return url.protocol === "https:" && url.hostname.includes(".");
+  } catch {
+    return false;
+  }
+}
+
 export type ToolEventName = "tool_open" | "tool_complete";
 
 type Gtag = (...args: unknown[]) => void;

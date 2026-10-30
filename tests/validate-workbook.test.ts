@@ -406,3 +406,18 @@ describe("analytics setting", () => {
     }
   });
 });
+
+describe("analytics dashboard link setting", () => {
+  const withUrl = (value: string) => validateWith((d) => {
+    d.site_settings!.find((r) => r.values.setting_key === "analytics_dashboard_url")!.values.setting_value = value;
+  });
+  it("accepts an https address or empty", () => {
+    expect(withUrl("https://lookerstudio.google.com/reporting/abc")).toEqual([]);
+    expect(withUrl("")).toEqual([]);
+  });
+  it("rejects anything that is not a full https address", () => {
+    for (const bad of ["http://example.com", "javascript:alert(1)", "analytics", "https://"]) {
+      expect(has(withUrl(bad), "invalid_value", "site_settings", "setting_value"), bad).toBe(true);
+    }
+  });
+});

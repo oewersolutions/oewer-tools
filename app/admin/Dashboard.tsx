@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { listDeployRuns, type DeployRun } from "../../lib/admin/actions";
-import { contentCounts, plainCounts } from "../../lib/admin/dashboard";
+import { analyticsInfo, contentCounts, plainCounts } from "../../lib/admin/dashboard";
 import { GithubError, type GithubSession } from "../../lib/admin/github";
 import { listHistory, type HistoryEntry } from "../../lib/admin/history";
 import type { WorkbookData } from "../../lib/workbook";
@@ -34,6 +34,8 @@ export default function Dashboard({ session, data, refreshKey }: { session: Gith
     };
   }, [session, refreshKey]);
 
+  const analytics = analyticsInfo(data);
+
   return (
     <section aria-labelledby="dash-heading" className="rounded-2xl border border-brand-100 bg-white p-6 shadow-soft">
       <h2 id="dash-heading" className="font-display text-2xl font-semibold text-ink">
@@ -56,6 +58,33 @@ export default function Dashboard({ session, data, refreshKey }: { session: Gith
           .map((c) => `${c.total} ${c.label.toLowerCase()}`)
           .join(" · ")}
       </p>
+
+      <div className="mt-5 rounded-xl bg-brand-50 p-4" role="group" aria-label="Analytics">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <h3 className="font-semibold text-ink">Visitor analytics</h3>
+            <p className="mt-1 text-sm text-slate-800">
+              {analytics.enabled ? (
+                <>
+                  On, measuring with <code>{analytics.measurementId}</code>. Visitors are counted only after they allow it.
+                </>
+              ) : (
+                <>Off. Add your Google Analytics Measurement ID to switch it on.</>
+              )}
+            </p>
+          </div>
+          {analytics.dashboardUrl && (
+            <a href={analytics.dashboardUrl} target="_blank" rel="noopener noreferrer" className="rounded-xl bg-brand px-4 py-2 text-sm font-medium text-white shadow-soft transition hover:bg-brand-700">
+              Open analytics reports
+            </a>
+          )}
+        </div>
+        {!analytics.dashboardUrl && (
+          <p className="mt-2 text-sm text-slate-700">
+            No reports link yet. In <strong>All sheets → site_settings</strong>, set <code>analytics_dashboard_url</code> to the address of your Google Analytics (or Looker Studio) report, and set <code>analytics_measurement_id</code> to turn counting on.
+          </p>
+        )}
+      </div>
 
       <div className="mt-5 grid gap-5 md:grid-cols-2">
         <div>
