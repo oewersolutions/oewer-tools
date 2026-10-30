@@ -5,7 +5,9 @@ import { NumberField } from "../../components/tools/ui";
 import { GithubError, parseRepo, readWorkbookFile, verifySession, type GithubSession } from "../../lib/admin/github";
 import { EditError } from "../../lib/admin/edit";
 import { checkWorkbook, formatIssue, type Issue, type WorkbookData } from "../../lib/workbook";
+import BuildStatus from "./BuildStatus";
 import Manager from "./Manager";
+import { absoluteUrl } from "../../lib/seo";
 
 const WORKBOOK_PATH = "data/oewer_database.xlsx";
 const STORAGE_KEY = "oewer-admin-session";
@@ -230,7 +232,7 @@ export default function AdminApp({ defaultRepo, defaultBranch }: { defaultRepo: 
             className="mt-1.5 block w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 font-mono text-base shadow-sm"
           />
           <p className="mt-2 text-sm text-slate-700">
-            Use a fine-grained token limited to this one repository, with <strong>Contents: Read and write</strong> and nothing else. It stays in this page only and is forgotten when you sign out, after 30 minutes without activity, or when you close the tab.
+            Use a fine-grained token limited to this one repository, with <strong>Contents: Read and write</strong>, plus <strong>Actions: Read</strong> if you want to see whether the site has been updated after a save. Nothing else is needed. It stays in this page only and is forgotten when you sign out, after 30 minutes without activity, or when you close the tab.
           </p>
           <label className="mt-3 flex items-start gap-2 text-sm text-slate-800">
             <input type="checkbox" checked={keep} onChange={(e) => setKeep(e.target.checked)} className="mt-1" />
@@ -273,6 +275,11 @@ function Workbook({
   onReload: () => void;
   onSignOut: () => void;
 }) {
+  const [watchSha, setWatchSha] = useState<string>();
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+  const siteSetting = (loaded.data.site_settings ?? []).find((r) => r.values.setting_key === "site_url");
+  const siteUrl = absoluteUrl(process.env.NEXT_PUBLIC_SITE_URL || String(siteSetting?.values.setting_value ?? "https://example.com"), basePath, "/");
+
   return (
     <div className="space-y-8">
       <section aria-labelledby="wb-heading" className="rounded-2xl border border-brand-100 bg-white p-6 shadow-soft">
@@ -314,7 +321,10 @@ function Workbook({
         )}
       </section>
 
+      <BuildStatus session={loaded.session} watchSha={watchSha} siteUrl={siteUrl} />
+
       <Manager
+        onPublished={setWatchSha}
         file={{ session: loaded.session, canPush: loaded.canPush, bytes: loaded.bytes, sha: loaded.sha, data: loaded.data, issues: loaded.issues }}
         onSaved={async (base) => setLoaded({ ...loaded, bytes: base.bytes, sha: base.sha, ...(await analyse(base.bytes)) })}
       />

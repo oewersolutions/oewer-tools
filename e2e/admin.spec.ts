@@ -25,11 +25,20 @@ const SHAS = ["a", "b", "c", "d", "e"].map((c) => c.repeat(40));
 
 async function fakeGithub(
   page: Page,
-  opts: { push?: boolean; token?: string; /** Another editor saves just before the person's first save. */ concurrent?: (bytes: Buffer) => Promise<Buffer> } = {},
+  opts: {
+    push?: boolean;
+    token?: string;
+    /** Another editor saves just before the person's first save. */
+    concurrent?: (bytes: Buffer) => Promise<Buffer>;
+    /** How the site update after a save ends, or that the token cannot read build status at all. */
+    deploy?: "success" | "failure" | "forbidden";
+  } = {},
 ): Promise<Fake> {
   let bytes: Buffer = WORKBOOK;
   let version = 0;
   let concurrentDone = false;
+  let savedCommit: string | undefined;
+  let polls = 0; // how many times the new run has been looked at: queued, then running, then finished
   const fake: Fake = { puts: [], gets: [], current: () => bytes };
   const json = (body: unknown, status = 200) => ({ status, headers: { ...CORS, "content-type": "application/json" }, body: JSON.stringify(body) });
   const file = "/repos/acme/site/contents/data/oewer_database.xlsx";
@@ -41,6 +50,20 @@ async function fakeGithub(
     if (request.headers().authorization !== `Bearer ${opts.token ?? "github_pat_GOOD"}`) return route.fulfill(json({ message: "Bad credentials" }, 401));
 
     if (request.method() === "GET") fake.gets.push(url.pathname);
+    if (url.pathname.includes("/actions/")) {
+      if (opts.deploy === "forbidden") return route.fulfill(json({ message: "Resource not accessible by personal access token" }, 403));
+      const run = (id: number, sha: string, status: string, conclusion: string | null, title: string) => ({ id, head_sha: sha, display_title: title, status, conclusion, html_url: `https://github.com/acme/site/actions/runs/${id}`, created_at: "2026-10-30T10:00:00Z", updated_at: "2026-10-30T10:01:00Z" });
+      if (url.pathname.endsWith("/actions/workflows/deploy.yml/runs")) {
+        const runs = [run(1, "0".repeat(40), "completed", "success", "Earlier update")];
+        if (savedCommit) {
+          polls++;
+          const state = polls <= 1 ? ["queued", null] : polls === 2 ? ["in_progress", null] : ["completed", opts.deploy === "failure" ? "failure" : "success"];
+          runs.unshift(run(2, savedCommit, state[0]!, state[1], "Admin: update"));
+        }
+        return route.fulfill(json({ workflow_runs: runs }));
+      }
+      if (url.pathname.endsWith("/actions/runs/2/jobs")) return route.fulfill(json({ jobs: [{ name: "build", conclusion: "failure", steps: [{ name: "Checkout", conclusion: "success" }, { name: "Validate workbook", conclusion: "failure" }] }] }));
+    }
     if (request.method() === "GET" && url.pathname === "/repos/acme/site") return route.fulfill(json({ full_name: "acme/site", permissions: { push: opts.push ?? true } }));
     if (request.method() === "GET" && url.pathname === file) return route.fulfill(json({ type: "file", sha: SHAS[version], size: bytes.length }));
     if (request.method() === "GET" && url.pathname === `/repos/acme/site/git/blobs/${SHAS[version]}`) return route.fulfill(json({ encoding: "base64", content: bytes.toString("base64") }));
@@ -53,6 +76,7 @@ async function fakeGithub(
       }
       if (body.sha !== SHAS[version]) return route.fulfill(json({ message: `${file} does not match ${body.sha}` }, 409));
       fake.puts.push({ headers: request.headers(), body });
+      savedCommit = "c".repeat(40);
       bytes = Buffer.from(body.content, "base64");
       version++;
       return route.fulfill(json({ content: { sha: SHAS[version] }, commit: { sha: "c".repeat(40), html_url: "https://github.com/acme/site/commit/ccc" } }));
@@ -726,4 +750,109 @@ test("the content editors have no accessibility violations", async ({ page }) =>
   expect(await scan()).toEqual([]);
   await editor(page, "Ads").click();
   expect(await scan()).toEqual([]);
+});
+
+// ---- Publish flow (T5.6) ----
+
+/** Move the fake clock on in steps until something shows up: the page polls on a timer that is set after each reply. */
+async function wait(page: Page, text: string | RegExp) {
+  const target = page.getByText(text).first();
+  for (let i = 0; i < 12 && !(await target.isVisible()); i++) {
+    await page.clock.fastForward("00:07");
+    await page.waitForTimeout(150);
+  }
+  await expect(target).toBeVisible();
+}
+
+test("the site status is shown as soon as you sign in", async ({ page }) => {
+  await fakeGithub(page);
+  await signIn(page);
+  await expect(page.getByRole("heading", { name: "Site status" })).toBeVisible();
+  await expect(page.getByText("The site is up to date.")).toBeVisible();
+  await expect(page.getByRole("list", { name: "Recent site updates" }).getByText("Earlier update")).toBeVisible();
+  await expect(page.getByRole("link", { name: "View the live site" })).toHaveAttribute("href", /\/$/);
+});
+
+test("after saving, the update is followed from waiting to building to live", async ({ page }) => {
+  await page.clock.install();
+  await fakeGithub(page);
+  await signIn(page);
+  await editCell(page, "tools", "TOOL0001", "name", "Image Squeezer");
+  await page.getByRole("button", { name: "Save 1 change to GitHub" }).click();
+  await expect(page.getByText("View the commit on GitHub")).toBeVisible();
+  await expect(page.getByText(/Waiting for GitHub to start updating the site|being published/)).toBeVisible();
+  await wait(page, "The site is up to date.");
+  await expect(page.getByRole("list", { name: "Recent site updates" }).getByText("Live")).toHaveCount(2);
+});
+
+test("a failed update says why in plain words and that the live site is unchanged", async ({ page }) => {
+  await page.clock.install();
+  await fakeGithub(page, { deploy: "failure" });
+  await signIn(page);
+  await editCell(page, "tools", "TOOL0001", "name", "Image Squeezer");
+  await page.getByRole("button", { name: "Save 1 change to GitHub" }).click();
+  await expect(page.getByText("View the commit on GitHub")).toBeVisible();
+  await wait(page, /could not be updated. The live site still shows the previous version/);
+  await wait(page, /did not pass validation/);
+  await expect(page.getByRole("list", { name: "Recent site updates" }).getByRole("link", { name: "Details" }).first()).toHaveAttribute("href", /actions\/runs\/2$/);
+});
+
+test("a token that cannot read build status still saves, and the page explains what to add", async ({ page }) => {
+  const fake = await fakeGithub(page, { deploy: "forbidden" });
+  await signIn(page);
+  await expect(page.getByText("Build status is not available.")).toBeVisible();
+  await expect(page.getByText(/Add the Actions: Read permission/)).toBeVisible();
+  await editCell(page, "tools", "TOOL0001", "name", "Image Squeezer");
+  await page.getByRole("button", { name: "Save 1 change to GitHub" }).click();
+  await expect(page.getByText("View the commit on GitHub")).toBeVisible();
+  expect(fake.puts).toHaveLength(1);
+});
+
+test("before saving, the pending panel says what will appear, change or disappear on the live site", async ({ page }) => {
+  await fakeGithub(page);
+  await signIn(page);
+  await page.getByRole("button", { name: "Edit tool Word Counter" }).click();
+  await page.getByRole("form", { name: /Edit tool Word Counter/ }).getByLabel("Status").selectOption("draft");
+  await page.getByRole("form", { name: /Edit tool Word Counter/ }).getByRole("button", { name: "Update pending changes" }).click();
+  const summary = page.getByLabel("What will change on the live site");
+  await expect(summary).toContainText("Removed: tool “Word Counter”");
+
+  await page.getByRole("button", { name: "Edit tool EMI Calculator" }).click();
+  await page.getByRole("form", { name: /Edit tool EMI Calculator/ }).getByLabel("Answer 1").fill("A changed answer.");
+  await page.getByRole("form", { name: /Edit tool EMI Calculator/ }).getByRole("button", { name: "Update pending changes" }).click();
+  await expect(summary).toContainText("Updated: tool “EMI Calculator”");
+});
+
+test("changes that visitors cannot see are labelled as such", async ({ page }) => {
+  await fakeGithub(page);
+  await signIn(page);
+  await editor(page, "Articles").click();
+  await page.getByRole("button", { name: "New article" }).click();
+  const form = page.getByRole("form", { name: /New article/ });
+  await form.getByLabel("Title", { exact: true }).fill("Work in progress");
+  await form.getByLabel("Summary (shown in lists and search results)").fill("Notes for later.");
+  await form.getByLabel("Block 1 text").fill("Draft text.");
+  await form.getByRole("button", { name: "Update pending changes" }).click();
+  await expect(page.getByLabel("What will change on the live site")).toContainText("Nothing visitors can see");
+});
+
+test("an article can be previewed as it will look, including a draft, before it is saved", async ({ page }) => {
+  await fakeGithub(page);
+  await signIn(page);
+  await editor(page, "Articles").click();
+  await page.getByRole("button", { name: "New article" }).click();
+  const form = page.getByRole("form", { name: /New article/ });
+  await form.getByLabel("Title", { exact: true }).fill("Preview me");
+  await form.getByLabel("Block 1 text").fill("A **bold** opening.");
+  await form.getByLabel("New block type").selectOption("heading");
+  await form.getByRole("button", { name: "Add block" }).click();
+  await form.getByLabel("Block 2 text").fill("A section");
+  await form.getByRole("button", { name: "Preview article" }).click();
+  const preview = form.getByLabel("Article preview");
+  await expect(preview.getByRole("heading", { name: "Preview me", level: 2 })).toBeVisible();
+  await expect(preview.locator("strong", { hasText: "bold" })).toBeVisible();
+  await expect(preview.getByRole("heading", { name: "A section" })).toBeVisible();
+  await expect(preview).toContainText("Draft preview"); // not published yet, and it says so
+  await form.getByLabel("Status").selectOption("published");
+  await expect(preview).not.toContainText("Draft preview");
 });

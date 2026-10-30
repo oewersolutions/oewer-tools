@@ -4,7 +4,9 @@ import { useState } from "react";
 import type { Change } from "../../../lib/admin/changes";
 import { nowIso, planPost, planSeo, readPost, readSeo, type BlockForm, type PostForm, type SeoForm } from "../../../lib/admin/forms";
 import { cellString, toRows } from "../../../lib/admin/table";
-import { slugify } from "../../../lib/posts";
+import { PostBody } from "../../../components/Prose";
+import { readingMinutes } from "../../../lib/format";
+import { slugify, statusNotice } from "../../../lib/posts";
 import { schema, type WorkbookData } from "../../../lib/workbook";
 import { CheckGroup, FormShell, primaryButton, Section, SelectField, SeoFields, smallButton, TextAreaField, TextField } from "./parts";
 
@@ -89,6 +91,7 @@ function PostForm({ data, postId, onSave, onCancel }: { data: WorkbookData; post
   const [newBlockType, setNewBlockType] = useState("paragraph");
   const [seo, setSeo] = useState<SeoForm>(() => readSeo(data, "post", postId));
   const [error, setError] = useState<string>();
+  const [preview, setPreview] = useState(false);
   const set = (patch: Partial<PostForm>) => setF((s) => ({ ...s, ...patch }));
   const setBlock = (i: number, patch: Partial<BlockForm>) => set({ blocks: f.blocks.map((b, n) => (n === i ? { ...b, ...patch } : b)) });
   const move = (i: number, by: -1 | 1) => {
@@ -186,6 +189,32 @@ function PostForm({ data, postId, onSave, onCancel }: { data: WorkbookData; post
       </Section>
 
       <SeoFields value={seo} onChange={setSeo} defaults={{ title: f.title, description: f.excerpt }} />
+
+      <Section title="Preview">
+        <button type="button" className={smallButton} aria-expanded={preview} onClick={() => setPreview(!preview)}>
+          {preview ? "Hide preview" : "Preview article"}
+        </button>
+        {preview && (
+          <article aria-label="Article preview" className="space-y-4 rounded-2xl border border-brand-100 bg-white p-6">
+            {statusNotice(f.status) && (
+              <p className="rounded-lg bg-gold-300/30 p-3 text-sm text-ink">
+                <strong>{statusNotice(f.status)!.title}.</strong> {statusNotice(f.status)!.text}
+              </p>
+            )}
+            <p className="text-sm font-semibold uppercase tracking-wider text-brand-600">{cellString(categories.find((c) => c.id === f.category_id)?.values.name)}</p>
+            <h2 className="font-display text-3xl font-semibold tracking-tight text-ink">{f.title || "Untitled article"}</h2>
+            <p className="text-lg text-slate-700">{f.excerpt}</p>
+            <p className="text-sm text-slate-700">
+              {cellString(authors.find((a) => a.id === f.author_id)?.values.display_name)} · {readingMinutes(f.blocks.map((b) => b.content).join(" "))} min read
+            </p>
+            {f.blocks.length === 0 ? (
+              <p className="text-slate-700">No content yet.</p>
+            ) : (
+              <PostBody blocks={f.blocks.map((b, i) => ({ block_id: `preview-${i}`, post_id: f.post_id, sort_order: i + 1, block_type: b.block_type, content: b.content, asset_path: b.asset_path }))} />
+            )}
+          </article>
+        )}
+      </Section>
     </FormShell>
   );
 }

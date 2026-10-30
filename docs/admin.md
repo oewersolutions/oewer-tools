@@ -98,3 +98,15 @@ Details worth knowing:
 - Editing something you added in the same session updates the pending addition instead of stacking changes.
 - Changing an address (slug) breaks existing links to that page; use the `redirects` sheet when you rename one that is already published.
 - The planners that turn forms into changes are plain functions in `lib/admin/forms.ts`, unit tested against the seed workbook, including that the workbook is valid after each kind of edit.
+
+## Publish flow (T5.6)
+
+Saving is publishing: a save commits the workbook to the branch the site is built from, and the deploy workflow then rebuilds and replaces the live site. Content has three states in the workbook (`draft`, `published`, `archived`), so unfinished work is saved without going live by leaving it as `draft`.
+
+- **Before you save.** The Pending changes panel says what the live site will do: which articles, tools, pages and categories **appear**, which are **updated** (including edits to an article's blocks or a tool's questions) and which are **removed**. If nothing visitors can see changes, it says so. It also lists any validation problems, and Save stays refused until they are fixed.
+- **Preview.** The article editor has **Preview article**, which renders the article with the site's own typography from what is on screen, before anything is saved, with a "Draft preview" or "Archived article" notice when it applies. (A full preview of a draft on the real site is available locally with `npm run build:preview`.)
+- **After you save.** The **Site status** panel follows the update: *Waiting to start*, *Updating the site*, then *Live*, refreshed every few seconds and for up to fifteen minutes. It lists the latest updates with their commit message, time and a link to the run on GitHub, and has a link to the live site.
+- **If an update fails** the panel says so, says that **the live site still shows the previous version** (a failed build never replaces it), and explains in plain words which stage failed: the workbook did not pass validation, the checks failed, the site could not be built, or it could not be published (Pages settings). A link opens the run on GitHub for the full log.
+- **Token permission.** Reading build status needs **Actions: Read** on the token. Without it, saving works as usual and the panel says what to add instead of showing an error.
+
+The status client is `lib/admin/actions.ts` and the "what changes" comparison is `lib/admin/live.ts`; both are plain functions with unit tests (`tests/admin-publish.test.ts`). The browser tests run the whole flow against a pretend Actions API: waiting, building and live, a failed validation step, a token without Actions access, and the live-site summary.

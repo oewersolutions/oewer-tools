@@ -52,7 +52,7 @@ export function fromBase64(text: string): Uint8Array {
 const encodePath = (path: string) => path.split("/").map(encodeURIComponent).join("/");
 const repoUrl = (t: GithubTarget) => `${API}/repos/${encodeURIComponent(t.owner)}/${encodeURIComponent(t.repo)}`;
 
-async function call(session: GithubSession, url: string, init: RequestInit = {}, doFetch: Fetch = fetch): Promise<Response> {
+export async function githubCall(session: GithubSession, url: string, init: RequestInit = {}, doFetch: Fetch = fetch): Promise<Response> {
   let response: Response;
   try {
     response = await doFetch(url, {
@@ -96,7 +96,7 @@ export interface Verification {
 
 /** Check the token can see the repository, and whether it may write to it. */
 export async function verifySession(session: GithubSession, doFetch?: Fetch): Promise<Verification> {
-  const response = await call(session, repoUrl(session), {}, doFetch);
+  const response = await githubCall(session, repoUrl(session), {}, doFetch);
   const body = (await response.json()) as { full_name: string; permissions?: { push?: boolean } };
   return { fullName: body.full_name, canPush: body.permissions?.push === true };
 }
@@ -111,10 +111,10 @@ export interface WorkbookFile {
 /** Download the workbook and its SHA. Uses the blob API, which works for files of any size up to 100 MB. */
 export async function readWorkbookFile(session: GithubSession, doFetch?: Fetch): Promise<WorkbookFile> {
   const metaUrl = `${repoUrl(session)}/contents/${encodePath(session.path)}?ref=${encodeURIComponent(session.branch)}`;
-  const meta = (await (await call(session, metaUrl, {}, doFetch)).json()) as { sha?: string; size?: number; type?: string };
+  const meta = (await (await githubCall(session, metaUrl, {}, doFetch)).json()) as { sha?: string; size?: number; type?: string };
   if (meta.type !== "file" || !meta.sha) throw new GithubError("not_found", `${session.path} is not a file on branch ${session.branch}.`);
 
-  const blob = (await (await call(session, `${repoUrl(session)}/git/blobs/${meta.sha}`, {}, doFetch)).json()) as { content: string; encoding: string };
+  const blob = (await (await githubCall(session, `${repoUrl(session)}/git/blobs/${meta.sha}`, {}, doFetch)).json()) as { content: string; encoding: string };
   if (blob.encoding !== "base64") throw new GithubError("other", "GitHub sent the workbook in an unexpected format.");
   const bytes = fromBase64(blob.content);
   return { bytes, sha: meta.sha, size: meta.size ?? bytes.length };
@@ -130,7 +130,7 @@ export interface CommitResult {
 /** Save a new version of the workbook. `sha` must be the version the change was made from. */
 export async function commitWorkbook(session: GithubSession, bytes: Uint8Array, sha: string, message: string, doFetch?: Fetch): Promise<CommitResult> {
   const url = `${repoUrl(session)}/contents/${encodePath(session.path)}`;
-  const response = await call(session, url, { method: "PUT", body: JSON.stringify({ message, content: toBase64(bytes), sha, branch: session.branch }) }, doFetch);
+  const response = await githubCall(session, url, { method: "PUT", body: JSON.stringify({ message, content: toBase64(bytes), sha, branch: session.branch }) }, doFetch);
   const body = (await response.json()) as { content: { sha: string }; commit: { sha: string; html_url: string } };
   return { commitSha: body.commit.sha, commitUrl: body.commit.html_url, fileSha: body.content.sha };
 }

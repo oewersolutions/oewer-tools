@@ -11,6 +11,7 @@ import { cellString, EMPTY_QUERY, filterOptions, filterableColumns, nextId, pagi
 import { formatIssue, schema, type Issue, type WorkbookData } from "../../lib/workbook";
 import type { ColumnDef } from "../../lib/workbook/types";
 import { mergeChanges } from "../../lib/admin/forms";
+import { hasLiveChanges, liveChanges } from "../../lib/admin/live";
 import AdsEditor from "./editors/AdsEditor";
 import CategoriesEditor from "./editors/CategoriesEditor";
 import PostsEditor from "./editors/PostsEditor";
@@ -61,10 +62,13 @@ const shorten = (text: string, max = 60) => (text.length > max ? `${text.slice(0
 export default function Manager({
   file,
   onSaved,
+  onPublished,
 }: {
   file: ManagerFile;
   /** Called with the version now on GitHub after a save, or after a clash has shown a newer one. */
   onSaved: (base: WorkbookFile) => void;
+  /** Called with the new commit when a save has gone to GitHub, so the site update can be followed. */
+  onPublished?: (commitSha: string) => void;
 }) {
   const sheets = Object.keys(schema.sheets);
   const [tab, setTab] = useState<View>("tools");
@@ -150,6 +154,7 @@ export default function Manager({
       const result = await saveChanges(repo, base, changes, message.trim() || commitMessageFor(changes), force);
       if (result.status === "saved") {
         onSaved(result.base);
+        onPublished?.(result.commit.commitSha);
         setSaved({ url: result.commit.commitUrl, rebased: result.rebased });
         setPending([]);
         setChoices({});
@@ -181,6 +186,7 @@ export default function Manager({
 
   const unresolved = conflicts.filter((c) => !choices[c.index]);
   const liveIssues = projection.issues;
+  const onSite = useMemo(() => (pending.length > 0 && projection.ready ? liveChanges(file.data, projection.data) : undefined), [pending.length, projection.ready, projection.data, file.data]);
 
   const apply = (changes: Change[]) => changePending(mergeChanges(pending, changes));
   const editorProps = { data: projection.data, onApply: apply };
@@ -440,6 +446,32 @@ export default function Manager({
                 <li key={n}>{formatIssue(i)}</li>
               ))}
             </ul>
+          </div>
+        )}
+        {onSite && liveIssues.length === 0 && (
+          <div className="mt-5 rounded-xl border border-brand-100 bg-cream p-4 text-sm" aria-label="What will change on the live site">
+            <p className="font-semibold text-ink">What saving will change on the live site</p>
+            {!hasLiveChanges(onSite) ? (
+              <p className="mt-1 text-slate-700">Nothing visitors can see. These changes only affect drafts, settings or items that are not on the site.</p>
+            ) : (
+              <ul className="mt-2 list-disc space-y-1 pl-5">
+                {onSite.appear.map((t) => (
+                  <li key={`a-${t}`}>
+                    <strong>Appears:</strong> {t}
+                  </li>
+                ))}
+                {onSite.edited.map((t) => (
+                  <li key={`e-${t}`}>
+                    <strong>Updated:</strong> {t}
+                  </li>
+                ))}
+                {onSite.disappear.map((t) => (
+                  <li key={`d-${t}`}>
+                    <strong>Removed:</strong> {t}
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
         )}
         {pending.length > 0 && !projection.ready && (
