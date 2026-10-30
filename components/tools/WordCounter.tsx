@@ -2,11 +2,13 @@
 
 import { useMemo, useState } from "react";
 import { analyzeText, formatDuration, READING_WPM, SPEAKING_WPM } from "../../lib/tools/text";
+import { useReportResult } from "./ToolEvents";
 import { TextAreaField } from "./ui";
 
 export default function WordCounter() {
   const [text, setText] = useState("");
   const stats = useMemo(() => analyzeText(text), [text]);
+  useReportResult(text.trim() !== "");
   const items: [string, string][] = [
     ["Words", stats.words.toLocaleString("en-IN")],
     ["Characters", stats.characters.toLocaleString("en-IN")],

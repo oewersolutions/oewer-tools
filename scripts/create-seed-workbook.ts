@@ -72,6 +72,7 @@ const SEED: Record<string, Row[]> = {
     ["contact_email", "hello@example.com", "string", NOW],
     ["search_enabled", "true", "bool", NOW],
     ["ads_enabled", "false", "bool", NOW],
+    ["analytics_measurement_id", "", "string", NOW],
   ],
   pages: [
     ["PAGE0001", "about", "About OEWER Tools", "OEWER Tools is a collection of free, fast online tools for everyday jobs: shrinking an image, working out a loan EMI, tidying JSON or making a QR code.\n\nWe built it because too many online tools ask you to upload your files, sign up for an account or sit through pop-ups just to do something simple. Ours do not.\n\n# What makes us different\n\n- **Private by design.** Our tools run in your browser. Your images, text and numbers stay on your device and are never uploaded to our servers.\n- **No sign-up.** Open a tool and use it.\n- **Explained, not just answered.** Each tool comes with how-to steps, worked examples and answers to common questions, and our guides explain the formulas behind the results.\n- **Made for every device.** The site works on phones, tablets and computers, and with a keyboard or a screen reader.\n\n# How we keep our word\n\nWe test the privacy promise. Our automated tests watch the network while each tool is used and fail if anything is sent anywhere. The calculators use standard published formulas, and we check their results against worked examples.\n\n# What is next\n\nWe are adding more tools and more guides. If there is a tool you wish existed, tell us on the contact page.", "published", NOW],

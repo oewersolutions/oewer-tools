@@ -1,3 +1,4 @@
+import { isMeasurementId } from "../analytics";
 import { slugify } from "../posts";
 import { checkToolContentSetting, isToolContentKey } from "../tools/content";
 import type { ColumnDef, Issue, Schema, SheetDef, SheetRow, WorkbookData } from "./types";
@@ -209,6 +210,13 @@ export function validateWorkbook(data: WorkbookData, schema: Schema, options: Va
       const problem = checkTypedSetting(row.values.setting_value, row.values.value_type);
       if (problem) add(sheet, row, "setting_value", "invalid_value", `${problem}.`);
     }
+  }
+
+  // Analytics: an empty Measurement ID switches analytics off; anything else must look like a GA4 ID
+  const analyticsId = rowsOf("site_settings").find((r) => r.values.setting_key === "analytics_measurement_id");
+  const analyticsValue = String(analyticsId?.values.setting_value ?? "").trim();
+  if (analyticsId && analyticsValue !== "" && !isMeasurementId(analyticsValue)) {
+    add("site_settings", analyticsId, "setting_value", "invalid_value", "must be a Google Analytics Measurement ID such as G-ABC123XYZ4, or empty to switch analytics off.");
   }
 
   // Author pages are addressed by a slug made from the display name, so it must be usable and unique

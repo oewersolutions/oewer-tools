@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { formatJson, minifyJson, parseJson, type Indent } from "../../lib/tools/json";
+import { useReportResult } from "./ToolEvents";
 import { CopyButton, SelectField, TextAreaField } from "./ui";
 
 type Action = "format" | "minify";
@@ -13,6 +14,7 @@ export default function JsonFormatter() {
   const [sort, setSort] = useState(false);
 
   const parsed = useMemo(() => parseJson(input), [input]);
+  useReportResult(parsed.ok && input.trim() !== "");
   const output = parsed.ok ? (action === "format" ? formatJson(parsed.value, indent, sort) : minifyJson(parsed.value, sort)) : "";
   const blank = input.trim() === "";
 

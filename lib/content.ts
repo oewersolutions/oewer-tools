@@ -96,6 +96,12 @@ export function getSetting(key: string): string {
   return String(row.setting_value);
 }
 
+/** A site setting that may be absent or empty (older workbooks do not have every optional key). */
+export function getOptionalSetting(key: string): string {
+  const row = sheet<{ setting_key: string; setting_value: string }>("site_settings").find((r) => r.setting_key === key);
+  return row ? String(row.setting_value ?? "").trim() : "";
+}
+
 /** Enabled navigation links for a menu location. Links to pages that are not published are left out. */
 export function getNavigation(location: "header" | "footer" | "footer_legal"): { label: string; url: string }[] {
   const unpublished = new Set(sheet<Page>("pages").filter((p) => p.status !== "published").map((p) => `/${p.slug}`));

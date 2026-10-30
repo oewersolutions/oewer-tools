@@ -388,3 +388,21 @@ describe("tool guides (articles linked from a tool)", () => {
     expect(has(withGuides('"POST0001"'), "invalid_tool_content", "tool_settings")).toBe(true);
   });
 });
+
+describe("analytics setting", () => {
+  const withId = (value: string) => validateWith((d) => {
+    d.site_settings!.find((r) => r.values.setting_key === "analytics_measurement_id")!.values.setting_value = value;
+  });
+  it("is empty (analytics off) in the seed workbook", () => {
+    expect(baseline.site_settings!.find((r) => r.values.setting_key === "analytics_measurement_id")?.values.setting_value ?? "").toBe("");
+  });
+  it("accepts a GA4 Measurement ID or an empty value", () => {
+    expect(withId("G-ABC123XYZ4")).toEqual([]);
+    expect(withId("")).toEqual([]);
+  });
+  it("rejects anything else, so a typo cannot silently switch analytics off", () => {
+    for (const bad of ["UA-12345-1", "g-abc123xyz4", "G-", "G-ABC 123", "abc"]) {
+      expect(has(withId(bad), "invalid_value", "site_settings", "setting_value"), bad).toBe(true);
+    }
+  });
+});

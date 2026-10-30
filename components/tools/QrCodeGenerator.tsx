@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { buildQr, MAX_QR_CHARS, qrSvg, type ErrorCorrection } from "../../lib/tools/qr";
+import { useReportResult } from "./ToolEvents";
 import { SelectField, TextAreaField, ToolLayout } from "./ui";
 
 const COLORS = { black: "#000000", green: "#174f49" } as const;
@@ -14,6 +15,7 @@ export default function QrCodeGenerator() {
   const [color, setColor] = useState<keyof typeof COLORS>("black");
 
   const qr = useMemo(() => buildQr(text.trim() === "https://" ? "" : text, level), [text, level]);
+  useReportResult(qr.ok);
   const px = Number(size);
   const style = { size: px, margin: MARGIN, foreground: COLORS[color], background: "#ffffff" };
   const svg = qr.ok ? qrSvg(qr.modules, style) : "";

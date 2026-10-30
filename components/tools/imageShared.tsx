@@ -2,6 +2,7 @@
 
 import { useEffect, useId, useRef, useState, type ReactNode } from "react";
 import { checkImageFile, checkImageSize, formatBytes, outputName, savedPercent, type ImageType } from "../../lib/tools/image";
+import { useReportResult } from "./ToolEvents";
 import { decodeImage, encodeImage, type EncodeOptions } from "../../lib/tools/image-canvas";
 
 export interface ImageSource {
@@ -149,6 +150,7 @@ export function ImageOutput({
   note?: ReactNode;
   emptyMessage: string;
 }) {
+  useReportResult(encoded !== null && encoded !== undefined);
   if (!source) return <p className="text-slate-700">{emptyMessage}</p>;
   const saved = encoded ? savedPercent(source.file.size, encoded.blob.size) : 0;
   return (

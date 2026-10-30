@@ -4,7 +4,8 @@ import type { ReactNode } from "react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import LeaveAdmin from "../components/LeaveAdmin";
-import { getSetting } from "../lib/content";
+import Analytics from "../components/Analytics";
+import { getOptionalSetting, getSetting } from "../lib/content";
 import "./globals.css";
 
 // Fonts are downloaded at build time and served from this site, so visitors make no request to Google.
@@ -29,6 +30,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           Skip to content
         </a>
         <LeaveAdmin />
+        <Analytics measurementId={getOptionalSetting("analytics_measurement_id")} />
         <Header />
         <main id="main" className="flex-1">
           {children}

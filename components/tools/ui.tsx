@@ -1,6 +1,7 @@
 "use client";
 
 import { useId, useState, type ReactNode } from "react";
+import { useReportResult } from "./ToolEvents";
 
 const control =
   "mt-1.5 block w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-base text-slate-900 shadow-sm transition focus:border-brand-500 aria-[invalid=true]:border-red-700";
@@ -98,6 +99,7 @@ export function ToolLayout({ inputs, results }: { inputs: ReactNode; results: Re
 }
 
 export function Results({ headline, rows, emptyMessage }: { headline?: { label: string; value: string }; rows?: { label: string; value: string }[]; emptyMessage: string }) {
+  useReportResult(Boolean(headline));
   if (!headline) return <p className="text-slate-700">{emptyMessage}</p>;
   return (
     <dl className="space-y-3">

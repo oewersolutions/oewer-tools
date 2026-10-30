@@ -9,6 +9,7 @@ import { PostCard, ToolCard } from "../../../../components/Cards";
 import { ToolIcon } from "../../../../components/icons";
 import { Container, PageBand } from "../../../../components/layout";
 import { Check } from "lucide-react";
+import { ToolEvents } from "../../../../components/tools/ToolEvents";
 import { getBlogCategory, getGuidesForTool, getPostReadingMinutes, getPublishedTools, getRelatedTools, getToolBySlug, getToolCategory, getToolContent } from "../../../../lib/content";
 
 type Props = { params: Promise<{ category: string; tool: string }> };
@@ -77,7 +78,9 @@ export default async function ToolPage({ params }: Props) {
 
       <Container className="space-y-16 py-12 [overflow-wrap:anywhere]">
         <section aria-label={tool.name} data-component={tool.component_key}>
-          <ToolComponent />
+          <ToolEvents tool={tool.slug}>
+            <ToolComponent />
+          </ToolEvents>
         </section>
 
         {content.help && (
