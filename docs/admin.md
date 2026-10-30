@@ -51,3 +51,20 @@ The admin page loads no third-party scripts. Tests check the policy, that the wh
 **Limits to know about.** A policy in a `<meta>` tag cannot set `frame-ancestors`, so it does not stop another site framing the page; and it cannot be removed once applied, so leaving the admin page for another page reloads that page so the policy does not follow you. The page cannot protect against malware or a malicious browser extension on your own computer, which is why the token should be limited to this one repository with only Contents access, and given a short expiry.
 
 **A start-up quirk.** The framework can start this component twice while the page loads. Resuming a remembered session therefore shares one attempt between both starts, and a failure notice is kept in session storage until you sign in again so it is not lost.
+
+## Safe write workflow (T5.3)
+
+Changes are collected as a **list of pending changes** and saved together as one commit. Each change names the record by its **ID** (the sheet's primary key), not by row number, so it still makes sense if someone else adds or removes rows meanwhile. A change is one of: set a cell (remembering the value the person saw), add a row, or delete a row.
+
+Saving does this, in order (`lib/admin/save.ts`):
+
+1. **Apply and validate.** The changes are applied to the version they were made from, and the full validator runs on the result. If it would leave the workbook invalid (a wrong value, a broken link such as a deleted tag that an article still uses, a duplicate ID), **nothing is sent**; the problems are listed and the pending changes are kept so they can be fixed.
+2. **Save with the SHA.** The commit carries the SHA of the version the changes were made from, so GitHub refuses it if anyone saved in between.
+3. **If GitHub refuses, rebase.** The page downloads the newest version and applies the same changes to it, then saves again (up to three tries). Changes that touch different cells merge automatically, and the page says so.
+4. **If a change clashes, ask.** A change clashes when the cell now holds something other than what the person saw, the record was deleted, or a new ID is already taken. **Nothing is overwritten.** The page shows what is on GitHub now and, for each clash, lets the person choose **keep what is on GitHub** (drop my change) or **use my version** (overwrite theirs). Their other pending edits are never lost. The save then proceeds on top of GitHub's newest version.
+
+Deleting a row that other rows still use (for example a tag that an article carries) is blocked by validation; remove the references in the same save.
+
+Adding and deleting rows is built and tested in the engine; the screens for them come with the spreadsheet manager (T5.4).
+
+Tests: `tests/admin-changes.test.ts` runs the engine and the whole workflow against an in-memory repository that behaves like GitHub (SHA changes on every save, stale SHAs are refused, another editor can save mid-flight). `e2e/admin.spec.ts` covers the screens, including merge, both conflict choices, invalid changes and read-only tokens.

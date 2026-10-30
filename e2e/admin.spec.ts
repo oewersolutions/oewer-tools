@@ -2,6 +2,12 @@ import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test, type Page } from "@playwright/test";
+import { applyChanges, findRecord } from "../lib/admin/changes";
+import { loadWorkbook, readCell, saveWorkbook } from "../lib/admin/edit";
+import type { Schema } from "../lib/workbook/types";
+
+// The schema is read from disk: the test runner cannot import a .json module the way the app does.
+const schema = JSON.parse(readFileSync(resolve("schemas/workbook_schema.json"), "utf-8")) as Schema;
 
 // A pretend GitHub: the admin page is exercised end to end without touching the real repository.
 const WORKBOOK = readFileSync(resolve("data/oewer_database.xlsx"));
@@ -10,12 +16,22 @@ const CORS = { "access-control-allow-origin": "*", "access-control-allow-headers
 interface Fake {
   puts: { headers: Record<string, string>; body: { message: string; content: string; sha: string; branch: string } }[];
   gets: string[];
+  /** The workbook GitHub currently holds. */
+  current(): Buffer;
 }
 
-async function fakeGithub(page: Page, opts: { push?: boolean; token?: string; conflictOnPut?: boolean } = {}): Promise<Fake> {
-  const fake: Fake = { puts: [], gets: [] };
-  let sha = "a".repeat(40);
+const SHAS = ["a", "b", "c", "d", "e"].map((c) => c.repeat(40));
+
+async function fakeGithub(
+  page: Page,
+  opts: { push?: boolean; token?: string; /** Another editor saves just before the person's first save. */ concurrent?: (bytes: Buffer) => Promise<Buffer> } = {},
+): Promise<Fake> {
+  let bytes: Buffer = WORKBOOK;
+  let version = 0;
+  let concurrentDone = false;
+  const fake: Fake = { puts: [], gets: [], current: () => bytes };
   const json = (body: unknown, status = 200) => ({ status, headers: { ...CORS, "content-type": "application/json" }, body: JSON.stringify(body) });
+  const file = "/repos/acme/site/contents/data/oewer_database.xlsx";
 
   await page.route("https://api.github.com/**", async (route) => {
     const request = route.request();
@@ -25,17 +41,40 @@ async function fakeGithub(page: Page, opts: { push?: boolean; token?: string; co
 
     if (request.method() === "GET") fake.gets.push(url.pathname);
     if (request.method() === "GET" && url.pathname === "/repos/acme/site") return route.fulfill(json({ full_name: "acme/site", permissions: { push: opts.push ?? true } }));
-    if (request.method() === "GET" && url.pathname === "/repos/acme/site/contents/data/oewer_database.xlsx") return route.fulfill(json({ type: "file", sha, size: WORKBOOK.length }));
-    if (request.method() === "GET" && url.pathname === `/repos/acme/site/git/blobs/${sha}`) return route.fulfill(json({ encoding: "base64", content: WORKBOOK.toString("base64") }));
-    if (request.method() === "PUT" && url.pathname === "/repos/acme/site/contents/data/oewer_database.xlsx") {
-      if (opts.conflictOnPut) return route.fulfill(json({ message: "does not match" }, 409));
-      fake.puts.push({ headers: request.headers(), body: request.postDataJSON() });
-      sha = "b".repeat(40);
-      return route.fulfill(json({ content: { sha }, commit: { sha: "c".repeat(40), html_url: "https://github.com/acme/site/commit/ccc" } }));
+    if (request.method() === "GET" && url.pathname === file) return route.fulfill(json({ type: "file", sha: SHAS[version], size: bytes.length }));
+    if (request.method() === "GET" && url.pathname === `/repos/acme/site/git/blobs/${SHAS[version]}`) return route.fulfill(json({ encoding: "base64", content: bytes.toString("base64") }));
+    if (request.method() === "PUT" && url.pathname === file) {
+      const body = request.postDataJSON();
+      if (opts.concurrent && !concurrentDone) {
+        concurrentDone = true;
+        bytes = await opts.concurrent(bytes); // someone else saved first
+        version++;
+      }
+      if (body.sha !== SHAS[version]) return route.fulfill(json({ message: `${file} does not match ${body.sha}` }, 409));
+      fake.puts.push({ headers: request.headers(), body });
+      bytes = Buffer.from(body.content, "base64");
+      version++;
+      return route.fulfill(json({ content: { sha: SHAS[version] }, commit: { sha: "c".repeat(40), html_url: "https://github.com/acme/site/commit/ccc" } }));
     }
     return route.fulfill(json({ message: "Not Found" }, 404));
   });
   return fake;
+}
+
+/** A copy of the workbook with one cell changed, as another editor would save it. */
+const withCell = (sheet: string, pk: string, column: string, value: string) => async (bytes: Buffer): Promise<Buffer> => {
+  const wb = await loadWorkbook(new Uint8Array(bytes));
+  const before = readCell(wb, schema, { sheet, row: findRecord(wb, schema, sheet, pk), column });
+  applyChanges(wb, schema, [{ type: "set", sheet, pk, column, before, after: value }]);
+  return Buffer.from(await saveWorkbook(wb));
+};
+
+async function addChange(page: Page, sheet: string, row: string, column: string, value: string) {
+  await page.getByLabel("Sheet").selectOption(sheet);
+  await page.getByLabel("Row", { exact: true }).fill(row);
+  await page.getByLabel("Column").selectOption(column);
+  await page.getByLabel("New value").fill(value);
+  await page.getByRole("button", { name: "Add to pending changes" }).click();
 }
 
 async function signIn(page: Page, token = "github_pat_GOOD") {
@@ -70,61 +109,115 @@ test("a wrong token gets a clear message and no workbook", async ({ page }) => {
   await expect(page.getByRole("heading", { name: /Signed in/ })).toHaveCount(0);
 });
 
-test("editing a cell validates it and saves one commit with the previous version's SHA", async ({ page }) => {
+test("editing a cell saves one commit with the previous version's SHA", async ({ page }) => {
   const fake = await fakeGithub(page);
   await signIn(page);
-  await page.getByLabel("Sheet").selectOption("tools");
-  await page.getByLabel("Row", { exact: true }).fill("2");
-  await page.getByLabel("Column").selectOption("name");
-  await page.getByLabel("New value").fill("Image Squeezer");
-  await page.getByRole("button", { name: "Check this change" }).click();
-  await expect(page.getByText("The workbook is still valid after this change.")).toBeVisible();
-  await page.getByRole("button", { name: "Save to GitHub" }).click();
+  await addChange(page, "tools", "2", "name", "Image Squeezer");
+  await expect(page.getByText(/tools TOOL0001, name: .* → Image Squeezer/)).toBeVisible();
+  await page.getByRole("button", { name: "Save 1 change to GitHub" }).click();
   await expect(page.getByText("View the commit on GitHub")).toBeVisible();
 
   expect(fake.puts).toHaveLength(1);
   const put = fake.puts[0]!;
-  expect(put.body.sha).toBe("a".repeat(40));
+  expect(put.body.sha).toBe(SHAS[0]);
   expect(put.body.branch).toBe("main");
-  expect(put.body.message).toBe("Admin: change tools row 2 name");
+  expect(put.body.message).toBe("Admin: update tools TOOL0001 name");
   expect(put.headers.authorization).toBe("Bearer github_pat_GOOD");
-  expect(Buffer.from(put.body.content, "base64").length).toBeGreaterThan(1000);
   await expect(page.getByText("version bbbbbbb")).toBeVisible();
+  await expect(page.getByText(/Pending changes \(0\)/)).toBeVisible();
 });
 
-test("a change that would make the workbook invalid cannot be saved", async ({ page }) => {
+test("several changes are saved together as one commit", async ({ page }) => {
   const fake = await fakeGithub(page);
   await signIn(page);
-  await page.getByLabel("Sheet").selectOption("tools");
-  await page.getByLabel("Column").selectOption("status");
-  await page.getByLabel("New value").fill("live");
-  await page.getByRole("button", { name: "Check this change" }).click();
-  await expect(page.getByText(/would leave \d+ problem/)).toBeVisible();
-  await expect(page.getByRole("button", { name: "Save to GitHub" })).toBeDisabled();
+  await addChange(page, "tools", "2", "name", "One");
+  await addChange(page, "tools", "3", "name", "Two");
+  await addChange(page, "tools", "2", "name", "One again"); // same cell: replaces the earlier change
+  await expect(page.getByText(/Pending changes \(2\)/)).toBeVisible();
+  await page.getByRole("button", { name: "Save 2 changes to GitHub" }).click();
+  await expect(page.getByText("View the commit on GitHub")).toBeVisible();
+  expect(fake.puts).toHaveLength(1);
+  expect(fake.puts[0]!.body.message).toBe("Admin: update tools TOOL0001 name and 1 more change");
+});
+
+test("a pending change can be removed before saving", async ({ page }) => {
+  const fake = await fakeGithub(page);
+  await signIn(page);
+  await addChange(page, "tools", "2", "name", "One");
+  await page.getByRole("button", { name: "Remove" }).click();
+  await expect(page.getByText(/Pending changes \(0\)/)).toBeVisible();
+  await expect(page.getByRole("button", { name: /Save .* to GitHub/ })).toHaveCount(0);
   expect(fake.puts).toHaveLength(0);
 });
 
-test("a conflict with a newer version is explained and offers a reload", async ({ page }) => {
-  await fakeGithub(page, { conflictOnPut: true });
+test("a change that would make the workbook invalid is refused and nothing is sent", async ({ page }) => {
+  const fake = await fakeGithub(page);
   await signIn(page);
-  await page.getByLabel("Sheet").selectOption("tools");
-  await page.getByLabel("Column").selectOption("name");
-  await page.getByLabel("New value").fill("Changed");
-  await page.getByRole("button", { name: "Check this change" }).click();
-  await page.getByRole("button", { name: "Save to GitHub" }).click();
-  await expect(page.getByText(/changed on GitHub/)).toBeVisible();
-  await expect(page.getByRole("button", { name: "Reload the latest workbook" })).toBeVisible();
+  await addChange(page, "tools", "2", "status", "live");
+  await page.getByRole("button", { name: "Save 1 change to GitHub" }).click();
+  await expect(page.getByText(/would leave \d+ problem/)).toBeVisible();
+  expect(fake.puts).toHaveLength(0);
+  await expect(page.getByText(/Pending changes \(1\)/)).toBeVisible(); // your change is kept so you can fix it
+});
+
+test("a wrong kind of value is caught as soon as it is added", async ({ page }) => {
+  await fakeGithub(page);
+  await signIn(page);
+  await addChange(page, "tools", "2", "featured", "maybe");
+  await expect(page.getByText(/must be true or false/)).toBeVisible();
+  await expect(page.getByText(/Pending changes \(0\)/)).toBeVisible();
+});
+
+test("when someone saved a different cell first, your change is merged and saved", async ({ page }) => {
+  const fake = await fakeGithub(page, { concurrent: withCell("tools", "TOOL0002", "name", "Their edit") });
+  await signIn(page);
+  await addChange(page, "tools", "2", "name", "My edit");
+  await page.getByRole("button", { name: "Save 1 change to GitHub" }).click();
+  await expect(page.getByText(/merged with newer changes made by someone else/)).toBeVisible();
+
+  const final = await loadWorkbook(new Uint8Array(fake.current()));
+  expect(readCell(final, schema, { sheet: "tools", row: findRecord(final, schema, "tools", "TOOL0001"), column: "name" })).toBe("My edit");
+  expect(readCell(final, schema, { sheet: "tools", row: findRecord(final, schema, "tools", "TOOL0002"), column: "name" })).toBe("Their edit");
+});
+
+test("when someone changed the same cell, you choose and your edit is not lost", async ({ page }) => {
+  const fake = await fakeGithub(page, { concurrent: withCell("tools", "TOOL0001", "name", "Their name") });
+  await signIn(page);
+  await addChange(page, "tools", "2", "name", "My name");
+  await page.getByRole("button", { name: "Save 1 change to GitHub" }).click();
+
+  await expect(page.getByText(/Someone else changed the workbook on GitHub/)).toBeVisible();
+  await expect(page.getByText("Their name")).toBeVisible(); // what is on GitHub now
+  expect(fake.puts).toHaveLength(0); // nothing was overwritten
+  await expect(page.getByText(/Pending changes \(1\)/)).toBeVisible(); // and your edit is still here
+  await expect(page.getByRole("button", { name: "Apply my choices and save" })).toBeDisabled();
+
+  await page.getByLabel("Use my version (overwrite theirs)").check();
+  await page.getByRole("button", { name: "Apply my choices and save" }).click();
+  await expect(page.getByText("View the commit on GitHub")).toBeVisible();
+  const final = await loadWorkbook(new Uint8Array(fake.current()));
+  expect(readCell(final, schema, { sheet: "tools", row: findRecord(final, schema, "tools", "TOOL0001"), column: "name" })).toBe("My name");
+});
+
+test("choosing to keep their version drops your change", async ({ page }) => {
+  const fake = await fakeGithub(page, { concurrent: withCell("tools", "TOOL0001", "name", "Their name") });
+  await signIn(page);
+  await addChange(page, "tools", "2", "name", "My name");
+  await page.getByRole("button", { name: "Save 1 change to GitHub" }).click();
+  await page.getByLabel("Keep what is on GitHub (drop my change)").check();
+  await page.getByRole("button", { name: "Apply my choices and save" }).click();
+  await expect(page.getByText(/Pending changes \(0\)/)).toBeVisible();
+  const final = await loadWorkbook(new Uint8Array(fake.current()));
+  expect(readCell(final, schema, { sheet: "tools", row: findRecord(final, schema, "tools", "TOOL0001"), column: "name" })).toBe("Their name");
+  expect(fake.puts).toHaveLength(0);
 });
 
 test("a read-only token is told it cannot save", async ({ page }) => {
   await fakeGithub(page, { push: false });
   await signIn(page);
   await expect(page.getByText(/can only read the repository/)).toBeVisible();
-  await page.getByLabel("Sheet").selectOption("tools");
-  await page.getByLabel("Column").selectOption("name");
-  await page.getByLabel("New value").fill("X");
-  await page.getByRole("button", { name: "Check this change" }).click();
-  await expect(page.getByRole("button", { name: "Save to GitHub" })).toBeDisabled();
+  await addChange(page, "tools", "2", "name", "X");
+  await expect(page.getByRole("button", { name: "Save 1 change to GitHub" })).toBeDisabled();
 });
 
 test("signing out forgets the token", async ({ page }) => {
@@ -177,11 +270,8 @@ test("the whole sign-in and save flow runs without breaking the policy", async (
   page.on("pageerror", (e) => consoleErrors.push(e.message));
   await fakeGithub(page);
   await signIn(page);
-  await page.getByLabel("Sheet").selectOption("tools");
-  await page.getByLabel("Column").selectOption("name");
-  await page.getByLabel("New value").fill("Policy check");
-  await page.getByRole("button", { name: "Check this change" }).click();
-  await page.getByRole("button", { name: "Save to GitHub" }).click();
+  await addChange(page, "tools", "2", "name", "Policy check");
+  await page.getByRole("button", { name: "Save 1 change to GitHub" }).click();
   await expect(page.getByText("View the commit on GitHub")).toBeVisible();
   expect(await page.evaluate(() => (window as unknown as { __violations: string[] }).__violations)).toEqual([]);
   expect(consoleErrors).toEqual([]);

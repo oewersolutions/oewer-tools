@@ -2,8 +2,10 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { NumberField, SelectField, TextAreaField } from "../../components/tools/ui";
-import { loadWorkbook, readCell, saveWorkbook, setCell, EditError } from "../../lib/admin/edit";
-import { commitWorkbook, GithubError, parseRepo, readWorkbookFile, verifySession, type GithubSession } from "../../lib/admin/github";
+import { commitMessageFor, describeChange, queueSet, recordIdAt, type Change, type Conflict } from "../../lib/admin/changes";
+import { loadWorkbook, readCell, coerceValue, EditError } from "../../lib/admin/edit";
+import { commitWorkbook, GithubError, parseRepo, readWorkbookFile, verifySession, type GithubSession, type WorkbookFile } from "../../lib/admin/github";
+import { saveChanges, type Repo } from "../../lib/admin/save";
 import { checkWorkbook, formatIssue, schema, type Issue } from "../../lib/workbook";
 
 const WORKBOOK_PATH = "data/oewer_database.xlsx";
@@ -278,51 +280,75 @@ function Workbook({
   const columns = useMemo(() => schema.sheets[sheet]!.columns.map((c) => c.name), [sheet]);
   const [column, setColumn] = useState(columns[0]!);
   const [value, setValue] = useState("");
+  const [pending, setPending] = useState<Change[]>([]);
   const [message, setMessage] = useState("");
   const [working, setWorking] = useState(false);
-  const [preview, setPreview] = useState<{ bytes: Uint8Array; before: string; issues: Issue[] }>();
-  const [saved, setSaved] = useState<{ url: string }>();
+  const [problems, setProblems] = useState<Issue[]>([]);
+  const [conflicts, setConflicts] = useState<Conflict[]>([]);
+  const [choices, setChoices] = useState<Record<number, "theirs" | "mine">>({});
+  const [saved, setSaved] = useState<{ url: string; rebased: boolean }>();
 
-  const rowNumber = Number(row);
-  const ref = { sheet, row: rowNumber, column };
+  const repo: Repo = useMemo(
+    () => ({
+      read: () => readWorkbookFile(loaded.session),
+      commit: (bytes, sha, text) => commitWorkbook(loaded.session, bytes, sha, text),
+    }),
+    [loaded.session],
+  );
+
+  function resetOutcome() {
+    setSaved(undefined);
+    setProblems([]);
+    setError(undefined);
+  }
 
   async function currentValue(): Promise<string> {
     try {
-      return readCell(await loadWorkbook(loaded.bytes), schema, ref);
+      return readCell(await loadWorkbook(loaded.bytes), schema, { sheet, row: Number(row), column });
     } catch {
       return "";
     }
   }
 
-  async function check() {
-    setError(undefined);
-    setSaved(undefined);
+  async function addPending() {
+    resetOutcome();
     setWorking(true);
     try {
       const wb = await loadWorkbook(loaded.bytes);
-      const before = setCell(wb, schema, ref, value);
-      const bytes = await saveWorkbook(wb);
-      const { issues } = await analyse(bytes);
-      setPreview({ bytes, before, issues });
-      if (!message) setMessage(`Admin: change ${sheet} row ${row} ${column}`);
+      const pk = recordIdAt(wb, schema, sheet, Number(row));
+      if (!pk) throw new EditError("That row has no ID, so it cannot be changed.");
+      coerceValue(schema.sheets[sheet]!.columns.find((c) => c.name === column)!, value); // reject a wrong kind of value now
+      const before = readCell(wb, schema, { sheet, row: Number(row), column });
+      setPending((p) => queueSet(p, { type: "set", sheet, pk, column, before, after: value }));
+      setConflicts([]);
     } catch (e) {
-      setPreview(undefined);
       setError(describe(e));
     } finally {
       setWorking(false);
     }
   }
 
-  async function commit() {
-    if (!preview) return;
-    setError(undefined);
+  async function run(changes: Change[], base: WorkbookFile, force: ReadonlySet<number>) {
+    resetOutcome();
     setWorking(true);
     try {
-      const result = await commitWorkbook(loaded.session, preview.bytes, loaded.sha, message.trim() || `Admin: change ${sheet} row ${row} ${column}`);
-      const { issues, rowCounts } = await analyse(preview.bytes);
-      setLoaded({ ...loaded, bytes: preview.bytes, sha: result.fileSha, issues, rowCounts });
-      setSaved({ url: result.commitUrl });
-      setPreview(undefined);
+      const text = message.trim() || commitMessageFor(changes);
+      const result = await saveChanges(repo, base, changes, text, force);
+      if (result.status === "saved") {
+        setLoaded({ ...loaded, bytes: result.base.bytes, sha: result.base.sha, ...(await analyse(result.base.bytes)) });
+        setSaved({ url: result.commit.commitUrl, rebased: result.rebased });
+        setPending([]);
+        setConflicts([]);
+        setChoices({});
+        setMessage("");
+      } else if (result.status === "invalid") {
+        setProblems(result.issues);
+      } else {
+        // Work from the newest version from now on, and let the person decide each clash.
+        setLoaded({ ...loaded, bytes: result.base.bytes, sha: result.base.sha, ...(await analyse(result.base.bytes)) });
+        setConflicts(result.conflicts);
+        setChoices({});
+      }
     } catch (e) {
       setError(describe(e));
     } finally {
@@ -330,8 +356,26 @@ function Workbook({
     }
   }
 
-  const existing = preview?.before;
-  const blockers = preview?.issues ?? [];
+  const base: WorkbookFile = { bytes: loaded.bytes, sha: loaded.sha, size: loaded.bytes.length };
+  const unresolved = conflicts.filter((c) => !choices[c.index]);
+
+  function saveWithChoices() {
+    const drop = new Set(conflicts.filter((c) => choices[c.index] === "theirs").map((c) => c.index));
+    const force = new Set(conflicts.filter((c) => choices[c.index] === "mine").map((c) => c.index));
+    const remaining = pending.filter((_, i) => !drop.has(i));
+    // Indexes shift when changes are dropped, so translate the forced ones.
+    const forced = new Set<number>();
+    pending.forEach((_, i) => {
+      if (force.has(i)) forced.add(remaining.indexOf(pending[i]!));
+    });
+    setPending(remaining);
+    if (remaining.length === 0) {
+      setConflicts([]);
+      setChoices({});
+      return;
+    }
+    void run(remaining, base, forced);
+  }
 
   return (
     <div className="space-y-8">
@@ -341,7 +385,7 @@ function Workbook({
             Signed in to {loaded.session.owner}/{loaded.session.repo}
           </h2>
           <div className="flex gap-2">
-            <button type="button" onClick={onReload} disabled={busy} className={secondary}>
+            <button type="button" onClick={onReload} disabled={busy || pending.length > 0} title={pending.length > 0 ? "Save or discard your pending changes first" : undefined} className={secondary}>
               Reload
             </button>
             <button type="button" onClick={onSignOut} className={secondary}>
@@ -380,13 +424,13 @@ function Workbook({
 
       <section aria-labelledby="edit-heading" className="rounded-2xl border border-brand-100 bg-white p-6 shadow-soft">
         <h2 id="edit-heading" className="font-display text-2xl font-semibold text-ink">
-          Change one cell
+          Change a cell
         </h2>
-        <p className="mt-1 text-sm text-slate-700">A first, simple editor to prove saving works. Row 2 is the first data row; row 1 holds the column names.</p>
+        <p className="mt-1 text-sm text-slate-700">Add as many changes as you like, then save them together as one commit. Row 2 is the first data row; row 1 holds the column names.</p>
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            void check();
+            void addPending();
           }}
           className="mt-5 grid gap-5 md:grid-cols-3"
         >
@@ -396,63 +440,108 @@ function Workbook({
             onChange={(s) => {
               setSheet(s);
               setColumn(schema.sheets[s]!.columns[0]!.name);
-              setPreview(undefined);
             }}
             options={sheets.map((s) => ({ value: s, label: s }))}
           />
-          <NumberField label="Row" value={row} onChange={(v) => { setRow(v); setPreview(undefined); }} />
-          <SelectField label="Column" value={column} onChange={(c) => { setColumn(c); setPreview(undefined); }} options={columns.map((c) => ({ value: c, label: c }))} />
+          <NumberField label="Row" value={row} onChange={setRow} />
+          <SelectField label="Column" value={column} onChange={setColumn} options={columns.map((c) => ({ value: c, label: c }))} />
           <div className="md:col-span-3">
-            <TextAreaField label="New value" value={value} onChange={(v) => { setValue(v); setPreview(undefined); }} rows={3} />
+            <TextAreaField label="New value" value={value} onChange={setValue} rows={3} />
             <button type="button" className="mt-2 text-sm font-medium text-brand-700 hover:underline" onClick={async () => setValue(await currentValue())}>
               Fill in the current value
             </button>
           </div>
           <div className="md:col-span-3">
             <button type="submit" disabled={working} className={button}>
-              Check this change
+              Add to pending changes
             </button>
           </div>
         </form>
+      </section>
+
+      <section aria-labelledby="pending-heading" className="rounded-2xl border border-brand-100 bg-white p-6 shadow-soft">
+        <h2 id="pending-heading" className="font-display text-2xl font-semibold text-ink">
+          Pending changes ({pending.length})
+        </h2>
+        {pending.length === 0 ? (
+          <p className="mt-2 text-slate-700">Nothing yet. Changes you add appear here and are only saved when you press Save.</p>
+        ) : (
+          <ul className="mt-4 space-y-2">
+            {pending.map((c, i) => (
+              <li key={i} className="flex items-start justify-between gap-3 rounded-xl bg-brand-50 p-3 text-sm">
+                <span>{describeChange(c)}</span>
+                <button type="button" onClick={() => { resetOutcome(); setConflicts([]); setPending((p) => p.filter((_, n) => n !== i)); }} className="shrink-0 font-medium text-brand-700 hover:underline">
+                  Remove
+                </button>
+              </li>
+            ))}
+          </ul>
+        )}
 
         {error && (
           <div role="alert" className="mt-5 text-red-800">
             <p>{error}</p>
-            {error.includes("changed on GitHub") && (
-              <button type="button" onClick={onReload} className={`${secondary} mt-3`}>
-                Reload the latest workbook
-              </button>
-            )}
           </div>
         )}
 
-        {preview && (
-          <div className="mt-6 space-y-4 rounded-xl bg-brand-50 p-5" role="status">
-            <p>
-              <strong>{sheet}</strong>, row {row}, <strong>{column}</strong>: <span className="line-through">{existing || "(empty)"}</span> → <strong>{value || "(empty)"}</strong>
+        {problems.length > 0 && (
+          <div role="alert" className="mt-5 text-red-800">
+            <p className="font-medium">These changes would leave {problems.length} problem(s) in the workbook, so nothing was saved:</p>
+            <ul className="mt-2 list-disc space-y-1 pl-6 text-sm">
+              {problems.slice(0, 10).map((i, n) => (
+                <li key={n}>{formatIssue(i)}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {conflicts.length > 0 && (
+          <div role="alert" className="mt-5 space-y-4 rounded-xl border border-gold-500/50 bg-gold-300/20 p-5">
+            <p className="font-medium text-ink">
+              Someone else changed the workbook on GitHub. {conflicts.length === 1 ? "One of your changes clashes" : `${conflicts.length} of your changes clash`} with their edits. Nothing was saved. Choose what to do with each:
             </p>
-            {blockers.length === 0 ? (
-              <p className="font-medium text-brand">The workbook is still valid after this change.</p>
-            ) : (
-              <div className="text-red-800">
-                <p className="font-medium">This change would leave {blockers.length} problem(s), so it cannot be saved:</p>
-                <ul className="mt-2 list-disc space-y-1 pl-6 text-sm">
-                  {blockers.slice(0, 10).map((i, n) => (
-                    <li key={n}>{formatIssue(i)}</li>
-                  ))}
-                </ul>
-              </div>
-            )}
-            <TextAreaField label="Commit message" value={message} onChange={setMessage} rows={2} />
-            <button type="button" onClick={() => void commit()} disabled={working || blockers.length > 0 || !loaded.canPush} className={button}>
-              {working ? "Saving…" : "Save to GitHub"}
+            {conflicts.map((c) => (
+              <fieldset key={c.index} className="space-y-2 text-sm">
+                <legend className="font-medium">{describeChange(c.change)}</legend>
+                <p className="text-slate-700">
+                  {c.kind === "changed" && <>On GitHub now: <strong>{c.theirs === "" ? "(empty)" : c.theirs}</strong></>}
+                  {c.kind === "row_missing" && "That record was deleted on GitHub."}
+                  {c.kind === "id_taken" && "That ID is already used on GitHub."}
+                </p>
+                <label className="flex items-center gap-2">
+                  <input type="radio" name={`c${c.index}`} checked={choices[c.index] === "theirs"} onChange={() => setChoices({ ...choices, [c.index]: "theirs" })} />
+                  Keep what is on GitHub (drop my change)
+                </label>
+                {c.kind === "changed" && (
+                  <label className="flex items-center gap-2">
+                    <input type="radio" name={`c${c.index}`} checked={choices[c.index] === "mine"} onChange={() => setChoices({ ...choices, [c.index]: "mine" })} />
+                    Use my version (overwrite theirs)
+                  </label>
+                )}
+              </fieldset>
+            ))}
+            <button type="button" onClick={saveWithChoices} disabled={working || unresolved.length > 0} className={button}>
+              Apply my choices and save
+            </button>
+          </div>
+        )}
+
+        {pending.length > 0 && conflicts.length === 0 && (
+          <div className="mt-5 space-y-4">
+            <TextAreaField label="Commit message (optional)" value={message} onChange={setMessage} rows={2} placeholder={commitMessageFor(pending)} />
+            <button type="button" onClick={() => void run(pending, base, new Set())} disabled={working || !loaded.canPush} className={button}>
+              {working ? "Saving…" : `Save ${pending.length} change${pending.length === 1 ? "" : "s"} to GitHub`}
             </button>
           </div>
         )}
 
         {saved && (
           <p role="status" className="mt-5 font-medium text-brand">
-            Saved. <a href={saved.url} className="underline" rel="noopener noreferrer">View the commit on GitHub</a>. The site rebuilds automatically.
+            Saved. {saved.rebased && "Your changes were merged with newer changes made by someone else. "}
+            <a href={saved.url} className="underline" rel="noopener noreferrer">
+              View the commit on GitHub
+            </a>
+            . The site rebuilds automatically.
           </p>
         )}
       </section>
