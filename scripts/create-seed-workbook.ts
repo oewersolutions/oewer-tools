@@ -68,7 +68,7 @@ const SEED: Record<string, Row[]> = {
     ["schema_version", "1.0.1", "string", NOW],
     ["site_name", "OEWER Tools", "string", NOW],
     ["site_tagline", "Free online tools that respect your privacy", "string", NOW],
-    ["site_url", "https://example.com", "string", NOW],
+    ["site_url", "https://oewer.in", "string", NOW],
     ["primary_color", "#174f49", "string", NOW],
     ["contact_email", CONTACT_EMAIL, "string", NOW],
     ["search_enabled", "true", "bool", NOW],

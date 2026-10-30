@@ -48,10 +48,10 @@ Two workflows in `.github/workflows/`:
 - `validate.yml` runs on pull requests and non-main branches: workbook validation, typecheck, lint, tests, build and the browser tests.
 - `deploy.yml` runs on every push to `main` (including admin workbook commits): validate, test, build, then publish. The publish job only starts if the build succeeded, so a failed build never replaces the live site.
 
-One-time setup: in the repository go to Settings > Pages and set Source to "GitHub Actions". Optionally add repository variables `SITE_URL` (e.g. `https://example.com`) and `BASE_PATH` (`/<repo-name>` for a github.io project site; leave unset for a custom domain).
+One-time setup: in the repository go to Settings > Pages and set Source to "GitHub Actions". Add the repository variable `SITE_URL` (the live address, here `https://oewer.in`). Add `BASE_PATH` (`/<repo-name>`) only for a github.io project site; leave it unset on a custom domain. The live site is at **https://oewer.in**; see `docs/domain.md`.
 
 ## Status
-Phase 1 (workbook schema, validator, export, versioning) and Phase 2 (site shell, page templates, SEO, accessibility tests, CI/deploy workflows) are done. Phase 3 (tool registry and the 10 MVP tools, published) is done. The blog content, the admin page and analytics are next. See `TASKS.md` and `docs/schema-versioning.md`.
+Phases 1 to 6 are done: the workbook pipeline, the site and 10 tools, the blog, the browser-based admin (editing, history and restore, dashboard, publish status), analytics with a consent banner, and ad placements (off). Phase 7 launch work is under way: legal pages, audit, build safety and the custom domain are done; the acceptance checklist and the AdSense application remain. See `TASKS.md`; start with `docs/admin.md`, `docs/domain.md` and `docs/audit.md`.
 
 ## Security
 The workbook is public: put only public content in it. Never commit tokens, credentials or exports. The admin GitHub token is entered in the browser at run time and is never stored in the repo or the bundle. Copy `.env.example` to `.env` locally; `.env` is git-ignored.
