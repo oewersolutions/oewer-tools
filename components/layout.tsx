@@ -58,16 +58,16 @@ export function SectionHeading({
   return (
     <div className="flex flex-wrap items-end justify-between gap-4">
       <div className="max-w-2xl">
-        {eyebrow && <p className="text-sm font-semibold uppercase tracking-wider text-brand-600">{eyebrow}</p>}
-        <h2 id={id} className="font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
+        {eyebrow && <p className="t-eyebrow">{eyebrow}</p>}
+        <h2 id={id} className="t-heading mt-2 text-ink">
           {title}
         </h2>
-        {description && <p className="mt-2 text-lg text-slate-700">{description}</p>}
+        {description && <p className="mt-2 max-w-xl text-muted">{description}</p>}
       </div>
       {href && (
-        <Link href={href} className="group inline-flex items-center gap-1 font-medium text-brand-700 hover:text-brand-900">
+        <Link href={href} className="group inline-flex items-center gap-2 font-medium text-brand transition-[gap] hover:gap-3">
           {hrefLabel ?? "See all"}
-          <ArrowRight aria-hidden="true" className="size-4 transition group-hover:translate-x-0.5" />
+          <ArrowRight aria-hidden="true" className="size-4" />
         </Link>
       )}
     </div>

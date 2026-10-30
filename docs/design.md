@@ -69,3 +69,24 @@ The old token names (`brand-*`, `gold-*`, `cream`, `font-display`, `shadow-soft`
 - **Footer** (`components/Footer.tsx`): the logo and a one-line promise; **Tools** (the categories), **Company** (the header and footer menus, without Tools) and **Legal** (the footer_legal menu, plus **Analytics settings** or **Privacy choices** when they apply); a thin rule; the copyright and the contact email from `contact_email`. All of it comes from the workbook, so changing a menu or the email in the admin changes the footer.
 
 Two Safari details are handled on purpose: Safari does not focus a button when it is clicked (so the search button is given focus back explicitly), and it does not focus a link when the mouse is pressed on it (so the search results keep the field focused while the mouse is down; before this fix, results could not be clicked in Safari).
+
+## Home page and cards (T9.3)
+
+The home page (`app/page.tsx`) follows the approved preview:
+
+1. **Hero:** a dark green field, a small eyebrow, one large headline, one short paragraph, the search field, three popular tools, and three plain facts. No picture and no sample card.
+2. **Featured tools:** four cards that lead with a real example result (the featured tools first, topped up with others if fewer than four are marked featured).
+3. **Browse:** one tile per category with its tool count.
+4. **Why:** four plain columns on a quiet grey band, then the at-a-glance numbers (tools, categories, files uploaded, accounts needed).
+5. **Guides:** the three latest articles with covers.
+6. **Good to know:** the questions as a calm list, with the same structured data as before.
+7. **Closing call to action** on the dark field.
+
+Ad slots keep their two home placements (`top_banner` after the featured tools, `mid_page` after the "why" band).
+
+Shared parts that changed with it, so every page using them changes too:
+
+- `ToolCard` shows the category pill, the name, a two-line summary and, at the bottom, a real result from the tool's own maths (`lib/tool-examples.ts`) so the number can never disagree with the tool. Tools without an example say "Open".
+- `PostCard` is image-led: a cover, then the category, date and reading time, the title and a two-line summary.
+- `Cover` (`components/Cover.tsx`) draws a generated cover from the article's address, the same each time. It is a stand-in until articles carry their own cover image (T9.7).
+- `SectionHeading` is the small label, large heading and link pattern used in every section.

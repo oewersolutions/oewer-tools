@@ -83,7 +83,7 @@ Source: `docs/OEWER_TOOLS_PROJECT_PLAN.md` (v1.1: JavaScript-only, GitHub Pages,
 ## Phase 9 — Modern minimal redesign and article images (plan: `docs/redesign-plan.md`)
 - [x] **T9.1** Design system: Poppins, colour and type tokens, spacing, buttons, cards, motion rules; replace Inter and Fraunces; contrast checked; `docs/design.md`
 - [x] **T9.2** Header, mobile menu, search and footer redesigned
-- [ ] **T9.3** Home page redesigned: hero with search, featured tools, popular tools, latest articles, short trust and FAQ sections
+- [x] **T9.3** Home page redesigned: hero with search, featured tools, popular tools, latest articles, short trust and FAQ sections
 - [ ] **T9.4** Tools index, category pages and the tool page layout redesigned
 - [ ] **T9.5** Blog index and category, tag and author pages redesigned (big title, category chips, image cards)
 - [ ] **T9.6** Article page redesigned: cover image, contents list beside the text, author card, related tools and articles
@@ -91,6 +91,7 @@ Source: `docs/OEWER_TOOLS_PROJECT_PLAN.md` (v1.1: JavaScript-only, GitHub Pages,
 - [ ] **T9.8** Admin image upload for articles: choose, resize and compress in the browser, commit to the repository, insert as cover or inline image
 - [ ] **T9.9** About, Contact, Privacy and Terms pages restyled; the About page gets the editorial treatment
 - [ ] **T9.10** Redesign QA: accessibility, contrast, performance budgets, Safari, mobile, SEO audit, image rules, docs
+- [ ] **T9.11** Testing for the redesign (deferred by the owner until the pages are built): update the browser tests that the new home, tools, blog and article pages break, add tests for the new parts (home sections, covers, article layout, image upload), run Chrome, Firefox and Safari in CI, fix what turns up
 
 ## Suggested next order
 T1.3b → T1.3a → T1.4 → T1.5 → T2.1/T2.2 → T3.1 + first calculator → T4.1 first article → T2.6 → T5.1 spike
