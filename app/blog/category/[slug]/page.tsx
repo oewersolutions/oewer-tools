@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Breadcrumbs from "../../../../components/Breadcrumbs";
 import { PostCard } from "../../../../components/Cards";
 import { Container, PageBand } from "../../../../components/layout";
+import { nonEmptyParams } from "../../../../lib/static";
 import { pageMetadata } from "../../../../lib/metadata";
 import { getBlogCategories, getBlogCategoryBySlug, getPostReadingMinutes, getPostsInCategory } from "../../../../lib/content";
 
@@ -12,9 +13,12 @@ export const dynamicParams = false;
 
 // Only categories that have published articles get a page.
 export function generateStaticParams() {
-  return getBlogCategories()
-    .filter((c) => getPostsInCategory(c.category_id).length > 0)
-    .map((c) => ({ slug: c.slug }));
+  return nonEmptyParams(
+    getBlogCategories()
+      .filter((c) => getPostsInCategory(c.category_id).length > 0)
+      .map((c) => ({ slug: c.slug })),
+    { slug: "_none" },
+  );
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

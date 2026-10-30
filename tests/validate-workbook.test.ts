@@ -338,3 +338,53 @@ describe("tool page content", () => {
     expect(has(bad("help", "<script>x</script>", "string"), "invalid_value", "tool_settings", "setting_value")).toBe(true);
   });
 });
+
+describe("article image blocks", () => {
+  it("requires alt text and an asset path", () => {
+    const issues = validateWith((d) => {
+      const blk = d.post_blocks![0]!;
+      blk.values.block_type = "image";
+      blk.values.content = "";
+      blk.values.asset_path = "";
+    });
+    expect(has(issues, "required", "post_blocks", "content")).toBe(true);
+    expect(has(issues, "required", "post_blocks", "asset_path")).toBe(true);
+  });
+  it("accepts an image block with alt text and a path", () => {
+    const issues = validateWith((d) => {
+      const blk = d.post_blocks![0]!;
+      blk.values.block_type = "image";
+      blk.values.content = "A chart of EMI against tenure";
+      blk.values.asset_path = "/assets/chart.png";
+    });
+    expect(issues).toEqual([]);
+  });
+});
+
+describe("author page addresses", () => {
+  it("rejects two authors whose names make the same address", () => {
+    const issues = validateWith((d) => {
+      d.authors!.push({ row: 99, values: { ...d.authors![0]!.values, author_id: "AUTH0002", display_name: "oewer  team!" } });
+    });
+    expect(has(issues, "duplicate_slug", "authors", "display_name")).toBe(true);
+  });
+  it("rejects a name with no letters or numbers", () => {
+    expect(has(validateWith((d) => (d.authors![0]!.values.display_name = "!!!")), "invalid_value", "authors", "display_name")).toBe(true);
+  });
+});
+
+describe("tool guides (articles linked from a tool)", () => {
+  const withGuides = (value: string) =>
+    validateWith((d) => {
+      const row = d.tool_settings!.find((r) => r.values.tool_id === "TOOL0001" && r.values.setting_key === "guides")!;
+      row.values.setting_value = value;
+    });
+  it("accepts existing post ids", () => {
+    expect(withGuides('["POST0001"]')).toEqual([]);
+  });
+  it("rejects ids that are not posts and malformed lists", () => {
+    expect(has(withGuides('["POST9999"]'), "unknown_ref", "tool_settings")).toBe(true);
+    expect(has(withGuides('["TOOL0001"]'), "invalid_tool_content", "tool_settings")).toBe(true);
+    expect(has(withGuides('"POST0001"'), "invalid_tool_content", "tool_settings")).toBe(true);
+  });
+});

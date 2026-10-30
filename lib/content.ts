@@ -1,6 +1,9 @@
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { readingMinutes } from "./format";
+import { hasOwnPage, pickRelatedPosts, slugify } from "./posts";
+
+export { MIN_POSTS_FOR_INDEXED_TAG } from "./posts";
 import { parseToolContent, pickRelated, type ToolContent } from "./tools/content";
 import type { ContentExport } from "./workbook/export";
 
@@ -127,6 +130,29 @@ export function getRelatedTools(tool: Tool, chosenIds: string[]): { tool: Tool; 
   });
 }
 
+/** Published articles that a tool lists as guides, in the order given. */
+export function getGuidesForTool(toolId: string): Post[] {
+  const published = getPublishedPosts();
+  return getToolContent(toolId)
+    .guides.map((id) => published.find((p) => p.post_id === id))
+    .filter((p): p is Post => p !== undefined);
+}
+
+/** Published tools whose guides include this article. */
+export function getToolsForPost(postId: string): { tool: Tool; category: ToolCategory }[] {
+  return getPublishedTools().flatMap((tool) => {
+    const category = getToolCategory(tool.category_id);
+    return category && getToolContent(tool.tool_id).guides.includes(postId) ? [{ tool, category }] : [];
+  });
+}
+
+export function getRelatedPosts(post: Post): Post[] {
+  const rows = sheet<{ post_id: string; tag_id: string }>("post_tags");
+  const tagsByPost = new Map<string, Set<string>>();
+  for (const r of rows) tagsByPost.set(r.post_id, (tagsByPost.get(r.post_id) ?? new Set()).add(r.tag_id));
+  return pickRelatedPosts(post, tagsByPost, getPublishedPosts());
+}
+
 // Static pages
 
 export const getPublishedPages = (): Page[] => sheet<Page>("pages").filter((p) => p.status === "published");
@@ -135,13 +161,28 @@ export const getPageBySlug = (slug: string): Page | undefined => getPublishedPag
 // Blog
 
 export const getPublishedPosts = (): Post[] => sheet<Post>("posts").filter((p) => p.status === "published");
-export const getPostBySlug = (slug: string): Post | undefined => getPublishedPosts().find((p) => p.slug === slug);
+/** Posts that get their own page: published and archived, plus drafts in a draft-preview build. */
+export const getPostsWithPages = (): Post[] => sheet<Post>("posts").filter((p) => hasOwnPage(p.status, process.env.OEWER_PREVIEW_DRAFTS === "1"));
+export const getPostBySlug = (slug: string): Post | undefined => getPostsWithPages().find((p) => p.slug === slug);
 export const getPostBlocks = (postId: string): PostBlock[] =>
   sheet<PostBlock>("post_blocks")
     .filter((b) => b.post_id === postId)
     .sort((a, b) => a.sort_order - b.sort_order);
 /** Minutes to read a published post, from its blocks. */
 export const getPostReadingMinutes = (postId: string): number => readingMinutes(getPostBlocks(postId).map((b) => b.content).join(" "));
+export const getAuthors = (): Author[] => sheet<Author>("authors");
+/** Author pages are addressed by a slug made from the display name. */
+export const authorSlug = (author: Author): string => slugify(author.display_name);
+export const getAuthorBySlug = (slug: string): Author | undefined => getAuthors().find((a) => authorSlug(a) === slug);
+export const getPostsByAuthor = (authorId: string): Post[] => getPublishedPosts().filter((p) => p.author_id === authorId);
+
+export const getTagBySlug = (slug: string): Tag | undefined => sheet<Tag>("tags").find((t) => t.slug === slug);
+export const getPostsByTag = (tagId: string): Post[] => {
+  const ids = new Set(sheet<{ post_id: string; tag_id: string }>("post_tags").filter((r) => r.tag_id === tagId).map((r) => r.post_id));
+  return getPublishedPosts().filter((p) => ids.has(p.post_id));
+};
+/** Tags used by at least one published article. */
+export const getTagsInUse = (): Tag[] => sheet<Tag>("tags").filter((t) => getPostsByTag(t.tag_id).length > 0);
 export const getAuthor = (id: string): Author | undefined => sheet<Author>("authors").find((a) => a.author_id === id);
 export const getBlogCategories = (): BlogCategory[] => sheet<BlogCategory>("blog_categories");
 export const getBlogCategory = (id: string): BlogCategory | undefined => getBlogCategories().find((c) => c.category_id === id);

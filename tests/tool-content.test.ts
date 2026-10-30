@@ -12,10 +12,10 @@ const rows = [
 
 describe("parseToolContent", () => {
   it("collects one tool's content and ignores other settings", () => {
-    expect(parseToolContent(rows, "TOOL0001")).toEqual({ help: "## Use it", examples: [], faq: [{ q: "Q", a: "A" }], related: [] });
+    expect(parseToolContent(rows, "TOOL0001")).toEqual({ help: "## Use it", examples: [], faq: [{ q: "Q", a: "A" }], related: [], guides: [] });
   });
   it("returns empty content for a tool with none", () => {
-    expect(parseToolContent(rows, "TOOL0009")).toEqual({ help: "", examples: [], faq: [], related: [] });
+    expect(parseToolContent(rows, "TOOL0009")).toEqual({ help: "", examples: [], faq: [], related: [], guides: [] });
   });
 });
 
@@ -38,6 +38,7 @@ describe("seed content", () => {
       expect(c.examples.length).toBeGreaterThan(0);
       expect(c.faq.length).toBeGreaterThan(0);
       expect(c.related.length).toBeGreaterThan(0);
+      expect(c.guides.length).toBeGreaterThan(0);
     }
   });
 });

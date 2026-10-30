@@ -2,13 +2,14 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Breadcrumbs from "../../../../components/Breadcrumbs";
 import { pageMetadata } from "../../../../lib/metadata";
+import { nonEmptyParams } from "../../../../lib/static";
 import { getToolComponent } from "../../../../components/tools/registry";
 import { Prose } from "../../../../components/Prose";
-import { ToolCard } from "../../../../components/Cards";
+import { PostCard, ToolCard } from "../../../../components/Cards";
 import { ToolIcon } from "../../../../components/icons";
 import { Container, PageBand } from "../../../../components/layout";
 import { Check } from "lucide-react";
-import { getPublishedTools, getRelatedTools, getToolBySlug, getToolCategory, getToolContent } from "../../../../lib/content";
+import { getBlogCategory, getGuidesForTool, getPostReadingMinutes, getPublishedTools, getRelatedTools, getToolBySlug, getToolCategory, getToolContent } from "../../../../lib/content";
 
 type Props = { params: Promise<{ category: string; tool: string }> };
 
@@ -19,9 +20,8 @@ export function generateStaticParams() {
     const category = getToolCategory(tool.category_id);
     return category ? [{ category: category.slug, tool: tool.slug }] : [];
   });
-  // Static export fails on an empty list, which happens when no tool is published.
-  // This placeholder is never linked and renders the 404 page (see notFound() below).
-  return params.length > 0 ? params : [{ category: "_none", tool: "_none" }];
+  // Placeholder (never linked, renders the 404 page) so the export does not fail when no tool is published.
+  return nonEmptyParams(params, { category: "_none", tool: "_none" });
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -53,6 +53,7 @@ export default async function ToolPage({ params }: Props) {
   const { tool, category } = found;
   const content = getToolContent(tool.tool_id);
   const related = getRelatedTools(tool, content.related);
+  const guides = getGuidesForTool(tool.tool_id);
   const ToolComponent = getToolComponent(tool.component_key); // throws, failing the build, for an unregistered key
 
   return (
@@ -123,6 +124,19 @@ export default async function ToolPage({ params }: Props) {
               ))}
             </div>
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd(content.faq) }} />
+          </section>
+        )}
+
+        {guides.length > 0 && (
+          <section aria-labelledby="guides-heading">
+            <h2 id="guides-heading" className="font-display text-3xl font-semibold tracking-tight text-ink">
+              Guides about {tool.name}
+            </h2>
+            <div className="mt-6 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+              {guides.map((p) => (
+                <PostCard key={p.post_id} post={p} categoryName={getBlogCategory(p.category_id)?.name} minutes={getPostReadingMinutes(p.post_id)} />
+              ))}
+            </div>
           </section>
         )}
 

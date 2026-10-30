@@ -63,3 +63,44 @@ describe("redirects", () => {
     expect(html).toContain('name="robots" content="noindex"');
   });
 });
+
+describe("sitemap: blog tags and authors", () => {
+  const blog = {
+    ...content,
+    sheets: {
+      ...content.sheets,
+      authors: [
+        { author_id: "AUTH0001", display_name: "OEWER Team" },
+        { author_id: "AUTH0002", display_name: "No Posts" },
+      ],
+      posts: [
+        { post_id: "POST0001", slug: "a", status: "published", category_id: "BCAT0001", author_id: "AUTH0001", updated_at: "" },
+        { post_id: "POST0002", slug: "b", status: "published", category_id: "BCAT0001", author_id: "AUTH0001", updated_at: "" },
+        { post_id: "POST0003", slug: "c", status: "draft", category_id: "BCAT0001", author_id: "AUTH0001", updated_at: "" },
+      ],
+      tags: [
+        { tag_id: "TAG0001", slug: "popular" },
+        { tag_id: "TAG0002", slug: "thin" },
+        { tag_id: "TAG0003", slug: "draft-only" },
+      ],
+      post_tags: [
+        { post_id: "POST0001", tag_id: "TAG0001" },
+        { post_id: "POST0002", tag_id: "TAG0001" },
+        { post_id: "POST0001", tag_id: "TAG0002" },
+        { post_id: "POST0003", tag_id: "TAG0003" },
+        { post_id: "POST0003", tag_id: "TAG0001" },
+      ],
+    },
+  } as unknown as ContentExport;
+  const paths = buildSitemapEntries(blog).map((e) => e.path);
+
+  it("lists tags with at least two published articles, not thin or draft-only ones", () => {
+    expect(paths).toContain("/blog/tag/popular/");
+    expect(paths).not.toContain("/blog/tag/thin/");
+    expect(paths).not.toContain("/blog/tag/draft-only/");
+  });
+  it("lists authors with a published article", () => {
+    expect(paths).toContain("/blog/author/oewer-team/");
+    expect(paths).not.toContain("/blog/author/no-posts/");
+  });
+});

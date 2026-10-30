@@ -5,6 +5,7 @@ export interface SeedToolContent {
   examples: { title: string; text: string }[];
   faq: { q: string; a: string }[];
   related: string[];
+  guides: string[];
 }
 
 export const TOOL_CONTENT: Record<string, SeedToolContent> = {
@@ -20,6 +21,7 @@ export const TOOL_CONTENT: Record<string, SeedToolContent> = {
       { q: "What is the largest image I can use?", a: "Files up to 25 MB and about 50 megapixels. Very large photos can be slow on older phones." },
     ],
     related: ["TOOL0002", "TOOL0003"],
+    guides: ["POST0002", "POST0006"],
   },
   TOOL0002: {
     help: "Follow these steps:\n\n- Choose a JPG, PNG or WebP image. Its current size is filled in for you.\n- Either type a new width or height in pixels, or switch to a percentage of the original.\n- Leave **Keep the original proportions** ticked so the picture is not stretched.\n- Download the resized image.",
@@ -33,6 +35,7 @@ export const TOOL_CONTENT: Record<string, SeedToolContent> = {
       { q: "Is my image uploaded anywhere?", a: "No. Everything happens in your browser on your own device." },
     ],
     related: ["TOOL0001", "TOOL0003"],
+    guides: ["POST0002"],
   },
   TOOL0003: {
     help: "Follow these steps:\n\n- Choose a JPG, PNG or WebP image.\n- Pick the format to convert to.\n- For JPG and WebP, set the quality. Higher quality means a larger file.\n- Download the converted image.",
@@ -46,6 +49,7 @@ export const TOOL_CONTENT: Record<string, SeedToolContent> = {
       { q: "Is my image uploaded anywhere?", a: "No. Everything happens in your browser on your own device." },
     ],
     related: ["TOOL0001", "TOOL0002"],
+    guides: ["POST0002"],
   },
   TOOL0004: {
     help: "Follow these steps:\n\n- Enter the loan amount, the yearly interest rate and the tenure.\n- Choose whether the tenure is in years or months.\n- The monthly EMI, total interest and total payment update as you type.\n\n## How it is calculated\n\nEMI = P × r × (1 + r)^n ÷ ((1 + r)^n − 1), where P is the loan amount, r is the monthly rate (yearly rate ÷ 12 ÷ 100) and n is the number of months.",
@@ -59,6 +63,7 @@ export const TOOL_CONTENT: Record<string, SeedToolContent> = {
       { q: "Is the information I type saved?", a: "No. The calculation runs in your browser and nothing is sent or stored." },
     ],
     related: ["TOOL0005", "TOOL0007"],
+    guides: ["POST0001"],
   },
   TOOL0005: {
     help: "Follow these steps:\n\n- Enter the deposit amount, the yearly interest rate and the tenure.\n- Choose how often the interest is compounded. Most banks compound fixed deposits quarterly.\n- See the maturity amount and the interest earned.\n\n## How it is calculated\n\nMaturity = P × (1 + r ÷ n)^(n × t), where P is the deposit, r the yearly rate, n the compounding periods per year and t the years. With simple interest, maturity = P × (1 + r × t).",
@@ -72,6 +77,7 @@ export const TOOL_CONTENT: Record<string, SeedToolContent> = {
       { q: "Is the information I type saved?", a: "No. The calculation runs in your browser and nothing is sent or stored." },
     ],
     related: ["TOOL0004", "TOOL0007"],
+    guides: ["POST0004"],
   },
   TOOL0006: {
     help: "Follow these steps:\n\n- Choose whether to add GST to an amount or remove it from an amount that already includes GST.\n- Enter the amount and the GST rate. Common rates are 0, 5, 12, 18 and 28.\n- See the amount without GST, the GST, and the CGST and SGST halves.",
@@ -85,6 +91,7 @@ export const TOOL_CONTENT: Record<string, SeedToolContent> = {
       { q: "Is the information I type saved?", a: "No. The calculation runs in your browser and nothing is sent or stored." },
     ],
     related: ["TOOL0007", "TOOL0004"],
+    guides: ["POST0003"],
   },
   TOOL0007: {
     help: "Pick the kind of calculation, then enter two numbers:\n\n- **X% of Y**: for example, 20% of 150.\n- **X is what % of Y**: for example, 25 out of 200.\n- **% change from X to Y**: how much a value went up or down.\n- **Increase or decrease X by Y%**: for example, a price rise of 10%.",
@@ -99,6 +106,7 @@ export const TOOL_CONTENT: Record<string, SeedToolContent> = {
       { q: "Is the information I type saved?", a: "No. The calculation runs in your browser and nothing is sent or stored." },
     ],
     related: ["TOOL0006", "TOOL0004"],
+    guides: ["POST0003"],
   },
   TOOL0008: {
     help: "Follow these steps:\n\n- Paste your JSON on the left. It is checked as you type.\n- Choose **Format** to make it easy to read, or **Minify** to make it as small as possible.\n- Pick the indentation and, if you like, sort the keys A to Z.\n- Copy the result.\n\nIf the JSON is invalid, the message says what is wrong and, where your browser gives it, the line and column.",
@@ -112,6 +120,7 @@ export const TOOL_CONTENT: Record<string, SeedToolContent> = {
       { q: "How large can the input be?", a: "Up to 5 million characters." },
     ],
     related: ["TOOL0010", "TOOL0009"],
+    guides: ["POST0006"],
   },
   TOOL0009: {
     help: "Follow these steps:\n\n- Type or paste a link or any text.\n- Choose the error correction. Medium suits most uses; High lets the code still scan if part of it is damaged.\n- Pick the image size and colour.\n- Download the code as a PNG or SVG.\n\nAlways test the code with a phone before you print it.",
@@ -125,6 +134,7 @@ export const TOOL_CONTENT: Record<string, SeedToolContent> = {
       { q: "PNG or SVG?", a: "Use PNG for screens and documents. Use SVG when you need it to stay sharp at any size, for example for print." },
     ],
     related: ["TOOL0010", "TOOL0008"],
+    guides: ["POST0005", "POST0006"],
   },
   TOOL0010: {
     help: "Follow these steps:\n\n- Type or paste your text.\n- The counts update as you type: words, characters, sentences, paragraphs and lines.\n- Reading and speaking time are estimates based on average speeds.",
@@ -138,5 +148,6 @@ export const TOOL_CONTENT: Record<string, SeedToolContent> = {
       { q: "Is my text sent to a server?", a: "No. The count happens in your browser and your text never leaves your device." },
     ],
     related: ["TOOL0008", "TOOL0009"],
+    guides: ["POST0006"],
   },
 };

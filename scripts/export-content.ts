@@ -9,6 +9,8 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { checkWorkbook, formatIssue, schema } from "../lib/workbook";
+import { existsSync } from "node:fs";
+import { missingImageFiles } from "../lib/posts";
 import { TOOL_COMPONENT_KEYS } from "../lib/tools/keys";
 import { buildContent, serialize } from "../lib/workbook/export";
 
@@ -26,6 +28,25 @@ if (issues.length > 0) {
 }
 
 const content = buildContent(data, schema);
+
+if (process.env.OEWER_PREVIEW_DRAFTS === "1") {
+  if (process.env.GITHUB_WORKFLOW === "Deploy to GitHub Pages") {
+    console.error("OEWER_PREVIEW_DRAFTS must never be set for a deploy build.");
+    process.exit(1);
+  }
+  console.warn("PREVIEW BUILD: draft articles get a page. Do not deploy this build.");
+}
+
+// Images referenced by articles must exist under public/, or the build would publish broken images.
+const missing = missingImageFiles(
+  (content.sheets.post_blocks ?? []).map((b) => ({ block_id: String(b.block_id), block_type: String(b.block_type), content: String(b.content), asset_path: String(b.asset_path) })),
+  (path) => existsSync(resolve(ROOT, "public", `.${path}`)),
+);
+if (missing.length > 0) {
+  console.error("Not exporting: these article images are not in the public folder:");
+  for (const path of missing) console.error(`  ${path}`);
+  process.exit(1);
+}
 
 // For test builds only: show every tool that has a component, so browser tests can exercise them while they are still drafts.
 if (process.env.OEWER_PREVIEW_ALL_TOOLS === "1") {

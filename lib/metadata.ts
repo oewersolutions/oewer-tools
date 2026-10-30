@@ -14,10 +14,12 @@ interface PageSeo {
   path: string;
   entity?: { type: SeoEntityType; id: string };
   type?: "website" | "article";
+  /** Keep this page out of search engines even when no seo_metadata row says so. */
+  noindex?: boolean;
 }
 
 /** Metadata for a page: the `seo_metadata` row for the entity overrides title, description, canonical and noindex. */
-export function pageMetadata({ title, description, path, entity, type = "website" }: PageSeo): Metadata {
+export function pageMetadata({ title, description, path, entity, type = "website", noindex = false }: PageSeo): Metadata {
   const override = entity ? seoOverrides(getContent()).get(`${entity.type}:${entity.id}`) : undefined;
   const finalTitle = override?.meta_title || title;
   const finalDescription = override?.meta_description || description;
@@ -26,8 +28,8 @@ export function pageMetadata({ title, description, path, entity, type = "website
   return {
     title: override?.meta_title ? { absolute: finalTitle } : finalTitle,
     description: finalDescription,
-    alternates: { canonical },
-    robots: override?.noindex ? { index: false, follow: true } : undefined,
+    alternates: { canonical, types: { "application/rss+xml": `${BASE_PATH}/feed.xml` } },
+    robots: override?.noindex || noindex ? { index: false, follow: true } : undefined,
     openGraph: { title: finalTitle, description: finalDescription, url: canonical, siteName: getSetting("site_name"), type },
   };
 }

@@ -7,6 +7,7 @@ Help, examples, FAQ and related tools for each tool live in the `tool_settings` 
 | `help` | `string` | Restricted Markdown shown under the tool (for example a "How to use" heading and a list). |
 | `examples` | `json` | A list of `{"title": "...", "text": "..."}` (up to 10; title up to 100 characters, text up to 500). |
 | `faq` | `json` | A list of `{"q": "...", "a": "..."}` (up to 10; question up to 200 characters, answer up to 1000). Also published as FAQ structured data. |
+| `guides` | `json` | A list of article ids, such as `["POST0001"]` (up to 10). The tool page shows them as "Guides", and each article automatically shows a "Try it yourself" card for the tool. |
 | `related` | `json` | A list of tool ids, such as `["TOOL0005", "TOOL0007"]` (up to 10; three are shown). When absent, other published tools in the same category are suggested. |
 
 Rules:

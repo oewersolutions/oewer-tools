@@ -15,9 +15,11 @@ export interface ToolContent {
   faq: ToolFaq[];
   /** tool_ids of related tools; when empty the page falls back to other tools in the same category. */
   related: string[];
+  /** post_ids of articles about this tool. The article pages link back to the tool automatically. */
+  guides: string[];
 }
 
-export const TOOL_CONTENT_KEYS = ["help", "examples", "faq", "related"] as const;
+export const TOOL_CONTENT_KEYS = ["help", "examples", "faq", "related", "guides"] as const;
 export type ToolContentKey = (typeof TOOL_CONTENT_KEYS)[number];
 export const isToolContentKey = (key: string): key is ToolContentKey => (TOOL_CONTENT_KEYS as readonly string[]).includes(key);
 
@@ -48,6 +50,9 @@ export function checkToolContentSetting(key: ToolContentKey, value: string, valu
       ? null
       : `each item in 'faq' needs a question 'q' (up to 200 characters) and an answer 'a' (up to 1000)`;
   }
+  if (key === "guides") {
+    return parsed.every((id) => typeof id === "string" && /^POST\d{4}$/.test(id)) ? null : "'guides' must be a list of post ids such as \"POST0001\"";
+  }
   return parsed.every((id) => typeof id === "string" && /^TOOL\d{4}$/.test(id)) ? null : "'related' must be a list of tool ids such as \"TOOL0004\"";
 }
 
@@ -60,7 +65,7 @@ interface SettingRow {
 
 /** Assemble one tool's content from its settings rows. Missing parts are empty; the data is validated at export time. */
 export function parseToolContent(rows: SettingRow[], toolId: string): ToolContent {
-  const content: ToolContent = { help: "", examples: [], faq: [], related: [] };
+  const content: ToolContent = { help: "", examples: [], faq: [], related: [], guides: [] };
   for (const row of rows) {
     if (row.tool_id !== toolId || !isToolContentKey(row.setting_key)) continue;
     if (row.setting_key === "help") content.help = row.setting_value;

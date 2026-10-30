@@ -39,10 +39,10 @@ Source: `docs/OEWER_TOOLS_PROJECT_PLAN.md` (v1.1: JavaScript-only, GitHub Pages,
 - [x] **T3.7** Flip finished tools from `draft` to `published` in the workbook (all 10 seed tools published; the workbook is regenerated from the seed script)
 
 ## Phase 4 — Blog engine (4–6 days)
-- [ ] **T4.1** `posts` + `post_blocks` → static article pages (restricted Markdown renderer, no raw HTML) ← T2.3
-- [ ] **T4.2** Blog index, categories, tags, author display, SEO metadata
-- [ ] **T4.3** Draft/published/archived handling
-- [ ] **T4.4** Related-tool and related-article links
+- [x] **T4.1** `posts` + `post_blocks` → static article pages (restricted Markdown renderer, no raw HTML) ← T2.3 (heading anchors and "In this article" list, Article structured data, alt text required, build fails on missing image files, see `docs/blog-content.md`)
+- [x] **T4.2** Blog index, categories, tags, author display, SEO metadata (tag pages, author pages with a bio box, linked tags, topic list, RSS feed, sitemap entries; no pagination yet, add it when there are many articles)
+- [x] **T4.3** Draft/published/archived handling (archived keeps its page with a notice and noindex; drafts have no page except in `npm run build:preview`; none of them is listed anywhere)
+- [x] **T4.4** Related-tool and related-article links (tool-to-article links via a `guides` setting on the tool, shown both ways; "Keep reading" is chosen automatically by shared tags and category)
 - [ ] **T4.5** Write first original articles
 
 ## Phase 5 — Browser-based admin panel (7–11 days)

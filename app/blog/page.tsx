@@ -4,9 +4,9 @@ import Breadcrumbs from "../../components/Breadcrumbs";
 import { PostCard } from "../../components/Cards";
 import { ArrowRight } from "../../components/icons";
 import { Container, PageBand } from "../../components/layout";
-import { getBlogCategories, getBlogCategory, getPostReadingMinutes, getPostsInCategory, getPublishedPosts } from "../../lib/content";
+import { getBlogCategories, getBlogCategory, getPostReadingMinutes, getPostsInCategory, getPublishedPosts, getTagsInUse } from "../../lib/content";
 import { formatDate } from "../../lib/format";
-import { pageMetadata } from "../../lib/metadata";
+import { BASE_PATH, pageMetadata } from "../../lib/metadata";
 import { postUrl } from "../../lib/search";
 
 export const metadata: Metadata = pageMetadata({
@@ -18,6 +18,7 @@ export const metadata: Metadata = pageMetadata({
 export default function BlogIndexPage() {
   const posts = getPublishedPosts();
   const categories = getBlogCategories().filter((c) => getPostsInCategory(c.category_id).length > 0);
+  const tags = getTagsInUse();
   const [latest, ...rest] = posts;
 
   return (
@@ -72,6 +73,27 @@ export default function BlogIndexPage() {
           </>
         ) : (
           <p className="text-slate-600">No articles yet.</p>
+        )}
+        {tags.length > 0 && (
+          <section aria-labelledby="topics-heading" className="border-t border-brand-100 pt-10">
+            <h2 id="topics-heading" className="font-display text-2xl font-semibold text-ink">
+              Browse by topic
+            </h2>
+            <ul className="mt-4 flex flex-wrap gap-2">
+              {tags.map((t) => (
+                <li key={t.tag_id}>
+                  <Link href={`/blog/tag/${t.slug}/`} className="inline-flex rounded-full bg-brand-50 px-4 py-1.5 text-sm font-medium text-brand-800 transition hover:bg-brand-100">
+                    {t.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-6 text-sm text-slate-600">
+              <a href={`${BASE_PATH}/feed.xml`} className="font-medium text-brand-700 hover:underline">
+                Subscribe with RSS
+              </a>
+            </p>
+          </section>
         )}
       </Container>
     </>

@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Breadcrumbs from "../../components/Breadcrumbs";
 import { Container, PageBand } from "../../components/layout";
 import { Prose } from "../../components/Prose";
+import { nonEmptyParams } from "../../lib/static";
 import { pageMetadata } from "../../lib/metadata";
 import { getPageBySlug, getPublishedPages } from "../../lib/content";
 
@@ -12,7 +13,7 @@ export const dynamicParams = false;
 
 // Static pages from the `pages` sheet (About, Contact, Privacy, Terms). Drafts are not built.
 export function generateStaticParams() {
-  return getPublishedPages().map((p) => ({ slug: p.slug }));
+  return nonEmptyParams(getPublishedPages().map((p) => ({ slug: p.slug })), { slug: "_none" });
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

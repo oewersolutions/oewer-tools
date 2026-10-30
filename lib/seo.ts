@@ -1,3 +1,4 @@
+import { MIN_POSTS_FOR_INDEXED_TAG, slugify } from "./posts";
 import type { ContentExport } from "./workbook/export";
 
 export type SeoEntityType = "page" | "tool_category" | "tool" | "post" | "blog_category";
@@ -66,6 +67,19 @@ export function buildSitemapEntries(content: ContentExport): SitemapEntry[] {
   }
   for (const p of posts) {
     if (indexed("post", p.post_id)) entries.push({ path: `/blog/${p.slug}/`, lastModified: dateOnly(p.updated_at) });
+  }
+
+  // Tag pages with enough articles, and author pages with at least one.
+  const postsByTag = new Map<string, number>();
+  const publishedIds = new Set(posts.map((p) => p.post_id));
+  for (const pt of sheets.post_tags ?? []) {
+    if (publishedIds.has(String(pt.post_id))) postsByTag.set(String(pt.tag_id), (postsByTag.get(String(pt.tag_id)) ?? 0) + 1);
+  }
+  for (const tag of sheets.tags ?? []) {
+    if ((postsByTag.get(String(tag.tag_id)) ?? 0) >= MIN_POSTS_FOR_INDEXED_TAG) entries.push({ path: `/blog/tag/${tag.slug}/` });
+  }
+  for (const author of sheets.authors ?? []) {
+    if (posts.some((p) => p.author_id === author.author_id)) entries.push({ path: `/blog/author/${slugify(String(author.display_name))}/` });
   }
 
   for (const page of (sheets.pages ?? []).filter((p) => p.status === "published")) {

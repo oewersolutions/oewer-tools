@@ -57,6 +57,7 @@ function toolContentRows(first: number): Row[] {
     add(toolId, "examples", JSON.stringify(c.examples), "json");
     add(toolId, "faq", JSON.stringify(c.faq), "json");
     add(toolId, "related", JSON.stringify(c.related), "json");
+    add(toolId, "guides", JSON.stringify(c.guides), "json");
   }
   return rows;
 }

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Fragment } from "react";
 import { parseInline, parseMarkdown } from "../lib/markdown";
 import type { PostBlock } from "../lib/content";
+import { buildOutline } from "../lib/posts";
 
 const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
@@ -82,13 +83,14 @@ export function Prose({ source }: { source: string }) {
 
 /** Renders a blog article from its ordered post_blocks. */
 export function PostBody({ blocks }: { blocks: PostBlock[] }) {
+  const ids = new Map(buildOutline(blocks).map((h) => [h.blockId, h.id]));
   return (
     <div className={PROSE}>
       {blocks.map((block) => {
         switch (block.block_type) {
           case "heading":
             return (
-              <h2 key={block.block_id} className={H2}>
+              <h2 key={block.block_id} id={ids.get(block.block_id)} className={`${H2} scroll-mt-24`}>
                 {block.content}
               </h2>
             );
@@ -105,7 +107,7 @@ export function PostBody({ blocks }: { blocks: PostBlock[] }) {
           case "image":
             return (
               // Plain <img>: static export has no image optimizer.
-              <img key={block.block_id} src={`${BASE_PATH}${block.asset_path}`} alt={block.content} className="h-auto max-w-full rounded-2xl" />
+              <img key={block.block_id} src={`${BASE_PATH}${block.asset_path}`} alt={block.content} loading="lazy" decoding="async" className="h-auto max-w-full rounded-2xl" />
             );
           case "quote":
             return (

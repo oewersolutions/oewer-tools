@@ -1,3 +1,4 @@
+import { slugify } from "../posts";
 import { checkToolContentSetting, isToolContentKey } from "../tools/content";
 import type { ColumnDef, Issue, Schema, SheetDef, SheetRow, WorkbookData } from "./types";
 
@@ -210,6 +211,15 @@ export function validateWorkbook(data: WorkbookData, schema: Schema, options: Va
     }
   }
 
+  // Author pages are addressed by a slug made from the display name, so it must be usable and unique
+  const authorSlugs = new Map<string, SheetRow>();
+  for (const row of rowsOf("authors")) {
+    const slug = slugify(String(row.values.display_name ?? ""));
+    if (slug === "") add("authors", row, "display_name", "invalid_value", "must contain at least one letter or number.");
+    else if (authorSlugs.has(slug)) add("authors", row, "display_name", "duplicate_slug", `makes the same author page address ('${slug}') as another author.`);
+    else authorSlugs.set(slug, row);
+  }
+
   // Tool page content (help, examples, FAQ, related tools)
   const toolIds = keyIndex("tools", "tool_id");
   for (const row of rowsOf("tool_settings")) {
@@ -218,6 +228,12 @@ export function validateWorkbook(data: WorkbookData, schema: Schema, options: Va
     const value = String(row.values.setting_value ?? "");
     const problem = checkToolContentSetting(key, value, String(row.values.value_type ?? ""));
     if (problem) add("tool_settings", row, "setting_value", "invalid_tool_content", `${problem}.`);
+    if (key === "guides" && !problem && row.values.value_type === "json") {
+      const postIds = keyIndex("posts", "post_id");
+      for (const id of JSON.parse(value) as string[]) {
+        if (!postIds.has(id)) add("tool_settings", row, "setting_value", "unknown_ref", `'${id}' is not a post_id in the posts sheet.`);
+      }
+    }
     if (key === "related" && !problem && row.values.value_type === "json") {
       for (const id of JSON.parse(value) as string[]) {
         if (!toolIds.has(id)) add("tool_settings", row, "setting_value", "unknown_ref", `'${id}' is not a tool_id in the tools sheet.`);
@@ -251,6 +267,7 @@ export function validateWorkbook(data: WorkbookData, schema: Schema, options: Va
     const type = block.values.block_type;
     if (type === "image") {
       if (isEmpty(block.values.asset_path)) add("post_blocks", block, "asset_path", "required", "is required for image blocks.");
+      if (isEmpty(block.values.content)) add("post_blocks", block, "content", "required", "is required for image blocks: write the alt text that describes the image.");
     } else if (isEmpty(block.values.content)) {
       add("post_blocks", block, "content", "required", `is required for '${String(type)}' blocks.`);
     }
