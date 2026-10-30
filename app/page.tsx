@@ -32,7 +32,7 @@ import {
 } from "lucide-react";
 
 export function generateMetadata(): Metadata {
-  return { ...pageMetadata({ title: getSetting("site_name"), description: getSetting("site_tagline"), path: "/" }), title: { absolute: `${getSetting("site_name")}: ${getSetting("site_tagline")}` } };
+  return { ...pageMetadata({ title: getSetting("site_name"), description: `${getSetting("site_tagline")}. Compress images, work out a loan EMI, tidy JSON and more, all in your browser, with no uploads and no sign-up.`, path: "/" }), title: { absolute: `${getSetting("site_name")}: ${getSetting("site_tagline")}` } };
 }
 
 const WHY = [

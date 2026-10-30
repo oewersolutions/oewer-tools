@@ -5,6 +5,7 @@ import { Container, PageBand } from "../../components/layout";
 import { Prose } from "../../components/Prose";
 import { nonEmptyParams } from "../../lib/static";
 import { pageMetadata } from "../../lib/metadata";
+import { summarize } from "../../lib/seo";
 import { getPageBySlug, getPublishedPages } from "../../lib/content";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -18,7 +19,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const page = getPageBySlug((await params).slug);
-  return page ? pageMetadata({ title: page.title, path: `/${page.slug}/`, entity: { type: "page", id: page.page_id } }) : {};
+  return page ? pageMetadata({ title: page.title, description: summarize(page.content), path: `/${page.slug}/`, entity: { type: "page", id: page.page_id } }) : {};
 }
 
 export default async function StaticPage({ params }: Props) {

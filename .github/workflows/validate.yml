@@ -26,6 +26,8 @@ jobs:
       - run: npm ci
       - name: Validate workbook
         run: npm run validate
+      - name: Check dependencies for known vulnerabilities
+        run: npm audit --omit=dev --audit-level=high
       - run: npm run typecheck
       - run: npm run lint
       - run: npm test

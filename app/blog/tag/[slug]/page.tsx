@@ -46,7 +46,7 @@ export default async function TagPage({ params }: Props) {
       <Container className="py-14">
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {posts.map((p) => (
-            <PostCard key={p.post_id} post={p} categoryName={getBlogCategory(p.category_id)?.name} minutes={getPostReadingMinutes(p.post_id)} />
+            <PostCard heading="h2" key={p.post_id} post={p} categoryName={getBlogCategory(p.category_id)?.name} minutes={getPostReadingMinutes(p.post_id)} />
           ))}
         </div>
       </Container>

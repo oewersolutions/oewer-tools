@@ -43,7 +43,7 @@ export default async function ToolCategoryPage({ params }: Props) {
         {tools.length > 0 ? (
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {tools.map((t) => (
-              <ToolCard key={t.tool_id} tool={t} category={category} />
+              <ToolCard key={t.tool_id} tool={t} category={category} heading="h2" />
             ))}
           </div>
         ) : (

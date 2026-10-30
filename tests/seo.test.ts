@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { absoluteUrl, activeRedirects, buildRobotsTxt, buildSitemapEntries, redirectFile, redirectHtml, redirectTargetUrl } from "../lib/seo";
+import { absoluteUrl, activeRedirects, buildRobotsTxt, buildSitemapEntries, fitDescription, redirectFile, redirectHtml, redirectTargetUrl, summarize } from "../lib/seo";
 import type { ContentExport } from "../lib/workbook/export";
 
 const content = {
@@ -103,5 +103,37 @@ describe("sitemap: blog tags and authors", () => {
   it("lists authors with a published article", () => {
     expect(paths).toContain("/blog/author/oewer-team/");
     expect(paths).not.toContain("/blog/author/no-posts/");
+  });
+});
+
+describe("fitDescription and summarize", () => {
+  const extra = "Free online tools that respect your privacy. Runs in your browser.";
+  it("keeps a description of a good length as it is", () => {
+    const text = "Work out the monthly EMI, total interest and total payment for any loan, free and in your browser.";
+    expect(fitDescription(text, extra)).toBe(text);
+  });
+  it("adds to a thin one and fills in a missing one", () => {
+    expect(fitDescription("Convert images between JPG, PNG and WebP.", extra)).toBe(`Convert images between JPG, PNG and WebP. ${extra}`);
+    expect(fitDescription("", extra)).toBe(extra);
+    expect(fitDescription("  Short  ", extra)).toBe(`Short. ${extra}`);
+  });
+  it("cuts a long one at a word and marks it", () => {
+    const long = "word ".repeat(60);
+    const out = fitDescription(long, extra);
+    expect(out.length).toBeLessThanOrEqual(160);
+    expect(out.endsWith("…")).toBe(true);
+    expect(out).not.toMatch(/\swor…$/);
+  });
+  it("always lands between 50 and 160 characters", () => {
+    for (const text of ["", "a", "x".repeat(49), "y ".repeat(200)]) {
+      const out = fitDescription(text, extra);
+      expect(out.length).toBeGreaterThanOrEqual(50);
+      expect(out.length).toBeLessThanOrEqual(160);
+    }
+  });
+  it("summarizes the first real paragraph as plain text", () => {
+    const md = "Last updated: 30 October 2026\n\n# Heading\n\nWe built **OEWER Tools** to be [private](/privacy) by `design`.\n\n- a list";
+    expect(summarize(md)).toBe("We built OEWER Tools to be private by design.");
+    expect(summarize("# Only a heading")).toBe("");
   });
 });

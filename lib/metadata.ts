@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { getContent, getSetting } from "./content";
-import { absoluteUrl, seoOverrides, type SeoEntityType } from "./seo";
+import { absoluteUrl, fitDescription, seoOverrides, type SeoEntityType } from "./seo";
 
 export const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
@@ -22,7 +22,7 @@ interface PageSeo {
 export function pageMetadata({ title, description, path, entity, type = "website", noindex = false }: PageSeo): Metadata {
   const override = entity ? seoOverrides(getContent()).get(`${entity.type}:${entity.id}`) : undefined;
   const finalTitle = override?.meta_title || title;
-  const finalDescription = override?.meta_description || description;
+  const finalDescription = fitDescription(override?.meta_description || description || "", `${getSetting("site_tagline")}. Free tools and guides that run in your browser.`);
   const canonical = override?.canonical_url || absoluteUrl(getSiteUrl(), BASE_PATH, path);
 
   return {

@@ -9,13 +9,14 @@ const CARD =
 
 const ICON_CHIP = "flex size-12 shrink-0 items-center justify-center rounded-xl bg-brand-50 text-brand-700 transition group-hover:bg-brand group-hover:text-gold-300";
 
-export function ToolCard({ tool, category }: { tool: Tool; category: ToolCategory }) {
+/** `heading` is the level of the card title: use "h2" when the cards sit directly under the page title. */
+export function ToolCard({ tool, category, heading: Heading = "h3" }: { tool: Tool; category: ToolCategory; heading?: "h2" | "h3" }) {
   return (
     <Link href={toolUrl(category.slug, tool.slug)} className={CARD}>
       <span className={ICON_CHIP}>
         <ToolIcon componentKey={tool.component_key} className="size-6" />
       </span>
-      <h3 className="mt-5 text-lg font-semibold text-ink">{tool.name}</h3>
+      <Heading className="mt-5 text-lg font-semibold text-ink">{tool.name}</Heading>
       <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-700">{tool.description}</p>
       <p className="mt-5 flex items-center justify-between text-sm">
         <span className="rounded-full bg-brand-50 px-2.5 py-0.5 text-xs font-medium text-brand-700">{category.name}</span>
@@ -44,14 +45,14 @@ export function CategoryCard({ category, toolCount }: { category: ToolCategory; 
   );
 }
 
-export function PostCard({ post, categoryName, minutes }: { post: Post; categoryName?: string; minutes?: number }) {
+export function PostCard({ post, categoryName, minutes, heading: Heading = "h3" }: { post: Post; categoryName?: string; minutes?: number; heading?: "h2" | "h3" }) {
   return (
     <Link href={postUrl(post.slug)} className={CARD}>
       <p className="flex items-center gap-2 text-xs">
         {categoryName && <span className="rounded-full bg-gold-300/40 px-2.5 py-0.5 font-medium text-gold-700">{categoryName}</span>}
         <span className="text-slate-600">{formatDate(post.published_at)}</span>
       </p>
-      <h3 className="mt-4 font-display text-xl font-semibold leading-snug text-ink">{post.title}</h3>
+      <Heading className="mt-4 font-display text-xl font-semibold leading-snug text-ink">{post.title}</Heading>
       <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-700">{post.excerpt}</p>
       <p className="mt-5 flex items-center justify-between text-sm">
         <span className="text-slate-600">{minutes ? `${minutes} min read` : ""}</span>

@@ -139,3 +139,35 @@ export function redirectTargetUrl(target: string, basePath: string): string {
   const path = target.startsWith("/") ? target : `/${target}`;
   return `${trimSlashes(basePath)}${path.endsWith("/") || path.includes(".") || path.includes("#") ? path : `${path}/`}`;
 }
+
+export const MIN_DESCRIPTION = 50;
+export const MAX_DESCRIPTION = 160;
+
+/**
+ * A meta description of a good length: short text gets `extra` added after it, and long text is cut at a word
+ * boundary. Search engines show roughly 50 to 160 characters, and a missing or thin description is replaced by
+ * whatever they pick from the page.
+ */
+export function fitDescription(text: string, extra: string): string {
+  let out = text.replace(/\s+/g, " ").trim();
+  if (out.length < MIN_DESCRIPTION) out = out === "" ? extra : `${out.replace(/[.\s]+$/, "")}. ${extra}`;
+  if (out.length > MAX_DESCRIPTION) {
+    const cut = out.slice(0, MAX_DESCRIPTION - 1);
+    out = `${cut.slice(0, Math.max(cut.lastIndexOf(" "), 40)).replace(/[\s,.;:–-]+$/, "")}…`;
+  }
+  return out;
+}
+
+/** Plain text of the first real paragraph of a page's Markdown, for a description: no headings, links or emphasis. */
+export function summarize(markdown: string): string {
+  for (const block of markdown.split(/\n{2,}/)) {
+    const text = block.trim();
+    if (text === "" || /^#{1,3}\s/.test(text) || /^[-*]\s/.test(text) || /^last updated/i.test(text)) continue;
+    return text
+      .replace(/\[([^\]]+)\]\([^)]*\)/g, "$1")
+      .replace(/[*`]/g, "")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+  return "";
+}
