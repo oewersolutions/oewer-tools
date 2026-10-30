@@ -26,7 +26,7 @@ A save is a normal commit on the branch, so the deploy workflow rebuilds the sit
 - **CORS is fine.** `api.github.com` accepts browser requests with an `Authorization` header.
 - **Cost:** `/admin/` ships about 1.5 MB of JavaScript (mostly `exceljs`, uncompressed). Only the admin page pays this; the public pages are unchanged. It could be loaded only after sign-in if it matters.
 - **Read-only tokens** are detected and the save button stays disabled.
-- **Not covered yet** (later tasks): hardening the token handling and a strict Content Security Policy (T5.2), editing whole rows with proper forms (T5.4 and T5.5), a conflict screen that keeps your edit (T5.3), publishing and build status (T5.6), history and restore (T5.7), and a dashboard (T5.8).
+- **Not covered yet** (later tasks): hardening the token handling and a strict Content Security Policy (T5.2), editing whole rows with proper forms (T5.4 and T5.5), a conflict screen that keeps your edit (T5.3), publishing and build status (T5.6), and a dashboard (T5.8).
 
 ## How it is tested
 
@@ -110,3 +110,15 @@ Saving is publishing: a save commits the workbook to the branch the site is buil
 - **Token permission.** Reading build status needs **Actions: Read** on the token. Without it, saving works as usual and the panel says what to add instead of showing an error.
 
 The status client is `lib/admin/actions.ts` and the "what changes" comparison is `lib/admin/live.ts`; both are plain functions with unit tests (`tests/admin-publish.test.ts`). The browser tests run the whole flow against a pretend Actions API: waiting, building and live, a failed validation step, a token without Actions access, and the live-site summary.
+
+## History and restore (T5.7)
+
+Git is the backup: every save, and every restore, is a commit that changed the workbook.
+
+- **History panel.** **Show earlier versions** lists the latest 30 commits on the branch that changed the workbook file, newest first, with the commit message, who made it, when, and a link to the commit on GitHub. Reading history needs only the Contents permission the token already has.
+- **Restore.** Each version except the latest has **Restore**. A confirmation says which version is about to come back and that content saved after it will be replaced on the live site once it rebuilds. Only after **Yes, restore this version** is anything sent.
+- **Restore is a new commit, not a rewind.** The old file is saved on top of the current one with the message "Restore workbook to version abc1234: …". History is never rewritten, so a restore can be undone by restoring the version before it, and the Site status panel then follows the rebuild like any other save.
+- **Guards.** The old version is checked against today's rules first; if it is no longer valid (for example the schema moved on), it is not restored and the first problem is shown. It is saved against the current version's SHA, so if someone saved in the meantime GitHub refuses and nothing is overwritten. Restoring a version identical to the current one does nothing. A read-only token cannot restore.
+- **Pending changes** in the editor stay where they are and apply on top of the restored version.
+
+Code: `lib/admin/history.ts` (unit tested in `tests/admin-history.test.ts`) and `app/admin/History.tsx`; the browser test confirms nothing is committed before the confirmation and that the restored bytes equal the old version.

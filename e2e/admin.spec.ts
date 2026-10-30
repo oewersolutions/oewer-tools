@@ -64,6 +64,15 @@ async function fakeGithub(
       }
       if (url.pathname.endsWith("/actions/runs/2/jobs")) return route.fulfill(json({ jobs: [{ name: "build", conclusion: "failure", steps: [{ name: "Checkout", conclusion: "success" }, { name: "Validate workbook", conclusion: "failure" }] }] }));
     }
+    const FIRST = "1".repeat(40);
+    const FIRST_FILE = "9".repeat(40); // the workbook as it was in the first commit
+    if (request.method() === "GET" && url.pathname === "/repos/acme/site/commits") {
+      const commit = (sha: string, message: string, date: string) => ({ sha, html_url: `https://github.com/acme/site/commit/${sha}`, commit: { message, author: { name: "Editor", date } }, author: { login: "editor" } });
+      const list = savedCommit ? [commit(savedCommit, "Admin: update records", "2026-10-30T11:00:00Z")] : [];
+      return route.fulfill(json([...list, commit(FIRST, "Add workbook", "2026-10-29T09:00:00Z")]));
+    }
+    if (request.method() === "GET" && url.pathname === file && url.searchParams.get("ref") === FIRST) return route.fulfill(json({ type: "file", sha: FIRST_FILE, size: WORKBOOK.length }));
+    if (request.method() === "GET" && url.pathname === `/repos/acme/site/git/blobs/${FIRST_FILE}`) return route.fulfill(json({ encoding: "base64", content: WORKBOOK.toString("base64") }));
     if (request.method() === "GET" && url.pathname === "/repos/acme/site") return route.fulfill(json({ full_name: "acme/site", permissions: { push: opts.push ?? true } }));
     if (request.method() === "GET" && url.pathname === file) return route.fulfill(json({ type: "file", sha: SHAS[version], size: bytes.length }));
     if (request.method() === "GET" && url.pathname === `/repos/acme/site/git/blobs/${SHAS[version]}`) return route.fulfill(json({ encoding: "base64", content: bytes.toString("base64") }));
@@ -855,4 +864,34 @@ test("an article can be previewed as it will look, including a draft, before it 
   await expect(preview).toContainText("Draft preview"); // not published yet, and it says so
   await form.getByLabel("Status").selectOption("published");
   await expect(preview).not.toContainText("Draft preview");
+});
+
+test("a previous version can be restored, after a confirmation, as a new commit", async ({ page }) => {
+  const fake = await fakeGithub(page);
+  await signIn(page);
+  await expect(page.getByRole("heading", { name: "Signed in to acme/site" })).toBeVisible();
+  await page.getByRole("button", { name: "Show earlier versions" }).click();
+  const list = page.getByRole("list", { name: "Earlier versions" });
+  await expect(list.getByText("Add workbook")).toBeVisible();
+  await expect(list.getByRole("button", { name: /^Restore/ })).toHaveCount(0); // with one version, the latest is all there is
+
+  // save an edit of our own so the workbook differs from the first commit
+  await editCell(page, "tools", "TOOL0001", "name", "Image Squeezer");
+  await page.getByRole("button", { name: "Save 1 change to GitHub" }).click();
+  await expect(page.getByText("View the commit on GitHub")).toBeVisible();
+  await page.getByRole("button", { name: "Refresh" }).click();
+  await expect(list.getByText("Admin: update records")).toBeVisible();
+
+  await list.getByRole("button", { name: "Restore version 1111111" }).click();
+  await expect(page.getByRole("alertdialog")).toContainText("Restore the workbook to “Add workbook”?");
+  await page.getByRole("button", { name: "Cancel" }).click();
+  await expect(page.getByRole("alertdialog")).toHaveCount(0);
+  expect(fake.puts).toHaveLength(1); // nothing is restored before confirming
+
+  await list.getByRole("button", { name: "Restore version 1111111" }).click();
+  await page.getByRole("button", { name: "Yes, restore this version" }).click();
+  await expect(page.getByText("Restored version 1111111.")).toBeVisible();
+  expect(fake.puts).toHaveLength(2);
+  expect(fake.puts[1]!.body.message).toBe("Restore workbook to version 1111111: Add workbook");
+  expect(Buffer.from(fake.puts[1]!.body.content, "base64").equals(WORKBOOK)).toBe(true);
 });

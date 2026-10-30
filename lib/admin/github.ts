@@ -50,7 +50,7 @@ export function fromBase64(text: string): Uint8Array {
 }
 
 const encodePath = (path: string) => path.split("/").map(encodeURIComponent).join("/");
-const repoUrl = (t: GithubTarget) => `${API}/repos/${encodeURIComponent(t.owner)}/${encodeURIComponent(t.repo)}`;
+export const repoUrl = (t: GithubTarget) => `${API}/repos/${encodeURIComponent(t.owner)}/${encodeURIComponent(t.repo)}`;
 
 export async function githubCall(session: GithubSession, url: string, init: RequestInit = {}, doFetch: Fetch = fetch): Promise<Response> {
   let response: Response;
@@ -109,10 +109,10 @@ export interface WorkbookFile {
 }
 
 /** Download the workbook and its SHA. Uses the blob API, which works for files of any size up to 100 MB. */
-export async function readWorkbookFile(session: GithubSession, doFetch?: Fetch): Promise<WorkbookFile> {
-  const metaUrl = `${repoUrl(session)}/contents/${encodePath(session.path)}?ref=${encodeURIComponent(session.branch)}`;
+export async function readWorkbookFile(session: GithubSession, doFetch?: Fetch, ref: string = session.branch): Promise<WorkbookFile> {
+  const metaUrl = `${repoUrl(session)}/contents/${encodePath(session.path)}?ref=${encodeURIComponent(ref)}`;
   const meta = (await (await githubCall(session, metaUrl, {}, doFetch)).json()) as { sha?: string; size?: number; type?: string };
-  if (meta.type !== "file" || !meta.sha) throw new GithubError("not_found", `${session.path} is not a file on branch ${session.branch}.`);
+  if (meta.type !== "file" || !meta.sha) throw new GithubError("not_found", `${session.path} is not a file at ${ref}.`);
 
   const blob = (await (await githubCall(session, `${repoUrl(session)}/git/blobs/${meta.sha}`, {}, doFetch)).json()) as { content: string; encoding: string };
   if (blob.encoding !== "base64") throw new GithubError("other", "GitHub sent the workbook in an unexpected format.");

@@ -6,6 +6,7 @@ import { GithubError, parseRepo, readWorkbookFile, verifySession, type GithubSes
 import { EditError } from "../../lib/admin/edit";
 import { checkWorkbook, formatIssue, type Issue, type WorkbookData } from "../../lib/workbook";
 import BuildStatus from "./BuildStatus";
+import History from "./History";
 import Manager from "./Manager";
 import { absoluteUrl } from "../../lib/seo";
 
@@ -322,6 +323,16 @@ function Workbook({
       </section>
 
       <BuildStatus session={loaded.session} watchSha={watchSha} siteUrl={siteUrl} />
+
+      <History
+        session={loaded.session}
+        current={{ bytes: loaded.bytes, sha: loaded.sha, size: loaded.bytes.length }}
+        canPush={loaded.canPush}
+        onRestored={async (base, commitSha) => {
+          setWatchSha(commitSha);
+          setLoaded({ ...loaded, bytes: base.bytes, sha: base.sha, ...(await analyse(base.bytes)) });
+        }}
+      />
 
       <Manager
         onPublished={setWatchSha}
