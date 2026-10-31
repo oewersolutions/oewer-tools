@@ -101,6 +101,24 @@ test("the unit converter sends nothing while you type", async ({ page }) => {
   expect(requests).toEqual([]);
 });
 
+test("the password generator sends nothing, and never puts the password in the address", async ({ page }) => {
+  const path = "/tools/utilities/password-generator/";
+  test.skip(!published.has(path), "tool is not published");
+  await open(page, path);
+  const password = (await page.getByTestId("generated-password").textContent()) ?? "";
+  expect(password).toHaveLength(16);
+  const requests = await requestsDuring(
+    page,
+    async () => {
+      await page.getByRole("button", { name: "Generate another" }).click();
+      await page.getByLabel("Length").fill("40");
+    },
+    password,
+  );
+  expect(requests).toEqual([]);
+  expect(page.url()).not.toContain(encodeURIComponent(password));
+});
+
 test("the RD and discount calculators send nothing while you type", async ({ page }) => {
   const typing: [string, string, string][] = [
     ["/tools/finance-calculators/rd-calculator/", "Monthly deposit (₹)", "7500"],

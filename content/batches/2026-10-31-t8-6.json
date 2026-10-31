@@ -1,0 +1,112 @@
+{
+ "date": "2026-10-31",
+ "articles": [
+  {
+   "title": "How to Create a Strong, Random Password",
+   "category": "How-To",
+   "excerpt": "How long a password should be, why random beats clever, what bits of strength mean, how a fair generator works and why a password manager is the practical answer.",
+   "tags": [
+    "passwords",
+    "security",
+    "privacy"
+   ],
+   "blocks": [
+    [
+     "paragraph",
+     "A strong password is long, unique and random. Most of the old advice about mixing capitals, numbers and symbols matters much less than length and not reusing passwords. This guide explains how long a password should be, why randomness matters, what the bits of strength in a generator mean, and why a password manager is the practical answer."
+    ],
+    [
+     "heading",
+     "Length matters more than complexity"
+    ],
+    [
+     "paragraph",
+     "Current guidance from standards bodies puts length first. NIST's digital identity guidelines (SP 800-63B) say a password that is the only sign-in factor should be at least 15 characters, and that a system should accept passwords of at least 64 characters. They also say sites should not force rules such as one capital letter, one number and one symbol, and should not make people change passwords on a schedule unless there is evidence of a breach. The OWASP authentication cheat sheet gives the same limits: shorter than 8 characters is weak even with a second factor, and shorter than 15 is weak without one."
+    ],
+    [
+     "paragraph",
+     "The US cybersecurity agency CISA gives a simple rule for people: use at least 16 characters, and a different password for every account. The reason for uniqueness is that when one site is breached, attackers try the same email and password on other sites. A strong password reused in two places is only as safe as the weaker of the two sites."
+    ],
+    [
+     "heading",
+     "Why random beats clever"
+    ],
+    [
+     "paragraph",
+     "People are poor at being random. A password such as Summer2026! looks complex, but it follows a pattern attackers try early: a word, a capital letter, a year and one symbol. Replacing letters with numbers, such as a for 4 or o for 0, is also a pattern they know. A password is strong only if it could not be guessed by anyone who knows how you think, which is why a computer should choose it."
+    ],
+    [
+     "paragraph",
+     "Computers also need care. The ordinary random function in many programming languages is built for games and simulations, and its output can be predicted. Browsers provide a separate function, crypto.getRandomValues, for security uses. It returns cryptographically strong random values. The password generator on this site uses it and nothing else."
+    ],
+    [
+     "heading",
+     "What \"bits of strength\" means"
+    ],
+    [
+     "paragraph",
+     "Strength is measured in bits. A password with 50 bits of strength is as hard to guess by trying everything as a secret that has 2 to the power of 50 possibilities. Each added bit doubles the work. For a password drawn at random from a pool of characters, the bits are the length multiplied by the base-2 logarithm of the pool size."
+    ],
+    [
+     "list",
+     "Lowercase letters only: 26 characters, about 4.7 bits each. A 12-character password has about 56 bits.\nLowercase, uppercase and numbers: 62 characters, about 5.95 bits each. A 16-character password has about 95 bits.\nAll four groups with the symbols in the generator: 86 characters, about 6.4 bits each. A 16-character password has about 103 bits."
+    ],
+    [
+     "paragraph",
+     "The figure is only valid for passwords made at random. A password you invented yourself has far fewer bits than its length suggests, however many symbols it contains. The generator labels the result Weak under 50 bits, Fair from 50, Strong from 70 and Very strong from 100. These labels are a guide, not a promise: how many guesses an attacker can make per second depends on how the website or service stores your password."
+    ],
+    [
+     "heading",
+     "How a generator can make every character equally likely"
+    ],
+    [
+     "paragraph",
+     "A common shortcut is to take a random number and use the remainder after dividing by the number of characters. That is slightly biased. A 32-bit random number has 4,294,967,296 possible values, and that is not an exact multiple of most pool sizes, so the first characters in the pool come up a little more often. The fix is called rejection sampling: numbers from the uneven leftover range are thrown away and a new one is drawn. Every character then has exactly the same chance. The generator also checks that the password contains at least one character from each group you picked, and if it does not, it draws the whole password again instead of changing one position, so that no pattern is introduced."
+    ],
+    [
+     "heading",
+     "Look-alike characters and typing by hand"
+    ],
+    [
+     "paragraph",
+     "If you must read a password aloud or type it from paper, the characters I, l, 1, |, O, 0 and o are easy to mix up. The generator can leave them out. This costs a few bits of strength, which you can win back by adding a character or two."
+    ],
+    [
+     "heading",
+     "Use a password manager"
+    ],
+    [
+     "paragraph",
+     "Nobody can remember dozens of unique 16-character random passwords. CISA recommends a password manager to generate, store and fill them in, so that you remember only one long master passphrase. NIST also says sites must allow password managers and pasting into password fields. Two more habits matter just as much: turn on multi-factor authentication, especially for email, banking and social accounts, and check a password you are unsure of against known breaches before using it."
+    ],
+    [
+     "heading",
+     "A checklist"
+    ],
+    [
+     "list",
+     "Use at least 16 characters for important accounts; use the maximum a site allows for your password manager's master password.\nUse a different password for every account.\nLet a generator choose it; do not build it from words, dates or names.\nStore it in a password manager rather than a note or a file.\nTurn on multi-factor authentication wherever it is offered.\nChange a password when you learn of a breach, not on a calendar."
+    ]
+   ],
+   "sources": [
+    {
+     "title": "NIST SP 800-63B: Digital Identity Guidelines, Authentication",
+     "url": "https://pages.nist.gov/800-63-4/sp800-63b.html"
+    },
+    {
+     "title": "Authentication Cheat Sheet (OWASP)",
+     "url": "https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html"
+    },
+    {
+     "title": "Use Strong Passwords (CISA)",
+     "url": "https://www.cisa.gov/secure-our-world/use-strong-passwords"
+    },
+    {
+     "title": "Crypto: getRandomValues() (MDN)",
+     "url": "https://developer.mozilla.org/en-US/docs/Web/API/Crypto/getRandomValues"
+    }
+   ],
+   "checkedOn": "2026-10-31"
+  }
+ ]
+}

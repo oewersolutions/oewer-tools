@@ -58,6 +58,8 @@ export function toolExample(componentKey: string): ToolExample | null {
       return { note: "With or without the end date", value: "Count days" };
     case "unit-converter":
       return { note: "Length, weight, temperature and more", value: "Every unit" };
+    case "password-generator":
+      return { note: "Random, made in your browser", value: "Strong passwords" };
     case "percentage-calculator":
       return { note: "15% of 2,000", value: "300" };
     case "image-compressor":

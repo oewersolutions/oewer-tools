@@ -10,6 +10,7 @@ import ImageCompressor from "./ImageCompressor";
 import ImageConverter from "./ImageConverter";
 import ImageResizer from "./ImageResizer";
 import JsonFormatter from "./JsonFormatter";
+import PasswordGenerator from "./PasswordGenerator";
 import PercentageCalculator from "./PercentageCalculator";
 import LumpsumCalculator from "./LumpsumCalculator";
 import QrCodeGenerator from "./QrCodeGenerator";
@@ -38,6 +39,7 @@ export const toolComponents: { [K in ToolComponentKey]: ComponentType } = {
   "age-calculator": AgeCalculator,
   "days-between-dates": DaysBetweenCalculator,
   "unit-converter": UnitConverter,
+  "password-generator": PasswordGenerator,
   "percentage-calculator": PercentageCalculator,
   "image-compressor": ImageCompressor,
   "image-resizer": ImageResizer,

@@ -14,6 +14,7 @@ const DISCOUNT = "/tools/finance-calculators/discount-calculator/";
 const AGE = "/tools/utilities/age-calculator/";
 const DAYS = "/tools/utilities/days-between-dates/";
 const UNITS = "/tools/utilities/unit-converter/";
+const PASSWORD = "/tools/utilities/password-generator/";
 const COMPRESSOR = "/tools/image-tools/image-compressor/";
 const RESIZER = "/tools/image-tools/image-resizer/";
 const CONVERTER = "/tools/image-tools/image-converter/";
@@ -159,6 +160,31 @@ test("unit converter shows a value in every unit of the chosen measure", async (
   await page.getByLabel("From", { exact: true }).selectOption("acre");
   await page.getByLabel("To", { exact: true }).selectOption("sqft");
   await expect(page.getByRole("status")).toContainText("43,560 ft²");
+});
+
+test("password generator follows the length and the kinds of character chosen", async ({ page }) => {
+  test.skip(!published.has(PASSWORD), "Password generator is not published");
+  await page.goto(PASSWORD);
+  const shown = page.getByTestId("generated-password");
+  await expect(shown).toHaveText(/^.{16}$/);
+  await page.getByLabel("Length").fill("30");
+  await expect(shown).toHaveText(/^.{30}$/);
+  await page.getByLabel("Uppercase letters (A–Z)").uncheck();
+  await page.getByLabel("Symbols (!@#$…)").uncheck();
+  await page.getByLabel("Numbers (0–9)").uncheck();
+  await expect(shown).toHaveText(/^[a-z]{30}$/);
+  await expect(page.getByRole("status")).toContainText("Very strong");
+  const before = await shown.textContent();
+  await page.getByRole("button", { name: "Generate another" }).click();
+  await expect(shown).not.toHaveText(before ?? "");
+  await page.getByLabel("Lowercase letters (a–z)").uncheck();
+  await expect(page.getByText("Choose at least one kind of character.")).toBeVisible();
+  await page.getByLabel("Lowercase letters (a–z)").check();
+  await page.getByLabel("Numbers (0–9)").check();
+  await page.getByLabel(/Avoid look-alike characters/).check();
+  await expect(shown).toHaveText(/^[a-km-np-z2-9]{30}$/);
+  await page.getByLabel("Length").fill("5");
+  await expect(page.getByText("Length cannot be less than 8.")).toBeVisible();
 });
 
 test("image compressor makes a WebP and offers a download", async ({ page, browserName }) => {
