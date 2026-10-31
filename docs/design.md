@@ -98,3 +98,14 @@ Shared parts that changed with it, so every page using them changes too:
 - **Category pages:** the same band, then the category's tools in the card grid, an ad slot at the bottom, and "More categories".
 - **Tool page:** the band, three outline badges (Free, No sign-up, Runs in your browser), then the tool in two panels. The left panel holds the inputs. The calculators (`ToolLayout dark`) show the answer in a dark green panel with large white type; tools that handle images or text use a light grey result panel, so pictures and text are not on a dark background. Below the tool, in this order: how to use (reading column), examples as cards, questions as an open-and-close list (structured data unchanged), guides, related tools.
 - **For the tool components:** `ToolLayout` takes `dark` for calculators; `Results` reads the same setting, so it picks white or ink text itself. Tools that need other result content use the light panel by default.
+
+## Blog listings (T9.5)
+
+All four listings (the Articles index, a category, a tag and an author) share `components/BlogHeader.tsx` and the same card grid:
+
+- **Header:** breadcrumbs, a small label (Category, Tagged, Author), a very large centred title, an optional intro, a thin rule with the years of the articles on the left and the article count on the right, and category chips. **All** and each category that has articles are chips; the one being shown is filled ink and marked `aria-current="page"`. Tag and author pages show no current chip.
+- **Grid:** three columns on a laptop, two on a tablet, one on a phone, with the image-led `PostCard`. The old dark "Latest" feature block is gone: every article is a card of the same size, newest first.
+- **Below the grid:** the `list_bottom` ad slot (index only), then "Browse by topic" with the tags and the RSS link.
+- **Page title:** the index is now titled **Articles** (the menu still says Blog and the address is still `/blog/`).
+- **Covers:** until an article has its own cover image (T9.7), `Cover` draws a generated one. Its colours follow the article's number (POST0003 is always the third palette), so neighbouring articles never look the same; the rings are placed from the article's address.
+- **Growing:** the listings show every article on one page. If the blog grows past about 30 articles, add paging or a "load more" step.

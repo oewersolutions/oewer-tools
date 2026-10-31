@@ -19,13 +19,17 @@ function hash(text: string): number {
 
 export default function Cover({
   seed,
+  number,
   className = "",
 }: {
   seed: string;
+  number?: number;
   className?: string;
 }) {
   const h = hash(seed);
-  const palette = PALETTES[h % PALETTES.length];
+  // The colours follow the article's number when there is one, so neighbouring articles always look different;
+  // the position of the rings comes from the address, so each cover is still its own.
+  const palette = PALETTES[(number ?? h) % PALETTES.length];
   const cx = 80 + (h % 240);
   const cy = 60 + ((h >> 3) % 130);
   const r = 60 + ((h >> 6) % 40);

@@ -2,8 +2,16 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Breadcrumbs from "../../../../components/Breadcrumbs";
 import { PostCard } from "../../../../components/Cards";
-import { Container, PageBand } from "../../../../components/layout";
-import { getBlogCategory, getPostReadingMinutes, getPostsByTag, getTagBySlug, getTagsInUse, MIN_POSTS_FOR_INDEXED_TAG } from "../../../../lib/content";
+import BlogHeader, { PostGrid } from "../../../../components/BlogHeader";
+import { Container } from "../../../../components/layout";
+import {
+  getBlogCategory,
+  getPostReadingMinutes,
+  getPostsByTag,
+  getTagBySlug,
+  getTagsInUse,
+  MIN_POSTS_FOR_INDEXED_TAG,
+} from "../../../../lib/content";
 import { pageMetadata } from "../../../../lib/metadata";
 import { nonEmptyParams } from "../../../../lib/static";
 
@@ -38,17 +46,32 @@ export default async function TagPage({ params }: Props) {
 
   return (
     <>
-      <PageBand
-        breadcrumbs={<Breadcrumbs trail={[{ label: "Blog", path: "/blog/" }, { label: `Tag: ${tag.name}` }]} />}
-        eyebrow={posts.length === 1 ? "1 article" : `${posts.length} articles`}
-        title={`Tagged: ${tag.name}`}
+      <BlogHeader
+        breadcrumbs={
+          <Breadcrumbs
+            trail={[
+              { label: "Articles", path: "/blog/" },
+              { label: `Tag: ${tag.name}` },
+            ]}
+          />
+        }
+        eyebrow="Tagged"
+        title={tag.name}
+        dates={posts.map((p) => p.published_at)}
+        count={posts.length}
       />
-      <Container className="py-14">
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+      <Container className="py-12 sm:py-14">
+        <PostGrid>
           {posts.map((p) => (
-            <PostCard heading="h2" key={p.post_id} post={p} categoryName={getBlogCategory(p.category_id)?.name} minutes={getPostReadingMinutes(p.post_id)} />
+            <PostCard
+              heading="h2"
+              key={p.post_id}
+              post={p}
+              categoryName={getBlogCategory(p.category_id)?.name}
+              minutes={getPostReadingMinutes(p.post_id)}
+            />
           ))}
-        </div>
+        </PostGrid>
       </Container>
     </>
   );

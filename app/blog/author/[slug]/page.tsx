@@ -2,8 +2,16 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Breadcrumbs from "../../../../components/Breadcrumbs";
 import { PostCard } from "../../../../components/Cards";
-import { Container, PageBand } from "../../../../components/layout";
-import { authorSlug, getAuthorBySlug, getAuthors, getBlogCategory, getPostReadingMinutes, getPostsByAuthor } from "../../../../lib/content";
+import BlogHeader, { PostGrid } from "../../../../components/BlogHeader";
+import { Container } from "../../../../components/layout";
+import {
+  authorSlug,
+  getAuthorBySlug,
+  getAuthors,
+  getBlogCategory,
+  getPostReadingMinutes,
+  getPostsByAuthor,
+} from "../../../../lib/content";
 import { pageMetadata } from "../../../../lib/metadata";
 import { nonEmptyParams } from "../../../../lib/static";
 
@@ -23,7 +31,13 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const author = getAuthorBySlug((await params).slug);
-  return author ? pageMetadata({ title: `Articles by ${author.display_name}`, description: author.bio || undefined, path: `/blog/author/${authorSlug(author)}/` }) : {};
+  return author
+    ? pageMetadata({
+        title: `Articles by ${author.display_name}`,
+        description: author.bio || undefined,
+        path: `/blog/author/${authorSlug(author)}/`,
+      })
+    : {};
 }
 
 export default async function AuthorPage({ params }: Props) {
@@ -34,18 +48,33 @@ export default async function AuthorPage({ params }: Props) {
 
   return (
     <>
-      <PageBand
-        breadcrumbs={<Breadcrumbs trail={[{ label: "Blog", path: "/blog/" }, { label: author.display_name }]} />}
+      <BlogHeader
+        breadcrumbs={
+          <Breadcrumbs
+            trail={[
+              { label: "Articles", path: "/blog/" },
+              { label: author.display_name },
+            ]}
+          />
+        }
         eyebrow="Author"
         title={author.display_name}
         description={author.bio || undefined}
+        dates={posts.map((p) => p.published_at)}
+        count={posts.length}
       />
-      <Container className="py-14">
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+      <Container className="py-12 sm:py-14">
+        <PostGrid>
           {posts.map((p) => (
-            <PostCard heading="h2" key={p.post_id} post={p} categoryName={getBlogCategory(p.category_id)?.name} minutes={getPostReadingMinutes(p.post_id)} />
+            <PostCard
+              heading="h2"
+              key={p.post_id}
+              post={p}
+              categoryName={getBlogCategory(p.category_id)?.name}
+              minutes={getPostReadingMinutes(p.post_id)}
+            />
           ))}
-        </div>
+        </PostGrid>
       </Container>
     </>
   );
