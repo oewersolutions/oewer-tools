@@ -1,0 +1,223 @@
+{
+ "date": "2026-10-31",
+ "articles": [
+  {
+   "title": "Recurring Deposit: How RD Maturity Is Calculated",
+   "category": "Money Guides",
+   "excerpt": "How an RD works, the quarterly compounding convention, the maturity formula, a worked example, and why your bank's figure can differ a little.",
+   "tags": [
+    "recurring deposit",
+    "savings",
+    "banking"
+   ],
+   "blocks": [
+    [
+     "paragraph",
+     "A recurring deposit, or RD, lets you save a fixed amount every month for a set period and get it back with interest at the end. This guide explains how the maturity amount is worked out, the quarterly compounding rule most Indian banks use, a worked example, and why your bank's own figure may differ from a calculator's by a small amount."
+    ],
+    [
+     "heading",
+     "How a recurring deposit works"
+    ],
+    [
+     "paragraph",
+     "Wikipedia's summary of recurring deposits says you deposit a fixed sum each month for a set period, and it earns interest at roughly the fixed-deposit rate. The payments can be automated through a standing instruction from your savings or current account. Because each instalment is paid in a different month, each one earns interest for a different length of time: the first for the whole tenure, the last for just one month."
+    ],
+    [
+     "paragraph",
+     "The same page says that if an instalment is paid late, the interest earned ends up lower than projected and the shortfall is deducted from the maturity value as a penalty, at a rate fixed when the account is opened. So the calculator's answer assumes you pay on time."
+    ],
+    [
+     "heading",
+     "Quarterly compounding"
+    ],
+    [
+     "paragraph",
+     "Wikipedia states that interest is compounded quarterly in recurring deposits, and that Indian banks use a quarterly-compounding formula for the maturity value, with the rate per quarter equal to the annual rate divided by 400. That is the annual rate divided by 4 quarters and by 100 to turn the percentage into a decimal. A 6.5% yearly rate is therefore 1.625% per quarter."
+    ],
+    [
+     "heading",
+     "The formula"
+    ],
+    [
+     "code",
+     "M = R × ((1 + i)^N − 1) / (1 − (1 + i)^(−1/3))"
+    ],
+    [
+     "list",
+     "M is the amount at maturity.\nR is the monthly instalment.\ni is the rate for one quarter: the annual rate ÷ 400.\nN is the number of quarters. Twelve months is 4 quarters, so N is the months divided by 3."
+    ],
+    [
+     "paragraph",
+     "This is the formula Groww's RD calculator page gives, with i as the quarterly rate and N as the number of quarters. The page's own worked example is ₹2,000 a month for 2 years at 7%, and it reports ₹51,640 at maturity. Our calculator gives ₹51,639.56 for the same numbers, which rounds to the same figure."
+    ],
+    [
+     "heading",
+     "A worked example"
+    ],
+    [
+     "paragraph",
+     "Say you deposit ₹5,000 a month for 5 years at 6.5% a year. You put in ₹3,00,000 over the 60 months. The formula gives a maturity amount of about ₹3,54,954, so the interest is about ₹54,954."
+    ],
+    [
+     "paragraph",
+     "A shorter one: ₹5,000 a month for 1 year at the same rate. You deposit ₹60,000 and the maturity is about ₹62,143, an interest of about ₹2,143. The interest is small in the first year because most of the instalments have only been in the account for a few months. And ₹10,000 a month for 3 years at 7% gives a deposit of ₹3,60,000, a maturity of about ₹4,01,373 and interest of about ₹41,373."
+    ],
+    [
+     "heading",
+     "Why your bank's figure may differ"
+    ],
+    [
+     "list",
+     "Rounding. Banks may round at each step in a different way.\nDay counting. Banks can count the exact days between instalments instead of whole months.\nRates. The rate is set by the bank and can differ with the tenure and for senior citizens. Check the current rate on the bank's own page.\nTax. Interest from a deposit can be taxed. The formula does not include tax, and the rules change, so look at the current rules or ask a professional."
+    ],
+    [
+     "paragraph",
+     "A bank's quoted maturity is the figure that counts. Use the calculator to compare options and plan, and then confirm the amount with the bank."
+    ],
+    [
+     "heading",
+     "RD or FD?"
+    ],
+    [
+     "paragraph",
+     "A fixed deposit takes a lump sum on day one. An RD builds up from monthly savings, so it suits someone who earns monthly and wants to save steadily. If you already have the whole amount, a fixed deposit puts all of it to work from the start, which is why the same total produces more interest there. Our fixed deposit calculator will show the difference."
+    ],
+    [
+     "heading",
+     "Common mistakes"
+    ],
+    [
+     "list",
+     "Entering the tenure in the wrong unit. 5 years is 60 months.\nExpecting the maturity to equal deposits plus a full year of interest on each. Later instalments earn for much less time.\nForgetting that a missed or late instalment can reduce the amount you receive."
+    ],
+    [
+     "heading",
+     "How to use the calculator"
+    ],
+    [
+     "paragraph",
+     "Enter the monthly deposit, the yearly rate and the tenure in years or months. The calculator shows the total you deposit, the interest earned and the maturity amount. Run it with your bank's quoted rate and compare the result with the maturity the bank shows you."
+    ]
+   ],
+   "sources": [
+    {
+     "title": "SBI RD Calculator: formula and worked example (Groww)",
+     "url": "https://groww.in/calculators/sbi-rd-calculator"
+    },
+    {
+     "title": "Recurring deposit (Wikipedia)",
+     "url": "https://en.wikipedia.org/wiki/Recurring_deposit"
+    }
+   ],
+   "checkedOn": "2026-10-31"
+  },
+  {
+   "title": "Successive Discounts: Why 20% Off Plus 10% Is 28%",
+   "category": "Money Guides",
+   "excerpt": "Why two discounts do not add up, the formula for the final price and effective discount, and worked examples with prices.",
+   "tags": [
+    "discount",
+    "shopping",
+    "percentages"
+   ],
+   "blocks": [
+    [
+     "paragraph",
+     "Two discounts in a row do not add up. A shop that takes 20% off and then another 10% off is not giving 30% off, but 28% off. This guide explains why, gives the formula, works through examples with prices, and shows how to spot the real saving behind offers that stack."
+    ],
+    [
+     "heading",
+     "Why 20% plus 10% is 28%"
+    ],
+    [
+     "paragraph",
+     "The second discount is worked out on the price after the first one, not on the original price. Take an item marked ₹1,000. The first discount of 20% takes off ₹200 and leaves ₹800. The second discount of 10% is 10% of ₹800, which is ₹80, not ₹100. The price you pay is ₹720, so you saved ₹280, which is 28% of the original ₹1,000."
+    ],
+    [
+     "heading",
+     "The formula"
+    ],
+    [
+     "paragraph",
+     "PrepShots gives the final price for two discounts of a% and b% as the marked price × (100 − a) ÷ 100 × (100 − b) ÷ 100. ExamAtlas gives the single equivalent discount as a + b − (a × b) ÷ 100. For 20% and 10% that is 20 + 10 − (200 ÷ 100) = 28%. Both forms give the same answer. The calculator uses the multiplication form:"
+    ],
+    [
+     "code",
+     "Price you pay = original price × (1 − a/100) × (1 − b/100)"
+    ],
+    [
+     "paragraph",
+     "The effective discount is then the amount saved divided by the original price."
+    ],
+    [
+     "heading",
+     "The order does not matter"
+    ],
+    [
+     "paragraph",
+     "Both pages say the order of the discounts does not change the final price, and the reason is that multiplication works in either order. Taking 20% off and then 10% off gives ₹720 on ₹1,000. Taking 10% off and then 20% off gives the same ₹720. This is useful when a shop applies a member discount and a sale discount in different orders on different days."
+    ],
+    [
+     "heading",
+     "More worked examples"
+    ],
+    [
+     "list",
+     "₹2,500 with 20% and then 10% off: ₹2,500 × 0.8 × 0.9 = ₹1,800. You save ₹700, which is 28%.\n₹2,000 with 25% and then 20% off: ₹2,000 × 0.75 × 0.80 = ₹1,200. The effective discount is 40%, not 45%.\n₹5,000 with 40% and then 10% off: ₹5,000 × 0.6 × 0.9 = ₹2,700. You save ₹2,300, which is 46%.\n50% off and then another 50% off: the price falls to 25% of the original, so the effective discount is 75%, not 100%."
+    ],
+    [
+     "heading",
+     "Equal discounts and \"buy more, get more free\""
+    ],
+    [
+     "paragraph",
+     "ExamAtlas includes an example where two equal discounts take ₹1,000 to ₹810. Since 810 ÷ 1,000 = 0.81 and 0.81 is 0.9 × 0.9, each discount is 10%. The same page points out that a deal like buy 3, get 1 free is worth 25% off, because you pay for three of the four items."
+    ],
+    [
+     "paragraph",
+     "That last idea is handy in shops. To compare offers, turn each one into an effective percentage, and then you can see which one is really cheaper."
+    ],
+    [
+     "heading",
+     "Working backwards"
+    ],
+    [
+     "paragraph",
+     "If you know the sale price and the discounts, divide the sale price by the product of the factors to find the original price. If you paid ₹720 after 20% and 10% off, divide by 0.8 × 0.9 = 0.72 to get ₹1,000. This is a useful check when a price tag has been changed or a coupon is stacked on a sale."
+    ],
+    [
+     "paragraph",
+     "A second check: if a tag says ₹1,800 after 20% and 10% off, the original price was ₹1,800 ÷ 0.72 = ₹2,500. And if you only know the total saving, say 28%, you can find the price paid by multiplying the original by 0.72. Doing this a few times makes it easy to judge any stacked offer in your head."
+    ],
+    [
+     "heading",
+     "Common mistakes"
+    ],
+    [
+     "list",
+     "Adding the percentages. 20% and 10% is 28%, never 30%.\nApplying the second discount to the original price instead of the reduced price.\nForgetting that a discount before tax and a discount after tax can differ if the tax is added at the end. Check which price the discount applies to."
+    ],
+    [
+     "heading",
+     "How to use the calculator"
+    ],
+    [
+     "paragraph",
+     "Enter the original price and the first discount. If a second discount applies, enter it too and the calculator shows the price after each step, the amount you save and the effective discount. Leave the second box empty for a single discount."
+    ]
+   ],
+   "sources": [
+    {
+     "title": "Successive Discount: Formula, Tricks and Examples (PrepShots)",
+     "url": "https://prepshots.in/quantitative-aptitude/successive-discount/"
+    },
+    {
+     "title": "Successive Discount Formula and Examples (ExamAtlas)",
+     "url": "https://examatlas.com/study-material/t/successive-discount"
+    }
+   ],
+   "checkedOn": "2026-10-31"
+  }
+ ]
+}

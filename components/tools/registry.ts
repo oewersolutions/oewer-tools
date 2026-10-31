@@ -1,4 +1,6 @@
 import type { ComponentType } from "react";
+import CompoundInterestCalculator from "./CompoundInterestCalculator";
+import DiscountCalculator from "./DiscountCalculator";
 import EmiCalculator from "./EmiCalculator";
 import FdCalculator from "./FdCalculator";
 import GstCalculator from "./GstCalculator";
@@ -9,6 +11,8 @@ import JsonFormatter from "./JsonFormatter";
 import PercentageCalculator from "./PercentageCalculator";
 import LumpsumCalculator from "./LumpsumCalculator";
 import QrCodeGenerator from "./QrCodeGenerator";
+import RdCalculator from "./RdCalculator";
+import SimpleInterestCalculator from "./SimpleInterestCalculator";
 import SipCalculator from "./SipCalculator";
 import WordCounter from "./WordCounter";
 import type { ToolComponentKey } from "../../lib/tools/keys";
@@ -24,6 +28,10 @@ export const toolComponents: { [K in ToolComponentKey]: ComponentType } = {
   "gst-calculator": GstCalculator,
   "sip-calculator": SipCalculator,
   "lumpsum-calculator": LumpsumCalculator,
+  "compound-interest-calculator": CompoundInterestCalculator,
+  "simple-interest-calculator": SimpleInterestCalculator,
+  "rd-calculator": RdCalculator,
+  "discount-calculator": DiscountCalculator,
   "percentage-calculator": PercentageCalculator,
   "image-compressor": ImageCompressor,
   "image-resizer": ImageResizer,

@@ -68,6 +68,41 @@ for (const [path, label, text] of TEXT_TOOLS) {
   });
 }
 
+test("the RD and discount calculators send nothing while you type", async ({ page }) => {
+  const typing: [string, string, string][] = [
+    ["/tools/finance-calculators/rd-calculator/", "Monthly deposit (₹)", "7500"],
+    ["/tools/finance-calculators/discount-calculator/", "Original price (₹)", "4999"],
+  ];
+  for (const [path, label, text] of typing) {
+    test.skip(!published.has(path), "tool is not published");
+    await open(page, path);
+    const requests = await requestsDuring(
+      page,
+      async () => {
+        await page.getByLabel(label).fill(text);
+      },
+      text,
+    );
+    expect(requests).toEqual([]);
+  }
+});
+
+test("the interest calculators send nothing while you type", async ({ page }) => {
+  for (const path of ["/tools/finance-calculators/compound-interest-calculator/", "/tools/finance-calculators/simple-interest-calculator/"]) {
+    test.skip(!published.has(path), "tool is not published");
+    await open(page, path);
+    const requests = await requestsDuring(
+      page,
+      async () => {
+        await page.getByLabel("Interest rate (% per year)").fill("7.25");
+        await page.getByLabel("Principal (₹)").fill("250000");
+      },
+      "7.25",
+    );
+    expect(requests).toEqual([]);
+  }
+});
+
 test("the SIP and lumpsum calculators send nothing while you type", async ({ page }) => {
   for (const path of ["/tools/finance-calculators/sip-calculator/", "/tools/finance-calculators/lumpsum-calculator/"]) {
     test.skip(!published.has(path), "tool is not published");

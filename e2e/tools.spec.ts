@@ -7,6 +7,10 @@ const published = new Set(builtPaths());
 const EMI = "/tools/finance-calculators/emi-calculator/";
 const SIP = "/tools/finance-calculators/sip-calculator/";
 const LUMPSUM = "/tools/finance-calculators/lumpsum-calculator/";
+const COMPOUND = "/tools/finance-calculators/compound-interest-calculator/";
+const SIMPLE = "/tools/finance-calculators/simple-interest-calculator/";
+const RD = "/tools/finance-calculators/rd-calculator/";
+const DISCOUNT = "/tools/finance-calculators/discount-calculator/";
 const COMPRESSOR = "/tools/image-tools/image-compressor/";
 const RESIZER = "/tools/image-tools/image-resizer/";
 const CONVERTER = "/tools/image-tools/image-converter/";
@@ -45,6 +49,61 @@ test("lumpsum calculator shows the estimated value and rejects bad input", async
   await expect(page.getByRole("status")).toContainText("3,10,584.82");
   await page.getByLabel("Investment amount (₹)").fill("-5");
   await expect(page.getByText("Investment amount cannot be less than 0.")).toBeVisible();
+});
+
+test("compound interest calculator shows the amount and a year-by-year table", async ({ page }) => {
+  test.skip(!published.has(COMPOUND), "Compound interest calculator is not published");
+  await page.goto(COMPOUND);
+  await page.getByLabel("Principal (₹)").fill("100000");
+  await page.getByLabel("Interest rate (% per year)").fill("8");
+  await page.getByLabel("Time period (years)").fill("10");
+  await expect(page.getByRole("status")).toContainText("2,15,892");
+  await expect(page.getByRole("region", { name: "Year by year" }).getByRole("row")).toHaveCount(11); // header + 10 years
+  await page.getByLabel("Interest added").selectOption("12");
+  await expect(page.getByRole("status")).toContainText("2,21,964");
+  await page.getByLabel("Time period (years)").fill("51");
+  await expect(page.getByText("Time period cannot be more than 50.")).toBeVisible();
+});
+
+test("simple interest calculator handles years, months and days", async ({ page }) => {
+  test.skip(!published.has(SIMPLE), "Simple interest calculator is not published");
+  await page.goto(SIMPLE);
+  await page.getByLabel("Principal (₹)").fill("100000");
+  await page.getByLabel("Interest rate (% per year)").fill("8");
+  await page.getByLabel("Time period").fill("3");
+  await expect(page.getByRole("status")).toContainText("24,000");
+  await page.getByLabel("Time unit").selectOption("months");
+  await page.getByLabel("Time period").fill("6");
+  await expect(page.getByRole("status")).toContainText("4,000");
+  await page.getByLabel("Time period").fill("abc");
+  await expect(page.getByText("Time period must be a number.")).toBeVisible();
+});
+
+test("RD calculator shows the maturity amount and rejects bad input", async ({ page }) => {
+  test.skip(!published.has(RD), "RD calculator is not published");
+  await page.goto(RD);
+  await page.getByLabel("Monthly deposit (₹)").fill("2000");
+  await page.getByLabel("Interest rate (% per year)").fill("7");
+  await page.getByLabel("Tenure", { exact: true }).fill("2");
+  await expect(page.getByRole("status")).toContainText("51,639.56");
+  await expect(page.getByRole("status")).toContainText("48,000");
+  await page.getByLabel("Tenure unit").selectOption("months");
+  await page.getByLabel("Tenure", { exact: true }).fill("6.5");
+  await expect(page.getByText("Tenure must be a whole number.")).toBeVisible();
+});
+
+test("discount calculator combines two discounts", async ({ page }) => {
+  test.skip(!published.has(DISCOUNT), "Discount calculator is not published");
+  await page.goto(DISCOUNT);
+  await page.getByLabel("Original price (₹)").fill("1000");
+  await page.getByLabel("Discount (%)", { exact: true }).fill("20");
+  await page.getByLabel(/Second discount/).fill("10");
+  await expect(page.getByRole("status")).toContainText("720");
+  await expect(page.getByRole("status")).toContainText("28%");
+  await page.getByLabel(/Second discount/).fill("");
+  await expect(page.getByRole("status")).toContainText("800");
+  await page.getByLabel("Discount (%)", { exact: true }).fill("101");
+  await expect(page.getByText("Discount cannot be more than 100.")).toBeVisible();
 });
 
 test("image compressor makes a WebP and offers a download", async ({ page, browserName }) => {

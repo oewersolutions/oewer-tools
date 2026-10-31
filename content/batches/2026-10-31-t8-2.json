@@ -1,0 +1,243 @@
+{
+ "date": "2026-10-31",
+ "articles": [
+  {
+   "title": "Compound Interest Explained: Formula and Examples",
+   "category": "Money Guides",
+   "excerpt": "How compound interest works, the formula, how adding interest more often changes the result, the Rule of 72, and a worked example.",
+   "tags": [
+    "compound interest",
+    "savings",
+    "investing"
+   ],
+   "blocks": [
+    [
+     "paragraph",
+     "Compound interest is interest that earns interest. It is the reason a small amount left alone for a long time can grow far more than you might expect, and the reason a debt can grow faster than you expect. This guide gives the formula, shows how the compounding frequency changes the answer, and explains the Rule of 72."
+    ],
+    [
+     "heading",
+     "What compound interest means"
+    ],
+    [
+     "paragraph",
+     "The US Consumer Financial Protection Bureau puts it this way: compound interest is when you earn interest on the money you have saved and on the interest you earn along the way. The St. Louis Fed's classroom lesson defines it as interest paid on the principal as well as on the interest earned previously."
+    ],
+    [
+     "paragraph",
+     "The CFPB's example is easy to follow. Start with 1,000 at 5% a year, compounded once a year. After the first year you have 1,050. After the second year you have 1,102.50, not 1,100, because the second year's interest is worked out on 1,050. That extra 2.50 is interest on interest."
+    ],
+    [
+     "heading",
+     "The formula"
+    ],
+    [
+     "code",
+     "A = P × (1 + r / n)^(n × t)"
+    ],
+    [
+     "list",
+     "A is the amount at the end.\nP is the principal, the money you start with.\nr is the yearly rate as a decimal. 8% is 0.08.\nn is how many times a year interest is added.\nt is the number of years."
+    ],
+    [
+     "paragraph",
+     "Our compound interest calculator does this sum for you and lists the balance at the end of every year, so you can see the growth speed up."
+    ],
+    [
+     "heading",
+     "A worked example"
+    ],
+    [
+     "paragraph",
+     "Take ₹1,00,000 at 8% a year, with interest added once a year. After 10 years the amount is about ₹2,15,892, so the interest earned is about ₹1,15,892. After 20 years it is about ₹4,66,096. Doubling the time more than doubles the interest, because each year's interest is added to a bigger balance."
+    ],
+    [
+     "heading",
+     "How often interest is added"
+    ],
+    [
+     "paragraph",
+     "Same ₹1,00,000, same 8% a year, same 10 years. Only the number of times interest is added changes:"
+    ],
+    [
+     "list",
+     "Yearly: about ₹2,15,892\nHalf-yearly: about ₹2,19,112\nQuarterly: about ₹2,20,804\nMonthly: about ₹2,21,964\nDaily: about ₹2,22,535"
+    ],
+    [
+     "paragraph",
+     "The CFPB lists compounding more often as one of the ways to help savings grow faster, and the numbers show why. Notice how small the steps get, though. Going from yearly to quarterly adds about ₹4,900. Going from monthly to daily adds about ₹570. The rate and the time matter far more than the frequency."
+    ],
+    [
+     "paragraph",
+     "Check the terms of any deposit or loan you are looking at. How often interest is added is part of the offer, and it is not the same everywhere."
+    ],
+    [
+     "heading",
+     "The Rule of 72"
+    ],
+    [
+     "paragraph",
+     "The St. Louis Fed lesson describes the Rule of 72 as a rule of thumb for estimating how long money takes to double. Divide 72 by the yearly interest rate, as a percentage, and you get the approximate number of years. The lesson's examples: at 4%, about 18 years; at 6%, about 12; at 9%, about 8; at 12%, about 6."
+    ],
+    [
+     "paragraph",
+     "It is a quick estimate, not an exact answer. At 12% the exact doubling time is a little over 6 years, so ₹1 grows to about ₹1.97 in 6 years rather than exactly ₹2. For planning, that is close enough, and you can use the calculator when you want the exact figure."
+    ],
+    [
+     "heading",
+     "Compound interest works against borrowers too"
+    ],
+    [
+     "paragraph",
+     "The same arithmetic applies when you owe money. If interest on a loan or card balance is added to what you owe and the next interest is charged on the larger amount, the debt grows the same way savings do. This is why paying off high-interest balances early matters."
+    ],
+    [
+     "heading",
+     "Common mistakes"
+    ],
+    [
+     "list",
+     "Mixing up the rate and the period. A rate of 8% a year is not 8% a month.\nForgetting that the result is only as good as the rate you assume, especially for investments whose returns go up and down. Compound interest on a fixed deposit is stated in advance. Returns on market investments are not.\nIgnoring tax and charges, which are not in the formula and reduce what you keep.\nExpecting a big difference from the compounding frequency alone."
+    ],
+    [
+     "heading",
+     "How to use the calculator"
+    ],
+    [
+     "paragraph",
+     "Enter the principal, the yearly rate, the number of years and how often interest is added. Read the final amount, and then look at the year-by-year table to see how the interest grows. Try changing only one number at a time to see what matters most."
+    ]
+   ],
+   "sources": [
+    {
+     "title": "How does compound interest work? (Consumer Financial Protection Bureau)",
+     "url": "https://www.consumerfinance.gov/ask-cfpb/how-does-compound-interest-work-en-1683/"
+    },
+    {
+     "title": "Lesson 6B: Simple and Compound Interest (Federal Reserve Bank of St. Louis and Minnesota Council on Economic Education)",
+     "url": "https://www.federalreserveeducation.org/resources/lessons/lesson--6b-simple-and-compound-interest.pdf"
+    }
+   ],
+   "checkedOn": "2026-10-31"
+  },
+  {
+   "title": "Simple Interest Formula: How It Works With Examples",
+   "category": "Money Guides",
+   "excerpt": "The simple interest formula, worked examples in years, months and days, and how simple interest compares with compound interest on the same numbers.",
+   "tags": [
+    "simple interest",
+    "loans",
+    "savings"
+   ],
+   "blocks": [
+    [
+     "paragraph",
+     "Simple interest is the easiest kind of interest to work out. It is calculated only on the money you started with, so the interest is the same every year. This guide gives the formula, works through examples in years, months and days, and compares simple interest with compound interest using the same numbers."
+    ],
+    [
+     "heading",
+     "What simple interest means"
+    ],
+    [
+     "paragraph",
+     "The St. Louis Fed lesson defines simple interest as an annual payment based on a percentage of the amount you save, and calls the original amount deposited or invested, leaving out any interest, the principal. The percentage is the annual interest rate. Unlike compound interest, earlier interest is never added to the amount that earns the next interest."
+    ],
+    [
+     "heading",
+     "The formula"
+    ],
+    [
+     "code",
+     "SI = P × R × T / 100"
+    ],
+    [
+     "list",
+     "SI is the simple interest.\nP is the principal.\nR is the yearly rate in percent.\nT is the time in years."
+    ],
+    [
+     "paragraph",
+     "The total amount is the principal plus the interest. The lesson's own example is 100 saved at 8%: the interest for one year is 100 × 0.08 = 8, so you have 108 after a year. Another from the same lesson: 60 at 10% for one year earns 6 and becomes 66."
+    ],
+    [
+     "heading",
+     "Finding the rate, the time or the principal"
+    ],
+    [
+     "paragraph",
+     "The formula can be turned around when one of the other numbers is the unknown. Rearranged, it gives R = SI × 100 / (P × T), T = SI × 100 / (P × R) and P = SI × 100 / (R × T). Each one is just the same relationship solved for a different letter."
+    ],
+    [
+     "list",
+     "Rate: ₹50,000 earns ₹6,000 in 2 years. R = 6,000 × 100 / (50,000 × 2) = 6% a year.\nTime: ₹80,000 at 5% earns ₹10,000. T = 10,000 × 100 / (80,000 × 5) = 2.5 years.\nPrincipal: ₹3,000 of interest in 3 years at 5%. P = 3,000 × 100 / (5 × 3) = ₹20,000."
+    ],
+    [
+     "paragraph",
+     "The calculator works forward from principal, rate and time. Use these rearranged forms to check a figure a lender or a bank quotes you, or to work out which number is missing."
+    ],
+    [
+     "heading",
+     "Months and days"
+    ],
+    [
+     "paragraph",
+     "The formula wants years, so a shorter period has to be turned into a fraction of a year. Our simple interest calculator counts a month as 1/12 of a year and a day as 1/365. Some lenders use other conventions, such as a 360-day year, so their figure can differ by a small amount. Check the terms of your loan or deposit."
+    ],
+    [
+     "list",
+     "₹1,00,000 at 8% for 3 years: interest ₹24,000, total ₹1,24,000.\n₹1,00,000 at 8% for 6 months: interest ₹4,000, total ₹1,04,000.\n₹50,000 at 9% for 90 days: interest about ₹1,109.59, total about ₹51,109.59."
+    ],
+    [
+     "heading",
+     "Simple versus compound with the same numbers"
+    ],
+    [
+     "paragraph",
+     "Take ₹1,00,000 at 8% a year. With simple interest you earn ₹8,000 every year. With compound interest, interest added once a year, the first year is the same, but the second year's interest is worked out on ₹1,08,000."
+    ],
+    [
+     "list",
+     "After 3 years: simple interest is ₹24,000. Compound interest is about ₹25,971.\nAfter 10 years: simple gives a total of ₹1,80,000. Compound gives about ₹2,15,892.\nAfter 20 years: simple gives ₹2,60,000. Compound gives about ₹4,66,096."
+    ],
+    [
+     "paragraph",
+     "For one year the two are identical. The gap opens slowly and then quickly. This is also why the CFPB describes compound interest as earning interest on interest as well as on the money you saved, and simple interest has no such second layer."
+    ],
+    [
+     "heading",
+     "When you meet simple interest"
+    ],
+    [
+     "paragraph",
+     "Short loans and some deposits are quoted with simple interest, and school and exam problems use it constantly. Whether a particular product uses simple or compound interest is stated in its terms, so ask. If it compounds, use the compound interest calculator instead."
+    ],
+    [
+     "heading",
+     "Common mistakes"
+    ],
+    [
+     "list",
+     "Using months or days as if they were years. 6 months is 0.5 years, not 6.\nForgetting to add the interest to the principal when you want the total amount.\nUsing simple interest on something that compounds, which understates the result, especially over long periods."
+    ],
+    [
+     "heading",
+     "How to use the calculator"
+    ],
+    [
+     "paragraph",
+     "Enter the principal, the yearly rate, the time and the unit. The calculator shows the interest and the total amount. To compare with compound interest, enter the same numbers in the compound interest calculator."
+    ]
+   ],
+   "sources": [
+    {
+     "title": "Lesson 6B: Simple and Compound Interest (Federal Reserve Bank of St. Louis and Minnesota Council on Economic Education)",
+     "url": "https://www.federalreserveeducation.org/resources/lessons/lesson--6b-simple-and-compound-interest.pdf"
+    },
+    {
+     "title": "How does compound interest work? (Consumer Financial Protection Bureau)",
+     "url": "https://www.consumerfinance.gov/ask-cfpb/how-does-compound-interest-work-en-1683/"
+    }
+   ],
+   "checkedOn": "2026-10-31"
+  }
+ ]
+}

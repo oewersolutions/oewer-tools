@@ -1,5 +1,7 @@
 import { calculateEmi, calculateFd, calculateGst } from "./tools/finance";
 import { calculateLumpsum, calculateSip } from "./tools/growth";
+import { calculateDiscount, calculateRd } from "./tools/deposits";
+import { calculateCompound, calculateSimple } from "./tools/interest";
 
 /** Whole rupees in the Indian number format, for the figures on cards. */
 const rupees = (n: number) =>
@@ -42,6 +44,14 @@ export function toolExample(componentKey: string): ToolExample | null {
       return { note: "₹5,000 a month at 12% for 10 years", value: rupees(calculateSip(5000, 12, 10).maturity) };
     case "lumpsum-calculator":
       return { note: "₹1,00,000 at 12% for 10 years", value: rupees(calculateLumpsum(100_000, 12, 10).maturity) };
+    case "compound-interest-calculator":
+      return { note: "₹1,00,000 at 8% for 10 years", value: rupees(calculateCompound(100_000, 8, 10, 1).amount) };
+    case "simple-interest-calculator":
+      return { note: "₹1,00,000 at 8% for 3 years", value: `${rupees(calculateSimple(100_000, 8, 3, "years").interest)} interest` };
+    case "rd-calculator":
+      return { note: "₹5,000 a month at 6.5% for 5 years", value: rupees(calculateRd(5000, 6.5, 60).maturity) };
+    case "discount-calculator":
+      return { note: "₹2,000 with 20% then 10% off", value: rupees(calculateDiscount(2000, 20, 10).finalPrice) };
     case "percentage-calculator":
       return { note: "15% of 2,000", value: "300" };
     case "image-compressor":
