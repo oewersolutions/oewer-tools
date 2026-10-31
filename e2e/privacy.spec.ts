@@ -51,6 +51,9 @@ for (const path of IMAGE_TOOLS) {
 const TEXT_TOOLS: [path: string, label: string, text: string][] = [
   ["/tools/developer-tools/json-formatter/", "Your JSON", '{"secret":"do not send me"}'],
   ["/tools/utilities/word-counter/", "Type or paste your text", "private words that stay here"],
+  ["/tools/developer-tools/base64-encoder-decoder/", "Your text", "private base64 secret 9911"],
+  ["/tools/developer-tools/url-encoder-decoder/", "Your text or URL", "https://private.example/?token=zz9911"],
+  ["/tools/developer-tools/hash-generator/", "Your text", "private hash input 9911"],
   ["/tools/utilities/qr-code-generator/", "Text or link", "https://private.example/token=abc123"],
 ];
 for (const [path, label, text] of TEXT_TOOLS) {

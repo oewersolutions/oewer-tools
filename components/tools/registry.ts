@@ -1,4 +1,8 @@
 import type { ComponentType } from "react";
+import Base64Tool from "./Base64Tool";
+import HashGenerator from "./HashGenerator";
+import UrlEncoderTool from "./UrlEncoderTool";
+import UuidGenerator from "./UuidGenerator";
 import AgeCalculator from "./AgeCalculator";
 import CompoundInterestCalculator from "./CompoundInterestCalculator";
 import DaysBetweenCalculator from "./DaysBetweenCalculator";
@@ -40,6 +44,10 @@ export const toolComponents: { [K in ToolComponentKey]: ComponentType } = {
   "days-between-dates": DaysBetweenCalculator,
   "unit-converter": UnitConverter,
   "password-generator": PasswordGenerator,
+  "base64-encoder-decoder": Base64Tool,
+  "url-encoder-decoder": UrlEncoderTool,
+  "uuid-generator": UuidGenerator,
+  "hash-generator": HashGenerator,
   "percentage-calculator": PercentageCalculator,
   "image-compressor": ImageCompressor,
   "image-resizer": ImageResizer,

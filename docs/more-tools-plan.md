@@ -1,6 +1,6 @@
 # More tools: plan (Phase 8)
 
-**Status (31 October 2026): T8.1 to T8.7 are done.** The site has 20 tools and each new tool has a guide article. Developer tools and PDF/image tools (T8.8+) are not started.
+**Status (31 October 2026): T8.1 to T8.8 are done.** The site has 24 tools and each new tool has a guide article. Developer tools and PDF/image tools (T8.8+) are not started.
 
 Agreed starting point (30 October 2026): the finance calculators plus the three best everyday utilities, one guide article per tool. Developer tools and PDF/image tools come later.
 
@@ -54,7 +54,7 @@ Agreed starting point (30 October 2026): the finance calculators plus the three 
 ## Later (not started)
 
 - **Batch D, PDF and images:** merge PDF, split PDF, image to PDF, image crop and rotate, EXIF remover, image to Base64. A PDF library loaded only when the tool is opened, so other pages stay fast. A new category, "PDF and document tools".
-- **Batch C, developer tools:** Base64, URL encode/decode, UUID, hash, colour converter, timestamp converter, regex tester, JWT decoder.
+- **Batch C, developer tools:** Base64, URL encode/decode, UUID and hash are done (T8.8). Still to do: colour converter, timestamp converter, regex tester, JWT decoder.
 
 ## Order and effort
 

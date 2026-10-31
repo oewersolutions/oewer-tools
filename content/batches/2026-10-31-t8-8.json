@@ -1,0 +1,385 @@
+{
+ "date": "2026-10-31",
+ "articles": [
+  {
+   "title": "What Is Base64? How to Encode and Decode It",
+   "category": "How-To",
+   "excerpt": "What Base64 is for, how 3 bytes become 4 characters, why the text grows by a third, the URL-safe form and the common mistakes, including thinking it is encryption.",
+   "tags": [
+    "base64",
+    "encoding",
+    "developer"
+   ],
+   "blocks": [
+    [
+     "paragraph",
+     "Base64 turns any data into plain text made of 64 safe characters. You meet it in email attachments, data URLs, tokens and API responses. This guide explains what it is for, how it works, what the URL-safe form changes, and the mistakes people make with it, above all treating it as a way to hide information."
+    ],
+    [
+     "heading",
+     "What Base64 is for"
+    ],
+    [
+     "paragraph",
+     "Many systems were built to carry text, not arbitrary bytes. Email, JSON, XML and URLs can all break or change data that contains control characters or unusual bytes. Base64 solves this by writing the bytes using only letters, digits, plus and slash, which survive almost any text channel. It is a common way to put a small image inside a web page as a data URL, to attach files in email, and to carry binary values inside JSON."
+    ],
+    [
+     "heading",
+     "How it works"
+    ],
+    [
+     "paragraph",
+     "The method is defined in RFC 4648. The input is read in groups of three bytes, which is 24 bits. Each group is cut into four pieces of 6 bits, and each 6-bit value, from 0 to 63, is looked up in a table of 64 characters: A to Z, a to z, 0 to 9, plus and slash. Three bytes therefore become four characters."
+    ],
+    [
+     "paragraph",
+     "If the input does not divide evenly into threes, the last group is padded with zero bits and the output ends with one or two equals signs, so that the length is always a multiple of four. The text foobar becomes Zm9vYmFy. The text f becomes Zg==, and fo becomes Zm8=. These are the test values given in the standard."
+    ],
+    [
+     "heading",
+     "Why the output is bigger"
+    ],
+    [
+     "paragraph",
+     "Four characters carry three bytes of data, so Base64 makes the data about a third larger, rounded up to a multiple of four characters. A 30 KB image becomes about 40 KB of text. That cost is acceptable for small items. For large files, sending the bytes directly is better, which is why big images are normally linked rather than embedded."
+    ],
+    [
+     "heading",
+     "The URL-safe form"
+    ],
+    [
+     "paragraph",
+     "Plus and slash have special meanings in URLs and file names. The standard describes a second alphabet, often called base64url, that replaces plus with a hyphen and slash with an underscore. Padding with equals signs is often left off in this form when the length is known. Tokens such as the parts of a JWT use base64url. A decoder should accept either alphabet, which is what the tool on this site does."
+    ],
+    [
+     "heading",
+     "Text, Unicode and the btoa problem"
+    ],
+    [
+     "paragraph",
+     "Base64 encodes bytes, not characters. To encode text you must first choose how it becomes bytes, and the usual choice is UTF-8. The browser functions btoa and atob treat each character as one byte, so btoa fails for any character above code 255, such as Hindi letters or an emoji. The solution is to turn the text into UTF-8 bytes first and then encode those. The tool does this, so नमस्ते and 😀 round-trip correctly."
+    ],
+    [
+     "paragraph",
+     "When you decode, the bytes may not be text at all. The Base64 of a JPEG image starts with /9j/. Decoding it to text is meaningless, so the tool says the data is valid Base64 but does not decode to text."
+    ],
+    [
+     "heading",
+     "Base64 is not encryption"
+    ],
+    [
+     "paragraph",
+     "The most important point is that Base64 hides nothing. Anyone can decode it in a second, with no key. RFC 4648 itself notes that it may visually hide data but gives no confidentiality. A password, API key or personal detail that is Base64 encoded is still exposed. Encoding changes the form of the data; encryption protects it with a secret. If something must be kept private, encrypt it with a proper tool and send it over a secure connection."
+    ],
+    [
+     "heading",
+     "Common mistakes"
+    ],
+    [
+     "list",
+     "Treating Base64 as security. It is only a format.\nUsing the standard alphabet in a URL without converting plus and slash, which corrupts the value.\nDropping or adding the equals padding in a system that insists on it.\nEncoding text with btoa and being surprised when non-English characters fail.\nCopying with line breaks or spaces added. Many decoders accept them, but some do not."
+    ],
+    [
+     "paragraph",
+     "When a decode fails, check four things: whether the text was cut off, whether it is the URL-safe alphabet, whether padding is missing, and whether the result is binary data rather than text."
+    ],
+    [
+     "heading",
+     "A quick check"
+    ],
+    [
+     "paragraph",
+     "You can confirm a result by hand for a short word. The letters hel are the bytes 104, 101 and 108. In binary that is 01101000 01100101 01101100, which regroups as 011010 000110 010101 101100, or 26, 6, 21 and 44. Those look up as a, G, V and s, so hel becomes aGVs. That is the start of aGVsbG8=, the Base64 of hello."
+    ]
+   ],
+   "sources": [
+    {
+     "title": "RFC 4648: The Base16, Base32, and Base64 Data Encodings",
+     "url": "https://www.rfc-editor.org/rfc/rfc4648"
+    },
+    {
+     "title": "Base64 (MDN Web Docs glossary)",
+     "url": "https://developer.mozilla.org/en-US/docs/Glossary/Base64"
+    }
+   ],
+   "checkedOn": "2026-10-31"
+  },
+  {
+   "title": "URL Encoding Explained: What %20 and %3D Mean",
+   "category": "How-To",
+   "excerpt": "Why URLs need percent-encoding, which characters are safe, how encodeURI and encodeURIComponent differ, and how to fix the most common double-encoding and plus-sign mistakes.",
+   "tags": [
+    "url",
+    "encoding",
+    "developer"
+   ],
+   "blocks": [
+    [
+     "paragraph",
+     "A web address can only contain a limited set of characters. Anything else, such as a space, an ampersand inside a value, or a letter like é, has to be written in a special form: a percent sign followed by two hex digits. This guide explains why that is, which characters are safe, and the mistakes that cause broken links and doubled encoding."
+    ],
+    [
+     "heading",
+     "Why URLs need encoding"
+    ],
+    [
+     "paragraph",
+     "Some characters in a URL are punctuation with a job to do. A question mark starts the query, an ampersand separates parameters, an equals sign joins a name to a value, and a hash starts the fragment. If the data itself contains one of those, the browser cannot tell data from structure. Percent-encoding solves this by writing the byte as a percent sign and two hex digits, so a space is %20 and an ampersand is %26."
+    ],
+    [
+     "heading",
+     "What is safe and what is reserved"
+    ],
+    [
+     "paragraph",
+     "RFC 3986 defines the rules. The unreserved characters never need encoding: the letters A to Z and a to z, the digits 0 to 9, and the four marks hyphen, period, underscore and tilde. The reserved characters are the ones with a special role, and must be encoded when they are part of the data. The general delimiters are colon, slash, question mark, hash, square brackets and at sign. The sub-delimiters are exclamation mark, dollar, ampersand, apostrophe, parentheses, asterisk, plus, comma, semicolon and equals."
+    ],
+    [
+     "paragraph",
+     "The standard recommends upper-case hex digits, so %3D rather than %3d, although they mean the same."
+    ],
+    [
+     "heading",
+     "Non-English text"
+    ],
+    [
+     "paragraph",
+     "A character outside basic English is first turned into bytes using UTF-8, and then each byte is written as %XX. The é in café is two bytes, so it becomes %C3%A9. The Russian word шеллы becomes %D1%88%D0%B5%D0%BB%D0%BB%D1%8B, and an emoji can need four bytes, giving four escapes. This is why a short word in Hindi or Tamil can become a long run of percent codes in a link."
+    ],
+    [
+     "heading",
+     "encodeURI or encodeURIComponent?"
+    ],
+    [
+     "paragraph",
+     "JavaScript has two functions, and choosing the wrong one is a common bug. encodeURI is for a whole address. It leaves the structural characters alone, so slashes, question marks, ampersands and equals signs stay as they are. encodeURIComponent is for one piece, such as a query value. It also encodes those structural characters. For the text a=1&b=Jack & Jill, encodeURIComponent gives a%3D1%26b%3DJack%20%26%20Jill, which is right when this is a value, while encodeURI keeps the separators."
+    ],
+    [
+     "list",
+     "Building a query value, a path segment or a redirect parameter: encode the piece.\nCleaning up a full address that has spaces or non-English letters: encode the whole URL.\nNever encode a whole URL as if it were a component, because the colon and slashes would be escaped and the link would break."
+    ],
+    [
+     "heading",
+     "The plus sign and form data"
+    ],
+    [
+     "paragraph",
+     "In the older form encoding used by HTML forms and many query strings, a space is written as a plus sign instead of %20. In a path, a plus sign is just a plus. This is why a search for C++ can come back as C%2B%2B: the plus signs have to be escaped so they are not read as spaces. The tool offers a form mode for this case."
+    ],
+    [
+     "heading",
+     "Double encoding"
+    ],
+    [
+     "paragraph",
+     "Encoding text that is already encoded turns the percent sign itself into %25, so %20 becomes %2520. The sign of this problem is a link that shows %20 on the page, or a server that receives the literal text %20 in a value. RFC 3986 advises against encoding or decoding the same string more than once. Encode once, as late as possible, when you build the address, and decode once, when you read it."
+    ],
+    [
+     "heading",
+     "When decoding fails"
+    ],
+    [
+     "paragraph",
+     "Decoding fails when a percent sign is not followed by two hex digits, as in 100%, or when the bytes do not form valid UTF-8, as with %FF on its own. The fix is to find where the text was cut or encoded with another character set. The tool reports these cases instead of returning half a result."
+    ],
+    [
+     "heading",
+     "A short checklist"
+    ],
+    [
+     "list",
+     "Encode the pieces, then join them with the real separators.\nUse a component encoder for values and a URL encoder only for a whole address.\nDo not encode twice.\nExpect non-English text to grow, three or four times as long.\nIf a plus sign turns into a space, the value was read as form data."
+    ]
+   ],
+   "sources": [
+    {
+     "title": "RFC 3986: Uniform Resource Identifier (URI): Generic Syntax",
+     "url": "https://www.rfc-editor.org/rfc/rfc3986"
+    },
+    {
+     "title": "encodeURIComponent() (MDN Web Docs)",
+     "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent"
+    }
+   ],
+   "checkedOn": "2026-10-31"
+  },
+  {
+   "title": "UUIDs Explained: Versions 4 and 7 and When to Use Them",
+   "category": "How-To",
+   "excerpt": "What a UUID is, how version 4 and version 7 are built, why collisions are not a worry in practice, and why a UUID must not be used as a secret.",
+   "tags": [
+    "uuid",
+    "identifiers",
+    "developer"
+   ],
+   "blocks": [
+    [
+     "paragraph",
+     "A UUID is a 128-bit label that can be created anywhere without asking a central server, and still be unique for all practical purposes. They are used as database keys, file names, request IDs and more. This guide explains the format, the difference between version 4 and version 7, and the cases where a UUID is the wrong tool."
+    ],
+    [
+     "heading",
+     "What a UUID looks like"
+    ],
+    [
+     "paragraph",
+     "A UUID is 16 bytes, written as 32 hex digits in five groups separated by hyphens, in the pattern 8-4-4-4-12. An example is f81d4fae-7dec-11d0-a765-00a0c91e6bf6. The format is defined in RFC 9562, which replaced the older RFC 4122. Two small fields inside identify the layout. The first digit of the third group is the version, and the first digit of the fourth group, which is 8, 9, a or b for standard UUIDs, marks the variant."
+    ],
+    [
+     "heading",
+     "Version 4: random"
+    ],
+    [
+     "paragraph",
+     "Version 4 is the one most people use. Apart from the 6 bits that fix the version and variant, the other 122 bits are random. A valid version 4 UUID therefore always has a 4 as the first character of the third group, such as 3b241101-e2bb-4255-8caf-4136c566a962. Everything else is chance, so a good source of randomness matters. The standard says to use a cryptographically secure generator, which in a browser is crypto.getRandomValues, the one this site's tool uses."
+    ],
+    [
+     "heading",
+     "Version 7: random but sortable"
+    ],
+    [
+     "paragraph",
+     "Version 7 puts a 48-bit timestamp, in milliseconds since 1970, at the front, and fills the rest with random bits. Newer UUIDs therefore sort after older ones. This matters for databases. A random version 4 key lands at a random place in an index, which the RFC says gives poor index locality and can significantly hurt database performance, while time-ordered keys stay close together. RFC 9562 prefers version 7 over the older time-based versions 1 and 6 for this reason. The cost is that a version 7 UUID reveals roughly when it was created."
+    ],
+    [
+     "heading",
+     "Will two UUIDs ever collide?"
+    ],
+    [
+     "paragraph",
+     "With 122 random bits, there are about 5.3 undecillion possibilities, which is 5.3 followed by 36 zeros. After generating a billion version 4 UUIDs, the chance of any pair matching is still far below one in a billion billion. For ordinary applications you can treat them as unique. The standard still tells designers to weigh the cost of a collision: a duplicate log entry is harmless, while a duplicate key in a safety-critical system is not. The weak point is usually a poor random generator, not the maths."
+    ],
+    [
+     "heading",
+     "A UUID is not a secret"
+    ],
+    [
+     "paragraph",
+     "RFC 9562 is clear that UUIDs must not be used as security capabilities, meaning an ID whose possession grants access. A link such as /invoice/3b241101-e2bb-4255-8caf-4136c566a962 should still check that the visitor is allowed to see the invoice. Version 7 is even less suitable as a secret, because part of it is a timestamp. If you need an unguessable token, such as a password reset link, generate a dedicated random token and store it with an expiry. If a UUID is involved in any security operation, the standard recommends version 4."
+    ],
+    [
+     "heading",
+     "When to use which"
+    ],
+    [
+     "list",
+     "Version 4: general purpose IDs, request IDs, file names, anything where order does not matter.\nVersion 7: primary keys in a database table that grows large, and logs that should sort by time.\nAn ordinary number: when one database hands out the IDs, a counter is smaller, faster and easier to read.\nA random token, not a UUID: for secrets."
+    ],
+    [
+     "heading",
+     "Formatting choices"
+    ],
+    [
+     "paragraph",
+     "Hyphens and case are only presentation. The same UUID can be written in upper or lower case, with or without hyphens, and systems should compare them without regard to case. RFC 9562 allows upper or lower case hex digits. Some systems store the 16 bytes directly rather than the 36-character text, which saves space."
+    ],
+    [
+     "paragraph",
+     "As an example of how a version 7 UUID is built, the first twelve hex digits are the time. The value 018f1b2c3d4e is a moment in milliseconds, and a UUID made a millisecond later starts with 018f1b2c3d4f. Sorting the text of two such UUIDs as plain strings therefore puts the older one first, with no special code needed. Within the same millisecond the order is decided by the random bits, so strict ordering needs extra care."
+    ]
+   ],
+   "sources": [
+    {
+     "title": "RFC 9562: Universally Unique IDentifiers (UUIDs)",
+     "url": "https://www.rfc-editor.org/rfc/rfc9562"
+    },
+    {
+     "title": "Crypto: getRandomValues() (MDN Web Docs)",
+     "url": "https://developer.mozilla.org/en-US/docs/Web/API/Crypto/getRandomValues"
+    }
+   ],
+   "checkedOn": "2026-10-31"
+  },
+  {
+   "title": "What Is a Hash? SHA-256 vs SHA-1 Explained",
+   "category": "How-To",
+   "excerpt": "What a cryptographic hash does, why SHA-256 is preferred to SHA-1, how to check a download against a published hash, and why hashes alone are wrong for storing passwords.",
+   "tags": [
+    "hash",
+    "sha-256",
+    "security"
+   ],
+   "blocks": [
+    [
+     "paragraph",
+     "A hash is a fixed-length fingerprint of some data. Change one letter of the input and the fingerprint changes completely. Hashes are used to check downloads, detect changes and sign data. This guide explains what a hash is, the differences between SHA-1 and SHA-256, how to compare a file with a published hash, and the one job a plain hash must not be used for: storing passwords."
+    ],
+    [
+     "heading",
+     "What a hash does"
+    ],
+    [
+     "paragraph",
+     "A cryptographic hash function takes input of any size and returns a short value of fixed size. It has a few key properties. The same input always gives the same output. A small change to the input changes the output beyond recognition. It is practical to compute in one direction and infeasible to work backwards from the output to the input. And it is infeasible to find two different inputs with the same output."
+    ],
+    [
+     "paragraph",
+     "The SHA-256 hash of the text abc is ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad, and the hash of abd shares nothing with it. The hash of empty text is also well defined: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855."
+    ],
+    [
+     "heading",
+     "The SHA family"
+    ],
+    [
+     "paragraph",
+     "The browser can compute four hashes: SHA-1, SHA-256, SHA-384 and SHA-512. The number is the size of the output in bits, apart from SHA-1, which has 160 bits. SHA-256 gives 64 hex digits and SHA-512 gives 128. SHA-256 is the usual choice today. SHA-1 is considered broken for security because researchers produced two different files with the same SHA-1 hash in 2017, NIST has deprecated it and plans to phase it out by 2030, and MDN warns against using it for cryptographic purposes. It still appears in older systems and for non-security checksums."
+    ],
+    [
+     "heading",
+     "Checking a download"
+    ],
+    [
+     "paragraph",
+     "Software sites often publish a hash next to a download. After downloading, you compute the hash of your copy and compare. If the values match, the file is the one that was published. If they differ, the download was damaged, or the file has been changed. The tool on this site has a field for pasting a published hash and says whether it matches. It compares ignoring case and spaces. Remember that the check is only as trustworthy as the place you got the published hash from: a hash on the same page as a tampered file proves little."
+    ],
+    [
+     "heading",
+     "Text is hashed as bytes"
+    ],
+    [
+     "paragraph",
+     "A hash works on bytes, not letters. The tool converts your text to UTF-8 bytes first, which is what most programs do. A different text encoding, a trailing newline or a different line ending gives a different hash for text that looks the same. This is the most common reason that a hash made here differs from one made by a command-line program. The words hello and hello followed by a newline have different hashes."
+    ],
+    [
+     "heading",
+     "Not for passwords"
+    ],
+    [
+     "paragraph",
+     "Plain hashes such as SHA-256 are designed to be fast. That is the opposite of what is needed to protect passwords. An attacker who steals a table of SHA-256 password hashes can try billions of guesses per second on ordinary hardware, and will find every short or common password. Password storage needs a deliberately slow function with a random salt, such as Argon2, scrypt, bcrypt or PBKDF2. If you build a website that stores passwords, use one of those from a trusted library, not a bare hash."
+    ],
+    [
+     "heading",
+     "Hash is not encryption"
+    ],
+    [
+     "paragraph",
+     "A hash cannot be reversed to get the original text back, so it is not a way to store a message for later. Encryption is reversible with a key. A hash is a one-way fingerprint. Short or guessable inputs can still be found by trying candidates, which is why hashes of simple words are easy to look up."
+    ],
+    [
+     "heading",
+     "A short checklist"
+    ],
+    [
+     "list",
+     "Use SHA-256 or longer for new work. Use SHA-1 only to match an older system.\nCompare the full hash, not the first few characters.\nGet the expected hash from a trusted source.\nWatch for different line endings and text encodings.\nNever store passwords as a plain hash."
+    ]
+   ],
+   "sources": [
+    {
+     "title": "SubtleCrypto: digest() method (MDN Web Docs)",
+     "url": "https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/digest"
+    },
+    {
+     "title": "SHA-1 (Wikipedia)",
+     "url": "https://en.wikipedia.org/wiki/SHA-1"
+    },
+    {
+     "title": "Password Storage Cheat Sheet (OWASP)",
+     "url": "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+    }
+   ],
+   "checkedOn": "2026-10-31"
+  }
+ ]
+}

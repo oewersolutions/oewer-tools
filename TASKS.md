@@ -78,7 +78,8 @@ Source: `docs/OEWER_TOOLS_PROJECT_PLAN.md` (v1.1: JavaScript-only, GitHub Pages,
 - [x] **T8.5** Unit converter (length, weight, temperature, area, volume, speed), with content and article
 - [x] **T8.6** Password generator (browser randomness only), with content and article
 - [x] **T8.7** Wrap-up: home page and counts, search index, rerun SEO / accessibility / privacy audits, update docs
-- [ ] **T8.8+** (later, optional) Batch D: PDF and image tools (merge and split PDF, image to PDF, crop and rotate, EXIF remover); Batch C: developer tools (Base64, URL, UUID, hash, colour, timestamp, regex, JWT)
+- [x] **T8.8** Developer tools, first four: Base64, URL encode/decode, UUID, hash, each with a guide article
+- [ ] **T8.9+** (later, optional) Remaining developer tools: colour, timestamp, regex, JWT; Batch D: PDF and image tools (merge and split PDF, image to PDF, crop and rotate, EXIF remover)
 
 ## Phase 9 — Modern minimal redesign and article images (plan: `docs/redesign-plan.md`)
 - [x] **T9.1** Design system: Poppins, colour and type tokens, spacing, buttons, cards, motion rules; replace Inter and Fraunces; contrast checked; `docs/design.md`

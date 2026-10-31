@@ -60,6 +60,14 @@ export function toolExample(componentKey: string): ToolExample | null {
       return { note: "Length, weight, temperature and more", value: "Every unit" };
     case "password-generator":
       return { note: "Random, made in your browser", value: "Strong passwords" };
+    case "base64-encoder-decoder":
+      return { note: "Text to Base64 and back", value: "aGVsbG8=" };
+    case "url-encoder-decoder":
+      return { note: "Percent-encode and decode", value: "%20" };
+    case "uuid-generator":
+      return { note: "Random version 4 and 7", value: "Unique IDs" };
+    case "hash-generator":
+      return { note: "SHA-1, SHA-256, SHA-384, SHA-512", value: "Hashes" };
     case "percentage-calculator":
       return { note: "15% of 2,000", value: "300" };
     case "image-compressor":

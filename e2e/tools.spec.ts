@@ -15,6 +15,10 @@ const AGE = "/tools/utilities/age-calculator/";
 const DAYS = "/tools/utilities/days-between-dates/";
 const UNITS = "/tools/utilities/unit-converter/";
 const PASSWORD = "/tools/utilities/password-generator/";
+const BASE64 = "/tools/developer-tools/base64-encoder-decoder/";
+const URLTOOL = "/tools/developer-tools/url-encoder-decoder/";
+const UUID = "/tools/developer-tools/uuid-generator/";
+const HASH = "/tools/developer-tools/hash-generator/";
 const COMPRESSOR = "/tools/image-tools/image-compressor/";
 const RESIZER = "/tools/image-tools/image-resizer/";
 const CONVERTER = "/tools/image-tools/image-converter/";
@@ -185,6 +189,66 @@ test("password generator follows the length and the kinds of character chosen", 
   await expect(shown).toHaveText(/^[a-km-np-z2-9]{30}$/);
   await page.getByLabel("Length").fill("5");
   await expect(page.getByText("Length cannot be less than 8.")).toBeVisible();
+});
+
+test("Base64 tool encodes, decodes and explains bad input", async ({ page }) => {
+  test.skip(!published.has(BASE64), "Base64 tool is not published");
+  await page.goto(BASE64);
+  await page.getByLabel("Your text").fill("hello नमस्ते");
+  await expect(page.getByLabel("Base64", { exact: true })).toHaveValue("aGVsbG8g4KSo4KSu4KS44KWN4KSk4KWH");
+  await page.getByLabel("Alphabet").selectOption("url-unpadded");
+  await page.getByLabel("Your text").fill("??>>");
+  await expect(page.getByLabel("Base64", { exact: true })).toHaveValue("Pz8-Pg");
+  await page.getByLabel("Action").selectOption("decode");
+  await page.getByLabel("Your Base64").fill("Zm9vYmFy");
+  await expect(page.getByLabel("Decoded text")).toHaveValue("foobar");
+  await page.getByLabel("Your Base64").fill("Zm9v!");
+  await expect(page.getByText("This is not valid Base64.")).toBeVisible();
+  await page.getByLabel("Your Base64").fill("/9j/4AAQ");
+  await expect(page.getByText("does not decode to text")).toBeVisible();
+});
+
+test("URL tool encodes parts, whole addresses and form data, and decodes", async ({ page }) => {
+  test.skip(!published.has(URLTOOL), "URL tool is not published");
+  await page.goto(URLTOOL);
+  await page.getByLabel("Your text or URL").fill("a=1&b=Jack & Jill");
+  await expect(page.getByLabel("Encoded")).toHaveValue("a%3D1%26b%3DJack%20%26%20Jill");
+  await page.getByLabel("What is it?").selectOption("form");
+  await page.getByLabel("Your text or URL").fill("a b+c");
+  await expect(page.getByLabel("Encoded")).toHaveValue("a+b%2Bc");
+  await page.getByLabel("What is it?").selectOption("url");
+  await page.getByLabel("Your text or URL").fill("https://example.com/a b?q=é");
+  await expect(page.getByLabel("Encoded")).toHaveValue("https://example.com/a%20b?q=%C3%A9");
+  await page.getByLabel("Action").selectOption("decode");
+  await page.getByLabel("Your encoded text").fill("100%");
+  await expect(page.getByText("This is not valid percent-encoding.")).toBeVisible();
+});
+
+test("UUID tool makes the number asked for in the style chosen", async ({ page }) => {
+  test.skip(!published.has(UUID), "UUID tool is not published");
+  await page.goto(UUID);
+  const box = page.getByLabel("Your UUIDs");
+  await expect(box).toHaveValue(/^(?:[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}\n?){5}$/);
+  await page.getByLabel("How many").fill("2");
+  await page.getByLabel("Hyphens").uncheck();
+  await page.getByLabel("Uppercase").check();
+  await expect(box).toHaveValue(/^[0-9A-F]{32}\n[0-9A-F]{32}$/);
+  await page.getByLabel("Version").selectOption("7");
+  await expect(box).toHaveValue(/^[0-9A-F]{12}7[0-9A-F]{3}[89AB][0-9A-F]{15}\n/);
+  await page.getByLabel("How many").fill("101");
+  await expect(page.getByText("Count cannot be more than 100.")).toBeVisible();
+});
+
+test("hash tool gives the known SHA values and checks a pasted hash", async ({ page }) => {
+  test.skip(!published.has(HASH), "Hash tool is not published");
+  await page.goto(HASH);
+  await page.getByLabel("Your text").fill("abc");
+  await expect(page.locator("dd", { hasText: "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad" })).toBeVisible();
+  await expect(page.locator("dd", { hasText: "a9993e364706816aba3e25717850c26c9cd0d89d" })).toBeVisible();
+  await page.getByLabel(/Compare with a hash/).fill("BA7816BF 8F01CFEA414140DE5DAE2223B00361A396177A9CB410FF61F20015AD");
+  await expect(page.getByText("Matches the SHA-256 hash of your text.")).toBeVisible();
+  await page.getByLabel(/Compare with a hash/).fill("deadbeef");
+  await expect(page.getByText("Does not match any of the hashes above.")).toBeVisible();
 });
 
 test("image compressor makes a WebP and offers a download", async ({ page, browserName }) => {
