@@ -41,5 +41,5 @@ test("the legal pages and the contact address are plain text and links", async (
   await page.goto("/privacy-policy/");
   await expect(page.getByRole("heading", { level: 1, name: "Privacy Policy" })).toBeVisible();
   await page.goto("/contact/");
-  await expect(page.locator("main").getByRole("link", { name: "oewersolutions@gmail.com" })).toHaveAttribute("href", "mailto:oewersolutions@gmail.com");
+  await expect(page.locator("main").getByRole("link", { name: "Write an email" })).toHaveAttribute("href", "mailto:oewersolutions@gmail.com");
 });

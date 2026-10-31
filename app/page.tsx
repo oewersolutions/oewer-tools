@@ -134,7 +134,7 @@ export default function HomePage() {
           <p className="mt-6 flex flex-wrap items-center justify-center gap-2 text-sm text-white/70">
             <span>Popular:</span>
             {popular.map(({ tool, category }) => (
-              <Link
+              <Link prefetch={false}
                 key={tool.tool_id}
                 href={toolUrl(category.slug, tool.slug)}
                 className="rounded-full border border-white/20 px-3.5 py-1 text-white transition-colors hover:bg-white/10"
@@ -198,7 +198,7 @@ export default function HomePage() {
           />
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {categories.map((c, i) => (
-              <Link
+              <Link prefetch={false}
                 key={c.category_id}
                 href={`/tools/${c.slug}/`}
                 className={`${TILES[i % TILES.length]} group relative isolate flex min-h-64 flex-col justify-end overflow-hidden rounded-3xl p-6 text-white`}

@@ -99,19 +99,25 @@ test("every page loads only from its own site, with no uploads", async ({ page, 
   }
 });
 
-// Analytics is off until the workbook has a Measurement ID and the visitor accepts. With no ID, nothing may be
-// requested from Google even if a visitor's stored choice says "accept".
-test("with no Measurement ID set, no analytics request is made even after accepting", async ({ page }) => {
+// Analytics never runs on its own. Without a stored "accept" nothing may be requested from Google, whether or not the
+// workbook has a Measurement ID. With no ID at all, even a stored "accept" must request nothing.
+test("analytics requests nothing before a visitor accepts (and nothing at all without an ID)", async ({ page }) => {
   const external: string[] = [];
   page.on("request", (r) => {
     if (/^https?:/.test(r.url()) && new URL(r.url()).origin !== new URL(page.url() === "about:blank" ? "http://localhost" : page.url()).origin) external.push(r.url());
   });
-  await page.addInitScript(() => localStorage.setItem("oewer-consent", JSON.stringify({ analytics: true })));
   const path = ["/tools/finance-calculators/emi-calculator/"].find((p) => published.has(p));
   test.skip(!path, "tool is not published");
   await open(page, path!);
   await page.getByLabel("Loan amount (₹)").fill("500000");
   await page.waitForTimeout(500);
-  expect(external.filter((u) => /google|gtag|analytics/i.test(u))).toEqual([]);
+  expect(external.filter((u) => /google|gtag|analytics/i.test(u)), "before any choice").toEqual([]);
   expect(await page.evaluate(() => typeof (window as unknown as { gtag?: unknown }).gtag)).toBe("undefined");
+
+  const hasId = (await page.getByRole("region", { name: "Analytics choice" }).count()) > 0 || (await page.getByRole("region", { name: "Privacy choices" }).count()) > 0;
+  if (hasId) return; // the accepted case needs a stub for Google's script; consent.spec.ts covers it
+  await page.evaluate(() => localStorage.setItem("oewer-consent", JSON.stringify({ analytics: true })));
+  await open(page, path!);
+  await page.waitForTimeout(500);
+  expect(external.filter((u) => /google|gtag|analytics/i.test(u)), "accepted, but no Measurement ID").toEqual([]);
 });

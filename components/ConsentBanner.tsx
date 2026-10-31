@@ -63,9 +63,12 @@ export default function ConsentBanner({ measurementId, privacyPath, adsActive = 
     const box = "mt-0.5 size-4 shrink-0 accent-[#174f49]";
     return (
       <div ref={region} tabIndex={-1} role="region" aria-label="Privacy choices" className="fixed inset-x-3 bottom-3 z-40 mx-auto max-h-[85vh] max-w-3xl overflow-y-auto rounded-2xl border border-brand-200 bg-white p-5 shadow-lift outline-none sm:inset-x-6 sm:bottom-6">
-        <p className="font-display text-lg font-semibold text-ink">Your privacy choices</p>
-        <p className="mt-2 text-sm leading-relaxed text-slate-800">
-          Optional extras, your call. Our tools never see your files or text, and if you decline both the site works the same.{" "}
+        <p className="text-base font-semibold text-ink">Your privacy choices</p>
+        {/* Short separate lines, for the same reason as the analytics-only banner above (keep it smaller than the page's own content). */}
+        <p className="mt-1.5 text-sm text-slate-800">Two optional extras, your call.</p>
+        <p className="text-sm text-slate-800">Our tools never see your files or text.</p>
+        <p className="text-sm text-slate-800">
+          Declining both changes nothing.{" "}
           {privacyPath && (
             <Link href={privacyPath} className="font-medium text-brand-700 underline">
               Privacy policy
@@ -121,9 +124,16 @@ export default function ConsentBanner({ measurementId, privacyPath, adsActive = 
       aria-label="Analytics choice"
       className="fixed inset-x-3 bottom-3 z-40 mx-auto max-h-[85vh] max-w-3xl overflow-y-auto rounded-2xl border border-brand-200 bg-white p-5 shadow-lift outline-none sm:inset-x-6 sm:bottom-6"
     >
-      <p className="font-display text-lg font-semibold text-ink">Help us count what is useful?</p>
-      <p className="mt-2 text-sm leading-relaxed text-slate-800">
-        With your OK, we use Google Analytics to count visits and which tools are used. It sets cookies and sends anonymous usage figures to Google, such as the page and the tool name. It never sees what you type or the files you choose: the tools run in your browser. If you decline, the whole site works the same.{" "}
+      <p className="text-base font-semibold text-ink">Help us count what is useful?</p>
+      {/*
+        The text is kept in short separate lines on purpose. This banner appears only after the page's scripts have loaded;
+        if one paragraph here were the largest text on the screen it would become the page's "largest contentful paint"
+        and make every first visit look slow to search engines. Short lines stay smaller than the page's own content.
+      */}
+      <p className="mt-1.5 text-sm text-slate-800">Google Analytics counts visits and tool names, with cookies.</p>
+      <p className="text-sm text-slate-800">It never sees what you type or choose.</p>
+      <p className="text-sm text-slate-800">
+        Declining changes nothing.{" "}
         {privacyPath && (
           <Link href={privacyPath} className="font-medium text-brand-700 underline">
             Privacy policy

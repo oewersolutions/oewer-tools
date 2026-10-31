@@ -62,8 +62,9 @@ export default async function TagPage({ params }: Props) {
       />
       <Container className="py-12 sm:py-14">
         <PostGrid>
-          {posts.map((p) => (
+          {posts.map((p, i) => (
             <PostCard
+              priority={i === 0}
               heading="h2"
               key={p.post_id}
               post={p}

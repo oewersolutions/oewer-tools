@@ -98,7 +98,7 @@ export function ContactPage({
             >
               <div className="hero-bg on-dark rounded-3xl p-8 text-white">
                 <p className="t-eyebrow !text-white/70">Email</p>
-                <p className="t-heading mt-3 break-words">{email}</p>
+                <p className="t-heading mt-3 [overflow-wrap:anywhere]">{email}</p>
                 <p className="mt-3 text-sm leading-relaxed text-white/80">
                   We read every message. Tell us the tool, what you tried and
                   what happened, and we will get back to you.

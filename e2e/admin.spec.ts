@@ -952,7 +952,11 @@ test("the dashboard still shows counts when the token cannot read site updates",
 });
 
 test("the dashboard says analytics is off and how to set the reports link", async ({ page }) => {
-  await fakeGithub(page);
+  // The checked-in workbook may have analytics switched on, so start from one with the settings cleared.
+  const wb = await loadWorkbook(new Uint8Array(WORKBOOK));
+  const clear = (key: string) => ({ type: "set" as const, sheet: "site_settings", pk: key, column: "setting_value", before: readCell(wb, schema, { sheet: "site_settings", row: findRecord(wb, schema, "site_settings", key), column: "setting_value" }), after: "" });
+  applyChanges(wb, schema, [clear("analytics_measurement_id"), clear("analytics_dashboard_url")]);
+  await fakeGithub(page, { workbook: Buffer.from(await saveWorkbook(wb)) });
   await signIn(page);
   const analytics = page.getByRole("region", { name: "Dashboard" }).getByRole("group", { name: "Analytics" });
   await expect(analytics).toContainText("Off.");

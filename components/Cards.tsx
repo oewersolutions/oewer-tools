@@ -23,7 +23,7 @@ export function ToolCard({
 }) {
   const example = toolExample(tool.component_key);
   return (
-    <Link
+    <Link prefetch={false}
       href={toolUrl(category.slug, tool.slug)}
       className="card card-link group flex h-full flex-col p-6"
     >
@@ -64,7 +64,7 @@ export function CategoryCard({
   toolCount: number;
 }) {
   return (
-    <Link
+    <Link prefetch={false}
       href={`/tools/${category.slug}/`}
       className="card card-link group flex h-full flex-col p-6"
     >
@@ -89,19 +89,22 @@ export function CategoryCard({
 }
 
 /** An article: the cover first, then the date and reading time, the title and a two-line summary. */
+/** `priority` is for the first card of a list that starts near the top of the page: its picture loads at once, not lazily. */
 export function PostCard({
   post,
   categoryName,
   minutes,
   heading: Heading = "h3",
+  priority = false,
 }: {
   post: Post;
   categoryName?: string;
   minutes?: number;
   heading?: "h2" | "h3";
+  priority?: boolean;
 }) {
   return (
-    <Link
+    <Link prefetch={false}
       href={postUrl(post.slug)}
       className="card card-link group flex h-full flex-col overflow-hidden"
     >
@@ -111,7 +114,7 @@ export function PostCard({
           alt=""
           info={getCoverInfo(post)}
           sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-          className="aspect-[16/10] w-full object-cover"
+          priority={priority} className="aspect-[16/10] w-full object-cover"
         />
       ) : (
         <Cover
