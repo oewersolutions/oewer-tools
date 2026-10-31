@@ -76,6 +76,14 @@ export function toolExample(componentKey: string): ToolExample | null {
       return { note: "Matches, groups, safe timeout", value: "\\d+" };
     case "jwt-decoder":
       return { note: "Read a token's header and payload", value: "JWT" };
+    case "pdf-merge":
+      return { note: "Combine PDFs in your order", value: "One PDF" };
+    case "pdf-split":
+      return { note: "Pull out pages or ranges", value: "Pages 1-3" };
+    case "images-to-pdf":
+      return { note: "JPG, PNG and WebP to PDF", value: "Pictures to PDF" };
+    case "exif-remover":
+      return { note: "Remove GPS and camera data", value: "Clean photos" };
     case "percentage-calculator":
       return { note: "15% of 2,000", value: "300" };
     case "image-compressor":

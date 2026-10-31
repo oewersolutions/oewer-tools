@@ -1,4 +1,6 @@
 import { expect, test } from "./fixtures";
+import { PDFDocument } from "pdf-lib";
+import { jpegWithHiddenData, pdfFile, PNG_1X1, readDownload } from "./files";
 import { upload } from "./helpers";
 import { builtPaths } from "./pages";
 
@@ -24,6 +26,10 @@ const TIMESTAMP = "/tools/developer-tools/timestamp-converter/";
 const REGEX = "/tools/developer-tools/regex-tester/";
 const JWT = "/tools/developer-tools/jwt-decoder/";
 const SAMPLE_JWT = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c";
+const PDF_MERGE = "/tools/pdf-tools/pdf-merge/";
+const PDF_SPLIT = "/tools/pdf-tools/pdf-split/";
+const IMAGES_PDF = "/tools/pdf-tools/images-to-pdf/";
+const EXIF = "/tools/image-tools/exif-remover/";
 const COMPRESSOR = "/tools/image-tools/image-compressor/";
 const RESIZER = "/tools/image-tools/image-resizer/";
 const CONVERTER = "/tools/image-tools/image-converter/";
@@ -320,6 +326,85 @@ test("JWT decoder shows the parts and the times, and warns about unsigned tokens
   await expect(page.getByText("Expired")).toBeVisible();
   await page.getByLabel("Your token").fill("a.b");
   await expect(page.getByText("three parts separated by dots")).toBeVisible();
+});
+
+const pageCountOf = async (download: import("@playwright/test").Download) => (await PDFDocument.load(readDownload((await download.path())!))).getPageCount();
+
+test("PDF merge puts the files in the order chosen and downloads one PDF", async ({ page }) => {
+  test.skip(!published.has(PDF_MERGE), "PDF merge is not published");
+  await page.goto(PDF_MERGE);
+  await page.getByLabel("Choose PDF files").setInputFiles([await pdfFile("first.pdf", 2), await pdfFile("second.pdf", 3)]);
+  await expect(page.getByRole("list", { name: "Chosen files" })).toContainText("second.pdf");
+  await expect(page.getByRole("list", { name: "Chosen files" })).toContainText("3 pages");
+  await page.getByRole("button", { name: "Move second.pdf up" }).click();
+  await page.getByRole("button", { name: "Merge into one PDF" }).click();
+  await expect(page.getByText("Done: 5 pages")).toBeVisible();
+  const [download] = await Promise.all([page.waitForEvent("download"), page.getByRole("link", { name: /Download/ }).click()]);
+  const merged = await PDFDocument.load(readDownload((await download.path())!));
+  expect(merged.getPageCount()).toBe(5);
+  expect(merged.getPage(0).getWidth()).toBe(200); // second.pdf now comes first and its first page is 200 wide
+  expect(merged.getPage(3).getWidth()).toBe(200); // then first.pdf
+  await page.getByRole("button", { name: "Remove first.pdf" }).click();
+  await expect(page.getByRole("button", { name: "Merge into one PDF" })).toBeDisabled();
+});
+
+test("PDF merge says when a file is not a PDF", async ({ page }) => {
+  test.skip(!published.has(PDF_MERGE), "PDF merge is not published");
+  await page.goto(PDF_MERGE);
+  await page.getByLabel("Choose PDF files").setInputFiles([{ name: "notes.pdf", mimeType: "application/pdf", buffer: Buffer.from("this is not a pdf") }]);
+  await expect(page.getByRole("alert").filter({ hasText: "notes.pdf" })).toBeVisible();
+});
+
+test("PDF split makes one file per line and explains a bad range", async ({ page }) => {
+  test.skip(!published.has(PDF_SPLIT), "PDF split is not published");
+  await page.goto(PDF_SPLIT);
+  await page.getByLabel("Choose a PDF file").setInputFiles(await pdfFile("report.pdf", 5));
+  await expect(page.getByText("has 5 pages.")).toBeVisible();
+  await page.getByLabel(/Pages for each new file/).fill("1-2\n4-");
+  await page.getByRole("button", { name: "Make the files" }).click();
+  await expect(page.getByText("Pages 1-2: 2 pages")).toBeVisible();
+  await expect(page.getByText("Pages 4-: 2 pages")).toBeVisible();
+  const [download] = await Promise.all([page.waitForEvent("download"), page.getByRole("link", { name: /pages-4/ }).click()]);
+  expect(await pageCountOf(download)).toBe(2);
+  await page.getByLabel(/Pages for each new file/).fill("9");
+  await page.getByRole("button", { name: "Make the files" }).click();
+  await expect(page.getByRole("alert").filter({ hasText: "5 pages" })).toBeVisible();
+});
+
+test("images to PDF makes one page per picture", async ({ page }) => {
+  test.skip(!published.has(IMAGES_PDF), "Images to PDF is not published");
+  await page.goto(IMAGES_PDF);
+  await page.getByLabel(/Choose pictures/).setInputFiles([
+    { name: "a.png", mimeType: "image/png", buffer: PNG_1X1 },
+    { name: "b.png", mimeType: "image/png", buffer: PNG_1X1 },
+  ]);
+  await expect(page.getByRole("list", { name: "Chosen files" })).toContainText("b.png");
+  await page.getByRole("button", { name: "Make the PDF" }).click();
+  await expect(page.getByText("Done: 2 pages")).toBeVisible();
+  const [download] = await Promise.all([page.waitForEvent("download"), page.getByRole("link", { name: /Download/ }).click()]);
+  const doc = await PDFDocument.load(readDownload((await download.path())!));
+  expect(doc.getPageCount()).toBe(2);
+  expect(doc.getPage(0).getWidth()).toBeCloseTo(595.28, 1);
+});
+
+test("EXIF remover shows what is hidden in a photo and gives back a clean copy", async ({ page }) => {
+  test.skip(!published.has(EXIF), "EXIF remover is not published");
+  await page.goto(EXIF);
+  await page.getByLabel(/Choose pictures/).setInputFiles({ name: "holiday.jpg", mimeType: "image/jpeg", buffer: jpegWithHiddenData() });
+  const result = page.getByRole("status");
+  await expect(result).toContainText("Acme Phone 9");
+  await expect(result).toContainText("GPS location");
+  await expect(result).toContainText("XMP data");
+  await expect(result).toContainText("A comment");
+  const [download] = await Promise.all([page.waitForEvent("download"), page.getByRole("link", { name: /holiday-clean\.jpg/ }).click()]);
+  expect(download.suggestedFilename()).toBe("holiday-clean.jpg");
+  const text = readDownload((await download.path())!).toString("latin1");
+  for (const gone of ["Acme", "Exif", "xmpmeta", "secret comment"]) expect(text).not.toContain(gone);
+  expect(text).toContain("JFIF");
+  await page.getByLabel("Choose pictures (JPG, PNG or WebP)").setInputFiles({ name: "plain.png", mimeType: "image/png", buffer: PNG_1X1 });
+  await expect(result).toContainText("No hidden data found");
+  await page.getByLabel("Choose pictures (JPG, PNG or WebP)").setInputFiles({ name: "fake.jpg", mimeType: "image/jpeg", buffer: Buffer.from("not an image at all") });
+  await expect(page.getByRole("alert").filter({ hasText: "fake.jpg" })).toBeVisible();
 });
 
 test("image compressor makes a WebP and offers a download", async ({ page, browserName }) => {

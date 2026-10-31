@@ -1,4 +1,8 @@
 import type { ComponentType } from "react";
+import ExifRemover from "./ExifRemover";
+import ImagesToPdf from "./ImagesToPdf";
+import PdfMerge from "./PdfMerge";
+import PdfSplit from "./PdfSplit";
 import ColourConverter from "./ColourConverter";
 import JwtDecoder from "./JwtDecoder";
 import RegexTester from "./RegexTester";
@@ -56,6 +60,10 @@ export const toolComponents: { [K in ToolComponentKey]: ComponentType } = {
   "timestamp-converter": TimestampConverter,
   "regex-tester": RegexTester,
   "jwt-decoder": JwtDecoder,
+  "pdf-merge": PdfMerge,
+  "pdf-split": PdfSplit,
+  "images-to-pdf": ImagesToPdf,
+  "exif-remover": ExifRemover,
   "percentage-calculator": PercentageCalculator,
   "image-compressor": ImageCompressor,
   "image-resizer": ImageResizer,

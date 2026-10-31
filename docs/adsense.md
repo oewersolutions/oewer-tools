@@ -20,7 +20,7 @@ An honest read, from what is in the workbook today:
 |---|---|---|
 | Domain you own, HTTPS | Yes: `oewer.in` | Required |
 | Privacy Policy, Terms, Contact, About | Yes, published | Have them reviewed (`docs/legal-pages.md`) |
-| Working, useful tools | 28 tools | A strength: real utility, not filler |
+| Working, useful tools | 32 tools | A strength: real utility, not filler |
 | Original written content | 6 seed articles | **The weak spot.** Google gives no fixed number, but applications are commonly refused for "low value content" when a site has only a handful of short pages. Aim for a clearly substantial set of original, accurate guides (T4.5) before applying, written for people, not for search engines |
 | Clear navigation, no broken pages | Yes | Audited (`docs/audit.md`) |
 | Consent for ads | Yes, built in | See the EU note below |

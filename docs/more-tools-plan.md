@@ -1,6 +1,6 @@
 # More tools: plan (Phase 8)
 
-**Status (31 October 2026): T8.1 to T8.9 are done.** The site has 28 tools and each new tool has a guide article. PDF and image tools (Batch D) are not started.
+**Status (31 October 2026): T8.1 to T8.10 are done.** The site has 32 tools and each new tool has a guide article. Merge PDF, split PDF, images to PDF and the EXIF remover (Batch D) are done; image crop and rotate are not.
 
 Agreed starting point (30 October 2026): the finance calculators plus the three best everyday utilities, one guide article per tool. Developer tools and PDF/image tools come later.
 

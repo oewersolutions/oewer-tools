@@ -1,0 +1,369 @@
+{
+ "date": "2026-10-31",
+ "articles": [
+  {
+   "title": "How to Merge PDF Files in Order Without Uploading",
+   "category": "How-To",
+   "excerpt": "How to combine several PDFs into one in the right order, what happens to page sizes and bookmarks, why password-protected files fail, and how to merge without sending files to a server.",
+   "tags": [
+    "pdf",
+    "merge",
+    "privacy"
+   ],
+   "blocks": [
+    [
+     "paragraph",
+     "Putting several PDF files into one is a common job: a set of scanned pages, an application with its attachments, or the chapters of a report. This guide explains how merging works, how to do it in the order you want, the problems that stop it, and how to do it without sending your documents to someone else's server."
+    ],
+    [
+     "heading",
+     "What a PDF is"
+    ],
+    [
+     "paragraph",
+     "PDF stands for Portable Document Format. Adobe created it and made it public in 1993, and it became an open standard in 2008 as ISO 32000. A PDF describes a fixed-layout document: each page lists its text, drawings and pictures, so the pages look the same on any device. This page-by-page structure is what makes merging straightforward. A merge copies the pages of each file, one after another, into a new document."
+    ],
+    [
+     "heading",
+     "Putting the files in the right order"
+    ],
+    [
+     "paragraph",
+     "The merged file follows the order of your list: all pages of the first file, then all pages of the second, and so on. Check the order before merging, because fixing it afterwards means splitting the file again. In the merge tool on this site you can move each file up or down and remove one you added by mistake. A common approach is to name files with numbers (01-cover.pdf, 02-form.pdf) so that they sort correctly when you pick them."
+    ],
+    [
+     "heading",
+     "What happens to the pages"
+    ],
+    [
+     "list",
+     "Each page keeps its own size, so a merge of A4 and Letter pages gives a file with both sizes. Viewers show each page at its own size.\nText stays as text and can still be searched and copied. Images stay as they were, so merging does not reduce quality.\nThe page count of the result is the sum of the counts of the files you merged.\nThe new file is a fresh document. Features that belong to a whole document, such as the title and author in the properties, or bookmarks that jump to chapters, may not carry over from the originals."
+    ],
+    [
+     "paragraph",
+     "If a merged file looks odd on one page, the cause is usually in the original. A scan may have been saved sideways, or a page may have been set in a different paper size."
+    ],
+    [
+     "heading",
+     "Why a merge can fail"
+    ],
+    [
+     "paragraph",
+     "PDFs can be protected with a password. A file that needs a password to open cannot be read by a merge tool, because the page content is encrypted. Remove the password in the program that created the file or in your PDF viewer, then try again. An owner password that only restricts printing or copying is a weaker lock, and many programs ignore it, but a tool that respects it will also refuse. A file can also be damaged, for example by an interrupted download, or it can be a different kind of file with a .pdf name. The tool tells you which file is the problem, so you can remove it and merge the rest."
+    ],
+    [
+     "heading",
+     "Size limits in a browser"
+    ],
+    [
+     "paragraph",
+     "A browser works on files held in memory, so there are practical limits. The tool on this site accepts files up to 50 MB each, up to 20 files, and 150 MB in total. For very large scans, merge them in groups, or reduce them with a compression tool first."
+    ],
+    [
+     "heading",
+     "Privacy: why local merging matters"
+    ],
+    [
+     "paragraph",
+     "PDFs often hold the most sensitive paper in your life: ID scans, bank statements, contracts and medical reports. Many online merge sites upload your files to a server, and you must trust the site to delete them. A tool that does the work inside your browser never sends the files anywhere, because the merging code runs on your own device. The library used here, pdf-lib, is written in JavaScript and works in any JavaScript runtime, including browsers. You can confirm that nothing is uploaded by opening your browser's network panel while you merge."
+    ],
+    [
+     "heading",
+     "A short checklist"
+    ],
+    [
+     "list",
+     "Name or arrange the files in the order you want before choosing them.\nRemove passwords first.\nCheck the page count in the result matches your expectation.\nOpen the merged file and look at the first and last page of each part.\nKeep the originals until you have checked the result."
+    ]
+   ],
+   "sources": [
+    {
+     "title": "PDF (Wikipedia)",
+     "url": "https://en.wikipedia.org/wiki/PDF"
+    },
+    {
+     "title": "pdf-lib: create and modify PDF documents in any JavaScript environment",
+     "url": "https://pdf-lib.js.org/"
+    }
+   ],
+   "checkedOn": "2026-10-31"
+  },
+  {
+   "title": "How to Split a PDF and Extract Pages",
+   "category": "How-To",
+   "excerpt": "How to take pages out of a PDF, split it into several files, write page ranges like 1-3, 5, 8-, and what to check before sharing the result.",
+   "tags": [
+    "pdf",
+    "split",
+    "privacy"
+   ],
+   "blocks": [
+    [
+     "paragraph",
+     "Sometimes you need only part of a PDF: one page of a form, a chapter of a long report, or a few pages of a scan. Splitting makes new files from selected pages without changing the original. This guide explains how page ranges work, how to cut a file into several parts, and what to check before you share the result."
+    ],
+    [
+     "heading",
+     "How splitting works"
+    ],
+    [
+     "paragraph",
+     "A PDF is built from separate pages, each one a description of its own text, drawings and pictures. Splitting creates a new document and copies the pages you chose into it. The original file is not changed, and you can make as many new files as you like from it. Because the pages are copied as they are, text stays searchable and pictures keep their quality. The new files are often smaller than the original, but not always: shared items such as fonts are copied into each new file that uses them."
+    ],
+    [
+     "heading",
+     "Writing page ranges"
+    ],
+    [
+     "paragraph",
+     "Pages are counted from 1, the first page. You can write one page, a range, or a mix, separated by commas."
+    ],
+    [
+     "list",
+     "3 means page 3 only.\n2-5 means pages 2, 3, 4 and 5.\n8- means page 8 and every page after it, to the end.\n1-3, 5, 8- means pages 1 to 3, then page 5, then page 8 to the end."
+    ],
+    [
+     "paragraph",
+     "The order you write is the order in the new file. Writing 5, 1 puts page 5 first, which is a quick way to reorder, and a page may appear twice. A range must go upwards, so 5-2 is an error, and a page number larger than the page count is refused with a message that tells you how many pages the file has."
+    ],
+    [
+     "heading",
+     "Making several files at once"
+    ],
+    [
+     "paragraph",
+     "The split tool on this site makes one file per line. If you enter 1-3 on the first line, 4-6 on the second and 7- on the third, you get three files: the first three pages, the next three, and the rest. This is useful for cutting a long scan into separate documents, or splitting a combined statement into months. Each file is named after the original and the pages in it, such as report-pages-1-3.pdf, so you can tell them apart."
+    ],
+    [
+     "heading",
+     "Common uses"
+    ],
+    [
+     "list",
+     "Sending only the page that a form requires, instead of a whole scanned document.\nRemoving a cover page or a blank page by extracting everything else, for example 2- to drop the first page.\nSeparating a scanned batch of different documents.\nSaving one chapter to read on a phone.\nRemoving pages that hold information you do not want to share."
+    ],
+    [
+     "heading",
+     "Check before you share"
+    ],
+    [
+     "paragraph",
+     "A split file keeps only the pages you chose, but check it before sending. Open the new file and look at every page. If you were removing sensitive pages, be sure the numbers are right, since the page numbers printed on the paper may differ from the position in the file. A cover page makes the printed number 1 sit on file page 2. Also remember that metadata such as the document title or author may carry over from some files, so review the properties in your viewer if the original author's name matters."
+    ],
+    [
+     "heading",
+     "When splitting fails"
+    ],
+    [
+     "paragraph",
+     "Files that are protected with a password cannot be read, so remove the password first. A damaged file, or one that only has a .pdf name, is reported as not readable. Very large files are limited in a browser: this tool accepts up to 50 MB. For a bigger file, split it into larger parts first, then split again."
+    ],
+    [
+     "heading",
+     "Privacy"
+    ],
+    [
+     "paragraph",
+     "Because the work is done inside your browser, the file is not uploaded. This matters for documents such as bank statements or ID scans. The page-copying code runs on your own device, using a JavaScript library that works in any JavaScript runtime, including browsers."
+    ]
+   ],
+   "sources": [
+    {
+     "title": "PDF (Wikipedia)",
+     "url": "https://en.wikipedia.org/wiki/PDF"
+    },
+    {
+     "title": "pdf-lib: create and modify PDF documents in any JavaScript environment",
+     "url": "https://pdf-lib.js.org/"
+    }
+   ],
+   "checkedOn": "2026-10-31"
+  },
+  {
+   "title": "How to Turn Pictures Into a PDF: Sizes and Quality",
+   "category": "How-To",
+   "excerpt": "How to put JPG, PNG and WebP pictures into one PDF, how page size and margins work, why quality can stay the same, and how to keep a scan sharp and the file small.",
+   "tags": [
+    "pdf",
+    "images",
+    "scanning"
+   ],
+   "blocks": [
+    [
+     "paragraph",
+     "Turning photos or scans into a PDF makes them easy to send as one document, print in order, and keep together. This guide explains how pictures become pages, how to choose a page size and margin, what happens to quality, and how to keep the file a reasonable size."
+    ],
+    [
+     "heading",
+     "One picture, one page"
+    ],
+    [
+     "paragraph",
+     "The tool puts each picture on its own page, in the order of your list. You can move pictures up and down before you make the file, which is easier than rearranging pages afterwards. Common uses are a set of scanned pages from your phone, photos of a receipt and a form, or a series of screenshots to share as one file."
+    ],
+    [
+     "heading",
+     "Choosing the page size"
+    ],
+    [
+     "list",
+     "A4 is 210 by 297 millimetres, which is 595 by 842 points in PDF terms (a point is 1/72 inch). It is the standard paper size in India and most of the world.\nUS Letter is 8.5 by 11 inches, or 612 by 792 points, used in the United States and Canada.\nSame size as each picture makes every page exactly as large as its picture, with no margin. That is best for screens, such as screenshots, because nothing is shrunk."
+    ],
+    [
+     "paragraph",
+     "On A4 or Letter the tool picks portrait for a tall picture and landscape for a wide one, and scales the picture to fit inside the margin, centred on the page. It keeps the shape of the picture so that nothing is squashed, and a small picture is enlarged to fit, so it may look soft if it has few pixels. Margins of none, small and normal are offered, and a normal margin of about 13 millimetres is safe for most home printers, which cannot print right to the edge."
+    ],
+    [
+     "heading",
+     "What happens to quality"
+    ],
+    [
+     "paragraph",
+     "JPEG is a lossy format, and every time a JPEG is compressed again, a little more detail is lost. To avoid this, the tool puts JPG and PNG files into the PDF as they are, without compressing them again, so the quality is the same as the original. The exceptions are pictures that need work first. WebP files cannot be placed directly, so they are redrawn as PNG, which is lossless. A JPG photo that is stored sideways with a rotation note (an Exif orientation tag) is redrawn upright and saved as JPEG at high quality, since otherwise it would appear on its side in the PDF."
+    ],
+    [
+     "heading",
+     "Keeping the file size down"
+    ],
+    [
+     "paragraph",
+     "The size of the PDF is mostly the size of the pictures. A modern phone photo is often 3 to 8 MB, so ten photos can make a file of 50 MB or more, which many email systems reject. If the file is too large, shrink the pictures first with an image resizer or compressor before you make the PDF. For documents, a width of about 1600 to 2000 pixels is enough to read and print a page clearly. PNG files from screenshots can also be large, so convert photographs to JPG, which is better suited to photographs, before building the PDF."
+    ],
+    [
+     "heading",
+     "Scans and readability"
+    ],
+    [
+     "paragraph",
+     "A PDF made from pictures is a set of images, not text. You cannot search or select the words unless you run text recognition (OCR) with another tool. For official use, make sure the scan is straight, well lit and readable at full size. If text looks small or blurry, retake the picture rather than enlarging it, because enlarging cannot add detail."
+    ],
+    [
+     "heading",
+     "Privacy"
+    ],
+    [
+     "paragraph",
+     "Photos and scans often contain private details. The pictures are processed in your browser and not uploaded. Remember that photos can also carry hidden camera and location data in their files; the PDF made here places the picture itself on the page, but you may want to clean the originals with an EXIF remover before sharing them separately."
+    ],
+    [
+     "heading",
+     "A short checklist"
+    ],
+    [
+     "list",
+     "Order the pictures before you make the file.\nChoose A4 or Letter for printing, and same size for screens.\nReduce very large photos first.\nOpen the result and check each page.\nKeep the original pictures."
+    ]
+   ],
+   "sources": [
+    {
+     "title": "JPEG (Wikipedia)",
+     "url": "https://en.wikipedia.org/wiki/JPEG"
+    },
+    {
+     "title": "PDF (Wikipedia)",
+     "url": "https://en.wikipedia.org/wiki/PDF"
+    },
+    {
+     "title": "pdf-lib: create and modify PDF documents in any JavaScript environment",
+     "url": "https://pdf-lib.js.org/"
+    }
+   ],
+   "checkedOn": "2026-10-31"
+  },
+  {
+   "title": "What Is EXIF Data? Why and How to Remove It",
+   "category": "How-To",
+   "excerpt": "What hidden data photos carry (camera, time, GPS location), how it can reveal where you live, how it is stored in JPG, PNG and WebP files, and how to remove it without re-compressing the picture.",
+   "tags": [
+    "exif",
+    "privacy",
+    "photos"
+   ],
+   "blocks": [
+    [
+     "paragraph",
+     "A photo file holds more than the picture. Most cameras and phones add a block of hidden details called Exif data, and it can say what device took the photo, when, and where. This guide explains what is stored, why it matters for privacy, how it is kept in different file types, and how to remove it cleanly."
+    ],
+    [
+     "heading",
+     "What Exif data contains"
+    ],
+    [
+     "paragraph",
+     "Exif stands for Exchangeable image file format. It records the camera make and model, the camera settings such as aperture, shutter speed and ISO, the date and time of the shot, and the pixel size of the image. If the device has a GPS receiver and location is on, it also stores the coordinates where the photo was taken. There may also be a small preview thumbnail, a description and copyright text. Some files also carry a device ID."
+    ],
+    [
+     "paragraph",
+     "Most of this is harmless and useful for photographers. The risk comes from the location and the time. A photo taken at home and posted online with its location intact can show where you live, and a series of photos can show where you are during the day."
+    ],
+    [
+     "heading",
+     "Why it matters"
+    ],
+    [
+     "paragraph",
+     "Some services remove location data from pictures you upload, but you cannot count on it, and a photo sent as a file by email, chat or a file-sharing link may arrive with everything inside. Selling something online, posting to a forum or sending a picture to a stranger are the usual cases where it is wise to remove the data first. The thumbnail inside the Exif block has also caused surprises in the past: an editor can crop the visible picture while an old, uncropped preview stays in the file."
+    ],
+    [
+     "heading",
+     "Where the data is stored"
+    ],
+    [
+     "list",
+     "JPG: in a segment called APP1, which holds a small TIFF-style structure. Other segments can hold XMP (editing history, ratings), IPTC (captions and credits, used by news photographers) and comments.\nPNG: in the optional eXIf chunk, in text chunks (tEXt, zTXt, iTXt) which can hold authors and notes, and in a tIME chunk with the last-change time. All of these are ancillary chunks, so a viewer can ignore them without affecting how the picture looks.\nWebP: in an EXIF chunk and an XMP chunk, with two flag bits in the file header that say whether they are present."
+    ],
+    [
+     "heading",
+     "How removal works"
+    ],
+    [
+     "paragraph",
+     "The cleanest method is to cut the hidden segments out of the file and leave the picture data exactly as it is. The tool on this site does this. It never decodes and re-saves the picture, so there is no re-compression and no loss of quality; the picture data is the same bytes. The colour profile in a JPG is kept, so colours look the same. By contrast, a method that redraws the picture on a canvas and saves a new file also removes the data, but it compresses a JPG a second time, which loses quality each time it is done."
+    ],
+    [
+     "heading",
+     "The orientation tag"
+    ],
+    [
+     "paragraph",
+     "One small piece of Exif data is useful: the orientation tag. Phones often save a photo in the sensor's own direction and use this tag to say that it must be shown rotated. If you remove all the Exif data, such a photo can suddenly open on its side. For JPG files the tool offers to keep only the orientation note, with nothing about the camera, time or place. Turn that off if you want every trace gone, and then rotate the picture yourself. For PNG and WebP, the tool removes all of it."
+    ],
+    [
+     "heading",
+     "What removal does not cover"
+    ],
+    [
+     "list",
+     "Anything visible in the picture itself: a street sign, a house number, a face or a reflection.\nThe file name, which might include a date or a place.\nA copy of the picture that is already online.\nMetadata inside a PDF or video, which are different formats."
+    ],
+    [
+     "heading",
+     "A short checklist"
+    ],
+    [
+     "list",
+     "Check what a photo contains before you send it.\nRemove the data from copies, and keep the originals.\nKeep the orientation note unless you need a clean break.\nTurn off location in the camera settings if you do not need it.\nLook at the picture itself for personal details."
+    ]
+   ],
+   "sources": [
+    {
+     "title": "Exif (Wikipedia)",
+     "url": "https://en.wikipedia.org/wiki/Exif"
+    },
+    {
+     "title": "JPEG (Wikipedia)",
+     "url": "https://en.wikipedia.org/wiki/JPEG"
+    },
+    {
+     "title": "Portable Network Graphics (PNG) Specification, Third Edition (W3C)",
+     "url": "https://www.w3.org/TR/png-3/"
+    },
+    {
+     "title": "WebP Container Specification (Google)",
+     "url": "https://developers.google.com/speed/webp/docs/riff_container"
+    }
+   ],
+   "checkedOn": "2026-10-31"
+  }
+ ]
+}

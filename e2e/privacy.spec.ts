@@ -2,6 +2,7 @@ import { type Page } from "@playwright/test";
 import { expect, test } from "./fixtures";
 import { upload } from "./helpers";
 import { builtPaths } from "./pages";
+import { jpegWithHiddenData, pdfFile, PNG_1X1 } from "./files";
 
 // The tools promise that files and text never leave the visitor's device. These tests watch the network
 // while each tool is used and fail if anything is sent anywhere, or any request goes to another site.
@@ -123,6 +124,30 @@ test("the password generator sends nothing, and never puts the password in the a
   );
   expect(requests).toEqual([]);
   expect(page.url()).not.toContain(encodeURIComponent(password));
+});
+
+test("the PDF and EXIF tools send nothing while files are chosen and processed", async ({ page }) => {
+  const cases: [string, string, () => Promise<{ name: string; mimeType: string; buffer: Buffer }[]>, string][] = [
+    ["/tools/pdf-tools/pdf-merge/", "Choose PDF files", async () => [await pdfFile("a.pdf", 1), await pdfFile("b.pdf", 1)], "Merge into one PDF"],
+    ["/tools/pdf-tools/pdf-split/", "Choose a PDF file", async () => [await pdfFile("a.pdf", 3)], ""],
+    ["/tools/pdf-tools/images-to-pdf/", "Choose pictures (JPG, PNG or WebP)", async () => [{ name: "a.png", mimeType: "image/png", buffer: PNG_1X1 }], "Make the PDF"],
+    ["/tools/image-tools/exif-remover/", "Choose pictures (JPG, PNG or WebP)", async () => [{ name: "a.jpg", mimeType: "image/jpeg", buffer: jpegWithHiddenData() }], ""],
+  ];
+  for (const [path, label, files, button] of cases) {
+    if (!published.has(path)) continue;
+    await open(page, path);
+    const chosen = await files();
+    const requests = await requestsDuring(page, async () => {
+      await page.getByLabel(label).setInputFiles(chosen);
+      if (path.includes("pdf-split")) {
+        await page.getByLabel(/Pages for each new file/).fill("1-2");
+        await page.getByRole("button", { name: "Make the files" }).click();
+      }
+      if (button) await page.getByRole("button", { name: button }).click();
+      await page.getByRole("link", { name: /Download|clean/ }).first().waitFor();
+    });
+    expect(requests, path).toEqual([]);
+  }
 });
 
 test("the RD and discount calculators send nothing while you type", async ({ page }) => {
