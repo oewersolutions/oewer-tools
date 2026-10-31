@@ -58,7 +58,8 @@ export function useEncoded(source: ImageSource | null, options: EncodeOptions | 
   const [encoded, setEncoded] = useState<Encoded | null>(null);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string>();
-  const { width, height, type, quality } = options ?? { width: 0, height: 0, type: "image/png" as ImageType, quality: 1 };
+  const { width, height, type, quality, edit } = options ?? { width: 0, height: 0, type: "image/png" as ImageType, quality: 1, edit: undefined };
+  const editKey = edit ? JSON.stringify(edit) : "";
   const ready = source !== null && options !== null;
 
   useEffect(() => {
@@ -69,7 +70,7 @@ export function useEncoded(source: ImageSource | null, options: EncodeOptions | 
     let cancelled = false;
     setBusy(true);
     const timer = setTimeout(() => {
-      encodeImage(source.bitmap, { width, height, type, quality })
+      encodeImage(source.bitmap, { width, height, type, quality, edit })
         .then((blob) => {
           if (cancelled) return;
           setError(undefined);
@@ -82,7 +83,7 @@ export function useEncoded(source: ImageSource | null, options: EncodeOptions | 
       cancelled = true;
       clearTimeout(timer);
     };
-  }, [ready, source, width, height, type, quality]);
+  }, [ready, source, width, height, type, quality, editKey]);
 
   useEffect(() => () => void (encoded && URL.revokeObjectURL(encoded.url)), [encoded]);
 

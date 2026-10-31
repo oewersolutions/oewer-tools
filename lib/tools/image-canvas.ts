@@ -1,3 +1,5 @@
+import type { Rect, Transform } from "./crop";
+import { transformMatrix } from "./crop";
 import { TYPE_LABELS, type ImageType } from "./image";
 
 /** Browser-only image encoding. Everything happens on the visitor's device; nothing is uploaded. */
@@ -7,9 +9,11 @@ export interface EncodeOptions {
   type: ImageType;
   /** 0 to 1; ignored for PNG. */
   quality: number;
+  /** Flip, turn and crop instead of resizing. `width` and `height` are then the size of the crop. */
+  edit?: { transform: Transform; crop: Rect };
 }
 
-export async function encodeImage(bitmap: ImageBitmap, { width, height, type, quality }: EncodeOptions): Promise<Blob> {
+export async function encodeImage(bitmap: ImageBitmap, { width, height, type, quality, edit }: EncodeOptions): Promise<Blob> {
   const canvas = document.createElement("canvas");
   canvas.width = width;
   canvas.height = height;
@@ -21,7 +25,13 @@ export async function encodeImage(bitmap: ImageBitmap, { width, height, type, qu
     context.fillRect(0, 0, width, height);
   }
   context.imageSmoothingQuality = "high";
-  context.drawImage(bitmap, 0, 0, width, height);
+  if (edit) {
+    const [a, b, c, d, e, f] = transformMatrix(bitmap.width, bitmap.height, edit.transform);
+    context.setTransform(a, b, c, d, e - edit.crop.x, f - edit.crop.y);
+    context.drawImage(bitmap, 0, 0);
+  } else {
+    context.drawImage(bitmap, 0, 0, width, height);
+  }
 
   const blob = await new Promise<Blob | null>((resolve) => canvas.toBlob(resolve, type, quality));
   if (!blob) throw new Error("Your browser could not create the image.");

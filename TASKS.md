@@ -81,7 +81,8 @@ Source: `docs/OEWER_TOOLS_PROJECT_PLAN.md` (v1.1: JavaScript-only, GitHub Pages,
 - [x] **T8.8** Developer tools, first four: Base64, URL encode/decode, UUID, hash, each with a guide article
 - [x] **T8.9** Developer tools, last four: colour converter, timestamp converter, regex tester (runs in a worker with a timeout), JWT decoder, each with a guide article
 - [x] **T8.10** PDF and image file tools: merge PDF, split PDF, images to PDF (new PDF Tools category, pdf-lib loaded on demand) and EXIF remover (lossless JPG/PNG/WebP metadata removal), each with a guide article
-- [ ] **T8.11+** (later, optional) Image crop and rotate; compress PDF; PDF to images
+- [x] **T8.11** Image crop and rotate (turn, flip, crop by shape, numbers, keyboard or dragging; one re-save), with a guide article
+- [ ] **T8.12+** (later, optional) Compress PDF and PDF to images (both need heavier libraries; not started)
 
 ## Phase 9 — Modern minimal redesign and article images (plan: `docs/redesign-plan.md`)
 - [x] **T9.1** Design system: Poppins, colour and type tokens, spacing, buttons, cards, motion rules; replace Inter and Fraunces; contrast checked; `docs/design.md`

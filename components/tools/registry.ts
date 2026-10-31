@@ -1,5 +1,6 @@
 import type { ComponentType } from "react";
 import ExifRemover from "./ExifRemover";
+import ImageCropRotate from "./ImageCropRotate";
 import ImagesToPdf from "./ImagesToPdf";
 import PdfMerge from "./PdfMerge";
 import PdfSplit from "./PdfSplit";
@@ -64,6 +65,7 @@ export const toolComponents: { [K in ToolComponentKey]: ComponentType } = {
   "pdf-split": PdfSplit,
   "images-to-pdf": ImagesToPdf,
   "exif-remover": ExifRemover,
+  "image-crop-rotate": ImageCropRotate,
   "percentage-calculator": PercentageCalculator,
   "image-compressor": ImageCompressor,
   "image-resizer": ImageResizer,

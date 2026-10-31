@@ -33,6 +33,7 @@ const EXIF = "/tools/image-tools/exif-remover/";
 const COMPRESSOR = "/tools/image-tools/image-compressor/";
 const RESIZER = "/tools/image-tools/image-resizer/";
 const CONVERTER = "/tools/image-tools/image-converter/";
+const CROP = "/tools/image-tools/image-crop-rotate/";
 
 test("EMI calculator shows the monthly EMI and rejects bad input", async ({ page }) => {
   test.skip(!published.has(EMI), "EMI calculator is not published");
@@ -425,6 +426,42 @@ test("image resizer keeps proportions and applies the new size", async ({ page }
   await page.getByLabel("Width (px)").fill("100");
   await expect(page.getByLabel("Height (px)")).toHaveValue("50");
   await expect(page.getByText("100 × 50")).toBeVisible();
+});
+
+test("image crop and rotate crops by numbers, by shape, by keyboard and by dragging, and turns the picture", async ({ page }) => {
+  test.skip(!published.has(CROP), "Image crop and rotate is not published");
+  await page.goto(CROP);
+  await upload(page); // 200 x 100
+  await expect(page.getByLabel("Width (px)")).toHaveValue("200");
+  await expect(page.getByText("Turn, flip or crop the picture to get a new file.")).toBeVisible();
+  await page.getByLabel("Width (px)").fill("100");
+  await expect(page.getByText("100 × 100")).toBeVisible();
+  await page.getByRole("button", { name: "Rotate right" }).click();
+  await expect(page.getByLabel("Width (px)")).toHaveValue("100");
+  await expect(page.getByLabel("Height (px)")).toHaveValue("200");
+  await expect(page.getByText("100 × 200")).toBeVisible();
+  await page.getByLabel("Shape").selectOption("1:1");
+  await expect(page.getByLabel("Top (px)")).toHaveValue("50");
+  await expect(page.getByLabel("Height (px)")).toHaveValue("100");
+  // keyboard: the arrow keys move the box
+  const box = page.getByRole("group", { name: /Crop area/ });
+  await box.focus();
+  await page.keyboard.press("ArrowDown");
+  await page.keyboard.press("ArrowDown");
+  await page.keyboard.press("Shift+ArrowDown");
+  await expect(page.getByLabel("Top (px)")).toHaveValue("62");
+  // dragging the box moves it too
+  await box.evaluate((el) => el.scrollIntoView({ block: "center" })); // keep the box clear of the consent banner at the bottom of the window
+  const before = await box.boundingBox();
+  await page.mouse.move(before!.x + before!.width / 2, before!.y + before!.height / 2);
+  await page.mouse.down();
+  await page.mouse.move(before!.x + before!.width / 2, before!.y + before!.height / 2 - 20, { steps: 4 });
+  await page.mouse.up();
+  const after = await box.boundingBox();
+  expect(after!.y).toBeLessThan(before!.y);
+  await expect(page.getByRole("link", { name: "Download image" })).toHaveAttribute("download", "sample-edited.png");
+  await page.getByRole("button", { name: "Reset crop" }).click();
+  await expect(page.getByLabel("Top (px)")).toHaveValue("50");
 });
 
 test("image converter converts PNG to JPG", async ({ page }) => {

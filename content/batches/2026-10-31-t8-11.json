@@ -1,0 +1,116 @@
+{
+ "date": "2026-10-31",
+ "articles": [
+  {
+   "title": "How to Crop, Rotate and Flip a Photo Without Losing Quality",
+   "category": "How-To",
+   "excerpt": "How cropping, rotating and flipping work, which shape (aspect ratio) to choose, why some edits re-compress a JPG, and how to fix a photo that opens on its side.",
+   "tags": [
+    "images",
+    "crop",
+    "rotate"
+   ],
+   "blocks": [
+    [
+     "paragraph",
+     "Cropping, rotating and flipping are the three most common photo edits. They sound simple, but a few details decide whether the result looks right: the shape you crop to, the order you apply the changes in, and whether the picture is saved again with a loss in quality. This guide explains each edit, how to choose a crop shape, and how to fix a photo that opens sideways."
+    ],
+    [
+     "heading",
+     "What cropping does"
+    ],
+    [
+     "paragraph",
+     "Cropping removes the outer parts of a picture. People crop to make the main subject fill more of the frame, to remove something distracting at the edge, to improve the balance of the picture, or to change its shape so it fits a particular frame. Cropping cannot add detail. It only keeps a smaller area of the same pixels, so a picture that is 4000 pixels wide and cropped to half its width is 2000 pixels wide. Cropping too tightly leaves too few pixels for printing or for a big screen."
+    ],
+    [
+     "heading",
+     "Choosing a shape: aspect ratio"
+    ],
+    [
+     "paragraph",
+     "The shape of a picture is its aspect ratio, the width compared with the height, written as width:height. A box of 1600 by 900 pixels is 16:9. The common shapes each have a history."
+    ],
+    [
+     "list",
+     "1:1 is a square. It suits profile pictures and many social media posts.\n4:3 is the shape of most point-and-shoot cameras and of older televisions.\n3:2 is the classic 35 mm film shape, used by DSLR cameras.\n16:9 is the shape of high-definition television and most phone, laptop and desktop screens.\n9:16 is the same shape turned on its end, the usual shape for phone video."
+    ],
+    [
+     "paragraph",
+     "When you need a different shape from the original, you have three options: crop to the new shape, add bars around the picture, or stretch it. Stretching distorts people and objects, so avoid it. Cropping to the right shape is usually the best choice. Pick the shape first in the tool, and the crop box keeps that shape as you drag it. Typing a width or height changes the other number to match."
+    ],
+    [
+     "heading",
+     "Rotating and flipping"
+    ],
+    [
+     "paragraph",
+     "Rotating turns the picture a quarter turn at a time, left or right. Two quarter turns make a half turn, which turns it upside down. Flipping makes a mirror image, either left to right or top to bottom. A flip is not the same as a rotation: a mirror image of text reads backwards, and no amount of turning will fix that. Flipping is for a selfie that was mirrored by the camera, or a scan placed on the glass the wrong way round."
+    ],
+    [
+     "paragraph",
+     "Order matters when you combine them. The tool on this site flips first and then turns clockwise. If you turn the picture, the crop box starts again over the whole picture, because the old box would point at a different part of the scene once the picture has moved."
+    ],
+    [
+     "heading",
+     "Why a photo opens on its side"
+    ],
+    [
+     "paragraph",
+     "Phones usually save a photo in the direction the sensor reads it, and add a small note called the orientation tag in the Exif data to say how it should be turned for display. Web browsers apply this tag by default, so the photo looks upright on a web page. But other programs, upload forms and print services may ignore it, and then the photo appears sideways. If a picture looks right in one place and sideways in another, this is the cause. Rotating the picture and saving it again writes the pixels in the correct direction, so it looks right everywhere. Tools that clean metadata can also remove the tag, which is why a good cleaner has the option to keep only the orientation."
+    ],
+    [
+     "heading",
+     "Quality: what happens when you save again"
+    ],
+    [
+     "paragraph",
+     "PNG is lossless, so a PNG can be cropped, turned and flipped any number of times with no loss. JPEG is lossy, and each time a JPEG is compressed again, more quality is lost. Cropping, shifting or changing the settings makes the loss worse. There are special cases: some turns and crops that line up exactly with the blocks that a JPEG is built from can be done without recompressing, but a general crop cannot. The tool on this site decodes the picture, applies your edits and saves a new file, so a JPG or WebP is compressed once more. Keep the quality slider high, about 90 to 95 percent, and always keep your original."
+    ],
+    [
+     "paragraph",
+     "To limit loss, make all your edits in one go instead of saving after each step, and do your cropping last in a chain of edits. If you need many edits, do them in a lossless format such as PNG and export to JPG only as the final step."
+    ],
+    [
+     "heading",
+     "Hidden data"
+    ],
+    [
+     "paragraph",
+     "Because the picture is redrawn, hidden camera and location data in the original is not copied to the new file. That can be a benefit when you want to share a photo, but it also means the orientation tag is gone. The pixels are already turned, so the result is upright."
+    ],
+    [
+     "heading",
+     "A short checklist"
+    ],
+    [
+     "list",
+     "Choose the shape you need before you crop.\nTurn or flip first, then set the crop.\nKeep the quality at 90 percent or more for JPG and WebP.\nKeep the original file.\nCheck the result at full size before you share it."
+    ]
+   ],
+   "sources": [
+    {
+     "title": "Aspect ratio (image) (Wikipedia)",
+     "url": "https://en.wikipedia.org/wiki/Aspect_ratio_(image)"
+    },
+    {
+     "title": "Cropping (image) (Wikipedia)",
+     "url": "https://en.wikipedia.org/wiki/Cropping_(image)"
+    },
+    {
+     "title": "JPEG (Wikipedia)",
+     "url": "https://en.wikipedia.org/wiki/JPEG"
+    },
+    {
+     "title": "Exif (Wikipedia)",
+     "url": "https://en.wikipedia.org/wiki/Exif"
+    },
+    {
+     "title": "image-orientation (MDN Web Docs)",
+     "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/image-orientation"
+    }
+   ],
+   "checkedOn": "2026-10-31"
+  }
+ ]
+}

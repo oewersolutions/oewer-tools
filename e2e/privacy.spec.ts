@@ -126,6 +126,18 @@ test("the password generator sends nothing, and never puts the password in the a
   expect(page.url()).not.toContain(encodeURIComponent(password));
 });
 
+test("cropping and turning an image sends nothing", async ({ page }) => {
+  const path = "/tools/image-tools/image-crop-rotate/";
+  test.skip(!published.has(path), "tool is not published");
+  await open(page, path);
+  const requests = await requestsDuring(page, async () => {
+    await upload(page);
+    await page.getByRole("button", { name: "Rotate right" }).click();
+    await expect(page.getByRole("link", { name: "Download image" })).toBeVisible();
+  });
+  expect(requests).toEqual([]);
+});
+
 test("the PDF and EXIF tools send nothing while files are chosen and processed", async ({ page }) => {
   const cases: [string, string, () => Promise<{ name: string; mimeType: string; buffer: Buffer }[]>, string][] = [
     ["/tools/pdf-tools/pdf-merge/", "Choose PDF files", async () => [await pdfFile("a.pdf", 1), await pdfFile("b.pdf", 1)], "Merge into one PDF"],

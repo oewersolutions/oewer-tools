@@ -84,6 +84,8 @@ export function toolExample(componentKey: string): ToolExample | null {
       return { note: "JPG, PNG and WebP to PDF", value: "Pictures to PDF" };
     case "exif-remover":
       return { note: "Remove GPS and camera data", value: "Clean photos" };
+    case "image-crop-rotate":
+      return { note: "Crop, rotate and flip", value: "Any shape" };
     case "percentage-calculator":
       return { note: "15% of 2,000", value: "300" };
     case "image-compressor":
