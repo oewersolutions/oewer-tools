@@ -1,6 +1,7 @@
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import type { AdConfig } from "./ads";
+import { getImageInfo, type ImageInfo } from "./images";
 import { readingMinutes } from "./format";
 import { hasOwnPage, pickRelatedPosts, slugify } from "./posts";
 
@@ -57,6 +58,8 @@ export interface Post {
   status: string;
   published_at: string | null;
   updated_at: string;
+  cover_image: string;
+  cover_alt: string;
 }
 export interface PostBlock {
   block_id: string;
@@ -65,6 +68,9 @@ export interface PostBlock {
   block_type: string;
   content: string;
   asset_path: string;
+  caption?: string;
+  /** Added when the page is built: the picture's size and its smaller versions. Not in the workbook. */
+  image?: ImageInfo;
 }
 export interface Tag {
   tag_id: string;
@@ -189,7 +195,11 @@ export const getPostBySlug = (slug: string): Post | undefined => getPostsWithPag
 export const getPostBlocks = (postId: string): PostBlock[] =>
   sheet<PostBlock>("post_blocks")
     .filter((b) => b.post_id === postId)
-    .sort((a, b) => a.sort_order - b.sort_order);
+    .sort((a, b) => a.sort_order - b.sort_order)
+    .map((b) => (b.block_type === "image" && b.asset_path ? { ...b, image: getImageInfo(b.asset_path) ?? undefined } : b));
+
+/** The size and smaller versions of an article's cover image, or undefined when it has none (or the file is missing). */
+export const getCoverInfo = (post: Post): ImageInfo | undefined => (post.cover_image ? (getImageInfo(post.cover_image) ?? undefined) : undefined);
 /** Minutes to read a published post, from its blocks. */
 export const getPostReadingMinutes = (postId: string): number => readingMinutes(getPostBlocks(postId).map((b) => b.content).join(" "));
 export const getAuthors = (): Author[] => sheet<Author>("authors");

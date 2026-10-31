@@ -31,6 +31,19 @@ export interface Migration {
   up(workbook: RawWorkbook): void;
 }
 
+/** Add a column to every row of a sheet (with `value` in each), unless it is already there, as a migration step. */
+export function addColumn(workbook: RawWorkbook, sheet: string, column: string, value: unknown = ""): void {
+  const target = workbook.sheets[sheet];
+  if (!target || target.headers.includes(column)) return;
+  target.headers.push(column);
+  for (const row of target.rows) row[column] = value;
+}
+
+function setSchemaVersion(workbook: RawWorkbook, version: string): void {
+  const row = workbook.sheets.site_settings?.rows.find((r) => r.setting_key === "schema_version");
+  if (row) row.setting_value = version;
+}
+
 /**
  * Registered migrations, oldest first.
  * See docs/schema-versioning.md for how to add one.
@@ -41,8 +54,18 @@ export const migrations: Migration[] = [
     to: "1.0.1",
     description: "Allow longer tool_settings values (up to 6000 characters) for tool help and FAQ content",
     up(workbook) {
-      const row = workbook.sheets.site_settings?.rows.find((r) => r.setting_key === "schema_version");
-      if (row) row.setting_value = "1.0.1";
+      setSchemaVersion(workbook, "1.0.1");
+    },
+  },
+  {
+    from: "1.0.1",
+    to: "1.0.2",
+    description: "Article images: a cover image and its description on posts, and an optional caption on image blocks",
+    up(workbook) {
+      addColumn(workbook, "posts", "cover_image");
+      addColumn(workbook, "posts", "cover_alt");
+      addColumn(workbook, "post_blocks", "caption");
+      setSchemaVersion(workbook, "1.0.2");
     },
   },
 ];

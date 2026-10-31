@@ -104,3 +104,30 @@ describe("articleJsonLd", () => {
     expect(JSON.parse(json).datePublished).toBeUndefined();
   });
 });
+
+describe("pictures in an article", () => {
+  const withImage = block("image", "A chart of interest over time", { asset_path: "/images/blog/a/chart-1600.jpg", caption: "Interest grows faster each year.", image: { width: 1600, height: 900, srcSet: "/images/blog/a/chart-800.jpg 800w, /images/blog/a/chart-1600.jpg 1600w" } });
+
+  it("shows the picture with its size, smaller versions, lazy loading, alt text and caption", () => {
+    const html = render([withImage]);
+    expect(html).toContain('<figure');
+    expect(html).toContain('width="1600"');
+    expect(html).toContain('height="900"');
+    expect(html).toContain('loading="lazy"');
+    expect(html).toContain('alt="A chart of interest over time"');
+    expect(html).toContain('srcSet="/images/blog/a/chart-800.jpg 800w, /images/blog/a/chart-1600.jpg 1600w"');
+    expect(html).toContain("<figcaption");
+    expect(html).toContain("Interest grows faster each year.");
+  });
+  it("still works for a picture that has no size information (the admin preview)", () => {
+    const html = render([block("image", "Alt text", { asset_path: "/images/blog/a/p.png" })]);
+    expect(html).toContain('src="/images/blog/a/p.png"');
+    expect(html).not.toContain("srcSet");
+    expect(html).not.toContain("figcaption");
+  });
+  it("puts the cover in the structured data when there is one", () => {
+    const base = { title: "T", description: "D", url: "https://x.test/blog/t/", published: null, modified: "2026-10-30T00:00:00Z", publisherName: "P" };
+    expect(JSON.parse(articleJsonLd({ ...base, image: "https://x.test/images/c.jpg" })).image).toBe("https://x.test/images/c.jpg");
+    expect(JSON.parse(articleJsonLd(base)).image).toBeUndefined();
+  });
+});

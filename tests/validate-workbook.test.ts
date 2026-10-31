@@ -421,3 +421,32 @@ describe("analytics dashboard link setting", () => {
     }
   });
 });
+
+describe("article images (schema 1.0.2)", () => {
+  const post = (d: WorkbookData) => d.posts![0]!.values;
+  const imageBlock = (d: WorkbookData) => d.post_blocks!.find((b) => b.values.block_type !== "image")!;
+
+  it("accepts a cover with a description, and no cover at all", () => {
+    expect(validateWith((d) => { post(d).cover_image = "/images/blog/x/cover-1600.jpg"; post(d).cover_alt = "A calculator on a desk"; })).toEqual([]);
+    expect(validateWith((d) => { post(d).cover_image = ""; post(d).cover_alt = ""; })).toEqual([]);
+  });
+  it("requires a description whenever there is a cover", () => {
+    const issues = validateWith((d) => { post(d).cover_image = "/images/blog/x/cover.png"; post(d).cover_alt = ""; });
+    expect(has(issues, "required", "posts", "cover_alt")).toBe(true);
+  });
+  it("accepts only jpg, jpeg, png and webp for covers and inline pictures", () => {
+    for (const bad of ["/images/x.svg", "/images/x.gif", "/images/x.html", "/images/x"]) {
+      expect(has(validateWith((d) => { post(d).cover_image = bad; post(d).cover_alt = "alt"; }), "invalid_value", "posts", "cover_image"), bad).toBe(true);
+      expect(has(validateWith((d) => { const b = imageBlock(d).values; b.block_type = "image"; b.content = "alt"; b.asset_path = bad; }), "invalid_value", "post_blocks", "asset_path"), bad).toBe(true);
+    }
+  });
+  it("allows a caption on an image block only", () => {
+    expect(has(validateWith((d) => { imageBlock(d).values.caption = "A caption"; }), "invalid_value", "post_blocks", "caption")).toBe(true);
+    expect(validateWith((d) => { const b = imageBlock(d).values; b.block_type = "image"; b.content = "alt"; b.asset_path = "/images/x.png"; b.caption = "A caption"; })).toEqual([]);
+  });
+  it("keeps descriptions and captions short", () => {
+    const long = "x".repeat(201);
+    const issues = validateWith((d) => { post(d).cover_image = "/images/x.jpg"; post(d).cover_alt = long; });
+    expect(issues.some((i) => i.sheet === "posts" && i.column === "cover_alt" && /maximum is 200/.test(i.message))).toBe(true);
+  });
+});

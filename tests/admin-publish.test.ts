@@ -113,7 +113,7 @@ describe("liveChanges", () => {
     expect(liveChanges(before, next)).toEqual({ appear: [], disappear: [], edited: ["article “How EMI Is Calculated”"] });
   });
   it("reports a new published article as appearing, and a deleted one as disappearing", async () => {
-    const form = { ...readPost(before, ""), title: "Brand new", slug: "brand-new", category_id: "BCAT0001", author_id: "AUTH0001", status: "published", blocks: [{ block_id: "", block_type: "paragraph", content: "Hello.", asset_path: "" }] };
+    const form = { ...readPost(before, ""), title: "Brand new", slug: "brand-new", category_id: "BCAT0001", author_id: "AUTH0001", status: "published", blocks: [{ block_id: "", block_type: "paragraph", content: "Hello.", asset_path: "", caption: "" }] };
     const added = await after(planPost(before, form).changes);
     expect(liveChanges(before, added).appear).toEqual(["article “Brand new”"]);
     expect(liveChanges(added, before).disappear).toEqual(["article “Brand new”"]);

@@ -125,6 +125,8 @@ function PostForm({ data, postId, onSave, onCancel }: { data: WorkbookData; post
             Set publication date to now
           </button>
         </div>
+        <TextField label="Cover image file" value={f.cover_image} onChange={(v) => set({ cover_image: v })} hint="Where the picture is on the site, like /images/blog/my-article/cover-1600.jpg (jpg, png or webp). Empty uses a generated cover." />
+        <TextField label="Cover image description (alt text)" value={f.cover_alt} onChange={(v) => set({ cover_alt: v })} hint="Required with a cover: describe the picture for people who cannot see it." />
         <div className="md:col-span-2">
           <TextAreaField label="Summary (shown in lists and search results)" value={f.excerpt} onChange={(v) => set({ excerpt: v })} rows={2} />
         </div>
@@ -164,7 +166,12 @@ function PostForm({ data, postId, onSave, onCancel }: { data: WorkbookData; post
                   <TextAreaField label={`Block ${i + 1} ${b.block_type === "image" ? "alt text" : "text"}`} value={b.content} onChange={(v) => setBlock(i, { content: v })} rows={b.block_type === "heading" ? 1 : 4} />
                 </div>
                 <p className="text-xs text-slate-600">{BLOCK_HELP[b.block_type]}</p>
-                {b.block_type === "image" && <TextField label={`Block ${i + 1} image file`} value={b.asset_path} onChange={(v) => setBlock(i, { asset_path: v })} hint="Where the file is on the site, like /assets/chart.png. Upload the file to the public/assets folder in the repository." />}
+                {b.block_type === "image" && (
+                  <div className="grid gap-4 md:grid-cols-2">
+                    <TextField label={`Block ${i + 1} image file`} value={b.asset_path} onChange={(v) => setBlock(i, { asset_path: v })} hint="Where the file is on the site, like /images/blog/my-article/chart-1600.jpg (jpg, png or webp)." />
+                    <TextField label={`Block ${i + 1} caption`} value={b.caption} onChange={(v) => setBlock(i, { caption: v })} hint="Optional. Shown under the picture." />
+                  </div>
+                )}
                 <div className="flex flex-wrap gap-2">
                   <button type="button" className={smallButton} disabled={i === 0} onClick={() => move(i, -1)}>
                     Move block {i + 1} up
@@ -182,7 +189,7 @@ function PostForm({ data, postId, onSave, onCancel }: { data: WorkbookData; post
         </ol>
         <div className="flex flex-wrap items-end gap-2">
           <SelectField label="New block type" value={newBlockType} onChange={setNewBlockType} options={(schema.enums.block_type ?? []).map((t) => ({ value: t, label: t }))} />
-          <button type="button" className={smallButton} onClick={() => set({ blocks: [...f.blocks, { block_id: "", block_type: newBlockType, content: "", asset_path: "" }] })}>
+          <button type="button" className={smallButton} onClick={() => set({ blocks: [...f.blocks, { block_id: "", block_type: newBlockType, content: "", asset_path: "", caption: "" }] })}>
             Add block
           </button>
         </div>
@@ -210,7 +217,7 @@ function PostForm({ data, postId, onSave, onCancel }: { data: WorkbookData; post
             {f.blocks.length === 0 ? (
               <p className="text-slate-700">No content yet.</p>
             ) : (
-              <PostBody blocks={f.blocks.map((b, i) => ({ block_id: `preview-${i}`, post_id: f.post_id, sort_order: i + 1, block_type: b.block_type, content: b.content, asset_path: b.asset_path }))} />
+              <PostBody blocks={f.blocks.map((b, i) => ({ block_id: `preview-${i}`, post_id: f.post_id, sort_order: i + 1, block_type: b.block_type, content: b.content, asset_path: b.asset_path, caption: b.caption }))} />
             )}
           </article>
         )}

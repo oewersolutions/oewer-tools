@@ -1,6 +1,6 @@
 {
   "$comment": "Machine-readable definition of data/oewer_database.xlsx. Consumed by scripts/validate_workbook.py and export_content.py. One worksheet per table, fixed header row in row 1, no merged cells, no formulas.",
-  "schema_version": "1.0.1",
+  "schema_version": "1.0.2",
   "types": {
     "id": "Stable immutable identifier matching the sheet's id_pattern. Never a row number.",
     "string": "Single-line literal text. No newlines, no leading '=', '+', '-', '@' formula characters.",
@@ -150,7 +150,9 @@
         { "name": "author_id", "type": "ref", "ref": "authors.author_id", "required": true },
         { "name": "status", "type": "enum", "enum": "status", "required": true, "default": "draft" },
         { "name": "published_at", "type": "datetime", "required": false, "note": "Required when status is 'published'." },
-        { "name": "updated_at", "type": "datetime", "required": true }
+        { "name": "updated_at", "type": "datetime", "required": true },
+        { "name": "cover_image", "type": "path", "required": false, "default": "", "note": "Site path of the cover image (jpg, png or webp). Empty uses a generated cover." },
+        { "name": "cover_alt", "type": "string", "required": false, "default": "", "max_length": 200, "note": "Required when cover_image is set: describes the image for people who cannot see it." }
       ]
     },
     "post_blocks": {
@@ -164,7 +166,8 @@
         { "name": "sort_order", "type": "int", "required": true, "min": 0 },
         { "name": "block_type", "type": "enum", "enum": "block_type", "required": true },
         { "name": "content", "type": "text", "required": false, "default": "", "max_length_key": "max_block_length", "note": "Required unless block_type is 'image'." },
-        { "name": "asset_path", "type": "path", "required": false, "default": "", "note": "Required when block_type is 'image'." }
+        { "name": "asset_path", "type": "path", "required": false, "default": "", "note": "Required when block_type is 'image'." },
+        { "name": "caption", "type": "string", "required": false, "default": "", "max_length": 200, "note": "Optional text under an image. Only for image blocks." }
       ]
     },
     "tags": {

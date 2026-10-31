@@ -6,6 +6,7 @@ import Breadcrumbs from "../../../components/Breadcrumbs";
 import { ArrowRight } from "../../../components/icons";
 import { ArticleToc } from "../../../components/blog/ArticleToc";
 import { ShareLinks } from "../../../components/blog/ShareLinks";
+import ArticleImage from "../../../components/ArticleImage";
 import Cover from "../../../components/Cover";
 import { Container } from "../../../components/layout";
 import { PostCard } from "../../../components/Cards";
@@ -14,6 +15,7 @@ import { articleAdIndex } from "../../../lib/ads";
 import {
   authorSlug,
   getAuthor,
+  getCoverInfo,
   getBlogCategory,
   getRelatedPosts,
   getToolsForPost,
@@ -52,6 +54,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         entity: { type: "post", id: post.post_id },
         type: "article",
         noindex: post.status !== "published",
+        image: post.cover_image ? { path: post.cover_image, alt: post.cover_alt, ...getCoverInfo(post) } : undefined,
       })
     : {};
 }
@@ -79,6 +82,9 @@ export default async function PostPage({ params }: Props) {
     modified: post.updated_at,
     authorName: author?.display_name,
     publisherName: getSetting("site_name"),
+    image: post.cover_image
+      ? absoluteUrl(getSiteUrl(), BASE_PATH, post.cover_image)
+      : undefined,
   });
 
   const meta = (
@@ -145,11 +151,22 @@ export default async function PostPage({ params }: Props) {
           <p className="t-lead mx-auto mt-5 max-w-2xl">{post.excerpt}</p>
         </header>
 
-        <Cover
-          seed={post.slug}
-          number={Number(post.post_id.replace(/\D/g, "")) || undefined}
-          className="mt-10 aspect-[16/9] rounded-3xl sm:aspect-[21/9]"
-        />
+        {post.cover_image ? (
+          <ArticleImage
+            src={post.cover_image}
+            alt={post.cover_alt}
+            info={getCoverInfo(post)}
+            sizes="(min-width: 1280px) 1136px, 100vw"
+            priority
+            className="mt-10 aspect-[16/9] w-full rounded-3xl object-cover sm:aspect-[21/9]"
+          />
+        ) : (
+          <Cover
+            seed={post.slug}
+            number={Number(post.post_id.replace(/\D/g, "")) || undefined}
+            className="mt-10 aspect-[16/9] rounded-3xl sm:aspect-[21/9]"
+          />
+        )}
 
         <div className="mt-12 grid justify-center gap-x-16 lg:mt-16 lg:grid-cols-[13rem_minmax(0,42rem)]">
           <aside aria-label="Article tools" className="hidden lg:block">

@@ -42,12 +42,17 @@ Every schema change bumps the version in the same commit as the code that depend
 4. Update `scripts/create-seed-workbook.ts` so the seed matches the new schema.
 5. Add a test with a small old-version fixture.
 
-## Still to build with the first real migration
+## Running a migration
 
-The planner and version check are done and tested. The parts that need a real case to design against are built when the first migration is needed:
+`npm run migrate [path]` brings a workbook file up to the version the code expects, then validates it. It reads the file as it is (by header name), runs the registered migrations in order, and writes back **only what the migration changed** (new header cells, new default values, the version), so formatting and every other cell stay as they were. Git is the backup, so no copy is made. If the file is already current it says so and does nothing; if there is no path to the current version it says why and changes nothing.
 
-- a lenient reader that produces `RawWorkbook` from an old `.xlsx`,
-- a writer that saves migrated data back to `.xlsx` (also reused by the admin panel in Phase 5),
-- a `npm run migrate` command that backs up the file, applies the chain, writes the result, and re-validates it.
+Run it in **the same commit as the code that needs the new schema**, so a deploy never sees code and workbook at different versions (a mismatch fails the build safely, but it would stop the site updating until fixed). The admin page shows the mismatch as a problem if it loads an older workbook.
 
-Until then, with no migrations registered, a version mismatch is reported as an error with no migration path.
+Columns are appended at the **end** of a sheet and the header must match the schema exactly, so a new column always goes last in `schemas/workbook_schema.json`.
+
+## History
+
+| Version | Change | Migration |
+|---|---|---|
+| 1.0.0 to 1.0.1 | Longer `tool_settings` values (6000 characters) | Version number only |
+| 1.0.1 to 1.0.2 | Article images: `posts.cover_image`, `posts.cover_alt`, `post_blocks.caption` | Adds the three columns, empty |

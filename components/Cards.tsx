@@ -2,7 +2,9 @@ import Link from "next/link";
 import type { Post, Tool, ToolCategory } from "../lib/content";
 import { formatDate } from "../lib/format";
 import { postUrl, toolUrl } from "../lib/search";
+import { getCoverInfo } from "../lib/content";
 import { toolExample } from "../lib/tool-examples";
+import ArticleImage from "./ArticleImage";
 import Cover from "./Cover";
 import { ArrowRight, CategoryIcon, ToolIcon } from "./icons";
 
@@ -103,11 +105,21 @@ export function PostCard({
       href={postUrl(post.slug)}
       className="card card-link group flex h-full flex-col overflow-hidden"
     >
-      <Cover
-        seed={post.slug}
-        number={Number(post.post_id.replace(/\D/g, "")) || undefined}
-        className="aspect-[16/10]"
-      />
+      {post.cover_image ? (
+        <ArticleImage
+          src={post.cover_image}
+          alt=""
+          info={getCoverInfo(post)}
+          sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+          className="aspect-[16/10] w-full object-cover"
+        />
+      ) : (
+        <Cover
+          seed={post.slug}
+          number={Number(post.post_id.replace(/\D/g, "")) || undefined}
+          className="aspect-[16/10]"
+        />
+      )}
       <div className="flex flex-1 flex-col p-5 pb-6">
         <p className="t-meta flex flex-wrap items-center gap-x-2.5">
           {categoryName && (

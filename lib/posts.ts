@@ -35,13 +35,27 @@ export type PostStatus = "draft" | "published" | "archived";
  * - draft: no page, except in a test build with OEWER_PREVIEW_DRAFTS=1.
  */
 export function hasOwnPage(status: string, previewDrafts: boolean): boolean {
-  return status === "published" || status === "archived" || (status === "draft" && previewDrafts);
+  return (
+    status === "published" ||
+    status === "archived" ||
+    (status === "draft" && previewDrafts)
+  );
 }
 
 /** Notice shown at the top of an article that is not published, or null for a published one. */
-export function statusNotice(status: string): { title: string; text: string } | null {
-  if (status === "archived") return { title: "Archived article", text: "This article is no longer updated and may be out of date." };
-  if (status === "draft") return { title: "Draft preview", text: "This article is not published yet. Only people with a preview build can see it." };
+export function statusNotice(
+  status: string,
+): { title: string; text: string } | null {
+  if (status === "archived")
+    return {
+      title: "Archived article",
+      text: "This article is no longer updated and may be out of date.",
+    };
+  if (status === "draft")
+    return {
+      title: "Draft preview",
+      text: "This article is not published yet. Only people with a preview build can see it.",
+    };
   return null;
 }
 
@@ -58,14 +72,30 @@ export interface RelatablePost {
  * Articles to suggest after `post`: most shared tags first, then the same category, then newest.
  * Only articles in `candidates` are considered (pass published ones), and never the post itself.
  */
-export function pickRelatedPosts<T extends RelatablePost>(post: T, tagsByPost: Map<string, Set<string>>, candidates: T[], limit = 3): T[] {
+export function pickRelatedPosts<T extends RelatablePost>(
+  post: T,
+  tagsByPost: Map<string, Set<string>>,
+  candidates: T[],
+  limit = 3,
+): T[] {
   const mine = tagsByPost.get(post.post_id) ?? new Set<string>();
-  const shared = (p: T) => [...(tagsByPost.get(p.post_id) ?? [])].filter((t) => mine.has(t)).length;
+  const shared = (p: T) =>
+    [...(tagsByPost.get(p.post_id) ?? [])].filter((t) => mine.has(t)).length;
   return candidates
     .filter((p) => p.post_id !== post.post_id)
-    .map((p) => ({ p, shared: shared(p), sameCategory: p.category_id === post.category_id }))
+    .map((p) => ({
+      p,
+      shared: shared(p),
+      sameCategory: p.category_id === post.category_id,
+    }))
     .filter((x) => x.shared > 0 || x.sameCategory)
-    .sort((a, b) => b.shared - a.shared || Number(b.sameCategory) - Number(a.sameCategory) || String(b.p.published_at).localeCompare(String(a.p.published_at)) || a.p.post_id.localeCompare(b.p.post_id))
+    .sort(
+      (a, b) =>
+        b.shared - a.shared ||
+        Number(b.sameCategory) - Number(a.sameCategory) ||
+        String(b.p.published_at).localeCompare(String(a.p.published_at)) ||
+        a.p.post_id.localeCompare(b.p.post_id),
+    )
     .slice(0, limit)
     .map((x) => x.p);
 }
@@ -79,12 +109,32 @@ export interface OutlineItem {
 /** Heading blocks with stable anchor ids, in reading order. */
 export function buildOutline(blocks: BlockLike[]): OutlineItem[] {
   const used = new Set<string>();
-  return blocks.filter((b) => b.block_type === "heading").map((b) => ({ blockId: b.block_id, id: headingId(b.content, used), text: b.content }));
+  return blocks
+    .filter((b) => b.block_type === "heading")
+    .map((b) => ({
+      blockId: b.block_id,
+      id: headingId(b.content, used),
+      text: b.content,
+    }));
 }
 
 /** Image files that blocks refer to but that do not exist. `exists` takes a site path such as "/assets/photo.jpg". */
-export function missingImageFiles(blocks: BlockLike[], exists: (path: string) => boolean): string[] {
-  return [...new Set(blocks.filter((b) => b.block_type === "image" && b.asset_path !== "" && !exists(b.asset_path)).map((b) => b.asset_path))];
+export function missingImageFiles(
+  blocks: BlockLike[],
+  exists: (path: string) => boolean,
+): string[] {
+  return [
+    ...new Set(
+      blocks
+        .filter(
+          (b) =>
+            b.block_type === "image" &&
+            b.asset_path !== "" &&
+            !exists(b.asset_path),
+        )
+        .map((b) => b.asset_path),
+    ),
+  ];
 }
 
 export interface ArticleLd {
@@ -95,6 +145,8 @@ export interface ArticleLd {
   modified: string;
   authorName?: string;
   publisherName: string;
+  /** Absolute address of the cover picture. */
+  image?: string;
 }
 
 /** schema.org Article data, as a string that is safe to place inside a script tag. */
@@ -107,7 +159,10 @@ export function articleJsonLd(a: ArticleLd): string {
     mainEntityOfPage: a.url,
     ...(a.published ? { datePublished: a.published } : {}),
     dateModified: a.modified,
-    ...(a.authorName ? { author: { "@type": "Person", name: a.authorName } } : {}),
+    ...(a.image ? { image: a.image } : {}),
+    ...(a.authorName
+      ? { author: { "@type": "Person", name: a.authorName } }
+      : {}),
     publisher: { "@type": "Organization", name: a.publisherName },
   };
   return JSON.stringify(data).replace(/</g, "\\u003c");

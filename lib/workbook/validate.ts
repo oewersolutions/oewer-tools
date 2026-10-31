@@ -1,3 +1,4 @@
+import { isImagePath } from "../image-size";
 import { isPublisherId, isSupportedPlacement, SUPPORTED_PLACEMENTS } from "../ads";
 import { isDashboardUrl, isMeasurementId } from "../analytics";
 import { slugify } from "../posts";
@@ -298,14 +299,20 @@ export function validateWorkbook(data: WorkbookData, schema: Schema, options: Va
     const postId = String(block.values.post_id ?? "");
     blocksByPost.set(postId, (blocksByPost.get(postId) ?? 0) + 1);
     const type = block.values.block_type;
+    if (!isEmpty(block.values.caption) && type !== "image") add("post_blocks", block, "caption", "invalid_value", "captions are only for image blocks.");
     if (type === "image") {
       if (isEmpty(block.values.asset_path)) add("post_blocks", block, "asset_path", "required", "is required for image blocks.");
+      else if (!isImagePath(String(block.values.asset_path))) add("post_blocks", block, "asset_path", "invalid_value", "must be a .jpg, .jpeg, .png or .webp picture (SVG and other types are not accepted).");
       if (isEmpty(block.values.content)) add("post_blocks", block, "content", "required", "is required for image blocks: write the alt text that describes the image.");
     } else if (isEmpty(block.values.content)) {
       add("post_blocks", block, "content", "required", `is required for '${String(type)}' blocks.`);
     }
   }
   for (const post of rowsOf("posts")) {
+    if (!isEmpty(post.values.cover_image)) {
+      if (!isImagePath(String(post.values.cover_image))) add("posts", post, "cover_image", "invalid_value", "must be a .jpg, .jpeg, .png or .webp picture (SVG and other types are not accepted).");
+      if (isEmpty(post.values.cover_alt)) add("posts", post, "cover_alt", "required", "is required when the article has a cover image: describe the picture for people who cannot see it.");
+    }
     if (post.values.status !== "published") continue;
     if (isEmpty(post.values.published_at)) add("posts", post, "published_at", "required", "is required when status is 'published'.");
     if (!blocksByPost.get(String(post.values.post_id))) {

@@ -50,11 +50,13 @@ if (process.env.OEWER_PREVIEW_ADS === "1") {
   console.warn("PREVIEW BUILD: every supported ad placement shows an 'Ad space' box. Do not deploy this build.");
 }
 
-// Images referenced by articles must exist under public/, or the build would publish broken images.
-const missing = missingImageFiles(
-  (content.sheets.post_blocks ?? []).map((b) => ({ block_id: String(b.block_id), block_type: String(b.block_type), content: String(b.content), asset_path: String(b.asset_path) })),
-  (path) => existsSync(resolve(ROOT, "public", `.${path}`)),
-);
+// Images referenced by articles (covers and pictures inside them) must exist under public/, or the build would publish broken images.
+const articleImages = [
+  ...(content.sheets.post_blocks ?? []).map((b) => ({ block_id: String(b.block_id), block_type: String(b.block_type), content: String(b.content), asset_path: String(b.asset_path) })),
+  // Covers are checked the same way: a cover that points at a missing file would publish a broken picture.
+  ...(content.sheets.posts ?? []).filter((p) => String(p.cover_image ?? "") !== "").map((p) => ({ block_id: String(p.post_id), block_type: "image", content: String(p.cover_alt), asset_path: String(p.cover_image) })),
+];
+const missing = missingImageFiles(articleImages, (path) => existsSync(resolve(ROOT, "public", `.${path}`)));
 if (missing.length > 0) {
   console.error("Not exporting: these article images are not in the public folder:");
   for (const path of missing) console.error(`  ${path}`);

@@ -116,18 +116,36 @@ function renderBlock(block: PostBlock, ids: Map<string, string>) {
           ))}
         </ul>
       );
-    case "image":
+    case "image": {
+      const info = block.image;
+      const srcSet = info?.srcSet
+        ? info.srcSet
+            .split(", ")
+            .map((entry) => `${BASE_PATH}${entry}`)
+            .join(", ")
+        : undefined;
       return (
-        // Plain <img>: static export has no image optimizer.
-        <img
-          key={block.block_id}
-          src={`${BASE_PATH}${block.asset_path}`}
-          alt={block.content}
-          loading="lazy"
-          decoding="async"
-          className="my-2 h-auto max-w-full rounded-2xl"
-        />
+        <figure key={block.block_id} className="!my-8">
+          {/* A plain <img>: static export has no image optimizer. Width and height keep the space while it loads. */}
+          <img
+            src={`${BASE_PATH}${block.asset_path}`}
+            srcSet={srcSet}
+            sizes={srcSet ? "(min-width: 768px) 42rem, 100vw" : undefined}
+            width={info?.width}
+            height={info?.height}
+            alt={block.content}
+            loading="lazy"
+            decoding="async"
+            className="h-auto w-full rounded-2xl"
+          />
+          {block.caption && (
+            <figcaption className="t-meta mt-3 text-center">
+              {block.caption}
+            </figcaption>
+          )}
+        </figure>
       );
+    }
     case "quote":
       return (
         <blockquote

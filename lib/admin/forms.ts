@@ -177,6 +177,8 @@ export interface BlockForm {
   block_type: string;
   content: string;
   asset_path: string;
+  /** Text under an image block. */
+  caption: string;
 }
 export interface PostForm {
   /** Empty for a new article. */
@@ -188,6 +190,10 @@ export interface PostForm {
   author_id: string;
   status: string;
   published_at: string;
+  /** Site path of the cover picture, or "" for the generated cover. */
+  cover_image: string;
+  /** Description of the cover picture; required when there is one. */
+  cover_alt: string;
   tagIds: string[];
   /** Names of tags to create and attach. */
   newTags: string[];
@@ -200,7 +206,7 @@ export function readPost(data: WorkbookData, postId: string): PostForm {
   const blocks = rowsOf(data, "post_blocks")
     .filter((r) => cellString(r.values.post_id) === postId)
     .sort((a, b) => Number(a.values.sort_order) - Number(b.values.sort_order))
-    .map((r) => ({ block_id: r.id, block_type: cellString(r.values.block_type), content: cellString(r.values.content), asset_path: cellString(r.values.asset_path) }));
+    .map((r) => ({ block_id: r.id, block_type: cellString(r.values.block_type), content: cellString(r.values.content), asset_path: cellString(r.values.asset_path), caption: cellString(r.values.caption) }));
   const tagIds = rowsOf(data, "post_tags").filter((r) => cellString(r.values.post_id) === postId).map((r) => cellString(r.values.tag_id));
   return {
     post_id: postId,
@@ -211,9 +217,11 @@ export function readPost(data: WorkbookData, postId: string): PostForm {
     author_id: s.author_id ?? "",
     status: s.status ?? "draft",
     published_at: s.published_at ?? "",
+    cover_image: s.cover_image ?? "",
+    cover_alt: s.cover_alt ?? "",
     tagIds,
     newTags: [],
-    blocks: row ? blocks : [{ block_id: "", block_type: "paragraph", content: "", asset_path: "" }],
+    blocks: row ? blocks : [{ block_id: "", block_type: "paragraph", content: "", asset_path: "", caption: "" }],
   };
 }
 
@@ -236,6 +244,8 @@ export function planPost(data: WorkbookData, form: PostForm, now = nowIso()): { 
     status: form.status,
     published_at: publishedAt,
     updated_at: existing ? cellString(existing.values.updated_at) : now,
+    cover_image: form.cover_image,
+    cover_alt: form.cover_image ? form.cover_alt : "",
   };
 
   // Blocks, numbered in the order shown.
@@ -248,6 +258,7 @@ export function planPost(data: WorkbookData, form: PostForm, now = nowIso()): { 
     block_type: b.block_type,
     content: b.content,
     asset_path: b.block_type === "image" ? b.asset_path : "",
+    caption: b.block_type === "image" ? b.caption : "",
   }));
   const blockChanges = planRows("post_blocks", currentBlocks, desiredBlocks);
 

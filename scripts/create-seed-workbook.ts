@@ -7,6 +7,7 @@
  *   npx tsx scripts/create-seed-workbook.ts [outputPath]
  */
 import { SEED_POSTS } from "./blog-content";
+import { coverAlt, coverPath } from "./seed-covers";
 import { CONTACT_EMAIL, CONTACT_PAGE, PRIVACY_PAGE, TERMS_PAGE } from "./site-pages";
 import { TOOL_CONTENT } from "./tool-content";
 import { readFileSync } from "node:fs";
@@ -65,7 +66,7 @@ function toolContentRows(first: number): Row[] {
 
 const SEED: Record<string, Row[]> = {
   site_settings: [
-    ["schema_version", "1.0.1", "string", NOW],
+    ["schema_version", "1.0.2", "string", NOW],
     ["site_name", "OEWER Tools", "string", NOW],
     ["site_tagline", "Free online tools that respect your privacy", "string", NOW],
     ["site_url", "https://oewer.in", "string", NOW],
@@ -111,17 +112,18 @@ const SEED: Record<string, Row[]> = {
       "POST0001", "How EMI Is Calculated", "how-emi-is-calculated",
       "Understand the formula behind your loan EMI and how interest and tenure change what you pay.",
       "BCAT0001", "AUTH0001", "published", NOW, NOW,
+      coverPath("how-emi-is-calculated"), coverAlt("POST0001"),
     ],
-    ...SEED_POSTS.map((p): Row => [p.id, p.title, p.slug, p.excerpt, p.categoryId, "AUTH0001", "published", p.publishedAt, p.publishedAt]),
+    ...SEED_POSTS.map((p): Row => [p.id, p.title, p.slug, p.excerpt, p.categoryId, "AUTH0001", "published", p.publishedAt, p.publishedAt, coverPath(p.slug), coverAlt(p.id)]),
   ],
   post_blocks: [
-    ["BLK00001", "POST0001", 1, "paragraph", "An EMI, or equated monthly instalment, is the fixed amount you pay each month until a loan is cleared. Each payment covers part of the interest and part of the principal.", ""],
-    ["BLK00002", "POST0001", 2, "heading", "The EMI formula", ""],
-    ["BLK00003", "POST0001", 3, "paragraph", "EMI = P x r x (1 + r)^n / ((1 + r)^n - 1), where P is the loan amount, r is the monthly interest rate (annual rate divided by 12 and by 100) and n is the number of monthly instalments.", ""],
-    ["BLK00004", "POST0001", 4, "heading", "What changes your EMI", ""],
-    ["BLK00005", "POST0001", 5, "list", "A higher loan amount raises the EMI.\nA higher interest rate raises the EMI.\nA longer tenure lowers the EMI but increases the total interest paid.", ""],
+    ["BLK00001", "POST0001", 1, "paragraph", "An EMI, or equated monthly instalment, is the fixed amount you pay each month until a loan is cleared. Each payment covers part of the interest and part of the principal.", "", ""],
+    ["BLK00002", "POST0001", 2, "heading", "The EMI formula", "", ""],
+    ["BLK00003", "POST0001", 3, "paragraph", "EMI = P x r x (1 + r)^n / ((1 + r)^n - 1), where P is the loan amount, r is the monthly interest rate (annual rate divided by 12 and by 100) and n is the number of monthly instalments.", "", ""],
+    ["BLK00004", "POST0001", 4, "heading", "What changes your EMI", "", ""],
+    ["BLK00005", "POST0001", 5, "list", "A higher loan amount raises the EMI.\nA higher interest rate raises the EMI.\nA longer tenure lowers the EMI but increases the total interest paid.", "", ""],
     ...SEED_POSTS.flatMap((p, pi) =>
-      p.blocks.map((b, i): Row => [`BLK${String(10 + pi * 20 + i).padStart(5, "0")}`, p.id, i + 1, b[0], b[1], ""]),
+      p.blocks.map((b, i): Row => [`BLK${String(10 + pi * 20 + i).padStart(5, "0")}`, p.id, i + 1, b[0], b[1], "", ""]),
     ),
   ],
   tags: [

@@ -134,9 +134,9 @@ describe("articles", () => {
       tagIds: ["TAG0001"],
       newTags: ["Interest", "loans"], // "loans" already exists (case-insensitive) and must not be duplicated
       blocks: [
-        { block_id: "", block_type: "paragraph", content: "Start with the basics.", asset_path: "" },
-        { block_id: "", block_type: "heading", content: "Pay early", asset_path: "" },
-        { block_id: "", block_type: "list", content: "One\nTwo", asset_path: "" },
+        { block_id: "", block_type: "paragraph", content: "Start with the basics.", asset_path: "", caption: "" },
+        { block_id: "", block_type: "heading", content: "Pay early", asset_path: "", caption: "" },
+        { block_id: "", block_type: "list", content: "One\nTwo", asset_path: "", caption: "" },
       ],
     };
     const { changes, postId } = planPost(data, form, NOW);
@@ -155,7 +155,7 @@ describe("articles", () => {
   it("reorders, edits, adds and removes blocks of an existing article, and stamps the update date", async () => {
     const form = readPost(data, "POST0001");
     const [b1, b2, b3, b4, b5] = form.blocks;
-    form.blocks = [b2!, { ...b1!, content: "Edited opening." }, { block_id: "", block_type: "callout", content: "A tip.", asset_path: "" }, b4!, b5!]; // b3 removed
+    form.blocks = [b2!, { ...b1!, content: "Edited opening." }, { block_id: "", block_type: "callout", content: "A tip.", asset_path: "", caption: "" }, b4!, b5!]; // b3 removed
     const { changes } = planPost(data, form, NOW);
     expect(b3).toBeDefined();
     const result = await after(changes);
@@ -215,5 +215,45 @@ describe("advertisements", () => {
   });
   it("plans nothing when unchanged", () => {
     expect(planAds(data, readAds(data), NOW)).toEqual([]);
+  });
+});
+
+describe("article covers and captions in the editor", () => {
+  it("keeps the cover and captions through a save with no other change", () => {
+    const withCover = structuredClone(data);
+    const post = withCover.posts![0]!.values;
+    post.cover_image = "/images/blog/x/cover-1600.jpg";
+    post.cover_alt = "A calculator on a desk";
+    const form = readPost(withCover, String(post.post_id));
+    expect(form.cover_image).toBe("/images/blog/x/cover-1600.jpg");
+    expect(form.cover_alt).toBe("A calculator on a desk");
+    expect(planPost(withCover, form, NOW).changes).toEqual([]);
+  });
+  it("sets a cover and a caption, and the result is valid", async () => {
+    const form = readPost(data, "POST0002");
+    form.cover_image = "/images/blog/compress-images-without-losing-quality/cover-1600.jpg";
+    form.cover_alt = "Abstract artwork in dark purple";
+    form.blocks = [...form.blocks, { block_id: "", block_type: "image", content: "A before and after photo", asset_path: "/images/blog/compress-images-without-losing-quality/cover-800.jpg", caption: "Same photo, a tenth of the size." }];
+    const { changes } = planPost(data, form, NOW);
+    const result = await after(changes);
+    expect(result.issues).toEqual([]);
+    const next = readPost(result.data, "POST0002");
+    expect(next.cover_image).toBe(form.cover_image);
+    expect(next.blocks.at(-1)).toMatchObject({ block_type: "image", caption: "Same photo, a tenth of the size." });
+  });
+  it("clears the description when the cover is removed, and drops a caption when a block stops being an image", async () => {
+    const form = readPost(data, "POST0002");
+    form.cover_image = "";
+    form.cover_alt = "left over";
+    form.blocks = form.blocks.map((b) => ({ ...b, caption: "stray caption" }));
+    const next = readPost((await after(planPost(data, form, NOW).changes)).data, "POST0002");
+    expect(next.cover_alt).toBe("");
+    expect(next.blocks.every((b) => b.caption === "")).toBe(true);
+  });
+  it("rejects a cover with no description", async () => {
+    const form = readPost(data, "POST0002");
+    form.cover_image = "/images/x.jpg";
+    form.cover_alt = "";
+    expect((await after(planPost(data, form, NOW).changes)).issues.some((i) => i.column === "cover_alt")).toBe(true);
   });
 });

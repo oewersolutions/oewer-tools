@@ -18,7 +18,7 @@ Articles live in two sheets: `posts` (title, slug, excerpt, category, author, st
 | `quote` | Text | A pull quote. |
 | `code` | Text | Shown as a code block, never executed. |
 | `callout` | Text | A highlighted note. |
-| `image` | **Alt text** (required) | Also set `asset_path`, for example `/assets/emi-chart.png`. |
+| `image` | **Alt text** (required) | Also set `asset_path`, for example `/images/blog/my-article/chart-1600.jpg`, and optionally a `caption`. See Images below. |
 
 ## Rules that keep articles safe
 
@@ -29,7 +29,15 @@ Articles live in two sheets: `posts` (title, slug, excerpt, category, author, st
 
 ## Images
 
-Put the file in `public/assets/` and refer to it as `/assets/<file>`. `npm run export` and `npm run build` fail if a block refers to a file that is not there, so a broken image can never be published. Write alt text that describes the image for people who cannot see it.
+Every article can have a **cover image** and any number of **pictures in the text**.
+
+- **Cover image** (columns `cover_image` and `cover_alt` on `posts`): the picture shown at the top of the article, on its card in every list, and when the article is shared on social networks. **`cover_alt` is required whenever there is a cover**: describe the picture for people who cannot see it. With no cover, the site draws a generated one, so an article never looks empty.
+- **Pictures in the text:** an `image` block. Its `content` is the alt text (required), `asset_path` is the file, and the optional **`caption`** (up to 200 characters) is shown under it.
+- **Files:** put them in `public/images/blog/<article-address>/` and refer to them like `/images/blog/my-article/cover-1600.jpg`. Only **JPG, PNG and WebP** are accepted; SVG is refused because it can carry scripts. (The admin upload in T9.8 does the sizing and saving for you.)
+- **Two sizes, one name:** name a picture with its width, like `cover-1600.jpg`, and put smaller copies next to it (`cover-800.jpg`). The site finds them by name and gives phones the small one. A picture with no smaller copies is still fine, just heavier on a phone.
+- **Sizes:** aim for 1600 pixels wide for the cover and 1200 for pictures in the text, under about 300 KB each (JPG or WebP at roughly 80% quality). The site reads each file's real width and height, so the page keeps the right space while it loads and nothing jumps.
+- **Safety:** `npm run export` and `npm run build` fail if a cover or a picture refers to a file that is not there, so a broken image can never be published. Write alt text that says what the picture shows; keep captions short.
+- **The sample covers** are generated placeholders (`npx tsx scripts/make-seed-covers.ts` redraws them). Replace them with real pictures whenever you like; only use pictures you own or are licensed to use.
 
 ## Categories, tags and authors
 

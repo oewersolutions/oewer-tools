@@ -61,6 +61,23 @@ describe("a bad workbook stops the build", () => {
     });
   }
 
+  it("a cover image that is not in the public folder stops the export", async () => {
+    const wb = new ExcelJS.Workbook();
+    await wb.xlsx.readFile(good);
+    const ws = wb.getWorksheet("posts")!;
+    const cols = ws.getRow(1).values as string[];
+    ws.getRow(2).getCell(cols.indexOf("cover_image")).value = "/images/blog/not-there/cover-1600.jpg";
+    ws.getRow(2).getCell(cols.indexOf("cover_alt")).value = "A picture that does not exist";
+    const file = join(dir, "missing-cover.xlsx");
+    await wb.xlsx.writeFile(file);
+    expect(run("scripts/validate-workbook.ts", file).status).toBe(0); // the workbook itself is valid
+    const out = join(dir, "missing-cover.json");
+    const exported = run("scripts/export-content.ts", file, out);
+    expect(exported.status).toBe(1);
+    expect(exported.stderr).toContain("/images/blog/not-there/cover-1600.jpg");
+    expect(existsSync(out)).toBe(false);
+  });
+
   it("a file that is not a workbook fails", () => {
     const file = join(dir, "garbage.xlsx");
     writeFileSync(file, "this is not a spreadsheet");
