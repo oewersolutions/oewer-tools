@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Fragment, type ReactNode } from "react";
 import { parseInline, parseMarkdown } from "../lib/markdown";
 import type { PostBlock } from "../lib/content";
-import { buildOutline } from "../lib/posts";
+import { buildOutline, headingId } from "../lib/posts";
 
 const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
@@ -59,12 +59,13 @@ const UL = "list-disc space-y-2 pl-6 marker:text-brand";
 
 /** Renders restricted-Markdown text (static pages). */
 export function Prose({ source }: { source: string }) {
+  const used = new Set<string>();
   return (
     <div className={PROSE}>
       {parseMarkdown(source).map((block, i) => {
         if (block.type === "heading") {
           return block.level === 1 ? (
-            <h2 key={i} className={H2}>
+            <h2 key={i} id={headingId(block.text, used)} className={`${H2} scroll-mt-28`}>
               <Inline text={block.text} />
             </h2>
           ) : (

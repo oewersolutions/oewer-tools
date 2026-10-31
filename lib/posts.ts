@@ -1,5 +1,7 @@
 /** Article helpers: heading anchors, the outline, structured data and image-file checks. Pure, so they are unit tested. */
 
+import { parseMarkdown } from "./markdown";
+
 export interface BlockLike {
   block_id: string;
   block_type: string;
@@ -166,4 +168,12 @@ export function articleJsonLd(a: ArticleLd): string {
     publisher: { "@type": "Organization", name: a.publisherName },
   };
   return JSON.stringify(data).replace(/</g, "\\u003c");
+}
+
+/** The top-level headings of a page written in the restricted Markdown, with the anchors `Prose` gives them. */
+export function pageOutline(source: string): { id: string; text: string }[] {
+  const used = new Set<string>();
+  return parseMarkdown(source)
+    .filter((b): b is Extract<ReturnType<typeof parseMarkdown>[number], { type: "heading" }> => b.type === "heading" && b.level === 1)
+    .map((b) => ({ id: headingId(b.text, used), text: b.text }));
 }

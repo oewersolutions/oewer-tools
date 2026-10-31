@@ -126,3 +126,13 @@ Details:
 - **Contents list.** It appears when an article has at least two headings (at least three for the phone version). The marker uses the browser's IntersectionObserver; with JavaScript off the links still jump to the sections.
 - **Share.** No third-party share buttons, because they load other sites' scripts and track visitors. Copy link and Email only.
 - **Body styling** (`components/Prose.tsx`): headings use the shared type scale, bullets and links use the green accent, quotes have a thin green rule, callouts a green tint, code blocks ink. Images are rounded and lazy-loaded; captions arrive with T9.7.
+
+## About, Contact, Privacy and Terms (T9.9)
+
+`app/[slug]/page.tsx` picks a layout from `components/pages/PageLayouts.tsx`. All of them are made from the page's own text in the workbook, so editing a page in the admin changes the page; nothing is fixed in the code.
+
+- **About** (`AboutPage`, address `about`): a very large title; the first paragraph as large type and the next ones as a quieter intro; then each `# section` as a row, with its heading on the left (it stays in view while you read) and its text on the right; a bullet list whose every item starts with a **bold lead** becomes a grid of small cards (the bold part is the card's title); and a closing call to action to browse the tools or get in touch. To get the card grid, write the bullets like `- **Private by design.** Your files stay on your device.`
+- **Contact** (`ContactPage`, address `contact`): the title band with the first paragraph as the intro, the page's text in a reading column, and a dark card with the contact email (from the `contact_email` setting) and a "Write an email" button. The "Email us at …" line is left out of the text because the card shows the address.
+- **Everything else** (`ReadingPage`: Privacy, Terms and any new page): the title band, a "Last updated" line pulled out of the text when the first paragraph starts with those words, a calm reading column, and, for pages with three or more `#` sections, a sticky "On this page" list on the left whose current section is marked as you scroll.
+- **Anchors:** every `#` heading on these pages now has an address you can link to (`/privacy-policy/#advertising`).
+- **Text style:** headings use the type scale, bullets and links the green accent. Body text is 17px with generous line height, in a column about 44rem wide.
