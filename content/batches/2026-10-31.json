@@ -1,0 +1,509 @@
+{
+  "date": "2026-10-31",
+  "articles": [
+    {
+      "title": "How a Hybrid Car Works: Engine, Motor and Battery Explained",
+      "category": "Cars and Bikes",
+      "excerpt": "A hybrid pairs a petrol engine with an electric motor and a battery that charges itself while you drive. Here is what each part does, how braking recovers energy, and why it saves fuel.",
+      "tags": [
+        "hybrid",
+        "cars",
+        "engines",
+        "fuel economy"
+      ],
+      "blocks": [
+        [
+          "paragraph",
+          "A hybrid car has two ways to move: an ordinary combustion engine and one or more electric motors. The two share the work, and a computer decides how much each one does at any moment. According to the US Department of Energy, the result is better fuel economy without giving up performance. This guide explains the parts, what happens as you drive, and what a hybrid cannot do."
+        ],
+        [
+          "heading",
+          "The basic idea"
+        ],
+        [
+          "paragraph",
+          "The Department of Energy's Alternative Fuels Data Center describes a hybrid electric vehicle as one powered by an internal combustion engine and one or more electric motors that draw on energy stored in a battery. The pairing matters because a petrol engine is not equally efficient at every speed. The fuel economy site run by the US government says gasoline engines are least efficient at low speeds, and in some hybrids the electric motor alone moves the car at those speeds."
+        ],
+        [
+          "paragraph",
+          "At other times the motor helps the engine instead of replacing it. Because the motor can add power when it is needed, the car can use a smaller, more efficient engine than it otherwise would. That is the heart of the design: the engine does not have to be big enough to deliver peak power on its own, because the motor covers the moments when extra power is needed."
+        ],
+        [
+          "heading",
+          "The parts that matter"
+        ],
+        [
+          "list",
+          "**Engine.** A spark-ignited petrol engine. It can move the car, and it is one of the two ways the battery gets recharged.\n**Electric traction motor.** Drives the wheels, either on its own or together with the engine.\n**Traction battery pack.** The main battery. It stores the electricity that the motor uses.\n**Electric generator.** Makes electricity from motion, for example from the spinning wheels while the car brakes.\n**Power electronics controller.** The computer-controlled unit that manages the flow of electricity between the battery and the motor.\n**Transmission.** Passes power from the engine and the motor to the wheels.\n**Everything else.** A DC/DC converter and a separate auxiliary battery run the car's ordinary electrical equipment, and a cooling system keeps the engine, motor and electronics at a safe temperature."
+        ],
+        [
+          "paragraph",
+          "The Department of Energy's list of components also includes the fuel tank, the fuel filler and the exhaust system, which do the same jobs as in any petrol car."
+        ],
+        [
+          "heading",
+          "What happens as you drive"
+        ],
+        [
+          "paragraph",
+          "Exactly how a hybrid behaves depends on its design, but the main situations look like this."
+        ],
+        [
+          "list",
+          "**Pulling away and creeping along.** In some hybrids the electric motor alone can move the car at low speed, with the engine off.\n**Accelerating, overtaking or climbing a hill.** The motor assists the engine, adding power when demand is highest.\n**Steady driving.** The engine can move the car and recharge the battery at the same time.\n**Braking and slowing down.** The wheels turn the motor, which acts as a generator and sends electricity back to the battery. This is called regenerative braking.\n**Stopped at a light.** The engine can shut off and restart when you press the accelerator, so no fuel is burned while idling."
+        ],
+        [
+          "paragraph",
+          "Some hybrids can drive on the motor alone; others use the motor mainly to assist the engine. If you are comparing models, the manufacturer's own description will say which approach a particular car takes."
+        ],
+        [
+          "heading",
+          "Why regenerative braking matters"
+        ],
+        [
+          "paragraph",
+          "In an ordinary car, braking turns the car's movement into heat in the brake pads and discs, and that energy is simply lost. In a hybrid, the Department of Energy explains, the electric generator produces electricity from the spinning wheels while the car brakes, and that energy goes back into the traction battery."
+        ],
+        [
+          "paragraph",
+          "The fuel economy site describes the same thing from the motor's side: the wheels' forward motion turns the motor, which produces electricity and helps slow the car down. The stored energy is used later, for instance the next time the motor helps the engine accelerate. Energy that would have been wasted as heat becomes a small saving in fuel."
+        ],
+        [
+          "heading",
+          "A hybrid does not need a charging cable"
+        ],
+        [
+          "paragraph",
+          "The Alternative Fuels Data Center is direct on this point: a hybrid electric vehicle cannot be plugged in to charge its battery. The battery is recharged by the engine and by capturing energy during braking, so you refuel at a petrol station exactly as you would with any petrol car. Plug-in hybrids are a separate type that can also be charged from an outlet; this article covers the conventional kind."
+        ],
+        [
+          "heading",
+          "Why it saves fuel"
+        ],
+        [
+          "paragraph",
+          "The savings come from several small effects that add up. The motor lets the car use a smaller engine. In some hybrids the motor handles low-speed driving, where petrol engines are least efficient. Regenerative braking recovers energy that would be lost. Automatic stop and start reduces the energy wasted by idling, and the battery can also run accessories so the engine does not have to. The Department of Energy sums up the result as better fuel economy without sacrificing performance."
+        ],
+        [
+          "callout",
+          "**Check the numbers for yourself.** The US government's fuel economy site has a side-by-side comparison tool for estimated fuel economy. It is a better place to compare specific models than a general article, because figures differ from one car to the next."
+        ]
+      ],
+      "sources": [
+        {
+          "title": "How Do Hybrid Electric Cars Work? Alternative Fuels Data Center, US Department of Energy",
+          "url": "https://afdc.energy.gov/vehicles/how-do-hybrid-electric-cars-work"
+        },
+        {
+          "title": "How Hybrids Work, fueleconomy.gov (US Department of Energy and EPA)",
+          "url": "https://www.fueleconomy.gov/feg/hybridtech.shtml"
+        }
+      ],
+      "checkedOn": "2026-10-31"
+    },
+    {
+      "title": "How Airplanes Stay in the Air: The Four Forces of Flight",
+      "category": "Aviation",
+      "excerpt": "Every flight comes down to four forces: lift, weight, thrust and drag. See what each one does, how pilots change the balance for takeoff, cruising and landing, and why engines do not lift the plane.",
+      "tags": [
+        "airplanes",
+        "flight",
+        "physics",
+        "aerodynamics"
+      ],
+      "blocks": [
+        [
+          "paragraph",
+          "An airplane stays up because four forces are in play at once: lift, weight, thrust and drag. Two of them push the plane up and forward, and two pull it down and back. Everything a pilot does with the controls and the engines is a way of changing how those four forces compare. This article explains each one, using material from NASA's Glenn Research Center and the Smithsonian's National Air and Space Museum."
+        ],
+        [
+          "heading",
+          "Four forces, two pairs"
+        ],
+        [
+          "paragraph",
+          "The forces come in two opposing pairs. Weight is opposed by lift, and drag is opposed by thrust. NASA's beginner's guide to aeronautics puts it simply: the engines overcome drag, and they do not provide lift. That surprises many people, because engines are the loud, obvious part of a plane. Their job is to push the aircraft through the air. The lifting is done by the wings."
+        ],
+        [
+          "list",
+          "**Weight** pulls the aircraft toward the center of the Earth.\n**Lift** acts at a right angle to the direction of travel and holds the aircraft up.\n**Thrust** pushes the aircraft in the direction it is moving.\n**Drag** acts against the direction of travel."
+        ],
+        [
+          "heading",
+          "Weight: gravity never stops"
+        ],
+        [
+          "paragraph",
+          "Weight is the force of gravity on the aircraft, pulling downward toward the center of the Earth. NASA explains that its size depends on the mass of everything on board: the structure of the airplane, the fuel, and the payload, meaning passengers, baggage and freight. Weight also changes during a flight, because fuel is burned. As the plane gets lighter, pilots adjust the controls to keep it trimmed."
+        ],
+        [
+          "heading",
+          "Lift: the wings do the work"
+        ],
+        [
+          "paragraph",
+          "Lift is an aerodynamic force, which means it is created by the aircraft moving through the air. It acts perpendicular to the flight direction and opposes weight. The Smithsonian's How Things Fly pages say lift is created by differences in air pressure. NASA adds that the amount of lift depends on the shape, size and speed of the aircraft, and that most of it comes from the wings."
+        ],
+        [
+          "heading",
+          "Thrust and drag: pushing against the air"
+        ],
+        [
+          "paragraph",
+          "Drag is the air's resistance to the aircraft's motion. It acts along the flight path, in the opposite direction to travel. According to NASA it depends on the shape of the aircraft, on the air's viscosity (its stickiness) and on speed. The Smithsonian notes that drag is caused by friction and by differences in air pressure."
+        ],
+        [
+          "paragraph",
+          "Thrust comes from the engines, and its size depends on the type of engine, how many there are, and the throttle setting. In a jet, NASA explains, thrust is a reaction to the exhaust gas leaving the engine nozzle, an example of Newton's third law: the gas goes backward and the engine, and so the plane, is pushed forward."
+        ],
+        [
+          "heading",
+          "Takeoff, cruising and landing"
+        ],
+        [
+          "paragraph",
+          "The Smithsonian sets out what has to be true at each stage of a flight."
+        ],
+        [
+          "list",
+          "**Takeoff:** thrust must be greater than drag, and lift must be greater than weight.\n**Level flight:** lift must equal weight, and thrust must equal drag.\n**Landing:** thrust must be less than drag, and lift must be less than weight."
+        ],
+        [
+          "paragraph",
+          "This is why a plane accelerates down the runway before it leaves the ground. While the wings are not yet producing more lift than the plane weighs, it stays on the ground. Once the speed is high enough, lift exceeds weight and the plane climbs."
+        ],
+        [
+          "heading",
+          "When the forces are not balanced"
+        ],
+        [
+          "paragraph",
+          "When all four forces are balanced, the aircraft cruises at a constant speed in a steady direction. NASA's guide notes that if the forces are unbalanced, the aircraft accelerates in the direction of the largest force. Following that rule, thrust greater than drag speeds the plane up, and thrust less than drag slows it down. The Smithsonian adds that the balance shifts whenever an airplane climbs, descends, speeds up, slows down or turns."
+        ],
+        [
+          "heading",
+          "Why a spacecraft is different"
+        ],
+        [
+          "paragraph",
+          "Lift and drag both depend on air. In the near-vacuum above the atmosphere, the Smithsonian points out, a spacecraft still has weight and still uses thrust, but lift and drag are absent. Only two of the four forces remain. Without air, wings have nothing to work with, which is why a spacecraft beyond the atmosphere does not stay up by lift at all."
+        ],
+        [
+          "callout",
+          "**One thing to remember.** Engines do not hold a plane up. Wings do that, using the motion of the air. Engines supply the thrust that keeps the plane moving fast enough for the wings to work."
+        ]
+      ],
+      "sources": [
+        {
+          "title": "Four Forces on an Airplane, Beginner's Guide to Aeronautics, NASA Glenn Research Center",
+          "url": "https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/four-forces-on-an-airplane/"
+        },
+        {
+          "title": "The Four Forces, How Things Fly, Smithsonian National Air and Space Museum",
+          "url": "https://howthingsfly.si.edu/forces-flight/four-forces"
+        }
+      ],
+      "checkedOn": "2026-10-31"
+    },
+    {
+      "title": "How Ford's Moving Assembly Line Cut Model T Build Time to 93 Minutes",
+      "category": "Vintage and History",
+      "excerpt": "In 1913 Ford moved cars past workers instead of workers around cars. Build time for one Model T fell from 12 and a half hours to 93 minutes, and the price fell with it. Here is how it happened.",
+      "tags": [
+        "ford",
+        "model t",
+        "history",
+        "manufacturing"
+      ],
+      "blocks": [
+        [
+          "paragraph",
+          "Before 1913, building a Ford Model T took about 12 and a half hours of work per car. By early 1914 a finished car came off Ford's lines every 93 minutes. The change did not come from one clever machine. It came from rethinking how work moved through the factory, one small step at a time, at the company's Highland Park plant in Michigan. This is the story of how that happened, and what it did to the price of a car."
+        ],
+        [
+          "heading",
+          "Before the line"
+        ],
+        [
+          "paragraph",
+          "The Henry Ford museum, in an article by Matt Anderson, describes the old way of building as stationary: a car stayed in one place and workers came to it. Under those methods a car took 12 and a half hours to build. The Model T had been on sale since October 1908, when it was priced at $850, according to HISTORY.com. The price would fall sharply over the next decade, as the sections below show."
+        ],
+        [
+          "heading",
+          "A trial with magnetos"
+        ],
+        [
+          "paragraph",
+          "The first experiment was not on a whole car. Around the start of April 1913, according to The Henry Ford, flywheel magnetos, a part of the engine's electrical system, were placed on moving lines. Previously one worker completed one flywheel in some 20 minutes. On the moving line, one finished flywheel came off every 13 minutes. With further adjustments, the line produced a finished flywheel magneto in just five minutes."
+        ],
+        [
+          "heading",
+          "Spreading to the whole car"
+        ],
+        [
+          "paragraph",
+          "The idea then spread to other parts. Ford adapted the line to engines, then to transmissions, and finally to complete chassis. Chain-driven delivery replaced what the article calls the slide method. Workers stood along a waist-high platform, and each added one piece as the work passed by."
+        ],
+        [
+          "paragraph",
+          "Sources differ on the date. The Henry Ford says the moving line was extended to complete chassis in August 1913. HISTORY.com dates the chassis going on the moving line to 7 October 1913, and the Library of Congress says Ford introduced the moving assembly line in October 1913. They agree on the place, Highland Park, and on the main result."
+        ],
+        [
+          "heading",
+          "The numbers"
+        ],
+        [
+          "list",
+          "**12 and a half hours.** Time to build a Model T under the old stationary methods.\n**93 minutes.** Time for a finished Model T by early 1914, when separate lines had joined into three continuous ones. HISTORY.com calls this figure 93 man-minutes, meaning it describes labour time per car, so it is worth reading with care.\n**Every 24 seconds.** How often HISTORY.com says a Model T eventually came off the line.\n**Hundreds to thousands.** The Library of Congress says daily production rose from hundreds of cars to thousands after the new line was introduced."
+        ],
+        [
+          "heading",
+          "A line that was never finished"
+        ],
+        [
+          "paragraph",
+          "The Henry Ford stresses that the line was never complete. It stayed under constant review. Small changes, such as adjusting the height of a work platform or moving a drill press, saved seconds, and the seconds added up to large gains in output. The speed-up was less a single event than a habit of looking for the next small improvement."
+        ],
+        [
+          "heading",
+          "What it did to the price"
+        ],
+        [
+          "paragraph",
+          "Lower costs meant lower prices, and lower prices meant more buyers. The Library of Congress gives the Model T's price as $850 in 1908, $490 in 1914 and $260 in 1924. HISTORY.com says it had fallen to $360 by 1916 and later dropped below $300. The Henry Ford says the Model T sold for as little as $260. HISTORY.com reports that sales in 1916 were more than triple those of 1912."
+        ],
+        [
+          "paragraph",
+          "More than 15 million Model Ts had been built or sold by the time production ended in 1927, according to HISTORY.com and the Library of Congress. HISTORY.com says that was nearly half of all automobiles sold worldwide up to that date, and that the moving line spurred an industrial revolution in factories around the world."
+        ],
+        [
+          "heading",
+          "Why it still matters"
+        ],
+        [
+          "paragraph",
+          "The moving line is the best-known example of a simple idea: make the work flow past the worker, break the job into small steps, and keep improving each step. The Model T story also shows how a lower price can come from improvements in how a product is made. The Henry Ford says the time and cost savings are what let Ford lower the price, which raised demand and drove further efficiency gains."
+        ],
+        [
+          "callout",
+          "**A note on figures.** Historical numbers for the Model T vary a little between sources, because they measure slightly different things, such as hours of labour or hours on the line. This article reports what each source says and names it."
+        ]
+      ],
+      "sources": [
+        {
+          "title": "Ford Methods and the Ford Shops, by Matt Anderson, The Henry Ford",
+          "url": "https://www.thehenryford.org/collections/explore/articles/ford-methods-and-the-ford-shops"
+        },
+        {
+          "title": "Ford Implements the Moving Assembly Line, This Month in Business History, Library of Congress",
+          "url": "https://guides.loc.gov/this-month-in-business-history/October/Ford"
+        },
+        {
+          "title": "Moving assembly line debuts at Ford factory, HISTORY.com",
+          "url": "https://www.history.com/this-day-in-history/moving-assembly-line-at-ford"
+        }
+      ],
+      "checkedOn": "2026-10-31"
+    },
+    {
+      "title": "What Is a Context Window? Why AI Chatbots Forget Things",
+      "category": "AI",
+      "excerpt": "A context window is the amount of text an AI model can look at in one go. Learn what counts toward it, how tokens relate to words, and why long chats can lose track of earlier details.",
+      "tags": [
+        "ai",
+        "chatbots",
+        "tokens",
+        "language models"
+      ],
+      "blocks": [
+        [
+          "paragraph",
+          "If you have ever had an AI chatbot lose track of something you said earlier in a long conversation, you have run into the limits of its context window. The context window is the amount of text a model can work with at one time. Everything inside it is available to the model when it writes a reply. Everything outside it might as well not exist. This article explains what the window holds, how its size is counted in tokens, and what happens when a conversation grows too long."
+        ],
+        [
+          "heading",
+          "What a context window is"
+        ],
+        [
+          "paragraph",
+          "Anthropic's developer documentation defines the context window as all the text a language model can reference when generating a response, including the response itself. It is different from the large body of data the model was trained on. Instead, the documentation says, it works like the model's working memory."
+        ],
+        [
+          "paragraph",
+          "That distinction is the key to why chatbots seem to forget. Training is what a model learned in the past. The context window is what it can see right now, in this request."
+        ],
+        [
+          "heading",
+          "Tokens: how the window is measured"
+        ],
+        [
+          "paragraph",
+          "Context windows are measured in tokens, not words. Google's documentation for its Gemini models explains that a token is a unit of text the model processes. It can be a single character or a whole word, and long words are split into several tokens. For Gemini models, the same page gives a rule of thumb: a token is about four characters, and 100 tokens is about 60 to 80 English words. Other models split text differently, so the ratio is an estimate, not a fixed law."
+        ],
+        [
+          "paragraph",
+          "Pictures and sound count too. Google's documentation says an image of 384 pixels or less in both dimensions counts as 258 tokens, video in static processing counts as 263 tokens per second, and audio as 32 tokens per second. Whatever you give the model, it all takes up room in the same window."
+        ],
+        [
+          "heading",
+          "How big are the windows?"
+        ],
+        [
+          "paragraph",
+          "Sizes have grown quickly. As of 31 October 2026, Google's documentation lists a window of 1,048,576 tokens for the Gemini models it describes, and Anthropic's documentation says the window is up to 1 million tokens depending on the model, with some older Claude models at 200,000. By the rule of thumb above, a million tokens is roughly 630,000 to 840,000 English words. These figures change as new models appear, so check each company's current documentation before relying on them."
+        ],
+        [
+          "heading",
+          "What counts toward the limit"
+        ],
+        [
+          "paragraph",
+          "Anthropic's documentation is specific that everything in a request counts: the system prompt, every message in the conversation, tool results, images and documents, and the definitions of any tools. The reply the model generates counts as well, including any extended thinking. Google's documentation makes similar points: system instructions and tool definitions count as input tokens, and for its newest models input, thinking and output share one window."
+        ],
+        [
+          "heading",
+          "Why a long chat starts to forget"
+        ],
+        [
+          "paragraph",
+          "A model does not carry a memory of your conversation from one message to the next. In the way Anthropic's documentation describes it, each turn consists of all the previous conversation history plus your new message as input, and the reply then becomes part of the input for the next turn. The conversation keeps growing inside the window."
+        ],
+        [
+          "paragraph",
+          "When it approaches the limit, something has to give. The documentation describes several outcomes. If the input alone is too long, the service refuses it with an error saying the prompt is too long. Chat apps may instead drop the oldest messages on a first-in, first-out basis. Another approach is compaction, in which earlier parts of the conversation are summarised so the conversation can go on. In each case, details from early in the chat may be lost or reduced to a summary."
+        ],
+        [
+          "heading",
+          "More is not always better"
+        ],
+        [
+          "paragraph",
+          "A bigger window does not mean a model uses everything in it equally well. Anthropic's documentation says that as the number of tokens grows, accuracy and recall degrade, which it calls context rot, and that choosing what goes into the context is as important as how much space is available. Google's tools can also check the size of a request before it is sent, which helps people avoid sending more than they need."
+        ],
+        [
+          "heading",
+          "What this means in practice"
+        ],
+        [
+          "list",
+          "**Start a new chat for a new topic.** Old, unrelated text takes up room and can distract.\n**Put the important details in your latest message** if a conversation has been going on for a long time.\n**Ask for a summary** of a long chat and start fresh with it, so the key points are close at hand.\n**Be selective with pasted material.** Sending only the relevant part of a long document leaves more room for the answer."
+        ],
+        [
+          "callout",
+          "**Tokens affect cost as well as memory.** For developers, Google's documentation notes that the cost of using a model depends partly on the number of input and output tokens, so a window filled with unnecessary text can cost more as well as perform worse."
+        ]
+      ],
+      "sources": [
+        {
+          "title": "Context windows, Claude API documentation, Anthropic",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/context-windows"
+        },
+        {
+          "title": "Understand and count tokens, Gemini API documentation, Google AI for Developers",
+          "url": "https://ai.google.dev/gemini-api/docs/tokens"
+        }
+      ],
+      "checkedOn": "2026-10-31"
+    },
+    {
+      "title": "How USB-C Chargers Decide How Much Power to Send",
+      "category": "Electronics",
+      "excerpt": "USB Power Delivery lets a charger and a device agree on the power they need. See how the negotiation works, what the 100 W and 240 W limits mean, and why the cable matters.",
+      "tags": [
+        "usb-c",
+        "chargers",
+        "usb power delivery",
+        "laptops"
+      ],
+      "blocks": [
+        [
+          "paragraph",
+          "One USB-C charger can power a phone, a tablet and a laptop, and it does not blast the same amount of electricity into each of them. The devices and the charger talk to each other first and agree on how much power to send. The system that makes this possible is called USB Power Delivery, or USB PD. This article explains how the conversation works, what the power limits are, and why the cable you use matters."
+        ],
+        [
+          "heading",
+          "What USB Power Delivery does"
+        ],
+        [
+          "paragraph",
+          "The USB Implementers Forum, the organisation that looks after the USB standards, says USB Power Delivery provides more flexible power along with data over a single cable. The direction of the power is no longer fixed, so either the host or a peripheral can supply it. Devices can take only the power they need, and they can ask for more when an application requires it."
+        ],
+        [
+          "heading",
+          "A menu and an order"
+        ],
+        [
+          "paragraph",
+          "The negotiation is simpler than it sounds. The charger offers a menu, and the device places an order. A guide from the electronics company Acroname describes the sequence."
+        ],
+        [
+          "list",
+          "**The charger lists what it can do.** First the source checks the capabilities of the USB-C cable. It then sends a message listing its power options. Each option is called a power data object.\n**The device chooses.** If the device supports USB PD, it replies with a request data object. That request names one of the offered options and gives extra detail about the voltage or current it wants.\n**The charger says yes or no.** The source answers with an accept or a reject message.\n**The power changes.** If the request is accepted, the source changes its voltage and current, then sends a power supply ready message. That message tells the device it can draw the power it requested."
+        ],
+        [
+          "paragraph",
+          "Because the device can only choose from the menu the charger offers, a small charger with a short menu cannot supply what a power-hungry laptop asks for. Acroname also notes that the traditional 5 volt output of a USB port counts as one of the fixed options, so the plain 5 volt supply that older devices expect is part of the menu."
+        ],
+        [
+          "heading",
+          "How much power can it carry?"
+        ],
+        [
+          "paragraph",
+          "The USB Implementers Forum describes the limits introduced in revision 3.1 of the USB PD specification."
+        ],
+        [
+          "list",
+          "**Up to 100 watts** was the limit before this revision, using 20 volts and cables rated for 5 amps. (20 volts times 5 amps is 100 watts.)\n**Up to 240 watts** is supported by revision 3.1 over a full-featured USB Type-C cable and connector.\n**New fixed voltages of 28, 36 and 48 volts** allow up to 140, 180 and 240 watts respectively.\n**An adjustable voltage mode** lets a device request intermediate voltages between 15 volts and the charger's maximum fixed voltage."
+        ],
+        [
+          "paragraph",
+          "A phone needs far less than any of these figures. The point of the negotiation is that a device asks only for what it needs."
+        ],
+        [
+          "heading",
+          "Why the cable matters"
+        ],
+        [
+          "paragraph",
+          "The cable is part of the system. The USB Implementers Forum says that 240 watt operation requires a full-featured USB Type-C cable and connector, and that the USB Type-C specification, release 2.1, defines the requirements for such cables. Acroname's description of the sequence also starts with the source checking the capabilities of the cable. A cable that cannot carry the current for a high-power option limits what the charger and device can agree on."
+        ],
+        [
+          "paragraph",
+          "This is worth remembering when something charges more slowly than expected. The charger, the device and the cable all have to support the power level. The weakest of the three sets the limit."
+        ],
+        [
+          "heading",
+          "What certification means"
+        ],
+        [
+          "paragraph",
+          "According to the USB Implementers Forum, products must pass compliance testing, and Power Delivery products must be listed on its Integrators List. Companies that want to use the certified USB logos need a current trademark licence agreement with the organisation. When a charger or cable claims USB PD support, the Integrators List is the place where the claim can be checked."
+        ],
+        [
+          "heading",
+          "In short"
+        ],
+        [
+          "paragraph",
+          "USB-C charging works because the charger and the device agree on terms before any significant power flows. The charger offers options, the device chooses one, the charger confirms, and then the voltage and current change. The result is a single charger that can serve many different devices, as long as the charger, the device and the cable all support the power level you are after."
+        ],
+        [
+          "callout",
+          "**Before you buy.** Check the power in watts printed on a charger, and check that a cable is rated for the power you want to use. Higher power levels need cables built for them."
+        ]
+      ],
+      "sources": [
+        {
+          "title": "USB Charger (USB Power Delivery), USB Implementers Forum",
+          "url": "https://www.usb.org/usb-charger-pd"
+        },
+        {
+          "title": "The Basics of USB Power Delivery Negotiations, Acroname (24 June 2023)",
+          "url": "https://acroname.com/blog/basics-usb-power-delivery-negotiations"
+        }
+      ],
+      "checkedOn": "2026-10-31"
+    }
+  ]
+}

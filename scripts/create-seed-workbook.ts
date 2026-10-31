@@ -8,7 +8,7 @@
  */
 import { SEED_POSTS } from "./blog-content";
 import { coverAlt, coverPath } from "./seed-covers";
-import { CONTACT_EMAIL, CONTACT_PAGE, PRIVACY_PAGE, TERMS_PAGE } from "./site-pages";
+import { CONTACT_EMAIL, CONTACT_PAGE, EDITORIAL_PAGE, PRIVACY_PAGE, TERMS_PAGE } from "./site-pages";
 import { TOOL_CONTENT } from "./tool-content";
 import { readFileSync } from "node:fs";
 import { mkdir } from "node:fs/promises";
@@ -83,6 +83,7 @@ const SEED: Record<string, Row[]> = {
     ["PAGE0002", "privacy-policy", "Privacy Policy", PRIVACY_PAGE, "published", NOW],
     ["PAGE0003", "terms", "Terms of Use", TERMS_PAGE, "published", NOW],
     ["PAGE0004", "contact", "Contact Us", CONTACT_PAGE, "published", NOW],
+    ["PAGE0005", "editorial-policy", "How we write our articles", EDITORIAL_PAGE, "published", NOW],
   ],
   navigation: [
     ["NAV0001", "Tools", "/tools", "header", 1, true],
@@ -91,6 +92,7 @@ const SEED: Record<string, Row[]> = {
     ["NAV0004", "Contact", "/contact", "footer", 1, true],
     ["NAV0005", "Privacy Policy", "/privacy-policy", "footer_legal", 1, true],
     ["NAV0006", "Terms of Use", "/terms", "footer_legal", 2, true],
+    ["NAV0007", "Editorial policy", "/editorial-policy", "footer", 2, true],
   ],
   tool_categories: TOOL_CATEGORIES.map((c) => [...c, true]),
   // Every tool has a component (Phase 3), so all are published.

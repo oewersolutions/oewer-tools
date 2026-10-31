@@ -16,6 +16,7 @@ import {
   authorSlug,
   getAuthor,
   getCoverInfo,
+  getPageBySlug,
   getBlogCategory,
   getRelatedPosts,
   getToolsForPost,
@@ -216,8 +217,18 @@ export default async function PostPage({ params }: Props) {
               }
             />
 
+            {getPageBySlug("editorial-policy") && (
+              <p className="t-meta mt-10 !text-sm">
+                This article was written with AI assistance.{" "}
+                <Link href="/editorial-policy/" className="font-medium text-brand underline">
+                  How we research and check our articles
+                </Link>
+                .
+              </p>
+            )}
+
             {tags.length > 0 && (
-              <ul aria-label="Tags" className="mt-12 flex flex-wrap gap-2">
+              <ul aria-label="Tags" className="mt-8 flex flex-wrap gap-2">
                 {tags.map((t) => (
                   <li key={t.tag_id}>
                     <Link

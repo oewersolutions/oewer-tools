@@ -133,3 +133,33 @@ We may update these terms. The date at the top shows when they last changed. If 
 # Contact
 
 Questions about these terms? Email ${mail}.`;
+
+export const EDITORIAL_PAGE = `Last updated: 31 October 2026
+
+This page explains how the articles on OEWER Tools are made, so you can decide how far to trust them.
+
+# What we publish
+
+Plain-language explainers: how things work, what they cost, where technology is heading, and the history behind vehicles and the companies that built them. We write for people who want a clear answer without the marketing.
+
+# How an article is made
+
+- **AI-assisted writing.** Articles are drafted with the help of an AI model. We say so openly, and a note appears under each article.
+- **Researched from named sources.** Each article lists the pages its facts came from at the end. We look for official and primary sources first, such as a company's own pricing page, a manufacturer, a standards body, a museum or an archive.
+- **Checked by a program.** Before an article goes live it must pass automatic checks: enough substance, at least two sources from different websites, no filler phrases, no invented first-hand claims, and no repeat of an article we already have.
+- **Dated.** Each article says the day its facts were checked. Prices, plans, dates and specifications change, so always confirm important details on the official page.
+
+# What we do not do
+
+- We do not claim to have tested, driven, flown or owned anything we have not.
+- We do not accept payment for articles or for what they say, and we do not copy other sites' text.
+- We do not give financial, legal, medical or safety advice. Articles are for general information.
+- Company and product names belong to their owners. Mentioning them is not an endorsement, and they have not reviewed or approved what we write.
+
+# Pictures
+
+Article pictures are abstract artwork we generate, not photographs of the things described, unless an article says otherwise.
+
+# Mistakes and corrections
+
+We make mistakes. If you spot one, email ${mail} with the article's address and what is wrong. We check the sources, correct the article and change its "checked on" date. If an article cannot be fixed, we remove it.`;
