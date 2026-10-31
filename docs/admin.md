@@ -132,3 +132,18 @@ The first panel after sign-in gives an overview without opening any sheet.
 - **Latest site update.** The state of the newest deploy run (*Live*, *Updating the site*, *Failed*…), its commit and time, with a link to the run. Without the **Actions: Read** permission this line says so and the rest of the dashboard still works.
 
 Code: `lib/admin/dashboard.ts` (counts, unit tested in `tests/admin-dashboard.test.ts`) and `app/admin/Dashboard.tsx`, which reuses the history and deploy-run clients.
+
+## Pictures in articles (T9.8)
+
+The article editor can upload pictures, so nothing has to be copied into the repository by hand.
+
+- **Where:** **Upload a cover picture** near the top of an article, and **Block N: upload a picture** inside each image block. Both are disabled until the article has a title (its address names the folder) and when the token is read-only, with the reason shown.
+- **What happens:** the file is checked by its contents (a renamed SVG or GIF is refused, and so is anything over 25 MB or 80 megapixels), then resized and compressed **in your browser**: a full size and a half-size copy for phones, WebP (JPEG in Safari), lowering the quality a step at a time until each file is about 300 KB, and refusing a picture that stays over 800 KB. The original never leaves your computer.
+- **Saved as one commit:** both files go to GitHub through the Git data API in a single commit named "Admin: add cover for <article>", on top of the branch's latest commit and never forced; if someone saved a moment before, it is repeated on top of theirs (up to three times). One commit means one site update, not one per file.
+- **Then:** the form shows a preview, the sizes and a link to the commit, and fills in the picture's address. Pictures go live with the next site update; an article that refers to a picture not yet in the repository would fail the build, which is why the picture is saved first and the article after.
+- **Removing:** "Remove the cover" clears the cover and its description; the files stay in the repository (Git history keeps everything), and the article goes back to a generated cover. Pictures that are uploaded but never used are harmless.
+- **Token:** it needs the same **Contents: Read and write** permission as everything else; the Git data calls are covered by it.
+- **Privacy and rights:** pictures become public in the repository and its history. Only upload pictures you own or are licensed to use.
+- **The preview** of the saved picture is shown from the browser's memory (the admin's security policy allows `blob:` images for this and nothing else new).
+
+Code: `lib/admin/images.ts` (rules and the resizing, unit tested), `commitFiles` in `lib/admin/github.ts`, and `app/admin/editors/ImageUpload.tsx`.

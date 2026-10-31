@@ -88,7 +88,7 @@ Source: `docs/OEWER_TOOLS_PROJECT_PLAN.md` (v1.1: JavaScript-only, GitHub Pages,
 - [x] **T9.5** Blog index and category, tag and author pages redesigned (big title, category chips, image cards)
 - [x] **T9.6** Article page redesigned: cover image, contents list beside the text, author card, related tools and articles
 - [x] **T9.7** Article images in the data: cover image, alt text and image captions (schema 1.0.2 with migration), seed covers, validation, export
-- [ ] **T9.8** Admin image upload for articles: choose, resize and compress in the browser, commit to the repository, insert as cover or inline image
+- [x] **T9.8** Admin image upload for articles: choose, resize and compress in the browser, commit to the repository, insert as cover or inline image
 - [ ] **T9.9** About, Contact, Privacy and Terms pages restyled; the About page gets the editorial treatment
 - [ ] **T9.10** Redesign QA: accessibility, contrast, performance budgets, Safari, mobile, SEO audit, image rules, docs
 - [ ] **T9.11** Testing for the redesign (deferred by the owner until the pages are built): update the browser tests that the new home, tools, blog and article pages break, add tests for the new parts (home sections, covers, article layout, image upload), run Chrome, Firefox and Safari in CI, fix what turns up

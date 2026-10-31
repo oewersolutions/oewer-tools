@@ -134,3 +134,51 @@ export async function commitWorkbook(session: GithubSession, bytes: Uint8Array, 
   const body = (await response.json()) as { content: { sha: string }; commit: { sha: string; html_url: string } };
   return { commitSha: body.commit.sha, commitUrl: body.commit.html_url, fileSha: body.content.sha };
 }
+
+export interface FileToCommit {
+  /** Path inside the repository, without a leading slash, like `public/images/blog/x/cover-1600.webp`. */
+  path: string;
+  bytes: Uint8Array;
+}
+
+export interface FilesCommit {
+  commitSha: string;
+  commitUrl: string;
+}
+
+/** `/images/blog/a.webp` (an address on the site) to `public/images/blog/a.webp` (the file in the repository). */
+export const repoPathForSitePath = (sitePath: string): string => `public/${sitePath.replace(/^\/+/, "")}`;
+
+const MAX_ATTEMPTS = 3;
+
+/**
+ * Save one or more new files in a single commit (so one site update, not one per file), through GitHub's Git data
+ * API: add each file as a blob, build a new tree on top of the branch's latest one, commit it, and move the branch.
+ * The branch is moved without force: if someone saved in the meantime GitHub refuses, and the whole sequence is
+ * repeated on top of their commit (up to three times), so nothing of theirs is ever overwritten.
+ */
+export async function commitFiles(session: GithubSession, files: FileToCommit[], message: string, doFetch?: Fetch): Promise<FilesCommit> {
+  if (files.length === 0) throw new GithubError("other", "There is nothing to save.");
+  const base = repoUrl(session);
+  const branch = encodeURIComponent(session.branch);
+  const call = async (path: string, init?: RequestInit) => (await githubCall(session, `${base}${path}`, init, doFetch)).json() as Promise<Record<string, any>>; // eslint-disable-line @typescript-eslint/no-explicit-any
+  const post = (path: string, body: unknown) => call(path, { method: "POST", body: JSON.stringify(body) });
+
+  // The blobs do not depend on the branch, so they are made once, even if the commit has to be redone.
+  const blobs = await Promise.all(files.map(async (f) => ({ path: f.path.replace(/^\/+/, ""), sha: (await post("/git/blobs", { content: toBase64(f.bytes), encoding: "base64" })).sha as string })));
+
+  for (let attempt = 1; ; attempt++) {
+    const head = (await call(`/git/ref/heads/${branch}`)).object.sha as string;
+    const parentTree = (await call(`/git/commits/${head}`)).tree.sha as string;
+    const tree = (await post("/git/trees", { base_tree: parentTree, tree: blobs.map((b) => ({ path: b.path, mode: "100644", type: "blob", sha: b.sha })) })).sha as string;
+    const commit = await post("/git/commits", { message, tree, parents: [head] });
+    try {
+      await call(`/git/refs/heads/${branch}`, { method: "PATCH", body: JSON.stringify({ sha: commit.sha, force: false }) });
+      return { commitSha: commit.sha as string, commitUrl: commit.html_url as string };
+    } catch (e) {
+      const movedOn = e instanceof GithubError && (e.status === 422 || e.status === 409);
+      if (!movedOn) throw e;
+      if (attempt >= MAX_ATTEMPTS) throw new GithubError("conflict", "The branch keeps changing on GitHub, so the picture could not be saved. Wait a moment and try again.", e.status);
+    }
+  }
+}

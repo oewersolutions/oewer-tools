@@ -2,12 +2,14 @@
 
 import { useState } from "react";
 import type { Change } from "../../../lib/admin/changes";
+import type { GithubSession } from "../../../lib/admin/github";
 import { nowIso, planPost, planSeo, readPost, readSeo, type BlockForm, type PostForm, type SeoForm } from "../../../lib/admin/forms";
 import { cellString, toRows } from "../../../lib/admin/table";
 import { PostBody } from "../../../components/Prose";
 import { readingMinutes } from "../../../lib/format";
 import { slugify, statusNotice } from "../../../lib/posts";
 import { schema, type WorkbookData } from "../../../lib/workbook";
+import ImageUpload from "./ImageUpload";
 import { CheckGroup, FormShell, primaryButton, Section, SelectField, SeoFields, smallButton, TextAreaField, TextField } from "./parts";
 
 const BLOCK_HELP: Record<string, string> = {
@@ -20,7 +22,7 @@ const BLOCK_HELP: Record<string, string> = {
   callout: "A highlighted note.",
 };
 
-export default function PostsEditor({ data, onApply }: { data: WorkbookData; onApply: (changes: Change[]) => void }) {
+export default function PostsEditor({ data, onApply, session, canPush }: { data: WorkbookData; onApply: (changes: Change[]) => void; session: GithubSession; canPush: boolean }) {
   const posts = toRows(data, "posts", schema.sheets.posts!).sort((a, b) => cellString(b.values.published_at).localeCompare(cellString(a.values.published_at)) || b.id.localeCompare(a.id));
   const [editing, setEditing] = useState<string | null>(null);
 
@@ -37,6 +39,8 @@ export default function PostsEditor({ data, onApply }: { data: WorkbookData; onA
         <PostForm
           key={editing}
           data={data}
+          session={session}
+          canPush={canPush}
           postId={editing === "new" ? "" : editing}
           onCancel={() => setEditing(null)}
           onSave={(changes) => {
@@ -78,7 +82,7 @@ export default function PostsEditor({ data, onApply }: { data: WorkbookData; onA
   );
 }
 
-function PostForm({ data, postId, onSave, onCancel }: { data: WorkbookData; postId: string; onSave: (c: Change[]) => void; onCancel: () => void }) {
+function PostForm({ data, postId, session, canPush, onSave, onCancel }: { data: WorkbookData; postId: string; session: GithubSession; canPush: boolean; onSave: (c: Change[]) => void; onCancel: () => void }) {
   const categories = toRows(data, "blog_categories", schema.sheets.blog_categories!);
   const authors = toRows(data, "authors", schema.sheets.authors!);
   const tags = toRows(data, "tags", schema.sheets.tags!);
@@ -127,6 +131,18 @@ function PostForm({ data, postId, onSave, onCancel }: { data: WorkbookData; post
         </div>
         <TextField label="Cover image file" value={f.cover_image} onChange={(v) => set({ cover_image: v })} hint="Where the picture is on the site, like /images/blog/my-article/cover-1600.jpg (jpg, png or webp). Empty uses a generated cover." />
         <TextField label="Cover image description (alt text)" value={f.cover_alt} onChange={(v) => set({ cover_alt: v })} hint="Required with a cover: describe the picture for people who cannot see it." />
+        <div className="space-y-2 md:col-span-2">
+          <ImageUpload kind="cover" slug={f.slug || slugify(f.title)} session={session} canPush={canPush} label="Upload a cover picture" onUploaded={(path) => set({ cover_image: path })} />
+          {f.cover_image && (
+            <p className="text-xs text-slate-700">
+              The cover is <code>{f.cover_image}</code>. Describe it in the box above (required).{" "}
+              <button type="button" className="font-medium text-brand-700 underline" onClick={() => set({ cover_image: "", cover_alt: "" })}>
+                Remove the cover
+              </button>{" "}
+              (the file stays in the repository; the article goes back to a generated cover).
+            </p>
+          )}
+        </div>
         <div className="md:col-span-2">
           <TextAreaField label="Summary (shown in lists and search results)" value={f.excerpt} onChange={(v) => set({ excerpt: v })} rows={2} />
         </div>
@@ -168,6 +184,9 @@ function PostForm({ data, postId, onSave, onCancel }: { data: WorkbookData; post
                 <p className="text-xs text-slate-600">{BLOCK_HELP[b.block_type]}</p>
                 {b.block_type === "image" && (
                   <div className="grid gap-4 md:grid-cols-2">
+                    <div className="md:col-span-2">
+                      <ImageUpload kind="inline" slug={f.slug || slugify(f.title)} session={session} canPush={canPush} label={`Block ${i + 1}: upload a picture`} onUploaded={(path) => setBlock(i, { asset_path: path })} />
+                    </div>
                     <TextField label={`Block ${i + 1} image file`} value={b.asset_path} onChange={(v) => setBlock(i, { asset_path: v })} hint="Where the file is on the site, like /images/blog/my-article/chart-1600.jpg (jpg, png or webp)." />
                     <TextField label={`Block ${i + 1} caption`} value={b.caption} onChange={(v) => setBlock(i, { caption: v })} hint="Optional. Shown under the picture." />
                   </div>

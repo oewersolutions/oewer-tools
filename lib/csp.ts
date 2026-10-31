@@ -33,7 +33,7 @@ export function buildCsp(scriptHashes: string[], { connect }: CspOptions): strin
     `script-src 'self' ${scriptHashes.join(" ")}`.trim(),
     `connect-src 'self' ${connect.join(" ")}`.trim(),
     "style-src 'self'",
-    "img-src 'self' data:",
+    "img-src 'self' data: blob:", // blob: lets the admin preview a picture it has just resized, before it is saved
     "font-src 'self'",
     "base-uri 'none'",
     "form-action 'none'",

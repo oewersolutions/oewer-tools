@@ -10,7 +10,7 @@ export interface ImageInfo {
   srcSet: string;
 }
 
-const WIDTHS = [400, 480, 640, 800, 1000, 1200, 1600, 2000];
+const WIDTHS = [400, 480, 600, 640, 800, 1000, 1200, 1600, 2000];
 const cache = new Map<string, ImageInfo | null>();
 
 const file = (path: string) => resolve(process.cwd(), "public", `.${path}`);

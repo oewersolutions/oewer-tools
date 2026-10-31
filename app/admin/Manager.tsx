@@ -189,7 +189,7 @@ export default function Manager({
   const onSite = useMemo(() => (pending.length > 0 && projection.ready ? liveChanges(file.data, projection.data) : undefined), [pending.length, projection.ready, projection.data, file.data]);
 
   const apply = (changes: Change[]) => changePending(mergeChanges(pending, changes));
-  const editorProps = { data: projection.data, onApply: apply };
+  const editorProps = { data: projection.data, onApply: apply, session: file.session, canPush: file.canPush };
 
   return (
     <div className="space-y-8">

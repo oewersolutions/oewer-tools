@@ -13,11 +13,13 @@ const schema = JSON.parse(readFileSync(resolve("schemas/workbook_schema.json"), 
 
 // A pretend GitHub: the admin page is exercised end to end without touching the real repository.
 const WORKBOOK = readFileSync(resolve("data/oewer_database.xlsx"));
-const CORS = { "access-control-allow-origin": "*", "access-control-allow-headers": "*", "access-control-allow-methods": "GET,PUT,OPTIONS" };
+const CORS = { "access-control-allow-origin": "*", "access-control-allow-headers": "*", "access-control-allow-methods": "GET,PUT,POST,PATCH,OPTIONS" };
 
 interface Fake {
   puts: { headers: Record<string, string>; body: { message: string; content: string; sha: string; branch: string } }[];
   gets: string[];
+  /** Pictures saved through the Git data API: one entry per commit, with each file's path and size. */
+  uploads: { message: string; files: { path: string; size: number }[] }[];
   /** The workbook GitHub currently holds. */
   current(): Buffer;
 }
@@ -42,7 +44,10 @@ async function fakeGithub(
   let concurrentDone = false;
   let savedCommit: string | undefined;
   let polls = 0; // how many times the new run has been looked at: queued, then running, then finished
-  const fake: Fake = { puts: [], gets: [], current: () => bytes };
+  const fake: Fake = { puts: [], gets: [], uploads: [], current: () => bytes };
+  const blobs = new Map<string, number>();
+  const trees = new Map<string, { path: string; sha: string }[]>();
+  const gitCommits = new Map<string, { message: string; tree: string }>();
   const json = (body: unknown, status = 200) => ({ status, headers: { ...CORS, "content-type": "application/json" }, body: JSON.stringify(body) });
   const file = "/repos/acme/site/contents/data/oewer_database.xlsx";
 
@@ -92,6 +97,31 @@ async function fakeGithub(
       bytes = Buffer.from(body.content, "base64");
       version++;
       return route.fulfill(json({ content: { sha: SHAS[version] }, commit: { sha: "c".repeat(40), html_url: "https://github.com/acme/site/commit/ccc" } }));
+    }
+    // GitHub's Git data API, which the picture upload uses to save several files in one commit.
+    const git = url.pathname.replace("/repos/acme/site", "");
+    if (request.method() === "GET" && git === "/git/ref/heads/main") return route.fulfill(json({ object: { sha: "head0" } }));
+    if (request.method() === "GET" && git === "/git/commits/head0") return route.fulfill(json({ tree: { sha: "tree0" } }));
+    if (request.method() === "POST" && git === "/git/blobs") {
+      const sha = `blob${blobs.size}`;
+      blobs.set(sha, Buffer.from(request.postDataJSON().content, "base64").length);
+      return route.fulfill(json({ sha }));
+    }
+    if (request.method() === "POST" && git === "/git/trees") {
+      const sha = `tree${trees.size + 1}`;
+      trees.set(sha, request.postDataJSON().tree);
+      return route.fulfill(json({ sha }));
+    }
+    if (request.method() === "POST" && git === "/git/commits") {
+      const body = request.postDataJSON();
+      const sha = `commit${gitCommits.size + 1}`;
+      gitCommits.set(sha, { message: body.message, tree: body.tree });
+      return route.fulfill(json({ sha, html_url: `https://github.com/acme/site/commit/${sha}` }));
+    }
+    if (request.method() === "PATCH" && git === "/git/refs/heads/main") {
+      const commit = gitCommits.get(request.postDataJSON().sha)!;
+      fake.uploads.push({ message: commit.message, files: trees.get(commit.tree)!.map((t) => ({ path: t.path, size: blobs.get(t.sha)! })) });
+      return route.fulfill(json({}));
     }
     return route.fulfill(json({ message: "Not Found" }, 404));
   });
@@ -980,4 +1010,106 @@ test("a new tab starts signed out: the token does not outlive the tab it was typ
   await other.goto("/admin/");
   await expect(other.getByLabel("GitHub token")).toBeVisible();
   await expect(other.getByRole("heading", { name: /Signed in/ })).toHaveCount(0);
+});
+
+/** A large picture made in the browser, so no fixture file is needed: 2400 x 1500 with some texture. */
+async function bigPicture(page: Page): Promise<Buffer> {
+  const base64 = await page.evaluate(async () => {
+    const canvas = document.createElement("canvas");
+    canvas.width = 2400;
+    canvas.height = 1500;
+    const ctx = canvas.getContext("2d")!;
+    const gradient = ctx.createLinearGradient(0, 0, 2400, 1500);
+    gradient.addColorStop(0, "#174f49");
+    gradient.addColorStop(1, "#f4a261");
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, 2400, 1500);
+    for (let i = 0; i < 400; i++) {
+      ctx.fillStyle = `hsla(${(i * 37) % 360}, 70%, 60%, 0.35)`;
+      ctx.beginPath();
+      ctx.arc((i * 193) % 2400, (i * 317) % 1500, 20 + (i % 60), 0, Math.PI * 2);
+      ctx.fill();
+    }
+    const blob = await new Promise<Blob>((resolve) => canvas.toBlob((b) => resolve(b!), "image/png"));
+    const bytes = new Uint8Array(await blob.arrayBuffer());
+    let binary = "";
+    for (let i = 0; i < bytes.length; i += 0x8000) binary += String.fromCharCode(...bytes.subarray(i, i + 0x8000));
+    return btoa(binary);
+  });
+  return Buffer.from(base64, "base64");
+}
+
+test("a cover picture is resized and compressed in the browser, saved in one commit, and filled in", async ({ page }) => {
+  const fake = await fakeGithub(page);
+  await signIn(page);
+  await editor(page, "Articles").click();
+  await page.getByRole("button", { name: "New article" }).click();
+  const form = page.getByRole("form", { name: /New article/ });
+
+  const upload = form.getByLabel("Upload a cover picture");
+  await expect(upload).toBeDisabled(); // no title yet, so no address for the folder
+  await form.getByLabel("Title", { exact: true }).fill("Picture Test");
+  await expect(upload).toBeEnabled();
+
+  const picture = await bigPicture(page);
+  expect(picture.length).toBeGreaterThan(1_000_000); // a heavy original
+  await upload.setInputFiles({ name: "My Holiday Photo.png", mimeType: "image/png", buffer: picture });
+  await expect(form.getByText(/Saved\. The picture appears/)).toBeVisible({ timeout: 30_000 });
+
+  // one commit, two files: the full size and the small copy for phones, both much lighter than the original
+  expect(fake.uploads).toHaveLength(1);
+  const [commit] = fake.uploads;
+  expect(commit!.message).toBe("Admin: add cover for picture-test");
+  expect(commit!.files).toHaveLength(2);
+  const [full, small] = commit!.files;
+  expect(full!.path).toMatch(/^public\/images\/blog\/picture-test\/cover-[0-9a-f]{6}-1600\.(webp|jpg)$/);
+  expect(small!.path).toMatch(/^public\/images\/blog\/picture-test\/cover-[0-9a-f]{6}-800\.(webp|jpg)$/);
+  expect(full!.size).toBeLessThan(800 * 1024);
+  expect(full!.size).toBeLessThan(picture.length / 3);
+  expect(small!.size).toBeLessThan(full!.size);
+
+  // the form now points at the saved picture, and the preview and sizes are shown
+  await expect(form.getByLabel("Cover image file")).toHaveValue(`/${full!.path.replace(/^public\//, "")}`);
+  await expect(form.getByText(/Full size: 1600 × 1000/)).toBeVisible();
+  await expect(form.getByText(/Small copy for phones: 800 × 500/)).toBeVisible();
+  await expect(form.getByRole("img", { name: "Preview of the saved picture" })).toBeVisible();
+
+  // with its description, the article is valid; the cover is part of the pending change
+  await form.getByLabel("Summary (shown in lists and search results)").fill("Testing pictures.");
+  await form.getByLabel("Block 1 text").fill("Hello.");
+  await form.getByLabel("Cover image description (alt text)").fill("A green and orange gradient with coloured circles");
+  await form.getByRole("button", { name: "Update pending changes" }).click();
+  await expect(page.getByText("The workbook is valid with these changes.")).toBeVisible();
+  await page.getByRole("button", { name: /^Save \d+ changes? to GitHub/ }).click();
+  await expect(page.getByText("View the commit on GitHub").first()).toBeVisible();
+  const saved = (await rowsOf(fake.current(), "posts")).find((r) => r.title === "Picture Test")!;
+  expect(saved.cover_image).toBe(`/${full!.path.replace(/^public\//, "")}`);
+  expect(saved.cover_alt).toBe("A green and orange gradient with coloured circles");
+});
+
+test("a picture that is not a picture, or is too big, is refused before anything is sent", async ({ page }) => {
+  const fake = await fakeGithub(page);
+  await signIn(page);
+  await editor(page, "Articles").click();
+  await page.getByRole("button", { name: "New article" }).click();
+  const form = page.getByRole("form", { name: /New article/ });
+  await form.getByLabel("Title", { exact: true }).fill("Refusals");
+  const upload = form.getByLabel("Upload a cover picture");
+
+  await upload.setInputFiles({ name: "evil.png", mimeType: "image/png", buffer: Buffer.from("<svg xmlns='http://www.w3.org/2000/svg'><script>alert(1)</script></svg>") });
+  await expect(form.getByRole("alert")).toContainText("Only jpg, jpeg, png, webp pictures can be used");
+  await upload.setInputFiles({ name: "huge.jpg", mimeType: "image/jpeg", buffer: Buffer.alloc(26 * 1024 * 1024, 1) });
+  await expect(form.getByRole("alert")).toContainText("limit is 25.0 MB");
+  expect(fake.uploads).toEqual([]);
+});
+
+test("a read-only token cannot save pictures, and says why", async ({ page }) => {
+  await fakeGithub(page, { push: false });
+  await signIn(page);
+  await editor(page, "Articles").click();
+  await page.getByRole("button", { name: "New article" }).click();
+  const form = page.getByRole("form", { name: /New article/ });
+  await form.getByLabel("Title", { exact: true }).fill("No Write");
+  await expect(form.getByLabel("Upload a cover picture")).toBeDisabled();
+  await expect(form.getByText("This token can only read the repository")).toBeVisible();
 });
