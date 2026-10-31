@@ -28,7 +28,7 @@ export function readNumber(raw: string, label: string, rules: NumberRules = {}):
 export type Evaluation<Raw, Result> = { errors: Partial<Record<keyof Raw, string>>; result?: Result };
 
 /** Read several fields at once: collects errors, and yields values only when every field is valid. */
-function readAll<Raw extends Record<string, string>>(
+export function readAll<Raw extends Record<string, string>>(
   raw: Raw,
   specs: { [K in keyof Raw]?: [label: string, rules?: NumberRules] },
 ): { errors: Partial<Record<keyof Raw, string>>; values?: { [K in keyof Raw]: number } } {

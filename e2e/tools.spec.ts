@@ -5,6 +5,8 @@ import { builtPaths } from "./pages";
 // Tool pages only exist once a tool is published in the workbook; each test skips until then.
 const published = new Set(builtPaths());
 const EMI = "/tools/finance-calculators/emi-calculator/";
+const SIP = "/tools/finance-calculators/sip-calculator/";
+const LUMPSUM = "/tools/finance-calculators/lumpsum-calculator/";
 const COMPRESSOR = "/tools/image-tools/image-compressor/";
 const RESIZER = "/tools/image-tools/image-resizer/";
 const CONVERTER = "/tools/image-tools/image-converter/";
@@ -18,6 +20,31 @@ test("EMI calculator shows the monthly EMI and rejects bad input", async ({ page
   await expect(page.getByRole("status")).toContainText("87,915.89");
   await page.getByLabel("Interest rate (% per year)").fill("abc");
   await expect(page.getByText("Interest rate must be a number.")).toBeVisible();
+});
+
+test("SIP calculator shows the estimated value and rejects bad input", async ({ page }) => {
+  test.skip(!published.has(SIP), "SIP calculator is not published");
+  await page.goto(SIP);
+  await page.getByLabel("Monthly investment (₹)").fill("5000");
+  await page.getByLabel("Expected return (% per year)").fill("12");
+  await page.getByLabel("Time period (years)").fill("10");
+  await expect(page.getByRole("status")).toContainText("11,61,695");
+  await expect(page.getByRole("status")).toContainText("6,00,000");
+  await page.getByLabel("Expected return (% per year)").fill("0");
+  await expect(page.getByRole("status")).toContainText("6,00,000");
+  await page.getByLabel("Time period (years)").fill("abc");
+  await expect(page.getByText("Time period must be a number.")).toBeVisible();
+});
+
+test("lumpsum calculator shows the estimated value and rejects bad input", async ({ page }) => {
+  test.skip(!published.has(LUMPSUM), "Lumpsum calculator is not published");
+  await page.goto(LUMPSUM);
+  await page.getByLabel("Investment amount (₹)").fill("100000");
+  await page.getByLabel("Expected return (% per year)").fill("12");
+  await page.getByLabel("Time period (years)").fill("10");
+  await expect(page.getByRole("status")).toContainText("3,10,584.82");
+  await page.getByLabel("Investment amount (₹)").fill("-5");
+  await expect(page.getByText("Investment amount cannot be less than 0.")).toBeVisible();
 });
 
 test("image compressor makes a WebP and offers a download", async ({ page, browserName }) => {

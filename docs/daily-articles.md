@@ -51,6 +51,8 @@ Block types: `paragraph`, `heading`, `list` (one item per line), `quote`, `callo
 
 ## How to write
 
+- **Titles are 20 to 60 characters**, so the page title still fits in search results once the site name is added.
+
 - **Plain and specific.** Short sentences, everyday words, concrete numbers and examples. Explain a term the first time it appears. One idea per paragraph.
 - **Open with the answer.** The first paragraph says what the reader will learn and the main point.
 - **Structure.** Three to eight headings that say what is under them. Use a list when there really is a list, and a callout for one useful tip or caution. Avoid padding.

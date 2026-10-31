@@ -37,7 +37,7 @@ export interface Batch {
 
 export const LIMITS = {
   maxPerRun: 12,
-  title: [20, 110],
+  title: [20, 60],
   excerpt: [60, 300],
   words: [600, 2500],
   headings: [3, 14],

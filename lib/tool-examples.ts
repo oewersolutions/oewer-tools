@@ -1,4 +1,5 @@
 import { calculateEmi, calculateFd, calculateGst } from "./tools/finance";
+import { calculateLumpsum, calculateSip } from "./tools/growth";
 
 /** Whole rupees in the Indian number format, for the figures on cards. */
 const rupees = (n: number) =>
@@ -37,6 +38,10 @@ export function toolExample(componentKey: string): ToolExample | null {
         note: "₹1,000 at 18% GST",
         value: `${rupees(calculateGst(1000, 18, "add").gstAmount)} GST`,
       };
+    case "sip-calculator":
+      return { note: "₹5,000 a month at 12% for 10 years", value: rupees(calculateSip(5000, 12, 10).maturity) };
+    case "lumpsum-calculator":
+      return { note: "₹1,00,000 at 12% for 10 years", value: rupees(calculateLumpsum(100_000, 12, 10).maturity) };
     case "percentage-calculator":
       return { note: "15% of 2,000", value: "300" };
     case "image-compressor":

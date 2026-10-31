@@ -1,0 +1,231 @@
+{
+ "date": "2026-10-31",
+ "articles": [
+  {
+   "title": "SIP Returns Explained: How a Monthly Investment Grows",
+   "category": "Money Guides",
+   "excerpt": "What a SIP is, the formula behind a SIP calculator, a worked example with real figures, and why the result is an estimate and never a promise.",
+   "tags": [
+    "sip",
+    "mutual funds",
+    "investing"
+   ],
+   "blocks": [
+    [
+     "paragraph",
+     "A SIP, short for systematic investment plan, is a way of putting money into a mutual fund a little at a time instead of all at once. This guide explains what a SIP is, the formula behind the estimate a SIP calculator gives you, a worked example with real numbers, and why that estimate is never a promise."
+    ],
+    [
+     "heading",
+     "What a SIP actually is"
+    ],
+    [
+     "paragraph",
+     "The SEBI investor FAQ describes it simply: a SIP allows an investor to invest regularly, putting a small amount into a mutual fund every month. AMFI-branded material published by Outlook India adds that the instalment could be as little as ₹500 a month, that you give your bank a standing instruction or ECS mandate to debit the amount each month, and that a SIP is similar to a recurring deposit."
+    ],
+    [
+     "paragraph",
+     "The comparison with a recurring deposit has a limit, and it matters. A recurring deposit pays a stated rate. A SIP buys units of a mutual fund, and the value of those units moves with the market. The same AMFI-branded page says SIP investments are subject to market volatility and risks."
+    ],
+    [
+     "heading",
+     "The formula behind the estimate"
+    ],
+    [
+     "paragraph",
+     "A calculator cannot know what the market will do, so it asks you to assume a return and works out what would happen if that return were earned steadily. The usual formula is:"
+    ],
+    [
+     "code",
+     "FV = P × ((1 + i)^n − 1) / i × (1 + i)"
+    ],
+    [
+     "list",
+     "FV is the estimated value at the end.\nP is the amount you invest each month.\ni is the monthly rate: the yearly return divided by 12, then by 100. A 12% yearly return gives i = 0.01.\nn is the number of months. Ten years gives n = 120."
+    ],
+    [
+     "paragraph",
+     "The last part, × (1 + i), assumes each instalment goes in at the start of the month, so it earns that month's return too. Some calculators assume the end of the month instead, which gives a slightly lower answer. That is why two calculators can disagree by a small amount without either being wrong. Our SIP calculator uses the start-of-month version and says so on the page."
+    ],
+    [
+     "heading",
+     "A worked example"
+    ],
+    [
+     "paragraph",
+     "Say you invest ₹5,000 a month for 10 years and assume a 12% yearly return. You put in ₹6,00,000 over the 120 months. The formula gives an estimated value of about ₹11,61,695, so the estimated gain is about ₹5,61,695."
+    ],
+    [
+     "paragraph",
+     "Now change only the assumed return. At 8% a year the same plan gives about ₹9,20,828, a gain of about ₹3,20,828. At 0% it gives back exactly what you put in, ₹6,00,000. Nothing else changed: the same money, the same ten years, a very different result. This is the most useful thing a calculator teaches. The answer depends heavily on a number nobody knows in advance."
+    ],
+    [
+     "heading",
+     "Why time matters more than the amount"
+    ],
+    [
+     "paragraph",
+     "Keep the 12% assumption and the ₹5,000 a month, and stretch the plan to 20 years. You invest ₹12,00,000, double the money, but the estimate is about ₹49,95,740, more than four times as much. The reason is that the early instalments have longer to earn, and what they earn also earns. Try it yourself in the calculator and change the years first, then the amount."
+    ],
+    [
+     "heading",
+     "How a SIP spreads out your buying price"
+    ],
+    [
+     "paragraph",
+     "The SEBI FAQ gives a small example. An investor puts in ₹1,000 every month for a year, and the fund's price per unit moves around between 9 and 11.5. In the months when the price is low, the same ₹1,000 buys more units, and when it is high it buys fewer. Over the year the investor ends up with about 1,186 units at an average cost of roughly ₹10.12 per unit."
+    ],
+    [
+     "paragraph",
+     "The same FAQ shows that a single lump sum on one particular day would have bought between about 1,043 and 1,333 units depending on the day chosen, or exactly 1,000 units on 1 January. Note what this does and does not say. It shows how regular buying averages out the price in that one made-up year. It does not say a SIP always beats a lump sum. If prices only rise, the money invested first would have done better."
+    ],
+    [
+     "heading",
+     "What the calculator cannot tell you"
+    ],
+    [
+     "list",
+     "The future return. The SEBI investor site says plainly that investing involves potential risks and that there are no guaranteed returns.\nHow a particular fund will do. SEBI notes that past performance can provide insights but does not guarantee returns.\nCosts and taxes. Fund charges and tax on gains are not in the formula, so your real result will usually be lower than the estimate.\nChanges along the way. A real SIP may be stopped, paused or increased, and the calculator assumes none of that."
+    ],
+    [
+     "heading",
+     "Common mistakes"
+    ],
+    [
+     "list",
+     "Using a hopeful return. Entering 15% or 18% because a fund did that last year makes the estimate look better, not more accurate. Try a lower number and see whether the plan still works for you.\nForgetting the goal. Work backwards from what you need and when, then see what monthly amount would be needed under a cautious assumption.\nComparing a SIP result with a lump sum result as if the money were the same. A SIP puts money in over time, so each rupee has a different amount of time to grow."
+    ],
+    [
+     "heading",
+     "How to use the estimate"
+    ],
+    [
+     "paragraph",
+     "Treat it as a way to compare plans and to feel how time and return change the outcome, not as a forecast. Run it with a low, a middle and a high return and plan around the low one. Before choosing a fund, read the scheme's offer document, as the SEBI FAQ advises."
+    ]
+   ],
+   "sources": [
+    {
+     "title": "What Is Systematic Investment Plan (SIP)? (AMFI content on Outlook India)",
+     "url": "https://www.outlookindia.com/brand-studio/amfi/what-is-systematic-investment-plan-sip"
+    },
+    {
+     "title": "Investments: Factors to Consider Before Investing (SEBI investor site)",
+     "url": "https://investor.sebi.gov.in/investment-thingsbeforeinv.html"
+    },
+    {
+     "title": "Investments in Mutual Funds: FAQs for Investors (SEBI)",
+     "url": "https://www.sebi.gov.in/sebi_data/attachdocs/1475063737177.pdf"
+    }
+   ],
+   "checkedOn": "2026-10-31"
+  },
+  {
+   "title": "Lumpsum Investment Calculator Explained: The Formula and an Example",
+   "category": "Money Guides",
+   "excerpt": "How a lumpsum investment grows, the compounding formula, a worked example, and how it differs from a SIP.",
+   "tags": [
+    "lumpsum",
+    "mutual funds",
+    "investing"
+   ],
+   "blocks": [
+    [
+     "paragraph",
+     "A lumpsum investment is money you put in once and leave alone. The maths is simpler than for a SIP, which makes it a good place to see how growth compounds. This guide explains the formula, a worked example, how it differs from a SIP, and what an estimate like this cannot tell you."
+    ],
+    [
+     "heading",
+     "What lumpsum means"
+    ],
+    [
+     "paragraph",
+     "The SEBI FAQ for mutual fund investors says an investment can be made in lump sum, that is, a one-time payment, or through a systematic investment plan. A lumpsum puts all your money to work on day one. A SIP spreads it across many months."
+    ],
+    [
+     "heading",
+     "The formula"
+    ],
+    [
+     "code",
+     "FV = P × (1 + r)^t"
+    ],
+    [
+     "list",
+     "FV is the estimated value at the end.\nP is the amount you invest.\nr is the yearly return as a decimal. 12% is 0.12.\nt is the number of years."
+    ],
+    [
+     "paragraph",
+     "The idea is that each year's gain is added to the amount and the next year's gain is worked out on the bigger total. Our lumpsum calculator compounds once a year, which keeps the answer easy to check by hand."
+    ],
+    [
+     "heading",
+     "A worked example"
+    ],
+    [
+     "paragraph",
+     "Invest ₹1,00,000 and assume a 12% return a year for 10 years. Each year the amount is multiplied by 1.12. After ten years the estimate is about ₹3,10,585, a gain of about ₹2,10,585."
+    ],
+    [
+     "paragraph",
+     "Change the assumption and the picture changes. At 8% the same ₹1,00,000 grows to about ₹2,15,892 in ten years. At 0% it stays ₹1,00,000. After just one year at 12% it is ₹1,12,000, so the gain is ₹12,000, exactly the return you typed in. The effect of compounding only becomes large when you give it years."
+    ],
+    [
+     "heading",
+     "Lumpsum or SIP: what changes in the maths"
+    ],
+    [
+     "paragraph",
+     "A lumpsum has all its money invested from the start, so every rupee grows for the whole period. A SIP adds money month by month, so later instalments grow for less time. That is why you cannot compare the two by putting the same total into each and expecting the same answer."
+    ],
+    [
+     "paragraph",
+     "For example, ₹6,00,000 put in once at the start and left for 10 years at an assumed 12% would be about ₹18,63,509. The same ₹6,00,000 paid as ₹5,000 a month over those 10 years gives about ₹11,61,695. The difference is not that one is better. The lumpsum simply had the whole amount working from day one, which most people cannot do because they do not have ₹6,00,000 available at once."
+    ],
+    [
+     "paragraph",
+     "In real markets the answer depends on what prices do, and nobody knows that in advance. A SIP can buy more units after a fall, as the SEBI FAQ's example shows. A lumpsum made just before a fall would have lost value at once. Neither approach removes risk."
+    ],
+    [
+     "heading",
+     "What the estimate cannot tell you"
+    ],
+    [
+     "list",
+     "The return itself. The SEBI investor site says there are no guaranteed returns and that past performance does not guarantee them.\nUps and downs. The formula assumes the same return every year. Real investments rise and fall, and the path you take matters.\nCharges and tax. They are not included, so the real figure is usually lower.\nInflation. ₹3,10,585 in ten years will buy less than ₹3,10,585 buys today."
+    ],
+    [
+     "heading",
+     "Common mistakes"
+    ],
+    [
+     "list",
+     "Using last year's best return as the assumption for the next ten years.\nReading the result as a promise, when it is only the output of a formula.\nForgetting that a lumpsum put in at a high price can fall in value soon after, even if the long-run assumption looks good."
+    ],
+    [
+     "heading",
+     "How to use the calculator"
+    ],
+    [
+     "paragraph",
+     "Enter the amount, an assumed yearly return and the number of years. Try a cautious return first and then a hopeful one, and notice how far apart the answers are. If the plan only works at the hopeful number, it is worth rethinking. Read the scheme's offer document before you invest, as SEBI advises."
+    ]
+   ],
+   "sources": [
+    {
+     "title": "Investments: Factors to Consider Before Investing (SEBI investor site)",
+     "url": "https://investor.sebi.gov.in/investment-thingsbeforeinv.html"
+    },
+    {
+     "title": "Investments in Mutual Funds: FAQs for Investors (SEBI)",
+     "url": "https://www.sebi.gov.in/sebi_data/attachdocs/1475063737177.pdf"
+    },
+    {
+     "title": "What Is Systematic Investment Plan (SIP)? (AMFI content on Outlook India)",
+     "url": "https://www.outlookindia.com/brand-studio/amfi/what-is-systematic-investment-plan-sip"
+    }
+   ],
+   "checkedOn": "2026-10-31"
+  }
+ ]
+}

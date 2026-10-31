@@ -68,6 +68,22 @@ for (const [path, label, text] of TEXT_TOOLS) {
   });
 }
 
+test("the SIP and lumpsum calculators send nothing while you type", async ({ page }) => {
+  for (const path of ["/tools/finance-calculators/sip-calculator/", "/tools/finance-calculators/lumpsum-calculator/"]) {
+    test.skip(!published.has(path), "tool is not published");
+    await open(page, path);
+    const requests = await requestsDuring(
+      page,
+      async () => {
+        await page.getByLabel("Expected return (% per year)").fill("9.5");
+        await page.getByLabel("Time period (years)").fill("15");
+      },
+      "9.5",
+    );
+    expect(requests).toEqual([]);
+  }
+});
+
 test("calculators send nothing while you type", async ({ page }) => {
   const path = "/tools/finance-calculators/emi-calculator/";
   test.skip(!published.has(path), "tool is not published");

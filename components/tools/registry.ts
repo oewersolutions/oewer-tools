@@ -7,7 +7,9 @@ import ImageConverter from "./ImageConverter";
 import ImageResizer from "./ImageResizer";
 import JsonFormatter from "./JsonFormatter";
 import PercentageCalculator from "./PercentageCalculator";
+import LumpsumCalculator from "./LumpsumCalculator";
 import QrCodeGenerator from "./QrCodeGenerator";
+import SipCalculator from "./SipCalculator";
 import WordCounter from "./WordCounter";
 import type { ToolComponentKey } from "../../lib/tools/keys";
 
@@ -20,6 +22,8 @@ export const toolComponents: { [K in ToolComponentKey]: ComponentType } = {
   "emi-calculator": EmiCalculator,
   "fd-calculator": FdCalculator,
   "gst-calculator": GstCalculator,
+  "sip-calculator": SipCalculator,
+  "lumpsum-calculator": LumpsumCalculator,
   "percentage-calculator": PercentageCalculator,
   "image-compressor": ImageCompressor,
   "image-resizer": ImageResizer,

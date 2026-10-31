@@ -71,7 +71,7 @@ Source: `docs/OEWER_TOOLS_PROJECT_PLAN.md` (v1.1: JavaScript-only, GitHub Pages,
 - [x] **T7.7** Apply for AdSense when eligible (site side done: ads.txt, account tag, consent-gated loader, readiness guide `docs/adsense.md`; applying and approval are the owner's step)
 
 ## Phase 8 — More tools (plan: `docs/more-tools-plan.md`)
-- [ ] **T8.1** SIP calculator and lumpsum (mutual fund) calculator, with a shared growth-maths module, tool content, one guide article each
+- [x] **T8.1** SIP calculator and lumpsum (mutual fund) calculator, with a shared growth-maths module, tool content, one guide article each
 - [ ] **T8.2** Compound interest and simple interest calculators, with content and articles
 - [ ] **T8.3** Recurring deposit (RD) calculator and discount / sale price calculator, with content and articles
 - [ ] **T8.4** Age calculator and days-between-dates calculator (shared date maths), with content and articles
