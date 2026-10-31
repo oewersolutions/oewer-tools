@@ -8,7 +8,7 @@ The site earns money from ads, and Google can refuse or remove ads on sites with
 
 ## Each day
 
-1. **Get the latest.** In the project folder: `git fetch` from the repository and make the working copy equal to `origin/main` (never rewrite or force anything). The GitHub token is read from the macOS Keychain (see "The token" below); never print it or write it into a file.
+1. **Get the latest.** In the project folder: `git fetch` and make the working copy equal to `origin/main` plus any earlier local daily-article commits that have not been pushed yet (never rewrite or force anything). This run has no GitHub token and must not look for one.
 2. **See what exists.** `npm run articles:list`. Note every title and how many articles each category has.
 3. **Choose 5 subjects.** Take them from different categories, favouring the categories with the fewest articles. Use the topic bank below or anything else that suits the site. Never repeat a title or a near-duplicate angle. Mix evergreen explainers (how it works, history) with at most two "current" subjects (prices, launches, announcements) a day.
 4. **Research each one properly.** Use web search, then **open and read** the pages. Prefer official and primary sources (a company's own page, a manufacturer, a standards body, a museum, a government site). Use at least **two sources on different websites**. Only list a source you actually opened and that supports the claims you used it for. Note any dates.
@@ -17,9 +17,8 @@ The site earns money from ads, and Google can refuse or remove ads on sites with
    `npx tsx scripts/add-articles.ts content/batches/YYYY-MM-DD.json --status published`
    Read what it says. For every article it rejects, fix the problems it lists and try that article again (up to twice). Do not weaken an article just to pass; if it cannot be made good, drop it.
 7. **Check the whole site builds:** `npm run validate` then `npm run build`. If either fails, do not commit; undo the workbook change (`git checkout data/oewer_database.xlsx`), and report what failed.
-8. **Commit and push to `main`** with the message `Daily articles YYYY-MM-DD` plus a line per article. Push without force. If the push is refused because someone saved first (the owner edits through the admin page), run `git fetch`, then `git checkout origin/main -- data/oewer_database.xlsx`, run the add step again on top of it, and push again.
-9. **Confirm the deploy** succeeded (GitHub Actions "Deploy to GitHub Pages" for that commit). If it failed, `git revert` your commit, push, and report.
-10. **Report** in the final message: how many were published, titles and categories, anything rejected or dropped and why, and anything the owner should look at.
+8. **Commit locally, do not push.** Commit with the message `Daily articles YYYY-MM-DD` plus a line per article. The owner pushes later in an interactive session; unpushed commits simply wait. If the workbook changed upstream meanwhile, that is handled at push time, not here.
+9. **Report** in the final message: how many were published, how many daily commits are waiting to be pushed, titles and categories, anything rejected or dropped and why, and anything the owner should look at.
 
 ## The batch file
 
@@ -82,7 +81,7 @@ Block types: `paragraph`, `heading`, `list` (one item per line), `quote`, `callo
 
 ## The token
 
-The run pushes to GitHub with a fine-grained token limited to this one repository with **Contents: Read and write** (nothing else). It lives in the macOS Keychain under the service name `oewer-tools-github` and is read with `security find-generic-password -s oewer-tools-github -w`. It is never put in a file, a commit, a log or a message. To create it, see `docs/daily-articles.md` in the project README; to replace it, store a new one in the Keychain.
+Scheduled runs have no token and never push. The owner pushes the waiting commits from an interactive session. Never ask for, search for or store a token during a scheduled run.
 
 ## Safety stops
 
