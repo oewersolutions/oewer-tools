@@ -13,6 +13,7 @@ const RD = "/tools/finance-calculators/rd-calculator/";
 const DISCOUNT = "/tools/finance-calculators/discount-calculator/";
 const AGE = "/tools/utilities/age-calculator/";
 const DAYS = "/tools/utilities/days-between-dates/";
+const UNITS = "/tools/utilities/unit-converter/";
 const COMPRESSOR = "/tools/image-tools/image-compressor/";
 const RESIZER = "/tools/image-tools/image-resizer/";
 const CONVERTER = "/tools/image-tools/image-converter/";
@@ -135,6 +136,29 @@ test("days between dates counts the gap and, on request, the end date", async ({
   await expect(page.getByRole("status")).toContainText("10");
   await page.getByLabel("Start date").fill("2026-12-31");
   await expect(page.getByRole("status")).toContainText("Counted from");
+});
+
+test("unit converter shows a value in every unit of the chosen measure", async ({ page }) => {
+  test.skip(!published.has(UNITS), "Unit converter is not published");
+  await page.goto(UNITS);
+  await page.getByLabel("Value").fill("1");
+  await page.getByLabel("From", { exact: true }).selectOption("in");
+  await page.getByLabel("To", { exact: true }).selectOption("mm");
+  await expect(page.getByRole("status")).toContainText("25.4 mm");
+  await expect(page.getByRole("status")).toContainText("2.54 cm");
+  await page.getByLabel("Measure").selectOption("temperature");
+  await page.getByLabel("Value").fill("98.6");
+  await page.getByLabel("From", { exact: true }).selectOption("f");
+  await page.getByLabel("To", { exact: true }).selectOption("c");
+  await expect(page.getByRole("status")).toContainText("37 °C");
+  await expect(page.getByRole("status")).toContainText("310.15 K");
+  await page.getByLabel("Value").fill("-500"); // in Fahrenheit, which is below absolute zero
+  await expect(page.getByText("That is below absolute zero")).toBeVisible();
+  await page.getByLabel("Measure").selectOption("area");
+  await page.getByLabel("Value").fill("1");
+  await page.getByLabel("From", { exact: true }).selectOption("acre");
+  await page.getByLabel("To", { exact: true }).selectOption("sqft");
+  await expect(page.getByRole("status")).toContainText("43,560 ft²");
 });
 
 test("image compressor makes a WebP and offers a download", async ({ page, browserName }) => {

@@ -56,6 +56,8 @@ export function toolExample(componentKey: string): ToolExample | null {
       return { note: "Years, months and days", value: "Exact age" };
     case "days-between-dates":
       return { note: "With or without the end date", value: "Count days" };
+    case "unit-converter":
+      return { note: "Length, weight, temperature and more", value: "Every unit" };
     case "percentage-calculator":
       return { note: "15% of 2,000", value: "300" };
     case "image-compressor":

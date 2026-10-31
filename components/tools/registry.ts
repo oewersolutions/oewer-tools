@@ -16,6 +16,7 @@ import QrCodeGenerator from "./QrCodeGenerator";
 import RdCalculator from "./RdCalculator";
 import SimpleInterestCalculator from "./SimpleInterestCalculator";
 import SipCalculator from "./SipCalculator";
+import UnitConverter from "./UnitConverter";
 import WordCounter from "./WordCounter";
 import type { ToolComponentKey } from "../../lib/tools/keys";
 
@@ -36,6 +37,7 @@ export const toolComponents: { [K in ToolComponentKey]: ComponentType } = {
   "discount-calculator": DiscountCalculator,
   "age-calculator": AgeCalculator,
   "days-between-dates": DaysBetweenCalculator,
+  "unit-converter": UnitConverter,
   "percentage-calculator": PercentageCalculator,
   "image-compressor": ImageCompressor,
   "image-resizer": ImageResizer,

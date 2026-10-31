@@ -87,6 +87,20 @@ test("the date calculators send nothing while you use them", async ({ page }) =>
   }
 });
 
+test("the unit converter sends nothing while you type", async ({ page }) => {
+  const path = "/tools/utilities/unit-converter/";
+  test.skip(!published.has(path), "tool is not published");
+  await open(page, path);
+  const requests = await requestsDuring(
+    page,
+    async () => {
+      await page.getByLabel("Value").fill("4242.5");
+    },
+    "4242.5",
+  );
+  expect(requests).toEqual([]);
+});
+
 test("the RD and discount calculators send nothing while you type", async ({ page }) => {
   const typing: [string, string, string][] = [
     ["/tools/finance-calculators/rd-calculator/", "Monthly deposit (₹)", "7500"],

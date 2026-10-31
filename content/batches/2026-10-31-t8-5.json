@@ -1,0 +1,156 @@
+{
+ "date": "2026-10-31",
+ "articles": [
+  {
+   "title": "How to Convert Units: Length, Weight, Temperature",
+   "category": "How-To",
+   "excerpt": "How unit conversion works, the exact values worth knowing, why temperature needs an offset, and the common traps with gallons, area and local land units.",
+   "tags": [
+    "units",
+    "conversion",
+    "temperature"
+   ],
+   "blocks": [
+    [
+     "paragraph",
+     "Converting units is mostly multiplication, but a few cases catch people out: temperature, which needs an offset as well as a multiplier, the two different gallons, and land units that change from place to place. This guide explains the one idea behind every conversion, the exact values worth knowing, and the mistakes to avoid."
+    ],
+    [
+     "heading",
+     "The idea behind every conversion"
+    ],
+    [
+     "paragraph",
+     "Every unit is defined as a fixed amount of some other unit. To convert, you multiply by that fixed ratio. To go from kilometres to miles you multiply by about 0.6214, and to go back you divide by the same number. If a result looks wrong, check the direction first: converting to a smaller unit should give a bigger number, and converting to a bigger unit should give a smaller one. Ten centimetres is a small length, so it must be a small number of metres (0.1), but a large number of millimetres (100)."
+    ],
+    [
+     "paragraph",
+     "A reliable method with many units is to go through one base unit. Convert the starting value to metres, kilograms or litres, then convert from that base to the target. This is how the OEWER unit converter works: every unit in a group is stored as its size in the base unit, so any pair can be converted without a table of every combination."
+    ],
+    [
+     "heading",
+     "Length: where the inch and yard come from"
+    ],
+    [
+     "paragraph",
+     "The metre is the base unit of length in the metric system, and the imperial units are defined from it. An international agreement signed on 1 July 1959 by Australia, Canada, New Zealand, South Africa, the United Kingdom and the United States fixed the yard at exactly 0.9144 metres. That makes one inch exactly 25.4 millimetres, one foot exactly 30.48 centimetres, and one mile (1,760 yards) exactly 1,609.344 metres."
+    ],
+    [
+     "paragraph",
+     "The nautical mile is separate. It is 1,852 metres by international agreement, and a knot is one nautical mile per hour, which is exactly 1.852 kilometres per hour. Sailors and pilots use these, so do not mix them up with the ordinary (statute) mile."
+    ],
+    [
+     "heading",
+     "Weight: kilogram, pound and the quintal"
+    ],
+    [
+     "paragraph",
+     "The same 1959 agreement fixed the pound at exactly 0.45359237 kilograms. An ounce is one sixteenth of a pound, about 28.35 grams, and a stone is 14 pounds, about 6.35 kilograms. In India the quintal (100 kilograms) is still common for grain and produce, and a metric tonne is 1,000 kilograms, or 10 quintals."
+    ],
+    [
+     "paragraph",
+     "Be careful with the word ounce. The weight ounce above is not the fluid ounce used for liquids, and a fluid ounce of water does not weigh an ounce exactly."
+    ],
+    [
+     "heading",
+     "Temperature: why you cannot just multiply"
+    ],
+    [
+     "paragraph",
+     "Celsius, Fahrenheit and Kelvin scales start from different zero points, so converting needs an offset as well as a multiplier. The formulas are below."
+    ],
+    [
+     "list",
+     "Celsius to Fahrenheit: multiply by 9/5, then add 32.\nFahrenheit to Celsius: subtract 32, then multiply by 5/9.\nCelsius to Kelvin: add 273.15.\nKelvin to Celsius: subtract 273.15."
+    ],
+    [
+     "paragraph",
+     "Check the answer with the fixed points: 0 °C is 32 °F, 100 °C is 212 °F, body temperature of about 37 °C is about 98.6 °F, and −40 is the same on both scales. A degree Celsius and a kelvin are the same size, which is why only an offset separates them. The kelvin is the SI unit of temperature, and since 2019 it has been defined by fixing the Boltzmann constant. Zero kelvin, or −273.15 °C, is absolute zero, the lowest possible temperature, so a value below it cannot exist and the converter says so."
+    ],
+    [
+     "heading",
+     "Area: acres, hectares and square feet"
+    ],
+    [
+     "paragraph",
+     "An acre is exactly 43,560 square feet, or 4,840 square yards, which works out to exactly 4,046.8564224 square metres in the international definition. A hectare is 10,000 square metres, so one hectare is about 2.471 acres. One square foot is 144 square inches, not 12, because area multiplies both sides: converting a length by a factor of 12 means converting an area by 12 × 12."
+    ],
+    [
+     "paragraph",
+     "That last point is the most common area mistake. If one foot is 0.3048 metres, one square foot is 0.3048 × 0.3048 = 0.0929 square metres. The same goes for volume, where the factor is cubed."
+    ],
+    [
+     "heading",
+     "Local land units such as the bigha"
+    ],
+    [
+     "paragraph",
+     "Units like the bigha, guntha, katha and cent are used for land in many Indian states, but they are not standard. The bigha in particular varies a great deal. Reference sources give sizes of roughly 6,800 square feet in western Uttar Pradesh, about 12,000 in Madhya Pradesh, about 14,400 in Assam and West Bengal, and about 27,225 in parts of Bihar and Rajasthan. For that reason the converter does not include them. For a property deal, use the area written in the official land record, or ask for it in square feet, square metres or acres."
+    ],
+    [
+     "heading",
+     "Volume: the two gallons"
+    ],
+    [
+     "paragraph",
+     "The US gallon is exactly 3.785411784 litres and holds 128 US fluid ounces. The imperial (UK) gallon is exactly 4.54609 litres and holds 160 imperial fluid ounces. They differ by about 20 percent, so a fuel economy figure in miles per gallon means different things in the US and the UK. The converter lists both gallons by name. A cubic metre is 1,000 litres, and a millilitre is the same as a cubic centimetre."
+    ],
+    [
+     "heading",
+     "Speed and how it is put together"
+    ],
+    [
+     "paragraph",
+     "Speed is a length divided by a time, so its conversion combines both. To convert kilometres per hour to metres per second, divide by 3.6, because a kilometre is 1,000 metres and an hour is 3,600 seconds. One mile per hour is 0.44704 metres per second, or about 1.609 kilometres per hour. A speed of 60 mph is therefore 96.56 km/h."
+    ],
+    [
+     "heading",
+     "Rounding and checking your answer"
+    ],
+    [
+     "paragraph",
+     "Convert first and round last. Rounding the conversion factor, such as using 2.54 for an inch, is harmless, but rounding in the middle of a longer calculation can drift by a visible amount. The converter shows up to seven significant digits; if you need more for engineering or scientific work, use the exact definitions in this guide."
+    ],
+    [
+     "list",
+     "Check the direction: a smaller unit gives a bigger number.\nFor area and volume, square or cube the length factor.\nFor temperature, use the offset formulas and check a fixed point like 0 °C = 32 °F.\nFor gallons, confirm whether the source means US or imperial.\nFor local land units, ask for the area in a standard unit."
+    ]
+   ],
+   "sources": [
+    {
+     "title": "International yard and pound (Wikipedia)",
+     "url": "https://en.wikipedia.org/wiki/International_yard_and_pound"
+    },
+    {
+     "title": "Acre (Wikipedia)",
+     "url": "https://en.wikipedia.org/wiki/Acre"
+    },
+    {
+     "title": "Gallon (Wikipedia)",
+     "url": "https://en.wikipedia.org/wiki/Gallon"
+    },
+    {
+     "title": "Kelvin (Wikipedia)",
+     "url": "https://en.wikipedia.org/wiki/Kelvin"
+    },
+    {
+     "title": "Knot (unit) (Wikipedia)",
+     "url": "https://en.wikipedia.org/wiki/Knot_(unit)"
+    },
+    {
+     "title": "Bigha (Wikipedia)",
+     "url": "https://en.wikipedia.org/wiki/Bigha"
+    },
+    {
+     "title": "Measurement units: the SI (BIPM)",
+     "url": "https://www.bipm.org/en/measurement-units"
+    },
+    {
+     "title": "SI units (NIST)",
+     "url": "https://www.nist.gov/pml/owm/metric-si/si-units"
+    }
+   ],
+   "checkedOn": "2026-10-31"
+  }
+ ]
+}
