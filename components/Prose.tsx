@@ -29,7 +29,7 @@ export function Inline({ text }: { text: string }) {
               <Link
                 key={i}
                 href={part.href}
-                className="font-medium text-brand-700 underline decoration-brand-300 underline-offset-2 hover:decoration-brand-700"
+                className="font-medium text-brand underline decoration-brand/30 underline-offset-2 hover:decoration-brand"
               >
                 {part.text}
               </Link>
@@ -38,7 +38,7 @@ export function Inline({ text }: { text: string }) {
                 key={i}
                 href={part.href}
                 rel="noopener noreferrer"
-                className="font-medium text-brand-700 underline decoration-brand-300 underline-offset-2 hover:decoration-brand-700"
+                className="font-medium text-brand underline decoration-brand/30 underline-offset-2 hover:decoration-brand"
               >
                 {part.text}
               </a>
@@ -51,11 +51,11 @@ export function Inline({ text }: { text: string }) {
   );
 }
 
-const PROSE = "max-w-prose space-y-5 text-[1.0625rem] leading-8 text-slate-800";
-const H2 =
-  "mt-10 font-display text-2xl font-semibold tracking-tight text-ink sm:text-3xl";
-const H3 = "mt-8 font-display text-xl font-semibold text-ink";
-const UL = "list-disc space-y-2 pl-6 marker:text-brand-400";
+const PROSE =
+  "max-w-prose space-y-5 text-[1.0625rem] leading-[1.85] text-ink-2";
+const H2 = "t-heading mt-12 text-ink";
+const H3 = "t-subheading mt-8 text-ink";
+const UL = "list-disc space-y-2 pl-6 marker:text-brand";
 
 /** Renders restricted-Markdown text (static pages). */
 export function Prose({ source }: { source: string }) {
@@ -125,14 +125,14 @@ function renderBlock(block: PostBlock, ids: Map<string, string>) {
           alt={block.content}
           loading="lazy"
           decoding="async"
-          className="h-auto max-w-full rounded-2xl"
+          className="my-2 h-auto max-w-full rounded-2xl"
         />
       );
     case "quote":
       return (
         <blockquote
           key={block.block_id}
-          className="border-l-4 border-gold-400 pl-5 font-display text-xl italic leading-relaxed text-ink"
+          className="border-l-2 border-brand pl-6 text-xl font-medium leading-relaxed tracking-tight text-ink"
         >
           <Inline text={block.content} />
         </blockquote>
@@ -141,7 +141,7 @@ function renderBlock(block: PostBlock, ids: Map<string, string>) {
       return (
         <pre
           key={block.block_id}
-          className="overflow-x-auto rounded-xl bg-brand-950 p-5 text-sm text-brand-50"
+          className="overflow-x-auto rounded-2xl bg-ink p-5 text-sm text-white"
         >
           <code>{block.content}</code>
         </pre>
@@ -150,7 +150,7 @@ function renderBlock(block: PostBlock, ids: Map<string, string>) {
       return (
         <aside
           key={block.block_id}
-          className="rounded-2xl border border-brand-200 bg-brand-50 p-5"
+          className="rounded-2xl bg-tint p-6 text-ink"
         >
           <Inline text={block.content} />
         </aside>

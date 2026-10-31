@@ -109,3 +109,20 @@ All four listings (the Articles index, a category, a tag and an author) share `c
 - **Page title:** the index is now titled **Articles** (the menu still says Blog and the address is still `/blog/`).
 - **Covers:** until an article has its own cover image (T9.7), `Cover` draws a generated one. Its colours follow the article's number (POST0003 is always the third palette), so neighbouring articles never look the same; the rings are placed from the article's address.
 - **Growing:** the listings show every article on one page. If the blog grows past about 30 articles, add paging or a "load more" step.
+
+## Article page (T9.6)
+
+`app/blog/[slug]/page.tsx`, top to bottom:
+
+1. The draft or archived notice, when it applies (unchanged).
+2. Breadcrumbs (they carry the structured data), a centred category pill, the title, the date, reading time and author, and the article's summary as an intro.
+3. A wide cover (`Cover` for now; the article's own image from T9.7), 21:9 on a laptop and 16:9 on a phone.
+4. Two columns on a laptop: on the left a sticky **In this article** list (the section being read is marked with a thin green line and `aria-current="location"`) and **Share** (copy the link, or email it); on the right the reading column (42rem, 17px text, generous line height). On a phone and tablet the contents list becomes a collapsed "In this article" box above the text and Share sits after the tags.
+5. After the text: tags, a **Try it yourself** card for each tool that lists this article, the author card, then **Related articles** in the card grid.
+
+Details:
+
+- The article body keeps its ad placement (`in_article`, after the third block) and its structured data.
+- **Contents list.** It appears when an article has at least two headings (at least three for the phone version). The marker uses the browser's IntersectionObserver; with JavaScript off the links still jump to the sections.
+- **Share.** No third-party share buttons, because they load other sites' scripts and track visitors. Copy link and Email only.
+- **Body styling** (`components/Prose.tsx`): headings use the shared type scale, bullets and links use the green accent, quotes have a thin green rule, callouts a green tint, code blocks ink. Images are rounded and lazy-loaded; captions arrive with T9.7.

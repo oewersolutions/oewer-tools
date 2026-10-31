@@ -4,13 +4,29 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Breadcrumbs from "../../../components/Breadcrumbs";
 import { ArrowRight } from "../../../components/icons";
-import { Container, PageBand } from "../../../components/layout";
-import { PostCard, ToolCard } from "../../../components/Cards";
+import { ArticleToc } from "../../../components/blog/ArticleToc";
+import { ShareLinks } from "../../../components/blog/ShareLinks";
+import Cover from "../../../components/Cover";
+import { Container } from "../../../components/layout";
+import { PostCard } from "../../../components/Cards";
 import { PostBody } from "../../../components/Prose";
 import { articleAdIndex } from "../../../lib/ads";
-import { authorSlug, getAuthor, getBlogCategory, getRelatedPosts, getToolsForPost, getPostBlocks, getPostBySlug, getPostReadingMinutes, getPostTags, getPostsWithPages, getSetting } from "../../../lib/content";
+import {
+  authorSlug,
+  getAuthor,
+  getBlogCategory,
+  getRelatedPosts,
+  getToolsForPost,
+  getPostBlocks,
+  getPostBySlug,
+  getPostReadingMinutes,
+  getPostTags,
+  getPostsWithPages,
+  getSetting,
+} from "../../../lib/content";
 import { BASE_PATH, getSiteUrl, pageMetadata } from "../../../lib/metadata";
 import { formatDate } from "../../../lib/format";
+import { toolUrl } from "../../../lib/search";
 import { nonEmptyParams } from "../../../lib/static";
 import { absoluteUrl } from "../../../lib/seo";
 import { articleJsonLd, buildOutline, statusNotice } from "../../../lib/posts";
@@ -20,13 +36,23 @@ type Props = { params: Promise<{ slug: string }> };
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return nonEmptyParams(getPostsWithPages().map((p) => ({ slug: p.slug })), { slug: "_none" });
+  return nonEmptyParams(
+    getPostsWithPages().map((p) => ({ slug: p.slug })),
+    { slug: "_none" },
+  );
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = getPostBySlug((await params).slug);
   return post
-    ? pageMetadata({ title: post.title, description: post.excerpt, path: `/blog/${post.slug}/`, entity: { type: "post", id: post.post_id }, type: "article", noindex: post.status !== "published" })
+    ? pageMetadata({
+        title: post.title,
+        description: post.excerpt,
+        path: `/blog/${post.slug}/`,
+        entity: { type: "post", id: post.post_id },
+        type: "article",
+        noindex: post.status !== "published",
+      })
     : {};
 }
 
@@ -55,38 +81,32 @@ export default async function PostPage({ params }: Props) {
     publisherName: getSetting("site_name"),
   });
 
+  const meta = (
+    <p className="t-meta mt-5 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 !text-sm">
+      <time dateTime={post.published_at ?? undefined}>
+        {formatDate(post.published_at)}
+      </time>
+      <span aria-hidden="true">·</span>
+      <span>{minutes} min read</span>
+      {author && (
+        <>
+          <span aria-hidden="true">·</span>
+          <span>
+            By{" "}
+            <Link
+              href={`/blog/author/${authorSlug(author)}/`}
+              className="font-medium text-ink hover:underline"
+            >
+              {author.display_name}
+            </Link>
+          </span>
+        </>
+      )}
+    </p>
+  );
+
   return (
     <article>
-      <PageBand
-        breadcrumbs={
-          <Breadcrumbs
-            trail={[
-              { label: "Blog", path: "/blog/" },
-              ...(category ? [{ label: category.name, path: `/blog/category/${category.slug}/` }] : []),
-              { label: post.title },
-            ]}
-          />
-        }
-        eyebrow={category?.name}
-        title={post.title}
-        description={post.excerpt}
-      >
-        <p className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-slate-700">
-          {author && (
-            <span className="flex items-center gap-2">
-              <span aria-hidden="true" className="flex size-8 items-center justify-center rounded-full bg-brand font-display text-gold-300">
-                {author.display_name.charAt(0)}
-              </span>
-              <Link href={`/blog/author/${authorSlug(author)}/`} className="font-medium text-ink hover:underline">
-                {author.display_name}
-              </Link>
-            </span>
-          )}
-          <time dateTime={post.published_at ?? undefined}>{formatDate(post.published_at)}</time>
-          <span>{minutes} min read</span>
-        </p>
-      </PageBand>
-
       {notice && (
         <div role="note" className="border-b border-gold-400/40 bg-gold-300/30">
           <Container className="py-3 text-sm text-ink">
@@ -95,82 +115,183 @@ export default async function PostPage({ params }: Props) {
         </div>
       )}
 
-      <Container className="py-12">
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: ld }} />
-        <div className="mx-auto max-w-prose">
-          {outline.length >= 3 && (
-            <nav aria-label="In this article" className="mb-10 rounded-2xl border border-brand-100 bg-white p-5 shadow-soft">
-              <p className="font-display text-lg font-semibold text-ink">In this article</p>
-              <ol className="mt-3 list-decimal space-y-1.5 pl-5 text-slate-700 marker:text-brand-400">
-                {outline.map((h) => (
-                  <li key={h.id}>
-                    <a href={`#${h.id}`} className="font-medium text-brand-700 hover:underline">
-                      {h.text}
-                    </a>
+      <Container className="pt-8 sm:pt-10">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: ld }}
+        />
+        <Breadcrumbs
+          trail={[
+            { label: "Articles", path: "/blog/" },
+            ...(category
+              ? [
+                  {
+                    label: category.name,
+                    path: `/blog/category/${category.slug}/`,
+                  },
+                ]
+              : []),
+            { label: post.title },
+          ]}
+        />
+        <header className="mx-auto max-w-3xl text-center">
+          {category && (
+            <Link href={`/blog/category/${category.slug}/`} className="pill">
+              {category.name}
+            </Link>
+          )}
+          <h1 className="t-title mt-5 text-ink">{post.title}</h1>
+          {meta}
+          <p className="t-lead mx-auto mt-5 max-w-2xl">{post.excerpt}</p>
+        </header>
+
+        <Cover
+          seed={post.slug}
+          number={Number(post.post_id.replace(/\D/g, "")) || undefined}
+          className="mt-10 aspect-[16/9] rounded-3xl sm:aspect-[21/9]"
+        />
+
+        <div className="mt-12 grid justify-center gap-x-16 lg:mt-16 lg:grid-cols-[13rem_minmax(0,42rem)]">
+          <aside aria-label="Article tools" className="hidden lg:block">
+            <div className="sticky top-28 space-y-8">
+              {outline.length >= 2 && (
+                <nav aria-label="In this article">
+                  <p className="t-eyebrow mb-3">In this article</p>
+                  <ArticleToc items={outline} />
+                </nav>
+              )}
+              <ShareLinks title={post.title} />
+            </div>
+          </aside>
+
+          <div className="min-w-0">
+            {outline.length >= 3 && (
+              <details className="card mb-10 p-5 lg:hidden">
+                <summary className="t-subheading cursor-pointer">
+                  In this article
+                </summary>
+                <ol className="mt-3 list-decimal space-y-1.5 pl-5 text-muted marker:text-brand">
+                  {outline.map((h) => (
+                    <li key={h.id}>
+                      <a
+                        href={`#${h.id}`}
+                        className="font-medium text-brand hover:underline"
+                      >
+                        {h.text}
+                      </a>
+                    </li>
+                  ))}
+                </ol>
+              </details>
+            )}
+
+            <PostBody
+              blocks={blocks}
+              adAfter={
+                adIndex === null
+                  ? undefined
+                  : {
+                      index: adIndex,
+                      node: (
+                        <AdSlot placement="in_article" pageType="blog_post" />
+                      ),
+                    }
+              }
+            />
+
+            {tags.length > 0 && (
+              <ul aria-label="Tags" className="mt-12 flex flex-wrap gap-2">
+                {tags.map((t) => (
+                  <li key={t.tag_id}>
+                    <Link
+                      href={`/blog/tag/${t.slug}/`}
+                      className="pill !px-3.5 !py-1 transition-colors hover:bg-brand hover:text-white"
+                    >
+                      {t.name}
+                    </Link>
                   </li>
                 ))}
-              </ol>
-            </nav>
-          )}
-          <PostBody blocks={blocks} adAfter={adIndex === null ? undefined : { index: adIndex, node: <AdSlot placement="in_article" pageType="blog_post" /> }} />
-          {tags.length > 0 && (
-            <ul aria-label="Tags" className="mt-10 flex flex-wrap gap-2 text-sm">
-              {tags.map((t) => (
-                <li key={t.tag_id}>
-                  <Link href={`/blog/tag/${t.slug}/`} className="inline-block rounded-full bg-brand-50 px-3 py-1 font-medium text-brand-800 transition hover:bg-brand-100">
-                    {t.name}
+              </ul>
+            )}
+
+            <div className="mt-8 lg:hidden">
+              <ShareLinks title={post.title} />
+            </div>
+
+            {tools.length > 0 && (
+              <aside aria-label="Try our tools" className="mt-12 space-y-4">
+                {tools.map((t) => (
+                  <Link
+                    key={t.tool.tool_id}
+                    href={toolUrl(t.category.slug, t.tool.slug)}
+                    className="card card-link group flex items-center justify-between gap-6 p-6 sm:p-7"
+                  >
+                    <span>
+                      <span className="t-subheading block text-ink">
+                        Try it yourself
+                      </span>
+                      <span className="mt-1 block text-sm text-muted">
+                        Open the {t.tool.name} and put your own numbers in.
+                      </span>
+                    </span>
+                    <span className="btn shrink-0 group-hover:bg-brand">
+                      Open <ArrowRight aria-hidden="true" className="size-4" />
+                    </span>
                   </Link>
-                </li>
-              ))}
-            </ul>
-          )}
-          {author && (
-            <aside aria-label="About the author" className="mt-12 flex gap-4 rounded-2xl border border-brand-100 bg-white p-6 shadow-soft">
-              <span aria-hidden="true" className="flex size-12 shrink-0 items-center justify-center rounded-full bg-brand font-display text-xl text-gold-300">
-                {author.display_name.charAt(0)}
-              </span>
-              <div>
-                <p className="text-sm text-slate-600">Written by</p>
-                <p className="font-display text-xl font-semibold text-ink">
-                  <Link href={`/blog/author/${authorSlug(author)}/`} className="hover:underline">
-                    {author.display_name}
-                  </Link>
-                </p>
-                {author.bio && <p className="mt-1 text-slate-700">{author.bio}</p>}
-              </div>
-            </aside>
-          )}
-          <aside aria-label="Try our tools" className="mt-12 rounded-2xl border border-brand-100 bg-white p-6 shadow-soft">
-            <p className="font-display text-xl font-semibold text-ink">Put it into practice</p>
-            <p className="mt-1 text-slate-700">Our free tools run in your browser, so your numbers and files stay private.</p>
-            <Link href="/tools/" className="mt-4 inline-flex items-center gap-2 font-semibold text-brand-700 hover:text-brand-900">
-              Browse all tools
-              <ArrowRight aria-hidden="true" className="size-4" />
-            </Link>
-          </aside>
+                ))}
+              </aside>
+            )}
+
+            {author && (
+              <aside
+                aria-label="About the author"
+                className="card mt-10 flex items-center gap-5 p-6"
+              >
+                <span
+                  aria-hidden="true"
+                  className="flex size-14 shrink-0 items-center justify-center rounded-full bg-brand text-xl font-semibold text-gold-300"
+                >
+                  {author.display_name.charAt(0)}
+                </span>
+                <div>
+                  <p className="t-meta">Written by</p>
+                  <p className="t-subheading text-ink">
+                    <Link
+                      href={`/blog/author/${authorSlug(author)}/`}
+                      className="hover:underline"
+                    >
+                      {author.display_name}
+                    </Link>
+                  </p>
+                  {author.bio && (
+                    <p className="mt-1 text-sm text-muted">{author.bio}</p>
+                  )}
+                </div>
+              </aside>
+            )}
+          </div>
         </div>
 
-        {tools.length > 0 && (
-          <section aria-labelledby="tools-heading" className="mt-16">
-            <h2 id="tools-heading" className="font-display text-3xl font-semibold tracking-tight text-ink">
-              Try it yourself
-            </h2>
-            <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {tools.map((t) => (
-                <ToolCard key={t.tool.tool_id} tool={t.tool} category={t.category} />
-              ))}
-            </div>
-          </section>
-        )}
-
         {readNext.length > 0 && (
-          <section aria-labelledby="related-articles-heading" className="mt-16">
-            <h2 id="related-articles-heading" className="font-display text-3xl font-semibold tracking-tight text-ink">
-              Keep reading
+          <section
+            aria-labelledby="related-articles-heading"
+            className="mt-20 pb-4"
+          >
+            <p className="t-eyebrow">Keep reading</p>
+            <h2
+              id="related-articles-heading"
+              className="t-heading mt-2 text-ink"
+            >
+              Related articles
             </h2>
-            <div className="mt-6 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {readNext.map((p) => (
-                <PostCard key={p.post_id} post={p} categoryName={getBlogCategory(p.category_id)?.name} minutes={getPostReadingMinutes(p.post_id)} />
+                <PostCard
+                  key={p.post_id}
+                  post={p}
+                  categoryName={getBlogCategory(p.category_id)?.name}
+                  minutes={getPostReadingMinutes(p.post_id)}
+                />
               ))}
             </div>
           </section>
