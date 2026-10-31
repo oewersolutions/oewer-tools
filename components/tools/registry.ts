@@ -1,5 +1,7 @@
 import type { ComponentType } from "react";
+import AgeCalculator from "./AgeCalculator";
 import CompoundInterestCalculator from "./CompoundInterestCalculator";
+import DaysBetweenCalculator from "./DaysBetweenCalculator";
 import DiscountCalculator from "./DiscountCalculator";
 import EmiCalculator from "./EmiCalculator";
 import FdCalculator from "./FdCalculator";
@@ -32,6 +34,8 @@ export const toolComponents: { [K in ToolComponentKey]: ComponentType } = {
   "simple-interest-calculator": SimpleInterestCalculator,
   "rd-calculator": RdCalculator,
   "discount-calculator": DiscountCalculator,
+  "age-calculator": AgeCalculator,
+  "days-between-dates": DaysBetweenCalculator,
   "percentage-calculator": PercentageCalculator,
   "image-compressor": ImageCompressor,
   "image-resizer": ImageResizer,

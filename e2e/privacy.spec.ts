@@ -68,6 +68,25 @@ for (const [path, label, text] of TEXT_TOOLS) {
   });
 }
 
+test("the date calculators send nothing while you use them", async ({ page }) => {
+  const dates: [string, string][] = [
+    ["/tools/utilities/age-calculator/", "Date of birth"],
+    ["/tools/utilities/days-between-dates/", "Start date"],
+  ];
+  for (const [path, label] of dates) {
+    test.skip(!published.has(path), "tool is not published");
+    await open(page, path);
+    const requests = await requestsDuring(
+      page,
+      async () => {
+        await page.getByLabel(label).fill("1988-03-09");
+      },
+      "1988-03-09",
+    );
+    expect(requests).toEqual([]);
+  }
+});
+
 test("the RD and discount calculators send nothing while you type", async ({ page }) => {
   const typing: [string, string, string][] = [
     ["/tools/finance-calculators/rd-calculator/", "Monthly deposit (₹)", "7500"],

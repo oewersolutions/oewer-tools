@@ -11,6 +11,8 @@ const COMPOUND = "/tools/finance-calculators/compound-interest-calculator/";
 const SIMPLE = "/tools/finance-calculators/simple-interest-calculator/";
 const RD = "/tools/finance-calculators/rd-calculator/";
 const DISCOUNT = "/tools/finance-calculators/discount-calculator/";
+const AGE = "/tools/utilities/age-calculator/";
+const DAYS = "/tools/utilities/days-between-dates/";
 const COMPRESSOR = "/tools/image-tools/image-compressor/";
 const RESIZER = "/tools/image-tools/image-resizer/";
 const CONVERTER = "/tools/image-tools/image-converter/";
@@ -104,6 +106,35 @@ test("discount calculator combines two discounts", async ({ page }) => {
   await expect(page.getByRole("status")).toContainText("800");
   await page.getByLabel("Discount (%)", { exact: true }).fill("101");
   await expect(page.getByText("Discount cannot be more than 100.")).toBeVisible();
+});
+
+test("age calculator gives years, months and days, and the next birthday", async ({ page }) => {
+  test.skip(!published.has(AGE), "Age calculator is not published");
+  await page.goto(AGE);
+  await page.getByLabel("Date of birth").fill("1990-05-15");
+  await page.getByLabel("Age on").fill("2026-10-31");
+  await expect(page.getByRole("status")).toContainText("36 years, 5 months, 16 days");
+  await expect(page.getByRole("status")).toContainText("13,318");
+  await expect(page.getByRole("status")).toContainText("15 May 2027");
+  await page.getByLabel("Date of birth").fill("2000-02-29");
+  await page.getByLabel("Age on").fill("2025-02-28");
+  await expect(page.getByRole("status")).toContainText("25 years, 0 months, 0 days");
+  await page.getByLabel("Date of birth").fill("2030-01-01");
+  await expect(page.getByText("The date of birth cannot be after the date you are measuring to.")).toBeVisible();
+});
+
+test("days between dates counts the gap and, on request, the end date", async ({ page }) => {
+  test.skip(!published.has(DAYS), "Days between dates is not published");
+  await page.goto(DAYS);
+  await page.getByLabel("Start date").fill("2026-01-01");
+  await page.getByLabel("End date", { exact: true }).fill("2026-01-10");
+  await expect(page.getByRole("status")).toContainText("9");
+  await expect(page.getByRole("status")).toContainText("Days between");
+  await page.getByLabel(/Count the end date too/).check();
+  await expect(page.getByRole("status")).toContainText("Days, including the end date");
+  await expect(page.getByRole("status")).toContainText("10");
+  await page.getByLabel("Start date").fill("2026-12-31");
+  await expect(page.getByRole("status")).toContainText("Counted from");
 });
 
 test("image compressor makes a WebP and offers a download", async ({ page, browserName }) => {

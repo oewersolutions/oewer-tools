@@ -74,7 +74,7 @@ Source: `docs/OEWER_TOOLS_PROJECT_PLAN.md` (v1.1: JavaScript-only, GitHub Pages,
 - [x] **T8.1** SIP calculator and lumpsum (mutual fund) calculator, with a shared growth-maths module, tool content, one guide article each
 - [x] **T8.2** Compound interest and simple interest calculators, with content and articles
 - [x] **T8.3** Recurring deposit (RD) calculator and discount / sale price calculator, with content and articles
-- [ ] **T8.4** Age calculator and days-between-dates calculator (shared date maths), with content and articles
+- [x] **T8.4** Age calculator and days-between-dates calculator (shared date maths), with content and articles
 - [ ] **T8.5** Unit converter (length, weight, temperature, area, volume, speed), with content and article
 - [ ] **T8.6** Password generator (browser randomness only), with content and article
 - [ ] **T8.7** Wrap-up: home page and counts, search index, rerun SEO / accessibility / privacy audits, update docs

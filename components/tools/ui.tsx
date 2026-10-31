@@ -69,6 +69,58 @@ export function NumberField({
   );
 }
 
+/** A calendar date picked with the browser's own date control. The value is "YYYY-MM-DD", or empty until a full date is chosen. */
+export function DateField({
+  label,
+  value,
+  onChange,
+  error,
+  hint,
+}: {
+  label: string;
+  value: string;
+  onChange: (value: string) => void;
+  error?: string;
+  hint?: string;
+}) {
+  const id = useId();
+  const describedBy =
+    [error ? `${id}-error` : "", hint ? `${id}-hint` : ""]
+      .filter(Boolean)
+      .join(" ") || undefined;
+  return (
+    <div>
+      <label
+        htmlFor={id}
+        className="block text-sm font-semibold text-slate-800"
+      >
+        {label}
+      </label>
+      <input
+        id={id}
+        type="date"
+        min="1900-01-01"
+        max="2200-12-31"
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        aria-invalid={error ? true : undefined}
+        aria-describedby={describedBy}
+        className={control}
+      />
+      {hint && (
+        <p id={`${id}-hint`} className="mt-1 text-xs text-slate-600">
+          {hint}
+        </p>
+      )}
+      {error && (
+        <p id={`${id}-error`} className="mt-1 text-sm text-red-800">
+          {error}
+        </p>
+      )}
+    </div>
+  );
+}
+
 export function SelectField<T extends string>({
   label,
   value,

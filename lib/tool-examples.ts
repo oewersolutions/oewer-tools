@@ -52,6 +52,10 @@ export function toolExample(componentKey: string): ToolExample | null {
       return { note: "₹5,000 a month at 6.5% for 5 years", value: rupees(calculateRd(5000, 6.5, 60).maturity) };
     case "discount-calculator":
       return { note: "₹2,000 with 20% then 10% off", value: rupees(calculateDiscount(2000, 20, 10).finalPrice) };
+    case "age-calculator":
+      return { note: "Years, months and days", value: "Exact age" };
+    case "days-between-dates":
+      return { note: "With or without the end date", value: "Count days" };
     case "percentage-calculator":
       return { note: "15% of 2,000", value: "300" };
     case "image-compressor":

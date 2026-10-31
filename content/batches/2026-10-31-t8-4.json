@@ -1,0 +1,203 @@
+{
+ "date": "2026-10-31",
+ "articles": [
+  {
+   "title": "How to Calculate Age in Years, Months and Days",
+   "category": "How-To",
+   "excerpt": "How age is counted in years, months and days, how 29 February birthdays and month ends are handled, and how to find the next birthday.",
+   "tags": [
+    "age",
+    "dates",
+    "leap year"
+   ],
+   "blocks": [
+    [
+     "paragraph",
+     "Working out someone's age sounds easy until the month ends and leap years get in the way. This guide explains how age is counted in years, months and days, how a 29 February birthday is handled, how to find the next birthday, and the small choices that make two calculators disagree by a day."
+    ],
+    [
+     "heading",
+     "The simple part: whole years"
+    ],
+    [
+     "paragraph",
+     "Your age in whole years is the number of birthdays you have had. If you were born on 15 May 1990, you turned 36 on 15 May 2026. On 31 October 2026 you are still 36, and you will turn 37 on 15 May 2027. Subtracting the years of the two dates only works if the birthday has already passed this year, which is the mistake most quick calculations make."
+    ],
+    [
+     "heading",
+     "Adding months and days"
+    ],
+    [
+     "paragraph",
+     "To get months and days, find the last date that is a whole number of months after the birth date and still not past today. Count the full months, then count the days left over. For a birth date of 15 May 1990 and a date of 31 October 2026, the answer is 36 years, 5 months and 16 days: 5 months after 15 May 2026 is 15 October 2026, and 16 days later is 31 October."
+    ],
+    [
+     "paragraph",
+     "Taken in other units, the same span is about 437 months, 1,902 whole weeks and 13,318 days. The weekday matters too. 15 May 1990 was a Tuesday, which a calculator can tell you from the date alone."
+    ],
+    [
+     "heading",
+     "What happens at the end of a month"
+    ],
+    [
+     "paragraph",
+     "Months are not the same length, so a birth date such as 31 January has no exact match in February. The usual fix, and the one our age calculator uses, is to move to the last day of the shorter month. Someone born on 31 January turns one month old on 28 February (or 29 in a leap year) and then 1 month and 1 day old on 1 March in a common year."
+    ],
+    [
+     "paragraph",
+     "Other calculators handle this differently. Some borrow days from the previous month, which can give an answer a day or two different at month ends. Neither is wrong. They follow different conventions, and only the month ends are affected. If an exact figure matters, such as for a form, use the rule the form states."
+    ],
+    [
+     "heading",
+     "Leap years and 29 February"
+    ],
+    [
+     "paragraph",
+     "The Royal Museums Greenwich explains why leap years exist: the solar year is 365.2422 days long, which no calendar year can match, so an extra day is added to keep the months matching the seasons. A year is a leap year if it is divisible by four, except that century years must also be divisible by 400. So 2000 was a leap year and 1900 was not, and 2100 will not be."
+    ],
+    [
+     "paragraph",
+     "People born on 29 February are sometimes called leaplings. Wikipedia's leap year article says that in common years they usually celebrate on 28 February or 1 March, and that the law differs by place. It reports, for example, that the legal birthday of a leapling in the United Kingdom is treated as 1 March. Our calculator counts the birthday as 28 February in years that are not leap years and says so on the page. If your purpose is legal, check which rule applies in your case."
+    ],
+    [
+     "heading",
+     "Days until the next birthday"
+    ],
+    [
+     "paragraph",
+     "The next birthday is the first occurrence of the month and day that is today or later. If your birthday is today, the answer is 0 days, and the age you reach is the one you just turned. For 15 May 1990, counted from 31 October 2026, the next birthday is on 15 May 2027, which is a Saturday, 196 days away, and the age reached is 37."
+    ],
+    [
+     "heading",
+     "Common mistakes"
+    ],
+    [
+     "list",
+     "Subtracting the birth year from the current year without checking whether the birthday has happened yet.\nCounting 30 days in every month. Months are 28 to 31 days, and it matters at month ends.\nAssuming a 29 February birthday falls on the same date everywhere. Different places and forms use 28 February or 1 March.\nMixing in the time of day. Age is counted in whole calendar dates, so the time you were born does not matter for these figures."
+    ],
+    [
+     "heading",
+     "How to use the calculator"
+    ],
+    [
+     "paragraph",
+     "Pick the date of birth. The second date is today unless you change it, which is useful for working out an age on a past date, for example when a form asks for your age on a particular day. The result shows the age in years, months and days, the totals in months, weeks and days, the weekday you were born, and the next birthday."
+    ]
+   ],
+   "sources": [
+    {
+     "title": "Which years are leap years? (Royal Museums Greenwich)",
+     "url": "https://www.rmg.co.uk/stories/time/which-years-are-leap-years-can-you-have-leap-seconds"
+    },
+    {
+     "title": "Leap year (Wikipedia)",
+     "url": "https://en.wikipedia.org/wiki/Leap_year"
+    }
+   ],
+   "checkedOn": "2026-10-31"
+  },
+  {
+   "title": "How to Count Days Between Two Dates (End Included?)",
+   "category": "How-To",
+   "excerpt": "How many days lie between two dates, why counting both ends gives one more, and how weeks, months and leap years change the answer.",
+   "tags": [
+    "dates",
+    "days",
+    "counting"
+   ],
+   "blocks": [
+    [
+     "paragraph",
+     "How many days are there between two dates? The answer depends on one small choice: whether the last day counts. This guide shows the difference with real dates, explains why counting both ends gives one more, and covers weeks, months, leap years and the usual mistakes."
+    ],
+    [
+     "heading",
+     "Two ways to count"
+    ],
+    [
+     "paragraph",
+     "From the 1st of January to the 10th of January, there are 9 days between the dates: you move forward nine times to get from the 1st to the 10th. But if you are asked how many days a booking from the 1st to the 10th covers, and both the first and last days are used, the answer is 10."
+    ],
+    [
+     "paragraph",
+     "Neither answer is wrong. They answer different questions. The first is the gap between two dates. The second counts every calendar day from the start to the end, with both included. Our calculator gives the gap by default, and adds one day when you tick the option to count the end date."
+    ],
+    [
+     "heading",
+     "Why the second count is one higher"
+    ],
+    [
+     "paragraph",
+     "This is a classic counting trap, known to programmers as an off-by-one error. Wikipedia's article uses a fence: a straight fence 30 feet long with posts 3 feet apart has 10 sections, but it needs 11 posts, because a fence with n sections has n + 1 posts. The same article states the rule for counting inclusive ranges: for items from m to n inclusive, the correct count is n − m + 1."
+    ],
+    [
+     "paragraph",
+     "Days work the same way. The 1st to the 10th is a range of 10 days inclusive (10 − 1 + 1), while the gap between the two dates is 9 (10 − 1). Decide which one you need before you count."
+    ],
+    [
+     "heading",
+     "Some worked examples"
+    ],
+    [
+     "list",
+     "1 January to 10 January 2026: 9 days between, or 10 days counting the end date.\n1 January to 31 December 2026: 364 days between, or 365 days counting both ends, which is every day of the year.\n28 February to 1 March 2024: 2 days, because 2024 is a leap year with a 29 February.\n28 February to 1 March 2023: 1 day, because 2023 has no 29 February.\n31 October 2026 to 26 January 2027: 87 days, which is 12 weeks and 3 days, or 2 months and 26 days."
+    ],
+    [
+     "heading",
+     "Weeks, months and days"
+    ],
+    [
+     "paragraph",
+     "A number of days is often easier to read as weeks. 87 days is 12 weeks and 3 days. Years, months and days are harder because months differ in length, so the calculator takes the most whole months that fit and then counts the days left over, moving a month-end date to the last day of a shorter month. The result is 2 months and 26 days for the last example above."
+    ],
+    [
+     "heading",
+     "Leap years"
+    ],
+    [
+     "paragraph",
+     "A day count across a leap day includes the extra day. Between 31 December 2023 and 1 March 2024 there are 61 days, because February 2024 has 29 days. A leap year is one divisible by four, except century years that are not divisible by 400, so 2000 and 2024 are leap years and 1900 and 2100 are not."
+    ],
+    [
+     "heading",
+     "No time zones, no clocks"
+    ],
+    [
+     "paragraph",
+     "The calculator works on calendar dates only, with no time of day. The Python documentation describes the date type as naive, meaning it carries no time zone, and says that subtracting two dates gives an exact result. Because the calculation never uses clock times, a daylight saving change cannot add or remove an hour and shift the answer by a day."
+    ],
+    [
+     "heading",
+     "Common mistakes"
+    ],
+    [
+     "list",
+     "Forgetting whether the end date should count, and being off by one.\nCounting 30 days in every month, which is wrong for 28, 29 and 31 day months.\nUsing a rough 365 or 30 shortcut for long periods. Use the dates themselves.\nPutting the dates in the wrong order. The calculator works either way and tells you which date it counted from."
+    ],
+    [
+     "heading",
+     "How to use the calculator"
+    ],
+    [
+     "paragraph",
+     "Pick the start and end dates. By default it shows the days between them. Tick the end date option to count both. The result also shows weeks and days, and years, months and days, which is handy for a project length, a notice period, a warranty or a trip."
+    ]
+   ],
+   "sources": [
+    {
+     "title": "Off-by-one error (Wikipedia)",
+     "url": "https://en.wikipedia.org/wiki/Off-by-one_error"
+    },
+    {
+     "title": "datetime: Basic date and time types (Python documentation)",
+     "url": "https://docs.python.org/3/library/datetime.html"
+    },
+    {
+     "title": "Leap year (Wikipedia)",
+     "url": "https://en.wikipedia.org/wiki/Leap_year"
+    }
+   ],
+   "checkedOn": "2026-10-31"
+  }
+ ]
+}
