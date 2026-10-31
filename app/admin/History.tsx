@@ -68,7 +68,7 @@ export default function History({
   }
 
   return (
-    <section aria-labelledby="history-heading" className="rounded-2xl border border-brand-100 bg-white p-6 shadow-soft">
+    <section aria-labelledby="history-heading" className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <h2 id="history-heading" className="font-display text-2xl font-semibold text-ink">
           History

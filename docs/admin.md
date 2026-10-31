@@ -147,3 +147,31 @@ The article editor can upload pictures, so nothing has to be copied into the rep
 - **The preview** of the saved picture is shown from the browser's memory (the admin's security policy allows `blob:` images for this and nothing else new).
 
 Code: `lib/admin/images.ts` (rules and the resizing, unit tested), `commitFiles` in `lib/admin/github.ts`, and `app/admin/editors/ImageUpload.tsx`.
+
+
+## The admin app: menu, views, rebuild and users
+
+After signing in with a fine-grained token it shows a full-window app:
+
+- **Menu (left):** Dashboard, Content (Articles, Tools, Categories), Site (Search settings, Ads, Site status), Data (All sheets, History), Team (Users).
+- **Top bar:** unsaved-change count, Reload, and **Rebuild site**.
+- **Dashboard:** content counts, analytics state, latest site update with its own Rebuild button, recent saves.
+- **List views and form views:** every sheet (All sheets) and the Articles, Tools, Categories and Search lists use the same table layout with status pills. A record opens as a form with a breadcrumb, Save/Cancel buttons at the top, and (for sheets) a previous/next record pager. Changes are queued as pending and saved in one commit.
+
+### Rebuild site
+
+Starts the `deploy.yml` workflow on the branch (`workflow_dispatch`), the same build a save triggers. Use it to publish again after a failed update or when nothing changed. The Site status page follows the run.
+
+### Users
+
+Users are the repository's GitHub collaborators. **Users → New user** takes a GitHub username and a role (Editor = write, Viewer = read, Admin) and sends GitHub's invitation. Pending invitations can be cancelled and members removed. Each person signs in with their own token, so saves are recorded under their name.
+
+### Token permissions
+
+| Use | Permission |
+| --- | --- |
+| Edit and save | Contents: Read and write |
+| See site updates, Rebuild site | Actions: Read and write |
+| Add or remove users | Administration: Read and write |
+
+Only the permissions you need must be granted; the page explains what is missing when GitHub refuses.

@@ -138,7 +138,7 @@ const withCell = (sheet: string, pk: string, column: string, value: string) => a
 
 /** Open a sheet, edit one cell of a record through the row form, and add it to the pending changes. */
 async function editCell(page: Page, sheet: string, pk: string, column: string, value: string) {
-  await page.getByRole("navigation", { name: "Editor" }).getByRole("button", { name: "All sheets" }).click();
+  await page.getByRole("navigation", { name: "Sections" }).getByRole("button", { name: "All sheets" }).click();
   await page.getByRole("navigation", { name: "Sheets" }).getByRole("button", { name: new RegExp(`^${sheet} `) }).click();
   await page.getByRole("button", { name: `Edit ${pk}` }).click();
   const form = page.getByRole("form", { name: new RegExp(`Edit ${pk}`) });
@@ -148,12 +148,17 @@ async function editCell(page: Page, sheet: string, pk: string, column: string, v
   await form.getByRole("button", { name: "Update pending changes" }).click();
 }
 
-async function signIn(page: Page, token = "github_pat_GOOD") {
+/** Signs in and opens a page from the menu. The editors are the usual starting point; pass "Dashboard" to stay on the overview. */
+async function signIn(page: Page, token = "github_pat_GOOD", menu = "Tools") {
   await page.goto("/admin/");
   await page.getByLabel("Repository (owner/name)").fill("acme/site");
   await page.getByLabel("Branch").fill("main");
   await page.getByLabel("GitHub token").fill(token);
   await page.getByRole("button", { name: "Sign in" }).click();
+  if (menu !== "Dashboard") await openMenu(page, menu);
+}
+async function openMenu(page: Page, name: string) {
+  await page.getByRole("navigation", { name: "Sections" }).getByRole("button", { name, exact: true }).click();
 }
 
 test("the admin page is hidden from search engines, the sitemap and the navigation", async ({ page }) => {
@@ -166,23 +171,23 @@ test("the admin page is hidden from search engines, the sitemap and the navigati
 
 test("signing in loads the workbook and checks it", async ({ page }) => {
   await fakeGithub(page);
-  await signIn(page);
+  await signIn(page, undefined, "Dashboard");
   await expect(page.getByRole("heading", { name: "Signed in to acme/site" })).toBeVisible();
   await expect(page.getByText("The workbook is valid.")).toBeVisible();
-  await expect(page.getByText("version aaaaaaa")).toBeVisible();
+  await expect(page.getByText("version aaaaaaa").first()).toBeVisible();
   await expect(page.getByLabel("GitHub token")).toHaveCount(0); // the token field is gone
 });
 
 test("a wrong token gets a clear message and no workbook", async ({ page }) => {
   await fakeGithub(page);
-  await signIn(page, "github_pat_WRONG");
+  await signIn(page, "github_pat_WRONG", "Dashboard");
   await expect(page.getByText(/did not accept the token/)).toBeVisible();
   await expect(page.getByRole("heading", { name: /Signed in/ })).toHaveCount(0);
 });
 
 test("editing a cell saves one commit with the previous version's SHA", async ({ page }) => {
   const fake = await fakeGithub(page);
-  await signIn(page);
+  await signIn(page, undefined, "Dashboard");
   await editCell(page, "tools", "TOOL0001", "name", "Image Squeezer");
   await expect(page.getByText(/tools TOOL0001, name: .* → Image Squeezer/)).toBeVisible();
   await page.getByRole("button", { name: "Save 1 change to GitHub" }).click();
@@ -200,7 +205,7 @@ test("editing a cell saves one commit with the previous version's SHA", async ({
 
 test("several changes are saved together as one commit", async ({ page }) => {
   const fake = await fakeGithub(page);
-  await signIn(page);
+  await signIn(page, undefined, "Dashboard");
   await editCell(page, "tools", "TOOL0001", "name", "One");
   await editCell(page, "tools", "TOOL0002", "name", "Two");
   await editCell(page, "tools", "TOOL0001", "name", "One again"); // same cell: replaces the earlier change
@@ -213,7 +218,7 @@ test("several changes are saved together as one commit", async ({ page }) => {
 
 test("a pending change can be removed before saving", async ({ page }) => {
   const fake = await fakeGithub(page);
-  await signIn(page);
+  await signIn(page, undefined, "Dashboard");
   await editCell(page, "tools", "TOOL0001", "name", "One");
   await page.getByRole("button", { name: "Remove" }).click();
   await expect(page.getByText(/Pending changes \(0\)/)).toBeVisible();
@@ -223,7 +228,7 @@ test("a pending change can be removed before saving", async ({ page }) => {
 
 test("a change that would make the workbook invalid is refused and nothing is sent", async ({ page }) => {
   const fake = await fakeGithub(page);
-  await signIn(page);
+  await signIn(page, undefined, "Dashboard");
   await editCell(page, "tools", "TOOL0001", "slug", "Not A Slug!");
   await expect(page.getByText(/cannot be saved yet/)).toBeVisible(); // shown at once, before saving
   await page.getByRole("button", { name: "Save 1 change to GitHub" }).click();
@@ -234,7 +239,7 @@ test("a change that would make the workbook invalid is refused and nothing is se
 
 test("a wrong kind of value is caught as soon as it is added", async ({ page }) => {
   await fakeGithub(page);
-  await signIn(page);
+  await signIn(page, undefined, "Dashboard");
   await editCell(page, "tools", "TOOL0001", "sort_order", "abc");
   await expect(page.getByText(/sort_order must be a whole number/)).toBeVisible();
   await expect(page.getByText(/Pending changes \(0\)/)).toBeVisible();
@@ -242,7 +247,7 @@ test("a wrong kind of value is caught as soon as it is added", async ({ page }) 
 
 test("when someone saved a different cell first, your change is merged and saved", async ({ page }) => {
   const fake = await fakeGithub(page, { concurrent: withCell("tools", "TOOL0002", "name", "Their edit") });
-  await signIn(page);
+  await signIn(page, undefined, "Dashboard");
   await editCell(page, "tools", "TOOL0001", "name", "My edit");
   await page.getByRole("button", { name: "Save 1 change to GitHub" }).click();
   await expect(page.getByText(/merged with newer changes made by someone else/)).toBeVisible();
@@ -254,7 +259,7 @@ test("when someone saved a different cell first, your change is merged and saved
 
 test("when someone changed the same cell, you choose and your edit is not lost", async ({ page }) => {
   const fake = await fakeGithub(page, { concurrent: withCell("tools", "TOOL0001", "name", "Their name") });
-  await signIn(page);
+  await signIn(page, undefined, "Dashboard");
   await editCell(page, "tools", "TOOL0001", "name", "My name");
   await page.getByRole("button", { name: "Save 1 change to GitHub" }).click();
 
@@ -273,7 +278,7 @@ test("when someone changed the same cell, you choose and your edit is not lost",
 
 test("choosing to keep their version drops your change", async ({ page }) => {
   const fake = await fakeGithub(page, { concurrent: withCell("tools", "TOOL0001", "name", "Their name") });
-  await signIn(page);
+  await signIn(page, undefined, "Dashboard");
   await editCell(page, "tools", "TOOL0001", "name", "My name");
   await page.getByRole("button", { name: "Save 1 change to GitHub" }).click();
   await page.getByLabel("Keep what is on GitHub (drop my change)").check();
@@ -286,7 +291,7 @@ test("choosing to keep their version drops your change", async ({ page }) => {
 
 test("a read-only token is told it cannot save", async ({ page }) => {
   await fakeGithub(page, { push: false });
-  await signIn(page);
+  await signIn(page, undefined, "Dashboard");
   await expect(page.getByText(/can only read the repository/)).toBeVisible();
   await editCell(page, "tools", "TOOL0001", "name", "X");
   await expect(page.getByRole("button", { name: "Save 1 change to GitHub" })).toBeDisabled();
@@ -294,7 +299,7 @@ test("a read-only token is told it cannot save", async ({ page }) => {
 
 test("signing out forgets the token", async ({ page }) => {
   await fakeGithub(page);
-  await signIn(page);
+  await signIn(page, undefined, "Dashboard");
   await page.getByRole("button", { name: "Sign out" }).click();
   await expect(page.getByLabel("GitHub token")).toHaveValue("");
   const stored = await page.evaluate(() => JSON.stringify({ ...localStorage }) + JSON.stringify({ ...sessionStorage }) + document.cookie);
@@ -303,7 +308,7 @@ test("signing out forgets the token", async ({ page }) => {
 
 test("the token is never written to browser storage by default", async ({ page }) => {
   await fakeGithub(page);
-  await signIn(page);
+  await signIn(page, undefined, "Dashboard");
   await expect(page.getByRole("heading", { name: "Signed in to acme/site" })).toBeVisible();
   const stored = await page.evaluate(() => JSON.stringify({ ...localStorage }) + JSON.stringify({ ...sessionStorage }) + document.cookie);
   expect(stored).not.toContain("github_pat");
@@ -314,7 +319,7 @@ test("the admin page has no accessibility violations, signed out or signed in", 
   const scan = async () => (await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"]).analyze()).violations.map((v) => `${v.id}: ${v.nodes.map((n) => n.target.join(" ")).join(", ")}`);
   await page.goto("/admin/");
   expect(await scan()).toEqual([]);
-  await signIn(page);
+  await signIn(page, undefined, "Dashboard");
   await expect(page.getByRole("heading", { name: "Signed in to acme/site" })).toBeVisible();
   expect(await scan()).toEqual([]);
 });
@@ -341,7 +346,7 @@ test("the whole sign-in and save flow runs without breaking the policy", async (
   const consoleErrors: string[] = [];
   page.on("pageerror", (e) => consoleErrors.push(e.message));
   await fakeGithub(page);
-  await signIn(page);
+  await signIn(page, undefined, "Dashboard");
   await editCell(page, "tools", "TOOL0001", "name", "Policy check");
   await page.getByRole("button", { name: "Save 1 change to GitHub" }).click();
   await expect(page.getByText("View the commit on GitHub")).toBeVisible();
@@ -371,7 +376,7 @@ test("the admin page loads no third-party scripts and talks only to itself and G
     if (/^https?:/.test(r.url())) origins.add(new URL(r.url()).origin);
   });
   await fakeGithub(page);
-  await signIn(page);
+  await signIn(page, undefined, "Dashboard");
   await expect(page.getByRole("heading", { name: "Signed in to acme/site" })).toBeVisible();
   const scriptSources = await page.locator("script[src]").evaluateAll((els) => els.map((e) => (e as HTMLScriptElement).src));
   const own = new URL(page.url()).origin;
@@ -391,7 +396,7 @@ test("leaving the admin page starts the next page clean, without the admin polic
 
 test("the token is not remembered unless you ask, and 'remember' uses this tab's session storage only", async ({ page }) => {
   await fakeGithub(page);
-  await signIn(page);
+  await signIn(page, undefined, "Dashboard");
   await expect(page.getByRole("heading", { name: "Signed in to acme/site" })).toBeVisible();
   expect(await page.evaluate(() => sessionStorage.length + localStorage.length)).toBe(0);
   await page.getByRole("button", { name: "Sign out" }).click();
@@ -425,7 +430,7 @@ test("a remembered token that GitHub no longer accepts is discarded", async ({ p
 test("you are signed out after 30 minutes without activity", async ({ page }) => {
   await page.clock.install();
   await fakeGithub(page);
-  await signIn(page);
+  await signIn(page, undefined, "Dashboard");
   await expect(page.getByRole("heading", { name: "Signed in to acme/site" })).toBeVisible();
   await page.clock.fastForward("29:00");
   await expect(page.getByRole("heading", { name: "Signed in to acme/site" })).toBeVisible();
@@ -445,7 +450,7 @@ const tableRows = (page: Page, sheet: string) => page.getByRole("region", { name
 async function managerPage(page: Page, opts?: Parameters<typeof fakeGithub>[1]) {
   const fake = await fakeGithub(page, opts);
   await signIn(page);
-  await page.getByRole("navigation", { name: "Editor" }).getByRole("button", { name: "All sheets" }).click();
+  await page.getByRole("navigation", { name: "Sections" }).getByRole("button", { name: "All sheets" }).click();
   await expect(page.getByRole("navigation", { name: "Sheets" })).toBeVisible();
   return fake;
 }
@@ -507,18 +512,19 @@ test("a row can be added, with the next free ID suggested, and is saved", async 
   await sheetTab(page, "tags").click();
   await page.getByRole("button", { name: "Add row" }).click();
   const form = page.getByRole("form", { name: /Add a row to tags/ });
-  await expect(form.getByLabel(/^tag_id/)).toHaveValue("TAG0007");
+  await expect(form.getByLabel(/^tag_id/)).toHaveValue("TAG0027");
   await form.getByLabel(/^name/).fill("Savings tips");
   await form.getByLabel(/^slug/).fill("savings-tips");
   await form.getByRole("button", { name: "Add to pending changes" }).click();
 
-  await expect(page.getByText("tags: add a row (TAG0007)")).toBeVisible();
+  await expect(page.getByText("tags: add a row (TAG0027)")).toBeVisible();
   await expect(page.getByText("The workbook is valid with these changes.")).toBeVisible();
-  await expect(page.getByRole("row", { name: /TAG0007/ })).toContainText("New");
+  await page.getByLabel("Search rows").fill("Savings tips"); // the sheet now has more than one page of tags
+  await expect(page.getByRole("row", { name: /TAG0027/ })).toContainText("New");
   await page.getByRole("button", { name: "Save 1 change to GitHub" }).click();
   await expect(page.getByText("View the commit on GitHub")).toBeVisible();
   expect(fake.puts[0]!.body.message).toBe("Admin: add a row to tags");
-  expect(await cellOf(fake.current(), "tags", "TAG0007", "name")).toBe("Savings tips");
+  expect(await cellOf(fake.current(), "tags", "TAG0027", "name")).toBe("Savings tips");
 });
 
 test("an ID that is already used is refused", async ({ page }) => {
@@ -568,7 +574,7 @@ test("a CSV can be imported: new rows are added, changed cells updated, nothing 
   await page.getByLabel("Choose a CSV file to import into tags").setInputFiles({
     name: "tags.csv",
     mimeType: "text/csv",
-    buffer: Buffer.from("tag_id,name,slug\nTAG0001,Loan help,loans\nTAG0007,Fresh,fresh\n"),
+    buffer: Buffer.from("tag_id,name,slug\nTAG0001,Loan help,loans\nTAG0027,Fresh,fresh\n"),
   });
   await expect(page.getByText(/would add 1, update 1 and leave 0 row/)).toBeVisible();
   await page.getByRole("button", { name: "Add 2 changes to pending" }).click();
@@ -576,7 +582,7 @@ test("a CSV can be imported: new rows are added, changed cells updated, nothing 
   await page.getByRole("button", { name: "Save 2 changes to GitHub" }).click();
   await expect(page.getByText("View the commit on GitHub")).toBeVisible();
   expect(await cellOf(fake.current(), "tags", "TAG0001", "name")).toBe("Loan help");
-  expect(await cellOf(fake.current(), "tags", "TAG0007", "slug")).toBe("fresh");
+  expect(await cellOf(fake.current(), "tags", "TAG0027", "slug")).toBe("fresh");
   expect(await cellOf(fake.current(), "tags", "TAG0002", "name")).toBe("Calculators"); // not in the file, still there
 });
 
@@ -599,7 +605,7 @@ test("the manager has no accessibility violations with a row form open", async (
 
 // ---- Content forms (T5.5) ----
 
-const editor = (page: Page, name: string) => page.getByRole("navigation", { name: "Editor" }).getByRole("button", { name });
+const editor = (page: Page, name: string) => page.getByRole("navigation", { name: "Sections" }).getByRole("button", { name, exact: true });
 
 /** All rows of a sheet in a saved workbook, as strings keyed by column name. */
 async function rowsOf(buffer: Buffer, sheet: string): Promise<Record<string, string>[]> {
@@ -811,8 +817,8 @@ async function wait(page: Page, text: string | RegExp) {
 
 test("the site status is shown as soon as you sign in", async ({ page }) => {
   await fakeGithub(page);
-  await signIn(page);
-  await expect(page.getByRole("heading", { name: "Site status" })).toBeVisible();
+  await signIn(page, undefined, "Site status");
+  await expect(page.getByRole("heading", { name: "Site status", level: 2 })).toBeVisible();
   await expect(page.getByText("The site is up to date.")).toBeVisible();
   await expect(page.getByRole("list", { name: "Recent site updates" }).getByText("Earlier update")).toBeVisible();
   await expect(page.getByRole("link", { name: "View the live site" })).toHaveAttribute("href", /\/$/);
@@ -825,6 +831,7 @@ test("after saving, the update is followed from waiting to building to live", as
   await editCell(page, "tools", "TOOL0001", "name", "Image Squeezer");
   await page.getByRole("button", { name: "Save 1 change to GitHub" }).click();
   await expect(page.getByText("View the commit on GitHub")).toBeVisible();
+  await openMenu(page, "Site status");
   await expect(page.getByText(/Waiting for GitHub to start updating the site|being published/)).toBeVisible();
   await wait(page, "The site is up to date.");
   await expect(page.getByRole("list", { name: "Recent site updates" }).getByText("Live")).toHaveCount(2);
@@ -837,6 +844,7 @@ test("a failed update says why in plain words and that the live site is unchange
   await editCell(page, "tools", "TOOL0001", "name", "Image Squeezer");
   await page.getByRole("button", { name: "Save 1 change to GitHub" }).click();
   await expect(page.getByText("View the commit on GitHub")).toBeVisible();
+  await openMenu(page, "Site status");
   await wait(page, /could not be updated. The live site still shows the previous version/);
   await wait(page, /did not pass validation/);
   await expect(page.getByRole("list", { name: "Recent site updates" }).getByRole("link", { name: "Details" }).first()).toHaveAttribute("href", /actions\/runs\/2$/);
@@ -844,7 +852,7 @@ test("a failed update says why in plain words and that the live site is unchange
 
 test("a token that cannot read build status still saves, and the page explains what to add", async ({ page }) => {
   const fake = await fakeGithub(page, { deploy: "forbidden" });
-  await signIn(page);
+  await signIn(page, undefined, "Site status");
   await expect(page.getByText("Build status is not available.")).toBeVisible();
   await expect(page.getByText(/Add the Actions: Read permission/)).toBeVisible();
   await editCell(page, "tools", "TOOL0001", "name", "Image Squeezer");
@@ -870,7 +878,7 @@ test("before saving, the pending panel says what will appear, change or disappea
 
 test("changes that visitors cannot see are labelled as such", async ({ page }) => {
   await fakeGithub(page);
-  await signIn(page);
+  await signIn(page, undefined, "Dashboard");
   await editor(page, "Articles").click();
   await page.getByRole("button", { name: "New article" }).click();
   const form = page.getByRole("form", { name: /New article/ });
@@ -883,7 +891,7 @@ test("changes that visitors cannot see are labelled as such", async ({ page }) =
 
 test("an article can be previewed as it will look, including a draft, before it is saved", async ({ page }) => {
   await fakeGithub(page);
-  await signIn(page);
+  await signIn(page, undefined, "Dashboard");
   await editor(page, "Articles").click();
   await page.getByRole("button", { name: "New article" }).click();
   const form = page.getByRole("form", { name: /New article/ });
@@ -904,8 +912,7 @@ test("an article can be previewed as it will look, including a draft, before it 
 
 test("a previous version can be restored, after a confirmation, as a new commit", async ({ page }) => {
   const fake = await fakeGithub(page);
-  await signIn(page);
-  await expect(page.getByRole("heading", { name: "Signed in to acme/site" })).toBeVisible();
+  await signIn(page, undefined, "History");
   await page.getByRole("button", { name: "Show earlier versions" }).click();
   const list = page.getByRole("list", { name: "Earlier versions" });
   await expect(list.getByText("Add workbook")).toBeVisible();
@@ -915,7 +922,8 @@ test("a previous version can be restored, after a confirmation, as a new commit"
   await editCell(page, "tools", "TOOL0001", "name", "Image Squeezer");
   await page.getByRole("button", { name: "Save 1 change to GitHub" }).click();
   await expect(page.getByText("View the commit on GitHub")).toBeVisible();
-  await page.getByRole("button", { name: "Refresh" }).click();
+  await openMenu(page, "History");
+  await page.getByRole("button", { name: "Show earlier versions" }).click();
   await expect(list.getByText("Admin: update records")).toBeVisible();
 
   await list.getByRole("button", { name: "Restore version 1111111" }).click();
@@ -934,7 +942,7 @@ test("a previous version can be restored, after a confirmation, as a new commit"
 
 test("the dashboard shows content counts, recent saves and the latest site update", async ({ page }) => {
   await fakeGithub(page);
-  await signIn(page);
+  await signIn(page, undefined, "Dashboard");
   const dash = page.getByRole("region", { name: "Dashboard" });
   await expect(dash.getByRole("group", { name: "Tools" })).toContainText("published");
   await expect(dash.getByRole("group", { name: "Articles" })).toBeVisible();
@@ -945,7 +953,7 @@ test("the dashboard shows content counts, recent saves and the latest site updat
 
 test("the dashboard still shows counts when the token cannot read site updates", async ({ page }) => {
   await fakeGithub(page, { deploy: "forbidden" });
-  await signIn(page);
+  await signIn(page, undefined, "Dashboard");
   const dash = page.getByRole("region", { name: "Dashboard" });
   await expect(dash.getByRole("group", { name: "Tools" })).toBeVisible();
   await expect(dash).toContainText("Actions: Read");
@@ -957,9 +965,9 @@ test("the dashboard says analytics is off and how to set the reports link", asyn
   const clear = (key: string) => ({ type: "set" as const, sheet: "site_settings", pk: key, column: "setting_value", before: readCell(wb, schema, { sheet: "site_settings", row: findRecord(wb, schema, "site_settings", key), column: "setting_value" }), after: "" });
   applyChanges(wb, schema, [clear("analytics_measurement_id"), clear("analytics_dashboard_url")]);
   await fakeGithub(page, { workbook: Buffer.from(await saveWorkbook(wb)) });
-  await signIn(page);
+  await signIn(page, undefined, "Dashboard");
   const analytics = page.getByRole("region", { name: "Dashboard" }).getByRole("group", { name: "Analytics" });
-  await expect(analytics).toContainText("Off.");
+  await expect(analytics).toContainText("Off");
   await expect(analytics).toContainText("analytics_dashboard_url");
   await expect(analytics.getByRole("link")).toHaveCount(0);
 });
@@ -969,7 +977,7 @@ test("with analytics set up, the dashboard shows the ID and a link to the report
   const setting = (key: string, after: string) => ({ type: "set" as const, sheet: "site_settings", pk: key, column: "setting_value", before: readCell(wb, schema, { sheet: "site_settings", row: findRecord(wb, schema, "site_settings", key), column: "setting_value" }), after });
   applyChanges(wb, schema, [setting("analytics_measurement_id", "G-ABC123XYZ4"), setting("analytics_dashboard_url", "https://lookerstudio.google.com/reporting/abc")]);
   await fakeGithub(page, { workbook: Buffer.from(await saveWorkbook(wb)) });
-  await signIn(page);
+  await signIn(page, undefined, "Dashboard");
   const analytics = page.getByRole("region", { name: "Dashboard" }).getByRole("group", { name: "Analytics" });
   await expect(analytics).toContainText("G-ABC123XYZ4");
   const link = analytics.getByRole("link", { name: "Open analytics reports" });
@@ -991,7 +999,7 @@ test("the token only ever travels in the Authorization header to api.github.com"
     const headerLeak = Object.entries(r.headers()).some(([k, v]) => v.includes(TOKEN) && !(k === "authorization" && host === "api.github.com"));
     if (inUrl || inBody || headerLeak) leaks.push(`${r.method()} ${r.url()}`);
   });
-  await signIn(page, TOKEN);
+  await signIn(page, TOKEN, "Dashboard");
   await expect(page.getByRole("heading", { name: "Signed in to acme/site" })).toBeVisible();
   await editCell(page, "tools", "TOOL0001", "name", "Image Squeezer");
   await page.getByRole("button", { name: "Save 1 change to GitHub" }).click();
@@ -1008,7 +1016,7 @@ test("the token only ever travels in the Authorization header to api.github.com"
 
 test("a new tab starts signed out: the token does not outlive the tab it was typed in", async ({ page, context }) => {
   await fakeGithub(page);
-  await signIn(page);
+  await signIn(page, undefined, "Dashboard");
   await expect(page.getByRole("heading", { name: "Signed in to acme/site" })).toBeVisible();
   const other = await context.newPage();
   await other.goto("/admin/");

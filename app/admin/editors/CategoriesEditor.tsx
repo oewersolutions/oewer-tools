@@ -46,13 +46,13 @@ export default function CategoriesEditor({ data, onApply }: { data: WorkbookData
         />
       )}
 
-      <div className="overflow-x-auto rounded-xl border border-brand-100">
+      <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white">
         <table className="w-full text-left text-sm">
           <caption className="sr-only">{kind === "tool" ? "Tool categories" : "Article categories"}</caption>
-          <thead className="bg-brand-50 text-brand-900">
+          <thead className="bg-white text-xs uppercase tracking-wide text-slate-500">
             <tr>
               {["Name", "Address", kind === "tool" ? "Shown" : "", ""].map((h, i) => (
-                <th key={i} scope="col" className="px-3 py-2 font-semibold">
+                <th key={i} scope="col" className="border-b border-slate-200 px-4 py-3 font-semibold">
                   {h || <span className="sr-only">{i === 3 ? "Actions" : "Details"}</span>}
                 </th>
               ))}
@@ -60,11 +60,11 @@ export default function CategoriesEditor({ data, onApply }: { data: WorkbookData
           </thead>
           <tbody>
             {rows.map((r) => (
-              <tr key={r.id} className="border-t border-brand-100">
-                <td className="px-3 py-2 font-medium">{cellString(r.values.name)}</td>
-                <td className="px-3 py-2">/{cellString(r.values.slug)}</td>
-                <td className="px-3 py-2">{kind === "tool" ? (r.values.enabled === true ? "Yes" : "Hidden") : ""}</td>
-                <td className="px-3 py-2 text-right">
+              <tr key={r.id} className="border-t border-slate-100 transition hover:bg-slate-50">
+                <td className="px-4 py-3 font-medium">{cellString(r.values.name)}</td>
+                <td className="px-4 py-3">/{cellString(r.values.slug)}</td>
+                <td className="px-4 py-3">{kind === "tool" ? (r.values.enabled === true ? "Yes" : "Hidden") : ""}</td>
+                <td className="px-4 py-3 text-right">
                   <button type="button" className={smallButton} aria-label={`Edit category ${cellString(r.values.name)}`} onClick={() => setEditing(r.id)}>
                     Edit
                   </button>

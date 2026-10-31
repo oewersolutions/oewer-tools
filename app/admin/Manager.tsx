@@ -18,16 +18,9 @@ import PostsEditor from "./editors/PostsEditor";
 import SeoEditor from "./editors/SeoEditor";
 import ToolsEditor from "./editors/ToolsEditor";
 import { useProjection } from "./useProjection";
+import { FormHeader, FormRow, INPUT, ListShell, PRIMARY_BUTTON, RecordPager, StatusPill, TD, TH, toneFor, TOOLBAR_BUTTON, TR } from "./views";
 
-type View = "tools" | "categories" | "articles" | "seo" | "ads" | "sheets";
-const VIEWS: { id: View; label: string }[] = [
-  { id: "tools", label: "Tools" },
-  { id: "categories", label: "Categories" },
-  { id: "articles", label: "Articles" },
-  { id: "seo", label: "Search settings" },
-  { id: "ads", label: "Ads" },
-  { id: "sheets", label: "All sheets" },
-];
+export type View = "tools" | "categories" | "articles" | "seo" | "ads" | "sheets";
 
 export interface ManagerFile {
   session: GithubSession;
@@ -40,8 +33,7 @@ export interface ManagerFile {
 }
 
 const button = "rounded-xl bg-brand px-5 py-2.5 font-medium text-white shadow-soft transition hover:bg-brand-700 disabled:opacity-50";
-const secondary = "rounded-xl border border-brand px-4 py-2 text-sm font-medium text-brand transition hover:bg-brand-50 disabled:opacity-50";
-const small = "rounded-lg border border-brand-200 px-2.5 py-1 text-sm font-medium text-brand-800 transition hover:bg-brand-50";
+const secondary = TOOLBAR_BUTTON;
 const PAGE_SIZE_DEFAULT = 25;
 
 function describeError(e: unknown): string {
@@ -61,17 +53,22 @@ const shorten = (text: string, max = 60) => (text.length > max ? `${text.slice(0
 
 export default function Manager({
   file,
+  tab,
   onSaved,
   onPublished,
+  onPendingCount,
 }: {
   file: ManagerFile;
+  /** Which editor to show: the menu on the left chooses it. */
+  tab: View;
+  /** Told how many unsaved changes there are, for the top bar. */
+  onPendingCount?: (n: number) => void;
   /** Called with the version now on GitHub after a save, or after a clash has shown a newer one. */
   onSaved: (base: WorkbookFile) => void;
   /** Called with the new commit when a save has gone to GitHub, so the site update can be followed. */
   onPublished?: (commitSha: string) => void;
 }) {
   const sheets = Object.keys(schema.sheets);
-  const [tab, setTab] = useState<View>("tools");
   const [sheet, setSheet] = useState(sheets[0]!);
   const def = schema.sheets[sheet]!;
   const [query, setQuery] = useState<Query>(EMPTY_QUERY);
@@ -87,6 +84,7 @@ export default function Manager({
   const [saved, setSaved] = useState<{ url: string; rebased: boolean }>();
   const [importPlan, setImportPlan] = useState<ImportPlan>();
 
+  useEffect(() => onPendingCount?.(pending.length), [pending.length, onPendingCount]);
   const projection = useProjection(file.bytes, pending, { data: file.data, issues: file.issues });
   const rows = useMemo(() => toRows(projection.data, sheet, def), [projection.data, sheet, def]);
   const pageSize = useMemo(() => {
@@ -193,28 +191,8 @@ export default function Manager({
 
   return (
     <div className="space-y-8">
-      <nav aria-label="Editor" className="rounded-2xl border border-brand-100 bg-white p-4 shadow-soft">
-        <ul className="flex flex-wrap gap-2">
-          {VIEWS.map((v) => (
-            <li key={v.id}>
-              <button
-                type="button"
-                aria-current={v.id === tab ? "page" : undefined}
-                onClick={() => setTab(v.id)}
-                className={`rounded-full px-4 py-1.5 text-sm font-semibold transition ${v.id === tab ? "bg-brand text-white" : "bg-brand-50 text-brand-800 hover:bg-brand-100"}`}
-              >
-                {v.label}
-              </button>
-            </li>
-          ))}
-        </ul>
-      </nav>
-
       {tab !== "sheets" && (
-        <section aria-labelledby="editor-heading" className="space-y-5 rounded-2xl border border-brand-100 bg-white p-6 shadow-soft">
-          <h2 id="editor-heading" className="font-display text-2xl font-semibold text-ink">
-            {VIEWS.find((v) => v.id === tab)!.label}
-          </h2>
+        <section aria-label="Editor" className="space-y-5">
           {tab === "tools" && <ToolsEditor {...editorProps} />}
           {tab === "categories" && <CategoriesEditor {...editorProps} />}
           {tab === "articles" && <PostsEditor {...editorProps} />}
@@ -225,201 +203,195 @@ export default function Manager({
 
       {tab === "sheets" && (
         <>
-      <nav aria-label="Sheets" className="rounded-2xl border border-brand-100 bg-white p-4 shadow-soft">
-        <ul className="flex flex-wrap gap-2">
-          {sheets.map((name) => {
-            const count = (projection.data[name] ?? []).length;
-            return (
-              <li key={name}>
-                <button
-                  type="button"
-                  aria-current={name === sheet ? "page" : undefined}
-                  onClick={() => chooseSheet(name)}
-                  className={`rounded-full px-3.5 py-1.5 text-sm font-medium transition ${name === sheet ? "bg-brand text-white" : "bg-brand-50 text-brand-800 hover:bg-brand-100"}`}
-                >
-                  {name} <span className={name === sheet ? "text-brand-100" : "text-slate-600"}>({count})</span>
-                </button>
-              </li>
-            );
-          })}
-        </ul>
-      </nav>
-
-      <section aria-labelledby="sheet-heading" className="space-y-5 rounded-2xl border border-brand-100 bg-white p-6 shadow-soft">
-        <div className="flex flex-wrap items-start justify-between gap-3">
-          <div>
-            <h2 id="sheet-heading" className="font-display text-2xl font-semibold text-ink">
-              {sheet}
-            </h2>
-            <p className="mt-1 max-w-2xl text-sm text-slate-700">{def.purpose}</p>
-          </div>
-          <button type="button" onClick={() => { clearOutcome(); setEditing({ mode: "add" }); }} className={button}>
-            Add row
-          </button>
-        </div>
-
-        <div className="grid gap-4 md:grid-cols-4">
-          <div className="md:col-span-2">
-            <NumberField label="Search rows" value={query.search} onChange={(v) => { setQuery({ ...query, search: v }); setPageNumber(1); }} />
-          </div>
-          <SelectField
-            label="Filter by"
-            value={query.filterColumn}
-            onChange={(v) => { setQuery({ ...query, filterColumn: v, filterValue: "" }); setPageNumber(1); }}
-            options={[{ value: "", label: "No filter" }, ...filterableColumns(def).map((c) => ({ value: c.name, label: c.name }))]}
-          />
-          <SelectField
-            label="Filter value"
-            value={query.filterValue}
-            onChange={(v) => { setQuery({ ...query, filterValue: v }); setPageNumber(1); }}
-            options={[
-              { value: "", label: query.filterColumn ? "Any" : "Choose a column first" },
-              ...(query.filterColumn ? filterOptions(def.columns.find((c) => c.name === query.filterColumn)!, rows, schema.enums).map((v) => ({ value: v, label: v })) : []),
-            ]}
-          />
-          <SelectField
-            label="Sort by"
-            value={query.sortColumn}
-            onChange={(v) => setQuery({ ...query, sortColumn: v })}
-            options={[{ value: "", label: "Sheet order" }, ...def.columns.map((c) => ({ value: c.name, label: c.name }))]}
-          />
-          <label className="flex items-end gap-2 pb-2 text-sm">
-            <input type="checkbox" checked={query.sortDescending} onChange={(e) => setQuery({ ...query, sortDescending: e.target.checked })} />
-            Descending
-          </label>
-        </div>
-
-        <div className="flex flex-wrap gap-2">
-          <button type="button" className={secondary} onClick={() => download(`${sheet}.csv`, new Blob([sheetToCsv(def, rows)], { type: "text/csv" }))}>
-            Export {sheet} as CSV
-          </button>
-          <ImportButton onPlan={(p) => { clearOutcome(); setImportPlan(p); }} sheet={sheet} rows={rows} />
-          <button type="button" className={secondary} onClick={() => download("oewer_database.xlsx", new Blob([file.bytes as BlobPart], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" }))}>
-            Download the workbook
-          </button>
-        </div>
-
-        {importPlan && (
-          <div role="status" className="space-y-3 rounded-xl bg-brand-50 p-5">
-            {importPlan.errors.length > 0 ? (
-              <>
-                <p className="font-medium text-red-800">This file cannot be imported:</p>
-                <ul className="list-disc space-y-1 pl-6 text-sm text-red-800">
-                  {importPlan.errors.slice(0, 10).map((e, i) => (
-                    <li key={i}>{e}</li>
-                  ))}
+          {editing ? (
+            <RowForm
+              key={editing.mode === "edit" ? editing.id : "add"}
+              sheet={sheet}
+              mode={editing.mode}
+              initial={editing.mode === "edit" ? currentStrings(editing.id) : { [def.primary_key]: nextId(def, rows.map((r) => r.id)) }}
+              data={projection.data}
+              error={error}
+              onSubmit={submitRow}
+              onCancel={() => { setEditing(null); setError(undefined); }}
+              position={editing.mode === "edit" ? { index: filtered.findIndex((r) => r.id === editing.id) + 1, total: filtered.length, onPrev: filtered.findIndex((r) => r.id === editing.id) > 0 ? () => setEditing({ mode: "edit", id: filtered[filtered.findIndex((r) => r.id === editing.id) - 1]!.id }) : undefined, onNext: filtered.findIndex((r) => r.id === editing.id) < filtered.length - 1 ? () => setEditing({ mode: "edit", id: filtered[filtered.findIndex((r) => r.id === editing.id) + 1]!.id }) : undefined } : undefined}
+            />
+          ) : (
+            <div className="space-y-4">
+              <nav aria-label="Sheets" className="rounded-xl border border-slate-200 bg-white p-3 shadow-sm">
+                <ul className="flex flex-wrap gap-1.5">
+                  {sheets.map((name) => {
+                    const count = (projection.data[name] ?? []).length;
+                    return (
+                      <li key={name}>
+                        <button
+                          type="button"
+                          aria-current={name === sheet ? "page" : undefined}
+                          onClick={() => chooseSheet(name)}
+                          className={`rounded-lg px-3 py-1.5 text-sm font-medium transition ${name === sheet ? "bg-brand-50 text-brand-800" : "text-slate-700 hover:bg-slate-100"}`}
+                        >
+                          {name} <span className="text-slate-500">({count})</span>
+                        </button>
+                      </li>
+                    );
+                  })}
                 </ul>
-              </>
-            ) : (
-              <p>
-                The file would add <strong>{importPlan.added}</strong>, update <strong>{importPlan.updated}</strong> and leave <strong>{importPlan.unchanged}</strong> row(s) as they are. Rows missing from the file are not deleted.
-              </p>
-            )}
-            <div className="flex gap-2">
-              {importPlan.errors.length === 0 && importPlan.changes.length > 0 && (
-                <button
-                  type="button"
-                  className={button}
-                  onClick={() => {
-                    changePending(importPlan.changes.reduce((acc, c) => (c.type === "add" ? queueAdd(acc, c.sheet, def.primary_key, c.values) : c.type === "set" ? queueRowEdit(acc, c.sheet, def.primary_key, c.pk, { [c.column]: c.before }, { [c.column]: c.after }) : acc), pending));
-                    setImportPlan(undefined);
-                  }}
-                >
-                  Add {importPlan.changes.length} change{importPlan.changes.length === 1 ? "" : "s"} to pending
-                </button>
-              )}
-              <button type="button" className={secondary} onClick={() => setImportPlan(undefined)}>
-                Dismiss
-              </button>
-            </div>
-          </div>
-        )}
+              </nav>
 
-        {editing && (
-          <RowForm
-            key={editing.mode === "edit" ? editing.id : "add"}
-            sheet={sheet}
-            mode={editing.mode}
-            initial={editing.mode === "edit" ? currentStrings(editing.id) : { [def.primary_key]: nextId(def, rows.map((r) => r.id)) }}
-            data={projection.data}
-            error={error}
-            onSubmit={submitRow}
-            onCancel={() => { setEditing(null); setError(undefined); }}
-          />
-        )}
-
-        <div className="overflow-x-auto rounded-xl border border-brand-100" tabIndex={0} role="region" aria-label={`${sheet} rows`}>
-          <table className="w-full min-w-max text-left text-sm">
-            <caption className="sr-only">
-              {sheet}: {view.total} row{view.total === 1 ? "" : "s"}, page {view.page} of {view.pages}
-            </caption>
-            <thead className="bg-brand-50 text-brand-900">
-              <tr>
-                <th scope="col" className="px-3 py-2">
-                  <span className="sr-only">Actions</span>
-                </th>
-                {def.columns.map((c) => (
-                  <th key={c.name} scope="col" className="whitespace-nowrap px-3 py-2 font-semibold">
-                    {c.name}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {view.items.length === 0 && (
-                <tr>
-                  <td colSpan={def.columns.length + 1} className="px-3 py-6 text-center text-slate-700">
-                    No rows match.
-                  </td>
-                </tr>
-              )}
-              {view.items.map((r) => {
-                const mark = touched.get(r.id);
-                return (
-                  <tr key={r.id} className={`border-t border-brand-100 ${mark ? "bg-gold-300/20" : ""}`}>
-                    <td className="whitespace-nowrap px-3 py-2">
-                      <button type="button" className={small} aria-label={`Edit ${r.id}`} onClick={() => { clearOutcome(); setEditing({ mode: "edit", id: r.id }); }}>
-                        Edit
-                      </button>{" "}
-                      <button type="button" className={small} aria-label={`Delete ${r.id}`} onClick={() => changePending(queueDelete(pending, sheet, def.primary_key, r.id))}>
-                        Delete
+              <ListShell
+                title={sheet}
+                subtitle={def.purpose}
+                action={
+                  <>
+                    <button type="button" className={TOOLBAR_BUTTON} onClick={() => download(`${sheet}.csv`, new Blob([sheetToCsv(def, rows)], { type: "text/csv" }))}>
+                      Export {sheet} as CSV
+                    </button>
+                    <ImportButton onPlan={(p) => { clearOutcome(); setImportPlan(p); }} sheet={sheet} rows={rows} />
+                    <button type="button" className={TOOLBAR_BUTTON} onClick={() => download("oewer_database.xlsx", new Blob([file.bytes as BlobPart], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" }))}>
+                      Download the workbook
+                    </button>
+                    <button type="button" onClick={() => { clearOutcome(); setEditing({ mode: "add" }); }} className={PRIMARY_BUTTON}>
+                      Add row
+                    </button>
+                  </>
+                }
+                toolbar={
+                  <>
+                    <div className="min-w-48 flex-1">
+                      <NumberField label="Search rows" value={query.search} onChange={(v) => { setQuery({ ...query, search: v }); setPageNumber(1); }} />
+                    </div>
+                    <SelectField
+                      label="Filter by"
+                      value={query.filterColumn}
+                      onChange={(v) => { setQuery({ ...query, filterColumn: v, filterValue: "" }); setPageNumber(1); }}
+                      options={[{ value: "", label: "No filter" }, ...filterableColumns(def).map((c) => ({ value: c.name, label: c.name }))]}
+                    />
+                    <SelectField
+                      label="Filter value"
+                      value={query.filterValue}
+                      onChange={(v) => { setQuery({ ...query, filterValue: v }); setPageNumber(1); }}
+                      options={[
+                        { value: "", label: query.filterColumn ? "Any" : "Choose a column first" },
+                        ...(query.filterColumn ? filterOptions(def.columns.find((c) => c.name === query.filterColumn)!, rows, schema.enums).map((v) => ({ value: v, label: v })) : []),
+                      ]}
+                    />
+                    <SelectField
+                      label="Sort by"
+                      value={query.sortColumn}
+                      onChange={(v) => setQuery({ ...query, sortColumn: v })}
+                      options={[{ value: "", label: "Sheet order" }, ...def.columns.map((c) => ({ value: c.name, label: c.name }))]}
+                    />
+                    <label className="flex items-center gap-2 pb-2.5 text-sm">
+                      <input type="checkbox" checked={query.sortDescending} onChange={(e) => setQuery({ ...query, sortDescending: e.target.checked })} />
+                      Descending
+                    </label>
+                  </>
+                }
+                footer={
+                  <nav aria-label="Pages" className="flex w-full items-center justify-between gap-3">
+                    <span>
+                      {view.total} row{view.total === 1 ? "" : "s"} · page {view.page} of {view.pages}
+                    </span>
+                    <span className="flex gap-2">
+                      <button type="button" className={TOOLBAR_BUTTON} disabled={view.page <= 1} onClick={() => setPageNumber(view.page - 1)}>
+                        Previous
                       </button>
-                      {mark && <span className="ml-2 text-xs font-medium text-gold-700">{mark === "added" ? "New" : "Changed"}</span>}
-                    </td>
-                    {def.columns.map((c) => {
-                      const text = cellString(r.values[c.name]);
+                      <button type="button" className={TOOLBAR_BUTTON} disabled={view.page >= view.pages} onClick={() => setPageNumber(view.page + 1)}>
+                        Next
+                      </button>
+                    </span>
+                  </nav>
+                }
+              >
+                {importPlan && (
+                  <div role="status" className="space-y-3 border-b border-slate-200 bg-brand-50 p-5">
+                    {importPlan.errors.length > 0 ? (
+                      <>
+                        <p className="font-medium text-red-800">This file cannot be imported:</p>
+                        <ul className="list-disc space-y-1 pl-6 text-sm text-red-800">
+                          {importPlan.errors.slice(0, 10).map((e, i) => (
+                            <li key={i}>{e}</li>
+                          ))}
+                        </ul>
+                      </>
+                    ) : (
+                      <p>
+                        The file would add <strong>{importPlan.added}</strong>, update <strong>{importPlan.updated}</strong> and leave <strong>{importPlan.unchanged}</strong> row(s) as they are. Rows missing from the file are not deleted.
+                      </p>
+                    )}
+                    <div className="flex gap-2">
+                      {importPlan.errors.length === 0 && importPlan.changes.length > 0 && (
+                        <button
+                          type="button"
+                          className={PRIMARY_BUTTON}
+                          onClick={() => {
+                            changePending(importPlan.changes.reduce((acc, c) => (c.type === "add" ? queueAdd(acc, c.sheet, def.primary_key, c.values) : c.type === "set" ? queueRowEdit(acc, c.sheet, def.primary_key, c.pk, { [c.column]: c.before }, { [c.column]: c.after }) : acc), pending));
+                            setImportPlan(undefined);
+                          }}
+                        >
+                          Add {importPlan.changes.length} change{importPlan.changes.length === 1 ? "" : "s"} to pending
+                        </button>
+                      )}
+                      <button type="button" className={TOOLBAR_BUTTON} onClick={() => setImportPlan(undefined)}>
+                        Dismiss
+                      </button>
+                    </div>
+                  </div>
+                )}
+                <table className="w-full min-w-max text-left text-sm">
+                  <caption className="sr-only">
+                    {sheet}: {view.total} row{view.total === 1 ? "" : "s"}, page {view.page} of {view.pages}
+                  </caption>
+                  <thead>
+                    <tr>
+                      <TH>
+                        <span className="sr-only">Actions</span>
+                      </TH>
+                      {def.columns.map((c) => (
+                        <TH key={c.name}>{c.name}</TH>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {view.items.length === 0 && (
+                      <tr>
+                        <TD colSpan={def.columns.length + 1} className="py-8 text-center text-slate-600">
+                          No rows match.
+                        </TD>
+                      </tr>
+                    )}
+                    {view.items.map((r) => {
+                      const mark = touched.get(r.id);
                       return (
-                        <td key={c.name} title={text.length > 60 ? text : undefined} className="max-w-xs px-3 py-2 align-top">
-                          {shorten(text)}
-                        </td>
+                        <TR key={r.id} marked={Boolean(mark)}>
+                          <TD className="whitespace-nowrap">
+                            <button type="button" className={TOOLBAR_BUTTON} aria-label={`Edit ${r.id}`} onClick={() => { clearOutcome(); setEditing({ mode: "edit", id: r.id }); }}>
+                              Edit
+                            </button>{" "}
+                            <button type="button" className={TOOLBAR_BUTTON} aria-label={`Delete ${r.id}`} onClick={() => changePending(queueDelete(pending, sheet, def.primary_key, r.id))}>
+                              Delete
+                            </button>
+                            {mark && <span className="ml-2"><StatusPill tone="warn">{mark === "added" ? "New" : "Changed"}</StatusPill></span>}
+                          </TD>
+                          {def.columns.map((c) => {
+                            const text = cellString(r.values[c.name]);
+                            return (
+                              <TD key={c.name} title={text.length > 60 ? text : undefined}>
+                                {c.type === "enum" && text ? <StatusPill tone={toneFor(text)}>{text}</StatusPill> : shorten(text)}
+                              </TD>
+                            );
+                          })}
+                        </TR>
                       );
                     })}
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
-
-        <nav aria-label="Pages" className="flex items-center justify-between gap-3 text-sm">
-          <span>
-            {view.total} row{view.total === 1 ? "" : "s"} · page {view.page} of {view.pages}
-          </span>
-          <span className="flex gap-2">
-            <button type="button" className={secondary} disabled={view.page <= 1} onClick={() => setPageNumber(view.page - 1)}>
-              Previous
-            </button>
-            <button type="button" className={secondary} disabled={view.page >= view.pages} onClick={() => setPageNumber(view.page + 1)}>
-              Next
-            </button>
-          </span>
-        </nav>
-      </section>
-
+                  </tbody>
+                </table>
+              </ListShell>
+            </div>
+          )}
         </>
       )}
 
-      <section aria-labelledby="pending-heading" className="rounded-2xl border border-brand-100 bg-white p-6 shadow-soft">
+      <section aria-labelledby="pending-heading" className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
         <h2 id="pending-heading" className="font-display text-2xl font-semibold text-ink">
           Pending changes ({pending.length})
         </h2>
@@ -596,6 +568,7 @@ function RowForm({
   error,
   onSubmit,
   onCancel,
+  position,
 }: {
   sheet: string;
   mode: "add" | "edit";
@@ -604,6 +577,7 @@ function RowForm({
   error?: string;
   onSubmit: (values: Record<string, string>) => void;
   onCancel: () => void;
+  position?: { index: number; total: number; onPrev?: () => void; onNext?: () => void };
 }) {
   const def = schema.sheets[sheet]!;
   const [values, setValues] = useState<Record<string, string>>(() => Object.fromEntries(def.columns.map((c) => [c.name, initial[c.name] ?? ""])));
@@ -613,6 +587,7 @@ function RowForm({
   }, []);
   const set = (name: string, value: string) => setValues((v) => ({ ...v, [name]: value }));
   const id = `row-form-${sheet}`;
+  const title = mode === "add" ? `Add a row to ${sheet}` : `Edit ${initial[def.primary_key]}`;
 
   return (
     <form
@@ -621,49 +596,70 @@ function RowForm({
         e.preventDefault();
         onSubmit(values);
       }}
-      className="space-y-5 rounded-xl border border-gold-500/40 bg-cream p-5"
+      className="space-y-4"
     >
-      <h3 id={`${id}-title`} className="font-display text-xl font-semibold text-ink">
-        {mode === "add" ? `Add a row to ${sheet}` : `Edit ${initial[def.primary_key]}`}
+      <h3 id={`${id}-title`} className="sr-only">
+        {title}
       </h3>
-      <div ref={first} className="grid gap-5 md:grid-cols-2">
-        {def.columns.map((c) => (
-          <Field key={c.name} column={c} value={values[c.name] ?? ""} onChange={(v) => set(c.name, v)} readOnly={mode === "edit" && c.name === def.primary_key} data={data} />
-        ))}
-      </div>
-      {error && (
-        <p role="alert" className="text-red-800">
-          {error}
-        </p>
-      )}
-      <div className="flex gap-2">
-        <button type="submit" className={button}>
-          {mode === "add" ? "Add to pending changes" : "Update pending changes"}
-        </button>
-        <button type="button" onClick={onCancel} className={secondary}>
-          Cancel
-        </button>
+      <FormHeader
+        trail={[{ label: sheet, onClick: onCancel }, { label: mode === "add" ? "New" : (initial[def.primary_key] ?? "") }]}
+        title={title}
+        actions={
+          <>
+            <button type="submit" className={PRIMARY_BUTTON}>
+              {mode === "add" ? "Add to pending changes" : "Update pending changes"}
+            </button>
+            <button type="button" onClick={onCancel} className={TOOLBAR_BUTTON}>
+              Cancel
+            </button>
+          </>
+        }
+        status={position && <RecordPager {...position} />}
+      />
+      <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+        <div ref={first} className="grid gap-x-10 gap-y-4 lg:grid-cols-2">
+          {def.columns.map((c) => (
+            <div key={c.name} className={c.type === "text" ? "lg:col-span-2" : ""}>
+              <Field idBase={id} column={c} value={values[c.name] ?? ""} onChange={(v) => set(c.name, v)} readOnly={mode === "edit" && c.name === def.primary_key} data={data} />
+            </div>
+          ))}
+        </div>
+        {error && (
+          <p role="alert" className="mt-5 text-red-800">
+            {error}
+          </p>
+        )}
       </div>
     </form>
   );
 }
 
-function Field({ column, value, onChange, readOnly, data }: { column: ColumnDef; value: string; onChange: (v: string) => void; readOnly: boolean; data: Parameters<typeof refOptions>[1] }) {
-  const label = `${column.name}${column.required ? " *" : ""}`;
-  if (column.type === "text") return <div className="md:col-span-2"><TextAreaField label={label} value={value} onChange={onChange} rows={4} /></div>;
-  if (column.type === "bool") {
-    return <SelectField label={label} value={value} onChange={onChange} options={[{ value: "", label: "(not set)" }, { value: "true", label: "true" }, { value: "false", label: "false" }]} />;
-  }
-  if (column.type === "enum") {
+function Field({ idBase, column, value, onChange, readOnly, data }: { idBase: string; column: ColumnDef; value: string; onChange: (v: string) => void; readOnly: boolean; data: Parameters<typeof refOptions>[1] }) {
+  const id = `${idBase}-${column.name}`;
+  const label = `${column.name}${column.required ? " *" : ""}${readOnly ? " (cannot be changed)" : ""}`;
+  const hint = column.type === "datetime" ? "UTC, like 2026-10-29T08:30:00Z" : undefined;
+  const select = (options: { value: string; label: string }[]) => (
+    <select id={id} value={value} onChange={(e) => onChange(e.target.value)} className={INPUT}>
+      {options.map((o) => (
+        <option key={o.value} value={o.value}>
+          {o.label}
+        </option>
+      ))}
+    </select>
+  );
+  let control;
+  if (column.type === "text") control = <textarea id={id} rows={4} value={value} onChange={(e) => onChange(e.target.value)} className={INPUT} />;
+  else if (column.type === "bool") control = select([{ value: "", label: "(not set)" }, { value: "true", label: "true" }, { value: "false", label: "false" }]);
+  else if (column.type === "enum") {
     const options = schema.enums[column.enum ?? ""] ?? [];
-    return <SelectField label={label} value={value} onChange={onChange} options={[...(column.required ? [] : [{ value: "", label: "(none)" }]), ...(value && !options.includes(value) ? [{ value, label: value }] : []), ...options.map((o) => ({ value: o, label: o }))]} />;
-  }
-  if (column.type === "ref") {
+    control = select([...(column.required ? [] : [{ value: "", label: "(none)" }]), ...(value && !options.includes(value) ? [{ value, label: value }] : []), ...options.map((o) => ({ value: o, label: o }))]);
+  } else if (column.type === "ref") {
     const options = refOptions(column, data);
-    return <SelectField label={label} value={value} onChange={onChange} options={[{ value: "", label: "(none)" }, ...(value && !options.includes(value) ? [{ value, label: value }] : []), ...options.map((o) => ({ value: o, label: o }))]} />;
-  }
-  if (readOnly) {
-    return <NumberField label={`${label} (cannot be changed)`} value={value} onChange={() => undefined} readOnly />;
-  }
-  return <NumberField label={label} value={value} onChange={onChange} hint={column.type === "datetime" ? "UTC, like 2026-10-29T08:30:00Z" : undefined} />;
+    control = select([{ value: "", label: "(none)" }, ...(value && !options.includes(value) ? [{ value, label: value }] : []), ...options.map((o) => ({ value: o, label: o }))]);
+  } else control = <input id={id} type="text" autoComplete="off" value={value} readOnly={readOnly} onChange={(e) => onChange(e.target.value)} aria-describedby={hint ? `${id}-hint` : undefined} className={`${INPUT} ${readOnly ? "bg-slate-50 text-slate-600" : ""}`} />;
+  return (
+    <FormRow id={id} label={label} hint={hint}>
+      {control}
+    </FormRow>
+  );
 }

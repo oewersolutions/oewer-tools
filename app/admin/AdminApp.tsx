@@ -5,10 +5,14 @@ import { NumberField } from "../../components/tools/ui";
 import { GithubError, parseRepo, readWorkbookFile, verifySession, type GithubSession } from "../../lib/admin/github";
 import { EditError } from "../../lib/admin/edit";
 import { checkWorkbook, formatIssue, type Issue, type WorkbookData } from "../../lib/workbook";
+import { rebuildSite } from "../../lib/admin/actions";
+import AdminShell, { type MenuId } from "./AdminShell";
 import BuildStatus from "./BuildStatus";
+import Users from "./Users";
+import { Card } from "./views";
 import Dashboard from "./Dashboard";
 import History from "./History";
-import Manager from "./Manager";
+import Manager, { type View } from "./Manager";
 import { absoluteUrl } from "../../lib/seo";
 
 const WORKBOOK_PATH = "data/oewer_database.xlsx";
@@ -64,7 +68,6 @@ interface Loaded {
 }
 
 const button = "rounded-xl bg-brand px-5 py-2.5 font-medium text-white shadow-soft transition hover:bg-brand-700 disabled:opacity-50";
-const secondary = "rounded-xl border border-brand px-5 py-2.5 font-medium text-brand transition hover:bg-brand-50 disabled:opacity-50";
 
 function describe(e: unknown): string {
   if (e instanceof GithubError || e instanceof EditError) return e.message;
@@ -216,7 +219,7 @@ export default function AdminApp({ defaultRepo, defaultBranch }: { defaultRepo: 
           e.preventDefault();
           void signIn();
         }}
-        className="max-w-xl space-y-5 rounded-2xl border border-brand-100 bg-white p-6 shadow-soft"
+        className="max-w-xl space-y-5 rounded-xl border border-slate-200 bg-white p-5 shadow-sm"
       >
         <NumberField label="Repository (owner/name)" value={repoText} onChange={setRepoText} />
         <NumberField label="Branch" value={branch} onChange={setBranch} />
@@ -234,7 +237,7 @@ export default function AdminApp({ defaultRepo, defaultBranch }: { defaultRepo: 
             className="mt-1.5 block w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 font-mono text-base shadow-sm"
           />
           <p className="mt-2 text-sm text-slate-700">
-            Use a fine-grained token limited to this one repository, with <strong>Contents: Read and write</strong>, plus <strong>Actions: Read</strong> if you want to see whether the site has been updated after a save. Nothing else is needed. It stays in this page only and is forgotten when you sign out, after 30 minutes without activity, or when you close the tab.
+            Use a fine-grained token limited to this one repository, with <strong>Contents: Read and write</strong>, plus <strong>Actions: Read and write</strong> to see site updates and use <em>Rebuild site</em>, and <strong>Administration: Read and write</strong> only if you will add or remove users. Nothing else is needed. It stays in this page only and is forgotten when you sign out, after 30 minutes without activity, or when you close the tab.
           </p>
           <label className="mt-3 flex items-start gap-2 text-sm text-slate-800">
             <input type="checkbox" checked={keep} onChange={(e) => setKeep(e.target.checked)} className="mt-1" />
@@ -261,6 +264,8 @@ export default function AdminApp({ defaultRepo, defaultBranch }: { defaultRepo: 
   return <Workbook loaded={loaded} setLoaded={setLoaded} busy={busy} error={error} setError={setError} onReload={reload} onSignOut={signOut} />;
 }
 
+const EDITOR_VIEWS: Partial<Record<MenuId, View>> = { articles: "articles", tools: "tools", categories: "categories", seo: "seo", ads: "ads", sheets: "sheets" };
+
 function Workbook({
   loaded,
   setLoaded,
@@ -278,70 +283,118 @@ function Workbook({
   onSignOut: () => void;
 }) {
   const [watchSha, setWatchSha] = useState<string>();
+  const [menu, setMenu] = useState<MenuId>("dashboard");
+  const [lastEditor, setLastEditor] = useState<MenuId>("articles");
+  const [pending, setPending] = useState(0);
+  const [rebuilding, setRebuilding] = useState(false);
+  const [rebuildNote, setRebuildNote] = useState<{ ok: boolean; text: string }>();
+  const [tick, setTick] = useState(0);
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
   const siteSetting = (loaded.data.site_settings ?? []).find((r) => r.values.setting_key === "site_url");
   const siteUrl = absoluteUrl(process.env.NEXT_PUBLIC_SITE_URL || String(siteSetting?.values.setting_value ?? "https://example.com"), basePath, "/");
+  const editorView = EDITOR_VIEWS[menu];
+
+  const navigate = (id: MenuId) => {
+    setMenu(id);
+    if (EDITOR_VIEWS[id]) setLastEditor(id);
+  };
+
+  async function rebuild() {
+    setRebuilding(true);
+    setRebuildNote(undefined);
+    try {
+      await rebuildSite(loaded.session);
+      setRebuildNote({ ok: true, text: "The site is being rebuilt. This usually takes a minute or two; the status below updates by itself." });
+      setTimeout(() => setTick((t) => t + 1), 4000); // give GitHub a moment to queue the run before looking for it
+    } catch (e) {
+      setRebuildNote({ ok: false, text: describe(e) });
+    } finally {
+      setRebuilding(false);
+    }
+  }
 
   return (
-    <div className="space-y-8">
-      <section aria-labelledby="wb-heading" className="rounded-2xl border border-brand-100 bg-white p-6 shadow-soft">
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <h2 id="wb-heading" className="font-display text-2xl font-semibold text-ink">
-            Signed in to {loaded.session.owner}/{loaded.session.repo}
-          </h2>
-          <div className="flex gap-2">
-            <button type="button" onClick={onReload} disabled={busy} className={secondary}>
-              Reload
-            </button>
-            <button type="button" onClick={onSignOut} className={secondary}>
-              Sign out
-            </button>
-          </div>
+    <AdminShell
+      active={menu}
+      onNavigate={navigate}
+      repoName={`${loaded.session.owner}/${loaded.session.repo}`}
+      version={loaded.sha.slice(0, 7)}
+      pending={pending}
+      onShowPending={() => navigate(lastEditor)}
+      onRebuild={() => void rebuild()}
+      rebuilding={rebuilding}
+      onReload={onReload}
+      onSignOut={onSignOut}
+      busy={busy}
+    >
+      <div className="space-y-5">
+        {rebuildNote && (
+          <p role={rebuildNote.ok ? "status" : "alert"} className={`rounded-xl border px-4 py-3 text-sm font-medium ${rebuildNote.ok ? "border-brand-200 bg-brand-50 text-brand-900" : "border-red-200 bg-red-50 text-red-900"}`}>
+            {rebuildNote.text}
+          </p>
+        )}
+
+        {menu === "dashboard" && (
+          <>
+            <Card>
+              <h2 id="wb-heading" className="font-display text-lg font-semibold text-ink">
+                Signed in to {loaded.session.owner}/{loaded.session.repo}
+              </h2>
+              <p className="mt-1 text-sm text-slate-600">
+                Branch <strong>{loaded.session.branch}</strong> · {loaded.session.path} · version <code>{loaded.sha.slice(0, 7)}</code> · {(loaded.bytes.length / 1024).toFixed(1)} KB
+              </p>
+              {error && (
+                <p role="alert" className="mt-3 text-red-800">
+                  {error}
+                </p>
+              )}
+              {!loaded.canPush && (
+                <p role="status" className="mt-3 rounded-lg bg-gold-300/30 p-3 text-sm">
+                  This token can only read the repository, so changes cannot be saved. Create a token with <strong>Contents: Read and write</strong>.
+                </p>
+              )}
+              <p role="status" className={`mt-3 text-sm font-medium ${loaded.issues.length === 0 ? "text-brand" : "text-red-800"}`}>
+                {loaded.issues.length === 0 ? "The workbook is valid." : `The workbook has ${loaded.issues.length} problem(s):`}
+              </p>
+              {loaded.issues.length > 0 && (
+                <ul className="mt-2 list-disc space-y-1 pl-6 text-sm text-red-800">
+                  {loaded.issues.slice(0, 10).map((i, n) => (
+                    <li key={n}>{formatIssue(i)}</li>
+                  ))}
+                </ul>
+              )}
+            </Card>
+            <Dashboard session={loaded.session} data={loaded.data} refreshKey={`${loaded.sha}:${tick}`} onNavigate={navigate} onRebuild={() => void rebuild()} rebuilding={rebuilding} />
+          </>
+        )}
+
+        {menu === "status" && <BuildStatus key={tick} session={loaded.session} watchSha={watchSha} siteUrl={siteUrl} />}
+
+        {menu === "history" && (
+          <History
+            session={loaded.session}
+            current={{ bytes: loaded.bytes, sha: loaded.sha, size: loaded.bytes.length }}
+            canPush={loaded.canPush}
+            onRestored={async (base, commitSha) => {
+              setWatchSha(commitSha);
+              setLoaded({ ...loaded, bytes: base.bytes, sha: base.sha, ...(await analyse(base.bytes)) });
+            }}
+          />
+        )}
+
+        {menu === "users" && <Users session={loaded.session} canManage={loaded.canPush} />}
+
+        {/* The editor stays mounted while another page is open, so unsaved changes are not lost by looking at the dashboard. */}
+        <div hidden={!editorView}>
+          <Manager
+            tab={editorView ?? EDITOR_VIEWS[lastEditor]!}
+            onPendingCount={setPending}
+            onPublished={setWatchSha}
+            file={{ session: loaded.session, canPush: loaded.canPush, bytes: loaded.bytes, sha: loaded.sha, data: loaded.data, issues: loaded.issues }}
+            onSaved={async (base) => setLoaded({ ...loaded, bytes: base.bytes, sha: base.sha, ...(await analyse(base.bytes)) })}
+          />
         </div>
-        <p className="mt-2 text-sm text-slate-700">
-          Branch <strong>{loaded.session.branch}</strong> · {loaded.session.path} · version <code>{loaded.sha.slice(0, 7)}</code> · {(loaded.bytes.length / 1024).toFixed(1)} KB
-        </p>
-        {error && (
-          <p role="alert" className="mt-3 text-red-800">
-            {error}
-          </p>
-        )}
-        {!loaded.canPush && (
-          <p role="status" className="mt-3 rounded-lg bg-gold-300/30 p-3 text-sm">
-            This token can only read the repository, so changes cannot be saved. Create a token with <strong>Contents: Read and write</strong>.
-          </p>
-        )}
-        <p role="status" className={`mt-3 font-medium ${loaded.issues.length === 0 ? "text-brand" : "text-red-800"}`}>
-          {loaded.issues.length === 0 ? "The workbook is valid." : `The workbook has ${loaded.issues.length} problem(s):`}
-        </p>
-        {loaded.issues.length > 0 && (
-          <ul className="mt-2 list-disc space-y-1 pl-6 text-sm text-red-800">
-            {loaded.issues.slice(0, 10).map((i, n) => (
-              <li key={n}>{formatIssue(i)}</li>
-            ))}
-          </ul>
-        )}
-      </section>
-
-      <Dashboard session={loaded.session} data={loaded.data} refreshKey={loaded.sha} />
-
-      <BuildStatus session={loaded.session} watchSha={watchSha} siteUrl={siteUrl} />
-
-      <History
-        session={loaded.session}
-        current={{ bytes: loaded.bytes, sha: loaded.sha, size: loaded.bytes.length }}
-        canPush={loaded.canPush}
-        onRestored={async (base, commitSha) => {
-          setWatchSha(commitSha);
-          setLoaded({ ...loaded, bytes: base.bytes, sha: base.sha, ...(await analyse(base.bytes)) });
-        }}
-      />
-
-      <Manager
-        onPublished={setWatchSha}
-        file={{ session: loaded.session, canPush: loaded.canPush, bytes: loaded.bytes, sha: loaded.sha, data: loaded.data, issues: loaded.issues }}
-        onSaved={async (base) => setLoaded({ ...loaded, bytes: base.bytes, sha: base.sha, ...(await analyse(base.bytes)) })}
-      />
-    </div>
+      </div>
+    </AdminShell>
   );
 }

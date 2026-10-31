@@ -68,7 +68,7 @@ export default function BuildStatus({ session, watchSha, siteUrl }: { session: G
             : "No site updates have run yet.";
 
   return (
-    <section aria-labelledby="status-heading" className="rounded-2xl border border-brand-100 bg-white p-6 shadow-soft">
+    <section aria-labelledby="status-heading" className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <h2 id="status-heading" className="font-display text-2xl font-semibold text-ink">
           Site status

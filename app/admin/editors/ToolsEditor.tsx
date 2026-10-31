@@ -52,13 +52,13 @@ export default function ToolsEditor({ data, onApply }: { data: WorkbookData; onA
         />
       )}
 
-      <div className="overflow-x-auto rounded-xl border border-brand-100">
+      <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white">
         <table className="w-full text-left text-sm">
           <caption className="sr-only">Tools</caption>
-          <thead className="bg-brand-50 text-brand-900">
+          <thead className="bg-white text-xs uppercase tracking-wide text-slate-500">
             <tr>
               {["Tool", "Category", "Status", ""].map((h, i) => (
-                <th key={i} scope="col" className="px-3 py-2 font-semibold">
+                <th key={i} scope="col" className="border-b border-slate-200 px-4 py-3 font-semibold">
                   {h || <span className="sr-only">Actions</span>}
                 </th>
               ))}
@@ -66,11 +66,11 @@ export default function ToolsEditor({ data, onApply }: { data: WorkbookData; onA
           </thead>
           <tbody>
             {tools.map((t) => (
-              <tr key={t.id} className="border-t border-brand-100">
-                <td className="px-3 py-2 font-medium">{cellString(t.values.name)}</td>
-                <td className="px-3 py-2">{categoryName(cellString(t.values.category_id))}</td>
-                <td className="px-3 py-2">{cellString(t.values.status)}</td>
-                <td className="px-3 py-2 text-right">
+              <tr key={t.id} className="border-t border-slate-100 transition hover:bg-slate-50">
+                <td className="px-4 py-3 font-medium">{cellString(t.values.name)}</td>
+                <td className="px-4 py-3">{categoryName(cellString(t.values.category_id))}</td>
+                <td className="px-4 py-3">{cellString(t.values.status)}</td>
+                <td className="px-4 py-3 text-right">
                   <button type="button" className={smallButton} aria-label={`Edit tool ${cellString(t.values.name)}`} onClick={() => setEditing(t.id)}>
                     Edit
                   </button>

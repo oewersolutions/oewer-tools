@@ -9,6 +9,7 @@ import { PostBody } from "../../../components/Prose";
 import { readingMinutes } from "../../../lib/format";
 import { slugify, statusNotice } from "../../../lib/posts";
 import { schema, type WorkbookData } from "../../../lib/workbook";
+import { StatusPill, toneFor } from "../views";
 import ImageUpload from "./ImageUpload";
 import { CheckGroup, FormShell, primaryButton, Section, SelectField, SeoFields, smallButton, TextAreaField, TextField } from "./parts";
 
@@ -50,13 +51,13 @@ export default function PostsEditor({ data, onApply, session, canPush }: { data:
         />
       )}
 
-      <div className="overflow-x-auto rounded-xl border border-brand-100">
+      <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white">
         <table className="w-full text-left text-sm">
           <caption className="sr-only">Articles</caption>
-          <thead className="bg-brand-50 text-brand-900">
+          <thead className="bg-white text-xs uppercase tracking-wide text-slate-500">
             <tr>
               {["Title", "Status", "Published", ""].map((h, i) => (
-                <th key={i} scope="col" className="px-3 py-2 font-semibold">
+                <th key={i} scope="col" className="border-b border-slate-200 px-4 py-3 font-semibold">
                   {h || <span className="sr-only">Actions</span>}
                 </th>
               ))}
@@ -64,11 +65,11 @@ export default function PostsEditor({ data, onApply, session, canPush }: { data:
           </thead>
           <tbody>
             {posts.map((p) => (
-              <tr key={p.id} className="border-t border-brand-100">
-                <td className="px-3 py-2 font-medium">{cellString(p.values.title)}</td>
-                <td className="px-3 py-2">{cellString(p.values.status)}</td>
-                <td className="px-3 py-2">{cellString(p.values.published_at).slice(0, 10)}</td>
-                <td className="px-3 py-2 text-right">
+              <tr key={p.id} className="border-t border-slate-100 transition hover:bg-slate-50">
+                <td className="px-4 py-3 font-medium">{cellString(p.values.title)}</td>
+                <td className="px-4 py-3"><StatusPill tone={toneFor(cellString(p.values.status))}>{cellString(p.values.status)}</StatusPill></td>
+                <td className="px-4 py-3">{cellString(p.values.published_at).slice(0, 10)}</td>
+                <td className="px-4 py-3 text-right">
                   <button type="button" className={smallButton} aria-label={`Edit article ${cellString(p.values.title)}`} onClick={() => setEditing(p.id)}>
                     Edit
                   </button>

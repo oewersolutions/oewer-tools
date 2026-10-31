@@ -87,3 +87,20 @@ export function explainFailure(steps: string[]): string {
   if (has(/deploy|pages/i)) return "The site was built but could not be published. Check that GitHub Pages is set to deploy from GitHub Actions in the repository settings.";
   return "The update failed, so the live site was left as it was. Open the run for details.";
 }
+
+const NO_DISPATCH = "The token cannot start a site update. Add the Actions: Read and write permission to it, then sign in again.";
+
+/** Start the deploy workflow by hand on the session's branch: the same build a save triggers, without needing a new commit. */
+export async function rebuildSite(session: GithubSession, doFetch?: typeof fetch): Promise<void> {
+  try {
+    await githubCall(
+      session,
+      `https://api.github.com/repos/${encodeURIComponent(session.owner)}/${encodeURIComponent(session.repo)}/actions/workflows/${DEPLOY_WORKFLOW}/dispatches`,
+      { method: "POST", body: JSON.stringify({ ref: session.branch }) },
+      doFetch,
+    );
+  } catch (e) {
+    if (e instanceof GithubError && (e.kind === "forbidden" || e.kind === "not_found")) throw new GithubError("forbidden", NO_DISPATCH, e.status);
+    throw e;
+  }
+}

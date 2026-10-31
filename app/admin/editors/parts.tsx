@@ -7,9 +7,9 @@ import type { SeoForm } from "../../../lib/admin/forms";
 export { TextField };
 export { SelectField, TextAreaField } from "../../../components/tools/ui";
 
-export const primaryButton = "rounded-xl bg-brand px-5 py-2.5 font-medium text-white shadow-soft transition hover:bg-brand-700 disabled:opacity-50";
-export const secondaryButton = "rounded-xl border border-brand px-4 py-2 text-sm font-medium text-brand transition hover:bg-brand-50 disabled:opacity-50";
-export const smallButton = "rounded-lg border border-brand-200 px-2.5 py-1 text-sm font-medium text-brand-800 transition hover:bg-brand-50 disabled:opacity-40";
+export const primaryButton = "rounded-lg bg-brand px-4 py-2 text-sm font-medium text-white shadow-sm transition hover:bg-brand-700 disabled:opacity-50";
+export const secondaryButton = "rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-800 transition hover:bg-slate-50 disabled:opacity-50";
+export const smallButton = "rounded-lg border border-slate-300 bg-white px-2.5 py-1 text-sm font-medium text-slate-800 transition hover:bg-slate-50 disabled:opacity-40";
 
 export function Checkbox({ label, checked, onChange }: { label: string; checked: boolean; onChange: (v: boolean) => void }) {
   return (
@@ -37,6 +37,16 @@ export function CheckGroup({ legend, options, selected, onChange, empty }: { leg
 
 export function FormShell({ title, onSubmit, onCancel, submitLabel, error, children }: { title: string; onSubmit: () => void; onCancel: () => void; submitLabel: string; error?: string; children: ReactNode }) {
   const id = useId();
+  const actions = (
+    <>
+      <button type="submit" className={primaryButton}>
+        {submitLabel}
+      </button>
+      <button type="button" onClick={onCancel} className={secondaryButton}>
+        Cancel
+      </button>
+    </>
+  );
   return (
     <form
       aria-labelledby={`${id}-t`}
@@ -44,24 +54,21 @@ export function FormShell({ title, onSubmit, onCancel, submitLabel, error, child
         e.preventDefault();
         onSubmit();
       }}
-      className="space-y-6 rounded-xl border border-gold-500/40 bg-cream p-5"
+      className="space-y-4"
     >
-      <h3 id={`${id}-t`} className="font-display text-xl font-semibold text-ink">
-        {title}
-      </h3>
-      {children}
-      {error && (
-        <p role="alert" className="text-red-800">
-          {error}
-        </p>
-      )}
-      <div className="flex gap-2">
-        <button type="submit" className={primaryButton}>
-          {submitLabel}
-        </button>
-        <button type="button" onClick={onCancel} className={secondaryButton}>
-          Cancel
-        </button>
+      <div className="flex flex-wrap items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-3 shadow-sm">
+        <h3 id={`${id}-t`} className="mr-auto font-display text-lg font-semibold text-ink">
+          {title}
+        </h3>
+        {actions}
+      </div>
+      <div className="space-y-6 rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+        {children}
+        {error && (
+          <p role="alert" className="text-red-800">
+            {error}
+          </p>
+        )}
       </div>
     </form>
   );
@@ -69,8 +76,8 @@ export function FormShell({ title, onSubmit, onCancel, submitLabel, error, child
 
 export function Section({ title, children }: { title: string; children: ReactNode }) {
   return (
-    <section className="space-y-4 border-t border-brand-100 pt-5">
-      <h4 className="text-sm font-semibold uppercase tracking-wider text-brand-600">{title}</h4>
+    <section className="space-y-4 border-t border-slate-100 pt-5">
+      <h4 className="text-sm font-semibold uppercase tracking-wider text-slate-500">{title}</h4>
       {children}
     </section>
   );
