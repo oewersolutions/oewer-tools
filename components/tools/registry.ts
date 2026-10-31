@@ -1,4 +1,8 @@
 import type { ComponentType } from "react";
+import ColourConverter from "./ColourConverter";
+import JwtDecoder from "./JwtDecoder";
+import RegexTester from "./RegexTester";
+import TimestampConverter from "./TimestampConverter";
 import Base64Tool from "./Base64Tool";
 import HashGenerator from "./HashGenerator";
 import UrlEncoderTool from "./UrlEncoderTool";
@@ -48,6 +52,10 @@ export const toolComponents: { [K in ToolComponentKey]: ComponentType } = {
   "url-encoder-decoder": UrlEncoderTool,
   "uuid-generator": UuidGenerator,
   "hash-generator": HashGenerator,
+  "colour-converter": ColourConverter,
+  "timestamp-converter": TimestampConverter,
+  "regex-tester": RegexTester,
+  "jwt-decoder": JwtDecoder,
   "percentage-calculator": PercentageCalculator,
   "image-compressor": ImageCompressor,
   "image-resizer": ImageResizer,

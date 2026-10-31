@@ -54,6 +54,9 @@ const TEXT_TOOLS: [path: string, label: string, text: string][] = [
   ["/tools/developer-tools/base64-encoder-decoder/", "Your text", "private base64 secret 9911"],
   ["/tools/developer-tools/url-encoder-decoder/", "Your text or URL", "https://private.example/?token=zz9911"],
   ["/tools/developer-tools/hash-generator/", "Your text", "private hash input 9911"],
+  ["/tools/developer-tools/regex-tester/", "Text to test", "private regex subject 7733"],
+  ["/tools/developer-tools/jwt-decoder/", "Your token", "eyJzZWNyZXQiOiI3NzMzIn0.eyJzZWNyZXQiOiI3NzMzIn0.c2VjcmV0"],
+  ["/tools/developer-tools/colour-converter/", "Type a colour", "#7733aa"],
   ["/tools/utilities/qr-code-generator/", "Text or link", "https://private.example/token=abc123"],
 ];
 for (const [path, label, text] of TEXT_TOOLS) {

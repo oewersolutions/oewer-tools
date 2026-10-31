@@ -288,9 +288,12 @@ export function TextAreaField({
 export function CopyButton({
   text,
   label = "Copy",
+  insideStatus = false,
 }: {
   text: string;
   label?: string;
+  /** Set when the button sits inside a live region that already announces changes, so it adds none of its own. */
+  insideStatus?: boolean;
 }) {
   const [state, setState] = useState<"idle" | "copied" | "failed">("idle");
   return (
@@ -311,7 +314,7 @@ export function CopyButton({
       >
         {label}
       </button>
-      <span role="status" className="ml-2 text-sm text-slate-700">
+      <span role={insideStatus ? undefined : "status"} className="ml-2 text-sm text-slate-700">
         {state === "copied"
           ? "Copied"
           : state === "failed"

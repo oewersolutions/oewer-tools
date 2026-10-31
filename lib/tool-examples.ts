@@ -68,6 +68,14 @@ export function toolExample(componentKey: string): ToolExample | null {
       return { note: "Random version 4 and 7", value: "Unique IDs" };
     case "hash-generator":
       return { note: "SHA-1, SHA-256, SHA-384, SHA-512", value: "Hashes" };
+    case "colour-converter":
+      return { note: "HEX, RGB and HSL", value: "#1a73e8" };
+    case "timestamp-converter":
+      return { note: "Unix time and dates", value: "1700000000" };
+    case "regex-tester":
+      return { note: "Matches, groups, safe timeout", value: "\\d+" };
+    case "jwt-decoder":
+      return { note: "Read a token's header and payload", value: "JWT" };
     case "percentage-calculator":
       return { note: "15% of 2,000", value: "300" };
     case "image-compressor":

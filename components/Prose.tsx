@@ -52,7 +52,7 @@ export function Inline({ text }: { text: string }) {
 }
 
 const PROSE =
-  "max-w-prose space-y-5 text-[1.0625rem] leading-[1.85] text-ink-2";
+  "max-w-prose space-y-5 text-[1.0625rem] leading-[1.85] text-ink-2 [overflow-wrap:anywhere]";
 const H2 = "t-heading mt-12 text-ink";
 const H3 = "t-subheading mt-8 text-ink";
 const UL = "list-disc space-y-2 pl-6 marker:text-brand";

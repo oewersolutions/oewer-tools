@@ -19,6 +19,11 @@ const BASE64 = "/tools/developer-tools/base64-encoder-decoder/";
 const URLTOOL = "/tools/developer-tools/url-encoder-decoder/";
 const UUID = "/tools/developer-tools/uuid-generator/";
 const HASH = "/tools/developer-tools/hash-generator/";
+const COLOUR = "/tools/developer-tools/colour-converter/";
+const TIMESTAMP = "/tools/developer-tools/timestamp-converter/";
+const REGEX = "/tools/developer-tools/regex-tester/";
+const JWT = "/tools/developer-tools/jwt-decoder/";
+const SAMPLE_JWT = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c";
 const COMPRESSOR = "/tools/image-tools/image-compressor/";
 const RESIZER = "/tools/image-tools/image-resizer/";
 const CONVERTER = "/tools/image-tools/image-converter/";
@@ -249,6 +254,72 @@ test("hash tool gives the known SHA values and checks a pasted hash", async ({ p
   await expect(page.getByText("Matches the SHA-256 hash of your text.")).toBeVisible();
   await page.getByLabel(/Compare with a hash/).fill("deadbeef");
   await expect(page.getByText("Does not match any of the hashes above.")).toBeVisible();
+});
+
+test("colour converter converts between formats and reports contrast", async ({ page }) => {
+  test.skip(!published.has(COLOUR), "Colour converter is not published");
+  await page.goto(COLOUR);
+  const status = page.getByRole("status");
+  await expect(status).toContainText("rgb(26, 115, 232)");
+  await expect(status).toContainText("hsl(214, 82%, 51%)");
+  await page.getByLabel("Type a colour").fill("hsl(0, 100%, 50%)");
+  await expect(status).toContainText("#ff0000");
+  await page.getByLabel("Type a colour").fill("#767676");
+  await expect(status).toContainText("4.54:1");
+  await page.getByLabel("Type a colour").fill("nonsense");
+  await expect(page.getByText("That is not a colour I can read.")).toBeVisible();
+});
+
+test("timestamp converter reads seconds and milliseconds and builds a timestamp", async ({ page }) => {
+  test.skip(!published.has(TIMESTAMP), "Timestamp converter is not published");
+  await page.goto(TIMESTAMP);
+  await page.getByLabel("Unix timestamp", { exact: true }).fill("1700000000");
+  const status = page.getByRole("status");
+  await expect(status).toContainText("22:13:20");
+  await expect(status).toContainText("03:43:20");
+  await expect(status).toContainText("2023-11-14T22:13:20.000Z");
+  await page.getByLabel("Unix timestamp", { exact: true }).fill("1700000000000");
+  await expect(status).toContainText("2023-11-14T22:13:20.000Z");
+  await page.getByLabel("Unix timestamp", { exact: true }).fill("abc");
+  await expect(page.getByText("Enter a timestamp as a number")).toBeVisible();
+  await page.getByLabel("Convert", { exact: true }).selectOption("to-timestamp");
+  await page.getByLabel("Date and time", { exact: true }).fill("2023-11-14T22:13:20");
+  await expect(status).toContainText("1700000000");
+});
+
+test("regex tester shows matches and groups, explains errors, and stops a runaway pattern", async ({ page, browserName }) => {
+  test.skip(!published.has(REGEX), "Regex tester is not published");
+  await page.goto(REGEX);
+  await expect(page.getByText("2 matches")).toBeVisible();
+  await expect(page.getByRole("region", { name: "Match details" })).toContainText("2026-03-14");
+  await page.getByLabel("Regular expression").fill("(");
+  await expect(page.getByText("Not a valid expression")).toBeVisible();
+  // Safari's engine runs this classic slow pattern quickly, so the stop-after-a-timeout step is only checked where the pattern really is slow.
+  if (browserName === "chromium") {
+    await page.getByLabel("Regular expression").fill("(a+)+$");
+    await page.getByLabel("Text to test").fill("a".repeat(60) + "!");
+    await expect(page.getByText("took too long and was stopped")).toBeVisible({ timeout: 10_000 });
+  }
+  await page.getByLabel("Regular expression").fill("a");
+  await page.getByLabel("Text to test").fill("banana");
+  await page.getByLabel(/g: find all/).uncheck();
+  await expect(page.getByText("1 match")).toBeVisible();
+});
+
+test("JWT decoder shows the parts and the times, and warns about unsigned tokens", async ({ page }) => {
+  test.skip(!published.has(JWT), "JWT decoder is not published");
+  await page.goto(JWT);
+  await page.getByLabel("Your token").fill(SAMPLE_JWT);
+  await expect(page.getByText("Decoded. The signature has not been checked.")).toBeVisible();
+  await expect(page.getByRole("region", { name: "Payload" })).toContainText("John Doe");
+  await expect(page.getByRole("region", { name: "Header" })).toContainText("HS256");
+  await expect(page.getByRole("region", { name: "Times in the token" })).toContainText("18 Jan 2018");
+  const none = Buffer.from('{"alg":"none"}').toString("base64url") + "." + Buffer.from('{"exp":1}').toString("base64url") + ".";
+  await page.getByLabel("Your token").fill(none);
+  await expect(page.getByText("this token is not signed")).toBeVisible();
+  await expect(page.getByText("Expired")).toBeVisible();
+  await page.getByLabel("Your token").fill("a.b");
+  await expect(page.getByText("three parts separated by dots")).toBeVisible();
 });
 
 test("image compressor makes a WebP and offers a download", async ({ page, browserName }) => {

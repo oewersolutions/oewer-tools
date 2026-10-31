@@ -1,0 +1,361 @@
+{
+ "date": "2026-10-31",
+ "articles": [
+  {
+   "title": "HEX, RGB and HSL Colours: How They Relate",
+   "category": "How-To",
+   "excerpt": "How HEX, RGB and HSL describe the same colour, how to convert between them, and how to check that text colours have enough contrast to read.",
+   "tags": [
+    "colour",
+    "css",
+    "accessibility"
+   ],
+   "blocks": [
+    [
+     "paragraph",
+     "A colour on a screen can be written in several ways, and a web designer meets three of them every day: HEX, RGB and HSL. They describe the same thing in different words. This guide explains how each one works, how to convert between them by hand, and how to check whether a text colour has enough contrast to be read comfortably."
+    ],
+    [
+     "heading",
+     "RGB: three amounts of light"
+    ],
+    [
+     "paragraph",
+     "Screens make colours by mixing red, green and blue light. RGB writes the amount of each as a number from 0 to 255. rgb(255, 0, 0) is full red with no green or blue. rgb(0, 0, 0) is black, because there is no light, and rgb(255, 255, 255) is white. The modern CSS form leaves out the commas, as in rgb(26 115 232), and also accepts percentages, with 100% meaning 255."
+    ],
+    [
+     "heading",
+     "HEX: the same numbers in base 16"
+    ],
+    [
+     "paragraph",
+     "A hex code is RGB with each number written in base 16, two digits per channel. The channel value 26 is 1a, 115 is 73 and 232 is e8, so rgb(26, 115, 232) is #1a73e8. The digits run from 0 to 9 and then a to f, so the largest channel value, 255, is ff. A three-digit code is shorthand that doubles each digit, so #f09 means #ff0099. Four- and eight-digit codes add a final pair for transparency, where 00 is fully transparent and ff is fully opaque."
+    ],
+    [
+     "paragraph",
+     "Because HEX and RGB hold exactly the same information, converting between them never loses anything. Letter case does not matter in a hex code, so #1A73E8 and #1a73e8 are the same colour."
+    ],
+    [
+     "heading",
+     "HSL: hue, saturation and lightness"
+    ],
+    [
+     "paragraph",
+     "HSL describes the same colours in a way that fits how people talk about them. Hue is an angle around the colour wheel from 0 to 360 degrees: red is at 0, green at 120 and blue at 240, and the angle wraps around, so 360 is red again. Saturation is how vivid the colour is, from grey at 0 percent to the purest colour at 100. Lightness runs from black at 0 percent through the pure colour at 50 to white at 100."
+    ],
+    [
+     "paragraph",
+     "The same blue is hsl(214, 82%, 51%). To make a darker button for a hover state, you only lower the lightness, to perhaps 42 percent, and keep the hue the same. Doing the same in RGB means changing all three numbers. This is the main reason designers like HSL. It is a transformation of RGB, not a different colour system, and its values depend on the screen's primaries, so the same numbers can look slightly different on different devices. It is also not perceptually even: two colours with the same lightness number do not always look equally light."
+    ],
+    [
+     "heading",
+     "Converting by hand"
+    ],
+    [
+     "paragraph",
+     "To convert RGB to HSL, divide each channel by 255, then find the largest and smallest of the three. Lightness is the average of those two. If they are equal the colour is grey and the hue is 0. Otherwise saturation depends on the gap between them, and the hue depends on which channel is the largest. For rgb(26, 115, 232) the blue channel is largest, the gap is 206 out of 255, and the result is a hue of about 214 degrees, saturation of 82 percent and lightness of 51 percent. The converter on this site does this for you and rounds to whole numbers."
+    ],
+    [
+     "heading",
+     "Checking contrast for text"
+    ],
+    [
+     "paragraph",
+     "Colours also have to be readable. The Web Content Accessibility Guidelines (WCAG) measure this with a contrast ratio between 1:1, for identical colours, and 21:1, for black on white. For level AA, normal text needs a ratio of at least 4.5:1, and large text, which is 18 point or larger or 14 point bold, needs 3:1. The stricter AAA level asks for 7:1 for normal text and 4.5:1 for large text."
+    ],
+    [
+     "paragraph",
+     "The ratio is worked out from relative luminance, which is 0.2126 times the red, 0.7152 times the green and 0.0722 times the blue, after each channel is converted from its screen value to a linear one. The ratio is the lighter luminance plus 0.05, divided by the darker luminance plus 0.05. Green has the largest weight because the eye is most sensitive to it. The grey #767676 on white scores about 4.54:1, the lightest plain grey that passes AA for normal text."
+    ],
+    [
+     "heading",
+     "Practical tips"
+    ],
+    [
+     "list",
+     "Use HEX when copying a colour between design tools, because it is short and exact.\nUse HSL when you want to make lighter, darker or more muted versions of a colour.\nCheck contrast for every text and background pair, not only the main ones.\nDo not rely on colour alone to carry meaning, such as red for an error with no text or icon.\nRemember that partly transparent colours depend on what is behind them, so their contrast changes with the background."
+    ]
+   ],
+   "sources": [
+    {
+     "title": "Web Content Accessibility Guidelines (WCAG) 2.2 (W3C)",
+     "url": "https://www.w3.org/TR/WCAG22/"
+    },
+    {
+     "title": "CSS color values (MDN Web Docs)",
+     "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/color_value"
+    },
+    {
+     "title": "HSL and HSV (Wikipedia)",
+     "url": "https://en.wikipedia.org/wiki/HSL_and_HSV"
+    }
+   ],
+   "checkedOn": "2026-10-31"
+  },
+  {
+   "title": "Unix Timestamps Explained: Seconds, Milliseconds, Zones",
+   "category": "How-To",
+   "excerpt": "What a Unix timestamp counts, how to tell seconds from milliseconds, why it has no time zone, and what the year 2038 problem is about.",
+   "tags": [
+    "timestamp",
+    "unix time",
+    "dates"
+   ],
+   "blocks": [
+    [
+     "paragraph",
+     "A Unix timestamp is a single number that stands for a moment in time. It appears in logs, databases, APIs and tokens, and it is easy to misread: is it seconds or milliseconds, and in what time zone? This guide explains what the number counts, how to read it, and the traps that cause dates to be off by hours or by decades."
+    ],
+    [
+     "heading",
+     "What the number counts"
+    ],
+    [
+     "paragraph",
+     "A Unix timestamp is the number of seconds since the start of 1 January 1970 in UTC, a moment known as the epoch. POSIX, the standard behind Unix-like systems, defines the value as seconds since the epoch and says every day counts as exactly 86,400 seconds. Leap seconds are not counted. The timestamp 0 is 1 January 1970, 00:00:00 UTC, and 1,700,000,000 is 14 November 2023 at 22:13:20 UTC."
+    ],
+    [
+     "heading",
+     "No time zone inside the number"
+    ],
+    [
+     "paragraph",
+     "A timestamp always refers to a single instant, the same everywhere on Earth. It has no time zone of its own. Time zones only matter when you show it to a person. The instant 1,700,000,000 is 22:13:20 in UTC and 03:43:20 the next morning in India, which is 5 hours 30 minutes ahead. This is why timestamps are good for storing and comparing times, and local dates are good for showing them."
+    ],
+    [
+     "heading",
+     "Seconds or milliseconds?"
+    ],
+    [
+     "paragraph",
+     "The classic Unix timestamp counts seconds, and today it has 10 digits. JavaScript and many other systems use milliseconds, which gives 13 digits for current dates. Mixing them up is the commonest mistake. Read as seconds, 1,700,000,000,000 would be a date in the year 55,800. Read as milliseconds, 1,700,000,000 would be January 1970, only about 19 days after the epoch. A converter can guess from the size of the number, and the one on this site treats 100 billion or more as milliseconds. When it matters, choose the unit yourself."
+    ],
+    [
+     "list",
+     "10 digits: usually seconds, for dates between 2001 and 2286.\n13 digits: usually milliseconds.\n16 digits: microseconds, used by some databases.\n19 digits: nanoseconds, used by some systems and languages."
+    ],
+    [
+     "heading",
+     "Dates before 1970 and far in the future"
+    ],
+    [
+     "paragraph",
+     "Timestamps before the epoch are negative. The number -86,400 is 31 December 1969. A JavaScript date can hold up to 8.64 quadrillion milliseconds either side of the epoch, which is roughly the year 275,760 in both directions, so values beyond that are invalid."
+    ],
+    [
+     "heading",
+     "The year 2038 problem"
+    ],
+    [
+     "paragraph",
+     "Some older systems store the timestamp as a signed 32-bit integer. The largest such number is 2,147,483,647, which is reached at 03:14:07 UTC on 19 January 2038. One second later the counter wraps around to a large negative number, which these systems read as December 1901. Affected places include old file systems, some databases and embedded devices that are hard to update. The fix is to use a 64-bit integer, which lasts about 292 billion years, and most modern systems already do."
+    ],
+    [
+     "heading",
+     "Turning a local date into a timestamp"
+    ],
+    [
+     "paragraph",
+     "The same clock time in different zones gives different timestamps. Midnight on 1 January 2024 is 1,704,067,200 in UTC, but it is 1,704,047,400 in India, because midnight arrives 5 hours 30 minutes earlier there. Always say which zone a date and time are in. In JavaScript, a date written without a zone is read in the zone of the device for a date-time, but as UTC for a date alone, which is a frequent source of off-by-one-day bugs."
+    ],
+    [
+     "heading",
+     "Practical tips"
+    ],
+    [
+     "list",
+     "Store and send times as UTC timestamps or ISO 8601 strings that end in Z.\nConvert to a local time zone only when showing the time to a person.\nCheck the number of digits before assuming the unit.\nTest dates around daylight saving changes in zones that use them.\nPlan for the 2038 limit if any 32-bit field is involved."
+    ],
+    [
+     "paragraph",
+     "One more habit helps: write the unit and the zone next to every timestamp in code, comments and documentation. A field named created_at tells a reader nothing, while created_at_ms_utc tells them both. When two systems exchange times, agreeing on this once, in writing, prevents the bugs that are hardest to spot, because the dates look plausible but are wrong by five and a half hours or by a thousand years."
+    ]
+   ],
+   "sources": [
+    {
+     "title": "POSIX: Seconds Since the Epoch (The Open Group)",
+     "url": "https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap04.html"
+    },
+    {
+     "title": "Date (MDN Web Docs)",
+     "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date"
+    },
+    {
+     "title": "Year 2038 problem (Wikipedia)",
+     "url": "https://en.wikipedia.org/wiki/Year_2038_problem"
+    }
+   ],
+   "checkedOn": "2026-10-31"
+  },
+  {
+   "title": "Regular Expressions Basics: Flags, Groups and Pitfalls",
+   "category": "How-To",
+   "excerpt": "A plain guide to regular expressions in JavaScript: the flags, capture groups, named groups, lookahead, and how nested repeats can make a pattern freeze.",
+   "tags": [
+    "regex",
+    "javascript",
+    "developer"
+   ],
+   "blocks": [
+    [
+     "paragraph",
+     "A regular expression is a short pattern that describes a set of strings. It lets you find, check or pull out parts of text with one line of code. This guide covers the building blocks in JavaScript, the flags that change how a pattern runs, groups for extracting pieces, and the one big pitfall: patterns that can take an enormous time to fail."
+    ],
+    [
+     "heading",
+     "The building blocks"
+    ],
+    [
+     "list",
+     "Literal characters match themselves: cat matches cat.\nA dot matches any one character except a line break, unless the s flag is on.\n\\d matches a digit, \\w a letter, digit or underscore, \\s a space, and the capital forms mean the opposite.\nSquare brackets give a choice: [aeiou] matches one vowel, and [0-9a-f] matches one hex digit.\nQuantifiers repeat: * for zero or more, + for one or more, ? for optional, and {2,4} for two to four.\n^ and $ anchor the start and end of the text, or of each line with the m flag.\nA vertical bar means or: cat|dog."
+    ],
+    [
+     "paragraph",
+     "A date pattern such as \\d{4}-\\d{2}-\\d{2} reads as four digits, a hyphen, two digits, a hyphen and two digits. It matches 2026-10-31 but would also match 9999-99-99, because a pattern checks shape, not whether a date exists."
+    ],
+    [
+     "heading",
+     "Flags"
+    ],
+    [
+     "paragraph",
+     "Flags follow the pattern and change how it is applied. The g flag finds all matches instead of stopping at the first. The i flag ignores upper and lower case. The m flag makes the start and end anchors work on each line. The s flag lets the dot match line breaks. The u flag treats the text as Unicode code points and allows property escapes. The y flag makes a match only at the current position, and d returns the start and end of each group. Flags can be combined in any order but cannot be changed after the expression is created."
+    ],
+    [
+     "heading",
+     "Capture groups"
+    ],
+    [
+     "paragraph",
+     "Brackets capture the part of the text they match. Applying (\\d{4})-(\\d{2}) to 2024-03 gives the whole match 2024-03 plus group 1 as 2024 and group 2 as 03. A group written (?:...) groups without capturing. A group can be given a name by putting a question mark and the name, in angle brackets, straight after the opening bracket. The result is then reached by name, as groups.year, which is easier to read than a number. A backreference such as \\1 requires the same text to appear again, which is how a pattern can insist on the same separator twice."
+    ],
+    [
+     "heading",
+     "Lookahead"
+    ],
+    [
+     "paragraph",
+     "A lookahead checks what follows without including it in the match. The pattern \\d+(?= dollars) matches the number in I have 50 dollars, but the match is only 50. The negative form (?!...) matches only when the text does not follow. These are useful for rules such as a number that is not followed by a percent sign."
+    ],
+    [
+     "heading",
+     "The pitfall: catastrophic backtracking"
+    ],
+    [
+     "paragraph",
+     "Most regular expression engines, including the one in the browser, try one path through the pattern and go back to try another when it fails. Usually that is quick. But a pattern with a repeat inside another repeat, such as (a+)+$, can split a run of letters into groups in a huge number of ways. When the text ends in a character that does not fit, the engine must try all of them before it gives up. OWASP counts 16 paths for four letters and 65,536 for sixteen, doubling with each letter added. This is called a regular expression denial of service, or ReDoS. On a server, a single crafted input can occupy a processor for minutes."
+    ],
+    [
+     "paragraph",
+     "Warning signs are a group that is repeated and contains another repeat, or alternatives that overlap inside a repeat, such as (a|aa)+. The usual fixes are to make the inner part unambiguous, to avoid nesting repeats, and to limit the length of the text before matching. The tester on this site runs each pattern in a background worker and stops it after about a second and a half, so a bad pattern cannot freeze the page."
+    ],
+    [
+     "heading",
+     "Practical tips"
+    ],
+    [
+     "list",
+     "Start simple and test with both good and bad examples.\nAnchor a validation pattern with ^ and $, or it will match a part of the text.\nPrefer specific classes such as [^,]* over a greedy dot.\nUse named groups when there are more than two.\nDo not use a regular expression to check an email address or parse HTML fully; use a purpose-built tool.\nLimit the size of text before running an untrusted pattern or running a pattern on untrusted text."
+    ]
+   ],
+   "sources": [
+    {
+     "title": "Regular expressions (MDN Web Docs)",
+     "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions"
+    },
+    {
+     "title": "Regular expression Denial of Service - ReDoS (OWASP)",
+     "url": "https://community.owasp.org/attacks/Regular_expression_Denial_of_Service_-_ReDoS"
+    }
+   ],
+   "checkedOn": "2026-10-31"
+  },
+  {
+   "title": "How to Read a JWT: Header, Payload and Signature",
+   "category": "How-To",
+   "excerpt": "What the three parts of a JSON Web Token are, what claims like exp and iat mean, why decoding is not the same as verifying, and the mistakes that make tokens unsafe.",
+   "tags": [
+    "jwt",
+    "authentication",
+    "security"
+   ],
+   "blocks": [
+    [
+     "paragraph",
+     "A JSON Web Token, or JWT, is a compact string that carries a few facts, such as who a user is and when a login expires. You see them in API calls and login systems. This guide explains the three parts, the standard claims, the difference between reading a token and trusting it, and the common mistakes."
+    ],
+    [
+     "heading",
+     "The three parts"
+    ],
+    [
+     "paragraph",
+     "A JWT is three pieces of base64url text joined by dots: header.payload.signature. The header is a small JSON object that says how the token is signed, for example the algorithm HS256 and the type JWT. The payload is a JSON object of claims, the facts the token carries. The signature is a value computed from the first two parts with a secret or a private key, which lets the receiver check that nobody changed them. The format is defined in RFC 7519."
+    ],
+    [
+     "paragraph",
+     "Because the parts are only base64url encoded, anyone who holds the token can read the header and payload. Nothing is hidden. This is the same as with plain Base64: encoding is not encryption. A token in the five-part form, known as a JWE, is encrypted, and cannot be read without the key. The decoder on this site says so when it meets one."
+    ],
+    [
+     "heading",
+     "The standard claims"
+    ],
+    [
+     "list",
+     "iss: the issuer, who created the token.\nsub: the subject, usually the user the token is about.\naud: the audience, who the token is meant for. A recipient that is not listed must reject it.\nexp: the expiry time. The token must not be accepted at or after it.\nnbf: not before. The token must not be accepted earlier.\niat: when the token was issued.\njti: a unique ID, which can help detect replays."
+    ],
+    [
+     "paragraph",
+     "The three time claims are numbers of seconds since 1 January 1970 UTC, the same as a Unix timestamp. A payload that says exp 1700000000 expires on 14 November 2023 at 22:13:20 UTC. Fractions are allowed. A common mistake is to treat these as milliseconds, which puts the date thousands of years ahead."
+    ],
+    [
+     "heading",
+     "Decoding is not verifying"
+    ],
+    [
+     "paragraph",
+     "Reading a token tells you what it claims, not whether the claims are true. Anyone can write a payload that says admin. Only a check of the signature, with the right key, shows that the token was made by the issuer and has not been altered. RFC 7519 says that if any of the validation steps fail, the token must be rejected. That is a job for the server, using a well-tested library. A web page that decodes a token, including the tool here, cannot prove it is genuine."
+    ],
+    [
+     "heading",
+     "Mistakes that make tokens unsafe"
+    ],
+    [
+     "list",
+     "Accepting the none algorithm. A token whose header says alg none is unsigned. RFC 8725 warns that libraries should not accept it unless the caller explicitly asks.\nLetting the token choose the algorithm. The application should decide which algorithms it accepts, and tie each key to one algorithm.\nSkipping the audience and issuer checks. A valid token for one service should not work on another.\nPutting secrets in the payload, because everyone can read it.\nUsing a short, guessable password as the signing key for HS256. The key should be random and long.\nTrusting header fields such as kid or jku without validating them, since they can be used for injection or to make the server fetch a URL.\nIgnoring expiry, or setting it so long that a stolen token stays useful."
+    ],
+    [
+     "heading",
+     "Is it safe to paste a token into an online decoder?"
+    ],
+    [
+     "paragraph",
+     "A token is a credential. Anyone who has a live token can usually use it until it expires. Pasting one into a website that sends it to a server would be a risk. The decoder on this site works entirely in your browser and sends nothing, but as a habit, avoid pasting production tokens into tools you cannot inspect, and prefer to use a short-lived token from a test environment."
+    ],
+    [
+     "heading",
+     "Reading a token step by step"
+    ],
+    [
+     "paragraph",
+     "To read a token by hand, split it at the dots. Decode the first two parts from Base64URL, which is Base64 with a hyphen and an underscore in place of the plus and the slash, and no equals padding. The result is two JSON objects. Look at alg in the header, then at exp, nbf and iat in the payload, and compare the times with the current time in UTC. If the token is outside its time window, it is not valid, whatever the signature says."
+    ]
+   ],
+   "sources": [
+    {
+     "title": "RFC 7519: JSON Web Token (JWT)",
+     "url": "https://www.rfc-editor.org/rfc/rfc7519"
+    },
+    {
+     "title": "RFC 8725: JSON Web Token Best Current Practices",
+     "url": "https://www.rfc-editor.org/rfc/rfc8725"
+    },
+    {
+     "title": "JSON Web Token (Wikipedia)",
+     "url": "https://en.wikipedia.org/wiki/JSON_Web_Token"
+    }
+   ],
+   "checkedOn": "2026-10-31"
+  }
+ ]
+}
