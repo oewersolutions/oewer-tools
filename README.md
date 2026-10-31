@@ -51,7 +51,7 @@ Two workflows in `.github/workflows/`:
 One-time setup: in the repository go to Settings > Pages and set Source to "GitHub Actions". Add the repository variable `SITE_URL` (the live address, here `https://oewer.in`). Add `BASE_PATH` (`/<repo-name>`) only for a github.io project site; leave it unset on a custom domain. The live site is at **https://oewer.in**; see `docs/domain.md`.
 
 ## Status
-Phases 1 to 6 are done: the workbook pipeline, the site and 10 tools, the blog, the browser-based admin (editing, history and restore, dashboard, publish status), analytics with a consent banner, and ad placements (off). Phase 7 launch work is under way: legal pages, audit, build safety and the custom domain are done; the acceptance checklist and the AdSense application remain. See `TASKS.md`; start with `docs/admin.md`, `docs/domain.md` and `docs/audit.md`.
+Phases 1 to 6 are done: the workbook pipeline, the site and 20 tools (Phase 8 added the SIP, lumpsum, interest, RD, discount, age, days-between, unit converter and password tools), the blog, the browser-based admin (editing, history and restore, dashboard, publish status), analytics with a consent banner, and ad placements (off). Phase 7 launch work is under way: legal pages, audit, build safety and the custom domain are done; the acceptance checklist and the AdSense application remain. See `TASKS.md`; start with `docs/admin.md`, `docs/domain.md` and `docs/audit.md`.
 
 ## Security
 The workbook is public: put only public content in it. Never commit tokens, credentials or exports. The admin GitHub token is entered in the browser at run time and is never stored in the repo or the bundle. Copy `.env.example` to `.env` locally; `.env` is git-ignored.

@@ -124,7 +124,7 @@ export default function HomePage() {
             Tools that do the job and keep your files to yourself.
           </h1>
           <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-white/80">
-            Compress an image, work out a loan EMI, tidy JSON or make a QR code.
+            Compress an image, work out a loan EMI or SIP, check an age, convert units or make a strong password.
             Everything runs in your browser, so nothing you type or choose ever
             leaves your device.
           </p>
