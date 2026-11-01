@@ -168,5 +168,30 @@
   "coverAlt": "A yellow sunflower in sharp focus with leaves and white flowers softly blurred behind",
   "figureAlt": null,
   "figureCaption": null
+ },
+ "what-are-ai-tokens-how-chatbots-split-and-count-text": {
+  "coverAlt": "Scrabble letter tiles scattered on a table",
+  "figureAlt": null,
+  "figureCaption": null
+ },
+ "oled-vs-lcd-how-each-screen-makes-light-and-black": {
+  "coverAlt": "A thin curved LG OLED television seen from the front",
+  "figureAlt": "Three phone screens glowing solid blue, green and red",
+  "figureCaption": "Phone screens lit in solid blue, green and red."
+ },
+ "how-passkeys-work-signing-in-without-a-password": {
+  "coverAlt": "A YubiKey 5C NFC security key next to its packaging and a set of keys",
+  "figureAlt": null,
+  "figureCaption": null
+ },
+ "how-bicycle-gears-work-chainrings-cogs-and-derailleurs": {
+  "coverAlt": "A Shimano rear derailleur mounted next to the rear sprockets of a bicycle",
+  "figureAlt": "A bicycle crankset with two chainrings",
+  "figureCaption": "A crankset with two chainrings, the toothed wheels at the pedals."
+ },
+ "concorde-how-the-supersonic-airliner-flew-and-why-it-ended": {
+  "coverAlt": "An Air France Concorde displayed in the air on a mount, seen from below",
+  "figureAlt": "The crowded flight deck of a Concorde with its many dials",
+  "figureCaption": "The flight deck of a Concorde."
  }
 }

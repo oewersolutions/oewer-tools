@@ -1,0 +1,508 @@
+{
+ "date": "2026-11-01",
+ "articles": [
+  {
+   "title": "What Are AI Tokens? How Chatbots Split and Count Text",
+   "category": "AI",
+   "excerpt": "AI chatbots do not read letters or whole words. They read tokens, small pieces of text. Here is how text is split into tokens, and why the count matters for limits and cost.",
+   "tags": [
+    "tokens",
+    "chatbots",
+    "tokenizer"
+   ],
+   "blocks": [
+    [
+     "paragraph",
+     "A token is a small piece of text that an AI language model treats as one unit. It may be a whole common word, part of a longer word, a single character or a bit of punctuation. Models work with numbers, so the first step with any text is to cut it into tokens and give each one a number. Limits on how much a chatbot can read, and in many cases the bill for using it, are counted in tokens rather than in words."
+    ],
+    [
+     "heading",
+     "Why text is turned into numbers"
+    ],
+    [
+     "paragraph",
+     "A language model is a mathematical system, and it cannot work on letters directly. Wikipedia's article on large language models puts it simply: because the algorithms process numbers rather than text, the text has to be converted to numbers. The conversion is called tokenization. A fixed list of pieces, called the vocabulary, is chosen. Each piece in the list gets its own whole-number index, and the model learns what each index tends to mean."
+    ],
+    [
+     "heading",
+     "Why not just use words, or just letters?"
+    ],
+    [
+     "paragraph",
+     "Both simple options have problems, as the Hugging Face documentation on tokenizers explains. If every word is a token, the vocabulary has to hold every form of every word: \"love\", \"loving\", \"loved\" and \"lovingly\" each need their own entry. The list becomes enormous, which makes the model bigger and slower, and any word missing from the list cannot be handled at all."
+    ],
+    [
+     "paragraph",
+     "If every character is a token, the vocabulary is tiny and nothing is ever missing. But sentences become very long strings of tokens, and a single letter such as \"l\" carries far less meaning than the word \"love\". The documentation says this hurts performance."
+    ],
+    [
+     "paragraph",
+     "The middle route is called subword tokenization. Common words stay whole as one token, and rare or new words are broken into smaller pieces that are already in the vocabulary. The Hugging Face page gives \"annoyingly\" as an example, which might be split into \"annoying\" and \"ly\", or into \"annoy\", \"ing\" and \"ly\", depending on the vocabulary. Wikipedia shows that an older GPT-3 tokenizer split \"tokenizer\" into \"token\" and \"izer\", and \"tokens\" into \"t\", \"ok\" and \"ens\". So tokens often do not line up with words."
+    ],
+    [
+     "heading",
+     "How the pieces are chosen"
+    ],
+    [
+     "paragraph",
+     "The most widely used method is byte pair encoding, or BPE. The Hugging Face documentation describes it in steps:"
+    ],
+    [
+     "list",
+     "Start with every single character as its own unit.\nFind the pair of neighbouring units that appears together most often in the training text.\nMerge that pair into one new unit and add it to the vocabulary.\nRepeat until the vocabulary reaches the size that was chosen in advance."
+    ],
+    [
+     "paragraph",
+     "The documentation works through a tiny example. In a text with the words \"hug\", \"pug\" and \"hugs\", the letters \"u\" and \"g\" appear together most, so \"ug\" becomes a unit. Frequent combinations therefore become single tokens, and unusual ones stay as smaller parts."
+    ],
+    [
+     "paragraph",
+     "Vocabulary sizes are chosen by the model's designers. The Hugging Face page says the original GPT model used BPE with a vocabulary of 40,478 entries, and GPT-2 used 50,257. GPT-2 used a version that works on bytes, the basic units of computer storage, so any text at all can be represented without an \"unknown\" token. The page also names other methods, called Unigram and WordPiece, and a library called SentencePiece. SentencePiece treats the space as an ordinary character, which helps with languages such as Chinese and Japanese that do not put spaces between words."
+    ],
+    [
+     "heading",
+     "Why the same sentence can cost different amounts"
+    ],
+    [
+     "paragraph",
+     "Every model family has its own tokenizer, with its own vocabulary, so the same text can produce a different number of tokens in different systems. Anthropic's documentation on token counting makes this concrete. It states that Claude models from version 4.7 onward use a newer tokenizer, and that the same input text produces approximately 30 percent more tokens than on earlier models. The exact increase depends on the content. Anthropic therefore advises recounting prompts against the model you plan to use instead of reusing counts from an older one."
+    ],
+    [
+     "paragraph",
+     "Text that is common in the training data tends to need fewer tokens, because its pieces were merged into the vocabulary. Rare words, unusual names and text in less common languages tend to be split into more pieces. The sources above do not give a single words-per-token ratio, and it varies by model and language, so any such figure should be treated as a rough guide."
+    ],
+    [
+     "heading",
+     "Where token counts show up"
+    ],
+    [
+     "paragraph",
+     "Anthropic's documentation says that counting tokens before sending a message helps you manage rate limits and costs, choose between models and fit a prompt to a target length. It describes a counting endpoint that returns the number of input tokens, and notes the result is an estimate that can differ slightly from the number actually used. It also says billing reflects only your own content, not tokens the company adds for system optimisation."
+    ],
+    [
+     "paragraph",
+     "This also explains the \"context window\" of a chatbot. That window is a limit on how many tokens, from your messages and the replies together, the model can take into account at once. A page that looks short in words may use more of that limit than expected if it contains code, numbers or unusual names."
+    ],
+    [
+     "callout",
+     "Token counts and prices differ by company and model, and they change. Check the provider's own documentation or pricing page for the model you use. This article is general information, not a price guide."
+    ],
+    [
+     "heading",
+     "The short version"
+    ],
+    [
+     "paragraph",
+     "Tokens are the pieces AI models actually read: chunks of text turned into numbers using a fixed vocabulary built from patterns in training text. Words, tokens and characters are different measures, and the exact count depends on the tokenizer, which differs from one model to the next."
+    ]
+   ],
+   "sources": [
+    {
+     "title": "Token counting, Claude API documentation, Anthropic",
+     "url": "https://platform.claude.com/docs/en/build-with-claude/token-counting"
+    },
+    {
+     "title": "Summary of the tokenizers, Hugging Face Transformers documentation",
+     "url": "https://huggingface.co/docs/transformers/tokenizer_summary"
+    },
+    {
+     "title": "Large language model, Wikipedia",
+     "url": "https://en.wikipedia.org/wiki/Large_language_model"
+    }
+   ],
+   "checkedOn": "2026-11-01"
+  },
+  {
+   "title": "OLED vs LCD: How Each Screen Makes Light and Black",
+   "category": "Electronics",
+   "excerpt": "An OLED pixel makes its own light, while an LCD pixel filters light from a backlight. That one difference explains black levels, thickness, power use and burn-in.",
+   "tags": [
+    "oled",
+    "lcd",
+    "displays"
+   ],
+   "blocks": [
+    [
+     "paragraph",
+     "The main difference between OLED and LCD screens is where the light comes from. In an OLED, each tiny dot of the picture produces its own light. In an LCD, a single backlight shines through the screen and the dots only block or pass that light. Most of the other differences people talk about, such as deeper blacks, thinner panels and the risk of burn-in, follow from that."
+    ],
+    [
+     "heading",
+     "How an LCD makes a picture"
+    ],
+    [
+     "paragraph",
+     "An LCD, or liquid crystal display, has a light source behind the panel. In front of it sit layers including liquid crystals, whose arrangement changes when a small voltage is applied. Depending on how the crystals are turned, more or less of the backlight gets through, and coloured filters over each dot give red, green and blue. The crystals do not make light. They act like tiny adjustable shutters."
+    ],
+    [
+     "paragraph",
+     "Because the backlight is on, some light leaks through even when a pixel is set to black. Wikipedia's article on OLED says LCDs cannot show true black for this reason: the backlight is always filtering through the crystals."
+    ],
+    [
+     "heading",
+     "How an OLED makes a picture"
+    ],
+    [
+     "paragraph",
+     "OLED stands for organic light-emitting diode. Here \"organic\" means the light-emitting material is a carbon-based compound. The display maker Newhaven Display describes the basic structure: an electrode that supplies electrons (the cathode), a transparent electrode (the anode, often indium tin oxide), and layers of organic material between them, including an emissive layer. When electricity flows, electrons and positive charges called holes meet in the organic layer and release energy as light. This effect is called electroluminescence. The colour depends on the material used."
+    ],
+    [
+     "paragraph",
+     "No backlight is needed, because the pixels glow by themselves. A pixel that is switched off gives no light and uses no power, according to Wikipedia. That is how an OLED can show true black, and why the contrast between dark and bright parts can be very high."
+    ],
+    [
+     "heading",
+     "Side-by-side differences"
+    ],
+    [
+     "list",
+     "**Black level:** OLED pixels can switch off completely. LCDs always pass a little backlight.\nThickness and weight: with no backlight layer, OLED panels can be thinner and lighter, and can be made on flexible plastic, says Wikipedia.\nPower use: dark pictures use less power on an OLED, since dark pixels are off. Newhaven Display adds that power use rises with white backgrounds.\nBrightness: Newhaven Display notes that it is harder to raise brightness on an OLED than on an LCD, and that readability can suffer in direct sunlight.\nLifespan and burn-in: organic materials wear out as they are used."
+    ],
+    [
+     "heading",
+     "Burn-in and ageing"
+    ],
+    [
+     "paragraph",
+     "Wikipedia says OLEDs may be more susceptible to screen burn-in and loss of brightness than LCDs. Burn-in means a faint ghost of an image that was shown for a long time, such as a logo or a menu bar. The cause is that the organic material in the frequently lit pixels ages faster than the pixels around them. Blue-emitting materials have historically degraded fastest. Wikipedia cites a 2008 report in which blue luminance fell by 12% after 1,000 hours."
+    ],
+    [
+     "paragraph",
+     "Lifetimes have improved. The same article reports that LG gave an expected lifetime of 100,000 hours in 2016, compared with 36,000 hours in 2013. These are manufacturer figures under test conditions, and real-world results depend on brightness settings and what is shown on the screen."
+    ],
+    [
+     "heading",
+     "A short history"
+    ],
+    [
+     "paragraph",
+     "According to Wikipedia, French researchers at the University of Nancy first saw electroluminescence in organic materials in the early 1950s. In 1987, Ching Wan Tang and Steven Van Slyke at Eastman Kodak built the first practical OLED device. Pioneer began commercial OLED production in 1997, starting with a car stereo display. Sony's XEL-1 in 2007 is listed as the first OLED television."
+    ],
+    [
+     "heading",
+     "Which one is it in a product?"
+    ],
+    [
+     "paragraph",
+     "Phone and television makers often name the technology in specifications. Some products marketed as LED are actually LCDs with an LED backlight, so \"LED\" tells you about the backlight, not the pixels. The word OLED, or AMOLED on many phones, indicates self-lit pixels."
+    ],
+    [
+     "callout",
+     "Both types are mature and widely used. This article explains the technical differences and does not recommend one over the other."
+    ],
+    [
+     "paragraph",
+     "In short, LCDs filter a constant light, and OLEDs create light where it is needed. That is why OLEDs excel at black levels and thinness, while LCDs can go brighter and avoid the same kind of ageing."
+    ]
+   ],
+   "sources": [
+    {
+     "title": "OLED, Wikipedia",
+     "url": "https://en.wikipedia.org/wiki/OLED"
+    },
+    {
+     "title": "OLED (Organic Light Emitting Diode), Newhaven Display",
+     "url": "https://newhavendisplay.com/blog/oled-organic-light-emitting-diode-/"
+    }
+   ],
+   "checkedOn": "2026-11-01"
+  },
+  {
+   "title": "How Passkeys Work: Signing In Without a Password",
+   "category": "Technology",
+   "excerpt": "A passkey replaces your password with a pair of cryptographic keys. The private half never leaves your device, so there is no secret to type, steal or reuse.",
+   "tags": [
+    "passkeys",
+    "security",
+    "fido"
+   ],
+   "blocks": [
+    [
+     "paragraph",
+     "A passkey is a sign-in credential that replaces a password. Instead of a secret word you type, your device holds a private key and proves it has it each time you sign in. You unlock your phone or computer with a fingerprint, face scan, PIN or pattern, and the website gets a cryptographic proof, not a password. The FIDO Alliance, the industry group behind the standards, describes passkeys as a sign-in method based on FIDO standards."
+    ],
+    [
+     "heading",
+     "Two keys instead of one password"
+    ],
+    [
+     "paragraph",
+     "Passkeys use public-key cryptography. When you create a passkey for a website, your device generates a pair of linked keys for that account. The web.dev guide for developers, written by Google, explains that the passkey provider, such as a password manager or security key, creates the pair and keeps the private key. The website receives only the public key."
+    ],
+    [
+     "paragraph",
+     "The two keys have different jobs. The public key can be shared freely and can only check a signature. The private key makes signatures and must stay secret. A signature made with the private key can be verified with the public key, but the public key cannot be used to make a signature."
+    ],
+    [
+     "heading",
+     "What happens at sign-in"
+    ],
+    [
+     "list",
+     "The website sends your device a random challenge, a one-time piece of data.\nYour device asks you to unlock it with a fingerprint, face, PIN or pattern.\nIf that succeeds, the private key signs the challenge, for the correct website address only.\nThe website checks the signature with the stored public key and lets you in."
+    ],
+    [
+     "paragraph",
+     "FIDO describes this as a challenge-response protocol. Your biometric check happens on the device itself. The FIDO page says the biometric data is not sent to the server, which only learns that the check succeeded."
+    ],
+    [
+     "heading",
+     "What the website stores"
+    ],
+    [
+     "paragraph",
+     "The web.dev guide lists what a site keeps for each passkey: a credential ID, the public key, a user ID that should hold no personal information, timestamps for creation and last use, and an identifier for the type of passkey provider. It also keeps a flag saying whether the passkey is eligible for backup, meaning it can sync between devices."
+    ],
+    [
+     "paragraph",
+     "No shared secret sits on the server. FIDO points out that this matters for data breaches: an attacker who steals the stored public keys gets nothing that can be used to sign in."
+    ],
+    [
+     "heading",
+     "Why passkeys resist phishing"
+    ],
+    [
+     "paragraph",
+     "In a phishing attack, a fake site tricks you into typing your password. With a passkey there is nothing to type. The signature is tied to the genuine website address, and the web.dev guide says the private key signs only on the valid domain. A look-alike site is on a different domain, so your device will not produce a valid sign-in for it. FIDO says this resistance holds whether or not the keys are bound to hardware."
+    ],
+    [
+     "heading",
+     "Synced and device-bound passkeys"
+    ],
+    [
+     "paragraph",
+     "FIDO describes two kinds. A synced passkey is stored by a provider and copied to your other devices signed in to the same account. FIDO says the syncing is end-to-end encrypted. Google Password Manager and iCloud Keychain are examples named by web.dev. This helps if you lose a device, because the passkey is still available elsewhere."
+    ],
+    [
+     "paragraph",
+     "A device-bound passkey never leaves one device, for example a hardware security key. FIDO says these offer the highest assurance, with the trade-off that you must keep that device safe and have a plan if it is lost."
+    ],
+    [
+     "heading",
+     "One step or two factors"
+    ],
+    [
+     "paragraph",
+     "If a site asks for user verification, a passkey combines something you have, which is the device or key, with something you are or know, which is your biometric or PIN. FIDO notes that this can cover the equivalent of two factors in one step."
+    ],
+    [
+     "callout",
+     "This is general information about how the standard works. Which sites support passkeys, and how recovery works if you lose access, depends on each website and device provider, so check their own help pages."
+    ],
+    [
+     "paragraph",
+     "In short, a passkey proves who you are with a signature, not a secret. Your private key stays with your device or password manager, the website holds only a public key, and a fake website cannot get a usable response."
+    ]
+   ],
+   "sources": [
+    {
+     "title": "Passkeys, FIDO Alliance",
+     "url": "https://fidoalliance.org/passkeys/"
+    },
+    {
+     "title": "Passkey registration, web.dev, Google",
+     "url": "https://web.dev/articles/passkey-registration"
+    }
+   ],
+   "checkedOn": "2026-11-01"
+  },
+  {
+   "title": "How Bicycle Gears Work: Chainrings, Cogs and Derailleurs",
+   "category": "How It Works",
+   "excerpt": "Bicycle gears change how far you travel per pedal turn. See how chainrings, cogs and derailleurs work, how a gear ratio is worked out, and what cross-chaining is.",
+   "tags": [
+    "bicycle",
+    "gears",
+    "derailleur"
+   ],
+   "blocks": [
+    [
+     "paragraph",
+     "Bicycle gears let you choose how hard each pedal turn is and how far it moves you. A low gear means easy pedalling and slow progress, which suits hills. A high gear means harder pedalling and more distance per turn, which suits flat roads and downhills. The chain connects toothed wheels at the pedals and at the rear wheel, and the gear you are in depends on which two toothed wheels it joins."
+    ],
+    [
+     "heading",
+     "The parts"
+    ],
+    [
+     "list",
+     "**Chainring:** a toothed wheel at the pedals. Bikes can have one, two or three.\n**Sprockets or cogs:** the toothed wheels on the rear hub, usually in a group called a cassette.\n**Chain:** joins one chainring to one rear sprocket.\n**Derailleurs and shifters:** the derailleurs move the chain between sprockets or chainrings when you operate the shifters."
+    ],
+    [
+     "paragraph",
+     "Wikipedia's article on bicycle gearing says bikes with derailleurs may have up to four chainrings and typically five to twelve rear sprockets."
+    ],
+    [
+     "heading",
+     "How a gear ratio works"
+    ],
+    [
+     "paragraph",
+     "The gear ratio compares the teeth on the front chainring with the teeth on the rear sprocket. Divide front by rear. With a chainring of 48 teeth and a sprocket of 16, the ratio is 3: the rear wheel turns three times for each turn of the pedals. With 34 teeth at the front and 27 at the back, the ratio is about 1.26, which feels much easier."
+    ],
+    [
+     "paragraph",
+     "Cyclists also use gear inches, defined on Wikipedia as the wheel diameter in inches multiplied by the front teeth divided by the rear teeth, usually rounded to a whole number. A 26-inch wheel in a 3 to 1 ratio gives 78 gear inches. A bigger number means a harder gear. Wikipedia also mentions metres of development, the distance travelled per pedal turn, which you can estimate by multiplying gear inches by about 0.08."
+    ],
+    [
+     "heading",
+     "How a derailleur shifts"
+    ],
+    [
+     "paragraph",
+     "Sheldon Brown, a respected bicycle writer whose site is a long-standing reference, explains the two derailleurs. The front derailleur is a simple guide that pushes the chain sideways between chainrings. The rear derailleur moves the chain across the rear sprockets and also holds the spring and small pulleys that keep the chain tight as it moves between large and small sprockets."
+    ],
+    [
+     "paragraph",
+     "A cable runs from the shifter to the derailleur. Wikipedia says pulling it moves a chain guide that makes the chain \"derail\" onto a new sprocket. The chain can only change position while it is moving forward, so you need to keep pedalling while shifting. Brown notes that the rear derailleur shifts on the slack lower part of the chain, so it can usually shift under load, though easing off helps. The front derailleur works on the upper, power-carrying part of the chain, so front shifts work less well if you are pedalling very hard or very slowly."
+    ],
+    [
+     "heading",
+     "Why \"24 gears\" is not 24 different gears"
+    ],
+    [
+     "paragraph",
+     "Wikipedia gives an example: three chainrings and eight sprockets are advertised as 24 gears. Some combinations are poor and many ratios overlap, so only about 22 are usable and typically 16 to 18 are distinct. The size of the jump between gears also varies. Wikipedia says racing bikes often step about 7% to 10% between gears, mountain and hybrid bikes are around 15%, and three-speed hubs about 33% to 37%."
+    ],
+    [
+     "heading",
+     "Cross-chaining"
+    ],
+    [
+     "paragraph",
+     "Small chainrings pair with large sprockets for low gears, and large chainrings pair with small sprockets for high gears. Using the largest chainring with the largest sprocket, or the smallest with the smallest, makes the chain run at a sharp sideways angle. This is called cross-chaining. Wikipedia says it reduces efficiency and increases chain wear. Brown calls the small-front, small-rear case the worst, saying it is noisy, inefficient and causes the chain to wear out sooner."
+    ],
+    [
+     "heading",
+     "Hub gears"
+    ],
+    [
+     "paragraph",
+     "Another design hides the gears inside the rear hub. Wikipedia explains that planetary gears inside the hub change the wheel speed relative to the sprocket. There is one chainring and one sprocket, the chain runs straight, and one shifter controls all speeds. Hubs range from 2 to 14 speeds. A three-speed hub has roughly a 180% range, the 14-speed Rohloff about 526%. Efficiency is close: Wikipedia lists derailleurs at 93% to 95% at 150 watts and 3-speed hubs at 92% to 95%."
+    ],
+    [
+     "callout",
+     "These are figures reported on Wikipedia and vary with conditions and maintenance. Gearing choice depends on the rider and terrain, and this article does not recommend a setup."
+    ],
+    [
+     "paragraph",
+     "In short, gears work by pairing a chainring and a sprocket with a ratio between them. Changing which pair the chain uses changes how far each pedal turn takes you."
+    ]
+   ],
+   "sources": [
+    {
+     "title": "Bicycle gearing, Wikipedia",
+     "url": "https://en.wikipedia.org/wiki/Bicycle_gearing"
+    },
+    {
+     "title": "Derailleur gears, Sheldon Brown",
+     "url": "https://www.sheldonbrown.com/gears.html"
+    }
+   ],
+   "checkedOn": "2026-11-01"
+  },
+  {
+   "title": "Concorde: How the Supersonic Airliner Flew and Why It Ended",
+   "category": "Vintage and History",
+   "excerpt": "Concorde carried passengers at about twice the speed of sound from 1976 to 2003. Here is the short story of how it began, what it did and why it was retired.",
+   "tags": [
+    "concorde",
+    "supersonic",
+    "airliners"
+   ],
+   "blocks": [
+    [
+     "paragraph",
+     "Concorde was a British and French passenger jet that flew at about twice the speed of sound. It entered service on 21 January 1976 and made its last commercial flight on 24 October 2003. Only 20 were built, and only two airlines flew them: Air France and British Airways. High costs, noise and a lack of buyers were behind its end, with a fatal crash in 2000 and a fall in travel after 11 September 2001 adding to the pressure."
+    ],
+    [
+     "heading",
+     "How it began"
+    ],
+    [
+     "paragraph",
+     "The Smithsonian National Air and Space Museum says Britain and France wanted a commercial aircraft that could fly faster than sound, and pooled their efforts in a treaty signed in 1962. The name Concorde recalls that agreement. By February 1965, two prototypes were being built: 001 by Aérospatiale of France and 002 by the British Aircraft Corporation."
+    ],
+    [
+     "paragraph",
+     "The first prototype made its first test flight from Toulouse on 2 March 1969, according to both the Smithsonian and Wikipedia. Wikipedia names the pilot as André Turcat. The Museum of Flight in Seattle says 20 aircraft were built between 1966 and 1979."
+    ],
+    [
+     "heading",
+     "What it could do"
+    ],
+    [
+     "list",
+     "**Speed:** the Smithsonian gives a maximum of 1,330 mph, about Mach 2.04. Wikipedia gives an average cruise of Mach 2.02.\n**Altitude:** cruising at 55,000 to 60,000 feet, says the Smithsonian.\n**Passengers:** 92 to 128, in four seats across, according to the Smithsonian and Wikipedia.\n**Engines:** Rolls-Royce Olympus engines, 38,000 pounds of thrust each according to the Smithsonian."
+    ],
+    [
+     "paragraph",
+     "The Museum of Flight says a round trip from London to New York could be done in the time a conventional aircraft took for one way. Another magazine article says that Paris to New York took 3 hours and 55 minutes, and notes that the 62-metre aircraft could stretch by up to 24 centimetres in flight from heat caused by friction with the air. That article is less authoritative than the museum sources, so treat that detail as a popular account."
+    ],
+    [
+     "heading",
+     "In service"
+    ],
+    [
+     "paragraph",
+     "Concorde entered service in 1976 with Air France and British Airways. The Smithsonian says a round-trip fare was $12,000, about $66,000 in today's money, and the aircraft flew mostly between New York and London and between New York and Paris. Short-lived routes to places such as South America, Bahrain and Singapore did not last. It operated for 27 years."
+    ],
+    [
+     "paragraph",
+     "The Soviet Tu-144, which first entered service in 1968, was faster on paper but, says the Smithsonian, was inefficient and costly to operate."
+    ],
+    [
+     "heading",
+     "Why it ended"
+    ],
+    [
+     "paragraph",
+     "The Smithsonian lists several reasons for the 2003 retirement:"
+    ],
+    [
+     "list",
+     "Fuel use of about 6,771 gallons per regular flight often exceeded the revenue from it.\nOnly 20 were built, and only Air France and British Airways ordered them, largely because both were state-run.\nSonic booms could break windows over land, so supersonic flight was limited mostly to water, and noise drew complaints.\nGrowing environmental opposition targeted noise and emissions.\nA 2000 crash in France killed everyone on board and damaged confidence.\nThe drop in international travel after 11 September 2001 was the final blow."
+    ],
+    [
+     "heading",
+     "The 2000 accident"
+    ],
+    [
+     "paragraph",
+     "Wikipedia's article on Air France Flight 4590 says that on 25 July 2000 a Concorde crashed shortly after takeoff from Paris Charles de Gaulle Airport. It had run over a metal strip that fell from another aircraft, bursting a tyre, and debris punctured a fuel tank. All 109 people on board and four on the ground died. Fleets were grounded. Modifications included Kevlar lining for the fuel tanks and burst-resistant tyres, and service resumed on 7 November 2001. It remains the only fatal accident in Concorde's passenger service, according to Wikipedia."
+    ],
+    [
+     "heading",
+     "The last flights and where they are now"
+    ],
+    [
+     "paragraph",
+     "Wikipedia says the last commercial flight was on 24 October 2003, and the final flight, to Bristol Filton, was on 26 November 2003. Air France had already retired its aircraft earlier in 2003; sources differ on the exact date. The Smithsonian says an Air France Concorde is displayed at its Udvar-Hazy Center in Virginia, and the Museum of Flight in Seattle has a British Airways aircraft on loan, one of the Concordes whose interior visitors can enter."
+    ],
+    [
+     "callout",
+     "Different sources give slightly different speed and passenger figures because they describe maximum, average or typical values. Where this article gives a number, it names the source."
+    ]
+   ],
+   "sources": [
+    {
+     "title": "What Happened to the Concordes?, Smithsonian National Air and Space Museum",
+     "url": "https://airandspace.si.edu/stories/editorial/what-happened-concordes"
+    },
+    {
+     "title": "Forty Years of the Concorde Jetliner, Museum of Flight",
+     "url": "https://www.museumofflight.org/about/press/2203/forty-years-of-the-concorde-jetliner"
+    },
+    {
+     "title": "Concorde, Wikipedia",
+     "url": "https://en.wikipedia.org/wiki/Concorde"
+    },
+    {
+     "title": "Air France Flight 4590, Wikipedia",
+     "url": "https://en.wikipedia.org/wiki/Air_France_Flight_4590"
+    }
+   ],
+   "checkedOn": "2026-11-01"
+  }
+ ]
+}
