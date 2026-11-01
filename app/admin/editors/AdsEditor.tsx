@@ -68,7 +68,7 @@ function AdsForm({ data, initial, onApply }: { data: WorkbookData; initial: AdsF
       )}
       <div>
         <button type="submit" className={primaryButton}>
-          Update pending changes
+          Save
         </button>
       </div>
     </form>

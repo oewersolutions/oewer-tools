@@ -6,7 +6,8 @@ import { idAllocator, planRows, planSeo, readSeo, type SeoForm } from "../../../
 import { cellString, toRows } from "../../../lib/admin/table";
 import { slugify } from "../../../lib/posts";
 import { schema, type WorkbookData } from "../../../lib/workbook";
-import { Checkbox, FormShell, primaryButton, SeoFields, smallButton, TextAreaField, TextField } from "./parts";
+import { RecordList } from "../views";
+import { Checkbox, FormShell, primaryButton, SeoFields, TextAreaField, TextField } from "./parts";
 
 type Kind = "tool" | "blog";
 const SHEET: Record<Kind, "tool_categories" | "blog_categories"> = { tool: "tool_categories", blog: "blog_categories" };
@@ -19,17 +20,12 @@ export default function CategoriesEditor({ data, onApply }: { data: WorkbookData
 
   return (
     <div className="space-y-5">
-      <div className="flex flex-wrap items-center justify-between gap-3">
-        <div role="group" aria-label="Kind of category" className="flex gap-2">
-          {(["tool", "blog"] as const).map((k) => (
-            <button key={k} type="button" aria-pressed={kind === k} onClick={() => { setKind(k); setEditing(null); }} className={`rounded-full px-3.5 py-1.5 text-sm font-medium ${kind === k ? "bg-brand text-white" : "bg-brand-50 text-brand-800 hover:bg-brand-100"}`}>
-              {k === "tool" ? "Tool categories" : "Article categories"}
-            </button>
-          ))}
-        </div>
-        <button type="button" className={primaryButton} onClick={() => setEditing("new")}>
-          Add category
-        </button>
+      <div role="group" aria-label="Kind of category" className="flex gap-2">
+        {(["tool", "blog"] as const).map((k) => (
+          <button key={k} type="button" aria-pressed={kind === k} onClick={() => { setKind(k); setEditing(null); }} className={`rounded-full px-3.5 py-1.5 text-sm font-medium ${kind === k ? "bg-brand text-white" : "bg-brand-50 text-brand-800 hover:bg-brand-100"}`}>
+            {k === "tool" ? "Tool categories" : "Article categories"}
+          </button>
+        ))}
       </div>
 
       {editing && (
@@ -46,34 +42,24 @@ export default function CategoriesEditor({ data, onApply }: { data: WorkbookData
         />
       )}
 
-      <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white">
-        <table className="w-full text-left text-sm">
-          <caption className="sr-only">{kind === "tool" ? "Tool categories" : "Article categories"}</caption>
-          <thead className="bg-white text-xs uppercase tracking-wide text-slate-500">
-            <tr>
-              {["Name", "Address", kind === "tool" ? "Shown" : "", ""].map((h, i) => (
-                <th key={i} scope="col" className="border-b border-slate-200 px-4 py-3 font-semibold">
-                  {h || <span className="sr-only">{i === 3 ? "Actions" : "Details"}</span>}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {rows.map((r) => (
-              <tr key={r.id} className="border-t border-slate-100 transition hover:bg-slate-50">
-                <td className="px-4 py-3 font-medium">{cellString(r.values.name)}</td>
-                <td className="px-4 py-3">/{cellString(r.values.slug)}</td>
-                <td className="px-4 py-3">{kind === "tool" ? (r.values.enabled === true ? "Yes" : "Hidden") : ""}</td>
-                <td className="px-4 py-3 text-right">
-                  <button type="button" className={smallButton} aria-label={`Edit category ${cellString(r.values.name)}`} onClick={() => setEditing(r.id)}>
-                    Edit
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      {!editing && (
+        <RecordList
+          title={kind === "tool" ? "Tool categories" : "Article categories"}
+          action={
+            <button type="button" className={primaryButton} onClick={() => setEditing("new")}>
+              Add category
+            </button>
+          }
+          columns={kind === "tool" ? ["Name", "Address", "Shown"] : ["Name", "Address"]}
+          rows={rows.map((r) => ({
+            key: r.id,
+            label: `Edit category ${cellString(r.values.name)}`,
+            search: `${cellString(r.values.name)} ${cellString(r.values.slug)}`,
+            cells: [cellString(r.values.name), `/${cellString(r.values.slug)}`, ...(kind === "tool" ? [r.values.enabled === true ? "Yes" : "Hidden"] : [])],
+            onOpen: () => setEditing(r.id),
+          }))}
+        />
+      )}
     </div>
   );
 }
@@ -103,7 +89,7 @@ function CategoryForm({ data, kind, categoryId, onSave, onCancel }: { data: Work
   }
 
   return (
-    <FormShell title={row ? `Edit category ${cellString(row.values.name)}` : kind === "tool" ? "Add a tool category" : "Add an article category"} onSubmit={save} onCancel={onCancel} submitLabel="Update pending changes" error={error}>
+    <FormShell title={row ? `Edit category ${cellString(row.values.name)}` : kind === "tool" ? "Add a tool category" : "Add an article category"} onSubmit={save} onCancel={onCancel} listLabel={kind === "tool" ? "Tool categories" : "Article categories"} error={error}>
       <div className="grid gap-5 md:grid-cols-2">
         <TextField label="Name" value={name} onChange={(v) => { setName(v); if (!slugTouched) setSlug(slugify(v)); }} />
         <TextField label="Page address (slug)" value={slug} onChange={(v) => { setSlugTouched(true); setSlug(v); }} hint="Lowercase letters, numbers and hyphens." />

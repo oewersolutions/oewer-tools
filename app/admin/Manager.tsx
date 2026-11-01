@@ -18,7 +18,7 @@ import PostsEditor from "./editors/PostsEditor";
 import SeoEditor from "./editors/SeoEditor";
 import ToolsEditor from "./editors/ToolsEditor";
 import { useProjection } from "./useProjection";
-import { FormHeader, FormRow, INPUT, ListShell, PRIMARY_BUTTON, RecordPager, StatusPill, TD, TH, toneFor, TOOLBAR_BUTTON, TR } from "./views";
+import { FormHeader, FormRow, INPUT, ListShell, Pager, PRIMARY_BUTTON, RecordPager, StatusPill, TD, TH, toneFor, TOOLBAR_BUTTON, TR } from "./views";
 
 export type View = "tools" | "categories" | "articles" | "seo" | "ads" | "sheets";
 
@@ -135,17 +135,21 @@ export default function Manager({
     } catch (e) {
       return setError(describeError(e));
     }
+    let next = pending;
     if (editing?.mode === "add") {
       if (rows.some((r) => r.id === pk)) return setError(`${pk} is already used in ${sheet}. Choose another ${def.primary_key}.`);
-      changePending(queueAdd(pending, sheet, def.primary_key, { ...after, [def.primary_key]: pk }));
+      next = queueAdd(pending, sheet, def.primary_key, { ...after, [def.primary_key]: pk });
     } else if (editing?.mode === "edit") {
-      changePending(queueRowEdit(pending, sheet, def.primary_key, editing.id, currentStrings(editing.id), after));
+      next = queueRowEdit(pending, sheet, def.primary_key, editing.id, currentStrings(editing.id), after);
     }
+    changePending(next);
     setEditing(null);
+    if (next.length > 0) void run(next, new Set());
   }
 
   async function run(changes: Change[], force: ReadonlySet<number>) {
     clearOutcome();
+    if (!file.canPush) return setError("This account is not allowed to save changes. Ask the site owner for edit access.");
     setWorking(true);
     try {
       const base: WorkbookFile = { bytes: file.bytes, sha: file.sha, size: file.bytes.length };
@@ -186,11 +190,81 @@ export default function Manager({
   const liveIssues = projection.issues;
   const onSite = useMemo(() => (pending.length > 0 && projection.ready ? liveChanges(file.data, projection.data) : undefined), [pending.length, projection.ready, projection.data, file.data]);
 
-  const apply = (changes: Change[]) => changePending(mergeChanges(pending, changes));
+  // A form's Save button queues its changes and commits everything queued in one step.
+  const apply = (changes: Change[]) => {
+    const next = mergeChanges(pending, changes);
+    changePending(next);
+    void run(next, new Set());
+  };
   const editorProps = { data: projection.data, onApply: apply, session: file.session, canPush: file.canPush };
 
   return (
     <div className="space-y-8">
+      <div className="space-y-4 empty:hidden" aria-live="polite">
+        {working && !conflicts.length && (
+          <p role="status" className="rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-medium text-slate-800 shadow-sm">
+            Saving…
+          </p>
+        )}
+        {saved && (
+          <p role="status" className="rounded-xl border border-brand-200 bg-brand-50 px-4 py-3 text-sm font-medium text-brand-900">
+            Saved. {saved.rebased && "Your changes were merged with newer changes made by someone else. "}
+            <a href={saved.url} className="underline" rel="noopener noreferrer">
+              View the commit on GitHub
+            </a>
+            . The site rebuilds automatically.
+          </p>
+        )}
+        {error && !editing && (
+          <p role="alert" className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-red-900">
+            {error}
+          </p>
+        )}
+
+        {saveProblems.length > 0 && (
+          <div role="alert" className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-red-900">
+            <p className="font-medium">These changes would leave {saveProblems.length} problem(s) in the workbook, so nothing was saved:</p>
+            <ul className="mt-2 list-disc space-y-1 pl-6 text-sm">
+              {saveProblems.slice(0, 10).map((i, n) => (
+                <li key={n}>{formatIssue(i)}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {conflicts.length > 0 && (
+          <div role="alert" className="space-y-4 rounded-xl border border-gold-500/50 bg-gold-300/20 p-5">
+            <p className="font-medium text-ink">
+              Someone else changed the workbook on GitHub. {conflicts.length === 1 ? "One of your changes clashes" : `${conflicts.length} of your changes clash`} with their edits. Nothing was saved. Choose what to do with each:
+            </p>
+            {conflicts.map((c) => (
+              <fieldset key={c.index} className="space-y-2 text-sm">
+                <legend className="font-medium">{describeChange(c.change)}</legend>
+                <p className="text-slate-700">
+                  {c.kind === "changed" && <>On GitHub now: <strong>{c.theirs === "" ? "(empty)" : c.theirs}</strong></>}
+                  {c.kind === "row_missing" && "That record was deleted on GitHub."}
+                  {c.kind === "id_taken" && "That ID is already used on GitHub."}
+                </p>
+                <label className="flex items-center gap-2">
+                  <input type="radio" name={`c${c.index}`} checked={choices[c.index] === "theirs"} onChange={() => setChoices({ ...choices, [c.index]: "theirs" })} />
+                  Keep what is on GitHub (drop my change)
+                </label>
+                {c.kind !== "row_missing" && (
+                  <label className="flex items-center gap-2">
+                    <input type="radio" name={`c${c.index}`} checked={choices[c.index] === "mine"} onChange={() => setChoices({ ...choices, [c.index]: "mine" })} />
+                    Use my version (overwrite theirs)
+                  </label>
+                )}
+              </fieldset>
+            ))}
+            <button type="button" onClick={saveWithChoices} disabled={working || unresolved.length > 0} className={button}>
+              Apply my choices and save
+            </button>
+          </div>
+        )}
+
+      </div>
+
       {tab !== "sheets" && (
         <section aria-label="Editor" className="space-y-5">
           {tab === "tools" && <ToolsEditor {...editorProps} />}
@@ -286,21 +360,7 @@ export default function Manager({
                     </label>
                   </>
                 }
-                footer={
-                  <nav aria-label="Pages" className="flex w-full items-center justify-between gap-3">
-                    <span>
-                      {view.total} row{view.total === 1 ? "" : "s"} · page {view.page} of {view.pages}
-                    </span>
-                    <span className="flex gap-2">
-                      <button type="button" className={TOOLBAR_BUTTON} disabled={view.page <= 1} onClick={() => setPageNumber(view.page - 1)}>
-                        Previous
-                      </button>
-                      <button type="button" className={TOOLBAR_BUTTON} disabled={view.page >= view.pages} onClick={() => setPageNumber(view.page + 1)}>
-                        Next
-                      </button>
-                    </span>
-                  </nav>
-                }
+                pager={<Pager page={view.page} pageSize={pageSize} total={view.total} onPage={setPageNumber} />}
               >
                 {importPlan && (
                   <div role="status" className="space-y-3 border-b border-slate-200 bg-brand-50 p-5">
@@ -391,13 +451,13 @@ export default function Manager({
         </>
       )}
 
+      {pending.length > 0 && (
       <section aria-labelledby="pending-heading" className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
         <h2 id="pending-heading" className="font-display text-2xl font-semibold text-ink">
           Pending changes ({pending.length})
         </h2>
-        {pending.length === 0 ? (
-          <p className="mt-2 text-slate-700">Nothing yet. Changes you make appear here and are only saved when you press Save.</p>
-        ) : (
+        <p className="mt-1 text-sm text-slate-700">Deleted rows and imports wait here until you save them.</p>
+        {(
           <ul className="mt-4 space-y-2">
             {pending.map((c, i) => (
               <li key={i} className="flex items-start justify-between gap-3 rounded-xl bg-brand-50 p-3 text-sm">
@@ -410,7 +470,7 @@ export default function Manager({
           </ul>
         )}
 
-        {pending.length > 0 && projection.ready && liveIssues.length > 0 && (
+        {pending.length > 0 && projection.ready && liveIssues.length > 0 && saveProblems.length === 0 && (
           <div role="status" className="mt-5 text-red-800">
             <p className="font-medium">With these changes the workbook would have {liveIssues.length} problem(s), so it cannot be saved yet:</p>
             <ul className="mt-2 list-disc space-y-1 pl-6 text-sm">
@@ -457,54 +517,6 @@ export default function Manager({
           </p>
         )}
 
-        {error && !editing && (
-          <p role="alert" className="mt-5 text-red-800">
-            {error}
-          </p>
-        )}
-
-        {saveProblems.length > 0 && (
-          <div role="alert" className="mt-5 text-red-800">
-            <p className="font-medium">These changes would leave {saveProblems.length} problem(s) in the workbook, so nothing was saved:</p>
-            <ul className="mt-2 list-disc space-y-1 pl-6 text-sm">
-              {saveProblems.slice(0, 10).map((i, n) => (
-                <li key={n}>{formatIssue(i)}</li>
-              ))}
-            </ul>
-          </div>
-        )}
-
-        {conflicts.length > 0 && (
-          <div role="alert" className="mt-5 space-y-4 rounded-xl border border-gold-500/50 bg-gold-300/20 p-5">
-            <p className="font-medium text-ink">
-              Someone else changed the workbook on GitHub. {conflicts.length === 1 ? "One of your changes clashes" : `${conflicts.length} of your changes clash`} with their edits. Nothing was saved. Choose what to do with each:
-            </p>
-            {conflicts.map((c) => (
-              <fieldset key={c.index} className="space-y-2 text-sm">
-                <legend className="font-medium">{describeChange(c.change)}</legend>
-                <p className="text-slate-700">
-                  {c.kind === "changed" && <>On GitHub now: <strong>{c.theirs === "" ? "(empty)" : c.theirs}</strong></>}
-                  {c.kind === "row_missing" && "That record was deleted on GitHub."}
-                  {c.kind === "id_taken" && "That ID is already used on GitHub."}
-                </p>
-                <label className="flex items-center gap-2">
-                  <input type="radio" name={`c${c.index}`} checked={choices[c.index] === "theirs"} onChange={() => setChoices({ ...choices, [c.index]: "theirs" })} />
-                  Keep what is on GitHub (drop my change)
-                </label>
-                {c.kind !== "row_missing" && (
-                  <label className="flex items-center gap-2">
-                    <input type="radio" name={`c${c.index}`} checked={choices[c.index] === "mine"} onChange={() => setChoices({ ...choices, [c.index]: "mine" })} />
-                    Use my version (overwrite theirs)
-                  </label>
-                )}
-              </fieldset>
-            ))}
-            <button type="button" onClick={saveWithChoices} disabled={working || unresolved.length > 0} className={button}>
-              Apply my choices and save
-            </button>
-          </div>
-        )}
-
         {pending.length > 0 && conflicts.length === 0 && (
           <div className="mt-5 space-y-4">
             <TextAreaField label="Commit message (optional)" value={message} onChange={setMessage} rows={2} placeholder={commitMessageFor(pending)} />
@@ -519,16 +531,8 @@ export default function Manager({
           </div>
         )}
 
-        {saved && (
-          <p role="status" className="mt-5 font-medium text-brand">
-            Saved. {saved.rebased && "Your changes were merged with newer changes made by someone else. "}
-            <a href={saved.url} className="underline" rel="noopener noreferrer">
-              View the commit on GitHub
-            </a>
-            . The site rebuilds automatically.
-          </p>
-        )}
       </section>
+      )}
     </div>
   );
 }
@@ -607,10 +611,10 @@ function RowForm({
         actions={
           <>
             <button type="submit" className={PRIMARY_BUTTON}>
-              {mode === "add" ? "Add to pending changes" : "Update pending changes"}
+              Save
             </button>
             <button type="button" onClick={onCancel} className={TOOLBAR_BUTTON}>
-              Cancel
+              Discard
             </button>
           </>
         }

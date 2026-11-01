@@ -3,6 +3,7 @@
 import { useId, type ReactNode } from "react";
 import { NumberField as TextField } from "../../../components/tools/ui";
 import type { SeoForm } from "../../../lib/admin/forms";
+import { FormHeader } from "../views";
 
 export { TextField };
 export { SelectField, TextAreaField } from "../../../components/tools/ui";
@@ -35,18 +36,8 @@ export function CheckGroup({ legend, options, selected, onChange, empty }: { leg
   );
 }
 
-export function FormShell({ title, onSubmit, onCancel, submitLabel, error, children }: { title: string; onSubmit: () => void; onCancel: () => void; submitLabel: string; error?: string; children: ReactNode }) {
+export function FormShell({ title, listLabel, onSubmit, onCancel, error, children }: { title: string; listLabel: string; onSubmit: () => void; onCancel: () => void; error?: string; children: ReactNode }) {
   const id = useId();
-  const actions = (
-    <>
-      <button type="submit" className={primaryButton}>
-        {submitLabel}
-      </button>
-      <button type="button" onClick={onCancel} className={secondaryButton}>
-        Cancel
-      </button>
-    </>
-  );
   return (
     <form
       aria-labelledby={`${id}-t`}
@@ -56,12 +47,23 @@ export function FormShell({ title, onSubmit, onCancel, submitLabel, error, child
       }}
       className="space-y-4"
     >
-      <div className="flex flex-wrap items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-3 shadow-sm">
-        <h3 id={`${id}-t`} className="mr-auto font-display text-lg font-semibold text-ink">
-          {title}
-        </h3>
-        {actions}
-      </div>
+      <h3 id={`${id}-t`} className="sr-only">
+        {title}
+      </h3>
+      <FormHeader
+        trail={[{ label: listLabel, onClick: onCancel }, { label: title }]}
+        title={title}
+        actions={
+          <>
+            <button type="submit" className={primaryButton}>
+              Save
+            </button>
+            <button type="button" onClick={onCancel} className={secondaryButton}>
+              Discard
+            </button>
+          </>
+        }
+      />
       <div className="space-y-6 rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
         {children}
         {error && (

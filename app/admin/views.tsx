@@ -1,6 +1,6 @@
 "use client";
 
-import type { ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 
 /**
  * Building blocks for the admin's list views and form views, laid out like a business app: a header with the breadcrumb,
@@ -46,16 +46,20 @@ export function TD({ children, colSpan, title, className = "" }: { children?: Re
   );
 }
 
-/** A list view: a white panel with a title bar (title, search, main button) above the table. */
-export function ListShell({ title, subtitle, action, toolbar, footer, children }: { title: string; subtitle?: string; action?: ReactNode; toolbar?: ReactNode; footer?: ReactNode; children: ReactNode }) {
+/** A list view in the style of a business app: a control panel (title, main button, search, pager) above a plain table. */
+export function ListShell({ title, subtitle, action, search, pager, toolbar, footer, children }: { title: string; subtitle?: string; action?: ReactNode; search?: ReactNode; pager?: ReactNode; toolbar?: ReactNode; footer?: ReactNode; children: ReactNode }) {
   return (
     <section aria-label={title} className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
-      <div className="flex flex-wrap items-center gap-3 border-b border-slate-200 px-4 py-3">
-        <div className="mr-auto min-w-0">
+      <div className="flex flex-wrap items-center gap-x-4 gap-y-3 border-b border-slate-200 px-4 py-3">
+        <div className="min-w-0">
           <h2 className="font-display text-lg font-semibold text-ink">{title}</h2>
           {subtitle && <p className="max-w-2xl text-sm text-slate-600">{subtitle}</p>}
         </div>
-        {action}
+        <div className="flex flex-wrap items-center gap-2">{action}</div>
+        <div className="ml-auto flex flex-wrap items-center gap-3">
+          {search}
+          {pager}
+        </div>
       </div>
       {toolbar && <div className="flex flex-wrap items-end gap-3 border-b border-slate-200 bg-slate-50/60 px-4 py-3">{toolbar}</div>}
       <div className="overflow-x-auto" tabIndex={0} role="region" aria-label={`${title} rows`}>
@@ -63,6 +67,110 @@ export function ListShell({ title, subtitle, action, toolbar, footer, children }
       </div>
       {footer && <div className="flex items-center justify-between gap-3 border-t border-slate-200 px-4 py-2.5 text-sm text-slate-700">{footer}</div>}
     </section>
+  );
+}
+
+/** "1-20 / 34" with previous and next, as in the corner of a list. */
+export function Pager({ page, pageSize, total, onPage }: { page: number; pageSize: number; total: number; onPage: (page: number) => void }) {
+  const pages = Math.max(1, Math.ceil(total / pageSize));
+  const from = total === 0 ? 0 : (page - 1) * pageSize + 1;
+  const to = Math.min(total, page * pageSize);
+  return (
+    <nav aria-label="Pages" className="flex items-center gap-1.5 text-sm text-slate-700">
+      <span aria-live="polite" className="px-1 tabular-nums">
+        <span className="font-medium text-slate-900">{from === to ? from : `${from}-${to}`}</span> / {total}
+      </span>
+      <button type="button" className={TOOLBAR_BUTTON} disabled={page <= 1} onClick={() => onPage(page - 1)} aria-label="Previous page">
+        ‹
+      </button>
+      <button type="button" className={TOOLBAR_BUTTON} disabled={page >= pages} onClick={() => onPage(page + 1)} aria-label="Next page">
+        ›
+      </button>
+    </nav>
+  );
+}
+
+/** Splits a list into pages and remembers which page is shown. */
+export function usePaged<T>(items: T[], size: number) {
+  const [wanted, setPage] = useState(1);
+  const pages = Math.max(1, Math.ceil(items.length / size));
+  const page = Math.min(wanted, pages);
+  return { page, setPage, pages, size, total: items.length, items: items.slice((page - 1) * size, page * size) };
+}
+
+export interface ListRow {
+  key: string;
+  /** What a screen reader calls the button that opens the record, such as "Edit tool EMI Calculator". */
+  label: string;
+  /** The text the search box looks in. */
+  search: string;
+  cells: ReactNode[];
+  onOpen: () => void;
+}
+
+/** A searchable, paged list of records: click a row to open its form. */
+export function RecordList({ title, subtitle, action, columns, rows, pageSize = 20 }: { title: string; subtitle?: string; action?: ReactNode; columns: string[]; rows: ListRow[]; pageSize?: number }) {
+  const [search, setSearch] = useState("");
+  const needle = search.trim().toLowerCase();
+  const found = needle ? rows.filter((r) => r.search.toLowerCase().includes(needle)) : rows;
+  const paged = usePaged(found, pageSize);
+  return (
+    <ListShell
+      title={title}
+      subtitle={subtitle}
+      action={action}
+      search={
+        <input
+          type="search"
+          aria-label={`Search ${title.toLowerCase()}`}
+          placeholder="Search…"
+          value={search}
+          onChange={(e) => {
+            setSearch(e.target.value);
+            paged.setPage(1);
+          }}
+          className="w-52 rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-sm text-slate-900 shadow-sm focus:border-brand-500"
+        />
+      }
+      pager={<Pager page={paged.page} pageSize={pageSize} total={paged.total} onPage={paged.setPage} />}
+    >
+      <table className="w-full min-w-max text-left text-sm">
+        <caption className="sr-only">
+          {title}: {paged.total} record{paged.total === 1 ? "" : "s"}
+        </caption>
+        <thead>
+          <tr>
+            {columns.map((c) => (
+              <TH key={c}>{c}</TH>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {paged.items.length === 0 && (
+            <tr>
+              <TD colSpan={columns.length} className="py-8 text-center text-slate-600">
+                Nothing to show.
+              </TD>
+            </tr>
+          )}
+          {paged.items.map((r) => (
+            <tr key={r.key} onClick={r.onOpen} className="cursor-pointer border-b border-slate-100 transition hover:bg-brand-50/60">
+              {r.cells.map((cell, i) => (
+                <TD key={i}>
+                  {i === 0 ? (
+                    <button type="button" aria-label={r.label} onClick={r.onOpen} className="text-left font-medium text-ink hover:text-brand-700">
+                      {cell}
+                    </button>
+                  ) : (
+                    cell
+                  )}
+                </TD>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </ListShell>
   );
 }
 

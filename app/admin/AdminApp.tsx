@@ -1,13 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { NumberField } from "../../components/tools/ui";
 import { GithubError, parseRepo, readWorkbookFile, verifySession, type GithubSession } from "../../lib/admin/github";
 import { EditError } from "../../lib/admin/edit";
 import { checkWorkbook, formatIssue, type Issue, type WorkbookData } from "../../lib/workbook";
 import { rebuildSite } from "../../lib/admin/actions";
 import AdminShell, { type MenuId } from "./AdminShell";
 import BuildStatus from "./BuildStatus";
+import SignIn from "./SignIn";
 import Users from "./Users";
 import { Card } from "./views";
 import Dashboard from "./Dashboard";
@@ -67,7 +67,15 @@ interface Loaded {
   data: WorkbookData;
 }
 
-const button = "rounded-xl bg-brand px-5 py-2.5 font-medium text-white shadow-soft transition hover:bg-brand-700 disabled:opacity-50";
+/** What the sign-in screen says when something goes wrong: plain words, nothing about how the site is stored. */
+function loginMessage(e: unknown): string {
+  if (e instanceof GithubError) {
+    if (e.kind === "network") return "Could not connect. Check your internet connection and try again.";
+    if (e.kind === "rate_limit") return "Too many attempts. Wait a few minutes and try again.";
+    return "That password was not accepted. Check it and try again.";
+  }
+  return "Something went wrong. Please try again.";
+}
 
 function describe(e: unknown): string {
   if (e instanceof GithubError || e instanceof EditError) return e.message;
@@ -98,8 +106,8 @@ function resumeOnce(): Promise<Resume | undefined> {
       return { loaded: await openSession({ ...repo, branch: saved.branch, path: WORKBOOK_PATH, token: saved.token }), saved };
     } catch (e) {
       remember(undefined); // the token no longer works, so stop keeping it
-      writeNotice(describe(e));
-      return { error: describe(e), saved };
+      writeNotice(loginMessage(e));
+      return { error: loginMessage(e), saved };
     }
   })();
   return resuming;
@@ -111,10 +119,13 @@ async function analyse(bytes: Uint8Array) {
   return { issues: result.issues, rowCounts, data: result.data };
 }
 
+/** Where the site's content lives. The sign-in asks only for a password, so this comes from the build, with the live site as the fallback. */
+const FALLBACK_REPO = "oewersolutions/oewer-tools";
+
 export default function AdminApp({ defaultRepo, defaultBranch }: { defaultRepo: string; defaultBranch: string }) {
-  // The token lives only in this component's state: it is not saved to the page, the browser or the repository.
-  const [repoText, setRepoText] = useState(defaultRepo);
-  const [branch, setBranch] = useState(defaultBranch);
+  // The password lives only in this component's state: it is not saved to the page, the browser or the repository.
+  const [repoText, setRepoText] = useState(defaultRepo || FALLBACK_REPO);
+  const [branch, setBranch] = useState(defaultBranch || "main");
   const [token, setToken] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string>();
@@ -131,9 +142,8 @@ export default function AdminApp({ defaultRepo, defaultBranch }: { defaultRepo: 
     setNotice(undefined);
     writeNotice(undefined);
     const repo = parseRepo(values.repo);
-    if (!repo) return setError("Enter the repository as owner/name, for example oewersolutions/oewer-tools.");
-    if (!values.branch.trim()) return setError("Enter the branch name.");
-    if (!values.token.trim()) return setError("Paste your GitHub token.");
+    if (!repo || !values.branch.trim()) return setError("This site is not set up for sign-in yet. Contact the person who built it.");
+    if (!values.token.trim()) return setError("Enter your password.");
     const session: GithubSession = { ...repo, branch: values.branch.trim(), path: WORKBOOK_PATH, token: values.token.trim() };
     setBusy(true);
     try {
@@ -141,7 +151,7 @@ export default function AdminApp({ defaultRepo, defaultBranch }: { defaultRepo: 
       setToken("");
       if (keep) remember({ repo: values.repo, branch: values.branch.trim(), token: session.token });
     } catch (e) {
-      setError(describe(e));
+      setError(loginMessage(e));
     } finally {
       setBusy(false);
     }
@@ -214,50 +224,16 @@ export default function AdminApp({ defaultRepo, defaultBranch }: { defaultRepo: 
 
   if (!loaded) {
     return (
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          void signIn();
-        }}
-        className="max-w-xl space-y-5 rounded-xl border border-slate-200 bg-white p-5 shadow-sm"
-      >
-        <NumberField label="Repository (owner/name)" value={repoText} onChange={setRepoText} />
-        <NumberField label="Branch" value={branch} onChange={setBranch} />
-        <div>
-          <label htmlFor="admin-token" className="block text-sm font-semibold text-slate-800">
-            GitHub token
-          </label>
-          <input
-            id="admin-token"
-            type="password"
-            autoComplete="off"
-            spellCheck={false}
-            value={token}
-            onChange={(e) => setToken(e.target.value)}
-            className="mt-1.5 block w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 font-mono text-base shadow-sm"
-          />
-          <p className="mt-2 text-sm text-slate-700">
-            Use a fine-grained token limited to this one repository, with <strong>Contents: Read and write</strong>, plus <strong>Actions: Read and write</strong> to see site updates and use <em>Rebuild site</em>, and <strong>Administration: Read and write</strong> only if you will add or remove users. Nothing else is needed. It stays in this page only and is forgotten when you sign out, after 30 minutes without activity, or when you close the tab.
-          </p>
-          <label className="mt-3 flex items-start gap-2 text-sm text-slate-800">
-            <input type="checkbox" checked={keep} onChange={(e) => setKeep(e.target.checked)} className="mt-1" />
-            <span>Keep me signed in if I reload this tab. The token is then kept in this tab&rsquo;s session storage until you sign out. Leave this off on a shared computer.</span>
-          </label>
-        </div>
-        {notice && (
-          <p role="status" className="text-slate-800">
-            {notice}
-          </p>
-        )}
-        {error && (
-          <p role="alert" className="text-red-800">
-            {error}
-          </p>
-        )}
-        <button type="submit" disabled={busy} className={button}>
-          {busy ? "Signing in…" : "Sign in"}
-        </button>
-      </form>
+      <SignIn
+        token={token}
+        onToken={setToken}
+        keep={keep}
+        onKeep={setKeep}
+        busy={busy}
+        error={error}
+        notice={notice}
+        onSubmit={() => void signIn()}
+      />
     );
   }
 

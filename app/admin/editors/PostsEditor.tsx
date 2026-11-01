@@ -9,7 +9,7 @@ import { PostBody } from "../../../components/Prose";
 import { readingMinutes } from "../../../lib/format";
 import { slugify, statusNotice } from "../../../lib/posts";
 import { schema, type WorkbookData } from "../../../lib/workbook";
-import { StatusPill, toneFor } from "../views";
+import { RecordList, StatusPill, toneFor } from "../views";
 import ImageUpload from "./ImageUpload";
 import { CheckGroup, FormShell, primaryButton, Section, SelectField, SeoFields, smallButton, TextAreaField, TextField } from "./parts";
 
@@ -29,13 +29,6 @@ export default function PostsEditor({ data, onApply, session, canPush }: { data:
 
   return (
     <div className="space-y-5">
-      <div className="flex flex-wrap items-center justify-between gap-3">
-        <p className="max-w-2xl text-sm text-slate-700">Articles are written as a list of blocks: paragraphs, headings, lists, images and so on. Only published articles are listed on the site.</p>
-        <button type="button" className={primaryButton} onClick={() => setEditing("new")}>
-          New article
-        </button>
-      </div>
-
       {editing && (
         <PostForm
           key={editing}
@@ -51,34 +44,25 @@ export default function PostsEditor({ data, onApply, session, canPush }: { data:
         />
       )}
 
-      <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white">
-        <table className="w-full text-left text-sm">
-          <caption className="sr-only">Articles</caption>
-          <thead className="bg-white text-xs uppercase tracking-wide text-slate-500">
-            <tr>
-              {["Title", "Status", "Published", ""].map((h, i) => (
-                <th key={i} scope="col" className="border-b border-slate-200 px-4 py-3 font-semibold">
-                  {h || <span className="sr-only">Actions</span>}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {posts.map((p) => (
-              <tr key={p.id} className="border-t border-slate-100 transition hover:bg-slate-50">
-                <td className="px-4 py-3 font-medium">{cellString(p.values.title)}</td>
-                <td className="px-4 py-3"><StatusPill tone={toneFor(cellString(p.values.status))}>{cellString(p.values.status)}</StatusPill></td>
-                <td className="px-4 py-3">{cellString(p.values.published_at).slice(0, 10)}</td>
-                <td className="px-4 py-3 text-right">
-                  <button type="button" className={smallButton} aria-label={`Edit article ${cellString(p.values.title)}`} onClick={() => setEditing(p.id)}>
-                    Edit
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      {!editing && (
+        <RecordList
+          title="Articles"
+          subtitle="Articles are written as a list of blocks: paragraphs, headings, lists, images and so on. Only published articles are listed on the site."
+          action={
+            <button type="button" className={primaryButton} onClick={() => setEditing("new")}>
+              New article
+            </button>
+          }
+          columns={["Title", "Status", "Published"]}
+          rows={posts.map((p) => ({
+            key: p.id,
+            label: `Edit article ${cellString(p.values.title)}`,
+            search: `${cellString(p.values.title)} ${cellString(p.values.status)}`,
+            cells: [cellString(p.values.title), <StatusPill key="s" tone={toneFor(cellString(p.values.status))}>{cellString(p.values.status)}</StatusPill>, cellString(p.values.published_at).slice(0, 10)],
+            onOpen: () => setEditing(p.id),
+          }))}
+        />
+      )}
     </div>
   );
 }
@@ -115,7 +99,7 @@ function PostForm({ data, postId, session, canPush, onSave, onCancel }: { data: 
   }
 
   return (
-    <FormShell title={postId ? `Edit article ${f.title}` : "New article"} onSubmit={save} onCancel={onCancel} submitLabel="Update pending changes" error={error}>
+    <FormShell title={postId ? `Edit article ${f.title}` : "New article"} onSubmit={save} onCancel={onCancel} listLabel="Articles" error={error}>
       <div className="grid gap-5 md:grid-cols-2">
         <div className="md:col-span-2">
           <TextField label="Title" value={f.title} onChange={(v) => set({ title: v, ...(slugTouched ? {} : { slug: slugify(v) }) })} />

@@ -7,6 +7,7 @@ import { cellString, toRows } from "../../../lib/admin/table";
 import { slugify } from "../../../lib/posts";
 import { TOOL_COMPONENT_KEYS } from "../../../lib/tools/keys";
 import { schema, type WorkbookData } from "../../../lib/workbook";
+import { RecordList, StatusPill, toneFor } from "../views";
 import { Checkbox, CheckGroup, FormShell, primaryButton, Section, SelectField, SeoFields, smallButton, TextAreaField, TextField } from "./parts";
 
 interface ToolFields {
@@ -30,12 +31,6 @@ export default function ToolsEditor({ data, onApply }: { data: WorkbookData; onA
 
   return (
     <div className="space-y-5">
-      <div className="flex flex-wrap items-center justify-between gap-3">
-        <p className="max-w-2xl text-sm text-slate-700">The tools on the site. Each has a page with the tool, a how-to, examples, questions and links to related tools and guides.</p>
-        <button type="button" className={primaryButton} onClick={() => setEditing("new")} disabled={freeKeys.length === 0} title={freeKeys.length === 0 ? "Every tool component that exists is already in use" : undefined}>
-          Add tool
-        </button>
-      </div>
       {freeKeys.length === 0 && <p className="text-sm text-slate-700">Every tool component built so far is in use. A developer adds a new component in code first; then it can be added here.</p>}
 
       {editing && (
@@ -52,34 +47,25 @@ export default function ToolsEditor({ data, onApply }: { data: WorkbookData; onA
         />
       )}
 
-      <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white">
-        <table className="w-full text-left text-sm">
-          <caption className="sr-only">Tools</caption>
-          <thead className="bg-white text-xs uppercase tracking-wide text-slate-500">
-            <tr>
-              {["Tool", "Category", "Status", ""].map((h, i) => (
-                <th key={i} scope="col" className="border-b border-slate-200 px-4 py-3 font-semibold">
-                  {h || <span className="sr-only">Actions</span>}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {tools.map((t) => (
-              <tr key={t.id} className="border-t border-slate-100 transition hover:bg-slate-50">
-                <td className="px-4 py-3 font-medium">{cellString(t.values.name)}</td>
-                <td className="px-4 py-3">{categoryName(cellString(t.values.category_id))}</td>
-                <td className="px-4 py-3">{cellString(t.values.status)}</td>
-                <td className="px-4 py-3 text-right">
-                  <button type="button" className={smallButton} aria-label={`Edit tool ${cellString(t.values.name)}`} onClick={() => setEditing(t.id)}>
-                    Edit
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      {!editing && (
+        <RecordList
+          title="Tools"
+          subtitle="The tools on the site. Each has a page with the tool, a how-to, examples, questions and links to related tools and guides."
+          action={
+            <button type="button" className={primaryButton} onClick={() => setEditing("new")} disabled={freeKeys.length === 0} title={freeKeys.length === 0 ? "Every tool component that exists is already in use" : undefined}>
+              Add tool
+            </button>
+          }
+          columns={["Tool", "Category", "Status"]}
+          rows={tools.map((t) => ({
+            key: t.id,
+            label: `Edit tool ${cellString(t.values.name)}`,
+            search: `${cellString(t.values.name)} ${categoryName(cellString(t.values.category_id))} ${cellString(t.values.status)}`,
+            cells: [cellString(t.values.name), categoryName(cellString(t.values.category_id)), <StatusPill key="s" tone={toneFor(cellString(t.values.status))}>{cellString(t.values.status)}</StatusPill>],
+            onOpen: () => setEditing(t.id),
+          }))}
+        />
+      )}
     </div>
   );
 }
@@ -129,7 +115,7 @@ function ToolForm({ data, toolId, freeKeys, onSave, onCancel }: { data: Workbook
   }
 
   return (
-    <FormShell title={row ? `Edit tool ${cellString(row.values.name)}` : "Add a tool"} onSubmit={save} onCancel={onCancel} submitLabel="Update pending changes" error={error}>
+    <FormShell title={row ? `Edit tool ${cellString(row.values.name)}` : "Add a tool"} onSubmit={save} onCancel={onCancel} listLabel="Tools" error={error}>
       <div className="grid gap-5 md:grid-cols-2">
         <TextField label="Name" value={f.name} onChange={(v) => set({ name: v, ...(slugTouched ? {} : { slug: slugify(v) }) })} />
         <TextField label="Page address (slug)" value={f.slug} onChange={(v) => { setSlugTouched(true); set({ slug: v }); }} hint="Lowercase letters, numbers and hyphens. Changing it breaks old links." />

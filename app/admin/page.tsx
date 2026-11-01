@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function AdminPage() {
   return (
     <>
-      <PageBand title="Admin" description="Sign in with a GitHub token to edit the site's workbook. Changes are saved as commits in your repository." />
+      <PageBand title="Admin" description="Sign in to manage the articles, tools and settings of your website." />
       <Container className="py-10">
         <AdminApp defaultRepo={process.env.NEXT_PUBLIC_GITHUB_REPO ?? ""} defaultBranch={process.env.NEXT_PUBLIC_GITHUB_BRANCH ?? "main"} />
       </Container>
