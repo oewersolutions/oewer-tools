@@ -157,7 +157,7 @@ export default async function PostPage({ params }: Props) {
             src={post.cover_image}
             alt={post.cover_alt}
             info={getCoverInfo(post)}
-            sizes="(min-width: 1280px) 1136px, 100vw"
+            sizes="(min-width: 1280px) 1136px, (min-width: 768px) 90vw, 60vw"
             priority
             className="mt-10 aspect-[16/9] w-full rounded-3xl object-cover sm:aspect-[21/9]"
           />

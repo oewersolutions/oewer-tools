@@ -131,7 +131,7 @@ function renderBlock(block: PostBlock, ids: Map<string, string>) {
           <img
             src={`${BASE_PATH}${block.asset_path}`}
             srcSet={srcSet}
-            sizes={srcSet ? "(min-width: 768px) 42rem, 100vw" : undefined}
+            sizes={srcSet ? "(min-width: 768px) 42rem, 60vw" : undefined}
             width={info?.width}
             height={info?.height}
             alt={block.content}

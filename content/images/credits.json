@@ -1,0 +1,943 @@
+{
+ "how-emi-is-calculated/cover": {
+  "title": "File:Sylvester Apartment Building, Fayette Street facade.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3ASylvester_Apartment_Building%2C_Fayette_Street_facade.jpg",
+  "author": "Kenneth C. Zirkel",
+  "licence": "CC BY-SA 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "description": "Sylvester Apartment Building Fayette Street facade. Syracuse, New York.",
+  "width": 3600,
+  "height": 2783,
+  "files": [
+   "/images/blog/how-emi-is-calculated/cover-1600.jpg",
+   "/images/blog/how-emi-is-calculated/cover-800.jpg"
+  ]
+ },
+ "how-emi-is-calculated/figure": {
+  "title": "File:Apartment buildings on the shore of Hudson River, West New York, New Jersey, 20231001 1206 1074.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3AApartment_buildings_on_the_shore_of_Hudson_River%2C_West_New_York%2C_New_Jersey%2C_20231001_1206_1074.jpg",
+  "author": "Jakub Hałun",
+  "licence": "CC BY 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/4.0",
+  "description": "Apartment buildings on the shore of the Hudson River, West New York, New Jersey",
+  "width": 5885,
+  "height": 2673,
+  "files": [
+   "/images/blog/how-emi-is-calculated/figure-1200.jpg",
+   "/images/blog/how-emi-is-calculated/figure-600.jpg",
+   "/images/blog/how-emi-is-calculated/figure-800.jpg"
+  ]
+ },
+ "compress-images-without-losing-quality/cover": {
+  "title": "File:Photographic lenses and tubes 2025.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3APhotographic_lenses_and_tubes_2025.jpg",
+  "author": "Carlos Valenzuela Montuy",
+  "licence": "CC BY 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/4.0",
+  "description": "Photographic lenses and tubes with wooden background, from left to right: Nikon AF-S VR Zoom-Nikkor 70-200mm f/2.8G IF-ED Nikon AF Zoom-Nikkor 70-300mm f/4-5.6G Tokina 24-70mm f/2.8 AT-X Pro FX Samyan",
+  "width": 6056,
+  "height": 3900,
+  "files": [
+   "/images/blog/compress-images-without-losing-quality/cover-1600.jpg",
+   "/images/blog/compress-images-without-losing-quality/cover-800.jpg"
+  ]
+ },
+ "compress-images-without-losing-quality/figure": {
+  "title": "File:Submuestreo subsampling zamora 4img.JPG",
+  "page": "https://commons.wikimedia.org/wiki/File%3ASubmuestreo_subsampling_zamora_4img.JPG",
+  "author": "Yo mismo",
+  "licence": "CC BY-SA 2.5",
+  "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.5",
+  "description": "Efectos del submuestreo (Arriba izq. original, a su derecha la imágen donde la información del color se redujo a la cuarta parte en horizontal y vertical, debajo otra donde se redujo esa información a",
+  "width": 1536,
+  "height": 1152,
+  "files": [
+   "/images/blog/compress-images-without-losing-quality/figure-1200.jpg",
+   "/images/blog/compress-images-without-losing-quality/figure-600.jpg",
+   "/images/blog/compress-images-without-losing-quality/figure-800.jpg"
+  ]
+ },
+ "gst-explained-add-and-remove-gst/cover": {
+  "title": "File:Indian 50-rupees banknote closeup (68912).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3AIndian_50-rupees_banknote_closeup_(68912).jpg",
+  "author": "Sohel Patel",
+  "licence": "CC0",
+  "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "description": "A close-up of a 50-rupee Indian banknote",
+  "width": 3200,
+  "height": 2400,
+  "files": [
+   "/images/blog/gst-explained-add-and-remove-gst/cover-1600.jpg",
+   "/images/blog/gst-explained-add-and-remove-gst/cover-800.jpg"
+  ]
+ },
+ "gst-explained-add-and-remove-gst/figure": {
+  "title": "File:Indian 100 and 2000 rupee notes (32190943222).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3AIndian_100_and_2000_rupee_notes_(32190943222).jpg",
+  "author": "Monito - Money Transfer Comparison",
+  "licence": "CC BY 2.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+  "description": "100 ruppees note and 2000 ruppees note",
+  "width": 4608,
+  "height": 3456,
+  "files": [
+   "/images/blog/gst-explained-add-and-remove-gst/figure-1200.jpg",
+   "/images/blog/gst-explained-add-and-remove-gst/figure-600.jpg",
+   "/images/blog/gst-explained-add-and-remove-gst/figure-800.jpg"
+  ]
+ },
+ "fixed-deposit-interest-simple-vs-compound/cover": {
+  "title": "File:One Rupee Indian coins.JPG",
+  "page": "https://commons.wikimedia.org/wiki/File%3AOne_Rupee_Indian_coins.JPG",
+  "author": "Reserve Bank of India / Kshitij Gupta",
+  "licence": "CC BY-SA 3.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "description": "One Rupee Indian coins",
+  "width": 3968,
+  "height": 2232,
+  "files": [
+   "/images/blog/fixed-deposit-interest-simple-vs-compound/cover-1600.jpg",
+   "/images/blog/fixed-deposit-interest-simple-vs-compound/cover-800.jpg"
+  ]
+ },
+ "fixed-deposit-interest-simple-vs-compound/figure": {
+  "title": "File:1 Rupee Indian Coin Mahatma Gandhi.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3A1_Rupee_Indian_Coin_Mahatma_Gandhi.jpg",
+  "author": "சக்திகுமார் லெட்சுமணன்",
+  "licence": "CC BY-SA 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "description": "1 Rupee Indian Commemorative Coin with Mahatma Gandhi image",
+  "width": 1780,
+  "height": 1120,
+  "files": [
+   "/images/blog/fixed-deposit-interest-simple-vs-compound/figure-1200.jpg",
+   "/images/blog/fixed-deposit-interest-simple-vs-compound/figure-600.jpg",
+   "/images/blog/fixed-deposit-interest-simple-vs-compound/figure-800.jpg"
+  ]
+ },
+ "make-a-qr-code-that-scans-every-time/cover": {
+  "title": "File:Gedenkort an das Deportationslager Köln-Müngersdorf -5696.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3AGedenkort_an_das_Deportationslager_K%C3%B6ln-M%C3%BCngersdorf_-5696.jpg",
+  "author": "Raimond Spekking",
+  "licence": "CC BY-SA 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "description": "Gedenkort an das Deportationslager Köln-Müngersdorf. Scan des QR-Code mit einem Smartphone. Linkziel: https://museenkoeln.de/ns-dokumentationszentrum/default.aspx?s=2821 . Verwendete App: Google Lens",
+  "width": 6720,
+  "height": 4480,
+  "files": [
+   "/images/blog/make-a-qr-code-that-scans-every-time/cover-1600.jpg",
+   "/images/blog/make-a-qr-code-that-scans-every-time/cover-800.jpg"
+  ]
+ },
+ "make-a-qr-code-that-scans-every-time/figure": {
+  "title": "File:QR codes at Ding Darling Refuge.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3AQR_codes_at_Ding_Darling_Refuge.jpg",
+  "author": "U.S. Fish and Wildlife Service Headquarters",
+  "licence": "Public domain",
+  "licenceUrl": "",
+  "description": "Visitors to J.N. “Ding” Darling National Wildlife Refuge in Florida scan quick response (QR) codes along the iNature Trail into their smartphone. (Chelle Koster Walton)",
+  "width": 3888,
+  "height": 2592,
+  "files": [
+   "/images/blog/make-a-qr-code-that-scans-every-time/figure-1200.jpg",
+   "/images/blog/make-a-qr-code-that-scans-every-time/figure-600.jpg",
+   "/images/blog/make-a-qr-code-that-scans-every-time/figure-800.jpg"
+  ]
+ },
+ "why-browser-based-tools-keep-your-files-private/cover": {
+  "title": "File:Secured laptop.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3ASecured_laptop.jpg",
+  "author": "Richard Nowell",
+  "licence": "CC BY-SA 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "description": "A Packard Bell laptop with a padlock and chain to secure it.",
+  "width": 3264,
+  "height": 2448,
+  "files": [
+   "/images/blog/why-browser-based-tools-keep-your-files-private/cover-1600.jpg",
+   "/images/blog/why-browser-based-tools-keep-your-files-private/cover-800.jpg"
+  ]
+ },
+ "why-browser-based-tools-keep-your-files-private/figure": {
+  "title": "File:SeeThruPadlockClosed.JPG",
+  "page": "https://commons.wikimedia.org/wiki/File%3ASeeThruPadlockClosed.JPG",
+  "author": "Simon Speed",
+  "licence": "CC0",
+  "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "description": "A transparent padlock for lock-picking practice, closed.",
+  "width": 1810,
+  "height": 2332,
+  "files": [
+   "/images/blog/why-browser-based-tools-keep-your-files-private/figure-1200.jpg",
+   "/images/blog/why-browser-based-tools-keep-your-files-private/figure-600.jpg",
+   "/images/blog/why-browser-based-tools-keep-your-files-private/figure-800.jpg"
+  ]
+ },
+ "how-a-hybrid-car-works-engine-motor-and-battery-explained/cover": {
+  "title": "File:Toyota Prius II 001.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3AToyota_Prius_II_001.jpg",
+  "author": "KitsuneDP",
+  "licence": "CC0",
+  "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "description": "Toyota Prius II",
+  "width": 2080,
+  "height": 1560,
+  "files": [
+   "/images/blog/how-a-hybrid-car-works-engine-motor-and-battery-explained/cover-1600.jpg",
+   "/images/blog/how-a-hybrid-car-works-engine-motor-and-battery-explained/cover-800.jpg"
+  ]
+ },
+ "how-a-hybrid-car-works-engine-motor-and-battery-explained/figure": {
+  "title": "File:Toyota Prius (XW60) engine bay fusebox cover.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3AToyota_Prius_(XW60)_engine_bay_fusebox_cover.jpg",
+  "author": "Benlisquare",
+  "licence": "CC BY-SA 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "description": "The underside of a plastic cover for the fusebox located within the engine bay of a Japanese domestic model fifth generation Toyota Prius (XW60). It is one of two fuseboxes located on the XW60 Prius; ",
+  "width": 3000,
+  "height": 4000,
+  "files": [
+   "/images/blog/how-a-hybrid-car-works-engine-motor-and-battery-explained/figure-1200.jpg",
+   "/images/blog/how-a-hybrid-car-works-engine-motor-and-battery-explained/figure-600.jpg",
+   "/images/blog/how-a-hybrid-car-works-engine-motor-and-battery-explained/figure-800.jpg"
+  ]
+ },
+ "how-airplanes-stay-in-the-air-the-four-forces-of-flight/cover": {
+  "title": "File:Aircraft wing in flight, Rostov-on-Don, Russia.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3AAircraft_wing_in_flight%2C_Rostov-on-Don%2C_Russia.jpg",
+  "author": "Vyacheslav Argenberg",
+  "licence": "CC BY 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/4.0",
+  "description": "Aircraft wing in flight, Rostov-on-Don, Russia.",
+  "width": 4032,
+  "height": 2688,
+  "files": [
+   "/images/blog/how-airplanes-stay-in-the-air-the-four-forces-of-flight/cover-1600.jpg",
+   "/images/blog/how-airplanes-stay-in-the-air-the-four-forces-of-flight/cover-800.jpg"
+  ]
+ },
+ "how-airplanes-stay-in-the-air-the-four-forces-of-flight/figure": {
+  "title": "File:Oblique Wing Research Aircraft in flight (EC76-6048).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3AOblique_Wing_Research_Aircraft_in_flight_(EC76-6048).jpg",
+  "author": "NASA Armstrong Flight Research Center / NASA",
+  "licence": "Public domain",
+  "licenceUrl": "",
+  "description": "Oblique Wing Research Aircraft in flight",
+  "width": 3000,
+  "height": 2400,
+  "files": [
+   "/images/blog/how-airplanes-stay-in-the-air-the-four-forces-of-flight/figure-1200.jpg",
+   "/images/blog/how-airplanes-stay-in-the-air-the-four-forces-of-flight/figure-600.jpg",
+   "/images/blog/how-airplanes-stay-in-the-air-the-four-forces-of-flight/figure-800.jpg"
+  ]
+ },
+ "how-ford-s-moving-assembly-line-cut-model-t-build-time-to-93-minutes/cover": {
+  "title": "File:Assembly line Ford T, 1923.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3AAssembly_line_Ford_T%2C_1923.jpg",
+  "author": "Peter Elfelt",
+  "licence": "CC BY-SA 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "description": "Assembly line Ford T, 1923. Possible from one of the two assembly lines in Copenhagen, Denmark: https://www.danmarksarkiv.dk/fords-danske-samlefabrikker/",
+  "width": 6745,
+  "height": 5169,
+  "files": [
+   "/images/blog/how-ford-s-moving-assembly-line-cut-model-t-build-time-to-93-minutes/cover-1600.jpg",
+   "/images/blog/how-ford-s-moving-assembly-line-cut-model-t-build-time-to-93-minutes/cover-800.jpg"
+  ]
+ },
+ "how-ford-s-moving-assembly-line-cut-model-t-build-time-to-93-minutes/figure": {
+  "title": "File:Model T Assembly Line Diorama, wide.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3AModel_T_Assembly_Line_Diorama%2C_wide.jpg",
+  "author": "Bill Abbott",
+  "licence": "CC BY-SA 2.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "description": "This work of art depicts the key moment in the Model T assembly line when the completed passenger compartment came down to be mated to the chassis and engine, alreay on their wheels. DSC_0698",
+  "width": 3872,
+  "height": 2592,
+  "files": [
+   "/images/blog/how-ford-s-moving-assembly-line-cut-model-t-build-time-to-93-minutes/figure-1200.jpg",
+   "/images/blog/how-ford-s-moving-assembly-line-cut-model-t-build-time-to-93-minutes/figure-600.jpg",
+   "/images/blog/how-ford-s-moving-assembly-line-cut-model-t-build-time-to-93-minutes/figure-800.jpg"
+  ]
+ },
+ "what-is-a-context-window-why-ai-chatbots-forget-things/cover": {
+  "title": "File:Sticky Notes 2.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3ASticky_Notes_2.jpg",
+  "author": "ProjectManhattan",
+  "licence": "CC BY-SA 3.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "description": "Sticky notes on the wall",
+  "width": 3920,
+  "height": 2204,
+  "files": [
+   "/images/blog/what-is-a-context-window-why-ai-chatbots-forget-things/cover-1600.jpg",
+   "/images/blog/what-is-a-context-window-why-ai-chatbots-forget-things/cover-800.jpg"
+  ]
+ },
+ "what-is-a-context-window-why-ai-chatbots-forget-things/figure": {
+  "title": "File:Sticky Notes in different colors.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3ASticky_Notes_in_different_colors.jpg",
+  "author": "Ramesh NG",
+  "licence": "CC BY-SA 2.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "description": "A Post-it note is a piece of stationery with a re-adherable strip of adhesive on the back, designed for temporarily attaching notes to documents and other surfaces. Although now available in a wide ra",
+  "width": 2048,
+  "height": 1536,
+  "files": [
+   "/images/blog/what-is-a-context-window-why-ai-chatbots-forget-things/figure-1200.jpg",
+   "/images/blog/what-is-a-context-window-why-ai-chatbots-forget-things/figure-600.jpg",
+   "/images/blog/what-is-a-context-window-why-ai-chatbots-forget-things/figure-800.jpg"
+  ]
+ },
+ "how-usb-c-chargers-decide-how-much-power-to-send/cover": {
+  "title": "File:USB-C cable connected to a powerbank.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3AUSB-C_cable_connected_to_a_powerbank.jpg",
+  "author": "Logant547",
+  "licence": "CC BY 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/4.0",
+  "description": "A USB Type-C (USB-C) cable connected to a powerbank.",
+  "width": 3060,
+  "height": 2295,
+  "files": [
+   "/images/blog/how-usb-c-chargers-decide-how-much-power-to-send/cover-1600.jpg",
+   "/images/blog/how-usb-c-chargers-decide-how-much-power-to-send/cover-800.jpg"
+  ]
+ },
+ "how-usb-c-chargers-decide-how-much-power-to-send/figure": {
+  "title": "File:Two USB-C connectors being held.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3ATwo_USB-C_connectors_being_held.jpg",
+  "author": "Logant547",
+  "licence": "CC BY 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/4.0",
+  "description": "A close-up shot of two USB-C male connectors being hold in someone's fingers. The left one is a Baseus \"Tungsten Gold\" cable, the right is a Xiaomi 6A cable. The left connector has a black cable, body",
+  "width": 2461,
+  "height": 3281,
+  "files": [
+   "/images/blog/how-usb-c-chargers-decide-how-much-power-to-send/figure-1200.jpg",
+   "/images/blog/how-usb-c-chargers-decide-how-much-power-to-send/figure-600.jpg",
+   "/images/blog/how-usb-c-chargers-decide-how-much-power-to-send/figure-800.jpg"
+  ]
+ },
+ "sip-returns-explained-how-a-monthly-investment-grows/cover": {
+  "title": "File:Newly born plant.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3ANewly_born_plant.jpg",
+  "author": "Md.Kawsar Hossain Jowel",
+  "licence": "CC0",
+  "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "description": "New plants are growing through the soil.",
+  "width": 2250,
+  "height": 4000,
+  "files": [
+   "/images/blog/sip-returns-explained-how-a-monthly-investment-grows/cover-1600.jpg",
+   "/images/blog/sip-returns-explained-how-a-monthly-investment-grows/cover-800.jpg"
+  ]
+ },
+ "sip-returns-explained-how-a-monthly-investment-grows/figure": {
+  "title": "File:Growing seed.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3AGrowing_seed.jpg",
+  "author": "Akeel Ameer",
+  "licence": "CC BY-SA 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "description": "It's a beginning stage of a plant",
+  "width": 3456,
+  "height": 4608,
+  "files": [
+   "/images/blog/sip-returns-explained-how-a-monthly-investment-grows/figure-1200.jpg",
+   "/images/blog/sip-returns-explained-how-a-monthly-investment-grows/figure-600.jpg",
+   "/images/blog/sip-returns-explained-how-a-monthly-investment-grows/figure-800.jpg"
+  ]
+ },
+ "lumpsum-investment-calculator-explained-the-formula-and-an-example/cover": {
+  "title": "File:Stack of coins 0214.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3AStack_of_coins_0214.jpg",
+  "author": "Dori",
+  "licence": "Public domain",
+  "licenceUrl": "",
+  "description": "Stacks of US quarters and pennies",
+  "width": 2000,
+  "height": 3000,
+  "files": [
+   "/images/blog/lumpsum-investment-calculator-explained-the-formula-and-an-example/cover-1600.jpg",
+   "/images/blog/lumpsum-investment-calculator-explained-the-formula-and-an-example/cover-800.jpg"
+  ]
+ },
+ "lumpsum-investment-calculator-explained-the-formula-and-an-example/figure": {
+  "title": "File:Branch Mint Sovereigns.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3ABranch_Mint_Sovereigns.jpg",
+  "author": "Snd3054",
+  "licence": "CC0",
+  "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "description": "Sovereigns struck at six branch mints",
+  "width": 3178,
+  "height": 2174,
+  "files": [
+   "/images/blog/lumpsum-investment-calculator-explained-the-formula-and-an-example/figure-1200.jpg",
+   "/images/blog/lumpsum-investment-calculator-explained-the-formula-and-an-example/figure-600.jpg",
+   "/images/blog/lumpsum-investment-calculator-explained-the-formula-and-an-example/figure-800.jpg"
+  ]
+ },
+ "compound-interest-explained-formula-and-examples/cover": {
+  "title": "File:Pine log cross-sections, Teutendorf, 2016-09-17.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3APine_log_cross-sections%2C_Teutendorf%2C_2016-09-17.jpg",
+  "author": "Radomianin",
+  "licence": "CC BY-SA 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "description": "Cross-sections of freshly felled Scots Pine logs ( Pinus sylvestris ) from a thinning on a forest log pile near Teutendorf (Sanitz). The image clearly shows the wide sapwood with fresh resin droplets ",
+  "width": 6000,
+  "height": 4000,
+  "files": [
+   "/images/blog/compound-interest-explained-formula-and-examples/cover-1600.jpg",
+   "/images/blog/compound-interest-explained-formula-and-examples/cover-800.jpg"
+  ]
+ },
+ "compound-interest-explained-formula-and-examples/figure": {
+  "title": "File:Close-up of Tree Cross-section Showing Growth Rings.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3AClose-up_of_Tree_Cross-section_Showing_Growth_Rings.jpg",
+  "author": "Kelsey Todd",
+  "licence": "CC BY-SA 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "description": "This image focuses on a close-up view of a single tree's cross-section. The intricate pattern of growth rings, marking each year of the tree's life, is vividly depicted. The concentric circles, varyin",
+  "width": 4000,
+  "height": 6000,
+  "files": [
+   "/images/blog/compound-interest-explained-formula-and-examples/figure-1200.jpg",
+   "/images/blog/compound-interest-explained-formula-and-examples/figure-600.jpg",
+   "/images/blog/compound-interest-explained-formula-and-examples/figure-800.jpg"
+  ]
+ },
+ "simple-interest-formula-how-it-works-with-examples/cover": {
+  "title": "File:Pittsboro Merchant Business Ledger - DPLA - 4cbfce8f8f08c14f851ab74af046c082 (page 258).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3APittsboro_Merchant_Business_Ledger_-_DPLA_-_4cbfce8f8f08c14f851ab74af046c082_(page_258).jpg",
+  "author": "This file was contributed to Wikimedia Commons by Cumberland County Public Library & Information Center as part of a cooperation project. The donation was facilitated by the Digital Public Library of America , via its partner North Carolina Digital Heritage Center . Record in source catalog DPLA identifier: 4cbfce8f8f08c14f851ab74af046c082",
+  "licence": "Public domain",
+  "licenceUrl": "",
+  "description": "A business ledger for the general merchants Womack and Goodwin in Pittsboro, North Carolina, dating from 1832-1834. The ledger lists the firm's many customers and transcations during this period, incl",
+  "width": 4522,
+  "height": 6786,
+  "files": [
+   "/images/blog/simple-interest-formula-how-it-works-with-examples/cover-1600.jpg",
+   "/images/blog/simple-interest-formula-how-it-works-with-examples/cover-800.jpg"
+  ]
+ },
+ "simple-interest-formula-how-it-works-with-examples/figure": {
+  "title": "File:Unnamed Blacksmith's Business Ledger or Account Book from the Ridenhour District, Stanly County, N.C. - DPLA - 17c6d0858f8eb29c3bc840fc1af3f62b (page 69).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3AUnnamed_Blacksmith's_Business_Ledger_or_Account_Book_from_the_Ridenhour_District%2C_Stanly_County%2C_N.C._-_DPLA_-_17c6d0858f8eb29c3bc840fc1af3f62b_(page_69).jpg",
+  "author": "This file was contributed to Wikimedia Commons by Stanly County Museum as part of a cooperation project. The donation was facilitated by the Digital Public Library of America , via its partner North Carolina Digital Heritage Center . Record in source catalog DPLA identifier: 17c6d0858f8eb29c3bc840fc1af3f62b",
+  "licence": "Public domain",
+  "licenceUrl": "",
+  "description": "Unnamed Blacksmith's Business Ledger or Account Book from the Ridenhour District, Stanly County, N.C.",
+  "width": 2003,
+  "height": 4390,
+  "files": [
+   "/images/blog/simple-interest-formula-how-it-works-with-examples/figure-1200.jpg",
+   "/images/blog/simple-interest-formula-how-it-works-with-examples/figure-600.jpg",
+   "/images/blog/simple-interest-formula-how-it-works-with-examples/figure-800.jpg"
+  ]
+ },
+ "recurring-deposit-how-rd-maturity-is-calculated/cover": {
+  "title": "File:Colorful-plastic-chicken-piggy-bank-indonesia.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3AColorful-plastic-chicken-piggy-bank-indonesia.jpg",
+  "author": "Undeka 11",
+  "licence": "CC BY-SA 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "description": "Colorful plastic chicken-shaped piggy banks displayed on a wooden shelf. These \"celengan ayam\" are traditional Indonesian money boxes used by children to save coins. The piggy banks come in bright col",
+  "width": 4080,
+  "height": 3060,
+  "files": [
+   "/images/blog/recurring-deposit-how-rd-maturity-is-calculated/cover-1600.jpg",
+   "/images/blog/recurring-deposit-how-rd-maturity-is-calculated/cover-800.jpg"
+  ]
+ },
+ "recurring-deposit-how-rd-maturity-is-calculated/figure": {
+  "title": "File:Model 1925 Kenworth Collectible Piggy Bank front view 2.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3AModel_1925_Kenworth_Collectible_Piggy_Bank_front_view_2.jpg",
+  "author": "Noah Wulf",
+  "licence": "CC BY-SA 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "description": "A Model 1925 Kenworth with Watkins Products Markings used as a collectible piggy bank. Seen from front.",
+  "width": 4272,
+  "height": 2848,
+  "files": [
+   "/images/blog/recurring-deposit-how-rd-maturity-is-calculated/figure-1200.jpg",
+   "/images/blog/recurring-deposit-how-rd-maturity-is-calculated/figure-600.jpg",
+   "/images/blog/recurring-deposit-how-rd-maturity-is-calculated/figure-800.jpg"
+  ]
+ },
+ "successive-discounts-why-20-off-plus-10-is-28/cover": {
+  "title": "File:Clearance Sale (13671292344).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3AClearance_Sale_(13671292344).jpg",
+  "author": "Paul Sableman",
+  "licence": "CC BY 2.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+  "description": "Clearance Sale",
+  "width": 5472,
+  "height": 3648,
+  "files": [
+   "/images/blog/successive-discounts-why-20-off-plus-10-is-28/cover-1600.jpg",
+   "/images/blog/successive-discounts-why-20-off-plus-10-is-28/cover-800.jpg"
+  ]
+ },
+ "successive-discounts-why-20-off-plus-10-is-28/figure": {
+  "title": "File:For sale sign, Beyoğlu 7May23.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3AFor_sale_sign%2C_Beyo%C4%9Flu_7May23.jpg",
+  "author": "Mariam elr",
+  "licence": "CC BY-SA 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "description": "50% for sale sign for mother's day",
+  "width": 3000,
+  "height": 4000,
+  "files": [
+   "/images/blog/successive-discounts-why-20-off-plus-10-is-28/figure-1200.jpg",
+   "/images/blog/successive-discounts-why-20-off-plus-10-is-28/figure-600.jpg",
+   "/images/blog/successive-discounts-why-20-off-plus-10-is-28/figure-800.jpg"
+  ]
+ },
+ "how-to-calculate-age-in-years-months-and-days/cover": {
+  "title": "File:Tim Tams and Nuts on a Birthday Cake With Candles during her Anniversary.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3ATim_Tams_and_Nuts_on_a_Birthday_Cake_With_Candles_during_her_Anniversary.jpg",
+  "author": "Brassluff",
+  "licence": "CC0",
+  "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "description": "Tim Tams filled on the Side and Nuts filled on top of a Birthday Cake With 2 and 6 Shaped Candles During her Anniversary",
+  "width": 3024,
+  "height": 4032,
+  "files": [
+   "/images/blog/how-to-calculate-age-in-years-months-and-days/cover-1600.jpg",
+   "/images/blog/how-to-calculate-age-in-years-months-and-days/cover-800.jpg"
+  ]
+ },
+ "how-to-calculate-age-in-years-months-and-days/figure": {
+  "title": "File:1 year old birthday cake.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3A1_year_old_birthday_cake.jpg",
+  "author": "JIP",
+  "licence": "CC BY-SA 3.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "description": "A birthday cake decorated with a candle shaped like the number 1, served at a children's birthday party in Helsinki, Finland.",
+  "width": 4032,
+  "height": 3024,
+  "files": [
+   "/images/blog/how-to-calculate-age-in-years-months-and-days/figure-1200.jpg",
+   "/images/blog/how-to-calculate-age-in-years-months-and-days/figure-600.jpg",
+   "/images/blog/how-to-calculate-age-in-years-months-and-days/figure-800.jpg"
+  ]
+ },
+ "how-to-count-days-between-two-dates-end-included/cover": {
+  "title": "File:WallCalendar.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3AWallCalendar.jpg",
+  "author": "Claudio Elias",
+  "licence": "Public domain",
+  "licenceUrl": "",
+  "description": "wall calendar",
+  "width": 2816,
+  "height": 2112,
+  "files": [
+   "/images/blog/how-to-count-days-between-two-dates-end-included/cover-1600.jpg",
+   "/images/blog/how-to-count-days-between-two-dates-end-included/cover-800.jpg"
+  ]
+ },
+ "how-to-count-days-between-two-dates-end-included/figure": {
+  "title": "File:Manual scrollable wooden wall calendar.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3AManual_scrollable_wooden_wall_calendar.jpg",
+  "author": "Amitbalani",
+  "licence": "CC0",
+  "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "description": "Manual scrollable wall calendar, made of pure wood",
+  "width": 3000,
+  "height": 4000,
+  "files": [
+   "/images/blog/how-to-count-days-between-two-dates-end-included/figure-1200.jpg",
+   "/images/blog/how-to-count-days-between-two-dates-end-included/figure-600.jpg",
+   "/images/blog/how-to-count-days-between-two-dates-end-included/figure-800.jpg"
+  ]
+ },
+ "how-to-convert-units-length-weight-temperature/cover": {
+  "title": "File:B&Q Tape Measure.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3AB%26Q_Tape_Measure.jpg",
+  "author": "多多123",
+  "licence": "CC BY 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/4.0",
+  "description": "Tape Measure - B&Q",
+  "width": 5788,
+  "height": 3859,
+  "files": [
+   "/images/blog/how-to-convert-units-length-weight-temperature/cover-1600.jpg",
+   "/images/blog/how-to-convert-units-length-weight-temperature/cover-800.jpg"
+  ]
+ },
+ "how-to-convert-units-length-weight-temperature/figure": {
+  "title": "File:Measuring-tape.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3AMeasuring-tape.jpg",
+  "author": "Evan-Amos",
+  "licence": "Public domain",
+  "licenceUrl": "",
+  "description": "A standard measuring tape.",
+  "width": 3380,
+  "height": 2160,
+  "files": [
+   "/images/blog/how-to-convert-units-length-weight-temperature/figure-1200.jpg",
+   "/images/blog/how-to-convert-units-length-weight-temperature/figure-600.jpg",
+   "/images/blog/how-to-convert-units-length-weight-temperature/figure-800.jpg"
+  ]
+ },
+ "how-to-create-a-strong-random-password/cover": {
+  "title": "File:Solex 99 30 padlock with keys (DSCF2659).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3ASolex_99_30_padlock_with_keys_(DSCF2659).jpg",
+  "author": "Trougnouf",
+  "licence": "CC BY 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/4.0",
+  "description": "Solex 99 30 lock with keys (DSCF2659)",
+  "width": 2575,
+  "height": 2344,
+  "files": [
+   "/images/blog/how-to-create-a-strong-random-password/cover-1600.jpg",
+   "/images/blog/how-to-create-a-strong-random-password/cover-800.jpg"
+  ]
+ },
+ "how-to-create-a-strong-random-password/figure": {
+  "title": "File:Clear padlock and keys.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3AClear_padlock_and_keys.jpg",
+  "author": "zaphad1",
+  "licence": "CC BY 2.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+  "description": "This has 6 pins. The bitting on these particular keys is good for security. To lockpick this you need to push the back pin down a lot without moving the others. The pin right next to it that doesn't n",
+  "width": 3072,
+  "height": 2304,
+  "files": [
+   "/images/blog/how-to-create-a-strong-random-password/figure-1200.jpg",
+   "/images/blog/how-to-create-a-strong-random-password/figure-600.jpg",
+   "/images/blog/how-to-create-a-strong-random-password/figure-800.jpg"
+  ]
+ },
+ "what-is-base64-how-to-encode-and-decode-it/cover": {
+  "title": "File:Binary damage code (28227210988).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3ABinary_damage_code_(28227210988).jpg",
+  "author": "Markus Spiske from Forchheim, Bavaria Upper Franconia",
+  "licence": "CC0",
+  "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "description": "WE ♥ AUTHENTIC PHOTOGRAPHY. FREE handpicked & curated images for your next commercial or personal project. DOWNLOAD 1130+ HI-RES IMAGES (CC-0) @ &lt;a href=\" https://freeforcommercialuse.net \" rel=\"no",
+  "width": 1920,
+  "height": 1280,
+  "files": [
+   "/images/blog/what-is-base64-how-to-encode-and-decode-it/cover-1600.jpg",
+   "/images/blog/what-is-base64-how-to-encode-and-decode-it/cover-800.jpg"
+  ]
+ },
+ "what-is-base64-how-to-encode-and-decode-it/figure": {
+  "title": "File:Binary-inscription in memory-stone.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3ABinary-inscription_in_memory-stone.jpg",
+  "author": "ThSt71",
+  "licence": "CC BY-SA 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "description": "The Ralph Baer Memorial features stones with inscriptions in the pavement. A close-up of a stone with a binary code carved into it is shown.",
+  "width": 4032,
+  "height": 3024,
+  "files": [
+   "/images/blog/what-is-base64-how-to-encode-and-decode-it/figure-1200.jpg",
+   "/images/blog/what-is-base64-how-to-encode-and-decode-it/figure-600.jpg",
+   "/images/blog/what-is-base64-how-to-encode-and-decode-it/figure-800.jpg"
+  ]
+ },
+ "uuids-explained-versions-4-and-7-and-when-to-use-them/cover": {
+  "title": "File:Barcode (2409057265).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3ABarcode_(2409057265).jpg",
+  "author": "allen watkin from London, UK",
+  "licence": "CC BY-SA 2.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "description": "Playing with macro lens,Apr2008",
+  "width": 3872,
+  "height": 2592,
+  "files": [
+   "/images/blog/uuids-explained-versions-4-and-7-and-when-to-use-them/cover-1600.jpg",
+   "/images/blog/uuids-explained-versions-4-and-7-and-when-to-use-them/cover-800.jpg"
+  ]
+ },
+ "uuids-explained-versions-4-and-7-and-when-to-use-them/figure": {
+  "title": "File:Conference pear label - 2025-12-03 - Andy Mabbett.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3AConference_pear_label_-_2025-12-03_-_Andy_Mabbett.jpg",
+  "author": "Andy Mabbett",
+  "licence": "CC BY-SA 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "description": "Label from a conference pear, sold osoe by a branch of Marks & Spencer in England in December 2025.",
+  "width": 2856,
+  "height": 2134,
+  "files": [
+   "/images/blog/uuids-explained-versions-4-and-7-and-when-to-use-them/figure-1200.jpg",
+   "/images/blog/uuids-explained-versions-4-and-7-and-when-to-use-them/figure-600.jpg",
+   "/images/blog/uuids-explained-versions-4-and-7-and-when-to-use-them/figure-800.jpg"
+  ]
+ },
+ "what-is-a-hash-sha-256-vs-sha-1-explained/cover": {
+  "title": "File:Fingerprint right thumb.JPG",
+  "page": "https://commons.wikimedia.org/wiki/File%3AFingerprint_right_thumb.JPG",
+  "author": "Metrónomo",
+  "licence": "CC BY-SA 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "description": "Right thumbprint",
+  "width": 4320,
+  "height": 3240,
+  "files": [
+   "/images/blog/what-is-a-hash-sha-256-vs-sha-1-explained/cover-1600.jpg",
+   "/images/blog/what-is-a-hash-sha-256-vs-sha-1-explained/cover-800.jpg"
+  ]
+ },
+ "what-is-a-hash-sha-256-vs-sha-1-explained/figure": {
+  "title": "File:Biometric Fingerprint Scanner.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3ABiometric_Fingerprint_Scanner.jpg",
+  "author": "Sanskritibharti1398",
+  "licence": "CC BY-SA 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "description": "It is used in keeping the attendance records in many government and non government institutions for labour force as well as students",
+  "width": 3456,
+  "height": 4608,
+  "files": [
+   "/images/blog/what-is-a-hash-sha-256-vs-sha-1-explained/figure-1200.jpg",
+   "/images/blog/what-is-a-hash-sha-256-vs-sha-1-explained/figure-600.jpg",
+   "/images/blog/what-is-a-hash-sha-256-vs-sha-1-explained/figure-800.jpg"
+  ]
+ },
+ "hex-rgb-and-hsl-colours-how-they-relate/cover": {
+  "title": "File:Scale of Complementary Colors.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3AScale_of_Complementary_Colors.jpg",
+  "author": "Anonymous Unknown author",
+  "licence": "Public domain",
+  "licenceUrl": "",
+  "description": "Color wheel from an 1892 treatise on color printing",
+  "width": 2048,
+  "height": 2032,
+  "files": [
+   "/images/blog/hex-rgb-and-hsl-colours-how-they-relate/cover-1600.jpg",
+   "/images/blog/hex-rgb-and-hsl-colours-how-they-relate/cover-800.jpg"
+  ]
+ },
+ "hex-rgb-and-hsl-colours-how-they-relate/figure": {
+  "title": "File:Colouring pencils.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3AColouring_pencils.jpg",
+  "author": "MichaelMaggs",
+  "licence": "CC BY-SA 3.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "description": "Colouring pencils",
+  "width": 1884,
+  "height": 1256,
+  "files": [
+   "/images/blog/hex-rgb-and-hsl-colours-how-they-relate/figure-1200.jpg",
+   "/images/blog/hex-rgb-and-hsl-colours-how-they-relate/figure-600.jpg",
+   "/images/blog/hex-rgb-and-hsl-colours-how-they-relate/figure-800.jpg"
+  ]
+ },
+ "unix-timestamps-explained-seconds-milliseconds-zones/cover": {
+  "title": "File:Counterfeit Casio F-91W digital watch.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3ACounterfeit_Casio_F-91W_digital_watch.jpg",
+  "author": "Petar Milošević",
+  "licence": "CC BY-SA 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "description": "Counterfeit CASIO F-91W digital watch. As shown by the too-dark \"WR\" text, the strangely large S on the Casio logo, and the too-large \"U\" on the bottom right corner, this is a counterfeit watch.",
+  "width": 2410,
+  "height": 2883,
+  "files": [
+   "/images/blog/unix-timestamps-explained-seconds-milliseconds-zones/cover-1600.jpg",
+   "/images/blog/unix-timestamps-explained-seconds-milliseconds-zones/cover-800.jpg"
+  ]
+ },
+ "unix-timestamps-explained-seconds-milliseconds-zones/figure": {
+  "title": "File:Junghans Funkuhr um 2005 (2022-01-30 Sp).JPG",
+  "page": "https://commons.wikimedia.org/wiki/File%3AJunghans_Funkuhr_um_2005_(2022-01-30_Sp).JPG",
+  "author": "Lothar Spurzem",
+  "licence": "CC BY-SA 2.0 de",
+  "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0/de/deed.en",
+  "description": "Junghans-Funkarmbanduhr, Modellnummer 030/4523.00 (Explorer), hergestellt zwischen 2005 und 2011 (Auskunft von Junghans, Schramberg). Edelstahl-Gehäuse, leicht gewölbtes Mineralglas, wasserdicht bis 1",
+  "width": 2210,
+  "height": 3314,
+  "files": [
+   "/images/blog/unix-timestamps-explained-seconds-milliseconds-zones/figure-1200.jpg",
+   "/images/blog/unix-timestamps-explained-seconds-milliseconds-zones/figure-600.jpg",
+   "/images/blog/unix-timestamps-explained-seconds-milliseconds-zones/figure-800.jpg"
+  ]
+ },
+ "regular-expressions-basics-flags-groups-and-pitfalls/cover": {
+  "title": "File:Magnifying glass2.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3AMagnifying_glass2.jpg",
+  "author": "Heptagon",
+  "licence": "Public domain",
+  "licenceUrl": "",
+  "description": "Philately, Magnifying glass shows the magnified image of the Deutsche Post 1 Reichsmark postage stamp issued on May 12 1946.",
+  "width": 3456,
+  "height": 2304,
+  "files": [
+   "/images/blog/regular-expressions-basics-flags-groups-and-pitfalls/cover-1600.jpg",
+   "/images/blog/regular-expressions-basics-flags-groups-and-pitfalls/cover-800.jpg"
+  ]
+ },
+ "regular-expressions-basics-flags-groups-and-pitfalls/figure": {
+  "title": "File:Magnifying glass on antique table.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3AMagnifying_glass_on_antique_table.jpg",
+  "author": "Stéphane Magnenat",
+  "licence": "CC BY-SA 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "description": "magnifying glass on an 17th century table",
+  "width": 2705,
+  "height": 2029,
+  "files": [
+   "/images/blog/regular-expressions-basics-flags-groups-and-pitfalls/figure-1200.jpg",
+   "/images/blog/regular-expressions-basics-flags-groups-and-pitfalls/figure-600.jpg",
+   "/images/blog/regular-expressions-basics-flags-groups-and-pitfalls/figure-800.jpg"
+  ]
+ },
+ "how-to-read-a-jwt-header-payload-and-signature/cover": {
+  "title": "File:Wrist Identification Band.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3AWrist_Identification_Band.jpg",
+  "author": "Whoisjohngalt",
+  "licence": "CC BY-SA 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "description": "An identification wristband given to a patient at Massachusetts General Hospital.",
+  "width": 3072,
+  "height": 2965,
+  "files": [
+   "/images/blog/how-to-read-a-jwt-header-payload-and-signature/cover-1600.jpg",
+   "/images/blog/how-to-read-a-jwt-header-payload-and-signature/cover-800.jpg"
+  ]
+ },
+ "how-to-read-a-jwt-header-payload-and-signature/figure": {
+  "title": "File:Isle of Wight Festival 2007 wristband.JPG",
+  "page": "https://commons.wikimedia.org/wiki/File%3AIsle_of_Wight_Festival_2007_wristband.JPG",
+  "author": "Editor5807",
+  "licence": "Public domain",
+  "licenceUrl": "",
+  "description": "A wristband for the en:Isle of Wight Festival in 2007.",
+  "width": 2242,
+  "height": 1438,
+  "files": [
+   "/images/blog/how-to-read-a-jwt-header-payload-and-signature/figure-1200.jpg",
+   "/images/blog/how-to-read-a-jwt-header-payload-and-signature/figure-600.jpg",
+   "/images/blog/how-to-read-a-jwt-header-payload-and-signature/figure-800.jpg"
+  ]
+ },
+ "how-to-merge-pdf-files-in-order-without-uploading/cover": {
+  "title": "File:FileStack.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3AFileStack.jpg",
+  "author": "Niklas Bildhauer (who also is User gerolsteiner91 .",
+  "licence": "CC BY-SA 2.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "description": "Papers/document pile",
+  "width": 2592,
+  "height": 1944,
+  "files": [
+   "/images/blog/how-to-merge-pdf-files-in-order-without-uploading/cover-1600.jpg",
+   "/images/blog/how-to-merge-pdf-files-in-order-without-uploading/cover-800.jpg"
+  ]
+ },
+ "how-to-merge-pdf-files-in-order-without-uploading/figure": {
+  "title": "File:Rapid Classic Longarm Stapler HD12 3.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3ARapid_Classic_Longarm_Stapler_HD12_3.jpg",
+  "author": "W.carter",
+  "licence": "CC BY-SA 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "description": "A Rapid Classic Longarm Heavy duty 12 stapler. All-steel, extra strong stapler with a large insertion depth. Specifications: Metal, 57 x 93 x 415 mm, capacity of stapling: 40 sheets with staplers 24/6",
+  "width": 4510,
+  "height": 2537,
+  "files": [
+   "/images/blog/how-to-merge-pdf-files-in-order-without-uploading/figure-1200.jpg",
+   "/images/blog/how-to-merge-pdf-files-in-order-without-uploading/figure-600.jpg",
+   "/images/blog/how-to-merge-pdf-files-in-order-without-uploading/figure-800.jpg"
+  ]
+ },
+ "how-to-split-a-pdf-and-extract-pages/cover": {
+  "title": "File:Wood Guillotine Trimmer.JPG",
+  "page": "https://commons.wikimedia.org/wiki/File%3AWood_Guillotine_Trimmer.JPG",
+  "author": "Qxtn1423",
+  "licence": "CC0",
+  "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "description": "This wood guillotine trimmer by X-ACTO cuts 15 sheets of paper using a self-sharpening blade. This heavy duty trimmmer includes an adjustible guide, safety guard and safety latch for cutting arm.",
+  "width": 1800,
+  "height": 1800,
+  "files": [
+   "/images/blog/how-to-split-a-pdf-and-extract-pages/cover-1600.jpg",
+   "/images/blog/how-to-split-a-pdf-and-extract-pages/cover-800.jpg"
+  ]
+ },
+ "how-to-split-a-pdf-and-extract-pages/figure": {
+  "title": "File:Paper cutter (1).JPG",
+  "page": "https://commons.wikimedia.org/wiki/File%3APaper_cutter_(1).JPG",
+  "author": "Chmee2",
+  "licence": "CC BY 3.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/3.0",
+  "description": "Small format paper cutter",
+  "width": 3456,
+  "height": 2304,
+  "files": [
+   "/images/blog/how-to-split-a-pdf-and-extract-pages/figure-1200.jpg",
+   "/images/blog/how-to-split-a-pdf-and-extract-pages/figure-600.jpg",
+   "/images/blog/how-to-split-a-pdf-and-extract-pages/figure-800.jpg"
+  ]
+ },
+ "what-is-exif-data-why-and-how-to-remove-it/cover": {
+  "title": "File:IPhone camera.jpeg",
+  "page": "https://commons.wikimedia.org/wiki/File%3AIPhone_camera.jpeg",
+  "author": "IPHONE MAX",
+  "licence": "CC BY-SA 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "description": "Apple iPhone",
+  "width": 5344,
+  "height": 3008,
+  "files": [
+   "/images/blog/what-is-exif-data-why-and-how-to-remove-it/cover-1600.jpg",
+   "/images/blog/what-is-exif-data-why-and-how-to-remove-it/cover-800.jpg"
+  ]
+ },
+ "what-is-exif-data-why-and-how-to-remove-it/figure": {
+  "title": "File:Smartphone cameras on refuge (7029496999).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3ASmartphone_cameras_on_refuge_(7029496999).jpg",
+  "author": "U.S. Fish and Wildlife Service Headquarters",
+  "licence": "Public domain",
+  "licenceUrl": "",
+  "description": "Marilyn Parker, left, and Liz Reeder, right, use their smartphone cameras at Desert National Wildlife Refuge in New Mexico to take and share photos during a special event with a local photographer and",
+  "width": 3264,
+  "height": 2448,
+  "files": [
+   "/images/blog/what-is-exif-data-why-and-how-to-remove-it/figure-1200.jpg",
+   "/images/blog/what-is-exif-data-why-and-how-to-remove-it/figure-600.jpg",
+   "/images/blog/what-is-exif-data-why-and-how-to-remove-it/figure-800.jpg"
+  ]
+ },
+ "how-to-crop-rotate-and-flip-a-photo-without-losing-quality/cover": {
+  "title": "File:@dailyshoot- 2010-08-11- Make a photograph that uses the rule of thirds composition in a very obvious way and post it. -ds269 (4884693788).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3A%40dailyshoot-_2010-08-11-_Make_a_photograph_that_uses_the_rule_of_thirds_composition_in_a_very_obvious_way_and_post_it._-ds269_(4884693788).jpg",
+  "author": "cogdogblog",
+  "licence": "CC BY 2.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+  "description": "@dailyshoot: 2010/08/11: Make a photograph that uses the rule of thirds composition in a very obvious way and post it. #ds269 The flower is pinned to the lower and side thirds. Obvious, eh?",
+  "width": 3730,
+  "height": 2487,
+  "files": [
+   "/images/blog/how-to-crop-rotate-and-flip-a-photo-without-losing-quality/cover-1600.jpg",
+   "/images/blog/how-to-crop-rotate-and-flip-a-photo-without-losing-quality/cover-800.jpg"
+  ]
+ },
+ "url-encoding-explained-what-20-and-3d-mean/cover": {
+  "title": "File:Directions to the facilities - geograph.org.uk - 7109885.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3ADirections_to_the_facilities_-_geograph.org.uk_-_7109885.jpg",
+  "author": "Richard Sutcliffe",
+  "licence": "CC BY-SA 2.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "description": "Directions to the facilities",
+  "width": 1600,
+  "height": 1200,
+  "files": [
+   "/images/blog/url-encoding-explained-what-20-and-3d-mean/cover-1600.jpg",
+   "/images/blog/url-encoding-explained-what-20-and-3d-mean/cover-800.jpg"
+  ]
+ },
+ "how-to-turn-pictures-into-a-pdf-sizes-and-quality/cover": {
+  "title": "File:Epson V33 scanner mirror.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3AEpson_V33_scanner_mirror.jpg",
+  "author": "Sam Wilson (taken with Panasonic Lumix DMC-FT1 )",
+  "licence": "CC BY-SA 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "description": "The scanner mirror in an Epson flatbed scanner.",
+  "width": 3000,
+  "height": 3184,
+  "files": [
+   "/images/blog/how-to-turn-pictures-into-a-pdf-sizes-and-quality/cover-1600.jpg",
+   "/images/blog/how-to-turn-pictures-into-a-pdf-sizes-and-quality/cover-800.jpg"
+  ]
+ }
+}

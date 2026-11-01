@@ -113,7 +113,8 @@ export function PostCard({
           src={post.cover_image}
           alt=""
           info={getCoverInfo(post)}
-          sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+          // On a phone the 800 pixel copy is plenty (it is shown about 400 pixels wide), so the larger one is kept for desktop screens.
+          sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 60vw"
           priority={priority} className="aspect-[16/10] w-full object-cover"
         />
       ) : (
