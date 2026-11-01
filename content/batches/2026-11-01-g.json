@@ -1,0 +1,168 @@
+{
+  "date": "2026-11-01",
+  "articles": [
+    {
+      "title": "How the Three-Point Seat Belt Was Invented",
+      "category": "Vintage and History",
+      "excerpt": "Nils Bohlin, an engineer at Volvo, designed the three-point belt still used in cars today, and Volvo let other makers use it freely. Here is how it came about.",
+      "tags": ["seat belt", "Volvo", "car safety", "history"],
+      "blocks": [
+        ["paragraph", "The seat belt in nearly every modern car, one strap crossing the chest and another across the lap, was designed by a Volvo engineer named Nils Bohlin in the late 1950s. Volvo chose to let other car makers use the design without paying for it. This article follows the story from the first belts of the early 1900s to the three-point belt and the rules that made wearing one normal."],
+        ["heading", "Belts before Bohlin"],
+        ["paragraph", "According to the German Patent and Trade Mark Office (DPMA), a safety belt was presumably used in a car for the first time on 31 May 1902, during a record attempt by a car called the Baker Torpedo on Staten Island, New York. The car crashed and two spectators died, but the two people in the car survived, and the belts were credited. In 1903 a Frenchman, Gustave-Désiré Leveau, received what the DPMA calls the first safety belt patent, for a four-point belt."],
+        ["paragraph", "For decades after that, belts came in several forms. The simplest was the two-point lap belt, a single strap across the hips. Racing cars used more complex belts with up to six attachment points. The DPMA says none of these had become established in ordinary car construction before Bohlin's invention."],
+        ["paragraph", "A lap belt has a weakness that engineers of the time knew about: it holds the hips but lets the upper body fold forward in a sudden stop. Volvo's own history page says earlier designs such as the lap-only belt protected passengers but could be improved."],
+        ["heading", "Who Nils Bohlin was"],
+        ["paragraph", "Nils Ivar Bohlin worked at the Swedish aircraft maker Saab, where, the DPMA notes, he had developed belts for pilots' ejection seats. He then joined Volvo as an engineer. That background mattered, because aircraft restraints are designed to hold a person's body in a crash or an ejection."],
+        ["heading", "The design"],
+        ["paragraph", "Bohlin's belt joins three anchor points: one low on each side of the seat and one above the shoulder. A single continuous strap runs from the upper anchor across the chest, then across the lap to the buckle. Because the two parts form one strap, the belt holds both the upper body and the pelvis."],
+        ["paragraph", "The patent text, quoted on Volvo's heritage page, says the belt \"effectively, and in a physiologically favorable manner\" prevents the strapped person's body from being thrown forward. The DPMA describes the design as holding the upper and lower body in a physiologically favourable way and as easy to fasten and release."],
+        ["callout", "Dates differ between sources. The DPMA says Bohlin filed his patent application in Sweden on 29 August 1958 and that the Volvo 544 launched in 1958 with a standard three-point belt. Volvo's page says he perfected the belt in 1959. Other accounts give 1959 for the first sale and for the US patent filing. This article uses the late 1950s for that reason."],
+        ["heading", "Giving the patent away"],
+        ["paragraph", "The most unusual part of the story is what Volvo did next. Volvo's heritage page says the company gave the design to the rest of the industry without payment or claims, so other manufacturers could use it freely. A safety feature that only one maker could fit would protect only that maker's customers; sharing it let the belt spread across the industry."],
+        ["paragraph", "Volvo says its three-point belt is now found in most vehicles and that its use is written into law in many countries. The company also says the invention has been credited with saving at least one million lives worldwide. That figure is Volvo's own statement of a credited estimate, not a measured count, and other organisations publish different estimates."],
+        ["heading", "From fitted to required"],
+        ["paragraph", "Having a belt in the car is one thing, and wearing it is another. The DPMA gives Germany as an example of how slowly this changed:"],
+        ["list", "1974: all new cars had to be fitted with safety belts.\n1976: wearing a belt became compulsory, but was poorly accepted at first.\n1984: a fine of 40 Deutschmarks for not wearing a belt took effect on 1 August. According to the DPMA, wearing rates rose from about 60% to over 90%.\n2004: three-point belts became mandatory on all seats, ending the tolerance of lap belts on rear seats.\n2014: seat belt reminders became mandatory in all new vehicles in the European Union."],
+        ["paragraph", "The DPMA also says that by 1961 more than three-quarters of new cars in Sweden had safety belts, which shows how quickly the idea was taken up in the country where the three-point design began."],
+        ["heading", "What came after"],
+        ["paragraph", "The belt did not stop developing. The DPMA lists airbags, crumple zones, belt tensioners and belt force limiters as later additions that work together with the belt. A tensioner pulls the belt tight in the first instant of a crash, and a force limiter lets a little strap out afterwards so the belt does not press too hard on the chest. Recent patents the office mentions include an adjustable anchor position for the shoulder strap and improved pre-tensioners."],
+        ["paragraph", "The basic shape, though, is still the one Bohlin drew: three anchor points and one strap. Few car parts from the 1950s remain in use with so little change to their core design."],
+        ["paragraph", "This article is general historical information. For how to wear a belt correctly, follow the car maker's manual and local law."]
+      ],
+      "sources": [
+        { "title": "The three points that saved one million lives, Volvo Group", "url": "https://www.volvogroup.com/en/about-us/heritage/three-point-safety-belt.html" },
+        { "title": "The safety belt, Inventions that made history, German Patent and Trade Mark Office (DPMA)", "url": "https://dpma.de/english/our_office/publications/milestones/inventionsthatmadehistory/safetybelt/index.html" }
+      ],
+      "checkedOn": "2026-11-01"
+    },
+    {
+      "title": "How a Motorcycle Stays Upright and Turns: Countersteering",
+      "category": "Cars and Bikes",
+      "excerpt": "To turn right, a moving motorcycle first steers briefly left. This article explains countersteering, lean angle, trail and what science says about balance.",
+      "tags": ["motorcycle", "countersteering", "physics", "balance"],
+      "blocks": [
+        ["paragraph", "A moving motorcycle stays up because the front wheel steers under the bike whenever it starts to fall, and it turns by first steering briefly the opposite way, a move called countersteering. Gyroscopic spin helps a little, but engineers now say it is not the main reason. This article explains each idea in plain terms."],
+        ["heading", "Why a bike must lean to turn"],
+        ["paragraph", "A car turns while staying level. A motorcycle cannot, because a bike held upright has nothing to resist the sideways pull of a turn. It leans so that the combined pull of gravity and the turn pass through the tyre contact patches."],
+        ["paragraph", "The lean needed can be worked out. The Wikipedia article on bicycle and motorcycle dynamics gives the ideal lean angle as the arctangent of speed squared divided by gravity times the turn radius. Its example is a 10 metre radius turn at 10 metres per second (36 km/h), which needs a lean of about 45.6 degrees. Faster or tighter means more lean. The article adds that wide tyres increase the lean needed and a lower centre of mass reduces it."],
+        ["heading", "What countersteering is"],
+        ["paragraph", "To start leaning right, the rider pushes the right handlebar away, which turns the front wheel briefly to the left. The tyre then pushes sideways on the road, and that force rolls the bike to the right, the way you would tip a broom by moving its base out from under it. Once the bike has leaned, the front wheel points into the turn."],
+        ["paragraph", "The Wikipedia article says that without an outside push such as a crosswind, countersteering is needed to begin a quick turn. It also says that leaving a turn needs countersteering again, first steering into the turn to tighten the radius, which reduces the lean. A steady turn may hold the front wheel pointed into the turn, or even slightly the other way at high speed."],
+        ["callout", "Many riders do this without thinking about it. At low speed, such as walking pace, the effect is small, and riders mostly just steer toward the turn."],
+        ["heading", "Trail: the self-correcting effect"],
+        ["paragraph", "Trail is the distance by which the front tyre's contact point lies behind the point where the steering axis would meet the ground. This is the same idea as the castor wheels on a shopping trolley, which line up behind their pivot. The Cambridge University engineering page on bicycle stability describes trail as the main passive stabiliser: when the bike leans, the front wheel turns into the lean, which tends to bring the wheels back under the bike."],
+        ["paragraph", "Wikipedia says positive trail tends to steer the front wheel into a lean, and that more trail usually feels more stable, though too much makes steering heavy. It lists survey ranges for bicycles of 43 to 60 mm for touring, 28 to 45 mm for racing and 23.5 to 37 mm for track bikes. Motorcycle designers choose their own figures for the same trade-off between stability and quick handling."],
+        ["heading", "The gyroscope story"],
+        ["paragraph", "A spinning wheel resists changes to its tilt and, when pushed, turns sideways. This gyroscopic effect is often given as the reason bikes stay up. The evidence is more mixed than that:"],
+        ["list", "The Cambridge page says gyroscopic forces are not important for stability. Its author attached an extra spinning wheel to a bicycle's front axle and found that spinning it either way made little difference. His estimate at 12 mph was that the gyroscopic effect could correct only a very small tilt.\nWikipedia calculates a front-wheel example at 22 metres per second in which the gyroscopic roll moment is about 12% of the moment from the tyres out-tracking, so it contributes but does not dominate.\nBoth sources say gyroscopic effects can matter in the first moment of a steering input at higher speed, and that they help with hands-free riding."],
+        ["heading", "A test: a bike without those effects"],
+        ["paragraph", "In 2011 a research team led by Jodi Kooijman published a paper in the journal Science describing a bicycle built to cancel both effects. It had extra wheels spinning in the opposite direction to cancel gyroscopic effects, and its geometry gave negative trail, with the contact point ahead of the steering axis. Wikipedia reports that, according to the researchers' equations, this design should still be self-stable, and that their physical model supported the prediction."],
+        ["paragraph", "The result suggests that neither gyroscopic action nor trail is necessary for balance. Wikipedia's wording is that neither is sufficient by itself nor necessary for self-stability, although both can help. Self-stability here means a range of speeds in which the geometry and the distribution of mass steer a riderless bike upright. The Cambridge author notes that a riderless bike is more stable than a ridden one in some ways because it is lighter and its centre of mass is lower."],
+        ["heading", "What this means in practice"],
+        ["paragraph", "The picture that emerges is of several effects working together: geometry such as trail, the way mass is spread, a smaller gyroscopic contribution, and above all the rider's steering inputs. Friction in the steering head or stiff cables can swamp the passive effects, which Wikipedia mentions as one reason real bikes can behave differently from simple models."],
+        ["paragraph", "This is general information about how motorcycles work, not riding instruction. Anyone learning to ride should use a recognised training course."]
+      ],
+      "sources": [
+        { "title": "Bicycle and motorcycle dynamics, Wikipedia", "url": "https://en.wikipedia.org/wiki/Bicycle_and_motorcycle_dynamics" },
+        { "title": "Bicycle stability and gyroscopes, Cambridge University Engineering Department", "url": "https://www3.eng.cam.ac.uk/~hemh1/gyrobike.htm" }
+      ],
+      "checkedOn": "2026-11-01"
+    },
+    {
+      "title": "How Air Traffic Control Hands a Flight From Tower to Tower",
+      "category": "Aviation",
+      "excerpt": "A flight passes through tower, terminal radar and en route controllers before landing. Here is who controls what, and how each handoff works.",
+      "tags": ["air traffic control", "TRACON", "radar", "airports"],
+      "blocks": [
+        ["paragraph", "On a typical airline trip, your plane is looked after by several controller teams in turn: the departure tower, a terminal radar room, an en route centre, then another terminal room and the destination tower. Each team owns a block of airspace, and the plane is passed from one to the next by radio and computer. This article explains the roles and the handoffs, using the United States system as the example."],
+        ["heading", "Three kinds of facility"],
+        ["paragraph", "A 1997 report from the US National Academies describing air traffic control in the United States says the Federal Aviation Administration (FAA) runs 20 en route centres, almost 200 terminal radar approach controls (TRACONs) and hundreds of airport towers. Wikipedia's page on the National Airspace System gives the same three-way split and says the whole system has over 600 facilities. Those numbers have changed since 1997, and some sources now say 21 centres, so treat the counts as approximate."],
+        ["heading", "The tower"],
+        ["paragraph", "Tower controllers sit in the glass cab at the airport and see the aircraft directly. According to the National Academies report, they manage pushback, taxiing, take-off and landing. The work is often split between a ground controller, who handles taxiing, and a local controller, who handles the runways. At small airports one person may do both."],
+        ["paragraph", "Towers use their own eyes, voice radio, flight strips (paper or electronic notes on each flight) and, at busy airports, surface radar. A tower controller authorises take-off; once the plane is airborne, tower control ends and the plane goes to the next facility."],
+        ["heading", "The terminal radar room"],
+        ["paragraph", "TRACON controllers work in a radar room, often without windows, and manage the airspace around one or more airports. Departure controllers take aircraft from the tower and guide them upward; approach controllers take arrivals from the en route centre, line them up and hand them to the tower for landing. Wikipedia notes that some airports have no TRACON, in which case flights go directly between the tower and the centre, and some short low flights stay within TRACON airspace the whole time."],
+        ["paragraph", "The National Academies report says controllers must keep aircraft apart in three dimensions. For flights under instrument rules (IFR), the separation standard it gives is 1,000 feet vertically or 3, 4 or 5 miles sideways, depending on aircraft size, because larger aircraft leave stronger wake turbulence."],
+        ["heading", "The en route centre"],
+        ["paragraph", "Centres guide aircraft across the country at high altitude. Wikipedia says the US has 20 contiguous areas of airspace above 18,000 feet, each managed by one centre. The National Academies report adds that aircraft fly along defined routes at assigned flight levels, with eastbound traffic generally at odd levels and westbound at even levels, and that required separation is larger than near airports: 5 miles, plus 1,000 or 2,000 feet vertically depending on altitude."],
+        ["paragraph", "A busy sector is often staffed by two people. One, on the radar side, watches separation and talks to pilots. The other, on the data side, handles coordination and flight-plan information. In quiet periods one controller may do both jobs."],
+        ["heading", "How radar and flight data work together"],
+        ["paragraph", "Two kinds of radar are involved. Primary radar sees anything that reflects radio waves. Secondary radar asks a transponder in the aircraft to reply, which supplies identity and altitude. The report describes the computer system joining both sources, then displaying a data block next to each target with the call sign, aircraft type, altitude and ground speed. The report describes equipment of its time, and newer systems have since replaced much of it, but the basic idea of combining radar returns with flight-plan data remains."],
+        ["heading", "The handoff"],
+        ["paragraph", "Wikipedia describes the usual order: a departure goes from the tower to a TRACON and then to a centre, and an arrival goes from the centre to the destination TRACON and then to the tower. The National Academies report describes how this works in practice:"],
+        ["list", "Tower to TRACON: a mix of voice coordination, flight-strip data passed by computer, and the pilot changing radio frequency.\nBetween TRACON and centre, or between sectors: usually an automated handoff, where the receiving controller accepts with a keypress when ready.\nIf automation fails: controllers fall back on voice, and the pilot is told the new frequency."],
+        ["paragraph", "The pilot hears \"contact\" followed by a new controller and frequency, and from that point the new team is responsible."],
+        ["callout", "The National Academies report notes that the system is designed to give up efficiency before safety, for example by delaying flights when weather or equipment problems reduce capacity."],
+        ["heading", "Over oceans"],
+        ["paragraph", "Radar does not cover the open ocean. The report says oceanic controllers rely on position and intent reports from pilots, and use larger separation standards to compensate. Other countries organise their facilities differently, though the idea of passing aircraft between tower, terminal and en route controllers is widely shared."]
+      ],
+      "sources": [
+        { "title": "Flight to the Future: Human Factors in Air Traffic Control, chapter 4, National Academies Press (1997)", "url": "https://www.nationalacademies.org/read/5493/chapter/4" },
+        { "title": "National Airspace System, Wikipedia", "url": "https://en.wikipedia.org/wiki/National_Airspace_System" }
+      ],
+      "checkedOn": "2026-11-01"
+    },
+    {
+      "title": "How a Reverse Osmosis Water Purifier Works",
+      "category": "How It Works",
+      "excerpt": "Reverse osmosis pushes water through a very fine membrane to leave dissolved salts behind. Here are the filter stages, the waste stream and what it can and cannot remove.",
+      "tags": ["water purifier", "reverse osmosis", "filters"],
+      "blocks": [
+        ["paragraph", "A reverse osmosis (RO) purifier forces tap water through a membrane so fine that most dissolved salts stay behind. The cleaned water, called permeate, goes to your tap, while the rest, carrying the removed material, is flushed to the drain. Filters before and after the membrane protect it and polish the taste. This article explains each part and the limits."],
+        ["heading", "Osmosis, then the reverse"],
+        ["paragraph", "In ordinary osmosis, water moves through a semipermeable membrane toward the side with more dissolved material. Wikipedia explains that reverse osmosis applies pressure higher than the solution's osmotic pressure, which pushes water the other way: out of the salty side and through the membrane. The pressure needed depends on the water. Wikipedia gives about 2 to 17 bar for fresh and brackish water and 40 to 82 bar for seawater, which has a natural osmotic pressure of roughly 27 bar."],
+        ["heading", "Two streams, not one"],
+        ["paragraph", "A membrane in an RO unit does not simply trap contaminants like a sieve that fills up. Water flows along the membrane surface, and part of it passes through as permeate while the rest leaves as concentrate, also called reject, carrying the salts. The share of the feed water that becomes permeate is called the recovery ratio."],
+        ["paragraph", "Wikipedia says household units have low back pressure and waste a lot of water, typically producing about 1 litre of usable water for every 3 to 25 litres sent to the drain. Large municipal and industrial plants recover far more, often 75 to 90 percent. A home unit's actual ratio depends on its design and the incoming water pressure, so manufacturers' figures are the better guide for a particular model."],
+        ["heading", "The stages in a typical home unit"],
+        ["list", "Sediment pre-filter: a cartridge that catches sand, rust and silt. Wikipedia notes that cartridge filtration in RO pre-treatment is commonly rated at 1 to 5 micrometres.\nCarbon pre-filter: activated carbon that takes out chlorine, which can damage some membranes, and improves taste and smell. The CDC says carbon filters mainly improve taste and smell and generally do not remove germs.\nRO membrane: the main separation step.\nPost-filter: usually a carbon cartridge that polishes the water before it reaches the tap."],
+        ["paragraph", "Wikipedia explains why pre-treatment matters: the membrane cannot be backflushed, so it is prone to fouling, and in large plants pre-treatment also includes chemicals to prevent scale and neutralise chlorine. Home units mainly rely on the cartridges."],
+        ["heading", "What it removes"],
+        ["paragraph", "The US Centers for Disease Control and Prevention (CDC) says RO filters remove germs, meaning parasites, bacteria and viruses, and some chemicals including lead, copper, chromium, chloride and sodium. It says they may also reduce arsenic, fluoride and others, and that removal varies by product, so the label should be checked for the specific chemicals a unit handles."],
+        ["paragraph", "The CDC points readers to NSF certification marks. It lists NSF Standard 58 as the one that covers reverse osmosis, alongside Standard 42 for taste and odour, 53 for cyst reduction and 62 for distillation. Indian buyers may also see other marks; check what a certificate actually covers before relying on it."],
+        ["heading", "What to know about minerals"],
+        ["paragraph", "Because RO takes out dissolved salts, it also removes minerals such as calcium and magnesium. Wikipedia notes that some studies link long-term low intake of these minerals with health effects, but describes the evidence as low quality. Large plants often add minerals back; some home units include a mineral cartridge for the same purpose. Whether that matters is a question for a doctor, and this article does not give health advice."],
+        ["heading", "Keeping it working"],
+        ["paragraph", "The CDC advises changing filter cartridges regularly, following the manufacturer's recommendations, to keep them working and prevent germ growth. It also says people with weakened immune systems should avoid changing filters themselves, since trapped germs or chemicals could be released. CDC-hosted research on arsenic found that household RO units reduced arsenic well but did not always bring it under the US limit, and that in one Maine study up to a third of such units failed within months to a year of installation. That shows why testing the water and servicing the unit matter."],
+        ["callout", "RO suits some water problems, such as high dissolved solids, better than others. Which kind of purifier a household needs depends on a test of its own water supply."],
+        ["paragraph", "This is general information; check the manufacturer's specifications and local water-quality guidance for a particular home."]
+      ],
+      "sources": [
+        { "title": "Reverse osmosis, Wikipedia", "url": "https://en.wikipedia.org/wiki/Reverse_osmosis" },
+        { "title": "About Choosing Home Water Filters, CDC", "url": "https://www.cdc.gov/drinking-water/prevention/about-choosing-home-water-filters.html" }
+      ],
+      "checkedOn": "2026-11-01"
+    },
+    {
+      "title": "How a Smartwatch Measures Your Heart Rate With Light",
+      "category": "Electronics",
+      "excerpt": "Smartwatches shine green light into your wrist and read how much blood absorbs. Here is how the method, called photoplethysmography, works and where it struggles.",
+      "tags": ["smartwatch", "heart rate", "sensors", "PPG"],
+      "blocks": [
+        ["paragraph", "A smartwatch finds your pulse by shining light into the skin of your wrist and measuring how much comes back. Each heartbeat briefly changes the amount of blood under the sensor, and blood absorbs light, so the returning light flickers in time with your pulse. The method is called photoplethysmography, or PPG. This article explains how it works and why it is less reliable in some situations."],
+        ["heading", "The basic idea"],
+        ["paragraph", "Wikipedia describes a photoplethysmogram as an optical measurement of blood volume changes in tissue. It is usually made by lighting the skin with a light-emitting diode (LED) and using a photodiode, a light-sensitive component, to measure the light reflected from or transmitted through the tissue. Each heartbeat sends a pressure pulse that briefly widens the small arteries just under the skin, which changes how much light is absorbed. Each cardiac cycle shows up as a peak in the signal."],
+        ["paragraph", "A watch sits on the back of the wrist, so it uses the reflected version: LEDs and photodiodes face the skin, and light goes in and part of it bounces back."],
+        ["heading", "Two parts of the signal"],
+        ["paragraph", "Wikipedia explains that the signal has a steady component and a pulsing one. The steady (DC) level comes mostly from the bulk absorption of skin and tissue. The pulsing (AC) part is the change in blood volume with each beat, and its height is related to pulse pressure. The watch's software separates the small pulsing part from the large steady part, then counts the peaks per minute."],
+        ["heading", "Why green light"],
+        ["paragraph", "Macworld, summarising Apple's own support documentation for the first Apple Watch, says blood absorbs green light, so measuring the shifts in green light absorption reveals heart rate. During workouts, it says, the watch flashes green light onto the wrist hundreds of times per second and uses photodiodes to measure how much is absorbed."],
+        ["paragraph", "The same article says that when you are not exercising, that watch takes a reading about every 10 minutes using infrared LEDs, with green LEDs as a fallback if the infrared reading is not good enough. It adds that studies favour green LEDs for accuracy and that Apple did not explain why it does not use them all the time; the author suggests battery saving. This describes one maker's early design, and other brands and newer models may differ."],
+        ["heading", "What can go wrong"],
+        ["paragraph", "Wikipedia says motion artefacts are often a limiting factor preventing accurate readings during exercise and everyday life. When the watch moves against the skin, the light path changes, and that change can look like a pulse. Macworld reports that Apple recommended a snug but comfortable strap so the sensors stay in place, and that cold weather and irregular movements such as tennis or boxing can make readings difficult."],
+        ["list", "Poor blood flow in the skin: Wikipedia says low peripheral blood flow can give a signal with no clear pulse.\nBody differences: the waveform's shape differs between people and with where and how the sensor is attached. Some product guides also say that dark tattoos, body hair and skin tone can affect how much light is captured; check a maker's own documentation for its claims.\nLoose fit: a gap between the sensor and skin lets in stray light."],
+        ["callout", "Wikipedia adds that the exact mechanisms that determine the waveform's shape are not yet fully understood, so research on this method is still active."],
+        ["heading", "Raising the signal"],
+        ["paragraph", "Several sources note that sensors adjust to conditions. A watch may brighten its LEDs or sample more often when the signal is weak, which uses more battery. Software filtering and motion data from the watch's accelerometer can help separate arm movement from the pulse, although this is a maker-specific feature that this article does not describe in detail."],
+        ["heading", "What the number means"],
+        ["paragraph", "A PPG heart-rate figure comes from light, not from the heart's electrical signal. It is not the same measurement as a hospital electrocardiogram. A watch's readings are general information and are not a medical diagnosis. Anyone worried about their heart should speak to a doctor rather than relying on a wearable."]
+      ],
+      "sources": [
+        { "title": "Photoplethysmogram, Wikipedia", "url": "https://en.wikipedia.org/wiki/Photoplethysmogram" },
+        { "title": "How the Apple Watch heart rate sensor works, according to Apple, Macworld", "url": "https://www.macworld.com/article/225341/how-the-apple-watch-heart-rate-sensor-works-according-to-apple.html" }
+      ],
+      "checkedOn": "2026-11-01"
+    }
+  ]
+}
