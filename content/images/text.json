@@ -193,5 +193,30 @@
   "coverAlt": "An Air France Concorde displayed in the air on a mount, seen from below",
   "figureAlt": "The crowded flight deck of a Concorde with its many dials",
   "figureCaption": "The flight deck of a Concorde."
+ },
+ "how-a-turbocharger-works-exhaust-power-made-useful": {
+  "coverAlt": "A turbocharger cut open to show the turbine and compressor wheels inside",
+  "figureAlt": "A turbocharger removed from an engine, showing its housings and connections",
+  "figureCaption": "A turbocharger: the exhaust turbine and air compressor share one shaft."
+ },
+ "why-airliners-cruise-at-about-35-000-feet": {
+  "coverAlt": "A United Airlines Airbus A320 airliner on the ground",
+  "figureAlt": "A Jetstar Airbus A320 airliner in flight",
+  "figureCaption": "An Airbus A320, a single-aisle airliner that cruises in the 31,000 to 38,000 foot band."
+ },
+ "how-ai-image-generators-turn-noise-into-pictures": {
+  "coverAlt": "A dark photograph covered in coloured speckles of image noise",
+  "figureAlt": "An illustration of an artificial neural network with a computer chip",
+  "figureCaption": "Image generators use neural networks to remove noise step by step."
+ },
+ "how-noise-cancelling-headphones-work": {
+  "coverAlt": "Black over-ear wireless noise-cancelling headphones",
+  "figureAlt": "Over-ear noise-cancelling headphones seen from the side",
+  "figureCaption": "Over-ear headphones with microphones and speakers in each ear cup."
+ },
+ "how-a-lift-stays-safe-brakes-governors-and-rails": {
+  "coverAlt": "The inside of a passenger lift cabin with buttons beside the doors",
+  "figureAlt": "The interior of a lift cabin in a tall tower",
+  "figureCaption": "A lift car rides on guide rails that its safety gear can grip."
  }
 }
