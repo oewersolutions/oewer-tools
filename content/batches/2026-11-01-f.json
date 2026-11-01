@@ -1,0 +1,178 @@
+{
+  "date": "2026-11-01",
+  "articles": [
+    {
+      "title": "How a Microwave Oven Heats Food",
+      "category": "Electronics",
+      "excerpt": "A microwave oven makes radio-type waves with a magnetron and uses them to shake water molecules in food. Here is how that turns into heat, and why spots stay cold.",
+      "tags": ["microwave", "magnetron", "kitchen"],
+      "blocks": [
+        ["paragraph", "A microwave oven heats food by filling a metal box with invisible radio-type waves. Water and other polar molecules in the food absorb the energy of those waves and warm up. The part that makes the waves is a vacuum tube called a magnetron, and the frequency most home ovens use is 2.45 gigahertz (GHz), which means the wave's electric field reverses direction about 2.45 billion times every second."],
+        ["heading", "The magnetron makes the waves"],
+        ["paragraph", "The magnetron turns electrical power into microwaves. According to the Wikipedia article on microwave ovens, the cavity magnetron was developed in 1940 by British researchers Randall and Boot at the University of Birmingham, originally for radar. RF Essentials, a technical reference site, says the magnetron in a household oven produces roughly 1 kilowatt of microwave energy and is fed by a high-voltage transformer working at about 4 to 5 kilovolts."],
+        ["paragraph", "From the magnetron, the energy travels along a metal channel called a waveguide into the cooking cavity. The cavity is a closed metal box. Metal reflects microwaves, so the waves bounce around inside instead of escaping, and the food is the main thing that absorbs them."],
+        ["heading", "Why water gets hot"],
+        ["paragraph", "A water molecule is polar: one end carries a slight positive charge and the other a slight negative charge. When an electric field is applied, the molecule turns to line up with it. In a microwave oven the field keeps flipping direction, so the molecules keep twisting back and forth. That motion and the friction with neighbouring molecules release heat, which spreads through the food."],
+        ["paragraph", "Other polar molecules respond too, which is why fats and sugars also warm up, though less strongly than water. Dry, non-polar materials such as most plastics and dry ceramics absorb little, so they stay cooler unless the hot food heats them by contact."],
+        ["heading", "Why 2.45 GHz, and a common myth"],
+        ["paragraph", "Many people repeat that 2.45 GHz is the frequency at which water resonates. Both sources used here say otherwise. RF Essentials states that water's resonance is nearer 20 GHz, and the Wikipedia article says heating does not depend on a special resonance, because polar molecules respond across a broad range of frequencies."],
+        ["paragraph", "The practical reasons are these, according to those sources:"],
+        ["list", "2.45 GHz sits in an ISM band, a range set aside worldwide for industrial, scientific and medical use that does not need a licence.\nThe frequency penetrates food by a useful distance: higher frequencies would heat mostly the surface, lower ones would pass too deeply.\nMagnetrons for this frequency are affordable to make.\nThe US Federal Communications Commission approved the 2450 MHz frequency on 30 December 1946, according to the Wikipedia article."],
+        ["paragraph", "Larger industrial ovens often use 915 MHz instead. That lower frequency penetrates deeper, but the Wikipedia article notes it is an ISM band only in some regions of the world."],
+        ["heading", "How deep do the waves go?"],
+        ["paragraph", "Sources give different numbers here. RF Essentials gives a penetration depth of about 2 to 3 centimetres for typical food, while the Wikipedia article says that at 2.45 GHz the waves go only about 1 centimetre into most foods. The difference likely depends on what the food is made of, since water content, salt and temperature all change absorption. Either way, the depth is small compared with a large dish."],
+        ["paragraph", "That is why the middle of a thick or frozen item is mostly warmed by conduction, meaning heat flowing inward from the outer layer, rather than by the waves reaching it directly. It also explains why the defrost setting uses low or pulsed power: pauses give heat time to spread into still-frozen areas."],
+        ["heading", "Why spots stay cold"],
+        ["paragraph", "Inside the box the waves form patterns, with places where the energy is strong and places where it is weak. Food in a weak spot heats slowly. Two common fixes are a turntable, which carries the food through the pattern, and a stirrer, a small rotating metal fan that scatters the waves. The Wikipedia article adds that a turntable can still leave dead spots, such as the centre, and that it reduces the usable space to the area above the plate."],
+        ["callout", "Metal needs care. RF Essentials notes that metal reflects microwaves and can create intense electric fields at sharp edges, which can cause arcing. Thin foil is more hazardous than smooth, thick metal such as a spoon. Follow your oven's manual for what may go inside."],
+        ["heading", "How the door keeps waves in"],
+        ["paragraph", "The metal case and the mesh in the door window work like a cage that blocks microwaves. According to the Wikipedia article, the holes in the mesh are much smaller than the wavelength of about 12.2 centimetres, so the waves cannot pass through them. Special choke structures around the door seal the gap at microwave frequencies, and interlocks cut power to the magnetron when the door opens. The same article reports that the US limit for leakage is 5 milliwatts per square centimetre at about 5 centimetres from the oven's surface."],
+        ["heading", "A short history"],
+        ["paragraph", "The Wikipedia article reports that in 1945 Percy Spencer, an engineer at Raytheon, noticed that a radar set's microwaves melted a candy bar in his pocket. He tried popcorn and an egg next, and Raytheon filed a patent application on 8 October 1945. The company showed two Radarange units to the press in New York in October 1946, and a commercial Radarange followed in 1947. That first unit stood about 1.8 metres tall, weighed around 340 kilograms and was water-cooled."],
+        ["paragraph", "Home use came later. The same source mentions a Tappan home model in 1956 priced around $1,250, a turntable added by Sharp between 1964 and 1966, and a $495 countertop model from Raytheon's Amana brand in 1967. RF Essentials describes the microwave oven as the highest-volume microwave application, with over one billion units in service worldwide."],
+        ["heading", "Key takeaways"],
+        ["list", "A magnetron makes microwaves at about 2.45 GHz and a waveguide sends them into a metal box.\nPolar molecules, mainly water, absorb the energy and turn it into heat.\nThe frequency was chosen for licence-free use, useful penetration and cost, not because water resonates there.\nHeating is uneven, so turntables or stirrers move food or waves around.\nThe waves penetrate only a few centimetres, so the centre of thick food warms by conduction."],
+        ["paragraph", "This article is general information. Sources disagree on some figures such as penetration depth, so treat numbers as typical rather than exact for every oven and food."]
+      ],
+      "sources": [
+        { "title": "Microwave oven, Wikipedia", "url": "https://en.wikipedia.org/wiki/Microwave_oven" },
+        { "title": "Microwave Oven, RF Essentials RF Glossary", "url": "https://rfessentials.com/resources/rf-glossary/microwave-oven/" }
+      ],
+      "checkedOn": "2026-11-01"
+    },
+    {
+      "title": "How a Thermostat Decides When to Heat or Cool",
+      "category": "How It Works",
+      "excerpt": "A thermostat compares the temperature it senses with the one you set and switches heating or cooling on or off. Learn how strips, sensors and a built-in gap do it.",
+      "tags": ["thermostat", "heating", "control"],
+      "blocks": [
+        ["paragraph", "A thermostat is a switch that watches temperature. It senses how warm a space or object is, compares that with a target called the setpoint, and turns heating or cooling on or off to stay near it. Older ones do this with a bending strip of metal. Newer ones use an electronic sensor and a small processor. Both rely on a deliberate gap between the switch-on and switch-off temperatures so they do not flick on and off constantly."],
+        ["heading", "The basic idea: a feedback loop"],
+        ["paragraph", "The Wikipedia article on thermostats describes the device as a closed-loop control. Closed loop means the device measures the result of its own action and uses that to decide what to do next. If the room is colder than the setpoint, the heater runs. Once the room reaches the setpoint, the heater stops. The temperature then drifts down and the cycle repeats."],
+        ["heading", "The bimetallic strip"],
+        ["paragraph", "A classic mechanical thermostat uses a bimetallic strip, which is two different metals bonded into one strip. Metals expand by different amounts when heated, so one side grows more than the other and the strip bends. That bending can open or close an electrical contact. Turning the dial on the wall changes how far the strip must bend before the contact moves, which changes the temperature at which it switches."],
+        ["paragraph", "According to Wikipedia, the Scottish chemist Andrew Ure designed a bimetallic thermostat in the 1830s for textile mills, and Warren S. Johnson of Wisconsin patented a bimetal room thermostat in 1883. The same article says the Dutch inventor Cornelis Drebbel built a mercury thermostat around 1620 to regulate a chicken incubator. Albert Butz is listed as patenting an electric thermostat in 1886, and Johnson invented a pneumatic one in 1895."],
+        ["heading", "Mercury switches"],
+        ["paragraph", "Some mechanical models replace the contact on the end of the strip with a small glass tube holding mercury. When the strip tilts the tube, the liquid metal rolls to one end and completes the circuit. Wikipedia notes that many countries restrict these because mercury is toxic, and a broken unit counts as chemical waste."],
+        ["heading", "Why there is a gap: hysteresis"],
+        ["paragraph", "If a thermostat switched at exactly one temperature, the heater could click on and off many times a minute as the reading hovered around the setpoint. That would wear out equipment. To prevent it, designers add hysteresis, a gap between the temperature at which the system turns on and the one at which it turns off. Wikipedia explains that a small magnet or the weight of the mercury can create this gap in a mechanical unit, so the temperature must rise several degrees before the contacts reopen."],
+        ["paragraph", "A result is that a simple on-off thermostat never holds the room perfectly steady. Wikipedia says conventional units oscillate about 1 to 2 °C around the setpoint. The room swings slightly above and below your target, and the swings are normally small enough that people do not notice."],
+        ["callout", "On-off control is sometimes called bang-bang control: the equipment is either at full output or fully off. Controllers that can modulate their output, such as PID controllers, give smoother results, but Wikipedia describes these as mainly used in industrial settings."],
+        ["heading", "Electronic and smart thermostats"],
+        ["paragraph", "Digital thermostats have no bending strip. They use a thermistor or similar sensor whose electrical resistance changes with temperature, and a small processor reads it. Wikipedia says most run on batteries, though some draw power from the 24-volt AC line in the wall, and a relay or other electronic switch turns the equipment on and off. The processor can apply the hysteresis gap in software and can follow a schedule, such as a lower setpoint overnight."],
+        ["paragraph", "ENERGY STAR, the US government-backed efficiency programme, describes certified smart thermostats as Wi-Fi enabled devices that can learn your temperature preferences, set schedules that lower energy use while you sleep or are away, and use geofencing, which adjusts the temperature as your phone approaches home. They can also be controlled from a smartphone, enter a low-power standby mode when inactive, and receive software updates."],
+        ["heading", "What about savings?"],
+        ["paragraph", "ENERGY STAR's smart thermostat page states that certified models were independently verified, using field data, to deliver energy savings, but it gives no percentage or dollar figure for the savings. It says almost half of the annual energy bill goes to heating and cooling, which is more than $900 a year for the average American household. That figure is the total cost of heating and cooling, not what a thermostat saves. Real savings depend on the home, the weather, the equipment and how the thermostat is set up, so treat any single number with caution."],
+        ["heading", "Summary"],
+        ["list", "A thermostat senses temperature, compares it with a setpoint and switches heating or cooling.\nMechanical models use a bimetallic strip, two bonded metals that bend as they warm.\nA built-in gap, called hysteresis, stops rapid on-off cycling.\nSimple on-off control lets the temperature swing about 1 to 2 °C around the setpoint.\nElectronic and smart models use sensors, processors and schedules, but the same feedback idea underlies them."],
+        ["paragraph", "This is general information about how the devices work. For installation or wiring of a thermostat, follow the manufacturer's instructions or ask a qualified electrician."]
+      ],
+      "sources": [
+        { "title": "Thermostat, Wikipedia", "url": "https://en.wikipedia.org/wiki/Thermostat" },
+        { "title": "Smart Thermostats, ENERGY STAR", "url": "https://www.energystar.gov/products/smart_thermostats" }
+      ],
+      "checkedOn": "2026-11-01"
+    },
+    {
+      "title": "Wi-Fi 7 vs Wi-Fi 6: What Actually Changes",
+      "category": "Technology",
+      "excerpt": "Wi-Fi 7 doubles channel width, packs more bits into each signal and lets a device use several links at once. Here is what that means and where the limits are.",
+      "tags": ["wifi", "networking", "wifi 7"],
+      "blocks": [
+        ["paragraph", "Wi-Fi 7, formally IEEE 802.11be, keeps the same three radio bands as Wi-Fi 6 and 6E but changes how much of them a device can use and how it uses them. The main differences are wider channels of up to 320 MHz, a denser signal encoding called 4096-QAM, and multi-link operation, which lets one device use more than one connection at the same time. The headline speeds are theoretical peaks, and real-world results depend on many things."],
+        ["heading", "The three biggest changes"],
+        ["paragraph", "The table-style comparison below follows the Devopedia entry on 802.11be, which compares Wi-Fi 7 with Wi-Fi 6 and 6E:"],
+        ["list", "Channel width: up to 160 MHz in Wi-Fi 6, up to 320 MHz in Wi-Fi 7, and the 320 MHz option works only in the 6 GHz band.\nSignal encoding: 1024-QAM in Wi-Fi 6, which carries 10 bits per symbol, against 4096-QAM in Wi-Fi 7, which carries 12 bits per symbol.\nMulti-link operation (MLO): not available in Wi-Fi 6, introduced in Wi-Fi 7.\nTheoretical peak rate: about 9.6 Gbps for Wi-Fi 6 and 46 Gbps for Wi-Fi 7."],
+        ["paragraph", "The Wi-Fi Alliance, the industry group that certifies Wi-Fi products, lists the same headline features for Wi-Fi CERTIFIED 7: 320 MHz channels in 6 GHz, multi-link operation, 4K QAM, 512 compressed block acknowledgement and multiple resource units for a single device."],
+        ["heading", "Wider channels"],
+        ["paragraph", "A channel is a slice of radio spectrum, and a wider slice can carry more data, much like a wider road. Devopedia explains that the 2.4 GHz band supports only 20 and 40 MHz channels, the 5 and 6 GHz bands support 80 and 160 MHz, and 320 MHz is possible only in 6 GHz, where there is room for 60 channels of 20 MHz. The Wi-Fi Alliance says 320 MHz channels double Wi-Fi 6's throughput for multigigabit device speeds."],
+        ["paragraph", "There is a practical limit. The 6 GHz band is not available to Wi-Fi in the same way everywhere. Devopedia reports that in December 2023 the World Radiocommunication Conference set aside the 6.425 to 7.125 GHz range for licensed 5G in some regions, so 6 GHz will not be available for Wi-Fi 7 worldwide. The channel width you can get depends on the rules in your country."],
+        ["heading", "A denser signal: 4096-QAM"],
+        ["paragraph", "QAM stands for quadrature amplitude modulation, a way of encoding bits by varying the signal in two ways at once. More points on the pattern means more bits per symbol but also less tolerance for noise. Moving from 1024-QAM to 4096-QAM raises the bits per symbol from 10 to 12. The Wi-Fi Alliance says this gives about 20% higher transmission rates than Wi-Fi 6."],
+        ["paragraph", "The gain has a catch. Devopedia notes that 4096-QAM helps mainly on clear, line-of-sight links with beamforming reaching about 30 dB signal quality. A device far away or behind walls will not see the benefit."],
+        ["heading", "Multi-link operation"],
+        ["paragraph", "Earlier Wi-Fi generations connect a device over one band at a time. Multi-link operation lets a Wi-Fi 7 device and access point communicate over several links, for example 5 GHz and 6 GHz together. The Wi-Fi Alliance says this balances traffic across links for higher throughput and better reliability. If one link is congested, traffic can move to another."],
+        ["paragraph", "Devopedia lists several device types, including multi-link single radio (MLSR), enhanced MLSR, multi-link multi-radio (MLMR) and enhanced MLMR. They differ in how many radios a device has and whether it can send and receive on different links at once. A phone with one radio and a router with several will therefore not get identical benefits."],
+        ["heading", "Smarter use of spectrum"],
+        ["paragraph", "Wi-Fi 7 adds preamble puncturing. If something interferes with one 20 MHz piece of a wide channel, the system can skip that piece and use the rest. Devopedia gives the example of using 300 of 320 MHz, where Wi-Fi 6 would fall back to 160 MHz. Wi-Fi 7 can also give one device several resource units at once, meaning more flexible slices of the channel."],
+        ["heading", "Peak speed versus real speed"],
+        ["paragraph", "The 46 Gbps figure assumes 16 spatial streams, the widest channel and the best encoding. Devopedia shows the calculation and notes that, as of January 2024, no chipset had reached it, with Qualcomm's Networking Pro 1620 reaching 33 Gbps. Consumer devices commonly have fewer streams, so peak numbers on a box are an upper limit, not what you will see when downloading a file."],
+        ["callout", "Wi-Fi 7 also depends on the internet plan. A router cannot make a connection from your provider faster than the provider supplies."],
+        ["heading", "Timeline"],
+        ["list", "March 2023: IEEE draft 2.0 of 802.11be published.\nDecember 2023: draft 4.0 followed, according to Devopedia.\nJanuary 2024: Wi-Fi CERTIFIED 7 launched, per Devopedia.\nThe Wi-Fi Alliance page cites ABI Research as projecting 1.4 billion Wi-Fi 7 chipset shipments in 2026."],
+        ["paragraph", "In short, Wi-Fi 7 is an evolution of Wi-Fi 6E rather than a break from it. It is backward compatible, so older devices still connect, but the main gains need Wi-Fi 7 on both the router and the device, and in the case of 320 MHz channels, a 6 GHz band that is open in your region. This article is general information, and figures are as published by the sources named."]
+      ],
+      "sources": [
+        { "title": "IEEE 802.11be, Devopedia", "url": "https://devopedia.org/ieee-802-11be" },
+        { "title": "Wi-Fi CERTIFIED 7, Wi-Fi Alliance", "url": "https://www.wi-fi.org/discover-wi-fi/wi-fi-certified-7" }
+      ],
+      "checkedOn": "2026-11-01"
+    },
+    {
+      "title": "Open-Weight vs Open-Source AI Models Explained",
+      "category": "AI",
+      "excerpt": "Open-weight models share their trained numbers; open-source AI, by one formal definition, shares much more. Here is what each term means and why the difference matters.",
+      "tags": ["open source", "open weights", "ai models"],
+      "blocks": [
+        ["paragraph", "Closed, open-weight and open-source describe how much of an AI model its maker shares. A closed model stays on the maker's servers. An open-weight model lets you download the trained parameters, called weights, and run them yourself. An open-source AI system, by the Open Source Initiative's definition, goes further and also shares information about the training data and the code used to build and run it. The labels are often mixed up, so the details are worth knowing."],
+        ["heading", "What are weights?"],
+        ["paragraph", "When an AI model is trained, it adjusts millions or billions of numbers. Those numbers are the weights, and they hold what the model has learned. Releasing them is like releasing the finished product without the full recipe and ingredients. With the weights and suitable software you can run the model, and often tune it further, without sending your data to its maker."],
+        ["heading", "Closed models"],
+        ["paragraph", "In a PBS NewsHour explainer, a researcher describes closed AI as the case where the developer keeps the model's internals secret and treats the model as private property. Users reach it through an app or a service, and cannot inspect or change how it works."],
+        ["heading", "Open-weight models"],
+        ["paragraph", "The same PBS explainer says that open-weight developers release the trained weights, often with less restrictive reuse terms than a closed model, and names DeepSeek and Alibaba's Qwen as examples. It adds that the community has adopted such models quickly, though many developers do not consider them fully open source."],
+        ["paragraph", "Open weight says nothing about the licence. Some open-weight releases allow almost any use, while others add conditions. The PBS article notes that Meta's LLaMA, released in February 2023 with its inference code and weights, is described by the Open Source Initiative as not truly open source, because its licence prohibits commercial reuse."],
+        ["heading", "Open-source AI: a formal definition"],
+        ["paragraph", "The term open source comes from the free software movement of the 1980s and 1990s, which argued for four freedoms: to run, study, modify and share software. The Open Source Initiative (OSI) applies these to AI in its Open Source AI Definition, version 1.0. It says an open-source AI system must let people:"],
+        ["list", "Use the system for any purpose without asking permission.\nStudy how it works and inspect its components.\nModify it for any purpose, including changing its outputs.\nShare it with others, modified or not, for any use."],
+        ["paragraph", "To make those freedoms real, the definition says people need the preferred form for making changes. For an AI system, the OSI lists three kinds of material:"],
+        ["list", "Data information: enough detail about the training data for a skilled person to recreate a comparable system, including where the data came from, how it was selected and processed, and where public or third-party data can be obtained.\nCode: the complete source used to train and run the system, including data processing and filtering, training settings, validation, inference and the model architecture.\nParameters: the model weights or other settings, such as key intermediate checkpoints and the final optimizer state."],
+        ["paragraph", "Notice what is and is not demanded. The OSI asks for information about the training data, not necessarily the data itself. The PBS explainer says some developers question whether datasets of that size can practically be distributed. The OSI page excerpted here does not give a release date, so check the OSI site for the current status of the definition."],
+        ["heading", "Why the distinction matters"],
+        ["list", "Privacy and control: running a downloaded model on your own hardware means your prompts need not leave your machine.\nCost and flexibility: with weights you can often adapt a model to your own task.\nLegal clarity: the licence decides whether you may use a model commercially, redistribute it or build on it.\nScientific checking: sharing code and data information lets others test how a model was made."],
+        ["callout", "A quick test: if you can download a model but cannot find the code and training-data details, it is probably best described as open weight, not open source."],
+        ["heading", "The terms are contested"],
+        ["paragraph", "Not everyone agrees on where to draw the line. Companies sometimes call a model open source when it is open weight, and developers sometimes argue that a strict definition makes little sense when training datasets are huge or contain material that cannot be shared. Treat any label as a prompt to read the licence and the release notes. This article is general information and does not give legal advice."],
+        ["heading", "Summary"],
+        ["list", "Closed: internals kept private, used through the maker's service.\nOpen weight: trained weights are downloadable, licence terms vary.\nOpen source (OSI definition): weights, code and data information are shared under terms that allow use, study, modification and sharing."]
+      ],
+      "sources": [
+        { "title": "The Open Source AI Definition 1.0, Open Source Initiative", "url": "https://opensource.org/ai/open-source-ai-definition" },
+        { "title": "What's the difference between closed, open-source and open-weight AI, PBS News", "url": "https://www.pbs.org/newshour/science/whats-the-difference-between-closed-open%E2%80%91source-and-open-weight-ai-a-researcher-explains" }
+      ],
+      "checkedOn": "2026-11-01"
+    },
+    {
+      "title": "How an Automatic Transmission Shifts Gears Itself",
+      "category": "Cars and Bikes",
+      "excerpt": "An automatic gearbox uses a fluid-filled torque converter instead of a clutch pedal and planetary gears chosen by hydraulic pressure. Here is how the parts work together.",
+      "tags": ["transmission", "torque converter", "gearbox"],
+      "blocks": [
+        ["paragraph", "A traditional automatic transmission lets a car change gear without a clutch pedal or a gear lever you move yourself. Two ideas make that possible. A fluid-filled torque converter connects the engine to the gearbox and takes the place of the clutch. Inside the gearbox, sets of gears called planetary gearsets produce different ratios, and clutches and brakes worked by fluid pressure choose which ratio is active."],
+        ["heading", "The torque converter replaces the clutch"],
+        ["paragraph", "In a manual car, you press the clutch to separate the engine from the wheels so the car can stop without stalling the engine. Jalopnik's explainer says the torque converter takes the place of that clutch. It is a fluid coupling: an impeller on the engine side spins automatic transmission fluid, and the moving fluid pushes a turbine connected to the gearbox's input shaft. At idle, little force passes through, so the car can sit in Drive at a stop. Press the accelerator and the engine speeds up, the fluid carries more force, and the car moves off."],
+        ["paragraph", "Between the two sits a part called the stator, mounted on a one-way clutch. It redirects returning fluid so it helps the impeller. The result, Jalopnik says, is that the converter can multiply torque mainly at stall and during acceleration, not at steady highway speed. A lock-up clutch can then join the turbine and impeller mechanically so all engine torque passes straight through. Wikipedia notes that many four-speed automatics gained lock-up converters in the 1980s to improve fuel economy."],
+        ["heading", "Planetary gearsets make the ratios"],
+        ["paragraph", "A planetary gearset has a central sun gear, several planet gears held on a carrier, and an outer ring gear. Because all these parts mesh at once, you can get different ratios by choosing which part is held still, which is driven and which is the output. According to Jalopnik, this lets the transmission change ratio without disconnecting gears. Holding one part gives a low ratio, holding another gives a higher one, locking two parts together gives 1:1, and holding the carrier reverses the direction of rotation for reverse gear."],
+        ["paragraph", "Jalopnik adds that most modern units use a Ravigneaux compound gearset, which combines two planetary sets with two sun gears, two sets of planets and one shared carrier. Wikipedia credits Chrysler's three-speed TorqueFlite in 1956 as the first to use the Simpson compound planetary gearset, a different compound design."],
+        ["heading", "Hydraulics decide which gear"],
+        ["paragraph", "Clutches and brake bands inside the gearbox hold or release parts of the planetary sets. They are squeezed by fluid pressure. Jalopnik explains that the torque converter drives the fluid pump, and a hydraulic control unit directs pressure to the right clutches and to lock the converter. Wikipedia mentions that sprag clutches, which are one-way locking devices, handle routine shifts, while bands are used for manually selected gears such as low or reverse. Modern gearboxes add an electronic control unit that decides when to shift, but the mechanical principle of holding and releasing parts stays the same."],
+        ["heading", "A short history"],
+        ["list", "1904: the Sturtevant gearbox is often called the first automatic transmission, but it was prone to sudden failure, according to Wikipedia.\n1939: General Motors introduced the Hydra-Matic for the 1940 model year in Oldsmobile and Cadillac models. It used a fluid coupling and three planetary gearsets for four forward speeds plus reverse and was the first mass-produced automatic.\n1948: the Buick Dynaflow was the first automatic to use a torque converter instead of a fluid coupling.\n1989 to 2017: gear counts rose, with a five-speed Jatco unit in 1989, ZF's six-speed in the 2002 BMW 7 Series, and Toyota's ten-speed Direct Shift-10A in 2017."],
+        ["heading", "How it differs from CVTs and dual-clutch gearboxes"],
+        ["paragraph", "Not every automatic car uses this design. A continuously variable transmission (CVT) changes ratio smoothly across an unlimited range, most commonly with two pulleys linked by a belt or chain. A dual-clutch transmission uses two clutches, one for odd gears and one for even, so the next gear is ready before the shift. Wikipedia says the first modern dual-clutch unit appeared in the 2003 Volkswagen Golf R32 and that these have increasingly replaced hydraulic automatics since the late 2000s."],
+        ["callout", "If a car's brochure says only 'automatic', check the specification. It may mean a torque converter automatic, a CVT or a dual-clutch design, and they feel different to drive."],
+        ["heading", "Where automatics are common"],
+        ["paragraph", "Wikipedia reports that automatics held over 80% of new US cars in 1957 but only about 10 to 12% of European cars in 1997. For manual gearboxes, it gives 43% of new cars worldwide in 2015, falling to 37% by 2020. These figures vary by region and year."],
+        ["heading", "Summary"],
+        ["list", "The torque converter is a fluid coupling that replaces the clutch.\nPlanetary gearsets create ratios when parts are held, driven or locked together.\nHydraulic pressure, directed by a control unit, applies clutches and brakes to select gears.\nCVTs and dual-clutch gearboxes are different kinds of automatic."],
+        ["paragraph", "This article is general information. For maintenance such as fluid changes, follow the car maker's manual."]
+      ],
+      "sources": [
+        { "title": "This Is How An Automatic Transmission Works, Jalopnik", "url": "https://www.jalopnik.com/this-is-how-an-automatic-transmission-works-517581894/" },
+        { "title": "Automatic transmission, Wikipedia", "url": "https://en.wikipedia.org/wiki/Automatic_transmission" }
+      ],
+      "checkedOn": "2026-11-01"
+    }
+  ]
+}
