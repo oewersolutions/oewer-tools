@@ -1,0 +1,504 @@
+{
+ "date": "2026-11-01",
+ "articles": [
+  {
+   "title": "How GPS Works: Satellites, Clocks and Your Position",
+   "category": "Technology",
+   "excerpt": "GPS finds your position by timing radio signals from satellites about 20,200 km up. Here is how the satellites, atomic clocks and your receiver fit together.",
+   "tags": [
+    "gps",
+    "satellites",
+    "navigation"
+   ],
+   "blocks": [
+    [
+     "paragraph",
+     "A GPS receiver works out where you are by measuring how long radio signals take to reach it from several satellites. Each satellite broadcasts its own position and the exact time. Because the signals travel at a known speed, the delay tells the receiver how far away each satellite is, and a few such distances pin down one spot on Earth. Your phone only listens; it sends nothing to the satellites."
+    ],
+    [
+     "heading",
+     "The three parts of the system"
+    ],
+    [
+     "paragraph",
+     "The US-run Global Positioning System has three parts, as described by the National Oceanic and Atmospheric Administration (NOAA): satellites, ground stations and receivers. The satellites do the broadcasting. The ground stations track the satellites and work out where each one is now and where it will be soon. Receivers are the phones, car units and watches that pick up the signals."
+    ],
+    [
+     "paragraph",
+     "NASA says the system has at least 24 satellites arranged in six orbital planes, each tilted 55 degrees to the equator. They orbit at about 20,200 kilometres (12,550 miles) and take roughly 12 hours to go round once, which is two orbits a day. More than 30 satellites are working today, according to both NASA and NOAA. The layout is planned so that at least four satellites are above the horizon from almost anywhere on Earth."
+    ],
+    [
+     "heading",
+     "What a satellite sends"
+    ],
+    [
+     "paragraph",
+     "Every satellite carries atomic clocks, and NASA notes that the redundancy is deliberate: if one clock fails, another takes over. The satellite repeatedly broadcasts two things: where it is, and the time its clock showed when the signal left. The ground stations keep this information up to date."
+    ],
+    [
+     "paragraph",
+     "A receiver compares the time stamp on an incoming signal with its own clock. The difference is the travel time. Radio waves move at about 300,000 kilometres per second, so even a tiny timing error becomes a large distance error. A mistake of one millionth of a second would put a distance estimate off by around 300 metres. That is why the satellites need such precise clocks. NASA gives the time accuracy of the system as about 10 nanoseconds, which is ten billionths of a second."
+    ],
+    [
+     "heading",
+     "From distances to a position"
+    ],
+    [
+     "paragraph",
+     "One distance tells you that you are somewhere on a sphere around that satellite. A second distance narrows it to a circle where two spheres meet. A third narrows it to two points, and one of those is usually far out in space and can be ignored. This method of fixing a position from distances is called trilateration. It differs from triangulation, which uses angles."
+    ],
+    [
+     "paragraph",
+     "NOAA says a receiver needs distances from four or more satellites to know where it is. The reason for the fourth is practical. The clock in a phone is far less precise than an atomic clock, so the receiver does not know the exact time. Treating its own clock error as one more unknown, the receiver needs a fourth measurement to solve for it. With more satellites in view, the calculation has extra checks and the result is steadier."
+    ],
+    [
+     "list",
+     "Satellite 1 gives a sphere of possible positions\nSatellite 2 reduces it to a circle\nSatellite 3 reduces it to two points\nSatellite 4 corrects the receiver's own clock error"
+    ],
+    [
+     "heading",
+     "How accurate it is"
+    ],
+    [
+     "paragraph",
+     "NASA states that the standard civilian service is built to meet about 10 metres horizontally and 20 metres vertically at 95 percent confidence, and that actual global-average error in recent years has been about 1 metre or better. NOAA describes typical results as within a few yards, with specialised receivers reaching far finer detail. Real-world results vary. Tall buildings, dense trees and tunnels block or bounce signals, and that can make a phone's position drift."
+    ],
+    [
+     "callout",
+     "GPS is the name of the American system. The general term for satellite navigation from any country is GNSS, and many phones combine several systems. The sources used here describe GPS only."
+    ],
+    [
+     "heading",
+     "Who uses it, and what it is not"
+    ],
+    [
+     "paragraph",
+     "Because every satellite also carries a time signal, GPS is used for more than maps. Anything that needs precise time can take it from the satellites. Navigation apps, ride booking, surveying and mapping all use the same signals."
+    ],
+    [
+     "paragraph",
+     "GPS does not know the roads, the traffic or the name of the street you are on. It supplies only coordinates and time. A map app adds the map, the route and the traffic information on top, usually through a mobile data connection. If the data connection is lost, the receiver can still calculate its position, though the map may not load."
+    ],
+    [
+     "heading",
+     "The short version"
+    ],
+    [
+     "paragraph",
+     "Satellites broadcast their position and the time. A receiver measures the delay of four or more signals, turns the delays into distances and solves for its own position and clock error. The accuracy depends on atomic clocks in space and on the ground stations that keep the satellites' positions up to date. This is general information drawn from NASA and NOAA, as of 1 November 2026."
+    ]
+   ],
+   "sources": [
+    {
+     "title": "Global Positioning System, NASA Space Communications and Navigation",
+     "url": "https://www.nasa.gov/directorates/somd/space-communications-navigation-program/gps/"
+    },
+    {
+     "title": "What is GPS?, NOAA National Ocean Service",
+     "url": "https://oceanservice.noaa.gov/facts/gps.html"
+    }
+   ],
+   "checkedOn": "2026-11-01"
+  },
+  {
+   "title": "How a Jet Engine Works: Intake to Exhaust",
+   "category": "Aviation",
+   "excerpt": "A jet engine pulls in air, squeezes it, burns fuel in it and blasts it out the back. Learn the four stages and why airliners use turbofans.",
+   "tags": [
+    "jet engines",
+    "turbofan",
+    "thrust"
+   ],
+   "blocks": [
+    [
+     "paragraph",
+     "A jet engine makes thrust by throwing air backwards very fast. It takes in air, compresses it, burns fuel in it and lets the hot gas rush out of a nozzle. The push on the aircraft is the reaction to that rush of gas. Most airliners today use a version called a turbofan, in which a big fan at the front sends extra air around the outside of the engine."
+    ],
+    [
+     "heading",
+     "Thrust and Newton's third law"
+    ],
+    [
+     "paragraph",
+     "NASA's Glenn Research Center explains thrust with Isaac Newton's third law: for every action there is an equal and opposite reaction. When an engine pushes gas backwards, the gas pushes the engine, and the aircraft attached to it, forwards. A jet engine does not push against the air behind it. It would work in the same way in space, if it carried its own oxygen, which is the reason rockets do."
+    ],
+    [
+     "heading",
+     "The four stages"
+    ],
+    [
+     "paragraph",
+     "NASA describes the work of a jet engine in four stages. They happen continuously and all at once, in different parts of the engine."
+    ],
+    [
+     "list",
+     "Intake: a fan at the front draws in a large volume of air.\nCompression: rows of spinning blades on a shaft squeeze the air into a smaller space and raise its pressure. NASA says a turbojet raises the pressure to between 3 and 12 times the starting value.\nCombustion: fuel is sprayed into the compressed air, through as many as 20 nozzles, and ignited. NASA puts the combustor temperature at about 2,700 degrees Fahrenheit (roughly 1,480 degrees Celsius), so the walls are often lined with ceramic.\nExhaust: the expanding gas spins a turbine, which turns the compressor and fan on a shared shaft. The gas then leaves through the nozzle and produces the thrust."
+    ],
+    [
+     "paragraph",
+     "The turbine is the link that keeps the engine running by itself. Part of the energy in the hot gas is taken out to drive the compressor at the front, and the rest is left to make thrust. Starting the engine needs an outside source of power to get the shaft turning, after which the engine sustains itself."
+    ],
+    [
+     "heading",
+     "Turbojet and turbofan"
+    ],
+    [
+     "paragraph",
+     "In a simple turbojet, all the air that enters goes through the core: compressor, combustor and turbine. NASA notes that an afterburner, which burns extra fuel in the exhaust, can add about 40 percent more thrust at takeoff. Afterburners use a lot of fuel, so they appear mainly on military aircraft."
+    ],
+    [
+     "paragraph",
+     "A turbofan adds a large fan at the front. Some of the air goes into the core as before, and the rest bypasses it through a duct around the outside. NASA defines the bypass ratio as the fan airflow divided by the core airflow. A ratio of 6 means six times as much air goes around the core as through it."
+    ],
+    [
+     "paragraph",
+     "Both streams make thrust. Because the extra fan changes the core's fuel use only a little, a turbofan makes more thrust for nearly the same fuel. NASA says high-bypass turbofans approach the fuel efficiency of propeller engines, and that even low-bypass turbofans are more efficient than plain turbojets."
+    ],
+    [
+     "heading",
+     "Why airliners use turbofans"
+    ],
+    [
+     "paragraph",
+     "Sending a lot of air backwards a little faster than the aircraft's speed is more efficient than sending a little air backwards very fast. Wikipedia's turbofan article, which draws on engineering references, says turbofans are most efficient at roughly 500 to 1,000 kilometres per hour, the speed range of most commercial aircraft. It gives bypass ratios of about 12.5 to 1 for the Pratt & Whitney PW1000G and about 11 to 1 for the CFM LEAP, against 0.3 to 1 for the Rolls-Royce Conway, the first production turbofan. Modern fighter engines usually keep the ratio low."
+    ],
+    [
+     "paragraph",
+     "The slower bypass air also makes the engine quieter. The same article explains that the air leaving the bypass duct moves much more slowly than the exhaust of a pure jet, so a high-bypass engine is significantly quieter at the same thrust. Sound-absorbing liners in the engine housing and serrated nozzle edges, called chevrons, reduce noise further."
+    ],
+    [
+     "heading",
+     "Other engines in the family"
+    ],
+    [
+     "paragraph",
+     "The same core idea appears in other engines. A turboprop uses the turbine to drive a propeller. A turboshaft drives a helicopter rotor. A ramjet has no moving parts and depends on forward speed to compress the air, so it cannot start from a standstill."
+    ],
+    [
+     "callout",
+     "NASA's pages give slightly different numbers for the air temperature in places, so this article uses the figure NASA gives for the combustor itself. Figures vary between engine models."
+    ],
+    [
+     "heading",
+     "In short"
+    ],
+    [
+     "paragraph",
+     "Intake, compression, combustion and exhaust turn fuel into a fast stream of gas and a push forward. The turbofan adds a bypass fan that moves more air more slowly, which saves fuel and noise at airliner speeds. This is general information from NASA and a reference article, as of 1 November 2026, and does not describe any one engine."
+    ]
+   ],
+   "sources": [
+    {
+     "title": "Engines, NASA Glenn Research Center",
+     "url": "https://www.grc.nasa.gov/www/k-12/UEET/StudentSite/engines.html"
+    },
+    {
+     "title": "Turbofan Engine, NASA Glenn Research Center",
+     "url": "https://www.grc.nasa.gov/www/K-12/airplane/turbfan.html"
+    },
+    {
+     "title": "Turbofan, Wikipedia",
+     "url": "https://en.wikipedia.org/wiki/Turbofan"
+    }
+   ],
+   "checkedOn": "2026-11-01"
+  },
+  {
+   "title": "How a Refrigerator Cools: The Four-Part Cycle",
+   "category": "How It Works",
+   "excerpt": "A fridge does not make cold. It moves heat from inside to your kitchen using a compressor, condenser, expansion valve and evaporator.",
+   "tags": [
+    "refrigerator",
+    "heat",
+    "appliances"
+   ],
+   "blocks": [
+    [
+     "paragraph",
+     "A refrigerator does not create cold. It moves heat out of the cabinet and releases it into the room. A liquid called a refrigerant circulates in a sealed loop, absorbing heat inside the fridge and giving it up outside. Four parts make this happen: a compressor, a condenser, an expansion device and an evaporator."
+    ],
+    [
+     "heading",
+     "Why moving heat takes work"
+    ],
+    [
+     "paragraph",
+     "Heat flows by itself from warm things to cooler ones. A fridge has to push it the other way, from the cool inside to the warmer kitchen. A Penn State energy course describes the fridge as a heat mover, and says this reversal needs work, which the compressor supplies using electricity. This is also why the back or underside of a fridge feels warm: the heat from your food, plus the energy the compressor uses, ends up in the room."
+    ],
+    [
+     "heading",
+     "The four parts"
+    ],
+    [
+     "paragraph",
+     "The refrigerant goes round the loop in this order, according to both Penn State and the repair site iFixit."
+    ],
+    [
+     "list",
+     "Compressor: pumps the refrigerant round and squeezes the vapour, raising its pressure and temperature above that of the kitchen air. It is the main user of electricity, and its motor makes the humming you hear.\nCondenser: coils on the back or bottom. The hot refrigerant gives up heat to the room, often helped by a fan, and condenses from a gas into a liquid.\nExpansion device: the liquid passes through a narrow opening, either a thin capillary tube or a thermal expansion valve. Pressure and temperature drop sharply, and some of the liquid flash-evaporates into a cold mixture.\nEvaporator: coils inside the fridge or freezer. The cold refrigerant absorbs heat from the air and food and boils into vapour, which returns to the compressor."
+    ],
+    [
+     "paragraph",
+     "iFixit names tetrafluoroethane as a common refrigerant and notes that the loop is sealed copper tubing. Other refrigerants are used in different models, and the choice has changed over the years. The sealed parts need special tools to open and refill, so iFixit recommends a professional for that kind of repair."
+    ],
+    [
+     "heading",
+     "Control: when the fridge starts and stops"
+    ],
+    [
+     "paragraph",
+     "The compressor does not run all the time. A temperature sensor tells a control board when to switch parts on or off. iFixit describes a sensor called a thermistor that reports the temperature to the board. In many models a fan in the freezer blows air over the evaporator and into the fresh-food section, with a damper that controls how much cold air gets through."
+    ],
+    [
+     "paragraph",
+     "Penn State gives recommended temperatures: 37 to 40 degrees Fahrenheit (about 3 to 4 degrees Celsius) for the fresh-food compartment and 0 to 5 degrees Fahrenheit (about minus 18 to minus 15 degrees Celsius) for the freezer."
+    ],
+    [
+     "paragraph",
+     "Because the compressor only has to run when the inside warms up, a fridge in a cool room with a well-sealed door spends more of its time switched off. The sources do not give run-time figures, and real behaviour depends on the model, the room and how often the door is opened."
+    ],
+    [
+     "heading",
+     "Frost, seals and cleaning"
+    ],
+    [
+     "paragraph",
+     "Frost builds up on the evaporator because moisture in the air freezes there. iFixit explains that many fridges have a defrost heater around the evaporator coils to melt it from time to time. If the heater fails, frost thickens, blocks heat absorption and the fridge struggles to cool."
+    ],
+    [
+     "paragraph",
+     "The door seal matters for the same reason. If it leaks, warm, damp air enters and the fridge works harder. iFixit also lists dirty condenser coils among the common causes of poor cooling, since the heat cannot escape properly."
+    ],
+    [
+     "callout",
+     "This is general information, not repair advice. Refrigerators contain electrical parts and sealed refrigerant systems; follow the maker's manual for your model."
+    ],
+    [
+     "heading",
+     "How efficiency is rated"
+    ],
+    [
+     "paragraph",
+     "Penn State notes that efficiency is stated as the volume cooled per unit of electrical energy per day. The page gives, as an example of the most efficient 2025 model it listed, a refrigerator of 27.4 cubic feet that uses 546 kilowatt-hours a year. Figures like these change as new models appear, and they depend on the test used."
+    ],
+    [
+     "heading",
+     "In short"
+    ],
+    [
+     "paragraph",
+     "The compressor raises the refrigerant's pressure and temperature, the condenser releases the heat to the room, the expansion device makes the refrigerant cold, and the evaporator absorbs heat from the food. Then the cycle repeats. Air conditioners and heat pumps use the same basic principle. The details here come from the two sources listed below, as of 1 November 2026."
+    ]
+   ],
+   "sources": [
+    {
+     "title": "Refrigerators, Penn State EGEE 102 course",
+     "url": "https://courses.ems.psu.edu/egee102/book/export/html/2402"
+    },
+    {
+     "title": "How Refrigerators Work, iFixit",
+     "url": "https://www.ifixit.com/News/31122/how-refrigerators-work"
+    }
+   ],
+   "checkedOn": "2026-11-01"
+  },
+  {
+   "title": "What Regenerative Braking Does in Hybrids and EVs",
+   "category": "Cars and Bikes",
+   "excerpt": "Regenerative braking turns the motor into a generator while slowing, sending some energy back to the battery instead of wasting it as heat.",
+   "tags": [
+    "regenerative braking",
+    "hybrid",
+    "electric cars"
+   ],
+   "blocks": [
+    [
+     "paragraph",
+     "Regenerative braking lets a hybrid or electric car recover part of the energy it would otherwise lose as heat when it slows down. While you brake or lift off the accelerator, the electric motor works in reverse as a generator, turns the car's motion into electricity and feeds it back to the battery. It does not replace the ordinary brakes, but it reduces how much work they do."
+    ],
+    [
+     "heading",
+     "What happens in a normal car"
+    ],
+    [
+     "paragraph",
+     "In a petrol or diesel car, braking uses friction. Pads press on discs, and the car's movement energy becomes heat that disperses into the air. That energy is gone. The US government's fueleconomy.gov site says only about 12 to 30 percent of the energy in a conventional vehicle's fuel reaches the wheels, depending on how it is driven, and that the energy wasted in braking is a loss that hybrids and electric vehicles can partly recover."
+    ],
+    [
+     "heading",
+     "The motor works both ways"
+    ],
+    [
+     "paragraph",
+     "An electric motor and a generator are close relatives. The Alternative Fuels Data Center (AFDC), a US Department of Energy resource, describes the arrangement in hybrids. When driving, the motor takes power from the traction battery and turns the wheels. When braking, the wheels turn the motor, which now produces electricity and sends it back to the battery. The AFDC lists the generator's job as producing electricity from the rotating wheels while braking and transferring that energy to the traction battery pack."
+    ],
+    [
+     "paragraph",
+     "A power electronics controller manages the flow of energy between battery and motor. The AFDC also notes that some vehicles use one motor generator for both driving and regeneration."
+    ],
+    [
+     "heading",
+     "Which vehicles have it"
+    ],
+    [
+     "paragraph",
+     "Fueleconomy.gov says hybrids, plug-in hybrids and electric vehicles all recover some braking energy that would otherwise be lost. The AFDC explains that an ordinary hybrid cannot be plugged in, so its traction battery is charged only by regenerative braking and by the petrol engine. In a hybrid, this is a major reason the car can cut fuel use in stop-and-go traffic, where there is plenty of slowing down."
+    ],
+    [
+     "heading",
+     "Friction brakes still matter"
+    ],
+    [
+     "paragraph",
+     "Regenerative braking has limits. Most cars blend the two systems, so the driver presses one pedal and the car's computer decides how much slowing comes from the motor and how much from the friction brakes. The motor is less effective at very low speeds, so the friction brakes usually do the final stop and hold the car on a slope. In an emergency, hard braking needs the friction brakes. Neither the AFDC nor fueleconomy.gov gives these blending details, so how a particular car does it is something the maker's manual explains."
+    ],
+    [
+     "heading",
+     "How much energy comes back"
+    ],
+    [
+     "paragraph",
+     "Neither source gives one number for how much is recovered. Fueleconomy.gov states that the amount of energy wasted in braking depends partly on weight: less energy is lost when slowing a lighter vehicle. Figures found elsewhere vary, and they depend on speed, battery charge, temperature and driving style, so a single percentage would mislead. Treat any quoted gain in range as specific to the test it came from."
+    ],
+    [
+     "list",
+     "Hills help: going downhill the car keeps turning the motor, so there is energy to recover.\nA full battery cannot accept much charge, so regeneration may be reduced.\nGentle, early slowing gives the motor more time to recover energy than sudden stops do."
+    ],
+    [
+     "callout",
+     "The three points above are general explanations of how the system behaves, not claims from the cited pages. Specific behaviour differs between models."
+    ],
+    [
+     "paragraph",
+     "Fueleconomy.gov also gives context on why this matters. It reports that in a conventional vehicle about 6 percent of fuel energy is lost to idling in city driving and about 3 percent in combined driving, and that systems in hybrids can shut the engine off at a stop and restart it when the accelerator is pressed. Regenerative braking and this automatic stop-start are separate features that work together in many hybrids to cut waste."
+    ],
+    [
+     "heading",
+     "One-pedal driving and other names"
+    ],
+    [
+     "paragraph",
+     "Some electric cars let the driver choose a stronger regeneration setting, so lifting off the accelerator slows the car noticeably, sometimes enough to stop without touching the brake pedal. Makers use different names for it, and the settings are not standard. The cited sources do not describe these modes, so check the owner's manual for details."
+    ],
+    [
+     "heading",
+     "In short"
+    ],
+    [
+     "paragraph",
+     "When slowing, the motor acts as a generator, so some of the car's motion goes back into the battery rather than becoming heat in the brakes. Hybrids, plug-in hybrids and electric cars all do this, and friction brakes remain for low speeds and hard stops. This is general information from the AFDC and fueleconomy.gov, as of 1 November 2026."
+    ]
+   ],
+   "sources": [
+    {
+     "title": "How Do Hybrid Electric Cars Work?, Alternative Fuels Data Center, US Department of Energy",
+     "url": "https://afdc.energy.gov/vehicles/how-do-hybrid-electric-cars-work"
+    },
+    {
+     "title": "Where the Energy Goes: Gasoline Vehicles, fueleconomy.gov",
+     "url": "https://www.fueleconomy.gov/feg/atv.shtml"
+    }
+   ],
+   "checkedOn": "2026-11-01"
+  },
+  {
+   "title": "The Wright Brothers' First Flights, 17 December 1903",
+   "category": "Vintage and History",
+   "excerpt": "On 17 December 1903 Orville and Wilbur Wright made four powered flights at Kitty Hawk. The longest was 852 feet in 59 seconds.",
+   "tags": [
+    "wright brothers",
+    "first flight",
+    "history"
+   ],
+   "blocks": [
+    [
+     "paragraph",
+     "On the morning of 17 December 1903, Orville and Wilbur Wright made four short flights in a powered, heavier-than-air machine on the sands of North Carolina. The first lasted 12 seconds and covered 120 feet. The fourth, the best of the day, went 852 feet in 59 seconds. The Smithsonian's National Air and Space Museum credits these as the first powered airplane flights."
+    ],
+    [
+     "heading",
+     "The machine"
+    ],
+    [
+     "paragraph",
+     "The aircraft is known as the 1903 Wright Flyer. According to the Smithsonian, it had a 12-horsepower four-cylinder engine that drove two pusher propellers through a system of chains and sprockets. Its wingspan was 12.3 metres (40 feet 4 inches) and its length 6.4 metres (21 feet 1 inch). It weighed 274 kilograms (605 pounds) empty and 341 kilograms (750 pounds) with the pilot aboard. Wikipedia describes the engine as a water-cooled straight-four of about 3,295 cubic centimetres."
+    ],
+    [
+     "heading",
+     "Where and when"
+    ],
+    [
+     "paragraph",
+     "The flights took place on the dunes near Kitty Hawk, North Carolina. The Smithsonian says the first flight began at about 10:35 in the morning. The brothers took turns as pilot. The Smithsonian says an attempt by Wilbur on 14 December had failed and slightly damaged the Flyer, so the aircraft needed repair before the December 17 attempts."
+    ],
+    [
+     "heading",
+     "The four flights"
+    ],
+    [
+     "paragraph",
+     "The best available figures come from the Smithsonian and from Wikipedia, and they do not fully agree on the middle two flights."
+    ],
+    [
+     "list",
+     "Flight 1: Orville, 120 feet (about 37 metres) in 12 seconds.\nFlight 2: probably Wilbur. Wikipedia gives 175 feet in 12 seconds; the Smithsonian says only that the second and third flights were in the range of 200 feet.\nFlight 3: probably Orville. Wikipedia gives 200 feet in 15 seconds.\nFlight 4: Wilbur, 852 feet (about 260 metres) in 59 seconds, the longest of the day."
+    ],
+    [
+     "paragraph",
+     "Both sources say that only the pilots of the first and last flights are named directly; the second and third are inferred from the brothers' habit of alternating. The Smithsonian also holds the stopwatch used to time the flights, a nickel-plated hand-held watch made by Gallet and dated about 1903."
+    ],
+    [
+     "callout",
+     "The distances for flights two and three differ between sources. Treat 175 and about 200 feet as the range, not as a settled figure."
+    ],
+    [
+     "heading",
+     "How the flights were counted"
+    ],
+    [
+     "paragraph",
+     "Wikipedia's table specifies that the 852 feet of the fourth flight is the distance over the ground. That is a different measure from the distance flown through the air, which depends on the wind. Neither of the sources used here gives the wind speed or the air distance, so this article does not state them. When comparing early flights, it helps to check whether a figure is ground distance and whether the time is given with it."
+    ],
+    [
+     "paragraph",
+     "The 12-second first flight is easy to put into context. At 120 feet it was shorter than the wingspan of many modern airliners is long; the fourth flight, at 852 feet, was about seven times the first. The step from the first flight to the last in a single morning shows how quickly the brothers were learning to control the machine, though the sources used here do not describe how they did so."
+    ],
+    [
+     "heading",
+     "What happened afterwards"
+    ],
+    [
+     "paragraph",
+     "The Smithsonian says that after the flights a gust of wind overturned the Flyer and badly damaged it, and that it never flew again. The aircraft is now displayed at the National Air and Space Museum in Washington, D.C., where Wikipedia says it has a place of honour."
+    ],
+    [
+     "paragraph",
+     "The sources used here do not go into the brothers' earlier glider tests or their later aircraft, which are separate stories. The Smithsonian's description of the day as the first powered airplane flights is the main claim: a machine that left the ground under its own power and was flown by a pilot on board. Later aircraft flew much farther."
+    ],
+    [
+     "heading",
+     "In short"
+    ],
+    [
+     "paragraph",
+     "Four flights, at about 10:35 in the morning on 17 December 1903, lasted between 12 and 59 seconds, and the longest covered 852 feet. Details of the middle two flights vary between sources. The facts in this article come from the Smithsonian's National Air and Space Museum and from Wikipedia, as of 1 November 2026."
+    ]
+   ],
+   "sources": [
+    {
+     "title": "1903 Wright Flyer, National Air and Space Museum, Smithsonian Institution",
+     "url": "https://airandspace.si.edu/collection-objects/1903-wright-flyer/nasm_A19610048000"
+    },
+    {
+     "title": "Stopwatch, Wright Brothers, National Air and Space Museum",
+     "url": "https://airandspace.si.edu/collection-objects/stopwatch-wright-brothers/nasm_A19640054000"
+    },
+    {
+     "title": "Wright Flyer, Wikipedia",
+     "url": "https://en.wikipedia.org/wiki/Wright_Flyer"
+    }
+   ],
+   "checkedOn": "2026-11-01"
+  }
+ ]
+}
