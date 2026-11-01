@@ -1,0 +1,179 @@
+{
+  "date": "2026-11-01",
+  "articles": [
+    {
+      "title": "How ABS Brakes Stop Wheels From Locking Up",
+      "category": "Cars and Bikes",
+      "excerpt": "Anti-lock brakes release and reapply pressure many times a second so a wheel keeps turning. See the four parts, what the pedal pulse means and where ABS falls short.",
+      "tags": ["abs", "brakes"],
+      "blocks": [
+        ["paragraph", "An anti-lock braking system, or ABS, stops a wheel from locking during hard braking. A wheel that keeps turning keeps some grip, and a driver can usually keep steering. This article explains the parts, how the system spots a locking wheel, why the pedal pulses, and where the technology has limits."],
+        ["heading", "The problem ABS solves"],
+        ["paragraph", "When you press a brake pedal hard, the brake pads or shoes slow each wheel. If the brake force is greater than the grip between tyre and road, the wheel stops turning while the car is still moving. The tyre then slides instead of rolling. A sliding front tyre cannot steer the car well, so the car carries on in a straight line whatever the steering wheel does."],
+        ["paragraph", "Before ABS, a driver could avoid this by pumping the pedal: pressing, easing off when a wheel starts to lock, and pressing again. ABS does the same job automatically, at each wheel, and much faster than a person can."],
+        ["heading", "The four main parts"],
+        ["paragraph", "According to the Wikipedia article on the system, an ABS has four main parts. The Drive, a motoring publication, describes the same set. They are:"],
+        ["list", "**Wheel speed sensors**, which measure how fast each wheel is turning. They are usually of the Hall-effect or variable-reluctance type, and Wikipedia notes they can become less accurate at very low wheel speeds.\n**Valves**, one on each brake line, that open, hold or release the fluid pressure going to a brake.\n**A pump**, which restores pressure after a valve has released it.\n**A controller**, a small computer (an ECU, or electronic control unit) that reads the sensors and commands the valves and pump."],
+        ["paragraph", "The ordinary brake system, with its pedal, master cylinder, fluid lines, discs or drums, works as normal underneath. ABS adds control over it rather than replacing it."],
+        ["heading", "How the system spots a locking wheel"],
+        ["paragraph", "The controller keeps comparing the speed of the wheels. If one wheel turns much more slowly than the car's speed, it is probably about to lock. The controller then tells that wheel's valve to reduce pressure. Once the wheel speeds up again, pressure is applied again. This cycle repeats while the driver keeps the pedal down."],
+        ["paragraph", "Small differences are ignored, because wheels do turn at different speeds in a corner: the inner wheel travels a shorter path than the outer one. Wikipedia also notes that motorcycle systems watch for strong deceleration and for a set percentage of brake slip."],
+        ["heading", "Why the pedal pulses"],
+        ["paragraph", "Because the valves open and close quickly, some of that movement reaches the pedal. Wikipedia says some systems can apply or release pressure up to 15 times a second. The Drive describes the result as a pulsing in the pedal, sometimes with mechanical noises, and says this is normal when ABS is working."],
+        ["callout", "The Drive's advice for an emergency stop is to brake firmly and keep the pedal down, because the system stops working if you lift off. This is general information, not a substitute for your vehicle's manual."],
+        ["heading", "A short history"],
+        ["paragraph", "The idea is older than the car version. Wikipedia reports that in 1920 Gabriel Voisin tested flywheel-based brake control on aircraft and reported a 30% improvement in braking. In 1928 Karl Wassel patented a brake-modulating system but did not build a working product, and Robert Bosch filed a similar patent in 1936."],
+        ["paragraph", "In the early 1950s Dunlop's Maxaret anti-skid system came into wide use in British aircraft. Mechanical systems for cars followed in the 1960s, including the Ferguson P99 and the Jensen FF, but they were expensive and unreliable. Wikipedia says the first fully electronic anti-lock system was developed for Concorde in the late 1960s."],
+        ["paragraph", "The modern car system is credited to Mario Palazzetti of Fiat's research centre in 1971; Bosch bought the patent and named it ABS. In 1978 Mercedes-Benz offered a Bosch four-wheel ABS as an option on the W116 model. On two wheels, the BMW K100 of 1988 was the first motorcycle with electro-hydraulic ABS, and Wikipedia says its unit added about 11 kg."],
+        ["heading", "Limits and faults"],
+        ["paragraph", "ABS helps drivers keep control, but it does not guarantee a shorter stop. The Drive says it does not always shorten stopping distances, even though cars with ABS often do stop shorter, and that it works best on wet and dry tarmac."],
+        ["paragraph", "Wikipedia gives some research results. A 1999 study by the US National Highway Traffic Safety Administration found stopping distances on loose gravel rose by an average of 27.2%. A 2004 study from Monash University found ABS lowered multiple-vehicle crashes by 18% but raised run-off-road crashes by 35%. These are single studies from different places and years, so they should not be read as a verdict on ABS everywhere."],
+        ["paragraph", "On very slippery surfaces several wheels can lock at the same moment, which confuses a system that works by comparing wheels. Bumpy ground can produce erratic wheel speeds that trigger the system, and some systems then enter a mode that limits braking force. The most common fault, according to Wikipedia, is a clogged valve. A fault normally switches on a dashboard warning lamp and turns ABS off, while the normal brakes keep working."],
+        ["heading", "The short version"],
+        ["paragraph", "ABS is sensors, valves, a pump and a computer that keep a braking wheel just short of locking. It has been in cars since the 1970s and on motorcycles since 1988. It protects steering control rather than promising shorter stops, and it is one part of a larger brake and tyre system."]
+      ],
+      "sources": [
+        { "title": "Anti-lock braking system, Wikipedia", "url": "https://en.wikipedia.org/wiki/Anti-lock_braking_system" },
+        { "title": "How Do ABS Brakes Work?, The Drive", "url": "https://www.thedrive.com/guides-and-gear/how-do-abs-brakes-work" }
+      ],
+      "checkedOn": "2026-11-01"
+    },
+    {
+      "title": "What a Flight Recorder Records and How It Survives",
+      "category": "Aviation",
+      "excerpt": "The so-called black box is really two orange recorders, one for data and one for voices. Learn what they store, how long, how they survive a crash and how they are found.",
+      "tags": ["flight recorder", "black box"],
+      "blocks": [
+        ["paragraph", "A flight recorder, often called a black box, is not one box and is not black. An airliner carries two recorders: a flight data recorder (FDR) that stores readings from the aircraft, and a cockpit voice recorder (CVR) that stores sound from the flight deck. This article explains what each keeps, how much, how they are built to survive, and where the idea came from."],
+        ["heading", "Two recorders, two jobs"],
+        ["paragraph", "The US National Transportation Safety Board (NTSB) describes the cockpit voice recorder as capturing radio transmissions and cockpit sounds, including the pilots' voices and engine noise, as well as communication with air traffic control. The cockpit area microphone is usually on the overhead panel between the two pilots."],
+        ["paragraph", "The flight data recorder logs parameters such as altitude, airspeed and heading. The NTSB says newly built aircraft must monitor at least 88 parameters, and some units can record more than 1,000. Wikipedia adds that US rules required only 29 parameters before 2002."],
+        ["heading", "How much they store"],
+        ["paragraph", "Both recorders work as a loop: new recording overwrites the oldest. The NTSB page gives 25 hours of continuous recording for the FDR. For the CVR it gives 30 minutes, or two hours for solid-state digital units, over four channels."],
+        ["paragraph", "Rules are changing. Wikipedia reports that the European aviation safety agency EASA raised its CVR requirement to 25 hours in 2021, that the US Federal Aviation Administration proposed 25 hours in 2023, and that in January 2024 the NTSB chair urged 25 hours on all existing devices. It also notes a 2024 case in which an Alaska Airlines Flight 1282 recorder was overwritten because it stayed powered after the incident. A longer loop is meant to prevent that."],
+        ["heading", "Why they are orange"],
+        ["paragraph", "The name black box is an old one. Wikipedia says the units must now be bright orange or yellow, with reflective surfaces, so that searchers can spot them in wreckage. They carry the words \"Flight recorder do not open\" in English, with French on the other side."],
+        ["heading", "Built to survive"],
+        ["paragraph", "Both units are installed in what the NTSB calls the most crash-survivable part of the aircraft, usually the tail. The international standard behind the design is EUROCAE ED-112. According to Wikipedia, its tests include an impact of 3,400 g for 6.5 milliseconds, fire resistance above 1,000 degrees Celsius, static crush, penetration, deep-sea pressure and immersion in seawater and other fluids."],
+        ["list", "**Impact:** 3,400 g for 6.5 milliseconds, roughly the same as a 270-knot impact\n**Fire:** resistance above 1,000 degrees Celsius\n**Other tests:** penetration, crushing, deep-sea pressure, fluid immersion"],
+        ["heading", "Finding them: the pinger"],
+        ["paragraph", "Each recorder has an underwater locator beacon, usually called a pinger. The NTSB says it switches on when the recorder is immersed in water and sends an acoustic signal at 37.5 kHz that a special receiver can detect from depths down to 14,000 feet. Its battery has a shelf life of six years or more and can run for 30 days after activation."],
+        ["paragraph", "After an accident in the United States, the NTSB says the recorders are removed from the site and taken to its headquarters in Washington, D.C. for processing. FDR data can be used to build an animation of the flight. The NTSB treats the recordings as one input among many when it works out the probable cause."],
+        ["callout", "Sources differ on small details such as the depth rating of a pinger (Wikipedia gives up to 6,000 metres; the NTSB page gives 14,000 feet, about 4,300 metres). Specifications vary by year, regulator and model."],
+        ["heading", "Where the idea came from"],
+        ["paragraph", "Wikipedia traces several early efforts. In 1939 the French engineers Francois Hussenot and Paul Beaudouin built a photographic-film recorder. In 1942 Veijo Hietala in Finland made a recorder for fighter test flights, and in 1943 the US Army Air Forces tested a magnetic-wire recorder on a B-17. In wartime Britain, Len Harrison and Vic Husband developed a copper-foil recorder at Farnborough."],
+        ["paragraph", "The combined data-and-voice idea is linked to David Warren of the Aeronautical Research Laboratories in Melbourne, who conceived it in 1953 and wrote a report in 1954. His team built a prototype flight memory unit, and a combined prototype in 1958. After the 1960 crash of Trans Australia Airlines Flight 538 at Mackay, Australia became the first country to make cockpit voice recording compulsory."],
+        ["paragraph", "Wikipedia says solid-state recorders became commercially practical in 1990, replacing tape and wire. In the United States, the first rules requiring cockpit voice recorders on four-engine aircraft were set in 1964."],
+        ["heading", "Open questions"],
+        ["paragraph", "After the loss of Malaysia Airlines Flight 370 in 2014 and Indonesia AirAsia Flight 8501 in the same year, people called for live data streaming and ejectable recorders. Wikipedia notes that the NTSB had earlier, in 1999, recommended ejectable second recorders. Whether and when such changes become standard is up to regulators; this article does not predict it."]
+      ],
+      "sources": [
+        { "title": "Flight recorder, Wikipedia", "url": "https://en.wikipedia.org/wiki/Flight_recorder" },
+        { "title": "Cockpit Voice Recorders (CVR) and Flight Data Recorders (FDR), NTSB", "url": "https://www.ntsb.gov/news/Pages/CVR_FDR.aspx" }
+      ],
+      "checkedOn": "2026-11-01"
+    },
+    {
+      "title": "The Volkswagen Beetle: A People's Car's 65-Year Run",
+      "category": "Vintage and History",
+      "excerpt": "The Beetle began as a 1930s German plan for a cheap family car and ended in Mexico in 2003 after about 21.5 million were built. Here is the story, with the disputes noted.",
+      "tags": ["volkswagen", "beetle"],
+      "blocks": [
+        ["paragraph", "The Volkswagen Beetle, officially the Type 1, was built from 1938 to 2003 and about 21.5 million were made, the most of any car on a single platform. It started as a German government plan for an affordable people's car, survived the Second World War, and ended its run in Puebla, Mexico. Some details of its origin are disputed, and this article says where."],
+        ["heading", "A car for the new motorways"],
+        ["paragraph", "Wikipedia says the car was conceived in the early 1930s, when Adolf Hitler wanted an inexpensive people's car for Germany's new Reichsautobahn road network. Ferdinand Porsche received a development contract on 22 June 1934, and the project was first called Type 60."],
+        ["paragraph", "Who deserves credit is argued over. The Wikipedia article credits Porsche's team but also names Bela Barenyi, Hans Ledwinka, Josef Ganz and Paul Jaray as influences, and mentions a 1953 court ruling that recognised Barenyi's claims. A Goodwood article says Barenyi, a Hungarian engineering student, conceived the basic layout in 1925 but did not patent it, and that Ganz was dismissed from the project because he was Jewish. Wikipedia itself is not consistent on how far ahead of Porsche Barenyi was, giving both \"almost ten years\" and \"more than five years\"."],
+        ["heading", "The design"],
+        ["paragraph", "The Beetle had its engine at the back: an air-cooled, four-cylinder boxer engine, in which the cylinders lie flat and face each other in pairs. It was rear-wheel drive with a two-door body, and Wikipedia gives a drag coefficient of 0.48. Air cooling meant no radiator or coolant, which kept the design simple."],
+        ["paragraph", "Goodwood lists the prototype stages: the Type 12 with Zundapp in 1931 or 1932, the Type 32 with NSU in 1933, and pilot batches built by Mercedes-Benz, 30 cars of the Type 30 in 1937 and 60 of the Type 60 in 1938."],
+        ["heading", "The factory and the savers"],
+        ["paragraph", "The foundation stone of the Wolfsburg factory was laid on 26 May 1938. The car was presented under the Kraft durch Freude (Strength Through Joy) scheme, and Germans bought savings stamps towards one. Goodwood says more than 337,000 people saved and none received a car, because war began and the plant switched to military vehicles."],
+        ["heading", "Restart after 1945"],
+        ["paragraph", "Wolfsburg fell in the British occupation zone. Goodwood says Major Ivan Hirst led the British command there, and that his team assembled 1,785 vehicles in 1945, with the British ordering a further 20,000 that September. Wikipedia gives 27 December 1945 as the start of series production."],
+        ["paragraph", "The two articles give different early counts. Wikipedia mentions 1,785 built by the end of 1945 and also says only 55 vehicles came off the line in 1945 after series production began, without reconciling the numbers. The likely reason is different ways of counting, but the sources do not say."],
+        ["paragraph", "The name KdF was dropped in favour of Volkswagen. Goodwood says full-strength production began in 1949, when control passed to the West German government. Ferdinand Porsche's first car under his own name, the Porsche 356, used the Beetle's chassis and rear air-cooled mechanical parts."],
+        ["heading", "Milestones"],
+        ["list", "**August 1955:** the first million Type 1 cars built (Goodwood)\n**17 February 1972:** the 15,007,034th Beetle was built, passing the Ford Model T's total (Wikipedia and Goodwood)\n**1 July 1974:** the last Beetle built at Wolfsburg (Wikipedia)\n**19 January 1978:** the last European saloon, from Emden (Wikipedia)\n**30 July 2003:** the last Type 1, in Puebla, Mexico (Wikipedia)"],
+        ["paragraph", "Goodwood notes that German saloon production ended in 1977, while Wikipedia says the last Emden sedan was in January 1978. Goodwood adds that Karmann built the last convertibles until 1979. These dates differ by source and by what is counted as the last car."],
+        ["heading", "How many were built"],
+        ["paragraph", "Wikipedia gives a worldwide total of 21,529,464 and says Wolfsburg alone built 11,916,519. A web search for the total also turns up 21,529,564, so sources differ in the last digits. A figure of about 21.5 million is safe."],
+        ["paragraph", "Even the length of the run is given two ways: Goodwood describes both \"more than 60 years\" and a \"65-year career\". From 1938 to 2003 is 65 years, though series production only started in 1945."],
+        ["heading", "Why it matters"],
+        ["paragraph", "The Beetle showed that a small, simple, cheap car could sell for decades with limited change, and it was built on several continents. Its record against the Model T made it the best-selling single-platform car. It also carries a history that is hard to separate from the politics of its birth, which is why historians keep arguing over who designed it and under what scheme it was first sold."]
+      ],
+      "sources": [
+        { "title": "Volkswagen Beetle, Wikipedia", "url": "https://en.wikipedia.org/wiki/Volkswagen_Beetle" },
+        { "title": "Why the Beetle is a motoring legend, Goodwood Road & Racing", "url": "https://goodwood.com/grr/road/news/why-the-beetle-is-a-motoring-legend--axons-automotive-anorak" }
+      ],
+      "checkedOn": "2026-11-01"
+    },
+    {
+      "title": "How an SSD Stores Data Without Moving Parts",
+      "category": "Technology",
+      "excerpt": "A solid-state drive keeps data in flash memory cells run by a small controller. See how cell types, wear levelling and write limits shape speed and lifespan.",
+      "tags": ["ssd", "storage"],
+      "blocks": [
+        ["paragraph", "A solid-state drive, or SSD, stores data in flash memory chips instead of on spinning disks. It has no moving parts, and a small processor called a controller decides where each piece of data goes. This article explains the memory cells, the controller's jobs, why flash wears out and how to read an endurance rating."],
+        ["heading", "NAND flash: memory that keeps its data"],
+        ["paragraph", "According to Wikipedia, most SSDs use NAND flash, a type of memory that keeps its contents without power. The data is held in cells built from floating-gate transistors, a kind of transistor that can trap an electrical charge."],
+        ["paragraph", "Ontrack, a data-recovery company, describes an SSD as made of many flash NAND cells, each able to take only a limited number of read and write operations. Rewriting a block that already holds data means reading it, erasing it, changing it and writing it back. That is slow and is the reason flash has a wear limit."],
+        ["heading", "How many bits per cell"],
+        ["paragraph", "Cells can hold more than one bit. Wikipedia lists the common types, and the trade-off is the same each time: more bits per cell means lower cost per gigabyte, but slower and less durable."],
+        ["list", "**SLC** stores 1 bit per cell: fastest and most durable, most expensive\n**MLC** stores 2 bits: a balance of cost, speed and endurance\n**TLC** stores 3 bits: cheaper, slower and less durable\n**QLC** stores 4 bits: cheapest, with the lowest performance and endurance"],
+        ["heading", "The controller does the thinking"],
+        ["paragraph", "Every SSD has an embedded processor running its own firmware. Wikipedia says the controller handles bad-block mapping, caching, error correction (such as BCH codes), garbage collection, wear levelling and thermal management. How well it does these jobs, and how many parallel channels it has to the flash chips, strongly affects speed."],
+        ["paragraph", "The operating system on your computer does not see the physical layout. It asks for data at logical addresses, and the controller keeps a map from those addresses to the real place in the chips. That freedom is what lets the controller move data around behind the scenes."],
+        ["heading", "Wear levelling"],
+        ["paragraph", "If a computer kept rewriting the same file, the same cells would wear out first. Wikipedia explains that wear levelling spreads writes and erases across all the blocks so none ages early, and that it moves rarely changed (cold) data off lightly used blocks so busy (hot) data can use them. Moving data internally means the drive writes more than the computer asked for, which is called write amplification."],
+        ["paragraph", "Ontrack separates two methods. Dynamic wear levelling places new writes in the least-worn free blocks. It helps, but when a lot of data is stored, cells still age unevenly. Static wear levelling also moves data that stays put, so wear is spread across the full capacity of the chips."],
+        ["callout", "Wear levelling makes a drive last longer; it does not remove the limit. Ontrack gives a range of 3,000 to 100,000 read-write cycles per cell, which varies with the cell type and chip."],
+        ["heading", "Reading an endurance rating"],
+        ["paragraph", "Makers state endurance as drive writes per day (DWPD) or terabytes written (TBW). Wikipedia's example is a 1 TB Samsung 970 EVO rated at 600 TBW, which means the maker expects the drive to take about 600 terabytes of writing within its warranty terms, or about 600 full-drive rewrites. Check the datasheet of the drive you are looking at, because ratings differ widely between models."],
+        ["heading", "Where SSDs differ from hard drives"],
+        ["paragraph", "A hard drive reads data with a head that moves over a spinning disk. An SSD reads electrically, so there is no seek time from head movement and no sound from moving parts. The cost is the wear limit described above, and the way deleted data is handled. Wikipedia notes that the TRIM command can erase or change the bits of a deleted file, which can make recovering deleted data harder than on a hard drive."],
+        ["paragraph", "Neither type is best for everyone. Prices, sizes and speeds change often, so compare current figures from the makers rather than relying on a general rule."],
+        ["heading", "Key points"],
+        ["list", "SSDs store data as trapped charge in NAND flash cells\nMore bits per cell means lower cost but less speed and endurance\nA controller maps addresses, corrects errors and spreads wear\nEndurance is stated in TBW or DWPD on the maker's datasheet"]
+      ],
+      "sources": [
+        { "title": "Solid-state drive, Wikipedia", "url": "https://en.wikipedia.org/wiki/Solid-state_drive" },
+        { "title": "How Does Wear Leveling Make Your SSD Live Longer?, Ontrack", "url": "https://www.ontrack.com/en-us/blog/how-does-wear-leveling-make-your-ssd-live-longer" }
+      ],
+      "checkedOn": "2026-11-01"
+    },
+    {
+      "title": "Why AI Chatbots Make Things Up: Hallucinations Explained",
+      "category": "AI",
+      "excerpt": "Chatbots sometimes state false things with confidence. Learn why it happens, how scoring rewards guessing, real cases where it caused trouble and what reduces it.",
+      "tags": ["hallucination", "chatbots"],
+      "blocks": [
+        ["paragraph", "An AI hallucination is a reply that contains false or misleading information presented as fact. Researchers say it happens because language models are trained to produce likely-sounding text and are often scored in ways that reward a guess over an honest \"I don't know\". This article explains the causes, real examples and what helps."],
+        ["heading", "What the word means"],
+        ["paragraph", "Wikipedia defines a hallucination as an AI response that includes false or misleading information presented as fact, and lists other names for it, including confabulation. It does not mean the system sees or imagines things. It means the output reads fluently but is wrong."],
+        ["heading", "Cause 1: predicting the next word"],
+        ["paragraph", "A language model is trained to guess the next word in a text. Wikipedia notes that this rewards producing an answer even when the model lacks the information. Spelling and grammar follow strong patterns that improve as models grow. A fact that appears rarely, such as a person's birthday, has no pattern to learn, so the model can only produce something that sounds right."],
+        ["paragraph", "A 2025 paper, \"Why Language Models Hallucinate\" by Adam Tauman Kalai, Ofir Nachum, Santosh Vempala and Edwin Zhang, frames hallucinations as errors in a yes-or-no judgement about whether a statement is valid. If wrong statements cannot be reliably told apart from facts, the authors argue, statistical pressure during pre-training will produce them. In their words, hallucinations \"need not be mysterious\"."],
+        ["heading", "Cause 2: scoring that rewards guessing"],
+        ["paragraph", "The same paper argues that models are tuned to be good test-takers. On most benchmarks a wrong answer and a blank answer both score zero, so guessing never costs anything. A model that says \"I'm not sure\" is scored lower than one that gambles and sometimes wins. Over time that favours confident guessing."],
+        ["paragraph", "The authors do not call for more tests built just for hallucination. They propose changing how the widely used benchmarks are scored so that admitting uncertainty is not punished. That is a change for the research community, not something a single user can do."],
+        ["heading", "Other causes listed by Wikipedia"],
+        ["list", "**Flawed data:** incomplete, wrong or unrepresentative training data\n**Repeated myths:** models can repeat common misconceptions and treat fiction as fact\n**Agreeableness:** tuning a chatbot to be friendlier can make it more likely to agree with a user, which can reduce accuracy\n**Misfiring refusal:** Wikipedia reports 2025 research by Anthropic finding that its Claude model normally declines unless it knows an answer, and that mistakes occurred when this refusal failed, for example when it recognised a name but knew little about the person"],
+        ["heading", "Real cases"],
+        ["paragraph", "These examples come from the Wikipedia article:"],
+        ["list", "**Galactica, November 2022:** Meta's science model cited a made-up paper, and Meta withdrew it within days\n**Mata v. Avianca, 2023:** a lawyer filed six fake case citations produced by ChatGPT; the judge dismissed the case and fined the lawyers $5,000 on 23 June 2023\n**Moffatt v. Air Canada, February 2024:** a tribunal held the airline to a fare policy that its support chatbot had invented\n**Studies of references:** one 2023 study found 69 of 178 references from GPT-3 had incorrect or non-existent DOIs; another found 47% of 115 references from GPT-3.5 were fabricated\n**Deloitte, 2025:** reports for two governments contained invented citations"],
+        ["heading", "What reduces it"],
+        ["paragraph", "Wikipedia says mitigation remains active research as of 2025. Ideas include:"],
+        ["list", "**Retrieval-augmented generation:** letting the model consult outside documents before it answers\n**Better scoring:** rewarding \"I don't know\" when it is the honest reply\n**Guardrails:** software layers that block or hard-code certain replies, such as Nvidia Guardrails, launched in 2023\n**Debate between models:** having several chatbots argue until they agree, an idea that has been proposed\n**Confidence scoring:** comparing several candidate answers, which Wikipedia says multiplies computing cost"],
+        ["paragraph", "Wikipedia adds that users tend to prefer fast, confident replies over cautious ones, which works against some of these fixes."],
+        ["callout", "General information only: if an answer matters, such as a legal, medical or money decision, check it against an original source rather than relying on a chatbot alone."],
+        ["heading", "The short version"],
+        ["paragraph", "Chatbots hallucinate because they are built to continue text plausibly, rare facts have no pattern to learn, and common scoring gives guesses a free chance to be right. Models have improved, but as of November 2026 no source consulted for this article says the problem is solved."]
+      ],
+      "sources": [
+        { "title": "Hallucination (artificial intelligence), Wikipedia", "url": "https://en.wikipedia.org/wiki/Hallucination_(artificial_intelligence)" },
+        { "title": "Why Language Models Hallucinate, arXiv 2509.04664", "url": "https://arxiv.org/abs/2509.04664" }
+      ],
+      "checkedOn": "2026-11-01"
+    }
+  ]
+}

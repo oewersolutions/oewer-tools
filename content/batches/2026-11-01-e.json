@@ -1,0 +1,111 @@
+{
+  "date": "2026-11-01",
+  "articles": [
+    {
+      "title": "Why AI Chatbots Make Things Up: Hallucinations Explained",
+      "category": "AI",
+      "excerpt": "Chatbots sometimes state false things with confidence. Learn why it happens, how scoring rewards guessing, real cases where it caused trouble and what reduces it.",
+      "tags": [
+        "hallucination",
+        "chatbots"
+      ],
+      "blocks": [
+        [
+          "paragraph",
+          "An AI hallucination is a reply that contains false or misleading information presented as fact. Researchers say it happens because language models are trained to produce likely-sounding text and are often scored in ways that reward a guess over an honest \"I don't know\". This article explains the causes, real examples and what helps."
+        ],
+        [
+          "heading",
+          "What the word means"
+        ],
+        [
+          "paragraph",
+          "Wikipedia defines a hallucination as a reply from an artificial intelligence system that includes false or misleading information presented as fact, and lists other names for it, including confabulation. It does not mean the system sees or imagines things. It means the output reads fluently but is wrong."
+        ],
+        [
+          "heading",
+          "Cause 1: predicting the next word"
+        ],
+        [
+          "paragraph",
+          "A language model is trained to guess the next word in a text. Wikipedia notes that this rewards producing an answer even when the model lacks the information. Spelling and grammar follow strong patterns that improve as models grow. A fact that appears rarely, such as a person's birthday, has no pattern to learn, so the model can only produce something that sounds right."
+        ],
+        [
+          "paragraph",
+          "A 2025 paper, \"Why Language Models Hallucinate\" by Adam Tauman Kalai, Ofir Nachum, Santosh Vempala and Edwin Zhang, frames hallucinations as errors in a yes-or-no judgement about whether a statement is valid. If wrong statements cannot be reliably told apart from facts, the authors argue, statistical pressure during pre-training will produce them. In their words, hallucinations \"need not be mysterious\"."
+        ],
+        [
+          "heading",
+          "Cause 2: scoring that rewards guessing"
+        ],
+        [
+          "paragraph",
+          "The same paper argues that models are tuned to be good test-takers. On most benchmarks a wrong answer and a blank answer both score zero, so guessing never costs anything. A model that says \"I'm not sure\" is scored lower than one that gambles and sometimes wins. Over time that favours confident guessing."
+        ],
+        [
+          "paragraph",
+          "The authors do not call for more tests built just for hallucination. They propose changing how the widely used benchmarks are scored so that admitting uncertainty is not punished. That is a change for the research community, not something a single user can do."
+        ],
+        [
+          "heading",
+          "Other causes listed by Wikipedia"
+        ],
+        [
+          "list",
+          "**Flawed data:** incomplete, wrong or unrepresentative training data\n**Repeated myths:** models can repeat common misconceptions and treat fiction as fact\n**Agreeableness:** tuning a chatbot to be friendlier can make it more likely to agree with a user, which can reduce accuracy\n**Misfiring refusal:** Wikipedia reports 2025 research by Anthropic finding that its Claude model normally declines unless it knows an answer, and that mistakes occurred when this refusal failed, for example when it recognised a name but knew little about the person"
+        ],
+        [
+          "heading",
+          "Real cases"
+        ],
+        [
+          "paragraph",
+          "These examples come from the Wikipedia article:"
+        ],
+        [
+          "list",
+          "**Galactica, November 2022:** Meta's science model cited a made-up paper, and Meta withdrew it within days\n**Mata v. Avianca, 2023:** a lawyer filed six fake case citations produced by ChatGPT; the judge dismissed the case and fined the lawyers $5,000 on 23 June 2023\n**Moffatt v. Air Canada, February 2024:** a tribunal held the airline to a fare policy that its support chatbot had invented\n**Studies of references:** one 2023 study found 69 of 178 references from GPT-3 had incorrect or non-existent DOIs; another found 47% of 115 references from GPT-3.5 were fabricated\n**Deloitte, 2025:** reports for two governments contained invented citations"
+        ],
+        [
+          "heading",
+          "What reduces it"
+        ],
+        [
+          "paragraph",
+          "Wikipedia says mitigation remains active research as of 2025. Ideas include:"
+        ],
+        [
+          "list",
+          "**Retrieval-augmented generation:** letting the model consult outside documents before it answers\n**Better scoring:** rewarding \"I don't know\" when it is the honest reply\n**Guardrails:** software layers that block or hard-code certain replies, such as Nvidia Guardrails, launched in 2023\n**Debate between models:** having several chatbots argue until they agree, an idea that has been proposed\n**Confidence scoring:** comparing several candidate answers, which Wikipedia says multiplies computing cost"
+        ],
+        [
+          "paragraph",
+          "Wikipedia adds that users tend to prefer fast, confident replies over cautious ones, which works against some of these fixes."
+        ],
+        [
+          "callout",
+          "General information only: if an answer matters, such as a legal, medical or money decision, check it against an original source rather than relying on a chatbot alone."
+        ],
+        [
+          "heading",
+          "The short version"
+        ],
+        [
+          "paragraph",
+          "Chatbots hallucinate because they are built to continue text plausibly, rare facts have no pattern to learn, and common scoring gives guesses a free chance to be right. Models have improved, but as of November 2026 no source consulted for this article says the problem is solved."
+        ]
+      ],
+      "sources": [
+        {
+          "title": "Hallucination (artificial intelligence), Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Hallucination_(artificial_intelligence)"
+        },
+        {
+          "title": "Why Language Models Hallucinate, arXiv 2509.04664",
+          "url": "https://arxiv.org/abs/2509.04664"
+        }
+      ],
+      "checkedOn": "2026-11-01"
+    }
+  ]
+}

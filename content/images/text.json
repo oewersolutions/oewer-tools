@@ -218,5 +218,30 @@
   "coverAlt": "The inside of a passenger lift cabin with buttons beside the doors",
   "figureAlt": "The interior of a lift cabin in a tall tower",
   "figureCaption": "A lift car rides on guide rails that its safety gear can grip."
+ },
+ "how-abs-brakes-stop-wheels-from-locking-up": {
+  "coverAlt": "A Bosch ABS-8M anti-lock braking control unit with its hydraulic block and electronics",
+  "figureAlt": null,
+  "figureCaption": null
+ },
+ "what-a-flight-recorder-records-and-how-it-survives": {
+  "coverAlt": "A flight data recorder and a cockpit voice recorder, both bright orange, side by side",
+  "figureAlt": null,
+  "figureCaption": null
+ },
+ "the-volkswagen-beetle-a-people-s-car-s-65-year-run": {
+  "coverAlt": "A Volkswagen Type 1 Beetle from the late 1960s parked beside a street",
+  "figureAlt": null,
+  "figureCaption": null
+ },
+ "how-an-ssd-stores-data-without-moving-parts": {
+  "coverAlt": "A Samsung 960 EVO M.2 solid-state drive, a small circuit board with memory chips",
+  "figureAlt": null,
+  "figureCaption": null
+ },
+ "why-ai-chatbots-make-things-up-hallucinations-explained": {
+  "coverAlt": "A large question mark sign mounted on the front of an old brick building",
+  "figureAlt": null,
+  "figureCaption": null
  }
 }

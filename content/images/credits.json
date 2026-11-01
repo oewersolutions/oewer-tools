@@ -1199,5 +1199,75 @@
    "/images/blog/how-ai-image-generators-turn-noise-into-pictures/figure-600.jpg",
    "/images/blog/how-ai-image-generators-turn-noise-into-pictures/figure-800.jpg"
   ]
+ },
+ "what-a-flight-recorder-records-and-how-it-survives/cover": {
+  "title": "File:NTSBAsiana214FDRAndCVR.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3ANTSBAsiana214FDRAndCVR.jpg",
+  "author": "NTSB",
+  "licence": "Public domain",
+  "licenceUrl": "",
+  "description": "Asiana Airlines Flight 214 's flight data recorder (left) and cockpit voice recorder (right) in NTSB's Washington lab.",
+  "width": 3547,
+  "height": 2364,
+  "files": [
+   "/images/blog/what-a-flight-recorder-records-and-how-it-survives/cover-1600.jpg",
+   "/images/blog/what-a-flight-recorder-records-and-how-it-survives/cover-800.jpg"
+  ]
+ },
+ "the-volkswagen-beetle-a-people-s-car-s-65-year-run/cover": {
+  "title": "File:VW Type 1 aka Beetle late 1960s Schaffen-Diest 2012.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3AVW_Type_1_aka_Beetle_late_1960s_Schaffen-Diest_2012.jpg",
+  "author": "Charles01",
+  "licence": "CC BY-SA 3.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "description": "VW Cocinelle d'annees 60",
+  "width": 3146,
+  "height": 1728,
+  "files": [
+   "/images/blog/the-volkswagen-beetle-a-people-s-car-s-65-year-run/cover-1600.jpg",
+   "/images/blog/the-volkswagen-beetle-a-people-s-car-s-65-year-run/cover-800.jpg"
+  ]
+ },
+ "how-an-ssd-stores-data-without-moving-parts/cover": {
+  "title": "File:Samsung 960 EVO NVME M.2 SSD by Daniel Aleksandersen.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3ASamsung_960_EVO_NVME_M.2_SSD_by_Daniel_Aleksandersen.jpg",
+  "author": "Daniel Aleksandersen",
+  "licence": "CC BY-SA 2.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "description": "A Samsung 960 SSD (NVME M.2 form-factor) held up against a gray fabric backdrop. This photo was shot as an illustration to my BtrFS vs. Ext4 random-read performance benchmark. I had just upgraded from",
+  "width": 2048,
+  "height": 1152,
+  "files": [
+   "/images/blog/how-an-ssd-stores-data-without-moving-parts/cover-1600.jpg",
+   "/images/blog/how-an-ssd-stores-data-without-moving-parts/cover-800.jpg"
+  ]
+ },
+ "how-abs-brakes-stop-wheels-from-locking-up/cover": {
+  "title": "File:Bosch ABS–8M.JPG",
+  "page": "https://commons.wikimedia.org/wiki/File%3ABosch_ABS%E2%80%938M.JPG",
+  "author": "Beademung at de.wikipedia",
+  "licence": "CC BY-SA 3.0 de",
+  "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+  "description": "Bosch ABS-8M Antiblockiersystem am Motorrad",
+  "width": 2848,
+  "height": 2136,
+  "files": [
+   "/images/blog/how-abs-brakes-stop-wheels-from-locking-up/cover-1600.jpg",
+   "/images/blog/how-abs-brakes-stop-wheels-from-locking-up/cover-800.jpg"
+  ]
+ },
+ "why-ai-chatbots-make-things-up-hallucinations-explained/cover": {
+  "title": "File:Question Mark Sign On Hobson's Old Building, Corner Of Henry & Main (Honor, MI) (472933624).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3AQuestion_Mark_Sign_On_Hobson's_Old_Building%2C_Corner_Of_Henry_%26_Main_(Honor%2C_MI)_(472933624).jpg",
+  "author": "takomabibelot from Austin TX / Rochester, NY, USA",
+  "licence": "CC0",
+  "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "description": "At least, I think that's a question mark.",
+  "width": 1600,
+  "height": 1247,
+  "files": [
+   "/images/blog/why-ai-chatbots-make-things-up-hallucinations-explained/cover-1600.jpg",
+   "/images/blog/why-ai-chatbots-make-things-up-hallucinations-explained/cover-800.jpg"
+  ]
  }
 }
