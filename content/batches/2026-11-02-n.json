@@ -1,0 +1,519 @@
+{
+  "date": "2026-11-02",
+  "articles": [
+    {
+      "title": "Loan Amortisation: How an EMI Splits Interest and Principal",
+      "category": "Money Guides",
+      "excerpt": "A fixed loan payment hides a changing split between interest and principal. Here is the formula, a worked 5-year example and how a schedule is read.",
+      "tags": [
+        "loans",
+        "amortisation"
+      ],
+      "blocks": [
+        [
+          "paragraph",
+          "When you repay a loan in equal monthly instalments, the payment stays the same but what it is made of keeps changing. Early payments are mostly interest. Later ones are mostly principal, which is the amount you originally borrowed. This pattern is called amortisation, and it explains why a loan balance falls slowly at first and faster near the end."
+        ],
+        [
+          "heading",
+          "What amortisation means"
+        ],
+        [
+          "paragraph",
+          "Capital One describes loan amortisation as paying off a loan through regular payments over time, where each payment covers part of the interest and part of the principal. Interest is charged on the balance still owed. As the balance shrinks, the interest charged each month shrinks too, so more of the same fixed payment is left over to reduce the balance."
+        ],
+        [
+          "paragraph",
+          "This applies to loans where the rate stays fixed and the payments are level, such as many home, car and personal loans. The Consumer Financial Protection Bureau, a US regulator, notes that with a fixed-rate loan the interest rate and the monthly principal-and-interest payment stay the same for the whole term."
+        ],
+        [
+          "heading",
+          "The payment formula"
+        ],
+        [
+          "paragraph",
+          "A standard formula gives the level payment. Wikipedia's page on amortisation calculators writes it as A = P × i ÷ (1 − (1 + i)^−n). Here P is the amount borrowed, i is the interest rate for one payment period, and n is the total number of payments."
+        ],
+        [
+          "list",
+          "P: the amount borrowed, for example 5,00,000\ni: the yearly rate divided by 12 for monthly payments (12% a year becomes 1% a month)\nn: the number of payments (5 years of monthly payments is 60)"
+        ],
+        [
+          "paragraph",
+          "If the rate were zero, the payment would simply be P divided by n. The same source notes that the first payment falls due one full period after the loan starts, not on day one."
+        ],
+        [
+          "heading",
+          "A worked example"
+        ],
+        [
+          "paragraph",
+          "Take a loan of 5,00,000 at 12% a year, repaid monthly over 5 years. The monthly rate is 1%, and there are 60 payments. The formula gives a payment of about 11,122.22. This is our own illustration, not a quote from any lender."
+        ],
+        [
+          "list",
+          "Month 1: interest 5,000.00 (1% of 5,00,000), principal 6,122.22, balance afterwards about 4,93,877.78\nMonth 2: interest about 4,938.78, principal about 6,183.45\nMonth 30: interest about 2,952.09, principal about 8,170.13\nMonth 60: interest about 110.12, principal about 11,012.10, balance zero"
+        ],
+        [
+          "paragraph",
+          "Over the 60 months the borrower pays about 6,67,333 in total, which means roughly 1,67,333 is interest. In the first month about 55% of the payment is principal. In the last month it is about 99%."
+        ],
+        [
+          "heading",
+          "Reading an amortisation schedule"
+        ],
+        [
+          "paragraph",
+          "An amortisation schedule is a table with one row per payment. Each row shows the payment, the interest part, the principal part and the balance left. Capital One notes that borrowers can see the split month by month in such a schedule, and online calculators build one from the loan amount, rate and term."
+        ],
+        [
+          "paragraph",
+          "Each row follows the same two steps. First, interest equals the previous balance multiplied by the period rate. Second, principal equals the payment minus that interest, and the new balance equals the old balance minus that principal. The payment must be bigger than the first month's interest, or the balance would never fall."
+        ],
+        [
+          "heading",
+          "Why the term matters"
+        ],
+        [
+          "paragraph",
+          "The CFPB explains that a shorter term means higher monthly payments but typically a lower interest rate and lower total cost, while a longer term means lower monthly payments but typically a higher rate and higher total cost. Part of the reason is simple arithmetic: a longer loan keeps a larger balance outstanding for longer, and interest is charged on that balance."
+        ],
+        [
+          "callout",
+          "A loan's total cost depends on the rate, the term and any fees. The example above ignores fees, insurance and taxes, which a real loan may add."
+        ],
+        [
+          "heading",
+          "When a loan does not amortise"
+        ],
+        [
+          "paragraph",
+          "Some loans are built differently. With interest-only periods, payments cover just the interest and the principal does not fall. With negative amortisation, the regular payment is smaller than the interest owed, so the unpaid interest is added to the balance and the debt grows. Loan documents state which type applies."
+        ],
+        [
+          "paragraph",
+          "Amortisation is also an accounting word. In business accounts it means spreading the cost of an intangible asset, such as a patent, over its useful life. That is a different idea from the loan schedule described here."
+        ],
+        [
+          "heading",
+          "What to take from this"
+        ],
+        [
+          "paragraph",
+          "A level payment is a simple promise on the surface, but behind it the interest share starts high and falls every month. Seeing the split explains why paying extra early in a loan reduces the balance on which later interest is charged, and why the first years of a long loan feel as if little progress is being made. This is general information, not financial advice; a lender's own schedule is the document that applies to a specific loan."
+        ]
+      ],
+      "sources": [
+        {
+          "title": "Loan amortization: How does it work?, Capital One",
+          "url": "https://capitalone.com/learn-grow/money-management/loan-amortization"
+        },
+        {
+          "title": "Amortization calculator, Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Amortization_calculator"
+        },
+        {
+          "title": "Loan options, Consumer Financial Protection Bureau",
+          "url": "https://www.consumerfinance.gov/owning-a-home/loan-options/"
+        }
+      ],
+      "checkedOn": "2026-11-02"
+    },
+    {
+      "title": "Harley-Davidson: From a Milwaukee Shed in 1903 to Today",
+      "category": "Vintage and History",
+      "excerpt": "How two friends and a brother built a first motorcycle in a backyard shed, survived the Depression and a 1969 sale, and reached their 100th year in 2003.",
+      "tags": [
+        "harley-davidson",
+        "motorcycles"
+      ],
+      "blocks": [
+        [
+          "paragraph",
+          "Harley-Davidson began in 1903 in a small wooden shed in Milwaukee, Wisconsin, where William S. Harley and Arthur Davidson built a motorcycle with help from Arthur's brother Walter. Within roughly ten years the company was selling nearly 13,000 machines a year, and it is still one of the best-known motorcycle names. This article follows the main dates, using the company's own archive and Wikipedia's company history."
+        ],
+        [
+          "heading",
+          "The shed and the first bikes"
+        ],
+        [
+          "paragraph",
+          "According to the Harley-Davidson Museum's archive, Harley and Davidson began experimenting with motorised bicycles in 1901, and their first attempt was underpowered. In 1903 they built a wooden shed measuring 10 by 15 feet in the Davidson family's backyard and sold their first motorcycle to a friend, Henry Meyer. A Chicago toolmaker, Carl H. Lang, became the first dealer."
+        ],
+        [
+          "paragraph",
+          "Wikipedia adds that the first 1903 machine could not climb Milwaukee's hills without pedal help, so the founders treated it as a learning exercise and built a second, improved one that year. Sources differ on how many motorcycles were made in 1903; the company archive says three were sold in the first year, and other accounts give different counts."
+        ],
+        [
+          "heading",
+          "Growing into a factory"
+        ],
+        [
+          "list",
+          "1904: the shed was doubled in size, and the company borrowed 170 dollars from a family friend, James McLay, rather than from a bank\n1906: a new factory opened on Chestnut Street, near the Davidson home, and about 50 motorcycles were built that year\n1907: the Motor Company was incorporated on 17 September, and William A. Davidson became works manager\n1909: output reached 1,149 machines, up from 450 in 1908\n1913: a six-floor brick factory was completed"
+        ],
+        [
+          "paragraph",
+          "Wikipedia also records that a V-twin engine prototype was shown in 1907 and that a V-twin with mechanically operated intake valves arrived in 1911. By 1914 production had reached 16,284 machines."
+        ],
+        [
+          "heading",
+          "War, racing and the 1920s"
+        ],
+        [
+          "paragraph",
+          "When the United States entered the First World War in 1917, the military bought more than 20,000 Harley-Davidson motorcycles, according to Wikipedia. By 1920 the company was the world's largest motorcycle maker, with dealers in 67 countries. In 1929 it introduced a 45 cubic inch flathead model to compete with the Scout from Indian, its main American rival."
+        ],
+        [
+          "heading",
+          "The Depression and the Second World War"
+        ],
+        [
+          "paragraph",
+          "Sales fell sharply after 1929. Wikipedia gives a drop from about 21,000 units in 1929 to 3,703 in 1933. Harley-Davidson and Indian were the two big American makers to survive the Depression. In 1936 Harley introduced the overhead-valve engine nicknamed the Knucklehead. During 1942 to 1945 the company built about 90,000 military motorcycles, mostly the WLA and WLC models."
+        ],
+        [
+          "heading",
+          "Sale, strike and buy-back"
+        ],
+        [
+          "paragraph",
+          "In 1969 the American Machine and Foundry company, known as AMF, bought Harley-Davidson. Wikipedia says cost-cutting led to a strike and to lower quality, while Japanese makers gained market share. In 1981 AMF sold the company for 80 million dollars to a group of 13 investors led by Vaughn Beals and Willie G. Davidson. In 1983 tariff protection was granted on large imported motorcycles, and models such as the 1984 Softail and the 1990 Fat Boy followed."
+        ],
+        [
+          "heading",
+          "The modern company"
+        ],
+        [
+          "list",
+          "2003: the company marked its 100th anniversary on 1 September\n2008: the Harley-Davidson Museum opened in Milwaukee\n2014: the company launched its Street platform of smaller bikes"
+        ],
+        [
+          "paragraph",
+          "The company has also changed its business more than once. It owned Buell Motorcycle Company fully from 2003 until discontinuing it on 15 October 2009, and it bought and later sold MV Agusta. Wikipedia reports that on 30 July 2025 the company announced the sale of a 9.8% stake in its finance arm and more than 5 billion dollars of consumer loan receivables to KKR and PIMCO."
+        ],
+        [
+          "callout",
+          "Where sources differ, as on the 1903 production count, this article says so rather than choosing one figure."
+        ],
+        [
+          "heading",
+          "Why the early story matters"
+        ],
+        [
+          "paragraph",
+          "The early years show a pattern that repeats through the history: small experiments, quick growth after incorporation, and survival through wars and slumps by changing products and owners. The museum in Milwaukee displays the oldest surviving machine and a replica of the shed, according to travel and local sources, which makes the 1903 beginning easy to picture."
+        ]
+      ],
+      "sources": [
+        {
+          "title": "Early Years, Harley-Davidson Museum archives",
+          "url": "https://www.harley-davidson.com/us/en/experiences/museum/archives/historicstories/earlyyears"
+        },
+        {
+          "title": "Harley-Davidson, Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Harley-Davidson"
+        }
+      ],
+      "checkedOn": "2026-11-02"
+    },
+    {
+      "title": "How a Hard Disk Drive Stores Data on Spinning Platters",
+      "category": "Electronics",
+      "excerpt": "A hard disk drive records bits as tiny magnetic patterns on spinning platters. Here is how the heads, spindle and actuator work, and where it all began.",
+      "tags": [
+        "storage",
+        "hard disk"
+      ],
+      "blocks": [
+        [
+          "paragraph",
+          "A hard disk drive, or HDD, stores data as magnetic patterns on fast-spinning disks called platters. A small read/write head floats just above each surface and either changes the magnetism beneath it or senses it. Because the patterns stay in place without power, the data survives when the computer is switched off."
+        ],
+        [
+          "heading",
+          "The main parts"
+        ],
+        [
+          "list",
+          "Platters: rigid disks, usually aluminium alloy, glass or ceramic, coated with a thin magnetic layer\nSpindle motor: spins the platters at a steady speed\nRead/write heads: one per platter surface, mounted on a shared arm\nActuator: a voice-coil motor that swings the arm across the surface"
+        ],
+        [
+          "paragraph",
+          "According to Wikipedia, the magnetic layer is typically 10 to 20 nanometres thick and is covered by a protective carbon layer. A data recovery firm's explainer lists the same basic pieces: several stacked coated platters, heads on an arm, and a spindle motor."
+        ],
+        [
+          "heading",
+          "How a bit is stored"
+        ],
+        [
+          "paragraph",
+          "Data is stored as changes in the direction of magnetisation in the coating. To write, the head converts an electric current into a small magnetic field that sets the direction of a tiny region of the surface. To read, the head passes over those regions and its sensor reacts to them, producing electrical signals that the drive turns back into bits."
+        ],
+        [
+          "paragraph",
+          "Modern drives use perpendicular recording, in which the magnetic regions point into the surface rather than along it. Wikipedia says this first shipped in 2005 and helps avoid a thermal instability called the superparamagnetic limit, where grains become so small that heat can flip them."
+        ],
+        [
+          "heading",
+          "A head that flies"
+        ],
+        [
+          "paragraph",
+          "The head does not touch the platter. It rides on a thin cushion of air created by the spinning surface. Wikipedia notes that in modern drives the flying height is often tens of nanometres, whereas the IBM 1301 of 1962 flew about 6 micrometres above its disks. The drive is sealed against dust for this reason: a speck is huge compared with the gap."
+        ],
+        [
+          "heading",
+          "Speed and layout"
+        ],
+        [
+          "paragraph",
+          "Spindle speeds range from 4,200 rpm in some portable drives to 15,000 rpm in high-performance server drives. Wikipedia says most consumer drives turned at 5,400 or 7,200 rpm as of November 2019. The surface is divided into circular tracks, and each track into sectors. To reach data, the actuator moves the head to the right track, then the drive waits for the right sector to rotate underneath. That waiting is why a drive's access time is measured in milliseconds, while memory chips and solid-state drives respond far faster."
+        ],
+        [
+          "heading",
+          "The first hard drive"
+        ],
+        [
+          "paragraph",
+          "IBM's team led by Reynold Johnson invented the disk drive, and Wikipedia dates the invention to 24 December 1954. The IBM 350 disk storage unit was announced on 14 September 1956 as part of the IBM 305 RAMAC computer system. It used 50 disks, each 24 inches (610 mm) across, and held about 5 million characters. A typical record took around 600 milliseconds to find. The RAMAC system leased for 3,200 US dollars a month, and the 350 unit weighed over a ton, so it was moved with forklifts."
+        ],
+        [
+          "heading",
+          "How capacity grew"
+        ],
+        [
+          "paragraph",
+          "Wikipedia states that areal density, the data packed into one square inch, has risen from about 2,000 bits to 1.4 terabits per square inch in 2023, and that the largest formatted capacity reached 36 terabytes as of 2025. Manufacturers count a terabyte as 1,000 gigabytes, while some operating systems count in powers of 1,024, so a new drive can seem smaller than its label."
+        ],
+        [
+          "heading",
+          "Errors and failure"
+        ],
+        [
+          "paragraph",
+          "Drives expect some read errors. They use error-correcting codes to fix them and remap failing sectors to a spare pool. A monitoring system called S.M.A.R.T. counts these corrections, since many of them can signal that a drive is wearing out. Wikipedia cites uncorrected read error rates of about 1 in 10^14 bits for 2018 consumer SATA drives and 1 in 10^16 for 2013 enterprise SAS drives."
+        ],
+        [
+          "callout",
+          "Because moving parts wear out and drives can fail without warning, a copy of important files on a second device is a common general precaution."
+        ]
+      ],
+      "sources": [
+        {
+          "title": "Hard disk drive, Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Hard_disk_drive"
+        },
+        {
+          "title": "IBM 305 RAMAC, Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/IBM_305_RAMAC"
+        },
+        {
+          "title": "How does a hard drive work, Data Clinic",
+          "url": "https://www.dataclinic.co.uk/how-does-a-hard-drive-work/"
+        }
+      ],
+      "checkedOn": "2026-11-02"
+    },
+    {
+      "title": "What Is RLHF? How Human Feedback Shapes AI Chatbots",
+      "category": "AI",
+      "excerpt": "Reinforcement learning from human feedback trains a chatbot to give answers people prefer. Here are the three steps, the results reported for InstructGPT and the limits.",
+      "tags": [
+        "rlhf",
+        "training"
+      ],
+      "blocks": [
+        [
+          "paragraph",
+          "Reinforcement learning from human feedback, or RLHF, is a training method in which people rank a language model's answers and the model is then adjusted to produce answers that rank higher. It is one of the steps that turns a raw text-predicting model into an assistant that follows instructions. This article explains the steps described by Hugging Face and the research paper behind InstructGPT."
+        ],
+        [
+          "heading",
+          "Why a plain language model is not enough"
+        ],
+        [
+          "paragraph",
+          "A model trained only to predict the next word learns patterns from huge amounts of text. That does not make it good at doing what a person asks. Asking it a question may just produce more questions or an unhelpful continuation. RLHF adds a signal about what people actually want."
+        ],
+        [
+          "heading",
+          "Step 1: start with a pretrained model"
+        ],
+        [
+          "paragraph",
+          "Hugging Face explains that the process begins with a language model that is already pretrained on general text and can respond to varied instructions. Optionally it is fine-tuned first on carefully written examples. The authors say no single starting model is clearly the best choice."
+        ],
+        [
+          "heading",
+          "Step 2: build a reward model"
+        ],
+        [
+          "paragraph",
+          "Next, people rank several model outputs for the same prompt. Hugging Face notes that ranking is used instead of giving each answer a score because raw scores are noisy and not calibrated between people. The rankings are converted into a reward model, a second model that reads a piece of text and returns a single number showing how well people would likely rate it. Its size is typically similar to the language model it judges."
+        ],
+        [
+          "heading",
+          "Step 3: tune with reinforcement learning"
+        ],
+        [
+          "paragraph",
+          "A copy of the original model becomes the policy, the model being improved. For each prompt it writes text, the reward model scores it, and an algorithm called Proximal Policy Optimization nudges the policy toward higher scores. A penalty measures how far the policy's word probabilities drift from the original model. Without it, Hugging Face says, the model can produce nonsense that still fools the reward model."
+        ],
+        [
+          "list",
+          "Policy writes an answer to a prompt\nReward model scores the answer\nPenalty keeps the policy close to the original\nThe policy is updated, and the cycle repeats over many prompts"
+        ],
+        [
+          "heading",
+          "What InstructGPT showed"
+        ],
+        [
+          "paragraph",
+          "The InstructGPT paper from OpenAI researchers, posted on arXiv, fine-tuned GPT-3 in two stages: supervised learning on writers' demonstrations, using prompts written by labelers and prompts submitted through the OpenAI API, then RLHF using human rankings. In human evaluations on their prompts, raters preferred outputs from the 1.3 billion parameter InstructGPT over those of the 175 billion parameter GPT-3, though the first model is about 100 times smaller. The authors also report gains in truthfulness, less toxic output and only minimal drops on public benchmarks."
+        ],
+        [
+          "heading",
+          "Limits"
+        ],
+        [
+          "paragraph",
+          "The paper's own abstract concedes that the models still make simple mistakes. Hugging Face lists further challenges:"
+        ],
+        [
+          "list",
+          "Collecting human preference data is expensive, and results depend on how well people annotate\nAnnotators often disagree with each other, and there is no ground truth to settle it\nReward models can be exploited, so a model learns to please the scorer rather than the person\nThe reinforcement learning step is costly because every generated output has to be scored\nThere is no clear point at which a model counts as fully aligned"
+        ],
+        [
+          "callout",
+          "RLHF teaches a model what people tend to prefer. It does not by itself guarantee that an answer is true."
+        ],
+        [
+          "paragraph",
+          "The method also shows why feedback matters more than size alone. A smaller model tuned on human preferences can feel more useful than a much larger one that has not been tuned, because usefulness depends on following the request and keeping a suitable tone, and these are things people judge directly. At the same time, the people giving feedback are a limited group, so the preferences the model learns reflect who was asked and what instructions they were given. Researchers therefore publish the guidelines that labelers follow, so that readers can judge what the training rewarded."
+        ],
+        [
+          "heading",
+          "Where it fits"
+        ],
+        [
+          "paragraph",
+          "RLHF is one stage among several in building a chatbot, alongside large-scale pretraining and instruction fine-tuning. Companies do not always publish the exact recipe of their products, so the details above describe the published methods rather than any specific current chatbot."
+        ]
+      ],
+      "sources": [
+        {
+          "title": "Illustrating Reinforcement Learning from Human Feedback (RLHF), Hugging Face",
+          "url": "https://huggingface.co/blog/rlhf"
+        },
+        {
+          "title": "Training language models to follow instructions with human feedback, arXiv",
+          "url": "https://arxiv.org/abs/2203.02155"
+        }
+      ],
+      "checkedOn": "2026-11-02"
+    },
+    {
+      "title": "How Power Steering Works: Hydraulic, Electric and Beyond",
+      "category": "Cars and Bikes",
+      "excerpt": "Power steering adds force to the driver's effort. See how the hydraulic pump and valve work, what electric systems replace, and when each arrived.",
+      "tags": [
+        "steering",
+        "cars"
+      ],
+      "blocks": [
+        [
+          "paragraph",
+          "Power steering adds force to what the driver applies to the steering wheel, so a heavy car can be turned with light effort. The first widely used type pushed pressurised fluid against a piston. Most newer cars use an electric motor instead. Here is how each system works and when they arrived."
+        ],
+        [
+          "heading",
+          "The mechanical core"
+        ],
+        [
+          "paragraph",
+          "In most passenger cars the steering wheel turns a small gear, the pinion, that meshes with a toothed bar called the rack. Wikipedia describes the idea simply: turning the pinion moves the rack in a straight line. The rack's ends connect to the front wheels. Power steering is added on top of this mechanism and is not a separate steering system."
+        ],
+        [
+          "heading",
+          "Hydraulic power steering"
+        ],
+        [
+          "paragraph",
+          "1A Auto's guide describes the hydraulic system in four parts. A reservoir holds the fluid. A pump driven by the engine's belt moves the fluid, and release valves manage the high pressure at high engine speed. A torsion bar in the steering shaft twists when you turn the wheel, and that twist rotates a spool inside a rotary valve. The spool lines up ports so that fluid flows to one side of a piston in the rack, which helps push the rack along."
+        ],
+        [
+          "paragraph",
+          "Wikipedia adds that the flow of fluid grows with engine speed, so a flow-control valve returns the excess to the reservoir, and a relief valve limits the pressure. If the assist fails, the car can still be steered manually, although the wheel feels heavier."
+        ],
+        [
+          "heading",
+          "Electro-hydraulic and electric systems"
+        ],
+        [
+          "list",
+          "Electro-hydraulic: the same hydraulic assist, but an electric motor drives the pump instead of the engine belt, so assist can work with the engine off\nElectric (EPS): an electric motor and a control unit replace the hydraulics; sensors measure the driver's torque on the steering column, and the motor applies the assist at the column or at the steering gear"
+        ],
+        [
+          "paragraph",
+          "Wikipedia says electric systems allow the amount of assist to vary with driving conditions and can be linked to features such as lane assist. Compared with hydraulics, they use fewer parts and no fluid. They also avoid a pump running all the time, which the page says harms fuel economy in hydraulic designs. The listed drawback is that when an electric system fails, the steering becomes heavy."
+        ],
+        [
+          "heading",
+          "A short history"
+        ],
+        [
+          "list",
+          "1903: a Columbia 5-ton truck used a separate electric motor to help turn the front wheels\n1926: Francis W. Davis of Pierce-Arrow demonstrated what Wikipedia calls the first practical power steering system; General Motors judged it too expensive to produce\n1951: Chrysler's Hydraguide appeared on the Imperial, and Cadillac followed in 1952\n1970: the Citroën SM introduced assist that varied with speed\n1988: the Suzuki Cervo became the first mass-produced passenger car with electric power steering, according to Wikipedia\n1990: the Honda NSX offered electric rack assist"
+        ],
+        [
+          "paragraph",
+          "Wikipedia says military demand for easier steering on heavy vehicles during the Second World War pushed the technology forward. It also mentions an early claim that a man named Fitts fitted a system in 1876, but little else is known about it."
+        ],
+        [
+          "heading",
+          "Steer-by-wire"
+        ],
+        [
+          "paragraph",
+          "A further step removes the mechanical link between the wheel and the road wheels altogether, leaving sensors, a controller and motors. Wikipedia cites the Lexus RZ 450e of 2023 as an example of a car with such a system."
+        ],
+        [
+          "heading",
+          "Support parts in hydraulic cars"
+        ],
+        [
+          "paragraph",
+          "1A Auto notes that hydraulic systems may include an oil cooler to stop the fluid overheating, and that pressure sensors can tell the engine computer to raise idle speed during low-speed parking so the engine does not stall under the pump's load. In some heavy trucks and SUVs the assist acts on a recirculating-ball steering gear rather than a rack, though the rack is more common."
+        ],
+        [
+          "callout",
+          "Steering faults can affect control of a vehicle. This article is general information; a vehicle's manual and a qualified mechanic are the right references for any specific problem."
+        ],
+        [
+          "heading",
+          "Summary"
+        ],
+        [
+          "paragraph",
+          "Hydraulic assist uses a belt-driven pump and a valve controlled by a twisting torsion bar. Electric assist replaces them with a motor, sensors and software. Both build on the same rack-and-pinion core, and the shift from one to the other is mainly about efficiency, simplicity and the ability to tune the feel."
+        ]
+      ],
+      "sources": [
+        {
+          "title": "Power steering, Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Power_steering"
+        },
+        {
+          "title": "How Does Power Steering Work?, 1A Auto",
+          "url": "https://content.1aauto.com/content/articles/automotive-power-steering"
+        },
+        {
+          "title": "Rack and pinion, Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Rack_and_pinion"
+        }
+      ],
+      "checkedOn": "2026-11-02"
+    }
+  ]
+}
