@@ -18,6 +18,7 @@
     "articles:list": "tsx scripts/list-articles.ts",
     "articles:add": "tsx scripts/add-articles.ts",
     "puzzles:add": "tsx scripts/add-puzzles.ts",
+    "game:publish": "tsx scripts/publish-game.ts",
     "seed": "tsx scripts/create-seed-workbook.ts",
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",

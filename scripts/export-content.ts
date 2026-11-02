@@ -34,7 +34,10 @@ if (issues.length > 0) {
 }
 
 // Every puzzle answer must be a word players can type: check the word lists (the workbook check cannot read files).
-const wordLists = { word_guess: new Set((await readFile(resolve(ROOT, "public/games/words-5.txt"), "utf-8")).split("\n").filter(Boolean)) };
+const wordLists = {
+  word_guess: new Set((await readFile(resolve(ROOT, "public/games/words-5.txt"), "utf-8")).split("\n").filter(Boolean)),
+  hive_words: new Set((await readFile(resolve(ROOT, "content/games/common-words.txt"), "utf-8")).split("\n").filter(Boolean)),
+};
 const gameTypes = new Map((data.games ?? []).map((g) => [String(g.values.game_id), String(g.values.game_type)]));
 const puzzleProblems = (data.game_puzzles ?? []).flatMap((p) => {
   const type = gameTypes.get(String(p.values.game_id)) as keyof typeof wordLists | undefined;

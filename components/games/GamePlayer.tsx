@@ -1,7 +1,8 @@
 "use client";
 
-import type { FourGroupsData, Game, Puzzle } from "../../lib/games/types";
+import type { FourGroupsData, Game, HiveWordsData, Puzzle } from "../../lib/games/types";
 import FourGroups from "./FourGroups";
+import HiveWords from "./HiveWords";
 import WordGuess from "./WordGuess";
 
 /** Chooses the board for a game's type. Only built types reach here: validation stops others being published. */
@@ -11,6 +12,8 @@ export default function GamePlayer({ game, puzzles }: { game: Pick<Game, "slug" 
       return <WordGuess name={game.name} slug={game.slug} puzzles={puzzles as Puzzle<{ answer: string }>[]} />;
     case "four_groups":
       return <FourGroups name={game.name} slug={game.slug} puzzles={puzzles as Puzzle<FourGroupsData>[]} />;
+    case "hive_words":
+      return <HiveWords name={game.name} slug={game.slug} puzzles={puzzles as Puzzle<HiveWordsData>[]} />;
     default:
       return <p className="text-muted">This game is not available yet.</p>;
   }

@@ -175,3 +175,49 @@ describe("Four Groups", () => {
     expect(checkPuzzleData("four_groups", JSON.stringify(lower))).toMatch(/capital letters/);
   });
 });
+
+import { checkWord, isPangram, points, rankFor, shareText as hiveShare, totalPoints, wordsFor } from "../lib/games/hive-words";
+import type { HiveWordsData } from "../lib/games/types";
+
+const hive: HiveWordsData = { center: "O", outer: ["A", "D", "I", "R", "T", "U"], words: ["AUDIO", "AUDITOR", "DOOR", "RADIO", "ROAD", "TOAD", "TOUR", "TRIO", "AUTO", "ROOT"] };
+
+describe("Hive Words", () => {
+  it("scores a word and a pangram", () => {
+    expect(points(hive, "DOOR")).toBe(1);
+    expect(points(hive, "AUDIO")).toBe(5);
+    expect(isPangram(hive, "AUDITOR")).toBe(true);
+    expect(points(hive, "AUDITOR")).toBe(14);
+    expect(totalPoints(hive, ["DOOR", "AUDIO"])).toBe(6);
+  });
+  it("gives the rank for a share of the points", () => {
+    expect(rankFor(0, 100).name).toBe("Beginner");
+    expect(rankFor(25, 100).name).toBe("Nice");
+    expect(rankFor(70, 100).name).toBe("Hive Master");
+    expect(rankFor(0, 0).name).toBe("Beginner");
+  });
+  it("accepts a word, and says why it refuses the others", () => {
+    expect(checkWord(hive, "audio", [])).toEqual({ ok: true, word: "AUDIO", pangram: false, points: 5 });
+    expect(checkWord(hive, "auditor", [])).toMatchObject({ ok: true, pangram: true, points: 14 });
+    const reason = (w: string, found: string[] = []) => (checkWord(hive, w, found) as { reason: string }).reason;
+    expect(reason("oat")).toMatch(/Too short/);
+    expect(reason("zoom")).toMatch(/not in the hive/);
+    expect(reason("tart")).toMatch(/centre letter, O/);
+    expect(reason("audio", ["AUDIO"])).toMatch(/already found/);
+    expect(reason("orad")).toMatch(/Not in the word list/);
+  });
+  it("lists the words a set of letters can make", () => {
+    expect(wordsFor("O", ["A", "D", "I", "R", "T", "U"], ["DOOR", "DART", "TO", "DOORS", "ROTA", "AUDITOR"])).toEqual(["AUDITOR", "DOOR", "ROTA"]);
+  });
+  it("shares the rank and score and not the words", () => {
+    expect(hiveShare("Hive Words", 4, hive, ["AUDIO", "AUDITOR"])).toBe("Hive Words No. 4: Amazing\n19 of 31 points, 2 of 10 words, 1 pangram");
+  });
+  it("checks the puzzle data", () => {
+    expect(checkPuzzleData("hive_words", JSON.stringify(hive))).toBeNull();
+    expect(checkPuzzleData("hive_words", JSON.stringify({ ...hive, center: "o" }))).toMatch(/centre|center/);
+    expect(checkPuzzleData("hive_words", JSON.stringify({ ...hive, outer: ["A", "D", "I", "R", "T", "O"] }))).toMatch(/seven different/);
+    expect(checkPuzzleData("hive_words", JSON.stringify({ ...hive, words: [...hive.words.slice(1), "ZOO!"] }))).toMatch(/capital letters/);
+    expect(checkPuzzleData("hive_words", JSON.stringify({ ...hive, words: [...hive.words.slice(0, 9), "TART"] }))).toMatch(/centre letter/);
+    expect(checkPuzzleData("hive_words", JSON.stringify({ ...hive, words: hive.words.filter((w) => w !== "AUDITOR") }))).toMatch(/uses all seven|at least ten/);
+    expect(checkPuzzleData("hive_words", JSON.stringify(hive), new Set(["AUDIO"]))).toMatch(/not in the word list/);
+  });
+});

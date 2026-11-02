@@ -75,6 +75,26 @@ export function checkPuzzleData(type: GameType, text: string, words?: ReadonlySe
       if (levels.size !== 4) return "each group needs a different level, 1 to 4";
       return null;
     }
+    case "hive_words": {
+      const d = data as { center?: unknown; outer?: unknown; words?: unknown };
+      if (typeof d.center !== "string" || !/^[A-Z]$/.test(d.center)) return "needs a \"center\" that is one capital letter";
+      if (!Array.isArray(d.outer) || d.outer.length !== 6 || d.outer.some((l) => typeof l !== "string" || !/^[A-Z]$/.test(l))) return "needs an \"outer\" list of six capital letters";
+      const seven = [d.center, ...(d.outer as string[])];
+      if (new Set(seven).size !== 7) return "needs seven different letters";
+      if (!Array.isArray(d.words) || d.words.length < 10) return "needs a \"words\" list with at least ten words";
+      const seen = new Set<string>();
+      let pangram = false;
+      for (const w of d.words) {
+        if (typeof w !== "string" || w.length < 4 || !/^[A-Z]+$/.test(w)) return `has a word that is not four or more capital letters (${JSON.stringify(w)})`;
+        if (seen.has(w)) return `the word ${w} is listed twice`;
+        seen.add(w);
+        if (![...w].every((c) => seven.includes(c))) return `the word ${w} uses a letter that is not in the hive`;
+        if (!w.includes(d.center)) return `the word ${w} does not use the centre letter ${d.center}`;
+        if (words && !words.has(w)) return `the word ${w} is not in the word list`;
+        if (seven.every((c) => w.includes(c))) pangram = true;
+      }
+      return pangram ? null : "needs at least one word that uses all seven letters";
+    }
     default:
       return `puzzles for '${type}' games are not supported yet`;
   }

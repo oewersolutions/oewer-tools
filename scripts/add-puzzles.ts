@@ -15,6 +15,7 @@ import { applyChanges, type Change } from "../lib/admin/changes";
 import { loadWorkbook, saveWorkbook } from "../lib/admin/edit";
 import { idAllocator } from "../lib/admin/forms";
 import { cellString, toRows } from "../lib/admin/table";
+import { wordsFor } from "../lib/games/hive-words";
 import { checkPuzzleData, isPuzzleDate } from "../lib/games/puzzles";
 import { BUILT_GAME_TYPES, type GameType } from "../lib/games/types";
 import { checkWorkbook, formatIssue, schema } from "../lib/workbook";
@@ -42,6 +43,7 @@ if (!Array.isArray(batch.puzzles) || batch.puzzles.length === 0) {
 
 const wordLists: Partial<Record<GameType, Set<string>>> = {
   word_guess: new Set((await readFile(resolve("public/games/words-5.txt"), "utf-8")).split("\n").filter(Boolean)),
+  hive_words: new Set((await readFile(resolve("content/games/common-words.txt"), "utf-8")).split("\n").filter(Boolean)),
 };
 
 let bytes: Uint8Array = new Uint8Array(await readFile(workbookPath));
@@ -65,6 +67,11 @@ for (const entry of batch.puzzles) {
   if (!isPuzzleDate(String(entry.date))) problems.push(`'${entry.date}' is not a real date (use YYYY-MM-DD).`);
   const existing = game ? toRows(data, "game_puzzles", schema.sheets.game_puzzles!).filter((p) => cellString(p.values.game_id) === game.id) : [];
   if (existing.some((p) => cellString(p.values.puzzle_date) === entry.date)) problems.push(`${entry.game} already has a puzzle for ${entry.date}.`);
+  // A Hive Words puzzle only needs its letters: the word list is every common word they can make.
+  if (type === "hive_words") {
+    const d = entry.data as { center?: string; outer?: string[]; words?: string[] };
+    if (d && typeof d.center === "string" && Array.isArray(d.outer) && !d.words) entry.data = { center: d.center, outer: d.outer, words: wordsFor(d.center, d.outer, wordLists.hive_words!) };
+  }
   const text = JSON.stringify(entry.data);
   if (type && BUILT_GAME_TYPES.includes(type)) {
     const bad = checkPuzzleData(type, text, wordLists[type]);

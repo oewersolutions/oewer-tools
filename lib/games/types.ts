@@ -1,7 +1,7 @@
 export type GameType = "word_guess" | "four_groups" | "word_trail" | "hive_words" | "mini_crossword";
 
 /** The game types that have a playable game. A game of another type can be kept as a draft but not published. */
-export const BUILT_GAME_TYPES: readonly GameType[] = ["word_guess", "four_groups"];
+export const BUILT_GAME_TYPES: readonly GameType[] = ["word_guess", "four_groups", "hive_words"];
 
 export interface Game {
   game_id: string;
@@ -35,6 +35,13 @@ export interface Puzzle<T = unknown> {
 /** Four hidden groups of four words. `level` runs from 1 (easiest) to 4 (trickiest) and each group has its own. */
 export interface FourGroupsData {
   groups: { title: string; level: number; words: string[] }[];
+}
+
+/** Seven letters, one of them required, and every word that can be made from them. */
+export interface HiveWordsData {
+  center: string;
+  outer: string[];
+  words: string[];
 }
 
 export interface WordGuessData {

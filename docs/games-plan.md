@@ -1,6 +1,6 @@
 # Games section: plan (Phase 10)
 
-**Status (2 November 2026): the foundation and the first game are built.** Done: schema 1.1.0 (the `games` and `game_puzzles` sheets, with a migration that adds sheets), the Games menu link, the `/games/` hub, the game page template, ad placements (`below_game` and the hub's `list_bottom`), search and sitemap entries, **Word Guess** with 21 daily puzzles (1 to 21 November 2026) and **Four Groups** with 14 (1 to 14 November 2026). `npm run puzzles:add` adds puzzles from a batch file. Not built yet: Hive Words, Mini Crossword, Word Trail, the daily puzzle task and the admin gap warning. The other three games exist in the workbook as drafts, so they are not shown.
+**Status (2 November 2026): the foundation and the first game are built.** Done: schema 1.1.0 (the `games` and `game_puzzles` sheets, with a migration that adds sheets), the Games menu link, the `/games/` hub, the game page template, ad placements (`below_game` and the hub's `list_bottom`), search and sitemap entries, **Word Guess** with 21 daily puzzles (1 to 21 November 2026) **Four Groups** with 14 and **Hive Words** with 14 (all 1 to 14 November 2026). `npm run puzzles:add` adds puzzles from a batch file. Not built yet: Mini Crossword, Word Trail, the daily puzzle task and the admin gap warning. The other two games exist in the workbook as drafts, so they are not shown.
 
 A "Games" menu and a hub page of daily puzzles, in the style of the New York Times games page (a grid of game cards, each with a short line and a Play button). Everything is configured in the workbook, the same as tools and articles, and each game gets a new puzzle every day. Ads show on the games pages like the rest of the site.
 
@@ -62,7 +62,7 @@ Two new sheets, plus a Games link in the header menu:
 2. Foundation: schema 1.1.0 and the migration, the two sheets, the Games menu link, the hub page, tests and the admin lists. **Done.**
 3. Word Guess, with its daily puzzles and the generator checks. **Done** (the daily task that writes new puzzles is step 8).
 4. Four Groups. **Done.**
-5. Hive Words.
+5. Hive Words. **Done.**
 6. Mini Crossword.
 7. Word Trail.
 8. The daily puzzle task and the admin dashboard gap warning.
@@ -84,6 +84,13 @@ Two new sheets, plus a Games link in the header menu:
 - **Ads on the games pages:** sheet `advertisements`, rows `below_game` (game) and `list_bottom` (game_hub). They reuse the below-tool and blog-list slots for now; create separate units in AdSense when you want separate numbers.
 - **Word list:** `public/games/words-5.txt` (the public-domain ENABLE list, five-letter words). Players can guess any word in it, and every answer must be in it.
 - **Puzzles are shipped up to tomorrow (UTC).** The site must be rebuilt about once a day (the daily articles commit does this). If it is not, visitors see the latest puzzle until it is.
+
+## Hive Words word lists
+
+- `content/games/common-words.txt` is the list of words Hive Words accepts (24,000 common English words of four letters or more). It is the public-domain ENABLE word list cut down to the common words in the `popular.txt` list from github.com/dolph/dictionary, with proper names (checked against the system dictionary) and everything in `content/games/blocked-words.txt` removed. Add a word to `blocked-words.txt` and delete it from `common-words.txt` to take it out of every puzzle (the puzzle's own list is stored in the workbook, so existing puzzles need their `puzzle_data` edited too).
+- A Hive Words batch file only needs the letters: `{"game":"hive-words","date":"2026-11-15","data":{"center":"O","outer":["A","D","I","R","T","U"]}}`. `npm run puzzles:add` fills in every word the letters can make from the list, and refuses a set of letters with no pangram or fewer than ten words.
+- Skim the words of each new puzzle before publishing. The lists are filtered but not hand-checked word by word.
+- `npm run game:publish -- <slug> <how-to.md>` sets a game's rules text and publishes it.
 
 ## Open questions for you
 

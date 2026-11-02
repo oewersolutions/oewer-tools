@@ -121,3 +121,46 @@ test("Four Groups: four mistakes end the game and show the groups", async ({ pag
   await expect(page.getByText("Fruits", { exact: true })).toBeVisible();
   await expect(page.getByText("Trickiest · not found")).toBeVisible();
 });
+
+// Hive Words: the first puzzle (1 November 2026) has O in the middle with A, D, I, R, T and U around it.
+test("Hive Words: scores words, finds the pangram and explains refusals", async ({ page }) => {
+  await page.clock.install({ time: DAY });
+  await page.goto("/games/hive-words/");
+  await expect(page.getByText("No. 1 · 2026-11-01")).toBeVisible();
+  await expect(page.getByRole("button", { name: "O, centre letter" })).toBeVisible();
+
+  const word = async (w: string) => {
+    await page.keyboard.type(w);
+    await page.keyboard.press("Enter");
+  };
+  await word("oat");
+  await expect(page.getByRole("status")).toContainText("Too short");
+  for (let i = 0; i < 3; i++) await page.keyboard.press("Backspace");
+  await word("tart");
+  await expect(page.getByRole("status")).toContainText("centre letter, O");
+  for (let i = 0; i < 4; i++) await page.keyboard.press("Backspace");
+  await page.keyboard.type("z");
+  await expect(page.getByRole("status")).toHaveText("That letter is not in the hive.");
+
+  await word("audio");
+  await expect(page.getByRole("status")).toHaveText("+5 points.");
+  await word("auditor");
+  await expect(page.getByRole("status")).toHaveText("Pangram! +14 points.");
+  await expect(page.getByText("Audio", { exact: true })).toBeVisible();
+  await expect(page.getByText("Auditor (pangram)")).toBeVisible();
+  await expect(page.getByText(/Words found: 2 of \d+/)).toBeVisible();
+  await word("audio");
+  await expect(page.getByRole("status")).toContainText("already found");
+
+  await page.reload();
+  await expect(page.getByText(/Words found: 2 of/)).toBeVisible(); // saved in this browser
+  await expect(page.getByRole("button", { name: "Copy my result" })).toBeVisible();
+});
+
+test("Hive Words works with the on-screen letters", async ({ page }) => {
+  await page.clock.install({ time: DAY });
+  await page.goto("/games/hive-words/");
+  for (const l of "DOOR") await page.getByRole("button", { name: l === "O" ? "O, centre letter" : l, exact: true }).click();
+  await page.getByRole("button", { name: "Enter" }).click();
+  await expect(page.getByRole("status")).toHaveText("+1 point.");
+});

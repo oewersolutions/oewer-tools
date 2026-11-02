@@ -1,0 +1,228 @@
+{
+ "puzzles": [
+  {
+   "game": "hive-words",
+   "date": "2026-11-01",
+   "title": "",
+   "data": {
+    "center": "O",
+    "outer": [
+     "A",
+     "D",
+     "I",
+     "R",
+     "T",
+     "U"
+    ]
+   }
+  },
+  {
+   "game": "hive-words",
+   "date": "2026-11-02",
+   "title": "",
+   "data": {
+    "center": "F",
+    "outer": [
+     "D",
+     "E",
+     "I",
+     "N",
+     "T",
+     "U"
+    ]
+   }
+  },
+  {
+   "game": "hive-words",
+   "date": "2026-11-03",
+   "title": "",
+   "data": {
+    "center": "I",
+    "outer": [
+     "A",
+     "C",
+     "G",
+     "N",
+     "O",
+     "U"
+    ]
+   }
+  },
+  {
+   "game": "hive-words",
+   "date": "2026-11-04",
+   "title": "",
+   "data": {
+    "center": "I",
+    "outer": [
+     "C",
+     "E",
+     "O",
+     "R",
+     "T",
+     "V"
+    ]
+   }
+  },
+  {
+   "game": "hive-words",
+   "date": "2026-11-05",
+   "title": "",
+   "data": {
+    "center": "U",
+    "outer": [
+     "C",
+     "E",
+     "N",
+     "R",
+     "T",
+     "Y"
+    ]
+   }
+  },
+  {
+   "game": "hive-words",
+   "date": "2026-11-06",
+   "title": "",
+   "data": {
+    "center": "E",
+    "outer": [
+     "A",
+     "K",
+     "O",
+     "P",
+     "R",
+     "W"
+    ]
+   }
+  },
+  {
+   "game": "hive-words",
+   "date": "2026-11-07",
+   "title": "",
+   "data": {
+    "center": "T",
+    "outer": [
+     "B",
+     "D",
+     "E",
+     "I",
+     "M",
+     "R"
+    ]
+   }
+  },
+  {
+   "game": "hive-words",
+   "date": "2026-11-08",
+   "title": "",
+   "data": {
+    "center": "G",
+    "outer": [
+     "A",
+     "E",
+     "L",
+     "M",
+     "N",
+     "T"
+    ]
+   }
+  },
+  {
+   "game": "hive-words",
+   "date": "2026-11-09",
+   "title": "",
+   "data": {
+    "center": "Y",
+    "outer": [
+     "D",
+     "E",
+     "L",
+     "M",
+     "O",
+     "P"
+    ]
+   }
+  },
+  {
+   "game": "hive-words",
+   "date": "2026-11-10",
+   "title": "",
+   "data": {
+    "center": "N",
+    "outer": [
+     "A",
+     "B",
+     "C",
+     "E",
+     "M",
+     "R"
+    ]
+   }
+  },
+  {
+   "game": "hive-words",
+   "date": "2026-11-11",
+   "title": "",
+   "data": {
+    "center": "F",
+    "outer": [
+     "C",
+     "D",
+     "E",
+     "L",
+     "R",
+     "T"
+    ]
+   }
+  },
+  {
+   "game": "hive-words",
+   "date": "2026-11-12",
+   "title": "",
+   "data": {
+    "center": "B",
+    "outer": [
+     "E",
+     "I",
+     "L",
+     "N",
+     "O",
+     "R"
+    ]
+   }
+  },
+  {
+   "game": "hive-words",
+   "date": "2026-11-13",
+   "title": "",
+   "data": {
+    "center": "H",
+    "outer": [
+     "A",
+     "C",
+     "D",
+     "E",
+     "G",
+     "R"
+    ]
+   }
+  },
+  {
+   "game": "hive-words",
+   "date": "2026-11-14",
+   "title": "",
+   "data": {
+    "center": "B",
+    "outer": [
+     "A",
+     "L",
+     "O",
+     "R",
+     "T",
+     "Y"
+    ]
+   }
+  }
+ ]
+}
