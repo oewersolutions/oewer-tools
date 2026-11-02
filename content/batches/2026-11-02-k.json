@@ -1,0 +1,213 @@
+{
+ "date": "2026-11-02",
+ "articles": [
+  {
+   "title": "How Inflation Is Measured: The Consumer Price Index",
+   "category": "Money Guides",
+   "excerpt": "Inflation is usually reported as the yearly change in a consumer price index. Here is how the basket, weights and base year turn thousands of prices into one number.",
+   "tags": [
+    "inflation",
+    "CPI"
+   ],
+   "blocks": [
+    [
+     "paragraph",
+     "Inflation is the rise in the general level of prices over time, and most countries report it using a **consumer price index**, or CPI. The index follows the cost of a fixed shopping list of goods and services bought by households. When the list costs more than it did a year ago, the percentage difference is the inflation rate. This article explains how that list is built, how prices are gathered and how the final figure is worked out, using the United States Bureau of Labor Statistics (BLS) as the detailed example."
+    ],
+    [
+     "heading",
+     "The market basket"
+    ],
+    [
+     "paragraph",
+     "A CPI does not track every price in the economy. It tracks a **market basket**: a sample of the things households buy, such as food, rent, fuel, clothing, medical care and transport. The BLS explains that it sorts spending into more than 200 categories within eight major groups. Each category counts for more or less depending on how much of a typical household's money goes to it. That share is called its **weight**."
+    ],
+    [
+     "paragraph",
+     "The weights come from household spending surveys. For the 2023 US index, the BLS says it used spending data from 2021, so there is always a lag between what people buy and what the index assumes they buy. In the BLS survey, about 20,000 households were interviewed each quarter, and around 12,000 more kept two-week diaries of frequent purchases such as groceries."
+    ],
+    [
+     "heading",
+     "How prices are collected"
+    ],
+    [
+     "paragraph",
+     "The BLS describes a multi-stage sample: first geographic areas, then shops and other outlets, then specific products, and for rent, specific homes. Within each category, several hundred specific items are chosen. Collectors record roughly 80,000 prices every month. Food eaten at home and energy are priced monthly. Most other items are priced monthly in New York, Los Angeles and Chicago and every second month elsewhere."
+    ],
+    [
+     "paragraph",
+     "Shops change what they sell. If a chosen item disappears, or comes in a different size or quality, collectors substitute a similar item or record an adjustment for the quality change, so that the index tries to capture a price change rather than a product change. The BLS says about 16 percent of sampled price quotes, excluding rent, came from online sellers as of 2023."
+    ],
+    [
+     "heading",
+     "Turning prices into an index"
+    ],
+    [
+     "paragraph",
+     "Prices for similar items are first averaged into basic indexes, using a geometric mean formula for most categories since January 1999, according to the BLS. These are then combined using the weights into the overall index. Because the weights come from spending, a 10 percent rise in rent moves the total more than a 10 percent rise in the price of salt."
+    ],
+    [
+     "paragraph",
+     "Wikipedia's overview of consumer price indexes gives the general idea for a single item: divide the current cost by the cost in a base period and multiply by 100. For many items, the index is the weighted sum of the sub-indexes divided by the sum of the weights."
+    ],
+    [
+     "heading",
+     "The base period"
+    ],
+    [
+     "paragraph",
+     "An index needs a starting point set to 100. Most BLS CPI series use 1982-84 = 100, meaning the average level across 1982, 1983 and 1984 is defined as 100. An index of 110 then means prices are 10 percent above that base period. The absolute number is not meaningful by itself; what matters is how it changes."
+    ],
+    [
+     "heading",
+     "Working out the inflation rate"
+    ],
+    [
+     "paragraph",
+     "To get inflation, compare the index now with the index a year earlier:"
+    ],
+    [
+     "code",
+     "inflation % = (index now - index a year ago) / index a year ago x 100"
+    ],
+    [
+     "paragraph",
+     "The BLS gives an example: a move from 110 to 128 is 18 index points, which is 16.4 percent. The monthly figure covers the whole month, and the BLS publishes it every month."
+    ],
+    [
+     "list",
+     "Single month change: compare with the previous month\nAnnual inflation: compare with the same month a year earlier\nSeasonally adjusted: removes regular patterns, such as winter heating costs"
+    ],
+    [
+     "heading",
+     "Real versus nominal money"
+    ],
+    [
+     "paragraph",
+     "A CPI can also be used to adjust old money amounts. Dividing a nominal (face-value) amount by the index divided by 100 gives its value in base-period terms, which is how economists compare wages or prices across years. Wages, pensions and some contracts are also tied to a CPI so that their payments keep pace with prices."
+    ],
+    [
+     "callout",
+     "A CPI measures the average basket. Your own inflation can differ if you spend more on, say, fuel or school fees than the typical household."
+    ],
+    [
+     "heading",
+     "What the index does not capture"
+    ],
+    [
+     "paragraph",
+     "Wikipedia notes that a CPI is not a perfect measure of inflation or of the cost of living. Adjusting for quality is difficult. Weights stay fixed between updates, so new kinds of spending can take time to appear. Savings, investments and spending abroad are usually left out, and the treatment of owner-occupied housing has long been debated. Methods differ between countries, so rates are not always directly comparable."
+    ],
+    [
+     "paragraph",
+     "Different agencies also revise differently. The BLS says its main indexes are final when issued, while one experimental chained index is revised several times over the following 10 to 12 months. Check the publisher's notes before comparing figures. This is general information, not financial advice."
+    ]
+   ],
+   "sources": [
+    {
+     "title": "Consumer Price Index Frequently Asked Questions, U.S. Bureau of Labor Statistics",
+     "url": "https://www.bls.gov/cpi/questions-and-answers.htm"
+    },
+    {
+     "title": "Consumer price index, Wikipedia",
+     "url": "https://en.wikipedia.org/wiki/Consumer_price_index"
+    }
+   ],
+   "checkedOn": "2026-11-02"
+  },
+  {
+   "title": "How Disc Brakes Slow a Car: Pads, Rotors and Calipers",
+   "category": "Cars and Bikes",
+   "excerpt": "Disc brakes turn a car's movement into heat by squeezing pads against a spinning rotor. See the hydraulic chain, the caliper types and why discs resist fade better than drums.",
+   "tags": [
+    "brakes",
+    "disc brakes"
+   ],
+   "blocks": [
+    [
+     "paragraph",
+     "A disc brake slows a car by clamping friction pads against a metal disc, called a **rotor**, that spins with the wheel. The friction turns the car's energy of motion into heat, which the rotor then gives off to the air. Pressing the pedal sends hydraulic fluid pressure to each wheel to do the clamping. Below is each part in order, plus how discs compare with older drum brakes."
+    ],
+    [
+     "heading",
+     "From pedal to wheel"
+    ],
+    [
+     "paragraph",
+     "When the driver presses the pedal, a piston in the **master cylinder** builds pressure in the brake fluid. Fluid is almost impossible to compress, so that pressure travels along the brake lines to a **caliper** at each wheel. EduMech, an engineering education site, describes the caliper pistons as converting hydraulic pressure into mechanical force. Wikipedia adds that hydraulic actuation is the most common system on motor vehicles and that modern cars split the circuits between axles as a safety measure."
+    ],
+    [
+     "heading",
+     "Pads, rotor and caliper"
+    ],
+    [
+     "list",
+     "**Rotor:** a flat, circular disc bolted to the wheel hub, usually made of grey cast iron\n**Pads:** friction-lined blocks, one on each side of the rotor\n**Caliper:** the housing that holds the pads and the piston or pistons that push them"
+    ],
+    [
+     "paragraph",
+     "Wikipedia states that the caliper contains at least one cylinder and two pads, one on each side of the disc. Most calipers have one piston, although some high-performance cars use as many as ten."
+    ],
+    [
+     "heading",
+     "Fixed and floating calipers"
+    ],
+    [
+     "paragraph",
+     "A **fixed caliper** has pistons on both sides of the rotor, which clamp it from either side. Wikipedia describes these as more complex and expensive, and less tolerant of imperfections in the disc. A **floating** (or sliding) **caliper** has a piston on one side only. The piston pushes the inner pad onto the disc, and the reaction pulls the caliper body along pins so the outer pad presses the other face. Floating designs with a single piston can stick if dirt, corrosion or dried grease gets onto the sliding parts."
+    ],
+    [
+     "heading",
+     "How the pads let go"
+    ],
+    [
+     "paragraph",
+     "Disc brakes do not need big return springs. EduMech explains that when the pedal is released and pressure drops, the elastic deformation of the piston seals pulls each piston back slightly, which frees the pad from the rotor. If air gets into the fluid, it compresses and weakens the pedal, so technicians use a bleed screw on the caliper to remove it."
+    ],
+    [
+     "heading",
+     "Vented, slotted and drilled rotors"
+    ],
+    [
+     "paragraph",
+     "Heat is the main design problem. Wikipedia says **ventilated** rotors have internal vanes between two friction faces, allowing air to flow through and carry heat away; these are typically used on the front, where most braking work is done. **Slotted** rotors help clear dust and gas, and **drilled** rotors help shed water, though the same source notes that cross-drilled rotors can develop cracks through repeated heating and cooling. Racing and high-end cars may use composite or carbon-ceramic rotors."
+    ],
+    [
+     "heading",
+     "Discs against drums"
+    ],
+    [
+     "paragraph",
+     "A drum brake presses shoes outward against the inside of a spinning drum. Discs cool better, which reduces **brake fade**, the loss of stopping power when parts get too hot, and they recover faster when wet. According to Wikipedia, discs also have no self-servo action, so braking force rises in proportion to pedal pressure; this gives better feel and helps avoid wheel lock-up. Discs cost more to make, and many lightweight cars still use drums at the rear to save cost and weight and to simplify the parking brake."
+    ],
+    [
+     "heading",
+     "A short history"
+    ],
+    [
+     "paragraph",
+     "Frederick Lanchester patented a caliper-type disc brake in 1902, but its copper lining wore quickly on the rough roads of the time, Wikipedia says. The Jaguar C-Type won the 1953 24 Hours of Le Mans as the only car in the race with disc brakes. The Citroën DS of 1955 is described as the first sustained mass-production car with modern disc brakes, and the 1963 Studebaker Avanti had them at the front as standard."
+    ],
+    [
+     "callout",
+     "Brakes turn motion into heat, so they get very hot in hard use. Follow your vehicle manual for any inspection or service advice."
+    ],
+    [
+     "paragraph",
+     "This article is general information about how the parts work, based on the sources listed below."
+    ]
+   ],
+   "sources": [
+    {
+     "title": "Disc brake, Wikipedia",
+     "url": "https://en.wikipedia.org/wiki/Disc_brake"
+    },
+    {
+     "title": "Disc Brakes Explained, EduMech",
+     "url": "https://www.edumech.co.uk/learn/braking/disc-brakes-explained"
+    }
+   ],
+   "checkedOn": "2026-11-02"
+  }
+ ]
+}

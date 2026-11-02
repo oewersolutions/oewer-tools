@@ -1,0 +1,311 @@
+{
+ "date": "2026-11-02",
+ "articles": [
+  {
+   "title": "The Honda Super Cub: How a 1958 Step-Through Went Global",
+   "category": "Vintage and History",
+   "excerpt": "The Honda Super Cub went on sale in August 1958 with a 49cc engine and a clutchless gearbox. Honda's own figures show how it grew into the most-produced vehicle ever.",
+   "tags": [
+    "Honda",
+    "motorcycle history"
+   ],
+   "blocks": [
+    [
+     "paragraph",
+     "The Honda Super Cub is a small step-through motorcycle that went on sale in Japan in August 1958 and became one of the most widely built vehicles in history. Honda's own records put its production past 60 million by April 2008, and Wikipedia reports it passed 100 million in 2017. This article follows its design, its first years and its growth, using Honda's published timeline for the dates."
+    ],
+    [
+     "heading",
+     "Where the idea came from"
+    ],
+    [
+     "paragraph",
+     "According to Wikipedia, the idea dates to 1956, when Soichiro Honda and Takeo Fujisawa, who ran the sales side of the company, saw how popular mopeds were in Germany. Honda led the engineering, and Fujisawa pushed for a machine that ordinary people could use every day. The result was the C100, which Honda's newsroom says began sales in August 1958."
+    ],
+    [
+     "heading",
+     "What made the C100 different"
+    ],
+    [
+     "list",
+     "**Engine:** 49cc, air-cooled, four-stroke, single cylinder, with overhead valves, giving 4.5 horsepower\n**Gearbox:** three speeds, changed with a foot lever, with a centrifugal clutch so there is no clutch lever\n**Frame:** a pressed-steel step-through design with a plastic leg shield and cover over the engine\n**Fuel:** a low compression ratio that, Wikipedia says, let it run on cheap low-octane fuel"
+    ],
+    [
+     "paragraph",
+     "The centrifugal clutch connects the engine to the wheel automatically as engine speed rises, so a rider needs only to twist the throttle and tap the gear pedal. The step-through frame meant riders in everyday clothes, including skirts, could get on easily. Wikipedia describes it as reportedly the first motorcycle to use a plastic fairing, and gives a top speed of roughly 69 km/h."
+    ],
+    [
+     "heading",
+     "A slow start"
+    ],
+    [
+     "paragraph",
+     "Early sales were not instant. Wikipedia says they were slow at first because of a recession in Japan and that complaints about the clutch followed; Honda staff visited customers to repair affected bikes. Sources also differ on early sales numbers, so this article does not quote one."
+    ],
+    [
+     "heading",
+     "Spreading abroad"
+    ],
+    [
+     "paragraph",
+     "Honda's newsroom timeline records that exports to the United States began in 1959. Production outside Japan started in Taiwan in 1961, the same year the series reached 1 million units. Later totals in the same source:"
+    ],
+    [
+     "list",
+     "5 million in 1967\n10 million in 1974\n20 million in 1992\n50 million in 2005\n60 million in April 2008"
+    ],
+    [
+     "paragraph",
+     "Honda says the Cub series is now built at 16 plants in 15 countries and that the Super Cub has been sold in more than 160 countries, a figure based on its own data. The C65 of 1964 introduced an overhead-camshaft engine. A 1983 model reached 180 km per litre in a 30 km/h constant-speed test, according to Honda's own testing. Production at home moved to the Kumamoto factory in 1991."
+    ],
+    [
+     "heading",
+     "The 100 million mark"
+    ],
+    [
+     "paragraph",
+     "Wikipedia, citing Honda, reports that cumulative production reached 100 million units in 2017, with the milestone unit built at the Ōzu plant in Kumamoto, and calls the Super Cub the most-produced motor vehicle in history. That counts the whole Cub series, not only the original C100, so it should not be read as a count of one model."
+    ],
+    [
+     "callout",
+     "Sales and production totals in this article come from Honda's own releases and Wikipedia. Different sources count \"Cub series\" models differently, so figures can vary."
+    ],
+    [
+     "heading",
+     "The step-through idea in practice"
+    ],
+    [
+     "paragraph",
+     "Most motorcycles of the 1950s asked a rider to manage a clutch lever, a gear pedal and a throttle at once, and to swing a leg over a tank or seat. The Super Cub removed those hurdles. The engine sat low and was covered, so clothes stayed clean, and the leg shield kept mud and wind off the rider. For delivery work, shops and families on narrow streets, that mattered as much as speed. These choices explain much of why the design found buyers in markets with very different roads and incomes."
+    ],
+    [
+     "paragraph",
+     "Honda's later records show the design was refined rather than replaced. The 1964 C65 gained an overhead-camshaft engine, and the fuel-economy test result of 180 km per litre in 1983 shows how far the engine's efficiency was pushed over the following two decades. Both facts come from Honda's own newsroom timeline."
+    ],
+    [
+     "heading",
+     "Why it matters"
+    ],
+    [
+     "paragraph",
+     "The Super Cub shows how a simple design built for daily use can scale across very different markets. Its low-cost fuel tolerance, automatic clutch and easy frame made it usable by people who had never ridden a motorcycle. Facts here were last checked on the date shown below."
+    ]
+   ],
+   "sources": [
+    {
+     "title": "Honda Super Cub, Wikipedia",
+     "url": "https://en.wikipedia.org/wiki/Honda_Super_Cub"
+    },
+    {
+     "title": "Super Cub production milestone news release, Honda Motor Co., 23 July 2008",
+     "url": "https://global.honda/newsroom/news/2008/c080723-eng.html"
+    }
+   ],
+   "checkedOn": "2026-11-02"
+  },
+  {
+   "title": "What Is Fine-Tuning? Teaching an AI Model a Narrower Job",
+   "category": "AI",
+   "excerpt": "Fine-tuning takes a model that has already learned from huge data and trains it a little more on a smaller, focused set of examples. Here are the methods, uses and risks.",
+   "tags": [
+    "fine-tuning",
+    "machine learning"
+   ],
+   "blocks": [
+    [
+     "paragraph",
+     "**Fine-tuning** means taking an AI model that has already been trained on a very large body of data and training it further on a smaller, focused set of examples, so that it does one job better. IBM describes it as a form of transfer learning, which is reusing what a model learned on one task for another. It is generally easier and cheaper than building a model from scratch. This article explains the main types and the trade-offs."
+    ],
+    [
+     "heading",
+     "Starting from a pretrained model"
+    ],
+    [
+     "paragraph",
+     "Training a large model from nothing needs vast data and computing power. A **pretrained** model has already done that work and holds general patterns in its internal numbers, called weights. Wikipedia describes fine-tuning as applying additional training to those pretrained parameters, often on new data, to adapt the model from the original (upstream) task to a narrower (downstream) task. Sometimes a new output layer is added and trained from scratch while the rest starts from the pretrained values."
+    ],
+    [
+     "heading",
+     "Why people fine-tune"
+    ],
+    [
+     "paragraph",
+     "IBM lists several common reasons:"
+    ],
+    [
+     "list",
+     "Matching a style or tone, such as a brand voice\nSpecialising a general model for coding or chat\nAdding knowledge from fields like law, finance or medicine\nHandling edge cases the original training probably missed\nUsing an organisation's own data"
+    ],
+    [
+     "heading",
+     "Full fine-tuning"
+    ],
+    [
+     "paragraph",
+     "In **full fine-tuning**, every weight in the network can change. Wikipedia says this often gives better results but costs more computing. IBM notes it usually uses a smaller learning rate, meaning smaller adjustment steps, so the model's earlier knowledge is not wrecked."
+    ],
+    [
+     "heading",
+     "Cheaper ways: partial and parameter-efficient tuning"
+    ],
+    [
+     "paragraph",
+     "Several methods change only a small part of the model:"
+    ],
+    [
+     "list",
+     "**Partial tuning:** freeze most layers and update only some. In image networks the early layers, which capture simple features, are often frozen\n**Adapters:** small modules added to the network; only their weights are trained\n**LoRA (low-rank adaptation):** trains small matrices that represent the weight changes while the original weights stay frozen\n**Prompt tuning:** learns \"soft prompts\", which are numbers rather than words, instead of changing weights"
+    ],
+    [
+     "paragraph",
+     "Together, methods like these are called parameter-efficient fine-tuning. Wikipedia notes that a model with billions of parameters may be tuned by training only millions. IBM adds that LoRA updates can be swapped in and out for different tasks."
+    ],
+    [
+     "heading",
+     "Instruction tuning and human feedback"
+    ],
+    [
+     "paragraph",
+     "Chat assistants are usually fine-tuned in more than one way. In **supervised fine-tuning**, the model learns from labelled pairs of prompts and good responses. IBM calls the version that teaches a model to follow instructions instruction tuning. **Reinforcement learning from human feedback (RLHF)** goes further: people rate outputs, a reward model learns those ratings, and the main model is adjusted toward higher-rated answers. Wikipedia cites it as part of how ChatGPT and Sparrow were produced."
+    ],
+    [
+     "heading",
+     "Risks and limits"
+    ],
+    [
+     "list",
+     "**Catastrophic forgetting:** further training can erode what the model knew before; smaller learning rates and parameter-efficient methods reduce this, according to IBM\n**Overfitting:** a large model trained on few examples may do well on them and poorly on new inputs\n**Cost:** full fine-tuning of big models can be very expensive\n**Robustness:** Wikipedia says fine-tuning can reduce a model's robustness when real-world data differs from the tuning data\n**Iteration:** good results often need repeated adjustment of the dataset and settings such as batch size"
+    ],
+    [
+     "heading",
+     "Fine-tuning compared with prompting"
+    ],
+    [
+     "paragraph",
+     "Fine-tuning changes the model itself, while a prompt changes only what the model is asked. If a task can be handled by giving the model clear instructions and a few examples in the prompt, no training is needed, and the model stays exactly as it was. Fine-tuning is considered when a prompt alone cannot produce the style or accuracy wanted, or when the same instructions would otherwise have to be repeated in every request. IBM does not give a direct comparison with retrieval-based approaches, which fetch documents at question time, so this article does not rank them."
+    ],
+    [
+     "paragraph",
+     "Another practical point is that a fine-tuned model is a separate copy or add-on that has to be stored, tested and updated. With LoRA-style methods, the added piece is small compared with the full model, which is part of why those methods are popular. The sources do not say how much data a given task needs, and results depend on the model, the quality of the examples and the settings chosen."
+    ],
+    [
+     "callout",
+     "Neither source gives a recipe for how much data is enough. That depends on the model and the task."
+    ],
+    [
+     "paragraph",
+     "Fine-tuning is one option among several for shaping a model. Writing a better prompt changes the input without changing weights at all, which is why IBM describes prompt tuning as sitting between the two. This is a general explanation of the field."
+    ]
+   ],
+   "sources": [
+    {
+     "title": "What is fine-tuning?, IBM",
+     "url": "https://www.ibm.com/think/topics/fine-tuning"
+    },
+    {
+     "title": "Fine-tuning (deep learning), Wikipedia",
+     "url": "https://en.wikipedia.org/wiki/Fine-tuning_(deep_learning)"
+    }
+   ],
+   "checkedOn": "2026-11-02"
+  },
+  {
+   "title": "How a Pressure Cooker Cooks Faster at 121°C",
+   "category": "How It Works",
+   "excerpt": "A pressure cooker traps steam so water can get hotter than 100°C. Here is how the sealed pot, the valve and the gasket work together, and why altitude matters.",
+   "tags": [
+    "kitchen",
+    "pressure"
+   ],
+   "blocks": [
+    [
+     "paragraph",
+     "A pressure cooker is a sealed pot. As the water inside heats, the steam cannot escape, so pressure rises and water boils at a higher temperature than normal. At about 1 bar above atmospheric pressure (roughly 15 psi), water reaches around 121°C instead of 100°C, and food cooks in that hotter steam and liquid. That is the whole trick, and the rest of the design is about keeping it controlled."
+    ],
+    [
+     "heading",
+     "Why pressure raises the boiling point"
+    ],
+    [
+     "paragraph",
+     "Water boils when its vapour pressure matches the pressure around it. In an open pot, that surrounding pressure is the atmosphere, so boiling stays at 100°C at sea level. Seal the pot, and the steam adds its own pressure, so the water has to get hotter before it boils. Science ABC makes the opposite point for mountains: in Denver water boils at about 95°C, which is why cooking there takes longer."
+    ],
+    [
+     "heading",
+     "Typical pressures"
+    ],
+    [
+     "paragraph",
+     "Wikipedia says most cookers work at 0.8 to 1 bar above atmospheric pressure, which is 11.6 to 15 psi. Science ABC gives about 121°C (250°F) for a typical home cooker. A search of consumer sources suggests electric models often run at lower pressure, with boiling temperatures nearer 112 to 117°C; treat this as approximate and check your model's manual."
+    ],
+    [
+     "heading",
+     "The main parts"
+    ],
+    [
+     "list",
+     "**Vessel:** stainless steel or aluminium alloy, strong enough for the pressure\n**Lid:** locks onto the pot and carries the valves\n**Sealing ring:** a rubber gasket between pot and lid that stops steam leaking\n**Regulator valve:** lifts when pressure passes the set level and lets out steam, which makes the whistle\n**Safety valve:** a backup that opens if the main vent is blocked"
+    ],
+    [
+     "heading",
+     "How the valve keeps pressure steady"
+    ],
+    [
+     "paragraph",
+     "Wikipedia describes three generations of designs. First-generation cookers use a weighted \"jiggler\" valve that rises to release steam, with backups such as a low-melting alloy plug. Second-generation cookers use a spring-loaded valve, often hidden, which can support two or more pressure settings. Third-generation electric cookers hold a target pressure with a regulated heater, usually without venting steam during cooking."
+    ],
+    [
+     "heading",
+     "Safety features"
+    ],
+    [
+     "paragraph",
+     "Modern units commonly have two or three safety valves, and an interlock that stops the lid opening while pressure is above atmospheric, according to Wikipedia. The same source gives fill limits: about two thirds full for solid food, half for liquids and foods that foam, and one third for pulses. It notes that blocked vents and worn gaskets are common causes of problems. Always follow the maker's manual."
+    ],
+    [
+     "heading",
+     "A short history"
+    ],
+    [
+     "paragraph",
+     "French physicist Denis Papin invented a steam digester in 1679 to shorten cooking time and presented it to the Royal Society in 1681. Wikipedia lists Zeno Crook's aluminium cookers in Colorado in 1910 and Alfred Vischer's Flex-Seal Speed Cooker in 1938 as later steps toward the home cooker."
+    ],
+    [
+     "callout",
+     "Time saved comes from the higher temperature, not from the pressure itself. The pressure just lets the water get hotter."
+    ],
+    [
+     "heading",
+     "Why the whistle matters"
+    ],
+    [
+     "paragraph",
+     "The whistling sound is not decoration. It is steam leaving through the regulator valve, which shows that the pot has reached its working pressure and is venting the surplus. Science ABC advises listening for hissing or whistling; if there is none after the cooker has been on the heat for a while, the valve opening may be blocked. Cookers are built so that the heat source can keep running, because the valve takes away the extra steam and holds the pressure near the same level."
+    ],
+    [
+     "paragraph",
+     "Once the heat is off, the pressure falls as steam cools. Opening the lid too early would let the superheated contents flash into steam, which is why the interlock exists. Different recipes and models handle release in different ways, and the maker's manual is the place to find the right method for a given cooker."
+    ],
+    [
+     "heading",
+     "Altitude"
+    ],
+    [
+     "paragraph",
+     "Cooker pressure is measured above the air around it. Add the cooker's pressure to the local air pressure and you get the true total, so at altitude the maximum temperature is lower than at sea level. Cooking times for a given recipe may need to be longer in the mountains, as with ordinary boiling. This is general information, not a cooking or safety instruction."
+    ]
+   ],
+   "sources": [
+    {
+     "title": "Pressure cooking, Wikipedia",
+     "url": "https://en.wikipedia.org/wiki/Pressure_cooking"
+    },
+    {
+     "title": "How does a pressure cooker work?, Science ABC",
+     "url": "https://www.scienceabc.com/innovation/pressure-cooker-work.html"
+    }
+   ],
+   "checkedOn": "2026-11-02"
+  }
+ ]
+}
