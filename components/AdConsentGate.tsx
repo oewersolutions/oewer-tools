@@ -1,7 +1,6 @@
 "use client";
 
-import { useEffect, useState, type ReactNode } from "react";
-import { CONSENT_EVENT, readAdsConsent } from "../lib/analytics";
+import { useEffect, type ReactNode } from "react";
 import { adsScriptUrl } from "../lib/ads";
 
 type AdsWindow = Window & { adsbygoogle?: unknown[] & { requestNonPersonalizedAds?: number } };
@@ -9,26 +8,11 @@ type AdsWindow = Window & { adsbygoogle?: unknown[] & { requestNonPersonalizedAd
 let scriptRequested = false;
 
 /**
- * Shows an ad slot, and loads Google's ad script, only after the visitor has allowed ads. Until then (or if they
- * decline) it renders nothing at all, so there is no empty box. Ads are requested as non-personalised, and if
- * consent is withdrawn after ads have loaded the page reloads so none are left behind.
+ * Shows an ad slot and loads Google's ad script. Ads are not behind a visitor choice (the privacy choices panel is
+ * about analytics only), and they are requested as non-personalised.
  */
 export default function AdConsentGate({ publisherId, children }: { publisherId: string; children: ReactNode }) {
-  const [allowed, setAllowed] = useState(false);
-
   useEffect(() => {
-    const apply = () => {
-      const yes = readAdsConsent() === true;
-      if (!yes && scriptRequested) window.location.reload(); // withdrawn: remove what was loaded
-      setAllowed(yes);
-    };
-    apply();
-    window.addEventListener(CONSENT_EVENT, apply);
-    return () => window.removeEventListener(CONSENT_EVENT, apply);
-  }, []);
-
-  useEffect(() => {
-    if (!allowed) return;
     const w = window as AdsWindow;
     w.adsbygoogle = w.adsbygoogle ?? [];
     w.adsbygoogle.requestNonPersonalizedAds = 1;
@@ -47,7 +31,7 @@ export default function AdConsentGate({ publisherId, children }: { publisherId: 
     } catch {
       // a blocked or broken ad script never affects the page
     }
-  }, [allowed, publisherId]);
+  }, [publisherId]);
 
-  return allowed ? <>{children}</> : null;
+  return <>{children}</>;
 }

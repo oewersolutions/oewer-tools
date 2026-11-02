@@ -6,9 +6,9 @@ import Header from "../components/Header";
 import LeaveAdmin from "../components/LeaveAdmin";
 import Analytics from "../components/Analytics";
 import HydrationFlag from "../components/HydrationFlag";
-import { adsActive, isPublisherId } from "../lib/ads";
+import { isPublisherId } from "../lib/ads";
 import ConsentBanner from "../components/ConsentBanner";
-import { getAdConfig, getMeasurementId, getNavigation, getOptionalSetting, getSetting } from "../lib/content";
+import { getMeasurementId, getNavigation, getOptionalSetting, getSetting } from "../lib/content";
 import "./globals.css";
 
 // Fonts are downloaded at build time and served from this site, so visitors make no request to Google.
@@ -42,7 +42,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           {children}
         </main>
         <Footer />
-        <ConsentBanner measurementId={getMeasurementId()} adsActive={adsActive(getAdConfig())} privacyPath={getNavigation("footer_legal").find((l) => /privacy/i.test(l.label))?.url} />
+        <ConsentBanner measurementId={getMeasurementId()} privacyPath={getNavigation("footer_legal").find((l) => /privacy/i.test(l.label))?.url} />
       </body>
     </html>
   );

@@ -2,6 +2,7 @@ import { expect, test } from "./fixtures";
 import { builtPaths } from "./pages";
 
 // Mobile budgets under a throttled connection (about slow 4G) and a CPU 4x slower than this machine.
+// Sizes count this site's own files; Google's ad script (loaded for every visitor) changes without us and is covered by the timing and layout-shift budgets.
 // JS sizes are uncompressed (the test server does not gzip); GitHub Pages sends gzip, so real transfer is far smaller.
 const BUDGET = { lcpMs: 2500, cls: 0.1, jsKB: 700, totalKB: 900 };
 
@@ -29,7 +30,7 @@ for (const path of builtPaths()) {
     await page.waitForTimeout(1500);
     const m = await page.evaluate(() => {
       const w = window as unknown as { __m: { lcp: number; cls: number } };
-      const res = performance.getEntriesByType("resource") as PerformanceResourceTiming[];
+      const res = (performance.getEntriesByType("resource") as PerformanceResourceTiming[]).filter((e) => e.name.startsWith(location.origin));
       const kb = (list: PerformanceResourceTiming[]) => list.reduce((n, e) => n + e.encodedBodySize, 0) / 1024;
       return { ...w.__m, jsKB: kb(res.filter((e) => e.name.endsWith(".js"))), totalKB: kb(res) };
     });

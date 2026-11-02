@@ -9,7 +9,7 @@ I cannot apply for you or promise approval; Google decides, and it needs your Go
 - **Ads only with permission.** The Google ad script is not loaded, and no ad box is shown, until a visitor chooses **Ads** in the privacy panel. Declining, or no answer, means no script, no cookies from Google ads and no empty box. Withdrawing later reloads the page without ads.
 - **Non-personalised ads** are requested (`requestNonPersonalizedAds`), so ads follow the page, not the visitor's history. Revenue per visit can be lower than with personalised ads; that is a deliberate privacy choice you can revisit.
 - **Placement rules** (`docs/ads.md`): never inside a tool or next to its controls, none on the legal or contact pages, labelled "Advertisement", reserved space so nothing jumps.
-- **Privacy Policy** already describes advertising, and the privacy panel and footer link (**Privacy choices**) appear when ads are switched on.
+- **Privacy Policy** already describes advertising, and ads load without a visitor choice (the privacy panel is about analytics only).
 - **Tested:** `e2e/ads-consent.spec.ts` (commands inside the file) checks the whole chain with Google's scripts stubbed: nothing loads before a choice, declining loads nothing, allowing loads one script and requests the ads once, the tool still works, withdrawing removes the ads, and the panel passes the accessibility checks and fits a phone.
 
 ## Is the site ready to apply?

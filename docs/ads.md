@@ -27,7 +27,7 @@ These are the rows in the `advertisements` sheet (edit them in the admin under *
 
 All four: `ads_enabled` = true (Ads page → "Show ads on the site"), `adsense_publisher_id` set in `site_settings` (looks like `ca-pub-1234567890123456`), the placement **enabled**, and its **slot ID** (digits). The publisher ID and slot IDs are public values from your AdSense account, never a password or key.
 
-With all four set, a visitor sees an ad only after choosing **Ads** in the privacy choices panel; until then the slot is not shown at all (no empty box). See `docs/adsense.md`.
+With all four set, ads load for every visitor, as non-personalised ads, with no choice asked. See `docs/adsense.md`.
 
 ## Checking the layout
 

@@ -1,6 +1,5 @@
 import Link from "next/link";
-import { adsActive } from "../lib/ads";
-import { getAdConfig, getMeasurementId, getNavigation, getOptionalSetting, getSetting, getToolCategories } from "../lib/content";
+import { getMeasurementId, getNavigation, getOptionalSetting, getSetting, getToolCategories } from "../lib/content";
 import ConsentSettingsButton from "./ConsentSettingsButton";
 import { Container } from "./layout";
 
@@ -64,7 +63,7 @@ export default function Footer() {
               </li>
             ))}
             <li>
-              <ConsentSettingsButton measurementId={getMeasurementId()} adsActive={adsActive(getAdConfig())} />
+              <ConsentSettingsButton measurementId={getMeasurementId()} />
             </li>
           </Column>
         </div>

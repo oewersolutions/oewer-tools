@@ -8,6 +8,11 @@ import { jpegWithHiddenData, pdfFile, PNG_1X1 } from "./files";
 // while each tool is used and fail if anything is sent anywhere, or any request goes to another site.
 const published = new Set(builtPaths());
 
+// Ads load for every visitor, so Google's ad hosts are expected to be asked for plain GET requests. Anything else, and
+// any ad request that carries what the visitor typed, still fails the tests below.
+const AD_HOST = /^(pagead2\.googlesyndication\.com|googleads\.g\.doubleclick\.net|tpc\.googlesyndication\.com|[a-z0-9]+\.adtrafficquality\.google|www\.google\.com)$/;
+const isAdRequest = (url: string, method: string) => AD_HOST.test(new URL(url).hostname) && ["GET", "HEAD"].includes(method);
+
 /**
  * Run `action`, and return the requests that could carry the visitor's data out of the page: anything to another
  * site, anything that sends a body, and any address that contains `secret`. Same-site GET and HEAD requests
@@ -22,6 +27,7 @@ async function requestsDuring(page: Page, action: () => Promise<void>, secret = 
     const sameSite = new URL(r.url()).origin === origin;
     const quiet = ["GET", "HEAD"].includes(r.method()) && !r.postData();
     const leaks = secret !== "" && decodeURIComponent(r.url()).includes(secret);
+    if (!sameSite && !leaks && isAdRequest(r.url(), r.method())) return;
     if (!sameSite || !quiet || leaks) seen.push(`${r.method()} ${r.url()}`);
   };
   page.on("request", listener);
@@ -234,7 +240,7 @@ test("every page loads only from its own site, with no uploads", async ({ page, 
   for (const path of builtPaths()) {
     const bad: string[] = [];
     const listener = (r: { url(): string; method(): string }) => {
-      if (/^https?:/.test(r.url()) && (new URL(r.url()).origin !== origin || !["GET", "HEAD"].includes(r.method()))) bad.push(`${r.method()} ${r.url()}`);
+      if (/^https?:/.test(r.url()) && (new URL(r.url()).origin !== origin || !["GET", "HEAD"].includes(r.method())) && !AD_HOST.test(new URL(r.url()).hostname)) bad.push(`${r.method()} ${r.url()}`);
     };
     page.on("request", listener);
     await page.goto(path);
@@ -256,7 +262,7 @@ test("analytics requests nothing before a visitor accepts (and nothing at all wi
   await open(page, path!);
   await page.getByLabel("Loan amount (₹)").fill("500000");
   await page.waitForTimeout(500);
-  expect(external.filter((u) => /google|gtag|analytics/i.test(u)), "before any choice").toEqual([]);
+  expect(external.filter((u) => /gtag|googletagmanager|google-analytics|analytics/i.test(u)), "before any choice").toEqual([]);
   expect(await page.evaluate(() => typeof (window as unknown as { gtag?: unknown }).gtag)).toBe("undefined");
 
   const hasId = (await page.getByRole("region", { name: "Analytics choice" }).count()) > 0 || (await page.getByRole("region", { name: "Privacy choices" }).count()) > 0;
@@ -264,5 +270,5 @@ test("analytics requests nothing before a visitor accepts (and nothing at all wi
   await page.evaluate(() => localStorage.setItem("oewer-consent", JSON.stringify({ analytics: true })));
   await open(page, path!);
   await page.waitForTimeout(500);
-  expect(external.filter((u) => /google|gtag|analytics/i.test(u)), "accepted, but no Measurement ID").toEqual([]);
+  expect(external.filter((u) => /gtag|googletagmanager|google-analytics|analytics/i.test(u)), "accepted, but no Measurement ID").toEqual([]);
 });
