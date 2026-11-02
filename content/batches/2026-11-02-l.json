@@ -1,0 +1,166 @@
+{
+  "date": "2026-11-02",
+  "articles": [
+    {
+      "title": "How a Catalytic Converter Cleans Petrol Engine Exhaust",
+      "category": "Cars and Bikes",
+      "excerpt": "A catalytic converter uses a ceramic honeycomb coated with platinum, palladium and rhodium to turn three harmful exhaust gases into nitrogen, carbon dioxide and water.",
+      "tags": ["exhaust", "emissions", "catalyst"],
+      "blocks": [
+        ["paragraph", "A catalytic converter is a metal canister in a car's exhaust pipe that changes three harmful gases from a petrol engine into less harmful ones. Carbon monoxide becomes carbon dioxide, unburned fuel becomes carbon dioxide and water, and nitrogen oxides become plain nitrogen. It does this with a thin coating of precious metals that speeds up the chemistry without being used up."],
+        ["heading", "What is inside the canister"],
+        ["paragraph", "The core is a honeycomb block, usually made of cordierite, a heat-resistant ceramic. The honeycomb has thousands of tiny channels, so a great deal of surface area fits into a small space. Exhaust flows through the channels instead of around a solid lump."],
+        ["paragraph", "The channels are covered with a rough coating called a washcoat, often based on alumina. The washcoat spreads the catalyst thinly across the surface so more of it touches the gas. Some designs add cerium compounds to the washcoat, which can store oxygen and release it later. A fibre mat wraps the block to hold it in place and absorb vibration, and a steel shell encloses everything."],
+        ["paragraph", "The catalysts are metals from the platinum family. Platinum helps with both kinds of reaction described below. Rhodium mainly helps remove nitrogen oxides, and palladium mainly helps with oxidation. Which mix a maker uses varies, and U.S. converters commonly use some combination of the three, according to NAPA's technical guide."],
+        ["heading", "The three reactions"],
+        ["paragraph", "Engineers call the modern design a three-way converter because it handles three pollutants at once:"],
+        ["list", "Reduction of nitrogen oxides (NOx): the converter strips oxygen from the molecules, and the nitrogen atoms pair up to form harmless nitrogen gas.\nOxidation of carbon monoxide (CO): oxygen is added, giving carbon dioxide.\nOxidation of unburned hydrocarbons (fuel that escaped burning): oxygen is added, giving carbon dioxide and water."],
+        ["paragraph", "One reaction adds oxygen and another removes it, so the converter needs the exhaust to contain about the right amount. That is where the engine computer comes in."],
+        ["heading", "Why the air-fuel mixture matters"],
+        ["paragraph", "A three-way converter works best when the engine burns a mixture close to the chemically exact ratio of air to petrol, called stoichiometric. If the mixture runs lean, with extra air, the exhaust has too much oxygen and nitrogen oxides are removed less well. If it runs rich, with extra fuel, there is too little oxygen and carbon monoxide and hydrocarbons are removed less well."],
+        ["paragraph", "To hold the mixture near that point, the engine computer reads an oxygen sensor placed before the converter and adjusts the fuel supply many times a second. The mixture therefore swings slightly lean and slightly rich around the target. The oxygen-storing material in the washcoat smooths those swings: it soaks up oxygen during lean moments and gives it back during rich ones. A second sensor after the converter lets the computer check that the converter is working, and it can switch on the warning light if the two sensors' readings look too alike."],
+        ["heading", "Why a cold converter does little"],
+        ["paragraph", "The chemistry needs heat. Wikipedia's article on the device says a converter needs about 400 °C to work effectively, and NAPA gives an operating range of roughly 500 to 1,200 °F (about 260 to 650 °C), noting that reaching it can take several miles of normal driving. The two sources describe the threshold differently, but both agree the converter is much less effective right after a cold start."],
+        ["paragraph", "Because of this, makers mount converters close to the engine, where the exhaust is hottest. Some cars add a small extra converter nearby that warms up first. A few have used electrically heated converters; Alpina offered one in 1995. Wikipedia notes that much of a car's pollution is released in the first minutes of running, before the converter has warmed up."],
+        ["heading", "A short history"],
+        ["paragraph", "Eugene Houdry, a French engineer who had worked on catalytic refining of oil, moved to the United States in 1930 and later developed a converter for gasoline cars in the mid-1950s. Engelhard engineers built the first production converter in 1973, and most U.S. petrol cars from the 1975 model year had one, according to Wikipedia."],
+        ["paragraph", "Those early converters could not work with leaded petrol, because lead coats the catalyst and stops it working. Removing lead from fuel was therefore tied to the spread of converters. The three-way type came later: Wikipedia says Volvo first commercialised it on 1977 California-specification 240 cars, and that nearly all U.S. makers used it from the 1981 model year."],
+        ["heading", "What damages a converter"],
+        ["paragraph", "Both sources describe two main kinds of failure."],
+        ["list", "Poisoning: lead, sulfur, manganese, zinc and phosphorus can coat the catalyst. Zinc and phosphorus from engine oil additives are a common source, and silicon can come from coolant leaking into the engine.\nOverheating: misfires or a rich-running fuel system send unburned fuel into the converter, where it burns and can melt the honeycomb.\nPhysical damage: the ceramic is brittle, and hard impacts can crack it."],
+        ["paragraph", "A blocked or damaged converter can reduce power and fuel economy, and the usual first sign is a warning light with a stored fault code. NAPA says a working modern converter removes close to 90% of nitrogen oxides and carbon monoxide once it is hot."],
+        ["callout", "General information only: if a warning light comes on, a qualified mechanic can read the fault code and say what is wrong. Diesel engines use different exhaust treatment, which this article does not cover."]
+      ],
+      "sources": [
+        { "title": "Catalytic converter, Wikipedia", "url": "https://en.wikipedia.org/wiki/Catalytic_converter" },
+        { "title": "How a Catalytic Converter Works, NAPA Know How", "url": "https://knowhow.napaonline.com/how-a-catalytic-converter-works/" }
+      ],
+      "checkedOn": "2026-11-02"
+    },
+    {
+      "title": "How the Instrument Landing System Guides Planes Down",
+      "category": "Aviation",
+      "excerpt": "The Instrument Landing System sends two radio beams that tell a pilot whether the plane is left or right of the runway and above or below the glide path.",
+      "tags": ["ILS", "landing", "navigation"],
+      "blocks": [
+        ["paragraph", "The Instrument Landing System, or ILS, is a pair of radio beams that tell a pilot how far left or right of a runway the aircraft is, and how far above or below the correct descent path. The pilot, or the autopilot, keeps two needles centred and the aircraft arrives at the runway even when cloud or fog hides it. It is the most common precision approach aid at large airports."],
+        ["heading", "Two beams, two jobs"],
+        ["paragraph", "An ILS has two separate transmitters. The **localiser** gives sideways guidance. Its antennas normally stand beyond the far end of the runway and send a signal along the extended centreline. The **glideslope** gives up and down guidance. Its antennas stand beside the runway near the touchdown area."],
+        ["paragraph", "SKYbrary, the aviation safety knowledge base, explains that each beam is really two overlapping beams. For the localiser, one lies slightly to the right of the centreline and one slightly to the left; they cross exactly on the centreline. For the glideslope, one lies slightly above the wanted path and one slightly below. The aircraft's receiver compares the two and shows the result on a cockpit needle. Both needles centred means the plane is on the line."],
+        ["heading", "How the receiver tells left from right"],
+        ["paragraph", "Each beam carries two audio tones, 90 Hz and 150 Hz, mixed into the radio signal. Per Wikipedia's ILS article, the transmitter arranges things so that one tone is stronger on one side of the centreline and the other tone is stronger on the other side. Along the centreline they are equal."],
+        ["paragraph", "The receiver measures the difference in how strongly each tone modulates the carrier. This is called the difference in depth of modulation. When it is zero, the needle is centred. When one tone dominates, the needle moves toward the side the pilot should fly to. Because the receiver compares the two tones rather than measuring signal strength, the reading does not depend much on distance from the antenna."],
+        ["heading", "Frequencies and the glide path"],
+        ["paragraph", "Localisers use 40 channels between 108.10 and 111.95 MHz, and glideslopes use 40 paired channels in the 328.6 to 335.4 MHz range, according to Wikipedia. That article gives the glideslope band slightly differently in different places, so treat the exact edges as approximate. Each localiser channel is paired with a particular glideslope channel, so the pilot tunes one frequency and the receiver picks up both."],
+        ["paragraph", "The usual glide path is 3 degrees above horizontal, and SKYbrary says the glideslope is normally set to put the aircraft about 50 feet above the runway threshold. Airports can choose other angles because of terrain or noise. Wikipedia gives London City Airport, which uses 5.5 degrees, as an unusually steep example."],
+        ["heading", "Distance markers"],
+        ["paragraph", "Pilots also need to know how far along the approach they are. Traditionally, marker beacons did this: SKYbrary says the outer marker is typically about 5 nautical miles from touchdown and the middle marker about 1 nautical mile. Many airports now use distance measuring equipment (DME) instead, which gives a distance reading directly."],
+        ["heading", "Categories: how low can you go"],
+        ["paragraph", "Not every ILS allows the same low-visibility landings. A pilot flying an approach reaches a *decision height*: if the runway lights are not in sight by then, the pilot must go around. Higher categories allow lower decision heights and lower visibility. The figures below are the ICAO/EASA values as summarised on Wikipedia; the FAA's wording differs slightly."],
+        ["list", "Category I: decision height not below 200 feet, and runway visual range (how far lights can be seen along the runway) of at least 550 metres.\nCategory II: decision height between 100 and 200 feet, and runway visual range of at least 300 metres.\nCategory III: decision height below 100 feet or none, and runway visual range under 300 metres or none."],
+        ["paragraph", "SKYbrary adds that Category III is split further into IIIA, IIIB and IIIC, and that IIIC, a landing with no height or visibility limit, is not routinely available, mainly because of difficulty moving around the airport afterwards. Categories II and III need special aircraft equipment, trained crews and extra airfield installations, including a backup power supply. Wikipedia notes that Category III requires an automatic landing system or an approved head-up display, and that the ground equipment must shut down faster on a fault: a Category I localiser within 10 seconds, a Category III localiser within 2."],
+        ["heading", "Where it came from"],
+        ["paragraph", "Early blind-landing work appeared in the 1920s and 1930s. The Lorenz beam was first used in Berlin in 1932, and in 1929 Jimmy Doolittle flew a takeoff and landing guided entirely by instruments in the United States. Wikipedia reports that the first scheduled U.S. airliner landing using an ILS took place on 26 January 1938. After the Second World War, the new International Civil Aviation Organization chose ILS in 1947 as its first standard precision approach system, and the specification was published in 1950."],
+        ["callout", "An ILS is a ground-based system, so each runway end needs its own equipment. Satellite-based approaches exist too, but they are a different technology and not covered here."]
+      ],
+      "sources": [
+        { "title": "Instrument Landing System (ILS), SKYbrary Aviation Safety", "url": "https://skybrary.aero/articles/instrument-landing-system-ils" },
+        { "title": "Instrument landing system, Wikipedia", "url": "https://en.wikipedia.org/wiki/Instrument_landing_system" }
+      ],
+      "checkedOn": "2026-11-02"
+    },
+    {
+      "title": "How E-Paper Screens Show Text Without Using Power",
+      "category": "Electronics",
+      "excerpt": "E-paper screens move tiny charged black and white particles with electric fields, then hold the picture with no power, which is why e-readers last weeks.",
+      "tags": ["e-paper", "e-ink", "displays"],
+      "blocks": [
+        ["paragraph", "An e-paper screen shows an image by moving tiny charged particles with an electric field, and it keeps the image on screen without drawing power. Electricity is used only when the picture changes. That is why an e-reader can show a page for as long as you like at almost no energy cost, and why the screen looks like printed paper rather than a glowing panel."],
+        ["heading", "Reflected light instead of emitted light"],
+        ["paragraph", "A phone or laptop screen makes its own light. An e-paper screen does not. It reflects the light of the room, the way a printed page does. This is the main reason it is easy to read in sunlight, where a glowing screen can wash out."],
+        ["heading", "What is inside"],
+        ["paragraph", "The best-known type is the electrophoretic display, and E Ink is the company most associated with it. In E Ink's description, the ink is made of millions of microcapsules, each about as wide as a human hair. Each capsule holds black and white particles floating in a clear fluid. Wikipedia describes one common arrangement: white titanium dioxide particles with a slight electric charge, suspended in dark oil, with the capsules sitting in a layer between two sets of electrodes. The finished layer is about 80 micrometres thick according to Wikipedia, roughly twice the thickness of ordinary paper."],
+        ["paragraph", "E Ink's own page and Wikipedia disagree on small details, such as which colour of particle carries which charge. The principle is the same either way: the two kinds of particle carry opposite charges, so an electric field pushes them in opposite directions."],
+        ["heading", "How a pixel changes"],
+        ["list", "To make a pixel white, the electronics apply a field that draws the white particles to the top of the capsule, where they reflect light.\nTo make it dark, the field is reversed. The white particles go down and the dark side shows.\nTo make grey, a smaller or shorter push leaves the particles part-way.\nWhen the field is switched off, the particles stay where they are."],
+        ["paragraph", "That last point is called bistability. E Ink's page says only the pixels that change need updating, and Wikipedia says power is drawn mainly when the content changes. Static content such as a book page, a price label on a shop shelf or a sign costs almost nothing to keep on show."],
+        ["heading", "Why e-paper updates slowly"],
+        ["paragraph", "Moving physical particles through fluid takes time. E Ink says an update can take as little as 120 milliseconds for the whole display, but that continual updates reduce the power saving and current production modules do not support video-rate updates. That is why e-paper suits text, and why page turns can show a brief flash or faint trace of the previous image. That trace is often called ghosting, and many devices clear it by refreshing the whole screen from time to time."],
+        ["heading", "Adding colour"],
+        ["paragraph", "Wikipedia describes several routes to colour. One places a thin colour filter over a black-and-white layer. Another stacks coloured layers. E Ink describes its Spectra 3000 as using three kinds of particle in sealed cups called Microcups, and says its Spectra 6 and ACeP platforms use coloured particles directly, so they need no colour filter. E Ink shows the ACeP platform in 2016. Colour e-paper generally has fewer colours and slower updates than a normal screen, a trade-off the sources describe only loosely, so check a specific product's specifications."],
+        ["heading", "A short history"],
+        ["paragraph", "The first electronic paper came from Nick Sheridon at Xerox PARC in the 1970s. It was called Gyricon and used tiny two-coloured balls that rotated, which is not the same principle as electrophoresis. The microcapsule version was developed by students at MIT in the 1990s, and a Nature paper by Comiskey and co-authors appeared in 1998. E Ink was founded in 1997 to bring it to market. Sony's Librie, released in Japan in 2004, was the first e-book reader with an E Ink screen. Amazon began selling the Kindle in late 2007, according to Wikipedia."],
+        ["heading", "Where it is used"],
+        ["paragraph", "Wikipedia lists e-readers, shelf labels and signs as typical uses, all places where the image changes rarely. Wherever content must change quickly, like video or fast scrolling, an ordinary backlit screen is the better fit."],
+        ["callout", "Battery life depends on how often the screen refreshes and on other parts, such as wireless radios and lights. \"Weeks\" is typical talk for e-readers, but the sources used here do not give a figure, so check a product's own claims."]
+      ],
+      "sources": [
+        { "title": "How E Ink displays work, E Ink", "url": "https://www.eink.com/tech/detail/How_it_works" },
+        { "title": "Electronic paper, Wikipedia", "url": "https://en.wikipedia.org/wiki/Electronic_paper" }
+      ],
+      "checkedOn": "2026-11-02"
+    },
+    {
+      "title": "How NFC Works: Tap-to-Pay and Tags Explained",
+      "category": "Technology",
+      "excerpt": "Near-field communication swaps small amounts of data between two coils held a few centimetres apart, and powers passive tags with the reader's own radio field.",
+      "tags": ["NFC", "contactless", "wireless"],
+      "blocks": [
+        ["paragraph", "Near-field communication, or NFC, lets two devices exchange small pieces of data when they are almost touching. It is what runs a tap-to-pay payment, a transit card tap or a tap on a smart poster. It works by magnetic coupling between two small coils, so it needs no pairing, and a simple tag does not even need a battery."],
+        ["heading", "The basic physics"],
+        ["paragraph", "NFC uses a radio frequency of 13.56 MHz, in a band set aside for industrial, scientific and medical use. Each device has a loop antenna. When one device makes a changing magnetic field in its loop, the other loop picks it up, the way a transformer passes energy between two coils. Wikipedia calls this inductive coupling."],
+        ["paragraph", "This only works over a very short distance. The NFC Forum, the industry body, says the typical range is up to 2 cm and the certified range is 5 mm. Wikipedia gives about 4 cm as a maximum, and notes other figures in other parts of its article. The sources differ, but all describe a distance of centimetres, not metres."],
+        ["heading", "Why a tag needs no battery"],
+        ["paragraph", "The device that starts the exchange is the initiator, such as a phone. It produces the field. A passive target, such as a sticker, key fob or card, takes a little power from that field and uses it to send its reply. So a tag can sit unpowered for years and wake only when a reader comes near. Two phones swapping data are different: both must be powered, according to Wikipedia."],
+        ["heading", "Three ways devices use it"],
+        ["list", "Reader/writer: a phone reads or writes a tag, for example a sticker that opens a web page or logs a device into Wi-Fi.\nCard emulation: the phone acts like a contactless card, for payments or transit tickets.\nPeer-to-peer: two devices touch to share a small amount of data."],
+        ["paragraph", "The NFC Forum also lists wireless charging as a mode, delivering up to 1 W over up to 2 cm, enough for small items such as headsets or watches. Wikipedia contrasts this with the Qi standard, which handles up to 15 W over up to 4 cm."],
+        ["heading", "What the data looks like"],
+        ["paragraph", "Tags store information in a common format called NDEF, short for NFC Data Exchange Format. A record might hold a web address, a phone number or Wi-Fi details. When a phone reads it, the phone decides what to do: open a link, start a call and so on. The NFC Forum defines five tag types, which differ inside but look the same to the reading device."],
+        ["paragraph", "Speeds are modest. Wikipedia says ISO/IEC 18092 data rates are 106, 212 or 424 kilobits per second. The NFC Forum cites a broader span, from about 46 kbit/s to 1.7 Mbit/s. This is fine for a payment token or a web address, but it is far slower than Bluetooth for larger files. Wikipedia notes that NFC sets up in under 0.1 second without pairing, which is the real advantage."],
+        ["heading", "How payments are kept safe"],
+        ["paragraph", "The NFC Forum describes two ways a phone can act as a card. With a secure element, a separate secure chip or SIM handles the transaction. With host card emulation, an app on the phone handles it and the NFC controller passes commands along. The radio link itself has no built-in protection against eavesdropping, Wikipedia warns, and relay attacks, where a signal is forwarded between devices, are possible. It says applications should add their own cryptography on top, which payment systems do."],
+        ["heading", "Dates worth knowing"],
+        ["paragraph", "These dates come from Wikipedia. Philips and Sony agreed a technical specification on 25 March 2002. It was approved as an ISO/IEC standard on 8 December 2003. Nokia, Philips and Sony formed the NFC Forum on 18 March 2004. The Nokia C7, released in 2010, is named as the first NFC smartphone, and Apple Pay launched in the United States on 20 October 2014."],
+        ["callout", "General information only. How a specific phone, bank or transit system handles NFC depends on its own settings and terms."]
+      ],
+      "sources": [
+        { "title": "NFC Technology, NFC Forum", "url": "https://nfc-forum.org/learn/nfc-technology/" },
+        { "title": "Near-field communication, Wikipedia", "url": "https://en.wikipedia.org/wiki/Near-field_communication" }
+      ],
+      "checkedOn": "2026-11-02"
+    },
+    {
+      "title": "CAGR Explained: Formula, Example and Limits",
+      "category": "Money Guides",
+      "excerpt": "CAGR is the steady yearly growth rate that would take a starting value to an ending value. Here is the formula, a worked example and what the number hides.",
+      "tags": ["CAGR", "returns", "growth"],
+      "blocks": [
+        ["paragraph", "CAGR, short for compound annual growth rate, is the single steady yearly rate that would take a value from where it started to where it ended. It is a way to compare growth over different periods using one comparable number. It tells you nothing about the bumps along the way, which is the thing most worth remembering about it."],
+        ["heading", "The formula"],
+        ["paragraph", "Wikipedia gives the formula as the ending value divided by the starting value, raised to the power of one over the number of years, minus one."],
+        ["code", "CAGR = (ending value / starting value) ^ (1 / years) - 1"],
+        ["paragraph", "Multiply the result by 100 for a percentage. The same formula works for an investment, a company's sales, a population or a country's output. For quarterly or monthly data, Wikipedia says the exponent's top number changes to 4 or 12 and the bottom counts the number of those periods."],
+        ["heading", "A worked example"],
+        ["paragraph", "Suppose a holding grows from ₹1,00,000 to ₹1,80,000 over 4 years. This example is made up for illustration."],
+        ["list", "Divide the end by the start: 1,80,000 / 1,00,000 = 1.8.\nRaise it to 1/4 (the fourth root): 1.8 ^ 0.25 is about 1.1583.\nSubtract 1: 0.1583, or about 15.8% a year."],
+        ["paragraph", "You can check it by compounding: 1,00,000 grows to about 1,15,830 after year one, about 1,34,170 after year two, about 1,55,410 after year three and 1,80,000 after year four. The Motley Fool's explainer shows the same check with a $50 stock that grows to $150 in five years, which gives about 24.6%."],
+        ["heading", "CAGR is not the average of yearly returns"],
+        ["paragraph", "The simple average adds up each year's growth and divides by the number of years. The Motley Fool illustrates the gap: a $50 stock stays flat for four years and then gains 200% in year five. The average annual growth rate is 40%, but the CAGR is 24.6%, and only the second number describes what an investor in the stock ended up with."],
+        ["paragraph", "A second, made-up example shows how the average misleads. A holding rises 50% in year one, then falls 50% in year two. The simple average is 0%. But 100 becomes 150, then 75, which is a loss. The CAGR is the square root of 0.75, minus 1, or about −13.4% a year."],
+        ["heading", "What CAGR leaves out"],
+        ["list", "Volatility. The Motley Fool says a path of steep falls and rises can give the same CAGR as steady growth. The number reflects only the start and the end.\nCash going in or out. The formula assumes one starting amount. The Motley Fool notes that added contributions would overstate growth, and withdrawals would understate it. A regular monthly investment needs a different measure, such as the internal rate of return. Excel's IRR function and its RRI function are related tools.\nRisk. CAGR measures growth only, not how risky the path was.\nThe future. Wikipedia says forecasting by compounding a past CAGR forward carries error. It is a description of what happened, not a promise."],
+        ["heading", "Choosing the dates"],
+        ["paragraph", "The start and end dates change the answer a lot. A period that begins just after a fall and ends just after a rise will look strong; the reverse will look weak. When someone quotes a CAGR, check the start date, the end date and whether the figure includes dividends or other income."],
+        ["heading", "Where you see it"],
+        ["paragraph", "Wikipedia lists uses including mean returns of investment funds, comparing stock, bond and savings returns, business measures such as sales or market share, and economic growth like GDP. It is also common in market reports that say a market will grow at some CAGR to a future year; those figures are forecasts by whoever wrote the report."],
+        ["callout", "General information only, not financial advice. CAGR is a calculation on past or assumed numbers and does not tell you what any investment will do next."]
+      ],
+      "sources": [
+        { "title": "Compound annual growth rate, Wikipedia", "url": "https://en.wikipedia.org/wiki/Compound_annual_growth_rate" },
+        { "title": "Compound Annual Growth Rate (CAGR), The Motley Fool", "url": "https://www.fool.com/terms/c/compound-annual-growth-rate" }
+      ],
+      "checkedOn": "2026-11-02"
+    }
+  ]
+}
