@@ -1,0 +1,690 @@
+{
+ "puzzles": [
+  {
+   "game": "four-groups",
+   "date": "2026-11-01",
+   "title": "",
+   "data": {
+    "groups": [
+     {
+      "title": "Fruits",
+      "level": 1,
+      "words": [
+       "MANGO",
+       "GUAVA",
+       "PAPAYA",
+       "LYCHEE"
+      ]
+     },
+     {
+      "title": "Cricket fielding positions",
+      "level": 2,
+      "words": [
+       "SLIP",
+       "GULLY",
+       "POINT",
+       "COVER"
+      ]
+     },
+     {
+      "title": "___ fish",
+      "level": 3,
+      "words": [
+       "GOLD",
+       "CAT",
+       "SWORD",
+       "JELLY"
+      ]
+     },
+     {
+      "title": "Start with a body part",
+      "level": 4,
+      "words": [
+       "ARMOUR",
+       "LEGEND",
+       "SHINGLE",
+       "CHINA"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "game": "four-groups",
+   "date": "2026-11-02",
+   "title": "",
+   "data": {
+    "groups": [
+     {
+      "title": "Planets",
+      "level": 1,
+      "words": [
+       "VENUS",
+       "SATURN",
+       "MERCURY",
+       "JUPITER"
+      ]
+     },
+     {
+      "title": "Chocolate bars",
+      "level": 2,
+      "words": [
+       "MARS",
+       "TWIX",
+       "SNICKERS",
+       "BOUNTY"
+      ]
+     },
+     {
+      "title": "Things with keys",
+      "level": 3,
+      "words": [
+       "PIANO",
+       "KEYBOARD",
+       "MAP",
+       "TYPEWRITER"
+      ]
+     },
+     {
+      "title": "Add S in front for a new word",
+      "level": 4,
+      "words": [
+       "MILE",
+       "TRAIN",
+       "LOW",
+       "NAIL"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "game": "four-groups",
+   "date": "2026-11-03",
+   "title": "",
+   "data": {
+    "groups": [
+     {
+      "title": "Kinds of tea",
+      "level": 1,
+      "words": [
+       "CHAI",
+       "OOLONG",
+       "ASSAM",
+       "MATCHA"
+      ]
+     },
+     {
+      "title": "Famous bridges",
+      "level": 2,
+      "words": [
+       "HOWRAH",
+       "RIALTO",
+       "TOWER",
+       "PAMBAN"
+      ]
+     },
+     {
+      "title": "Chess pieces",
+      "level": 3,
+      "words": [
+       "ROOK",
+       "BISHOP",
+       "KNIGHT",
+       "PAWN"
+      ]
+     },
+     {
+      "title": "Verbs that are also birds",
+      "level": 4,
+      "words": [
+       "DUCK",
+       "SWALLOW",
+       "HAWK",
+       "CROW"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "game": "four-groups",
+   "date": "2026-11-04",
+   "title": "",
+   "data": {
+    "groups": [
+     {
+      "title": "Months that are also names",
+      "level": 1,
+      "words": [
+       "APRIL",
+       "MAY",
+       "JUNE",
+       "AUGUST"
+      ]
+     },
+     {
+      "title": "Mountain ranges",
+      "level": 2,
+      "words": [
+       "ALPS",
+       "ANDES",
+       "ROCKIES",
+       "HIMALAYAS"
+      ]
+     },
+     {
+      "title": "Types of cloud",
+      "level": 3,
+      "words": [
+       "CIRRUS",
+       "CUMULUS",
+       "STRATUS",
+       "NIMBUS"
+      ]
+     },
+     {
+      "title": "Start with an animal",
+      "level": 4,
+      "words": [
+       "CATALOG",
+       "DOGMA",
+       "BATTERY",
+       "PIGMENT"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "game": "four-groups",
+   "date": "2026-11-05",
+   "title": "",
+   "data": {
+    "groups": [
+     {
+      "title": "Indian rivers",
+      "level": 1,
+      "words": [
+       "GANGA",
+       "YAMUNA",
+       "KAVERI",
+       "GODAVARI"
+      ]
+     },
+     {
+      "title": "Spices",
+      "level": 2,
+      "words": [
+       "CUMIN",
+       "CLOVE",
+       "NUTMEG",
+       "TURMERIC"
+      ]
+     },
+     {
+      "title": "Currencies",
+      "level": 3,
+      "words": [
+       "RUPEE",
+       "YEN",
+       "DOLLAR",
+       "EURO"
+      ]
+     },
+     {
+      "title": "Sound like letters",
+      "level": 4,
+      "words": [
+       "SEA",
+       "EYE",
+       "TEA",
+       "WHY"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "game": "four-groups",
+   "date": "2026-11-06",
+   "title": "",
+   "data": {
+    "groups": [
+     {
+      "title": "Kitchen utensils",
+      "level": 1,
+      "words": [
+       "LADLE",
+       "WHISK",
+       "SPATULA",
+       "TONGS"
+      ]
+     },
+     {
+      "title": "Parts of a shoe",
+      "level": 2,
+      "words": [
+       "SOLE",
+       "HEEL",
+       "LACE",
+       "TONGUE"
+      ]
+     },
+     {
+      "title": "Cricket terms",
+      "level": 3,
+      "words": [
+       "DUCK",
+       "YORKER",
+       "BOUNCER",
+       "GOOGLY"
+      ]
+     },
+     {
+      "title": "Palindromes",
+      "level": 4,
+      "words": [
+       "LEVEL",
+       "RADAR",
+       "CIVIC",
+       "KAYAK"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "game": "four-groups",
+   "date": "2026-11-07",
+   "title": "",
+   "data": {
+    "groups": [
+     {
+      "title": "Metals",
+      "level": 1,
+      "words": [
+       "GOLD",
+       "SILVER",
+       "COPPER",
+       "IRON"
+      ]
+     },
+     {
+      "title": "Gemstones",
+      "level": 2,
+      "words": [
+       "RUBY",
+       "EMERALD",
+       "OPAL",
+       "TOPAZ"
+      ]
+     },
+     {
+      "title": "Shades of red",
+      "level": 3,
+      "words": [
+       "CRIMSON",
+       "SCARLET",
+       "MAROON",
+       "CERISE"
+      ]
+     },
+     {
+      "title": "___bell",
+      "level": 4,
+      "words": [
+       "DUMB",
+       "BLUE",
+       "DOOR",
+       "COW"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "game": "four-groups",
+   "date": "2026-11-08",
+   "title": "",
+   "data": {
+    "groups": [
+     {
+      "title": "Tiffin items",
+      "level": 1,
+      "words": [
+       "IDLI",
+       "DOSA",
+       "VADA",
+       "UPMA"
+      ]
+     },
+     {
+      "title": "Festivals",
+      "level": 2,
+      "words": [
+       "DIWALI",
+       "HOLI",
+       "EID",
+       "ONAM"
+      ]
+     },
+     {
+      "title": "Musical instruments",
+      "level": 3,
+      "words": [
+       "SITAR",
+       "TABLA",
+       "FLUTE",
+       "VEENA"
+      ]
+     },
+     {
+      "title": "Sound like numbers",
+      "level": 4,
+      "words": [
+       "WON",
+       "TOO",
+       "FOR",
+       "ATE"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "game": "four-groups",
+   "date": "2026-11-09",
+   "title": "",
+   "data": {
+    "groups": [
+     {
+      "title": "Colours named after fruit",
+      "level": 1,
+      "words": [
+       "ORANGE",
+       "LIME",
+       "PEACH",
+       "PLUM"
+      ]
+     },
+     {
+      "title": "Famous detectives",
+      "level": 2,
+      "words": [
+       "HOLMES",
+       "POIROT",
+       "MARPLE",
+       "FELUDA"
+      ]
+     },
+     {
+      "title": "Dances",
+      "level": 3,
+      "words": [
+       "BHANGRA",
+       "GARBA",
+       "SALSA",
+       "TANGO"
+      ]
+     },
+     {
+      "title": "Spelling alphabet words",
+      "level": 4,
+      "words": [
+       "ALPHA",
+       "BRAVO",
+       "DELTA",
+       "ECHO"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "game": "four-groups",
+   "date": "2026-11-10",
+   "title": "",
+   "data": {
+    "groups": [
+     {
+      "title": "Metro cities",
+      "level": 1,
+      "words": [
+       "DELHI",
+       "MUMBAI",
+       "CHENNAI",
+       "KOLKATA"
+      ]
+     },
+     {
+      "title": "In a classroom",
+      "level": 2,
+      "words": [
+       "CHALK",
+       "DUSTER",
+       "BENCH",
+       "REGISTER"
+      ]
+     },
+     {
+      "title": "Board games",
+      "level": 3,
+      "words": [
+       "LUDO",
+       "CHESS",
+       "CARROM",
+       "SCRABBLE"
+      ]
+     },
+     {
+      "title": "Spell a new word backwards",
+      "level": 4,
+      "words": [
+       "STOP",
+       "LIVE",
+       "DRAW",
+       "KEEP"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "game": "four-groups",
+   "date": "2026-11-11",
+   "title": "",
+   "data": {
+    "groups": [
+     {
+      "title": "Vegetables",
+      "level": 1,
+      "words": [
+       "POTATO",
+       "ONION",
+       "BRINJAL",
+       "CARROT"
+      ]
+     },
+     {
+      "title": "Trees",
+      "level": 2,
+      "words": [
+       "BANYAN",
+       "NEEM",
+       "TEAK",
+       "PEEPAL"
+      ]
+     },
+     {
+      "title": "Parts of a book",
+      "level": 3,
+      "words": [
+       "SPINE",
+       "COVER",
+       "INDEX",
+       "CHAPTER"
+      ]
+     },
+     {
+      "title": "Add ER for a job",
+      "level": 4,
+      "words": [
+       "BAKE",
+       "TEACH",
+       "SING",
+       "PAINT"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "game": "four-groups",
+   "date": "2026-11-12",
+   "title": "",
+   "data": {
+    "groups": [
+     {
+      "title": "Greetings",
+      "level": 1,
+      "words": [
+       "HELLO",
+       "NAMASTE",
+       "SALAAM",
+       "HOLA"
+      ]
+     },
+     {
+      "title": "Seasons and weather",
+      "level": 2,
+      "words": [
+       "MONSOON",
+       "SUMMER",
+       "WINTER",
+       "AUTUMN"
+      ]
+     },
+     {
+      "title": "Shapes",
+      "level": 3,
+      "words": [
+       "CIRCLE",
+       "SQUARE",
+       "TRIANGLE",
+       "OVAL"
+      ]
+     },
+     {
+      "title": "Silent first letter",
+      "level": 4,
+      "words": [
+       "KNIFE",
+       "GNOME",
+       "WRIST",
+       "PSALM"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "game": "four-groups",
+   "date": "2026-11-13",
+   "title": "",
+   "data": {
+    "groups": [
+     {
+      "title": "Parts of a car",
+      "level": 1,
+      "words": [
+       "BONNET",
+       "TYRE",
+       "WIPER",
+       "HORN"
+      ]
+     },
+     {
+      "title": "Dog breeds",
+      "level": 2,
+      "words": [
+       "POODLE",
+       "BEAGLE",
+       "PUG",
+       "LABRADOR"
+      ]
+     },
+     {
+      "title": "Computer words",
+      "level": 3,
+      "words": [
+       "MOUSE",
+       "CURSOR",
+       "BROWSER",
+       "WINDOW"
+      ]
+     },
+     {
+      "title": "Add B in front for a new word",
+      "level": 4,
+      "words": [
+       "LAZE",
+       "RING",
+       "LOCK",
+       "ROOM"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "game": "four-groups",
+   "date": "2026-11-14",
+   "title": "",
+   "data": {
+    "groups": [
+     {
+      "title": "Sweets",
+      "level": 1,
+      "words": [
+       "LADDU",
+       "JALEBI",
+       "BARFI",
+       "RASGULLA"
+      ]
+     },
+     {
+      "title": "Zodiac signs",
+      "level": 2,
+      "words": [
+       "ARIES",
+       "LEO",
+       "VIRGO",
+       "LIBRA"
+      ]
+     },
+     {
+      "title": "Breads",
+      "level": 3,
+      "words": [
+       "NAAN",
+       "ROTI",
+       "PARATHA",
+       "PURI"
+      ]
+     },
+     {
+      "title": "Start with a colour",
+      "level": 4,
+      "words": [
+       "REDEEM",
+       "TANGLE",
+       "GOLDEN",
+       "PINKIE"
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}

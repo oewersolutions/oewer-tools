@@ -3,9 +3,9 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { prevDay, pickPuzzle, puzzleNumber } from "../../lib/games/puzzles";
 import type { Puzzle, WordGuessData } from "../../lib/games/types";
+import { BASE_PATH, read, today, write } from "./shared";
 import { EMPTY_STREAK, keyStates, MAX_GUESSES, outcome, recordResult, scoreGuess, shareText, type LetterState, type Streak } from "../../lib/games/word-guess";
 
-const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const ROWS = ["QWERTYUIOP", "ASDFGHJKL", "ZXCVBNM"];
 
 // A mark as well as a colour, so the result never depends on telling colours apart.
@@ -18,27 +18,6 @@ const TILE: Record<LetterState | "empty" | "typing", string> = {
 };
 const MARK: Record<LetterState, string> = { correct: "✓", present: "•", absent: "" };
 const WORD: Record<LetterState, string> = { correct: "in the right place", present: "in the word, in another place", absent: "not in the word" };
-
-const today = (): string => {
-  const d = new Date();
-  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
-};
-
-const read = <T,>(key: string, fallback: T): T => {
-  try {
-    const text = localStorage.getItem(key);
-    return text ? (JSON.parse(text) as T) : fallback;
-  } catch {
-    return fallback; // storage blocked: the game still works, it just does not remember
-  }
-};
-const write = (key: string, value: unknown) => {
-  try {
-    localStorage.setItem(key, JSON.stringify(value));
-  } catch {
-    // not remembered
-  }
-};
 
 /** The five-letter guessing game. Everything happens in the page: the word list is fetched from this site once. */
 export default function WordGuess({ name, slug, puzzles }: { name: string; slug: string; puzzles: Puzzle<WordGuessData>[] }) {

@@ -1,6 +1,6 @@
 # Games section: plan (Phase 10)
 
-**Status (2 November 2026): the foundation and the first game are built.** Done: schema 1.1.0 (the `games` and `game_puzzles` sheets, with a migration that adds sheets), the Games menu link, the `/games/` hub, the game page template, ad placements (`below_game` and the hub's `list_bottom`), search and sitemap entries, and **Word Guess** with 21 daily puzzles (1 to 21 November 2026). `npm run puzzles:add` adds puzzles from a batch file. Not built yet: Four Groups, Hive Words, Mini Crossword, Word Trail, the daily puzzle task and the admin gap warning. The other four games exist in the workbook as drafts, so they are not shown.
+**Status (2 November 2026): the foundation and the first game are built.** Done: schema 1.1.0 (the `games` and `game_puzzles` sheets, with a migration that adds sheets), the Games menu link, the `/games/` hub, the game page template, ad placements (`below_game` and the hub's `list_bottom`), search and sitemap entries, **Word Guess** with 21 daily puzzles (1 to 21 November 2026) and **Four Groups** with 14 (1 to 14 November 2026). `npm run puzzles:add` adds puzzles from a batch file. Not built yet: Hive Words, Mini Crossword, Word Trail, the daily puzzle task and the admin gap warning. The other three games exist in the workbook as drafts, so they are not shown.
 
 A "Games" menu and a hub page of daily puzzles, in the style of the New York Times games page (a grid of game cards, each with a short line and a Play button). Everything is configured in the workbook, the same as tools and articles, and each game gets a new puzzle every day. Ads show on the games pages like the rest of the site.
 
@@ -61,7 +61,7 @@ Two new sheets, plus a Games link in the header menu:
 1. Plan (this document).
 2. Foundation: schema 1.1.0 and the migration, the two sheets, the Games menu link, the hub page, tests and the admin lists. **Done.**
 3. Word Guess, with its daily puzzles and the generator checks. **Done** (the daily task that writes new puzzles is step 8).
-4. Four Groups.
+4. Four Groups. **Done.**
 5. Hive Words.
 6. Mini Crossword.
 7. Word Trail.

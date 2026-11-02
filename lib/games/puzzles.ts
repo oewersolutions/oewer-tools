@@ -54,6 +54,27 @@ export function checkPuzzleData(type: GameType, text: string, words?: ReadonlySe
       if (words && !words.has(answer)) return `the answer ${answer} is not in the word list, so players could not guess it`;
       return null;
     }
+    case "four_groups": {
+      const groups = (data as { groups?: unknown }).groups;
+      if (!Array.isArray(groups) || groups.length !== 4) return "needs four groups, like {\"groups\":[{\"title\":\"Fruits\",\"level\":1,\"words\":[\"MANGO\",...]}]}";
+      const seenWords = new Set<string>();
+      const levels = new Set<number>();
+      for (const [i, g] of groups.entries()) {
+        const group = g as { title?: unknown; level?: unknown; words?: unknown };
+        const name = `group ${i + 1}`;
+        if (typeof group.title !== "string" || group.title.trim() === "" || group.title.length > 60) return `${name} needs a title of up to 60 characters`;
+        if (!Number.isInteger(group.level) || (group.level as number) < 1 || (group.level as number) > 4) return `${name} needs a level from 1 to 4`;
+        levels.add(group.level as number);
+        if (!Array.isArray(group.words) || group.words.length !== 4) return `${name} needs exactly four words`;
+        for (const w of group.words) {
+          if (typeof w !== "string" || !/^[A-Z][A-Z' -]{0,13}$/.test(w)) return `${name} has a word that is not in capital letters, up to 14 characters (${JSON.stringify(w)})`;
+          if (seenWords.has(w)) return `the word ${w} is used twice`;
+          seenWords.add(w);
+        }
+      }
+      if (levels.size !== 4) return "each group needs a different level, 1 to 4";
+      return null;
+    }
     default:
       return `puzzles for '${type}' games are not supported yet`;
   }

@@ -86,7 +86,7 @@ describe("checkPuzzleData", () => {
     expect(checkPuzzleData("word_guess", "not json")).toMatch(/valid JSON/);
     expect(checkPuzzleData("word_guess", '{"answer":"crane"}')).toMatch(/five capital letters/);
     expect(checkPuzzleData("word_guess", '{"answer":"ZZZZZ"}', words)).toMatch(/not in the word list/);
-    expect(checkPuzzleData("four_groups", "{}")).toMatch(/not supported yet/);
+    expect(checkPuzzleData("word_trail", "{}")).toMatch(/not supported yet/);
   });
 });
 
@@ -112,9 +112,66 @@ describe("workbook rules for games", () => {
   });
   it("does not let a game that is not built be published, but allows it as a draft", () => {
     const data = base();
-    data.games!.push(row(3, { ...data.games![0]!.values, game_id: "GAME0002", slug: "four-groups", game_type: "four_groups", status: "published" }));
+    data.games!.push(row(3, { ...data.games![0]!.values, game_id: "GAME0002", slug: "word-trail", game_type: "word_trail", status: "published" }));
     expect(gameIssues(data).some((i) => i.code === "unknown_game_type")).toBe(true);
     data.games![1]!.values.status = "draft";
     expect(gameIssues(data)).toEqual([]);
+  });
+});
+
+import { checkGuess, isRepeat, replay, shareText as groupsShare, shuffled, startingOrder } from "../lib/games/four-groups";
+import type { FourGroupsData } from "../lib/games/types";
+
+const groups: FourGroupsData = {
+  groups: [
+    { title: "Fruits", level: 1, words: ["MANGO", "GUAVA", "PAPAYA", "LYCHEE"] },
+    { title: "Fielding", level: 2, words: ["SLIP", "GULLY", "POINT", "COVER"] },
+    { title: "___ fish", level: 3, words: ["GOLD", "CAT", "SWORD", "JELLY"] },
+    { title: "Body parts first", level: 4, words: ["ARMOUR", "LEGEND", "SHINGLE", "CHINA"] },
+  ],
+};
+
+describe("Four Groups", () => {
+  it("tells a group, one away and a wrong guess apart", () => {
+    expect(checkGuess(groups, ["LYCHEE", "MANGO", "GUAVA", "PAPAYA"])).toEqual({ kind: "correct", group: 0 });
+    expect(checkGuess(groups, ["MANGO", "GUAVA", "PAPAYA", "SLIP"])).toEqual({ kind: "one_away" });
+    expect(checkGuess(groups, ["MANGO", "GUAVA", "SLIP", "GOLD"])).toEqual({ kind: "wrong" });
+  });
+  it("works out the state from the guesses alone", () => {
+    const fruit = ["MANGO", "GUAVA", "PAPAYA", "LYCHEE"];
+    const wrong = ["MANGO", "SLIP", "GOLD", "CHINA"];
+    expect(replay(groups, [])).toEqual({ solved: [], mistakes: 0, state: "playing" });
+    expect(replay(groups, [fruit, wrong])).toEqual({ solved: [0], mistakes: 1, state: "playing" });
+    expect(replay(groups, [wrong, ["MANGO", "SLIP", "GOLD", "ARMOUR"], ["GUAVA", "SLIP", "CAT", "CHINA"], ["PAPAYA", "GULLY", "CAT", "LEGEND"]]).state).toBe("lost");
+    const all = groups.groups.map((g) => g.words);
+    expect(replay(groups, all)).toMatchObject({ solved: [0, 1, 2, 3], mistakes: 0, state: "won" });
+  });
+  it("spots a repeated guess whatever the order", () => {
+    expect(isRepeat([["A", "B", "C", "D"]], ["D", "C", "B", "A"])).toBe(true);
+    expect(isRepeat([["A", "B", "C", "D"]], ["A", "B", "C", "E"])).toBe(false);
+  });
+  it("starts in the same order every time for a puzzle, with every word once", () => {
+    const a = startingOrder(groups, "2026-11-01");
+    expect(startingOrder(groups, "2026-11-01")).toEqual(a);
+    expect(startingOrder(groups, "2026-11-02")).not.toEqual(a);
+    expect([...a].sort()).toEqual(groups.groups.flatMap((g) => g.words).sort());
+    expect([...shuffled(a)].sort()).toEqual([...a].sort());
+  });
+  it("shares colours and not the words", () => {
+    const text = groupsShare("Four Groups", 1, groups, [["MANGO", "GUAVA", "PAPAYA", "SLIP"], ["MANGO", "GUAVA", "PAPAYA", "LYCHEE"]]);
+    expect(text).toBe("Four Groups No. 1, not solved\n\n🟨🟨🟨🟩\n🟨🟨🟨🟨");
+  });
+  it("checks the puzzle data", () => {
+    expect(checkPuzzleData("four_groups", JSON.stringify(groups))).toBeNull();
+    expect(checkPuzzleData("four_groups", JSON.stringify({ groups: groups.groups.slice(0, 3) }))).toMatch(/four groups/);
+    const dup = structuredClone(groups);
+    dup.groups[1]!.words[0] = "MANGO";
+    expect(checkPuzzleData("four_groups", JSON.stringify(dup))).toMatch(/MANGO is used twice|used twice/);
+    const sameLevel = structuredClone(groups);
+    sameLevel.groups[1]!.level = 1;
+    expect(checkPuzzleData("four_groups", JSON.stringify(sameLevel))).toMatch(/different level/);
+    const lower = structuredClone(groups);
+    lower.groups[0]!.words[0] = "mango";
+    expect(checkPuzzleData("four_groups", JSON.stringify(lower))).toMatch(/capital letters/);
   });
 });

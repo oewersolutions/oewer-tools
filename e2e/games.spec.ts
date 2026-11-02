@@ -10,7 +10,8 @@ test("the Games menu leads to a hub that lists the playable games", async ({ pag
   await expect(page.getByRole("heading", { level: 1, name: "Daily word games" })).toBeVisible();
   const card = page.getByRole("link", { name: /Word Guess/ }).first();
   await expect(card).toHaveAttribute("href", /\/games\/word-guess\/$/);
-  await expect(page.getByRole("link", { name: /Four Groups/ })).toHaveCount(0); // drafts are not shown
+  await expect(page.getByRole("link", { name: /Four Groups/ }).first()).toHaveAttribute("href", /\/games\/four-groups\/$/);
+  await expect(page.getByRole("link", { name: /Word Trail/ })).toHaveCount(0); // drafts are not shown
 });
 
 test("Word Guess: rejects a non-word, marks letters, wins, and remembers the result", async ({ page }) => {
@@ -63,4 +64,60 @@ test("Word Guess makes no request to any other site while it is played", async (
   await page.keyboard.press("Enter");
   await expect(page.getByText("Solved in 1 of 6")).toBeVisible();
   expect(other).toEqual([]);
+});
+
+// Four Groups: the first puzzle (1 November 2026) is fruits, fielding positions, ___ fish and words that start with a body part.
+const FRUITS = ["MANGO", "GUAVA", "PAPAYA", "LYCHEE"];
+const FIELDING = ["SLIP", "GULLY", "POINT", "COVER"];
+const FISH = ["GOLD", "CAT", "SWORD", "JELLY"];
+const BODY = ["ARMOUR", "LEGEND", "SHINGLE", "CHINA"];
+
+async function pick(page: import("@playwright/test").Page, words: string[]) {
+  for (const w of words) await page.getByRole("button", { name: w, exact: true }).click();
+}
+
+test("Four Groups: says one away, finds groups, and finishes with no mistakes", async ({ page }) => {
+  await page.clock.install({ time: DAY });
+  await page.goto("/games/four-groups/");
+  await expect(page.getByText("No. 1 · 2026-11-01")).toBeVisible();
+  await expect(page.getByRole("button", { name: "Submit" })).toBeDisabled();
+
+  await pick(page, ["MANGO", "GUAVA", "PAPAYA", "SLIP"]);
+  await page.getByRole("button", { name: "Submit" }).click();
+  await expect(page.getByRole("status")).toHaveText("One away.");
+  await expect(page.getByText("Mistakes left: 3 of 4")).toBeVisible();
+  await expect(page.getByRole("button", { name: "Deselect all" })).toBeDisabled(); // a guess clears the selection
+
+  await pick(page, FRUITS);
+  await page.getByRole("button", { name: "Submit" }).click();
+  await expect(page.getByRole("status")).toHaveText("Found: Fruits.");
+  await expect(page.locator('[data-level="1"]')).toContainText("Easiest");
+  await expect(page.getByRole("button", { name: "MANGO", exact: true })).toHaveCount(0);
+
+  for (const words of [FIELDING, FISH, BODY]) {
+    await pick(page, words);
+    await page.getByRole("button", { name: "Submit" }).click();
+  }
+  await expect(page.getByText("Solved with 1 mistake")).toBeVisible();
+  await expect(page.getByRole("button", { name: "Copy my result" })).toBeVisible();
+  await page.reload();
+  await expect(page.getByText("Solved with 1 mistake")).toBeVisible(); // saved in this browser
+});
+
+test("Four Groups: four mistakes end the game and show the groups", async ({ page }) => {
+  await page.clock.install({ time: DAY });
+  await page.goto("/games/four-groups/");
+  const wrong = [
+    ["MANGO", "SLIP", "GOLD", "ARMOUR"],
+    ["GUAVA", "GULLY", "CAT", "LEGEND"],
+    ["PAPAYA", "POINT", "SWORD", "SHINGLE"],
+    ["LYCHEE", "COVER", "JELLY", "CHINA"],
+  ];
+  for (const words of wrong) {
+    await pick(page, words);
+    await page.getByRole("button", { name: "Submit" }).click();
+  }
+  await expect(page.getByText("Better luck tomorrow")).toBeVisible();
+  await expect(page.getByText("Fruits", { exact: true })).toBeVisible();
+  await expect(page.getByText("Trickiest · not found")).toBeVisible();
 });
