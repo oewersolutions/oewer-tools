@@ -1,0 +1,150 @@
+{
+  "date": "2026-11-02",
+  "articles": [
+    {
+      "title": "How a Barcode Scanner Reads the Bars on a Product",
+      "category": "How It Works",
+      "excerpt": "A barcode scanner does not read numbers. It measures how much light bounces back from bars and gaps, then turns the widths into digits. Here is the whole chain, step by step.",
+      "tags": ["barcode", "scanner", "UPC", "retail"],
+      "blocks": [
+        ["paragraph", "A barcode scanner reads a pattern of light and dark, not the digits printed underneath. Dark bars send back little light and pale gaps send back a lot, so a sensor sees a stream of bright and dim moments. Electronics measure how long each one lasts, and the widths are translated into the digits of a product code. This article follows that chain from the red beam to the checkout screen."],
+        ["heading", "Light in, light out"],
+        ["paragraph", "The common handheld or counter-top laser scanner contains a laser diode. According to the scanner maker Scanbot, the diode usually emits red light at a wavelength of about 650 nanometres. A mirror then sweeps the beam back and forth across the code so that it draws a thin line over the bars."],
+        ["paragraph", "The surface of the label does the encoding work. In the words of the same source, black lines absorb more light and reflect less than white ones. A light sensor inside the scanner, called a photodiode, turns the amount of returning light into an electrical signal. Bright gaps produce a high signal and dark bars produce a low one."],
+        ["paragraph", "Wikipedia's article on barcode readers adds detail on the optics. In a laser scanner the beam often lands on a rotating wheel of mirror facets, which sweeps the line at roughly 200 to 1,200 times a second in most scanners. The reflected light travels back through the same mirror system and an optical filter before it reaches the sensor, which helps it ignore room lighting."],
+        ["heading", "Turning widths into digits"],
+        ["paragraph", "The electronics do not care how bright a bar is, only how wide it is. The scanner times each dark and light stretch and compares it with the others. A bar twice as wide as the narrowest one takes twice as long to cross. The result is a list of widths, which software compares with the rules of the barcode type."],
+        ["paragraph", "The most familiar type on shop goods is the UPC-A. Wikipedia's article on the Universal Product Code explains that it holds 12 digits. The first identifies a number system, the middle ten identify the maker and product, and the last is a check digit. Each digit is drawn with two bars and two gaps that together span seven equal units, called modules. A full symbol is 95 modules wide."],
+        ["list", "Start and end guards: a thin bar, gap, bar pattern that marks the edges and tells the scanner the timing\nMiddle guard: a five-module pattern that splits the code into a left half and a right half\nDigit patterns: seven modules each, made of two bars and two gaps\nQuiet zone: blank space of at least nine modules on each side"],
+        ["paragraph", "The left half and right half use different patterns for the same digit. Because of this, the scanner can tell whether it swept the code left to right or upside down and can simply reverse the data."],
+        ["heading", "The check digit catches mistakes"],
+        ["paragraph", "A smudge or a tear can make a bar look wider or narrower than it is. To catch such errors, the last digit is calculated from the other eleven. Digits in odd positions are multiplied by three, those in even positions are added as they are, and the check digit is chosen so that the total is a multiple of ten. Wikipedia works through an example in which the first eleven digits are 03600029145; the sum is 58, so the check digit is 2."],
+        ["paragraph", "If the scanner's own calculation does not match the printed check digit, it rejects the read and tries again, which is why a scan that fails gives no half-correct answer. The same source says this method detects every single-digit error and about 89 percent of swapped neighbouring digits, so it is a strong safeguard but not a perfect one."],
+        ["heading", "Other kinds of scanner"],
+        ["paragraph", "Laser scanners are not the only design. A pen-type reader has a light source and a photodiode at its tip, and the user drags it across the code. A CCD reader has a row of hundreds of tiny light sensors, each measuring the light in front of it, so it reads the whole line at once without moving parts. Camera-based readers capture a full two-dimensional image and use image processing to find and decode the code, which lets them handle several codes in one picture."],
+        ["paragraph", "Scanbot notes that laser scanners have a low error rate and can read at a distance, but they read only one-dimensional codes, cannot read inverted codes and cannot read several codes at once. Camera-based readers, including the one in a phone, are the usual choice for two-dimensional codes such as QR codes."],
+        ["callout", "A scanner that beeps and shows the wrong item has usually read the code correctly. The code is looked up in the shop's own price list, so a wrong name or price points to that list, not to the bars."],
+        ["heading", "From bars to a price"],
+        ["paragraph", "Once the digits are decoded, the scanner sends them to the till as plain data. The code itself does not contain a price. It only identifies the product, and the shop's computer looks up the current price, which is why prices can change without any new labels."],
+        ["paragraph", "The first product scanned at a checkout this way, according to Wikipedia, was a ten-pack of Wrigley's Juicy Fruit gum at a Marsh supermarket in Troy, Ohio, on 26 June 1974. The register rang up 67 cents."],
+        ["heading", "Why a scan sometimes fails"],
+        ["paragraph", "Everything above depends on clean contrast and clear widths. Patent literature on scanners describes how mirror-like glare can overwhelm the signal, and sources agree that damaged, faded or low-contrast labels are harder to read. A crease through the code, a glossy wrapper or a very worn label can each blur the widths enough that the check digit fails. Holding the product at a slightly different angle changes how the light bounces and often fixes it."],
+        ["paragraph", "This article is general information about how scanners work. Exact wavelengths, scan rates and features differ between models, so the manual for a particular scanner is the best guide for that device."]
+      ],
+      "sources": [
+        { "title": "Barcode reader, Wikipedia", "url": "https://en.wikipedia.org/wiki/Barcode_reader" },
+        { "title": "Universal Product Code, Wikipedia", "url": "https://en.wikipedia.org/wiki/Universal_Product_Code" },
+        { "title": "How does a laser barcode scanner work?, Scanbot", "url": "https://scanbot.io/blog/how-does-a-laser-barcode-scanner-work/" }
+      ],
+      "checkedOn": "2026-11-02"
+    },
+    {
+      "title": "Royal Enfield: From a Redditch Bicycle Maker to Chennai",
+      "category": "Vintage and History",
+      "excerpt": "Royal Enfield began as an English bicycle maker and built its first motorcycle in 1901. Its Bullet survived in India long after Redditch closed. Where sources differ on dates, this article says so.",
+      "tags": ["Royal Enfield", "Bullet", "Madras Motors", "motorcycle history"],
+      "blocks": [
+        ["paragraph", "Royal Enfield started in England as a maker of bicycles and precision parts, built its first motorcycle in 1901, and today is headquartered in Chennai, India. Its Bullet, introduced in 1932, outlived the English factory because production moved to Madras, now Chennai. This article traces that path, using the company's own timeline and Wikipedia, and notes where the two do not agree."],
+        ["heading", "From needles to bicycles"],
+        ["paragraph", "According to the company's history page, two men named Bob Walker Smith and Albert Eadie bought George Townsend and Co. in 1891. Townsend was a needle maker that had started building bicycles. In 1893 the business was renamed the Enfield Manufacturing Company after winning a contract to supply precision parts to the Royal Small Arms Factory, and the bicycles were renamed Royal Enfields the following year."],
+        ["paragraph", "The firm built a motorised quadricycle in 1898. One of its quadricycles won a silver medal in the 1000 Mile Reliability Trial in 1900, and the first Royal Enfield motorcycle was launched in London in 1901. Wikipedia also dates the first motorcycle to 1901 and places the maker in Redditch, England."],
+        ["heading", "Growing through two world wars"],
+        ["paragraph", "The company launched a V-twin in 1909. In 1914 it began producing a two-stroke motorcycle and, according to its own timeline, supplied motorcycles to several armies in the First World War. In 1924 it launched a 350cc overhead-valve four-stroke model."],
+        ["paragraph", "The Bullet appeared in 1932, according to both the company and Wikipedia. The company says it produced more than 55,000 military motorcycles during the Second World War, including a small machine known as the Flying Flea. Wikipedia describes the Bullet as in continuous production since 1948."],
+        ["heading", "How the Bullet reached India"],
+        ["paragraph", "The company says Madras Motors began importing Royal Enfields into India in 1949. Wikipedia reports that after independence the Indian government chose the Bullet for army border patrols; it gives 1952 for that choice and says an order for 800 of the 350cc model followed in 1954. Other web sources give 500 bikes, so the exact size of the first order is not settled by the pages checked here."],
+        ["paragraph", "Production in India came next. Wikipedia says Redditch partnered with Madras Motors in 1955 to form Enfield India, which assembled the Bullet under licence in Madras. The company's timeline gives 1955 to 1956 for the partnership and the opening of the Tiruvottiyur factory. Wikipedia adds that by 1962 all of the components were made in India."],
+        ["list", "1891: Smith and Eadie buy a needle maker that has started making bicycles\n1901: first Royal Enfield motorcycle\n1932: the Bullet is introduced\n1949: Madras Motors starts importing the brand into India\n1955 to 1956: Enfield India is formed and the Tiruvottiyur factory opens"],
+        ["heading", "The English factory closes"],
+        ["paragraph", "The company's page says the Redditch facility closed in 1970. Wikipedia's infobox lists the English predecessor company as operating from 1901 to 1971. These are close but not identical, so the safe statement is that the English operation ended around 1970 to 1971."],
+        ["paragraph", "The Indian business carried on. The company says it began exporting the Bullet from India to the United Kingdom and Europe in 1977."],
+        ["heading", "Eicher and the modern company"],
+        ["paragraph", "The Eicher Group became involved in 1990 according to Wikipedia. The company's own page says Eicher acquired Enfield India in 1994 and renamed it Royal Enfield Motors Limited. Wikipedia's introduction says Eicher has been the parent since 1993, while its history section gives 1994, so the sources disagree by a year. The reader may see either date elsewhere."],
+        ["paragraph", "Later milestones listed on the company's page include the retro-styled Classic in India in 2009, a factory at Oragadam in Tamil Nadu in 2013, and the purchase of Harris Performance and the founding of Royal Enfield North America in 2015. The Himalayan, described as its first purpose-built adventure motorcycle, arrived in 2016, and the 650cc Interceptor and Continental GT twins were unveiled in 2017. In 2021 the company marked 120 years with Project Origin, a working replica of the 1901 motorcycle."],
+        ["callout", "Where dates differ between sources, treat the year as approximate and check the company's own history page or a book on the marque before quoting it."],
+        ["heading", "Why the story matters"],
+        ["paragraph", "Royal Enfield is often described as one of the oldest motorcycle brands still in production, and its history shows how a design can outlast its first home. The Bullet's tooling and licence moved to Madras, where the Indian factory kept building it for decades and later grew into the main company. That is why a motorcycle with English roots is now thought of as an Indian brand."],
+        ["paragraph", "This article is a summary of two published timelines. Neither is a full academic history, and some figures, such as early order sizes, vary by source."]
+      ],
+      "sources": [
+        { "title": "Royal Enfield history, Royal Enfield", "url": "https://www.royalenfield.com/in/en/our-world/since-1901/" },
+        { "title": "Royal Enfield, Wikipedia", "url": "https://en.wikipedia.org/wiki/Royal_Enfield" }
+      ],
+      "checkedOn": "2026-11-02"
+    },
+    {
+      "title": "How DC Fast Charging Fills an Electric Car's Battery",
+      "category": "Cars and Bikes",
+      "excerpt": "DC fast chargers move the AC-to-DC conversion out of the car and into the station. Here is how that works, what the connectors are called and why charging slows near the top.",
+      "tags": ["electric cars", "DC fast charging", "CCS", "NACS"],
+      "blocks": [
+        ["paragraph", "A DC fast charger is faster because it does the electrical conversion outside the car. A battery stores direct current (DC), but the grid supplies alternating current (AC). With slower AC charging, a converter inside the car does the job and is limited by its size. A DC fast charger puts a much larger converter in the station and feeds the battery directly. This article explains that idea and the pieces around it."],
+        ["heading", "What counts as fast"],
+        ["paragraph", "The International Energy Agency (IEA) draws its line at 22 kilowatts (kW). In its Global EV Outlook 2024, it defines slow chargers as having a rating of 22 kW or less, and fast chargers as above 22 kW, up to 350 kW. A kilowatt is a measure of power, so a higher figure means more energy delivered each hour."],
+        ["paragraph", "Wikipedia's article on fast charging gives context at the slow end. It says EV chargers range from 1 kW to 22 kW, and that a public charging station often provides 6 kW from 208 to 240 volts AC on a 40 ampere circuit. Six kilowatts is described as roughly six times faster than 1 kW charging overnight."],
+        ["heading", "Where the conversion happens"],
+        ["paragraph", "Inside every plug-in car is an on-board charger that converts AC to DC. It has to fit in the car, so its power is limited. A DC fast charger skips it. Its large power cabinet takes AC from the grid, converts it, and sends DC through the cable to the battery's own management system."],
+        ["paragraph", "That also explains why the same car can charge at different speeds on different stations. The speed depends on the station's rating, but also on what the car's battery is able to accept at that moment."],
+        ["heading", "The conversation between car and charger"],
+        ["paragraph", "The plug carries more than power. According to Wikipedia's article on the Combined Charging System (CCS), basic signalling over a control pilot contact handles safety functions and sets the current limit. High-level communication based on the DIN SPEC 70121 and ISO/IEC 15118 standards then manages DC charging and features such as plug-and-charge, where the car identifies itself without a card."],
+        ["paragraph", "Wikipedia's fast charging article adds that control circuitry for fast charging can sit in the battery, in the external unit, or be split between them. High charging rates need monitoring of terminal voltage and temperature to prevent overcharging and damage, and most fast chargers have a cooling fan to keep cells at safe temperatures."],
+        ["heading", "Why charging slows near the top"],
+        ["paragraph", "Fast charging is not a constant speed. The pages checked here do not give the exact shape of the curve, and it differs by car. The general reason is the one above: the battery and charger watch voltage and temperature, and the car asks the charger to reduce the current as the battery fills or warms. For that reason many drivers treat the part of the session up to about 80 percent as the quick part, but that figure is a rule of thumb, not a standard."],
+        ["callout", "Check the car's manual or the maker's website for its maximum DC charging power. The station can only deliver what the car accepts."],
+        ["heading", "Connectors in use"],
+        ["paragraph", "Several connector standards exist. Wikipedia's CCS article says CCS adds two DC contacts to the usual AC connectors. Combo 1 builds on the Type 1 AC plug and is used mainly in North America, while Combo 2 builds on the Type 2 plug and is used mainly in Europe and elsewhere. CCS chargers can supply up to 500 kW, at a maximum of 1,000 volts and 500 amperes, and 400 kW chargers have been deployed by charging networks."],
+        ["list", "CCS: Combo 1 and Combo 2 variants, both with DC contacts\nCHAdeMO: widely used in Japan\nGB/T: used in China\nNACS: Tesla's North American connector, later standardised as SAE J3400"],
+        ["paragraph", "The same article reports that in 2023 Ford, General Motors and Rivian announced they would move to NACS on North American models starting in 2025, and that some commentators predicted CCS1 may become obsolete. Whether that happens is not settled by the sources checked."],
+        ["heading", "How common fast chargers are"],
+        ["paragraph", "The IEA reports that public charging stock grew by more than 40 percent in 2023, with fast chargers growing 55 percent. At the end of 2023, fast chargers made up over 35 percent of public chargers. It also says private chargers outnumber public ones by almost ten to one, because most owners charge at home. China had over 85 percent of the world's fast chargers in 2023, according to the same report."],
+        ["paragraph", "These numbers are from the IEA's 2024 report and will have changed since. They are shown here to give a sense of scale, not as current totals."],
+        ["heading", "Battery care"],
+        ["paragraph", "Wikipedia notes that lithium-ion cells degrade more when stored fully charged than when held at 40 to 50 percent, and that heat speeds degradation. This is general information about the cells; the battery warranty and manual for a specific car are the right place to look for charging guidance."]
+      ],
+      "sources": [
+        { "title": "Trends in electric vehicle charging, Global EV Outlook 2024, International Energy Agency", "url": "https://www.iea.org/reports/global-ev-outlook-2024/trends-in-electric-vehicle-charging" },
+        { "title": "Combined Charging System, Wikipedia", "url": "https://en.wikipedia.org/wiki/Combined_Charging_System" },
+        { "title": "Fast charging, Wikipedia", "url": "https://en.wikipedia.org/wiki/Fast_charging" }
+      ],
+      "checkedOn": "2026-11-02"
+    },
+    {
+      "title": "How Wireless Earbuds Send Music: SBC, AAC and LC3",
+      "category": "Electronics",
+      "excerpt": "Wireless earbuds compress music, send it over Bluetooth radio and decode it again. The codec in the middle, such as SBC, AAC or LC3, shapes quality and battery life.",
+      "tags": ["earbuds", "Bluetooth", "codecs", "LE Audio"],
+      "blocks": [
+        ["paragraph", "Wireless earbuds receive music as compressed digital data over a 2.4 GHz Bluetooth radio link, then decode it into sound. The method of compression is called a codec. Every device that streams music over the common Bluetooth profile must support one codec, called SBC, and many support better ones. This article explains the chain and the main codecs."],
+        ["heading", "The radio link"],
+        ["paragraph", "The Bluetooth Special Interest Group describes two radio types, Classic and Low Energy (LE). Both work in the 2.4 GHz band, between 2.402 and 2.480 GHz, and both hop between frequencies to reduce interference. Transmit power is capped at 100 milliwatts, subject to local rules."],
+        ["paragraph", "Classic uses 79 channels one megahertz apart and is described as mainly used for point-to-point links such as audio to speakers and headphones. LE uses 40 channels two megahertz apart and is designed for very low power."],
+        ["heading", "The profile and the mandatory codec"],
+        ["paragraph", "A profile is an agreed set of rules for one job. Wikipedia explains that the Advanced Audio Distribution Profile (A2DP) streams audio from a phone or laptop to a headset, in up to two-channel stereo, one way at a time. It requires support for the SBC codec. SBC is described as low-complexity with modest bit rates."],
+        ["paragraph", "Because every A2DP device supports SBC, two devices that share no other codec can still connect. That is the usual fallback."],
+        ["heading", "What a codec does"],
+        ["paragraph", "Raw digital music is too large to send comfortably over a small radio link, so the phone compresses it. The earbud then decompresses it and a converter turns the numbers into the electrical signal that drives its speaker. This compression is lossy, meaning some detail is thrown away in ways designed to be hard to hear."],
+        ["paragraph", "Wikipedia says SBC was designed for reasonably good audio quality at medium bit rates with low computational complexity. Decoders must handle up to 512 kilobits per second for stereo, and the High Quality setting that most operating systems use by default runs at about 328 to 345 kilobits per second."],
+        ["heading", "Beyond SBC"],
+        ["paragraph", "A2DP also allows optional codecs. The Wikipedia list includes MP3, AAC and HE-AAC, and manufacturer-defined codecs such as aptX and LDAC. AAC, short for Advanced Audio Coding, was developed by Dolby, AT&T, Fraunhofer and Sony as a successor to MP3. Wikipedia says it generally gives higher sound quality than MP3 at the same bit rate and that tests found it transparent at 128 kilobits per second for stereo."],
+        ["paragraph", "Note that this is a general statement about AAC, not a measurement of any earbud. Whether an earbud sounds better with one codec than another also depends on its drivers, its fit and the music. Both the phone and the earbuds must support the same optional codec for it to be used."],
+        ["list", "SBC: required for A2DP, works everywhere\nAAC: optional, widely used for stored and streamed music\naptX and LDAC: optional, defined by manufacturers\nLC3: the codec of LE Audio"],
+        ["heading", "LE Audio and LC3"],
+        ["paragraph", "LE Audio is the newer system, running on the Low Energy radio instead of the Classic one. It uses LC3, the Low Complexity Communications Codec, which Wikipedia says was developed by Fraunhofer IIS and Ericsson and is royalty-free. The Bluetooth SIG's page says listening tests show quality gains over SBC, with LC3 delivering better quality at a 50 percent lower bit rate. The company says developers can use the saving for longer battery life or a smaller battery. Wikipedia mentions that some results against the Opus codec are disputed."],
+        ["paragraph", "LE Audio also adds multi-stream audio, which sends separate synchronised streams from a source to one or more devices, for example one stream to each earbud. It adds support for hearing aids too. A feature called Auracast lets one source broadcast audio to an unlimited number of listening devices, for uses such as TVs in public places."],
+        ["callout", "Codec support is listed on the earbud maker's product page. Having LE Audio on one device does nothing unless the other device supports it too."],
+        ["heading", "What this means in practice"],
+        ["paragraph", "The path is therefore the same every time: the phone's player decodes a music file, the Bluetooth stack compresses it with the codec both devices agreed on, the radio sends it in small packets, and the earbud decodes it. Where two devices share only SBC, that is what they use. Where both support something newer, they can choose it when they connect."],
+        ["paragraph", "This is general information. Actual sound, delay and battery life vary with the product, the phone and the surroundings, and the pages checked here do not give delay figures for the codecs."]
+      ],
+      "sources": [
+        { "title": "Bluetooth technology overview, Bluetooth SIG", "url": "https://www.bluetooth.com/learn-about-bluetooth/tech-overview/" },
+        { "title": "LE Audio, Bluetooth SIG", "url": "https://www.bluetooth.com/learn-about-bluetooth/feature-enhancements/le-audio/" },
+        { "title": "List of Bluetooth profiles, Wikipedia", "url": "https://en.wikipedia.org/wiki/List_of_Bluetooth_profiles" },
+        { "title": "SBC (codec), Wikipedia", "url": "https://en.wikipedia.org/wiki/SBC_(codec)" },
+        { "title": "LC3 (codec), Wikipedia", "url": "https://en.wikipedia.org/wiki/LC3_(codec)" },
+        { "title": "Advanced Audio Coding, Wikipedia", "url": "https://en.wikipedia.org/wiki/Advanced_Audio_Coding" }
+      ],
+      "checkedOn": "2026-11-02"
+    }
+  ]
+}
