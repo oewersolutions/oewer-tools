@@ -1,6 +1,6 @@
 # Games section: plan (Phase 10)
 
-**Status (2 November 2026): the foundation and the first game are built.** Done: schema 1.1.0 (the `games` and `game_puzzles` sheets, with a migration that adds sheets), the Games menu link, the `/games/` hub, the game page template, ad placements (`below_game` and the hub's `list_bottom`), search and sitemap entries, **Word Guess** with 21 daily puzzles (1 to 21 November 2026) **Four Groups** with 14, **Hive Words** with 14, **Mini Crossword** with 12 and **Word Trail** with 14 (all starting 1 November 2026). All five games are built. `npm run puzzles:add` adds puzzles from a batch file. Not built yet: Mini Crossword, Word Trail, the daily puzzle task and the admin gap warning. The other two games exist in the workbook as drafts, so they are not shown.
+**Status (2 November 2026): built.** All five games are playable and published, each with its first days of puzzles: Word Guess (21), Four Groups (14), Hive Words (14), Mini Crossword (12) and Word Trail (14), all starting 1 November 2026. Done: schema 1.1.0 (the `games` and `game_puzzles` sheets, with a migration that adds sheets), the Games menu link, the `/games/` hub, the game page template, ad placements (`below_game` and the hub's `list_bottom`), search and sitemap entries, `npm run puzzles:add` for batch files, `npm run puzzles:make` for helpers, the daily puzzle task (`docs/daily-puzzles.md`) and a warning on the admin dashboard when a game has fewer than 5 days of puzzles ready. Still to do: a home page section for the games, and Firefox, Safari and real-device checks.
 
 A "Games" menu and a hub page of daily puzzles, in the style of the New York Times games page (a grid of game cards, each with a short line and a Play button). Everything is configured in the workbook, the same as tools and articles, and each game gets a new puzzle every day. Ads show on the games pages like the rest of the site.
 
@@ -65,7 +65,7 @@ Two new sheets, plus a Games link in the header menu:
 5. Hive Words. **Done.**
 6. Mini Crossword. **Done.**
 7. Word Trail. **Done.**
-8. The daily puzzle task and the admin dashboard gap warning.
+8. The daily puzzle task and the admin dashboard gap warning. **Done** (see `docs/daily-puzzles.md`).
 9. Home page section, search, sitemap, ads on the games pages, the full browser and accessibility checks.
 
 ## Rules every game follows

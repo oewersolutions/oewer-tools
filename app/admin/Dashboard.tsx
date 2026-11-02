@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { listDeployRuns, type DeployRun } from "../../lib/admin/actions";
-import { analyticsInfo, contentCounts, plainCounts } from "../../lib/admin/dashboard";
+import { analyticsInfo, contentCounts, LOW_PUZZLE_STOCK, plainCounts, puzzleStock } from "../../lib/admin/dashboard";
 import { GithubError, type GithubSession } from "../../lib/admin/github";
 import { listHistory, type HistoryEntry } from "../../lib/admin/history";
 import type { WorkbookData } from "../../lib/workbook";
@@ -37,6 +37,8 @@ export default function Dashboard({ session, data, refreshKey, onNavigate, onReb
   }, [session, refreshKey]);
 
   const analytics = analyticsInfo(data);
+  const stock = puzzleStock(data, new Date().toLocaleDateString("en-CA")); // en-CA writes dates as YYYY-MM-DD, in the viewer's own time zone
+  const low = stock.filter((s) => s.tone !== "good");
 
   const kpis: { label: string; menu: MenuId }[] = [
     { label: "Tools", menu: "tools" },
@@ -93,6 +95,32 @@ export default function Dashboard({ session, data, refreshKey, onNavigate, onReb
           .map((c) => `${c.total} ${c.label.toLowerCase()}`)
           .join(" · ")}
       </p>
+
+      {stock.length > 0 && (
+        <Card>
+          <h3 className="font-semibold text-ink">Daily puzzles</h3>
+          {low.length > 0 ? (
+            <p role="alert" className="mt-3 rounded-lg bg-amber-50 px-4 py-3 text-sm text-amber-900 ring-1 ring-amber-200">
+              {low.length === 1 ? `${low[0]!.game} has` : `${low.length} games have`} fewer than {LOW_PUZZLE_STOCK} days of puzzles ready.{" "}
+              {low.some((s) => s.days === 0) ? "At least one has none for today, so visitors see an older puzzle. " : ""}
+              Add more in All sheets → game_puzzles, or run the daily puzzle task.
+            </p>
+          ) : (
+            <p className="mt-3 text-sm text-slate-700">Every game has at least {LOW_PUZZLE_STOCK} days of puzzles ready.</p>
+          )}
+          <ul className="mt-3 divide-y divide-slate-100 text-sm" aria-label="Puzzles ready by game">
+            {stock.map((s) => (
+              <li key={s.game} className="flex flex-wrap items-center justify-between gap-2 py-2">
+                <span className="font-medium text-ink">{s.game}</span>
+                <span>
+                  <StatusPill tone={s.tone}>{s.days === 0 ? "None for today" : `${s.days} ${s.days === 1 ? "day" : "days"} ready`}</StatusPill>
+                  <span className="ml-2 text-slate-600">next gap: {s.nextMissing}</span>
+                </span>
+              </li>
+            ))}
+          </ul>
+        </Card>
+      )}
 
       <div className="grid gap-5 lg:grid-cols-2">
         <Card>

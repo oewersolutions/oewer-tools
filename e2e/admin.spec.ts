@@ -907,6 +907,17 @@ test("the dashboard shows content counts, recent saves and the latest site updat
   await expect(dash).toContainText("Earlier update");
 });
 
+test("the dashboard shows how many days of puzzles each game has ready", async ({ page }) => {
+  await fakeGithub(page);
+  await signIn(page, undefined, "Dashboard");
+  const dash = page.getByRole("region", { name: "Dashboard" });
+  await expect(dash.getByRole("heading", { name: "Daily puzzles" })).toBeVisible();
+  const list = dash.getByRole("list", { name: "Puzzles ready by game" });
+  await expect(list.getByRole("listitem")).toHaveCount(5);
+  await expect(list).toContainText("Word Guess");
+  await expect(list).toContainText(/\d+ days? ready|None for today/);
+});
+
 test("the dashboard still shows counts when the token cannot read site updates", async ({ page }) => {
   await fakeGithub(page, { deploy: "forbidden" });
   await signIn(page, undefined, "Dashboard");

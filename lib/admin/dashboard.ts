@@ -1,4 +1,5 @@
 import { isDashboardUrl, isMeasurementId } from "../analytics";
+import { stockFrom } from "../games/make";
 import type { WorkbookData } from "../workbook";
 
 export interface CountRow {
@@ -32,6 +33,31 @@ export function analyticsInfo(data: WorkbookData): AnalyticsInfo {
   const measurementId = setting("analytics_measurement_id");
   const url = setting("analytics_dashboard_url");
   return { enabled: isMeasurementId(measurementId), measurementId: isMeasurementId(measurementId) ? measurementId : "", dashboardUrl: isDashboardUrl(url) ? url : "" };
+}
+
+/** Fewer days of ready puzzles than this is shown as a warning. */
+export const LOW_PUZZLE_STOCK = 5;
+
+export interface PuzzleStock {
+  game: string;
+  /** Days in a row, starting today, that have a published puzzle. */
+  days: number;
+  /** The first day that has none, as YYYY-MM-DD. */
+  nextMissing: string;
+  tone: "good" | "warn" | "bad";
+}
+
+/** For each published game, how many days of puzzles are ready from `today` (YYYY-MM-DD). None today is "bad", fewer than 5 is "warn". */
+export function puzzleStock(data: WorkbookData, today: string): PuzzleStock[] {
+  const puzzles = data.game_puzzles ?? [];
+  return (data.games ?? [])
+    .filter((g) => g.values.status === "published")
+    .sort((a, b) => Number(a.values.sort_order) - Number(b.values.sort_order))
+    .map((g) => {
+      const dates = new Set(puzzles.filter((p) => p.values.game_id === g.values.game_id && p.values.status === "published").map((p) => String(p.values.puzzle_date)));
+      const { days, nextMissing } = stockFrom(dates, today);
+      return { game: String(g.values.name), days, nextMissing, tone: days === 0 ? "bad" : days < LOW_PUZZLE_STOCK ? "warn" : "good" };
+    });
 }
 
 /** Sheets that have no status, shown as plain totals. */
