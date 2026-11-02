@@ -1,6 +1,6 @@
 # Games section: plan (Phase 10)
 
-**Status (2 November 2026): the foundation and the first game are built.** Done: schema 1.1.0 (the `games` and `game_puzzles` sheets, with a migration that adds sheets), the Games menu link, the `/games/` hub, the game page template, ad placements (`below_game` and the hub's `list_bottom`), search and sitemap entries, **Word Guess** with 21 daily puzzles (1 to 21 November 2026) **Four Groups** with 14, **Hive Words** with 14 and **Mini Crossword** with 12 (all starting 1 November 2026). `npm run puzzles:add` adds puzzles from a batch file. Not built yet: Mini Crossword, Word Trail, the daily puzzle task and the admin gap warning. The other two games exist in the workbook as drafts, so they are not shown.
+**Status (2 November 2026): the foundation and the first game are built.** Done: schema 1.1.0 (the `games` and `game_puzzles` sheets, with a migration that adds sheets), the Games menu link, the `/games/` hub, the game page template, ad placements (`below_game` and the hub's `list_bottom`), search and sitemap entries, **Word Guess** with 21 daily puzzles (1 to 21 November 2026) **Four Groups** with 14, **Hive Words** with 14, **Mini Crossword** with 12 and **Word Trail** with 14 (all starting 1 November 2026). All five games are built. `npm run puzzles:add` adds puzzles from a batch file. Not built yet: Mini Crossword, Word Trail, the daily puzzle task and the admin gap warning. The other two games exist in the workbook as drafts, so they are not shown.
 
 A "Games" menu and a hub page of daily puzzles, in the style of the New York Times games page (a grid of game cards, each with a short line and a Play button). Everything is configured in the workbook, the same as tools and articles, and each game gets a new puzzle every day. Ads show on the games pages like the rest of the site.
 
@@ -64,7 +64,7 @@ Two new sheets, plus a Games link in the header menu:
 4. Four Groups. **Done.**
 5. Hive Words. **Done.**
 6. Mini Crossword. **Done.**
-7. Word Trail.
+7. Word Trail. **Done.**
 8. The daily puzzle task and the admin dashboard gap warning.
 9. Home page section, search, sitemap, ads on the games pages, the full browser and accessibility checks.
 
@@ -97,6 +97,13 @@ Two new sheets, plus a Games link in the header menu:
 - A puzzle is `{"grid": ["AGO##","ROLL#","MEDIA","#SEND","##RED"], "across": {"1": "clue"}, "down": {"1": "clue"}}`: five rows of five capital letters, `#` for a black square, and one clue for every numbered word, keyed by its number (numbered left to right, top to bottom, the usual way). The checker works out the entries itself and refuses a grid with a two-letter run, a lone letter, a missing or extra clue, a clue that contains its own answer, or an answer of four or more letters that is not in `content/games/common-words.txt`.
 - Filling a grid is the hard part. Grids with more black squares (three-letter words at the corners) fill far more easily than nearly open ones. The twelve published grids were found by a random search over frequent words and then read and clued by hand.
 - There are 12 puzzles, not 14, so the supply runs out after 12 November. Write more by hand in the admin or as a batch file.
+
+## Word Trail puzzles
+
+- A puzzle is `{"theme": "In the fruit bowl", "grid": [8 rows of 6 capital letters], "words": [{"word": "MANGO", "cells": [14, 8, 2, 9, 3]}, ...]}`. `cells` are square numbers, counted row by row from 0 (so square 14 is row 3, column 3). Each word's squares must touch one after another (diagonals count), the words together must use every one of the 48 squares exactly once, and exactly one word has `"key": true` and runs from one side of the grid to the opposite side. The checker refuses anything else.
+- Players are told when a word is in the puzzle but hidden in other letters; only the intended squares count.
+- Making a grid by hand is slow. The 14 published puzzles were made with a small packing search: pick a theme and a pool of words, find a subset of 48 letters including the key word, and let the search lay them out. Because the letters come from the words, the grids look random; read the words and the theme to check they fit.
+- The theme title should not give the key word away too directly, but it should point at it.
 
 ## Open questions for you
 

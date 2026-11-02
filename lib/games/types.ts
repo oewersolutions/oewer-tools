@@ -1,7 +1,7 @@
 export type GameType = "word_guess" | "four_groups" | "word_trail" | "hive_words" | "mini_crossword";
 
 /** The game types that have a playable game. A game of another type can be kept as a draft but not published. */
-export const BUILT_GAME_TYPES: readonly GameType[] = ["word_guess", "four_groups", "hive_words", "mini_crossword"];
+export const BUILT_GAME_TYPES: readonly GameType[] = ["word_guess", "four_groups", "hive_words", "mini_crossword", "word_trail"];
 
 export interface Game {
   game_id: string;
@@ -49,6 +49,13 @@ export interface MiniCrosswordData {
   grid: string[];
   across: Record<string, string>;
   down: Record<string, string>;
+}
+
+/** An 8 by 6 letter grid that is covered exactly by the theme words. `cells` are square numbers, row by row from 0. */
+export interface WordTrailData {
+  theme: string;
+  grid: string[];
+  words: { word: string; cells: number[]; key?: boolean }[];
 }
 
 export interface WordGuessData {

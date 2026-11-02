@@ -107,6 +107,6 @@ T1.3b → T1.3a → T1.4 → T1.5 → T2.1/T2.2 → T3.1 + first calculator → 
 - [x] **T10.3** Four Groups with 14 daily puzzles (1 to 14 November 2026)
 - [x] **T10.4** Hive Words with 14 daily puzzles (1 to 14 November 2026)
 - [x] **T10.5** Mini Crossword with 12 daily puzzles (1 to 12 November 2026)
-- [ ] **T10.6** Word Trail
+- [x] **T10.6** Word Trail with 14 daily puzzles (1 to 14 November 2026)
 - [ ] **T10.7** Daily puzzle task, and an admin warning when fewer than 5 future days are stocked
 - [ ] **T10.8** Home page section for the games, Firefox, Safari and real-device checks

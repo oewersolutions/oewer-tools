@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { checkPuzzleData, isPuzzleDate, nextDay, pickPuzzle, prevDay, puzzleNumber } from "../lib/games/puzzles";
 import { EMPTY_STREAK, keyStates, outcome, recordResult, scoreGuess, shareText } from "../lib/games/word-guess";
+import { BUILT_GAME_TYPES } from "../lib/games/types";
 import { schema, validateWorkbook, type WorkbookData } from "../lib/workbook";
 
 describe("scoreGuess", () => {
@@ -86,7 +87,7 @@ describe("checkPuzzleData", () => {
     expect(checkPuzzleData("word_guess", "not json")).toMatch(/valid JSON/);
     expect(checkPuzzleData("word_guess", '{"answer":"crane"}')).toMatch(/five capital letters/);
     expect(checkPuzzleData("word_guess", '{"answer":"ZZZZZ"}', words)).toMatch(/not in the word list/);
-    expect(checkPuzzleData("word_trail", "{}")).toMatch(/not supported yet/);
+    expect(checkPuzzleData("bogus" as never, "{}")).toMatch(/not supported yet/);
   });
 });
 
@@ -110,11 +111,10 @@ describe("workbook rules for games", () => {
     expect(codes).toContain("invalid_puzzle");
     expect(codes).toContain("duplicate");
   });
-  it("does not let a game that is not built be published, but allows it as a draft", () => {
+  it("has a playable game for every game type in the schema, so none is refused as unbuilt", () => {
+    expect([...BUILT_GAME_TYPES].sort()).toEqual([...schema.enums.game_type!].sort());
     const data = base();
     data.games!.push(row(3, { ...data.games![0]!.values, game_id: "GAME0002", slug: "word-trail", game_type: "word_trail", status: "published" }));
-    expect(gameIssues(data).some((i) => i.code === "unknown_game_type")).toBe(true);
-    data.games![1]!.values.status = "draft";
     expect(gameIssues(data)).toEqual([]);
   });
 });
@@ -267,5 +267,63 @@ describe("Mini Crossword", () => {
     expect(checkMini({ ...mini, grid: ["##AIN", "CONDO", "ANGER", "STEAM", "TELL#"] })).toMatch(/needs a clue|letter on its own|three letters/);
     expect(checkMini({ ...mini, grid: ["MA###", "CONDO", "ANGER", "STEAM", "TELL#"] })).toMatch(/three letters or more|on its own/);
     expect(checkMini(mini, new Set(["MAIN"]))).toMatch(/not in the word list/);
+  });
+});
+
+import { adjacent, checkTrail, isPath, judge, shareText as trailShare, spans } from "../lib/games/word-trail";
+import type { WordTrailData } from "../lib/games/types";
+
+const trail: WordTrailData = {"theme": "In the fruit bowl", "grid": ["VANOEP", "GAAGHA", "EUMMCC", "EPRIEH", "HANCLE", "CYFOOR", "URLTRY", "ITBOWL"], "words": [{"word": "FRUITBOWL", "cells": [32, 37, 36, 42, 43, 44, 45, 46, 47], "key": true}, {"word": "MANGO", "cells": [14, 8, 2, 9, 3]}, {"word": "GUAVA", "cells": [6, 13, 7, 0, 1]}, {"word": "LYCHEE", "cells": [38, 31, 30, 24, 18, 12]}, {"word": "APRICOT", "cells": [25, 19, 20, 21, 27, 34, 39]}, {"word": "PEACH", "cells": [5, 4, 11, 16, 10]}, {"word": "CHERRY", "cells": [17, 23, 29, 35, 40, 41]}, {"word": "MELON", "cells": [15, 22, 28, 33, 26]}]};
+
+describe("Word Trail", () => {
+  it("knows which squares touch, diagonals included, and which paths are real", () => {
+    expect(adjacent(0, 1)).toBe(true);
+    expect(adjacent(0, 7)).toBe(true); // diagonal
+    expect(adjacent(5, 6)).toBe(false); // the end of one row and the start of the next do not touch
+    expect(adjacent(0, 12)).toBe(false);
+    expect(isPath([14, 8, 2, 9, 3])).toBe(true);
+    expect(isPath([14, 8, 14])).toBe(false);
+    expect(isPath([0, 2])).toBe(false);
+  });
+  it("says whether a word crosses the grid", () => {
+    expect(spans(trail.words[0]!.cells)).toBe(true); // left to right along the bottom
+    expect(spans(trail.words[1]!.cells)).toBe(false);
+    expect(spans([0, 6, 12, 18, 24, 30, 36, 42])).toBe(true); // top to bottom
+  });
+  it("accepts a good puzzle", () => {
+    expect(checkTrail(trail)).toBeNull();
+  });
+  it("explains what is wrong with a bad one", () => {
+    const clone = () => structuredClone(trail);
+    const gap = clone();
+    gap.words.pop();
+    expect(checkTrail(gap)).toMatch(/squares unused/);
+    const wrongLetter = clone();
+    wrongLetter.grid[0] = "XANOEP";
+    expect(checkTrail(wrongLetter)).toMatch(/does not match the letters/);
+    const jump = clone();
+    jump.words[1]!.cells = [14, 8, 2, 9, 40];
+    expect(checkTrail(jump)).toMatch(/touch one after another|does not match|used by two/);
+    const noKey = clone();
+    delete noKey.words[0]!.key;
+    expect(checkTrail(noKey)).toMatch(/exactly one key word/);
+    const shortKey = clone();
+    shortKey.words[1]!.key = true;
+    expect(checkTrail(shortKey)).toMatch(/exactly one key word|opposite side/);
+    expect(checkTrail({ ...trail, theme: "" })).toMatch(/theme/);
+    expect(checkTrail({ ...trail, grid: trail.grid.slice(0, 7) })).toMatch(/grid/);
+    expect(checkPuzzleData("word_trail", JSON.stringify(trail))).toBeNull();
+  });
+  it("tells a word in its own letters from the same word elsewhere", () => {
+    const mango = trail.words[1]!;
+    expect(judge(trail, mango.cells)).toEqual({ kind: "found", index: 1 });
+    expect(judge(trail, [...mango.cells].reverse())).toEqual({ kind: "found", index: 1 }); // traced backwards
+    expect(judge(trail, [14, 8, 2])).toEqual({ kind: "none" });
+    // GUAVA's letters in a different order of squares are not accepted as GUAVA
+    expect(judge(trail, [6, 13, 7, 1, 0])).toEqual({ kind: "none" });
+  });
+  it("shares the theme and the order without the words", () => {
+    expect(trailShare("Word Trail", 5, trail, [1, 0, 2], 0)).toBe('Word Trail No. 5\n"In the fruit bowl"\n🔵🟡🔵\nNo hints');
+    expect(trailShare("Word Trail", 5, trail, [0], 2)).toMatch(/2 hints/);
   });
 });

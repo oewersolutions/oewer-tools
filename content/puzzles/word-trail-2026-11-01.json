@@ -1,0 +1,1535 @@
+{
+ "puzzles": [
+  {
+   "game": "word-trail",
+   "date": "2026-11-01",
+   "title": "",
+   "data": {
+    "theme": "In the fruit bowl",
+    "grid": [
+     "VANOEP",
+     "GAAGHA",
+     "EUMMCC",
+     "EPRIEH",
+     "HANCLE",
+     "CYFOOR",
+     "URLTRY",
+     "ITBOWL"
+    ],
+    "words": [
+     {
+      "word": "FRUITBOWL",
+      "cells": [
+       32,
+       37,
+       36,
+       42,
+       43,
+       44,
+       45,
+       46,
+       47
+      ],
+      "key": true
+     },
+     {
+      "word": "MANGO",
+      "cells": [
+       14,
+       8,
+       2,
+       9,
+       3
+      ]
+     },
+     {
+      "word": "GUAVA",
+      "cells": [
+       6,
+       13,
+       7,
+       0,
+       1
+      ]
+     },
+     {
+      "word": "LYCHEE",
+      "cells": [
+       38,
+       31,
+       30,
+       24,
+       18,
+       12
+      ]
+     },
+     {
+      "word": "APRICOT",
+      "cells": [
+       25,
+       19,
+       20,
+       21,
+       27,
+       34,
+       39
+      ]
+     },
+     {
+      "word": "PEACH",
+      "cells": [
+       5,
+       4,
+       11,
+       16,
+       10
+      ]
+     },
+     {
+      "word": "CHERRY",
+      "cells": [
+       17,
+       23,
+       29,
+       35,
+       40,
+       41
+      ]
+     },
+     {
+      "word": "MELON",
+      "cells": [
+       15,
+       22,
+       28,
+       33,
+       26
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "game": "word-trail",
+   "date": "2026-11-02",
+   "title": "",
+   "data": {
+    "theme": "Around the kitchen",
+    "grid": [
+     "NOFPEP",
+     "KIOESE",
+     "NNRELI",
+     "KECVES",
+     "SHETIK",
+     "TIPLLA",
+     "OHGAED",
+     "WNSTLE"
+    ],
+    "words": [
+     {
+      "word": "KITCHEN",
+      "cells": [
+       29,
+       28,
+       27,
+       20,
+       25,
+       19,
+       12
+      ],
+      "key": true
+     },
+     {
+      "word": "WHISK",
+      "cells": [
+       42,
+       37,
+       31,
+       24,
+       18
+      ]
+     },
+     {
+      "word": "LADLE",
+      "cells": [
+       34,
+       35,
+       41,
+       46,
+       47
+      ]
+     },
+     {
+      "word": "TONGS",
+      "cells": [
+       30,
+       36,
+       43,
+       38,
+       44
+      ]
+     },
+     {
+      "word": "SIEVE",
+      "cells": [
+       23,
+       17,
+       22,
+       21,
+       26
+      ]
+     },
+     {
+      "word": "KNIFE",
+      "cells": [
+       6,
+       13,
+       7,
+       2,
+       9
+      ]
+     },
+     {
+      "word": "PEELER",
+      "cells": [
+       5,
+       4,
+       11,
+       16,
+       15,
+       14
+      ]
+     },
+     {
+      "word": "SPOON",
+      "cells": [
+       10,
+       3,
+       8,
+       1,
+       0
+      ]
+     },
+     {
+      "word": "PLATE",
+      "cells": [
+       32,
+       33,
+       39,
+       45,
+       40
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "game": "word-trail",
+   "date": "2026-11-03",
+   "title": "",
+   "data": {
+    "theme": "On the cricket field",
+    "grid": [
+     "CIRENS",
+     "WKEILG",
+     "RTBWNI",
+     "KOOVON",
+     "EYETUS",
+     "ARSRPM",
+     "BIICST",
+     "CRLSKE"
+    ],
+    "words": [
+     {
+      "word": "CRICKET",
+      "cells": [
+       42,
+       43,
+       38,
+       39,
+       46,
+       47,
+       41
+      ],
+      "key": true
+     },
+     {
+      "word": "WICKET",
+      "cells": [
+       6,
+       1,
+       0,
+       7,
+       8,
+       13
+      ]
+     },
+     {
+      "word": "BOWLER",
+      "cells": [
+       14,
+       20,
+       15,
+       10,
+       3,
+       2
+      ]
+     },
+     {
+      "word": "STUMPS",
+      "cells": [
+       32,
+       27,
+       28,
+       35,
+       34,
+       29
+      ]
+     },
+     {
+      "word": "BAILS",
+      "cells": [
+       36,
+       30,
+       37,
+       44,
+       45
+      ]
+     },
+     {
+      "word": "YORKER",
+      "cells": [
+       25,
+       19,
+       12,
+       18,
+       24,
+       31
+      ]
+     },
+     {
+      "word": "INNINGS",
+      "cells": [
+       17,
+       23,
+       16,
+       9,
+       4,
+       11,
+       5
+      ]
+     },
+     {
+      "word": "OVERS",
+      "cells": [
+       22,
+       21,
+       26,
+       33,
+       40
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "game": "word-trail",
+   "date": "2026-11-04",
+   "title": "",
+   "data": {
+    "theme": "Spices in the masala box",
+    "grid": [
+     "PPMONE",
+     "EEORLN",
+     "PRFMFN",
+     "CFDARE",
+     "IARDTA",
+     "SRRACS",
+     "TUEMUA",
+     "MASALM"
+    ],
+    "words": [
+     {
+      "word": "MASALA",
+      "cells": [
+       42,
+       43,
+       44,
+       45,
+       46,
+       41
+      ],
+      "key": true
+     },
+     {
+      "word": "TURMERIC",
+      "cells": [
+       36,
+       37,
+       32,
+       39,
+       38,
+       31,
+       24,
+       18
+      ]
+     },
+     {
+      "word": "CARDAMOM",
+      "cells": [
+       34,
+       29,
+       22,
+       27,
+       21,
+       15,
+       8,
+       2
+      ]
+     },
+     {
+      "word": "PEPPER",
+      "cells": [
+       12,
+       7,
+       0,
+       1,
+       6,
+       13
+      ]
+     },
+     {
+      "word": "FENNEL",
+      "cells": [
+       16,
+       23,
+       17,
+       11,
+       5,
+       10
+      ]
+     },
+     {
+      "word": "SAFFRON",
+      "cells": [
+       30,
+       25,
+       19,
+       14,
+       9,
+       3,
+       4
+      ]
+     },
+     {
+      "word": "MUSTARD",
+      "cells": [
+       47,
+       40,
+       35,
+       28,
+       33,
+       26,
+       20
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "game": "word-trail",
+   "date": "2026-11-05",
+   "title": "",
+   "data": {
+    "theme": "Weather outside",
+    "grid": [
+     "ZZNUSW",
+     "LNISTI",
+     "EYRDON",
+     "NWDRUD",
+     "OSMCOY",
+     "RINRLE",
+     "AHBEEZ",
+     "ERTAEW"
+    ],
+    "words": [
+     {
+      "word": "WEATHER",
+      "cells": [
+       47,
+       46,
+       45,
+       44,
+       37,
+       42,
+       43
+      ],
+      "key": true
+     },
+     {
+      "word": "RAIN",
+      "cells": [
+       30,
+       36,
+       31,
+       32
+      ]
+     },
+     {
+      "word": "STORM",
+      "cells": [
+       4,
+       10,
+       16,
+       21,
+       26
+      ]
+     },
+     {
+      "word": "CLOUD",
+      "cells": [
+       27,
+       34,
+       28,
+       22,
+       15
+      ]
+     },
+     {
+      "word": "SUNNY",
+      "cells": [
+       9,
+       3,
+       2,
+       7,
+       13
+      ]
+     },
+     {
+      "word": "WINDY",
+      "cells": [
+       5,
+       11,
+       17,
+       23,
+       29
+      ]
+     },
+     {
+      "word": "SNOW",
+      "cells": [
+       25,
+       18,
+       24,
+       19
+      ]
+     },
+     {
+      "word": "BREEZE",
+      "cells": [
+       38,
+       33,
+       39,
+       40,
+       41,
+       35
+      ]
+     },
+     {
+      "word": "DRIZZLE",
+      "cells": [
+       20,
+       14,
+       8,
+       1,
+       0,
+       6,
+       12
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "game": "word-trail",
+   "date": "2026-11-06",
+   "title": "",
+   "data": {
+    "theme": "A day at the beach",
+    "grid": [
+     "SNRSAF",
+     "UCOERR",
+     "SLSEUA",
+     "PEVNSP",
+     "EALLSH",
+     "WBLEEE",
+     "EBSOWL",
+     "SATIDE"
+    ],
+    "words": [
+     {
+      "word": "SEASIDE",
+      "cells": [
+       42,
+       36,
+       43,
+       38,
+       45,
+       46,
+       47
+      ],
+      "key": true
+     },
+     {
+      "word": "WAVES",
+      "cells": [
+       30,
+       25,
+       20,
+       19,
+       14
+      ]
+     },
+     {
+      "word": "SHELL",
+      "cells": [
+       28,
+       29,
+       34,
+       27,
+       26
+      ]
+     },
+     {
+      "word": "TOWEL",
+      "cells": [
+       44,
+       39,
+       40,
+       35,
+       41
+      ]
+     },
+     {
+      "word": "PARASOL",
+      "cells": [
+       23,
+       17,
+       10,
+       4,
+       3,
+       8,
+       13
+      ]
+     },
+     {
+      "word": "SURF",
+      "cells": [
+       22,
+       16,
+       11,
+       5
+      ]
+     },
+     {
+      "word": "SUNSCREEN",
+      "cells": [
+       12,
+       6,
+       1,
+       0,
+       7,
+       2,
+       9,
+       15,
+       21
+      ]
+     },
+     {
+      "word": "PEBBLE",
+      "cells": [
+       18,
+       24,
+       31,
+       37,
+       32,
+       33
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "game": "word-trail",
+   "date": "2026-11-07",
+   "title": "",
+   "data": {
+    "theme": "Sounds of music",
+    "grid": [
+     "ORGUIS",
+     "RROOTA",
+     "AOGATN",
+     "JTRALL",
+     "NBINOE",
+     "ASMECA",
+     "ITTUNL",
+     "NSRABT"
+    ],
+    "words": [
+     {
+      "word": "INSTRUMENT",
+      "cells": [
+       36,
+       42,
+       43,
+       37,
+       44,
+       39,
+       32,
+       33,
+       40,
+       47
+      ],
+      "key": true
+     },
+     {
+      "word": "SITAR",
+      "cells": [
+       31,
+       26,
+       19,
+       12,
+       6
+      ]
+     },
+     {
+      "word": "TABLA",
+      "cells": [
+       38,
+       45,
+       46,
+       41,
+       35
+      ]
+     },
+     {
+      "word": "GUITAR",
+      "cells": [
+       2,
+       3,
+       4,
+       10,
+       15,
+       20
+      ]
+     },
+     {
+      "word": "CELLO",
+      "cells": [
+       34,
+       29,
+       22,
+       23,
+       28
+      ]
+     },
+     {
+      "word": "BANJO",
+      "cells": [
+       25,
+       30,
+       24,
+       18,
+       13
+      ]
+     },
+     {
+      "word": "SANTOOR",
+      "cells": [
+       5,
+       11,
+       17,
+       16,
+       9,
+       8,
+       1
+      ]
+     },
+     {
+      "word": "ORGAN",
+      "cells": [
+       0,
+       7,
+       14,
+       21,
+       27
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "game": "word-trail",
+   "date": "2026-11-08",
+   "title": "",
+   "data": {
+    "theme": "Look up at the sky",
+    "grid": [
+     "TCOEOR",
+     "NEORTG",
+     "RMBTAE",
+     "TUILMT",
+     "EKTAYE",
+     "CSAXEN",
+     "ORPLAS",
+     "UNIVER"
+    ],
+    "words": [
+     {
+      "word": "UNIVERSE",
+      "cells": [
+       42,
+       43,
+       44,
+       45,
+       46,
+       47,
+       41,
+       34
+      ],
+      "key": true
+     },
+     {
+      "word": "PLANET",
+      "cells": [
+       38,
+       39,
+       40,
+       35,
+       29,
+       23
+      ]
+     },
+     {
+      "word": "COMET",
+      "cells": [
+       1,
+       8,
+       13,
+       7,
+       0
+      ]
+     },
+     {
+      "word": "GALAXY",
+      "cells": [
+       11,
+       16,
+       21,
+       27,
+       33,
+       28
+      ]
+     },
+     {
+      "word": "ORBIT",
+      "cells": [
+       2,
+       9,
+       14,
+       20,
+       15
+      ]
+     },
+     {
+      "word": "METEOR",
+      "cells": [
+       22,
+       17,
+       10,
+       3,
+       4,
+       5
+      ]
+     },
+     {
+      "word": "ROCKET",
+      "cells": [
+       37,
+       36,
+       30,
+       25,
+       24,
+       18
+      ]
+     },
+     {
+      "word": "SATURN",
+      "cells": [
+       31,
+       32,
+       26,
+       19,
+       12,
+       6
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "game": "word-trail",
+   "date": "2026-11-09",
+   "title": "",
+   "data": {
+    "theme": "Feathered friends",
+    "grid": [
+     "RIORAR",
+     "BDBARP",
+     "PIWOTS",
+     "ENNWCH",
+     "OACOCK",
+     "EELGAE",
+     "EGIPCW",
+     "HRONOR"
+    ],
+    "words": [
+     {
+      "word": "BIRDWATCH",
+      "cells": [
+       6,
+       1,
+       0,
+       7,
+       14,
+       9,
+       16,
+       22,
+       23
+      ],
+      "key": true
+     },
+     {
+      "word": "PEACOCK",
+      "cells": [
+       12,
+       18,
+       25,
+       26,
+       27,
+       28,
+       29
+      ]
+     },
+     {
+      "word": "SPARROW",
+      "cells": [
+       17,
+       11,
+       4,
+       5,
+       10,
+       15,
+       21
+      ]
+     },
+     {
+      "word": "EAGLE",
+      "cells": [
+       35,
+       34,
+       33,
+       32,
+       31
+      ]
+     },
+     {
+      "word": "CROW",
+      "cells": [
+       40,
+       47,
+       46,
+       41
+      ]
+     },
+     {
+      "word": "PIGEON",
+      "cells": [
+       39,
+       38,
+       37,
+       30,
+       24,
+       19
+      ]
+     },
+     {
+      "word": "HERON",
+      "cells": [
+       42,
+       36,
+       43,
+       44,
+       45
+      ]
+     },
+     {
+      "word": "ROBIN",
+      "cells": [
+       3,
+       2,
+       8,
+       13,
+       20
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "game": "word-trail",
+   "date": "2026-11-10",
+   "title": "",
+   "data": {
+    "theme": "Getting around",
+    "grid": [
+     "INRAUJ",
+     "OATBOT",
+     "COEUIO",
+     "SRTRCY",
+     "XANPYR",
+     "IETCLR",
+     "YELTEA",
+     "MARFNE"
+    ],
+    "words": [
+     {
+      "word": "JOURNEY",
+      "cells": [
+       5,
+       10,
+       15,
+       21,
+       26,
+       31,
+       36
+      ],
+      "key": true
+     },
+     {
+      "word": "TRAIN",
+      "cells": [
+       8,
+       2,
+       7,
+       0,
+       1
+      ]
+     },
+     {
+      "word": "TAXI",
+      "cells": [
+       32,
+       25,
+       24,
+       30
+      ]
+     },
+     {
+      "word": "SCOOTER",
+      "cells": [
+       18,
+       12,
+       6,
+       13,
+       20,
+       14,
+       19
+      ]
+     },
+     {
+      "word": "TRAM",
+      "cells": [
+       39,
+       44,
+       43,
+       42
+      ]
+     },
+     {
+      "word": "FERRY",
+      "cells": [
+       45,
+       40,
+       35,
+       29,
+       23
+      ]
+     },
+     {
+      "word": "BICYCLE",
+      "cells": [
+       9,
+       16,
+       22,
+       28,
+       33,
+       38,
+       37
+      ]
+     },
+     {
+      "word": "AUTO",
+      "cells": [
+       3,
+       4,
+       11,
+       17
+      ]
+     },
+     {
+      "word": "PLANE",
+      "cells": [
+       27,
+       34,
+       41,
+       46,
+       47
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "game": "word-trail",
+   "date": "2026-11-11",
+   "title": "",
+   "data": {
+    "theme": "Back to school",
+    "grid": [
+     "NCHEEN",
+     "BERRCP",
+     "OUBIAD",
+     "LARLSU",
+     "MEDRES",
+     "RAOSRT",
+     "ROESER",
+     "MKRALC"
+    ],
+    "words": [
+     {
+      "word": "CLASSROOM",
+      "cells": [
+       47,
+       46,
+       45,
+       39,
+       33,
+       27,
+       32,
+       37,
+       42
+      ],
+      "key": true
+     },
+     {
+      "word": "DUSTER",
+      "cells": [
+       17,
+       23,
+       29,
+       35,
+       40,
+       41
+      ]
+     },
+     {
+      "word": "BENCH",
+      "cells": [
+       14,
+       7,
+       0,
+       1,
+       2
+      ]
+     },
+     {
+      "word": "PENCIL",
+      "cells": [
+       11,
+       4,
+       5,
+       10,
+       15,
+       21
+      ]
+     },
+     {
+      "word": "ERASER",
+      "cells": [
+       3,
+       9,
+       16,
+       22,
+       28,
+       34
+      ]
+     },
+     {
+      "word": "BOARD",
+      "cells": [
+       6,
+       12,
+       19,
+       20,
+       26
+      ]
+     },
+     {
+      "word": "RULER",
+      "cells": [
+       8,
+       13,
+       18,
+       25,
+       30
+      ]
+     },
+     {
+      "word": "MARKER",
+      "cells": [
+       24,
+       31,
+       36,
+       43,
+       38,
+       44
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "game": "word-trail",
+   "date": "2026-11-12",
+   "title": "",
+   "data": {
+    "theme": "Time to celebrate",
+    "grid": [
+     "AIRHVA",
+     "BSAREN",
+     "OAAHIS",
+     "LHKTSC",
+     "HIIURE",
+     "ORDIDL",
+     "LTIBEL",
+     "EARWAI"
+    ],
+    "words": [
+     {
+      "word": "CELEBRATE",
+      "cells": [
+       23,
+       29,
+       35,
+       40,
+       39,
+       44,
+       43,
+       37,
+       42
+      ],
+      "key": true
+     },
+     {
+      "word": "DIWALI",
+      "cells": [
+       32,
+       38,
+       45,
+       46,
+       41,
+       47
+      ]
+     },
+     {
+      "word": "HOLI",
+      "cells": [
+       19,
+       12,
+       18,
+       25
+      ]
+     },
+     {
+      "word": "DUSSEHRA",
+      "cells": [
+       34,
+       27,
+       22,
+       17,
+       10,
+       3,
+       2,
+       8
+      ]
+     },
+     {
+      "word": "BAISAKHI",
+      "cells": [
+       6,
+       0,
+       1,
+       7,
+       13,
+       20,
+       15,
+       16
+      ]
+     },
+     {
+      "word": "LOHRI",
+      "cells": [
+       36,
+       30,
+       24,
+       31,
+       26
+      ]
+     },
+     {
+      "word": "NAVRATRI",
+      "cells": [
+       11,
+       5,
+       4,
+       9,
+       14,
+       21,
+       28,
+       33
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "game": "word-trail",
+   "date": "2026-11-13",
+   "title": "",
+   "data": {
+    "theme": "In the garden",
+    "grid": [
+     "SPMLTR",
+     "MPIAUO",
+     "ISAERS",
+     "NADSIE",
+     "ELJGDS",
+     "WAOLEE",
+     "NNIDAS",
+     "GNEDRG"
+    ],
+    "words": [
+     {
+      "word": "GARDENING",
+      "cells": [
+       47,
+       40,
+       46,
+       45,
+       44,
+       37,
+       38,
+       43,
+       42
+      ],
+      "key": true
+     },
+     {
+      "word": "ROSES",
+      "cells": [
+       5,
+       11,
+       17,
+       23,
+       29
+      ]
+     },
+     {
+      "word": "TULIP",
+      "cells": [
+       4,
+       10,
+       3,
+       8,
+       1
+      ]
+     },
+     {
+      "word": "LAWN",
+      "cells": [
+       25,
+       31,
+       30,
+       36
+      ]
+     },
+     {
+      "word": "SPADE",
+      "cells": [
+       0,
+       7,
+       14,
+       20,
+       15
+      ]
+     },
+     {
+      "word": "SEEDS",
+      "cells": [
+       41,
+       35,
+       34,
+       28,
+       21
+      ]
+     },
+     {
+      "word": "JASMINE",
+      "cells": [
+       26,
+       19,
+       13,
+       6,
+       12,
+       18,
+       24
+      ]
+     },
+     {
+      "word": "MARIGOLD",
+      "cells": [
+       2,
+       9,
+       16,
+       22,
+       27,
+       32,
+       33,
+       39
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "game": "word-trail",
+   "date": "2026-11-14",
+   "title": "",
+   "data": {
+    "theme": "High in the hills",
+    "grid": [
+     "MITGLV",
+     "LMSLAL",
+     "ITUACE",
+     "CARIRY",
+     "ELNYEN",
+     "GIRAOM",
+     "DIFTCO",
+     "NIAFNU"
+    ],
+    "words": [
+     {
+      "word": "MOUNTAIN",
+      "cells": [
+       35,
+       41,
+       47,
+       46,
+       39,
+       44,
+       43,
+       42
+      ],
+      "key": true
+     },
+     {
+      "word": "CLIFF",
+      "cells": [
+       18,
+       25,
+       31,
+       38,
+       45
+      ]
+     },
+     {
+      "word": "VALLEY",
+      "cells": [
+       5,
+       10,
+       4,
+       11,
+       17,
+       23
+      ]
+     },
+     {
+      "word": "SUMMIT",
+      "cells": [
+       8,
+       14,
+       7,
+       0,
+       1,
+       2
+      ]
+     },
+     {
+      "word": "GLACIER",
+      "cells": [
+       3,
+       9,
+       15,
+       16,
+       21,
+       28,
+       22
+      ]
+     },
+     {
+      "word": "RIDGE",
+      "cells": [
+       32,
+       37,
+       36,
+       30,
+       24
+      ]
+     },
+     {
+      "word": "CANYON",
+      "cells": [
+       40,
+       33,
+       26,
+       27,
+       34,
+       29
+      ]
+     },
+     {
+      "word": "TRAIL",
+      "cells": [
+       13,
+       20,
+       19,
+       12,
+       6
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}

@@ -11,7 +11,7 @@ test("the Games menu leads to a hub that lists the playable games", async ({ pag
   const card = page.getByRole("link", { name: /Word Guess/ }).first();
   await expect(card).toHaveAttribute("href", /\/games\/word-guess\/$/);
   await expect(page.getByRole("link", { name: /Four Groups/ }).first()).toHaveAttribute("href", /\/games\/four-groups\/$/);
-  await expect(page.getByRole("link", { name: /Word Trail/ })).toHaveCount(0); // drafts are not shown
+  await expect(page.getByRole("link", { name: /Word Trail/ }).first()).toHaveAttribute("href", /\/games\/word-trail\/$/);
 });
 
 test("Word Guess: rejects a non-word, marks letters, wins, and remembers the result", async ({ page }) => {
@@ -214,4 +214,63 @@ test("Mini Crossword works with the on-screen keyboard", async ({ page }) => {
   await page.getByRole("button", { name: /^1\. Gone by/ }).click();
   for (const l of "AGO") await page.getByRole("button", { name: l, exact: true }).click();
   await expect(page.getByRole("button", { name: /Row 1, column 3.*, O$/ })).toBeVisible();
+});
+
+// Word Trail: the first puzzle (1 November 2026) is "In the fruit bowl". Squares are numbered from 0, row by row.
+const TRAIL: { word: string; cells: number[] }[] = [{"word": "FRUITBOWL", "cells": [32, 37, 36, 42, 43, 44, 45, 46, 47]}, {"word": "MANGO", "cells": [14, 8, 2, 9, 3]}, {"word": "GUAVA", "cells": [6, 13, 7, 0, 1]}, {"word": "LYCHEE", "cells": [38, 31, 30, 24, 18, 12]}, {"word": "APRICOT", "cells": [25, 19, 20, 21, 27, 34, 39]}, {"word": "PEACH", "cells": [5, 4, 11, 16, 10]}, {"word": "CHERRY", "cells": [17, 23, 29, 35, 40, 41]}, {"word": "MELON", "cells": [15, 22, 28, 33, 26]}];
+
+async function trace(page: import("@playwright/test").Page, cells: number[]) {
+  for (const c of cells) await page.locator(`[data-cell="${c}"]`).click();
+}
+
+test("Word Trail: finds words, the key word, refuses wrong paths, and gives a hint", async ({ page }) => {
+  await page.clock.install({ time: DAY });
+  await page.goto("/games/word-trail/");
+  await expect(page.getByText("No. 1 · 2026-11-01")).toBeVisible();
+  await expect(page.getByText("In the fruit bowl")).toBeVisible();
+  await expect(page.getByText("0 of 8 words found")).toBeVisible();
+
+  await trace(page, [0, 1, 2, 3]); // not a word
+  await page.getByRole("button", { name: "Submit" }).click();
+  await expect(page.getByRole("status")).toHaveText("Not one of today's words.");
+
+  const mango = TRAIL.find((w) => w.word === "MANGO")!;
+  await trace(page, mango.cells);
+  await expect(page.getByText("Your word:")).toBeVisible();
+  await page.getByRole("button", { name: "Submit" }).click();
+  await expect(page.getByRole("status")).toHaveText("MANGO: found.");
+  await expect(page.getByText("1 of 8 words found")).toBeVisible();
+
+  const key = TRAIL.find((w) => w.word === "FRUITBOWL")!;
+  await trace(page, key.cells);
+  await page.locator(`[data-cell="${key.cells.at(-1)}"]`).click(); // tapping the last letter again submits
+  await expect(page.getByRole("status")).toContainText("key word");
+  await expect(page.getByText("Fruitbowl (key word)")).toBeVisible();
+
+  await page.getByRole("button", { name: "Hint" }).click();
+  await expect(page.getByRole("status")).toContainText("outlined");
+  await expect(page.getByRole("button", { name: /Hint \(1 used\)/ })).toBeVisible();
+
+  for (const w of TRAIL.filter((w) => w.word !== "MANGO" && w.word !== "FRUITBOWL")) {
+    await trace(page, w.cells);
+    await page.getByRole("button", { name: "Submit" }).click();
+  }
+  await expect(page.getByText("Solved with 1 hint")).toBeVisible();
+  await expect(page.getByRole("button", { name: "Copy my result" })).toBeVisible();
+  await page.reload();
+  await expect(page.getByText("Solved with 1 hint")).toBeVisible(); // saved in this browser
+});
+
+test("Word Trail: a word traced backwards counts, and arrow keys move between letters", async ({ page }) => {
+  await page.clock.install({ time: DAY });
+  await page.goto("/games/word-trail/");
+  const mango = TRAIL.find((w) => w.word === "MANGO")!;
+  await trace(page, [...mango.cells].reverse());
+  await page.getByRole("button", { name: "Submit" }).click();
+  await expect(page.getByRole("status")).toHaveText("MANGO: found.");
+  await page.locator('[data-cell="0"]').focus();
+  await page.keyboard.press("ArrowRight");
+  await expect(page.locator('[data-cell="1"]')).toBeFocused();
+  await page.keyboard.press("ArrowDown");
+  await expect(page.locator('[data-cell="7"]')).toBeFocused();
 });

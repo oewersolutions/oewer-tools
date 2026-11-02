@@ -1,0 +1,133 @@
+{
+  "date": "2026-11-02",
+  "articles": [
+    {
+      "title": "How DNS Turns a Web Address Into an IP Address",
+      "category": "Technology",
+      "excerpt": "DNS is the internet's phone book. See the steps a lookup takes, from your resolver to the root, TLD and authoritative servers, and why caching matters.",
+      "tags": ["dns", "internet", "networking"],
+      "blocks": [
+        ["paragraph", "The Domain Name System, or DNS, translates a name such as www.example.com into the numeric IP address that computers use to find each other. Your browser asks a chain of servers, each pointing it closer to the answer, and then remembers the result so the next visit is faster. This article walks through that chain and explains the records and timers that make it work."],
+        ["heading", "Why names need translating"],
+        ["paragraph", "Computers on the internet are reached by IP addresses, which are strings of numbers. People prefer names. DNS is the system that links the two. Before DNS existed, one central file called HOSTS.TXT, kept at the Stanford Research Institute, listed the names and addresses of machines on the ARPANET, and addresses were assigned by hand. According to the Wikipedia article on DNS, Paul Mockapetris designed the Domain Name System in 1983 at the University of Southern California's Information Sciences Institute. The first specifications appeared as RFC 882 and 883 in November 1983 and were replaced by RFC 1034 and 1035 in November 1987."],
+        ["paragraph", "Instead of one file, DNS spreads the work across many servers arranged as a hierarchy. No single machine has to know every name."],
+        ["heading", "The steps of a lookup"],
+        ["paragraph", "Amazon Web Services describes a typical lookup in a handful of steps. Suppose you type www.example.com into a browser:"],
+        ["list", "Your device sends the question to a recursive resolver. This is usually run by your internet provider or your workplace network. It owns no records itself; it finds answers on your behalf, much like a hotel concierge.\nThe resolver asks a root name server. The root does not know the final answer, but it knows which servers handle each top-level domain such as .com.\nThe resolver asks the .com top-level domain (TLD) server. That server replies with the names of the name servers responsible for example.com.\nThe resolver asks one of those authoritative name servers. An authoritative server has the final say over a domain. It looks up the www record and returns its value, for example an IP address.\nThe resolver passes the address back to your browser and stores it for a while. The browser then connects to that address."],
+        ["paragraph", "The Wikipedia article describes the same idea. A recursive server starts from root hints, a built-in list of the root servers' addresses, and follows referrals down the hierarchy until it reaches an authoritative answer."],
+        ["heading", "Caching and time to live"],
+        ["paragraph", "Asking three or four servers for every page would be slow and would overload the root servers. So answers are cached. Each DNS record carries a time to live, or TTL, a number of seconds set by whoever runs the domain. Until that time runs out, a resolver can answer from memory without repeating the lookup. The Wikipedia article notes that, because of caching, root servers see only a relatively small share of all requests."],
+        ["paragraph", "Caching also explains why a change to a DNS record is not instant everywhere. Old copies stay in caches until their TTL expires. The same article says TTLs can range from a few seconds to days or weeks, and mentions that RFC 1912 suggests one to five days for typical records. Some resolvers apply their own limits, so the real delay can differ."],
+        ["callout", "Your own device keeps a small cache too. A resolver first checks its local cache, and only if the answer is missing does it ask the configured DNS server."],
+        ["heading", "Common record types"],
+        ["paragraph", "A domain's settings are stored as records, and each record type answers a different question:"],
+        ["list", "**A** maps a name to an IPv4 address.\n**AAAA** maps a name to an IPv6 address.\n**MX** names the mail server for a domain, with a priority number.\n**CNAME** makes one name an alias of another."],
+        ["heading", "The root servers"],
+        ["paragraph", "The top of the hierarchy is the root zone. The Wikipedia article says it is served by thirteen groups of root name servers. Copies of each group are spread around the world using anycast, a method in which many machines share one address and a request reaches a nearby one. This is why the root can serve a global audience without being a single point of failure. The article does not give a total count of machines, so this article does not either."],
+        ["heading", "What DNS does not do"],
+        ["paragraph", "DNS only finds the address. It does not load the page, and it does not by itself hide which names you look up. Whether the lookups are encrypted depends on the resolver and the settings your device uses. If a site seems unreachable, the cause can be DNS, the server, or the network, and each needs a different check."],
+        ["paragraph", "In short, DNS is a distributed directory. A resolver walks down from the root to the TLD to the domain's own servers, then caches what it learned for as long as the record's TTL allows. That layered design, and the caching on top of it, is what lets billions of lookups happen every day."],
+        ["paragraph", "This is general information about how the system works, not advice on configuring any particular domain or network."]
+      ],
+      "sources": [
+        { "title": "What is DNS?, Amazon Web Services (Route 53)", "url": "https://aws.amazon.com/route53/what-is-dns/" },
+        { "title": "Domain Name System, Wikipedia", "url": "https://en.wikipedia.org/wiki/Domain_Name_System" }
+      ],
+      "checkedOn": "2026-11-02"
+    },
+    {
+      "title": "What Is Retrieval-Augmented Generation (RAG) in AI?",
+      "category": "AI",
+      "excerpt": "RAG lets an AI model look up documents before it answers. Learn the steps, why it was proposed in 2020, what it helps with and where it still falls short.",
+      "tags": ["rag", "llm", "embeddings"],
+      "blocks": [
+        ["paragraph", "Retrieval-augmented generation, usually shortened to RAG, is a way of making an AI language model check a body of trusted documents before it answers. The model's reply is then based partly on what was found, not only on what it absorbed during training. It is one of the main techniques used to make chatbots answer questions about current or private information. It helps, but it does not make a model infallible."],
+        ["heading", "The problem RAG tries to solve"],
+        ["paragraph", "A large language model learns from a fixed set of training data. Anything that happened after that data was collected is unknown to it, and so is anything private, such as a company's internal policies. Retraining a model to add such knowledge is expensive. Amazon Web Services describes RAG as a cost-effective way to improve a model's output without retraining it."],
+        ["paragraph", "The idea also has an academic origin. In May 2020 a team led by Patrick Lewis, with colleagues from Facebook AI Research, University College London and New York University, posted a paper called *Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks*. It was later accepted at the NeurIPS 2020 conference. The authors noted that large language models keep facts inside their parameters, but find it hard to access and precisely use that knowledge, and that they trailed task-specific systems on knowledge-heavy tasks."],
+        ["heading", "How RAG works, step by step"],
+        ["paragraph", "AWS lays out four parts to a RAG system:"],
+        ["list", "**Prepare the data.** Documents from databases, APIs or file stores are converted into embeddings, which are lists of numbers that capture meaning, and saved in a vector database.\n**Retrieve.** The user's question is also converted into an embedding and compared with those stored. The closest matches are fetched. In AWS's example, a question about annual leave brings back the leave policy and the employee's own leave record.\n**Augment the prompt.** The retrieved text is added to the question as extra context, and the model is asked to answer using it.\n**Keep the data fresh.** Documents and their embeddings are updated, either continuously or in batches, so answers do not go stale."],
+        ["paragraph", "The 2020 paper used a pretrained text-to-text model paired with a dense index of Wikipedia, searched by a neural retriever. The authors called the first part parametric memory, because it lives in the model's parameters, and the index non-parametric memory, because it sits outside the model and can be changed."],
+        ["heading", "What it is good for"],
+        ["paragraph", "According to AWS, the main benefits are these:"],
+        ["list", "**Lower cost**, because the base model is not retrained.\n**More current answers**, because the system can connect to frequently updated sources.\n**Easier checking**, because answers can cite the documents they used and readers can open them.\n**More control for developers**, who can change the sources and limit retrieval by who is allowed to see what."],
+        ["paragraph", "In the research paper, RAG set state-of-the-art results on three open-domain question answering tasks at the time. The authors also reported that its generated text was more specific, more varied and better grounded in facts than that of a baseline model without retrieval."],
+        ["heading", "Where it falls short"],
+        ["paragraph", "RAG moves part of the problem rather than removing it. If the retrieval step finds the wrong passages, the model has poor material to work with. AWS notes that finding the right context gets harder at scale and that keyword search alone gives limited results for knowledge-heavy tasks. Preparing the data also takes work: documents have to be split into sensible chunks and converted, and the stored copies must be kept up to date."],
+        ["paragraph", "AWS describes RAG as one approach to some of the challenges of language models, not a full cure. The model can still misread what it is given or add details of its own. The AWS page gives no accuracy or speed figures for RAG as a whole, so any claim of a specific improvement should come from a test of the actual system."],
+        ["callout", "Citations help, but they are only as good as the sources behind them. A cited answer is easier to check, not automatically correct."],
+        ["heading", "Where you may meet it"],
+        ["paragraph", "Many chat tools that answer from company manuals, help centres or uploaded files use some form of retrieval before generating a reply. Cloud providers sell managed versions; AWS names Amazon Bedrock knowledge bases, Amazon Kendra and Amazon SageMaker JumpStart as examples. Other vendors offer their own. This article is a general explanation and does not compare products."]
+      ],
+      "sources": [
+        { "title": "What is RAG (Retrieval-Augmented Generation)?, Amazon Web Services", "url": "https://aws.amazon.com/what-is/retrieval-augmented-generation/" },
+        { "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks, arXiv (Lewis et al., 2020)", "url": "https://arxiv.org/abs/2005.11401" }
+      ],
+      "checkedOn": "2026-11-02"
+    },
+    {
+      "title": "How Wing Flaps and Slats Let Planes Fly Slowly",
+      "category": "Aviation",
+      "excerpt": "Flaps and slats change a wing's shape and size for takeoff and landing. See how each type works, what it does to lift, drag and stall speed, and its history.",
+      "tags": ["flaps", "slats", "wings", "lift"],
+      "blocks": [
+        ["paragraph", "Flaps and slats are movable parts on an aeroplane's wings that let it produce enough lift at low speed. Flaps sit on the rear edge of the wing and slats on the front. Pilots extend them for takeoff and landing, when the aircraft is slow, and tuck them away in cruise, when speed does the job instead."],
+        ["heading", "The basic problem"],
+        ["paragraph", "NASA's educational pages explain that lift depends on the shape of the wing's cross-section (the airfoil), the wing's area and the aircraft's speed. A wing designed to cruise efficiently at high speed does not make much lift when the airspeed is low. Takeoff and landing happen at low speed, so the wing needs help. Flaps and slats provide it."],
+        ["heading", "Three things a flap does"],
+        ["list", "**Adds area.** On many designs the flap slides backward along tracks, and slats slide forward, so the total wing area grows.\n**Adds camber.** Camber is the curve of the wing. Tipping the front edge of a slat and the rear edge of a flap downward increases the effective camber, which NASA says raises lift.\n**Adds drag.** A big flap angled into the airflow slows the aircraft, which is useful when landing."],
+        ["paragraph", "Wikipedia's article on flaps adds that extending them raises the maximum lift coefficient, so a given weight can be supported at a lower speed. That lowers the stall speed, the slowest speed at which the wing still flies. It allows a slower and steeper approach. Flaps also tend to lower the nose, which improves the pilot's view of the runway."],
+        ["heading", "Types of flap"],
+        ["list", "**Plain flap:** the back part of the wing hinges down. It is simple and cheap but less effective than other types.\n**Split flap:** only the lower surface of the trailing edge hinges down. It makes a lot of drag at full deflection.\n**Slotted flap:** a gap between wing and flap lets higher-pressure air flow over the flap's upper surface, which helps keep the airflow attached and raises the maximum lift beyond a split flap. Some designs use several slots.\n**Fowler flap:** the flap first slides backward, lengthening the wing, then tilts down. It adds both area and camber and always creates a slot effect."],
+        ["paragraph", "Wikipedia credits Harlan D. Fowler with the Fowler flap in 1924. It first flew on the Martin 146 prototype in 1935 and entered production on the 1937 Lockheed Super Electra. The article says it is still widely used."],
+        ["heading", "Slats and leading-edge devices"],
+        ["paragraph", "Slats are mounted at the front of the wing. When extended they form a slot that guides air over the upper surface. This lets the wing be tilted to a higher angle against the airflow before it stalls, improving low-speed control and shortening takeoff and landing distances. Some fast fighter aircraft with thin wings instead use a leading-edge flap, in which the whole front edge rotates downward."],
+        ["heading", "How they are used"],
+        ["paragraph", "NASA notes that a moderate flap setting at takeoff gives plenty of lift with fairly low drag. For landing, flaps and slats are fully extended, giving high lift at low speed and high drag to help slow down. After touchdown, spoilers on the top of the wing are raised to reduce lift, which keeps the aircraft on the ground, and to add more drag."],
+        ["callout", "Flap settings are chosen for each aircraft type and situation. Real procedures come from the aircraft's flight manual, not from general articles like this one."],
+        ["heading", "A short history"],
+        ["list", "1913 to 1914: plain flaps were tested in the United Kingdom but not fitted to aircraft.\n1916: the Fairey Hamble Baby is credited as the first aeroplane to fly with flaps.\n1917: Breguet fitted automatic flaps to the Breguet 14.\n1920s and 1930s: split and slotted flaps were developed, and split flaps became common in the 1930s.\n1935 to 1937: the Fowler flap entered service."],
+        ["paragraph", "Wikipedia flags the credit for inventing the split flap as unverified, so this article does not name an inventor for it."],
+        ["paragraph", "Next time you sit by an airliner's wing, you may see sections sliding backward and down as the plane slows to land. That is the wing being reshaped, in a few seconds, for a different job than the one it does at cruising speed."]
+      ],
+      "sources": [
+        { "title": "Flaps and Slats, NASA Glenn Research Center", "url": "https://www.grc.nasa.gov/www/k-12/VirtualAero/BottleRocket/airplane/flap.html" },
+        { "title": "Flap (aeronautics), Wikipedia", "url": "https://en.wikipedia.org/wiki/Flap_(aeronautics)" }
+      ],
+      "checkedOn": "2026-11-02"
+    },
+    {
+      "title": "The Rule of 72: A Quick Way to Estimate Doubling Time",
+      "category": "Money Guides",
+      "excerpt": "Divide 72 by an annual rate to estimate how many years money takes to double. See worked examples, why 72 works, how accurate it is and where it was first written.",
+      "tags": ["compound interest", "investing basics", "mental maths"],
+      "blocks": [
+        ["paragraph", "The Rule of 72 is a mental shortcut. Divide 72 by an annual interest rate, in percent, and the answer is roughly how many years it takes for money to double with compound interest. At 8% a year, 72 divided by 8 is 9 years. It is an estimate, not an exact figure, and it works best for ordinary rates."],
+        ["heading", "How to use it"],
+        ["paragraph", "The method has one step: years to double ≈ 72 ÷ annual rate. Corporate Finance Institute gives an example in which an investor expects 12% a year, so 72 ÷ 12 = 6 years to double. At 6%, the answer is 12 years. At 9%, it is 8 years. The exact answer for 9% is about 8.04 years, according to Wikipedia, so the shortcut is very close."],
+        ["paragraph", "The rule assumes the interest is compounded, meaning each year's interest earns interest of its own. Corporate Finance Institute notes it does not work well with simple interest, where the same amount is added every year."],
+        ["heading", "Why 72?"],
+        ["paragraph", "The exact doubling time comes from solving (1 + r)^t = 2, which gives t = ln(2) ÷ ln(1 + r). For small rates, ln(1 + r) is close to r, so t is about 0.693 ÷ r. That is why the figure 69.3 is the mathematically natural number, and it is exact when interest is compounded continuously."],
+        ["paragraph", "So why use 72? Wikipedia explains that 72 fits annual compounding at typical rates near 8% better, and that it has many small divisors: 1, 2, 3, 4, 6, 8, 9 and 12. This makes the mental arithmetic easy for many common rates. Corporate Finance Institute makes the same point, saying 72 is preferred over 69.3 because it is easier to divide."],
+        ["heading", "How accurate is it?"],
+        ["paragraph", "Wikipedia compares the rule with the exact answer. Some of its figures, in years:"],
+        ["list", "At 2%: exact 35.0, Rule of 72 gives 36.0\nAt 8%: exact 9.006, Rule of 72 gives 9.0\nAt 10%: exact 7.273, Rule of 72 gives 7.2\nAt 20%: exact 3.802, Rule of 72 gives 3.6\nAt 50%: exact 1.710, Rule of 72 gives 1.44"],
+        ["paragraph", "The pattern is clear. Around 8% the rule is almost perfect. At very low rates, using 70 or 69.3 is closer, and at high rates the shortcut underestimates the time. Wikipedia suggests 69 or 70 for daily or continuous compounding."],
+        ["callout", "Rule of thumb: 72 for rates of roughly 6% to 10% compounded yearly; 70 or 69 when rates are low or compounding is very frequent."],
+        ["heading", "Other things you can estimate"],
+        ["paragraph", "The same idea works whenever something grows at a steady percentage. Wikipedia gives two examples that go the other way. With inflation of 3.5% a year, 70 ÷ 3.5 gives 20 years for the buying power of money to halve. A fee of 3% a year would halve an account's value in about 72 ÷ 3 = 24 years, in the sense of the growth lost to it. You can also change the 2 in the formula to 3 to estimate tripling time."],
+        ["heading", "An old rule"],
+        ["paragraph", "Wikipedia says the rule appears in Luca Pacioli's book *Summa de arithmetica*, printed in Venice in 1494. Pacioli states the rule without explaining where it comes from, which suggests it was known before him. His example is 6%: 72 divided by 6 is 12 years."],
+        ["heading", "Limits to remember"],
+        ["list", "It assumes a fixed rate every year. Real investment returns vary, and no rate is guaranteed.\nIt ignores taxes, fees and inflation unless you include them in the rate.\nIt is a way to build a feel for numbers, not a forecast."],
+        ["paragraph", "This is general information about arithmetic, not financial advice. For any real decision, use an exact calculator or the terms given by the provider."]
+      ],
+      "sources": [
+        { "title": "Rule of 72, Wikipedia", "url": "https://en.wikipedia.org/wiki/Rule_of_72" },
+        { "title": "Rule of 72, Corporate Finance Institute", "url": "https://corporatefinanceinstitute.com/resources/wealth-management/rule-of-72/" }
+      ],
+      "checkedOn": "2026-11-02"
+    }
+  ]
+}

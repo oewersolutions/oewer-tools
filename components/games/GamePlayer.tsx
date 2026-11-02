@@ -1,10 +1,11 @@
 "use client";
 
-import type { FourGroupsData, Game, HiveWordsData, MiniCrosswordData, Puzzle } from "../../lib/games/types";
+import type { FourGroupsData, Game, HiveWordsData, MiniCrosswordData, Puzzle, WordTrailData } from "../../lib/games/types";
 import FourGroups from "./FourGroups";
 import HiveWords from "./HiveWords";
 import MiniCrossword from "./MiniCrossword";
 import WordGuess from "./WordGuess";
+import WordTrail from "./WordTrail";
 
 /** Chooses the board for a game's type. Only built types reach here: validation stops others being published. */
 export default function GamePlayer({ game, puzzles }: { game: Pick<Game, "slug" | "name" | "game_type">; puzzles: Puzzle[] }) {
@@ -17,6 +18,8 @@ export default function GamePlayer({ game, puzzles }: { game: Pick<Game, "slug" 
       return <HiveWords name={game.name} slug={game.slug} puzzles={puzzles as Puzzle<HiveWordsData>[]} />;
     case "mini_crossword":
       return <MiniCrossword name={game.name} slug={game.slug} puzzles={puzzles as Puzzle<MiniCrosswordData>[]} />;
+    case "word_trail":
+      return <WordTrail name={game.name} slug={game.slug} puzzles={puzzles as Puzzle<WordTrailData>[]} />;
     default:
       return <p className="text-muted">This game is not available yet.</p>;
   }

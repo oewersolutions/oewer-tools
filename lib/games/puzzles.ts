@@ -1,4 +1,5 @@
 import { checkMini } from "./mini-crossword";
+import { checkTrail } from "./word-trail";
 import type { GameType, Puzzle, WordGuessData } from "./types";
 
 const DATE = /^(\d{4})-(\d{2})-(\d{2})$/;
@@ -96,6 +97,8 @@ export function checkPuzzleData(type: GameType, text: string, words?: ReadonlySe
       }
       return pangram ? null : "needs at least one word that uses all seven letters";
     }
+    case "word_trail":
+      return checkTrail(data as Record<string, never>);
     case "mini_crossword":
       return checkMini(data as Record<string, never>, words);
     default:
