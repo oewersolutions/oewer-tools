@@ -1,0 +1,159 @@
+{
+  "date": "2026-11-02",
+  "articles": [
+    {
+      "title": "How a Washing Machine Senses Load Size and Imbalance",
+      "category": "How It Works",
+      "excerpt": "Many washing machines judge how heavy the laundry is and whether it is lopsided by watching the drum motor's electrical power, not by weighing it.",
+      "tags": ["washing machine", "sensors", "motors"],
+      "blocks": [
+        ["paragraph", "A modern washing machine has to answer two questions before it spins fast: how much laundry is in the drum, and is that laundry spread evenly? Many machines answer both by watching the electrical power that the drum motor draws, rather than by using a scale. This article explains the idea, using a published patent as an example, and why the machine sometimes stops to ask for help."],
+        ["heading", "Why balance matters"],
+        ["paragraph", "When the drum spins, wet clothes are pressed against its wall. If they bunch up on one side, the drum is out of balance. The heavy side swings round the axis, which shakes the cabinet, makes noise and puts strain on bearings and springs. At high spin speeds the effect grows quickly, so the machine needs to check balance at low speed first."],
+        ["paragraph", "Manufacturers also build in passive defences. According to Wikipedia's article on washing machines, balance rings filled with a salt-water solution (or oil with small balls) can counter an uneven load, and many front-loaders carry a concrete block of roughly 25 kg to damp vibration. Other designs use water-filled counterweights or hydraulic suspension. These parts reduce shaking, but they do not tell the controller what is happening inside the drum."],
+        ["heading", "Reading the motor instead of weighing the load"],
+        ["paragraph", "A drum full of wet laundry is heavy and resists changes in speed. A motor that has to speed it up draws more power than one turning an empty drum. A lopsided load adds a second effect: as the heavy patch rises on one side and falls on the other, the motor works harder, then easier, once per turn. The power therefore rises and falls in step with the rotation."],
+        ["paragraph", "A US patent for a washer controller (US 7,958,585, listed on Google Patents) describes this approach. The controller measures voltage and current on the inverter that drives the motor, takes many samples each second, and computes power. It does not need a separate sensor for the drum. The patent presents one example design; other makers use their own methods, and many do not publish them."],
+        ["heading", "A short test routine"],
+        ["paragraph", "In the patent's example, the drum is run through a short sequence of speeds, and each stage gives a different piece of information."],
+        ["list", "At a modest speed (about 100 RPM in the example), the controller averages the power to get a baseline.\nIt then sums how far the power rises above and falls below that baseline. This total grows with the size of the imbalance, but it also depends on how heavy the load is.\nThe drum is ramped up and then down between roughly 85 and 150 RPM at the same rate. Friction affects both ramps in a similar way and largely cancels out, so the difference between them reflects the inertia of the load, which tracks its size.\nThe controller combines the two results, using calibration constants set for that machine, to estimate the imbalance in kilograms."],
+        ["paragraph", "The patent also describes a check just below the drum's lowest resonance speed, where an uneven load makes the drum vibrate more and the motor works harder. The controller uses that extra power to tell a single heavy lump from a pair of lumps on opposite sides."],
+        ["heading", "What the machine does with the result"],
+        ["paragraph", "If the measurements are within limits, the program carries on to a suitable spin speed. If any value exceeds its maximum, the machine stops. In the patent's example it then either asks the user to redistribute the clothes or tries to redistribute them itself, with a limit on the number of retries. That is why a washer may pause and start a slow tumble again before the final spin, and why a single heavy item such as a towel or a duvet can cause an early stop."],
+        ["heading", "Load size also shapes the wash"],
+        ["paragraph", "Knowing the load size has a second use. Wikipedia notes that Fisher & Paykel's SmartDrive line, introduced in 1991, used a computer-controlled system to determine the load size and adjust the wash cycle. In general, a machine that knows the load can set the water level and the time more closely to what the laundry needs. Front-loaders, the same article says, fill to the same low level each time and refill if the clothes soak up water, while top-loaders fill until the clothes can float freely."],
+        ["paragraph", "Spin speed is limited by the same checks. Wikipedia gives typical home spin speeds of about 1,000 to 1,400 RPM for front-loaders, with some models able to reach 2,000 RPM. A faster spin removes more water but demands a better-balanced drum."],
+        ["heading", "The motor matters too"],
+        ["paragraph", "Reading power from the motor works best when the controller can drive the motor precisely. Wikipedia says most newer front-loaders use a brushless DC direct-drive motor, which removes the belt and pulley, and that Fisher & Paykel introduced this arrangement in 1991. Electronic speed control has been common on more expensive models since the 1970s, and microcontrollers began to replace electromechanical timers in cheaper machines after appearing in upmarket models in the early 1990s."],
+        ["heading", "Limits of the method"],
+        ["paragraph", "The patent text itself notes that judging imbalance from motor current alone can be inaccurate, because the motor also carries other loads. That is the reason for the calibration steps and the filters described above. Different washers, from different brands and with different drums, will behave differently, so the figures in this article are an example rather than a rule for every machine."],
+        ["callout", "This is general information about how the technology works. For a specific machine, the user manual from its maker is the right guide to error codes and load limits."]
+      ],
+      "sources": [
+        { "title": "Washing machine, Wikipedia", "url": "https://en.wikipedia.org/wiki/Washing_machine" },
+        { "title": "US7958585B2: Method and apparatus for monitoring load size and load imbalance in a washing machine, Google Patents", "url": "https://patents.google.com/patent/US7958585" }
+      ],
+      "checkedOn": "2026-11-02"
+    },
+    {
+      "title": "How Cruise Control Works, From Teetor to Adaptive Systems",
+      "category": "Cars and Bikes",
+      "excerpt": "Cruise control holds a speed you set by adjusting the throttle. Here is how it works, who invented it, and what adaptive cruise adds with radar.",
+      "tags": ["cruise control", "driver assistance", "history"],
+      "blocks": [
+        ["paragraph", "Cruise control is a system that adjusts the throttle on its own to hold a speed the driver has chosen. The basic version has existed since the late 1950s, and today's adaptive version adds radar or cameras so the car can also keep a gap behind the vehicle ahead. This article covers how each works and where the idea came from."],
+        ["heading", "The basic idea"],
+        ["paragraph", "Wikipedia describes cruise control as a servomechanism, which simply means a system that compares what is happening with what is wanted and corrects the difference. The car measures its own speed, compares it with the speed the driver set, and moves the throttle to close any gap. Going uphill, the throttle opens a little more; going downhill, it closes."],
+        ["paragraph", "Speed can be read from the driveshaft, a speedometer cable, wheel-speed sensors or electronic pulses. The throttle can be moved by a solenoid, by a vacuum-operated servo, or, in cars with drive-by-wire throttles, simply by a command to the engine computer."],
+        ["heading", "How the driver controls it"],
+        ["list", "Switching the system on and setting a speed holds that speed.\nTouching the brake switches it off. Many systems remember the last speed, so a resume button brings it back.\nMost systems also offer buttons to raise or lower the set speed in steps.\nMost systems will not engage below roughly 25 to 30 mph, according to Wikipedia.\nIn manual-transmission cars, pressing the clutch normally cancels it."],
+        ["heading", "Where it came from"],
+        ["paragraph", "Early attempts at speed control date back to the early 1900s. Wikipedia mentions the Wilson-Pilcher, which had a steering-column lever to set engine speed, and the 1908 Peerless, which added a governor and a throttle lever on the steering wheel. These were closer to engine-speed regulators than the modern idea."],
+        ["paragraph", "The modern system is credited to Ralph Teetor, a blind engineer from Indiana. The Inventors Hall of Fame says the idea came to him in 1936 while he was a passenger with his friend and patent attorney Harry Lindsey, whose driving speed rose and fell as they talked. Teetor developed a device that held a steady speed. A dashboard selector was linked along the drive shaft to a mechanism under the bonnet, so the driver could set a speed and take the foot off the pedal."],
+        ["paragraph", "Dates differ slightly between sources. The Hall of Fame says he filed his first speed-control patent in 1948, while Wikipedia also gives 1948 as the year he developed the modern version. Wikipedia adds that a 35 mph wartime speed limit in the United States helped drive interest in the technology."],
+        ["heading", "From Speedostat to cruise control"],
+        ["paragraph", "The Hall of Fame says the device was made by Perfect Circle under the trademark \"Speedostat\" and first appeared in Chrysler cars, including the 1958 Imperial, New Yorker and Windsor; in 1959 Chrysler offered it as an option on all its models. Chrysler marketed it as \"Auto-Pilot.\" Wikipedia agrees that the 1958 Chrysler Imperial was the first car to use Teetor's system, and says Cadillac later marketed the feature as \"cruise control.\" The Hall of Fame puts Cadillac's use of the name in 1959. Whichever company coined it, \"cruise control\" is the name that stuck."],
+        ["paragraph", "Electronics changed the design later. Wikipedia says Daniel Aaron Wisner patented an electronic cruise control design in 1968, and that Motorola commercialised an integrated circuit based on it in the late 1980s."],
+        ["heading", "Adaptive cruise control"],
+        ["paragraph", "Adaptive cruise control keeps a set speed when the road ahead is clear, but slows the car to keep a chosen distance from the vehicle in front, then returns to the set speed when traffic clears. Wikipedia says these systems use radar, often at millimetre-wave frequencies, as well as lasers and cameras, and some also use GPS-linked speed-limit data."],
+        ["paragraph", "The same page points out limits. Some systems cannot detect stationary cars or pedestrians, so the driver has to stay attentive. SAE International classes a car with adaptive cruise control as Level 1 driving automation, meaning the system helps with one task, speed, while the human does the rest."],
+        ["callout", "This is general information. A car's owner manual explains what its own system can and cannot detect."]
+      ],
+      "sources": [
+        { "title": "Cruise control, Wikipedia", "url": "https://en.wikipedia.org/wiki/Cruise_control" },
+        { "title": "Ralph Teetor, National Inventors Hall of Fame", "url": "https://www.invent.org/inductees/ralph-teetor" }
+      ],
+      "checkedOn": "2026-11-02"
+    },
+    {
+      "title": "The Hindustan Ambassador: India's Long-Running Car",
+      "category": "Vintage and History",
+      "excerpt": "How a British Morris Oxford design became India's Ambassador, ran from 1957 until 2014, and later had its name sold to Peugeot's parent company.",
+      "tags": ["Ambassador", "Hindustan Motors", "Indian cars"],
+      "blocks": [
+        ["paragraph", "The Hindustan Ambassador was a car built in India for around 57 years with only gradual changes, based on a British Morris design from the 1950s. It was a familiar sight as a government car and a taxi. This article follows its history from the company's start to the end of production in 2014, using two published sources and noting where they differ."],
+        ["heading", "Hindustan Motors"],
+        ["paragraph", "According to Wikipedia, B. M. Birla founded Hindustan Motors in 1942. The company first assembled the Morris 10 as the Hindustan 10 at Okha in Gujarat. In 1948 the assembly plant moved to Uttarpara in the Hooghly district of West Bengal, near Calcutta (now Kolkata), and Uttarpara remained the home of the Ambassador line. Live History India gives the same two places and the same years."],
+        ["heading", "A British design, built in India"],
+        ["paragraph", "Wikipedia says that in 1956 Morris Motors sold the rights and tooling for the Morris Oxford Series III to Hindustan Motors, and that the car launched in India in 1957 as the Ambassador Mark I. The Oxford Series III had appeared in England in 1955. Live History India gives 1958 as the launch year, so sources differ by a year; the 1957 date is the more commonly cited one in the material read for this article."],
+        ["paragraph", "Hindustan had already built a Morris Oxford Series II derivative, the Landmaster, before the Ambassador, which shows the company's close link to Morris designs."],
+        ["heading", "Engines and updates"],
+        ["list", "1957: the Mark I used a 1,476 cc side-valve petrol engine.\n1959: a 1,489 cc overhead-valve BMC B-series petrol engine of 55 bhp replaced it.\n1980: a 1,489 cc diesel version of 37 bhp arrived. Wikipedia reports it as India's first diesel car; Live History India also calls it the first Indian-made diesel car.\n1992: the 1800 ISZ introduced a 1,817 cc Isuzu four-cylinder petrol engine of 75 bhp.\n2013: the Encore added a turbocharged 1.5-litre diesel to meet BS IV emission standards."],
+        ["paragraph", "The model names marked the changes: Mark II (1963), Mark III (1975), Mark 4 (1979), Nova (1990), 1800 ISZ (1992), Classic (1998), Grand (2003), Avigo (2004) and Encore (2013). Live History India counts seven generations in all, with the look staying close to the original."],
+        ["heading", "Who drove it"],
+        ["paragraph", "Wikipedia says the Ambassador long dominated the Indian market, valued for its size and toughness, and was widely used as an official government and company car. It was also popular as a taxi, especially in Kolkata. Live History India describes it as a favourite of politicians and officials, and says its low price, roomy cabin and easy maintenance suited middle-class families and taxi drivers."],
+        ["heading", "Decline and end"],
+        ["paragraph", "Private buyers gradually moved away from the Ambassador in the 1980s and 1990s, Wikipedia says, and Live History India links this to the arrival of smaller cars such as the Maruti. In the year to March 2014, Hindustan sold about 2,200 Ambassadors, roughly a tenth of its mid-1980s sales, according to Wikipedia. Production ended in 2014 after weak demand and financing problems."],
+        ["paragraph", "Wikipedia also records that taxi sales of the car were outlawed from 1 April 2011 under new emission rules, which affected one of its main markets."],
+        ["heading", "After production"],
+        ["paragraph", "Both sources say that in 2017 Hindustan Motors sold the Ambassador brand to PSA, the group behind Peugeot and Citroen, for ₹80 crore. Wikipedia adds that in 2022 Hindustan announced plans to bring the nameplate back with a new design and engine. As of 2 November 2026, this article has not confirmed whether such a car has gone on sale, so readers who want current news should check recent reports."],
+        ["callout", "Dates and figures in this article come from the two sources listed below. Where they disagree, such as on the launch year, both are noted."]
+      ],
+      "sources": [
+        { "title": "Hindustan Ambassador, Wikipedia", "url": "https://en.wikipedia.org/wiki/Hindustan_Ambassador" },
+        { "title": "The Ambassador: Why India Fell In Love With The Car, Live History India", "url": "https://livehistoryindia.com/story/snapshort-histories-making-of-modern-india/the-ambassador-car" }
+      ],
+      "checkedOn": "2026-11-02"
+    },
+    {
+      "title": "How a Smartphone Camera Sensor Turns Light Into Colour",
+      "category": "Electronics",
+      "excerpt": "A phone camera chip counts light with millions of tiny pixels, each behind one colour filter. Software then estimates the missing colours.",
+      "tags": ["camera", "image sensor", "smartphones"],
+      "blocks": [
+        ["paragraph", "A smartphone camera sensor is a chip covered in millions of tiny light detectors. Each one measures only how much light reaches it, not its colour, so the sensor is covered with a pattern of colour filters and software works out the full-colour picture afterwards. This article explains each step."],
+        ["heading", "Pixels that count light"],
+        ["paragraph", "Wikipedia explains that a CMOS image sensor converts light into electrical signals, one pixel at a time, using small amplifiers built into the chip. The light-sensing part of each pixel is a photodiode, which builds up electric charge in proportion to the light it receives. The more light, the larger the signal."],
+        ["paragraph", "Because each pixel has its own amplifier, some of the surface is not sensitive to light. To make up for it, a tiny lens, called a microlens, sits over each photodiode and bends light that would otherwise miss it. Some CMOS sensors also use back-side illumination, which puts the wiring behind the light-sensitive layer so more light can be captured."],
+        ["heading", "Adding colour with a filter pattern"],
+        ["paragraph", "A photodiode alone gives only brightness. To record colour, a colour filter array sits over the sensor so that each pixel sees only red, green or blue light. The most common layout is the Bayer pattern, a checkerboard that Wikipedia says has two green pixels for every red and every blue one. The darktable manual, which documents a photo-editing program, agrees that the filters are usually arranged in a Bayer mosaic, though other layouts exist."],
+        ["paragraph", "Sources generally explain the extra green as a match to human vision, which is more sensitive to green light. That detail is common in explanations of the pattern but was not stated in the two pages used here, so treat it as background rather than a checked fact."],
+        ["heading", "Demosaicing: estimating the missing colours"],
+        ["paragraph", "After the sensor reads out, every pixel holds data for one colour only. The darktable manual explains that a step called demosaicing estimates the two missing colours for each pixel by interpolating, which means working them out from the neighbouring pixels. Different programs use different methods, and the manual notes that some preserve fine detail better while others cope better with noisy, high-ISO images."],
+        ["paragraph", "Estimating can go wrong. The darktable manual lists artefacts such as moiré, which are false patterns, maze-like structures and exaggerated colours at edges. A phone does this step automatically in its image-processing hardware and software, and also applies noise reduction, colour balancing and other adjustments; the details differ by brand and are mostly not published."],
+        ["heading", "Combining pixels in the dark"],
+        ["paragraph", "Wikipedia notes that some sensors with very high pixel counts use pixel binning: groups of 4 or 9 neighbouring pixels of the same colour are combined into one. This improves sensitivity and dynamic range in dim scenes, at the cost of a lower output resolution. Wikipedia reports that in June 2022 Samsung announced a 200-megapixel sensor with 0.56-micrometre pixels, a size that shows why combining pixels is attractive."],
+        ["heading", "Rolling shutter"],
+        ["paragraph", "Most phone sensors read out rows one after another rather than all at once. Wikipedia describes this electronic rolling shutter: each row is exposed just before it is read, so the exposure rolls down the frame, usually top to bottom. Fast-moving subjects can look slanted as a result. Global shutters, which expose every pixel at the same moment, need extra storage circuits to hold the charge until readout, so they are less common."],
+        ["heading", "Why CMOS won"],
+        ["paragraph", "Earlier digital cameras often used CCD sensors. According to Wikipedia, CMOS sensors can use fewer components, less power and faster readout, and are less vulnerable to static discharge. Sales of CMOS sensors passed CCD sales in 2007, and by the 2010s they had largely displaced CCDs in new designs. The same article dates the first commercial digital camera, the Cromemco Cyclops, to 1975, with a 32 by 32 pixel MOS sensor."],
+        ["callout", "Phone makers do not always disclose their sensor or processing designs. The description here is of the general method, not of any one phone."]
+      ],
+      "sources": [
+        { "title": "Image sensor, Wikipedia", "url": "https://en.wikipedia.org/wiki/Image_sensor" },
+        { "title": "Demosaic, darktable 5.x user manual", "url": "https://docs.darktable.org/usermanual/development/en/module-reference/processing-modules/demosaic/" }
+      ],
+      "checkedOn": "2026-11-02"
+    },
+    {
+      "title": "How Cloud Computing Works: The NIST Definition Explained",
+      "category": "Technology",
+      "excerpt": "The cloud is rented computing delivered over a network. NIST's definition names five traits and three service types, which this guide explains in plain terms.",
+      "tags": ["cloud", "IaaS", "SaaS"],
+      "blocks": [
+        ["paragraph", "\"The cloud\" means computing power, storage and software that you use over the internet instead of owning and running the machines yourself. A widely used definition from the US National Institute of Standards and Technology (NIST) breaks it into five traits and three service types. This article explains them in plain terms."],
+        ["heading", "The NIST definition"],
+        ["paragraph", "NIST published its definition in September 2011 as Special Publication 800-145, written by Peter Mell and Timothy Grance. It describes cloud computing as a model for convenient, on-demand network access to a shared pool of configurable computing resources, such as networks, servers, storage, applications and services, which can be provisioned and released with little management effort. The document says the model has five essential characteristics, three service models and four deployment models. The ISO standard definition quoted on Wikipedia is similar: network access to a scalable, elastic pool of shareable resources, provisioned on demand."],
+        ["heading", "The five characteristics"],
+        ["list", "**On-demand self-service:** a customer can set up things like server time or storage automatically, without talking to a person at the provider.\n**Broad network access:** services are reached over the network from many kinds of devices, from phones to workstations.\n**Resource pooling:** the provider's hardware serves many customers at once, with resources assigned and reassigned as demand changes. Customers usually do not know the exact location, though they may choose a country or data centre region.\n**Rapid elasticity:** capacity can be added or released quickly, sometimes automatically, so it often seems unlimited to the customer.\n**Measured service:** use is metered, usually by storage, processing, bandwidth or active users, and reported to both sides, which is the basis for pay-per-use pricing."],
+        ["heading", "Virtualisation: the enabling technology"],
+        ["paragraph", "Wikipedia describes virtualisation as the main technology that makes the cloud possible. It splits one physical machine into several virtual machines, so one server can serve many customers and be used more fully. This is how resource pooling works in practice."],
+        ["heading", "Three service models"],
+        ["paragraph", "The models differ in how much the customer manages."],
+        ["list", "**Infrastructure as a Service (IaaS):** the customer rents basic resources such as processing, storage and networks and can run any software, including an operating system. The customer manages the operating system and applications, not the physical hardware.\n**Platform as a Service (PaaS):** the customer deploys their own applications onto tools and languages the provider supports. The provider manages the servers and operating system; the customer controls the application and its settings.\n**Software as a Service (SaaS):** the customer uses the provider's finished application, often in a web browser, such as web-based email. The customer manages almost nothing beyond limited settings."],
+        ["heading", "Four deployment models"],
+        ["paragraph", "Wikipedia, which lists these in more detail than NIST's short summary, describes private clouds (run for one organisation), public clouds (offered over the internet to many), hybrid clouds (a connected mix of private and public) and community clouds (shared by organisations with common concerns such as security rules). It also names multi-cloud, meaning public services from two or more providers."],
+        ["heading", "A short history"],
+        ["paragraph", "Wikipedia traces the idea to the time-sharing systems of the 1960s, where many users shared one expensive computer. The word \"cloud\" was used in 1994 by General Magic to describe the virtual places mobile programs could travel through, and Compaq's 1996 business plan popularised the term cloud computing. Wikipedia says Amazon Web Services launched between 2002 and 2006, with S3 and EC2 arriving in 2006. Microsoft launched Azure in 2010, the same year NASA and Rackspace started the OpenStack project."],
+        ["heading", "What it means in practice"],
+        ["paragraph", "Because customers pay for what they use and can scale up or down, a small team can rent computing capacity that once required buying servers. The trade-off is reliance on a provider: the customer does not control the physical hardware and depends on the provider's service and pricing. Whether that trade suits a given use depends on the situation."],
+        ["callout", "This is general information about how cloud computing is defined. Providers' own documentation is the place to check what a particular service includes."]
+      ],
+      "sources": [
+        { "title": "The NIST Definition of Cloud Computing, SP 800-145, NIST", "url": "https://csrc.nist.gov/pubs/sp/800/145/final" },
+        { "title": "Cloud computing, Wikipedia", "url": "https://en.wikipedia.org/wiki/Cloud_computing" }
+      ],
+      "checkedOn": "2026-11-02"
+    }
+  ]
+}
