@@ -1,0 +1,168 @@
+{
+  "date": "2026-11-02",
+  "articles": [
+    {
+      "title": "How Neural Networks Learn: Layers, Weights, Training",
+      "category": "AI",
+      "excerpt": "A neural network is a stack of simple calculating units whose connection strengths are adjusted from examples. Here is how the layers work and how training fixes mistakes.",
+      "tags": ["neural networks", "machine learning"],
+      "blocks": [
+        ["paragraph", "A neural network is a computer model made of many small calculating units, called artificial neurons, arranged in layers. It does not follow hand-written rules. Instead it starts with arbitrary numbers, compares its answers with known correct answers, and nudges those numbers until the answers improve. This article explains the parts and the training loop in plain terms."],
+        ["heading", "What one artificial neuron does"],
+        ["paragraph", "An artificial neuron is loosely inspired by the nerve cells of a brain, but it is just arithmetic. It receives several numbers as input. Each input is multiplied by a **weight**, which says how strongly that input matters. The neuron adds up the results and then adds one more number called a **bias**, which shifts the point at which the neuron becomes active."],
+        ["paragraph", "The total then passes through an **activation function**. This is a simple rule that turns the sum into the neuron's output. Common choices named by IBM include tanh, sigmoid and ReLU. Without this step the whole network would collapse into one big weighted sum, and it could not learn curved or complicated patterns."],
+        ["heading", "Layers: input, hidden and output"],
+        ["paragraph", "Neurons are grouped into layers. The **input layer** holds the raw data, for example the brightness of each pixel in a photo. One or more **hidden layers** sit in the middle and turn the data into new representations. The **output layer** gives the answer, such as a probability for each possible label."],
+        ["paragraph", "Signals move forward from layer to layer. Wikipedia notes that a network with at least two hidden layers is usually called a deep neural network, which is where the term deep learning comes from. Every connection between neurons has its own weight, so even a modest network can hold millions of these adjustable numbers. They are often called parameters."],
+        ["heading", "How training works"],
+        ["paragraph", "Training repeats four steps over the examples it is given."],
+        ["list", "**Forward pass:** the inputs flow through the network and produce a prediction.\n**Loss:** a loss function measures how far the prediction is from the known correct answer.\n**Backward pass:** an algorithm called backpropagation works out how much each weight contributed to the error.\n**Update:** a method such as gradient descent changes each weight a small step in the direction that reduces the error."],
+        ["paragraph", "The size of each step is set by the **learning rate**. According to Wikipedia, a higher learning rate can train faster but may end with lower accuracy. Training goes through the data many times, and the loss usually falls as the weights settle."],
+        ["callout", "Backpropagation is the bookkeeping step. It uses the chain rule from calculus to pass the error backwards through the layers, so every weight gets its own small correction."],
+        ["heading", "Overfitting: learning too well"],
+        ["paragraph", "A network with a great many parameters can memorise its training examples instead of learning the general pattern. This is called overfitting. It then performs well on data it has seen and poorly on new data. IBM describes this as part of the trade-off between bias and variance, and it is why developers test on examples that were held back from training."],
+        ["heading", "Common kinds of network"],
+        ["list", "**Feedforward networks:** information flows one way, input to output. Multilayer perceptrons are the basic example.\n**Convolutional neural networks (CNNs):** built for grid-like data such as images, using small filters that detect edges and shapes.\n**Recurrent neural networks (RNNs):** include feedback loops so they can carry information from one step to the next, which suits speech and time series.\n**Transformers:** use a mechanism called attention. Introduced in the 2017 paper \"Attention Is All You Need\", they now underlie many large language models and have replaced recurrent networks for many sequence tasks."],
+        ["heading", "A short history"],
+        ["paragraph", "The idea is older than most people expect. Wikipedia dates the first mathematical model of neural networks to 1943, by McCulloch and Pitts. Frank Rosenblatt described the perceptron in 1958, with funding from the US Office of Naval Research. Backpropagation in its modern form appeared in a 1970 master's thesis by Seppo Linnainmaa, was applied to neural networks by Paul Werbos in 1982, and was popularised in 1986 by Rumelhart and colleagues."],
+        ["paragraph", "A turning point for image recognition came in October 2012, when AlexNet, by Krizhevsky, Sutskever and Hinton, won the large ImageNet competition by a wide margin over methods that did not use deep networks."],
+        ["heading", "What a network does not do"],
+        ["paragraph", "A trained network is a fixed set of numbers that maps inputs to outputs. It does not understand the data the way a person does, and its quality depends heavily on the examples it was trained on. The sources used here describe the mechanism, not any particular product, and real systems add many more techniques around this core. This is general information, not a guide to building or buying a system."]
+      ],
+      "sources": [
+        { "title": "Neural network (machine learning), Wikipedia", "url": "https://en.wikipedia.org/wiki/Neural_network_(machine_learning)" },
+        { "title": "What is a neural network?, IBM", "url": "https://www.ibm.com/think/topics/neural-networks" }
+      ],
+      "checkedOn": "2026-11-02"
+    },
+    {
+      "title": "How a Smoke Alarm Detects Fire: Ionization vs Photoelectric",
+      "category": "How It Works",
+      "excerpt": "Smoke alarms use one of two sensing methods, and each reacts a little faster to a different kind of fire. Here is how both work and what fire agencies say about testing and replacement.",
+      "tags": ["smoke alarm", "home safety"],
+      "blocks": [
+        ["paragraph", "A smoke alarm senses smoke particles in the air and sounds a loud horn. Two sensing methods are common: **ionization** and **photoelectric**. Both are small, cheap and reliable, but they notice different fires slightly sooner, which is why fire agencies often suggest having both kinds. This article explains how each one works, with details on the radioactive part inside many alarms and the replacement advice from the U.S. Fire Administration."],
+        ["heading", "Ionization alarms: a tiny electric current"],
+        ["paragraph", "An ionization alarm contains a very small amount of americium-241, a radioactive element. It gives off alpha particles, which knock electrons off air molecules and turn them into charged ions. Between two metal plates, those ions let a small, steady electric current flow."],
+        ["paragraph", "The alarm has two chambers, one open to the room and one sealed as a reference. When smoke particles drift into the open chamber, ions attach to them. The current in that chamber drops, the circuit notices the difference between the two chambers, and the horn sounds. According to Wikipedia, these detectors typically respond faster to flaming fires, in the range of 30 to 60 seconds."],
+        ["heading", "Photoelectric alarms: scattered light"],
+        ["paragraph", "A photoelectric alarm uses a light source, usually an LED, and a light sensor called a photodiode. In the common chamber design the beam is aimed so that it normally misses the sensor. When smoke enters the chamber, the particles scatter some of the light onto the sensor, and the alarm sounds."],
+        ["paragraph", "Wikipedia says this design responds faster to slow, smouldering fires, where there is plenty of smoke but little flame."],
+        ["heading", "How much radioactive material is inside?"],
+        ["paragraph", "Americium-241 has a half-life of 432.6 years, meaning half of it would remain after that time. Wikipedia gives a typical alarm as holding about 37 kilobecquerels, roughly 0.3 micrograms. Alpha particles are stopped by a few centimetres of air or by the plastic case, and the same article says the amount does not pose a significant radiological hazard while the chamber stays sealed."],
+        ["heading", "A short history"],
+        ["paragraph", "Wikipedia traces the idea to Walter Jaeger in the late 1930s. He was trying to build a sensor for poison gas, and noticed the meter reading changed when he lit a cigarette, showing that smoke particles affected the circuit. The article credits Duane Pearsall and Stanley Peterson with the first low-cost battery-powered home smoke detector in 1965, and says a mass-produced model, the SmokeGard 700, followed from 1975. The article carries a note that these dates are disputed, so treat them as approximate."],
+        ["heading", "Testing and replacing: what the U.S. Fire Administration says"],
+        ["paragraph", "The U.S. Fire Administration, part of the U.S. government, gives this guidance on its smoke alarm page."],
+        ["list", "Have both ionization and photoelectric alarms, or dual-sensor alarms that contain both, because either type alone can miss certain fires.\nTest every alarm once a month, whatever its type.\nReplace every alarm 10 years after its manufacture date.\nIn alarms with a 9-volt battery, change the battery at least once a year. Hardwired alarms with a backup battery also need that battery changed yearly.\nFor sealed 10-year lithium battery alarms, replace the whole unit as the maker instructs.\nPlace alarms inside and outside each sleeping area and on every level, including the basement, and choose interconnected alarms so that all of them sound when one does."],
+        ["callout", "Look for the manufacture date printed on the back of the alarm. The 10-year clock starts there, not on the day it was fitted."],
+        ["heading", "Why a chirp means attention"],
+        ["paragraph", "Most alarms give a short chirp every minute or so when the battery runs low. A battery-powered alarm with a dead battery cannot detect anything, so a chirp should not be ignored. Wikipedia also describes standards such as the European EN 14604 for home alarms and notes that a 2014 study found 33% of devices claiming that standard failed in one or more areas, a reminder to buy alarms that carry a recognised approval mark."],
+        ["paragraph", "This is general information. For rules that apply to your home or rental, check your local fire service and building regulations."]
+      ],
+      "sources": [
+        { "title": "Smoke detector, Wikipedia", "url": "https://en.wikipedia.org/wiki/Smoke_detector" },
+        { "title": "Smoke alarms, U.S. Fire Administration (FEMA)", "url": "https://usfa.fema.gov/prevention/home-fires/prepare-for-fire/smoke-alarms" }
+      ],
+      "checkedOn": "2026-11-02"
+    },
+    {
+      "title": "How Bluetooth Works: Hopping Channels and Pairing Devices",
+      "category": "Technology",
+      "excerpt": "Bluetooth links nearby devices over a shared radio band by hopping between channels. Here is the difference between Classic and Low Energy, and where the name came from.",
+      "tags": ["bluetooth", "wireless"],
+      "blocks": [
+        ["paragraph", "Bluetooth is a short-range radio standard that lets nearby devices such as phones, headphones, watches and car systems exchange data without cables. It works in a crowded, licence-free radio band by hopping rapidly between channels, and it comes in two main forms: Bluetooth Classic, used for audio, and Bluetooth Low Energy, used for tiny low-power devices."],
+        ["heading", "The radio band it uses"],
+        ["paragraph", "Both forms of Bluetooth use the 2.4 GHz ISM band, a range of radio frequencies set aside worldwide for unlicensed use. According to the Bluetooth Special Interest Group (SIG), the part used runs from 2.402 to 2.480 GHz. Wi-Fi, microwave ovens and many other gadgets share this band, so Bluetooth is built to cope with interference."],
+        ["heading", "Frequency hopping"],
+        ["paragraph", "Bluetooth uses frequency-hopping spread spectrum. Instead of staying on one frequency, the two devices jump together between channels in a pattern both know. In Classic Bluetooth there are 79 channels, each 1 MHz wide, and Wikipedia says devices typically hop about 1,600 times per second. If one channel is noisy, only a tiny slice of the data is affected. An improvement called adaptive frequency hopping, added in version 1.2 in 2003, lets devices avoid channels that are known to be crowded."],
+        ["heading", "Classic and Low Energy"],
+        ["paragraph", "The SIG's technology overview describes two radio options. The table of differences it gives is summarised here."],
+        ["list", "**Bluetooth Classic:** 79 channels, data rates of 1, 2 or 3 Mb/s, suited to streaming audio, headsets, speakers and car systems.\n**Bluetooth Low Energy (LE):** 40 channels of 2 MHz (three used for advertising, 37 for data), data rates from 125 kb/s up to 2 Mb/s, suited to sensors, wearables and positioning.\n**Topologies:** Classic is point-to-point. LE supports point-to-point, broadcast and mesh, which allows large networks such as building controls."],
+        ["paragraph", "Low Energy was introduced with version 4.0 in 2010 and is designed to sip power. Wikipedia lists a wake-up latency of about 6 ms for LE, against about 100 ms for Classic."],
+        ["heading", "Connecting and pairing"],
+        ["paragraph", "Devices find each other by sending out and listening for short announcements. One device acts as the master and sets the hopping pattern, and the others follow. In a Classic network, Wikipedia says one master can talk to up to seven active devices in a group called a piconet."],
+        ["paragraph", "Pairing creates a trusted link. Secure Simple Pairing arrived in version 2.1 + EDR in 2007 to make the process easier and safer. Wikipedia lists the encryption as 56- or 128-bit for Classic and 128-bit AES for Low Energy."],
+        ["heading", "How far does it reach?"],
+        ["paragraph", "Range depends on transmit power. Wikipedia describes power classes from Class 3, at under 1 mW, up to Class 1, at 10 to 100 mW. Typical range is about 10 metres, and can reach about 100 metres with higher-power equipment. Walls, bodies and antenna design all change the real-world distance, and the weaker device in a pair sets the limit."],
+        ["callout", "The SIG says both radios are capped at about 100 mW, and products must also follow the limits of the countries where they are sold."],
+        ["heading", "Why is it called Bluetooth?"],
+        ["paragraph", "Development began in 1989 at Ericsson in Lund, Sweden, with the aim of wireless headsets, and Wikipedia credits Jaap Haartsen and Sven Mattisson among the engineers. The name was suggested in 1997 by Jim Kardach of Intel. It refers to Harald Bluetooth, a 10th-century Danish king said to have united Danish tribes, as a nod to uniting different communication protocols. The logo combines the runes for his initials. The Bluetooth SIG was announced on 20 May 1998 by Ericsson, IBM, Intel, Nokia and Toshiba."],
+        ["heading", "Versions and compatibility"],
+        ["paragraph", "Version 2.0 + EDR in 2004 introduced faster data rates. Version 4.0 in 2010 added Low Energy. Version 5.0 in 2016 added longer-range and faster LE options, and version 5.2 added LE Audio. Wikipedia lists version 6.0 in 2024 as adding Channel Sounding, which measures distance, with later 6.x updates after that. Wikipedia states that all versions are backward compatible with earlier ones, so newer devices can still talk to older ones, though only with the features both support."],
+        ["paragraph", "The SIG says more than five billion Bluetooth products ship each year. Feature support varies by product, so check a device's specification for the version it uses."]
+      ],
+      "sources": [
+        { "title": "Bluetooth, Wikipedia", "url": "https://en.wikipedia.org/wiki/Bluetooth" },
+        { "title": "Technology overview, Bluetooth Special Interest Group", "url": "https://www.bluetooth.com/learn-about-bluetooth/tech-overview/" }
+      ],
+      "checkedOn": "2026-11-02"
+    },
+    {
+      "title": "How a Solar Cell Turns Sunlight Into Electricity",
+      "category": "Electronics",
+      "excerpt": "A solar cell uses a layered silicon sandwich to push electrons from absorbed light into a circuit. Here is the physics, the efficiency limit and how cells become panels.",
+      "tags": ["solar", "semiconductors"],
+      "blocks": [
+        ["paragraph", "A solar cell, also called a photovoltaic or PV cell, turns light directly into electricity with no moving parts. Light knocks electrons loose inside a semiconductor, and an electric field built into the cell pushes them in one direction so they flow through a wire. This article explains the layers, why a silicon cell can convert only part of the light, and how many cells become a panel."],
+        ["heading", "Light frees electrons"],
+        ["paragraph", "Sunlight is made of particles of energy called photons. In a semiconductor such as silicon, electrons sit in a lower energy band. When a photon with enough energy hits one, the electron jumps to a higher band, called the conduction band, where it can move. It leaves behind a gap, called a hole, that acts like a moving positive charge. Wikipedia describes the first step of any solar cell as absorbing light to create these electron-hole pairs."],
+        ["heading", "The p-n junction"],
+        ["paragraph", "If nothing else happened, the freed electrons would simply fall back into their holes and give off heat. A solar cell prevents this with a **p-n junction**. Silicon is doped, meaning a tiny amount of another element is added. According to Wikipedia, one side is doped with boron to make p-type silicon, and the other with phosphorus to make n-type silicon."],
+        ["paragraph", "Where the two meet, a built-in electric field forms. It sweeps electrons toward the n side and holes toward the p side. Metal contacts on the two faces collect them, and when a load such as a lamp is connected, the electrons flow through it and do useful work. Energy Education, a University of Calgary resource, describes the same junction as the key layer of the cell."],
+        ["heading", "Why not all the light is used"],
+        ["paragraph", "Silicon has a band gap of 1.12 electron volts. Photons with less energy than that cannot free an electron and end up as heat. Photons with more energy than the gap free an electron but the extra energy is also lost as heat. Reflection and electrons that never reach the contacts cause further losses, which is why cells carry anti-reflection coatings."],
+        ["paragraph", "In 1961 William Shockley and Hans Queisser worked out a theoretical ceiling for a single junction. Wikipedia gives about 33.16% for a silicon cell of this kind, and Energy Education gives about 33%. Real commercial panels are well below that. Cells stacked in several layers can go higher: Wikipedia reports a four-junction concentrator cell reaching 47.6% in 2022, under sunlight concentrated 665 times."],
+        ["callout", "Efficiency figures change as laboratories set new records. Treat any number here as correct for the cited pages as read on 2 November 2026."],
+        ["heading", "From cell to panel to house"],
+        ["paragraph", "One cell makes only a small voltage, so cells are wired together into modules, usually with a glass sheet on the sunny side. Wikipedia explains that wiring cells in series raises voltage and wiring them in parallel raises current. Bypass diodes let current go around a shaded cell so it does not hold back the rest of the string."],
+        ["paragraph", "A group of modules forms an array. Cells produce direct current (DC), but homes and grids use alternating current (AC), so an inverter converts one to the other."],
+        ["heading", "Types of silicon cell"],
+        ["list", "**Monocrystalline:** made from a single uniform crystal.\n**Polycrystalline:** made from many crystal grains, generally less uniform.\n**Thin films and other materials:** Energy Education also names gallium arsenide, cadmium telluride and CIGS, some made as flexible thin films."],
+        ["heading", "Ageing"],
+        ["paragraph", "Cells slowly lose output as they age. Energy Education cites the US National Renewable Energy Laboratory (NREL) as reporting a median loss rate of 0.5% per year."],
+        ["heading", "A short history"],
+        ["paragraph", "Edmond Becquerel demonstrated the photovoltaic effect in 1839. In 1954, Bell Laboratories publicly demonstrated the first practical solar cell, developed by Calvin Fuller, Daryl Chapin and Gerald Pearson. Solar cells powered the Vanguard satellite in 1958. This is general information about the technology, not advice on buying or installing a system."]
+      ],
+      "sources": [
+        { "title": "Solar cell, Wikipedia", "url": "https://en.wikipedia.org/wiki/Solar_cell" },
+        { "title": "Photovoltaic cell, Energy Education (University of Calgary)", "url": "https://energyeducation.ca/encyclopedia/Photovoltaic_cell" }
+      ],
+      "checkedOn": "2026-11-02"
+    },
+    {
+      "title": "How an Aircraft Autopilot Flies the Plane",
+      "category": "Aviation",
+      "excerpt": "An autopilot reads sensors and moves the controls to hold a course, altitude or approach path. Here is how it works, its modes, autoland and what pilots must still watch.",
+      "tags": ["autopilot", "flight control"],
+      "blocks": [
+        ["paragraph", "An aircraft autopilot is a system that guides the aeroplane without the pilot moving the controls by hand. It reads sensors that say where the aircraft is and how it is pointing, compares that with what the crew has selected, and moves the flight controls to close the gap. Pilots remain responsible for the flight and can take over at any time."],
+        ["heading", "The first autopilot"],
+        ["paragraph", "According to Wikipedia, the Sperry Corporation built the first gyroscopic autopilot in 1912. It linked gyroscopic heading and attitude indicators to hydraulic controls on the elevators and rudder, so the aircraft held a straight and level compass course. In 1914 Lawrence Sperry demonstrated it at a Paris aviation safety contest, flying with his hands visibly off the controls. In 1947 a US Air Force C-53 flew across the Atlantic, including takeoff and landing, under autopilot control, and in 1949 Bill Lear won the Collier Trophy for his F-5 autopilot and automatic approach system."],
+        ["heading", "The control loop"],
+        ["paragraph", "Every autopilot works as a loop. Wikipedia uses the yaw damper as the simple example: a sensor, such as a gyroscope, detects the aircraft starting to swing sideways. A computer works out how much rudder is needed to oppose the motion, and an actuator moves the rudder. Then the sensor checks again, many times a second."],
+        ["paragraph", "On large aircraft, position and attitude usually come from an inertial guidance system. Gyroscope errors build up over time, so the system's readings are combined with radio aids such as DME and GPS. Wikipedia says a Kalman filter, a mathematical method for blending sensors that disagree, handles this."],
+        ["heading", "One, two or three axes"],
+        ["list", "**Single-axis:** controls roll only, sometimes called a wing leveller.\n**Two-axis:** controls roll and pitch.\n**Three-axis:** adds yaw control."],
+        ["paragraph", "An autothrottle can also adjust engine power to hold a chosen speed."],
+        ["heading", "Modes pilots can choose"],
+        ["paragraph", "Wikipedia describes two broad ways of using the system. In **control wheel steering** the pilot flies through the yoke or stick and the autopilot holds the resulting heading and attitude. In **command** mode the autopilot has full control and follows selected headings and altitudes, radio navigation signals or the route in the flight management system (FMS)."],
+        ["paragraph", "SKYbrary, the aviation safety knowledge base, says modern autopilots integrated with the FMS can control the aircraft from just after takeoff to landing. In climb, cruise and descent the aircraft follows the cleared altitude, speed and route. On approach the system tracks the glide path and the localiser, which are the vertical and sideways guidance beams of the runway's instrument landing system (ILS)."],
+        ["heading", "Autoland"],
+        ["paragraph", "An autoland flies the ILS approach, the flare and sometimes the rollout automatically. Wikipedia lists the ICAO approach categories:"],
+        ["list", "**CAT I:** decision height of 200 ft; the autopilot is not required.\n**CAT II:** decision height between 200 and 100 ft; a fail-passive autopilot is required.\n**CAT IIIa:** decision height as low as 50 ft.\n**CAT IIIb:** adds automatic rollout; a fail-operational autopilot is needed to land with no decision height."],
+        ["paragraph", "A fail-passive system leaves the aircraft controllable if it fails, so the pilot can take over. A fail-operational system can finish the approach and landing after a failure."],
+        ["heading", "What the autopilot does not remove"],
+        ["paragraph", "SKYbrary stresses that safe use depends on understanding what the system can and cannot do. It lists events in which crews did not notice a mode change or a disengagement, including an autothrottle that dropped out on a Boeing 737 at Bristol in 2024 and went unnoticed during takeoff, and an unnoticed go-around mode selection on a Boeing 767 near Houston in 2019. It also notes that on a Boeing 737 near Kazan in 2013 the crew did not recognise that the autopilot would disconnect automatically in an all-engine go-around."],
+        ["callout", "Pilots can disengage the autopilot instantly, normally with a switch on the control column, and fly the aircraft by hand."],
+        ["paragraph", "The takeaway is that automation changes the pilot's job from moving the controls to monitoring and managing the system. This article is general information drawn from the cited sources, not operating guidance."]
+      ],
+      "sources": [
+        { "title": "Autopilot, Wikipedia", "url": "https://en.wikipedia.org/wiki/Autopilot" },
+        { "title": "Autopilot, SKYbrary Aviation Safety", "url": "https://skybrary.aero/articles/autopilot" }
+      ],
+      "checkedOn": "2026-11-02"
+    }
+  ]
+}
