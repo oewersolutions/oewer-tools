@@ -1,0 +1,112 @@
+{
+  "date": "2026-11-02",
+  "articles": [
+    {
+      "title": "APR vs APY: What the Two Interest Rates Mean",
+      "category": "Money Guides",
+      "excerpt": "APR and APY both state interest as a yearly figure, but only APY counts compounding. Learn the formula, see worked examples, and how to compare offers.",
+      "tags": [
+        "apr",
+        "apy",
+        "interest"
+      ],
+      "blocks": [
+        [
+          "paragraph",
+          "APR and APY both show interest as a yearly figure, but they are not the same measure. APR, the annual percentage rate, is usually the rate quoted on borrowing. APY, the annual percentage yield, includes the effect of compounding and is usually quoted on savings. Knowing the difference stops you from comparing two numbers that were calculated in different ways. This is general information, not financial advice."
+        ],
+        [
+          "heading",
+          "What APR means"
+        ],
+        [
+          "paragraph",
+          "The US Consumer Financial Protection Bureau describes the interest rate as the price you pay for borrowing money, and says credit card rates are usually stated as a yearly figure called the annual percentage rate. If you pay the full balance on a card by the due date, most cards charge no interest on purchases, so the rate matters mainly when a balance is carried over."
+        ],
+        [
+          "paragraph",
+          "Wikipedia explains that an APR is an interest rate for a full year rather than a monthly one. In the United States the word can mean a nominal APR, which is the periodic rate multiplied by the number of periods in a year, or an effective APR that also takes in compounding and some fees. What a lender includes can differ between countries."
+        ],
+        [
+          "heading",
+          "What APY means"
+        ],
+        [
+          "paragraph",
+          "Wikipedia defines annual percentage yield as a normalised way to express an interest rate over a one-year compounding period. It lets you compare offers that add interest at different intervals, such as monthly or daily. It does not account for account fees."
+        ],
+        [
+          "paragraph",
+          "The formula is: APY = (1 + r / n) to the power n, minus 1. Here r is the nominal yearly rate written as a decimal and n is the number of compounding periods in a year. For monthly compounding n is 12, and for daily compounding n is 365."
+        ],
+        [
+          "heading",
+          "Why compounding makes them differ"
+        ],
+        [
+          "paragraph",
+          "Compounding means that interest earned in one period is added to the balance and then earns interest itself. The more often this happens in a year, the more the final amount grows beyond what simple yearly interest would give. APR on its own often leaves this out, so it does not always show what you really pay or earn over twelve months."
+        ],
+        [
+          "paragraph",
+          "Wikipedia gives a few figures that show the size of the effect. A nominal 5 percent rate compounded for a year corresponds to about 5.12 percent. A certificate of deposit with a 4.65 percent rate compounded monthly would be quoted as a 4.75 percent APY. On the borrowing side, a 12.99 percent APR compounded monthly works out to an effective annual rate of about 13.80 percent, and a 29.99 percent APR compounded monthly to about 34.48 percent."
+        ],
+        [
+          "list",
+          "Low rates: compounding adds little, so APR and APY look close.\nHigh rates: compounding adds a lot, so the gap widens.\nMore frequent compounding: a higher APY for the same nominal rate."
+        ],
+        [
+          "heading",
+          "A worked example"
+        ],
+        [
+          "paragraph",
+          "Suppose a savings account states a nominal rate of 6 percent, compounded monthly. The monthly rate is 6 divided by 12, which is 0.5 percent, or 0.005. Applying the formula gives 1.005 to the power 12, which is about 1.0617. Subtracting 1 leaves about 0.0617, so the APY is roughly 6.17 percent. A balance of 1,000 would grow to about 1,061.70 after one year, assuming no deposits, withdrawals or fees."
+        ],
+        [
+          "paragraph",
+          "The same calculation applies to a loan, where it is usually called the effective annual rate. A card with a 24 percent nominal rate compounded monthly has a monthly rate of 2 percent. Raising 1.02 to the power 12 gives about 1.2682, so the effective yearly cost is roughly 26.8 percent if the balance is left untouched for a year."
+        ],
+        [
+          "callout",
+          "Quick check: when comparing savings accounts, compare APY with APY. When comparing loans or cards, compare APR with APR, and ask whether fees are included."
+        ],
+        [
+          "heading",
+          "What APR can hide"
+        ],
+        [
+          "paragraph",
+          "Wikipedia notes limits on APR. It can leave out some one-time fees. It depends on the length of the loan, so a 20-year loan and a 30-year loan are not directly comparable. It can also exaggerate the cost of very short, small loans. In the article's example, a 100 loan repaid after one month at 5 percent interest has an effective APR of about 80 percent, and adding a 10 fee pushes it to about 435 percent, even though the amount of money involved is small."
+        ],
+        [
+          "paragraph",
+          "Rules on how APR is calculated and shown vary by country. In the United States, the Truth in Lending Act governs APR calculation and disclosure, and the CFPB implements it through Regulation Z, according to Wikipedia. In the European Union, directives 2008/48/EC and 2011/90/EU set a standard formula based on the present value of cash flows. For a specific product, the lender's own disclosure document is the authoritative source."
+        ],
+        [
+          "heading",
+          "Reading an offer"
+        ],
+        [
+          "paragraph",
+          "When you see a rate, ask three questions. First, is it a nominal rate, an APR or an APY? Second, how often is interest added? Third, which fees are inside the figure? An account advertised at 5 percent APY and one at 5 percent compounded monthly are slightly different offers, because the second has an APY near 5.12 percent. A bank's deposit terms or a lender's loan estimate will state the exact method used."
+        ]
+      ],
+      "sources": [
+        {
+          "title": "Annual percentage yield, Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Annual_percentage_yield"
+        },
+        {
+          "title": "Annual percentage rate, Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Annual_percentage_rate"
+        },
+        {
+          "title": "APR and statement rate, Consumer Financial Protection Bureau",
+          "url": "https://www.consumerfinance.gov/ask-cfpb/what-is-the-difference-between-a-statement-rate-and-an-annual-percentage-rate-apr-en-44/"
+        }
+      ],
+      "checkedOn": "2026-11-02"
+    }
+  ]
+}

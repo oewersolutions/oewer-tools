@@ -1,0 +1,179 @@
+{
+  "date": "2026-11-02",
+  "articles": [
+    {
+      "title": "How an Induction Cooktop Heats the Pan, Not the Hob",
+      "category": "How It Works",
+      "excerpt": "An induction cooktop uses a magnetic field to make heat inside the pan itself. See how the coil works, why only some pans suit it, and how efficient it is.",
+      "tags": ["induction", "cooking", "electromagnetism"],
+      "blocks": [
+        ["paragraph", "An induction cooktop does not heat its glass surface and then pass the heat to a pan. Instead, a coil under the glass creates a changing magnetic field, and that field makes electric current flow inside the metal of the pan. The pan's own resistance turns that current into heat. This article explains each step, why the pan material matters, and what published tests say about efficiency."],
+        ["heading", "The coil under the glass"],
+        ["paragraph", "Below the ceramic or glass surface sits a coil of copper wire. When the cooktop is on, an alternating current runs through this coil. Alternating current reverses direction many times a second, and the Wikipedia article on induction cooking gives a typical frequency of about 25 to 50 kHz, meaning tens of thousands of reversals every second."],
+        ["paragraph", "A current in a coil creates a magnetic field around it. Because the current keeps reversing, the field keeps rising, collapsing and flipping. A changing magnetic field is the key ingredient, because it can push current through any nearby piece of metal. This effect is called electromagnetic induction."],
+        ["heading", "How the pan becomes the heater"],
+        ["paragraph", "When a suitable pan sits on the surface, the changing field passes into its base and drives circular currents around inside the metal. These are called eddy currents. Engineers describe the whole arrangement as a transformer: the coil is the primary winding, and the pan acts as a single turn of wire that is shorted out, so it carries a large current."],
+        ["paragraph", "Metal resists the flow of current, and a current pushed through resistance produces heat. This is the same effect that warms the element in a kettle or toaster, but here it happens inside the pan base. The heat then moves into the food by ordinary conduction. The glass surface is not the source of heat, although it can still become warm because the hot pan touches it."],
+        ["paragraph", "There is a second, smaller source of heat in iron and steel. Magnetic materials lose a little energy each time their internal magnetic regions flip direction, a loss called hysteresis. According to Wikipedia, this accounts for less than 10 percent of the total heat in ferrous pots, so most of the heating comes from the eddy currents."],
+        ["heading", "Why the pan material matters"],
+        ["paragraph", "Most induction cooktops need cookware that is ferromagnetic, which means a magnet sticks to it. Cast iron and many stainless steels qualify. Aluminium and copper pans usually do not work on a standard cooktop. A common explanation is that these metals conduct current so well that their low resistance produces little heat. Another explanation sometimes given is that the field couples to them less well."],
+        ["list", "Cast iron and carbon steel pans normally work.\nMany stainless steel pans work, but not all grades are magnetic.\nPlain aluminium, copper and glass pans usually do not work.\nA magnet that sticks firmly to the base is a practical quick check."],
+        ["callout", "Some pans carry an induction symbol or a bonded steel plate in the base so that aluminium or copper cookware can work. Check the maker's labelling for the specific pan."],
+        ["paragraph", "There are exceptions on the market. Wikipedia notes that in 2009 Panasonic developed an all-metal induction cooker running at 60 kHz or higher, which can heat non-ferrous pans. Such designs are less common than the standard type."],
+        ["heading", "The electronics that control it"],
+        ["paragraph", "An article on induction cookers in Electronics Online explains that a modern cooktop uses a resonant inverter, a circuit that switches power on and off very quickly to produce the high-frequency current for the coil. Switching is timed to cut wasted energy. The power delivered is set by changing the switching frequency, and a microcontroller watches the mains voltage and the current to do this."],
+        ["paragraph", "The same article describes two common layouts. A quasi-resonant design uses one switching transistor, costs less and suits home cooktops up to about 2 kW. A half-bridge design uses two, is more stable and reaches about 5 kW, and is typically found in commercial equipment. The figures describe the reference designs in that article, and a particular product may differ."],
+        ["heading", "Pan detection and safety"],
+        ["paragraph", "With no pan on the surface, the coil has nothing to transfer energy to, and the controller can detect this. The Electronics Online article says the unit then drops into a sleep mode with standby use below 1 W. Wikipedia adds that cooktops monitor whether a pan is present and switch off if none, or one that is too small, is found. A surface sensor can also cut the power if the pan overheats or boils dry."],
+        ["paragraph", "Wikipedia states that the voltages induced in the pan are too low to be a shock hazard, and that induction burns no gas, so it releases no combustion fumes into the room. It also notes that people with pacemakers or other electronic implants are usually advised to avoid strong magnetic field sources. This is general information, and anyone with an implant should follow their doctor's advice and the maker's manual."],
+        ["heading", "How efficient is it?"],
+        ["paragraph", "Efficiency here means the share of the electrical or fuel energy that ends up in the water or food. Wikipedia summarises several tests. In a 2014 study by the American Council for an Energy-Efficient Economy, induction heated water at about 76 percent efficiency, while electric coil hobs ranged from over 80 percent with large pans down to 40 to 50 percent with small ones, and gas from 35 to 40 percent down to 30 percent. A US Department of Energy test block from 2014 gave 70.7 to 73.6 percent for induction, 71.9 percent for electric coil and 43.9 percent for gas."],
+        ["paragraph", "Results therefore vary with the test, the pan size and the amount of water. A 2023 study cited by Wikipedia found induction between 54 and 81 percent for boiling water, depending on volume. The fair summary is that induction usually lands in the mid-70s per cent in these tests, and it is generally ahead of gas, though not always ahead of a well-matched electric coil."],
+        ["heading", "A short history"],
+        ["paragraph", "The idea is older than most kitchens. Wikipedia records that Arthur Berry applied for a British patent in 1906 and Simon Hohlfeld received a German patent in 1909. A commercial product followed much later: the Westinghouse Cool Top 2 went into production in 1973 and ended in 1975, with four burners of about 1,600 W each and a price of $1,500 in 1973 dollars. Sears Kenmore sold a range with four induction surfaces in the mid-1980s."]
+      ],
+      "sources": [
+        { "title": "Induction cooking, Wikipedia", "url": "https://en.wikipedia.org/wiki/Induction_cooking" },
+        { "title": "Understanding how modern induction cookers work, Electronics Online", "url": "https://electronicsonline.net.au/content/components/article/understanding-how-modern-induction-cookers-work-1226425206" },
+        { "title": "How is electromagnetic induction utilized in induction cooktops?, TutorChase", "url": "https://tutorchase.com/answers/igcse/physics/how-is-electromagnetic-induction-utilized-in-induction-cooktops" }
+      ],
+      "checkedOn": "2026-11-02"
+    },
+    {
+      "title": "APR vs APY: What the Two Interest Rates Mean",
+      "category": "Money Guides",
+      "excerpt": "APR and APY both state interest as a yearly figure, but only APY counts compounding. Learn the formula, see worked examples, and how to compare offers.",
+      "tags": ["apr", "apy", "interest"],
+      "blocks": [
+        ["paragraph", "APR and APY both show interest as a yearly figure, but they are not the same measure. APR, the annual percentage rate, is usually the rate quoted on borrowing. APY, the annual percentage yield, includes the effect of compounding and is usually quoted on savings. Knowing the difference stops you from comparing two numbers that were calculated in different ways. This is general information, not financial advice."],
+        ["heading", "What APR means"],
+        ["paragraph", "The US Consumer Financial Protection Bureau describes the interest rate as the price you pay for borrowing money, and says credit card rates are usually stated as a yearly figure called the annual percentage rate. If you pay the full balance on a card by the due date, most cards charge no interest on purchases, so the rate matters mainly when a balance is carried over."],
+        ["paragraph", "Wikipedia explains that an APR is an interest rate for a full year rather than a monthly one. In the United States the word can mean a nominal APR, which is the periodic rate multiplied by the number of periods in a year, or an effective APR that also takes in compounding and some fees. What a lender includes can differ between countries."],
+        ["heading", "What APY means"],
+        ["paragraph", "Wikipedia defines annual percentage yield as a normalised way to express an interest rate over a one-year compounding period. It lets you compare offers that add interest at different intervals, such as monthly or daily. It does not account for account fees."],
+        ["paragraph", "The formula is: APY = (1 + r / n) to the power n, minus 1. Here r is the nominal yearly rate written as a decimal and n is the number of compounding periods in a year. For monthly compounding n is 12, and for daily compounding n is 365."],
+        ["heading", "Why compounding makes them differ"],
+        ["paragraph", "Compounding means that interest earned in one period is added to the balance and then earns interest itself. The more often this happens in a year, the more the final amount grows beyond what simple yearly interest would give. APR on its own often leaves this out, so it does not always show what you really pay or earn over twelve months."],
+        ["paragraph", "Wikipedia gives a few figures that show the size of the effect. A nominal 5 percent rate compounded for a year corresponds to about 5.12 percent. A certificate of deposit with a 4.65 percent rate compounded monthly would be quoted as a 4.75 percent APY. On the borrowing side, a 12.99 percent APR compounded monthly works out to an effective annual rate of about 13.80 percent, and a 29.99 percent APR compounded monthly to about 34.48 percent."],
+        ["list", "Low rates: compounding adds little, so APR and APY look close.\nHigh rates: compounding adds a lot, so the gap widens.\nMore frequent compounding: a higher APY for the same nominal rate."],
+        ["heading", "A worked example"],
+        ["paragraph", "Suppose a savings account states a nominal rate of 6 percent, compounded monthly. The monthly rate is 6 divided by 12, which is 0.5 percent, or 0.005. Applying the formula gives 1.005 to the power 12, which is about 1.0617. Subtracting 1 leaves about 0.0617, so the APY is roughly 6.17 percent. A balance of 1,000 would grow to about 1,061.70 after one year, assuming no deposits, withdrawals or fees."],
+        ["paragraph", "The same calculation applies to a loan, where it is usually called the effective annual rate. A card with a 24 percent nominal rate compounded monthly has a monthly rate of 2 percent. Raising 1.02 to the power 12 gives about 1.2682, so the effective yearly cost is roughly 26.8 percent if the balance is left untouched for a year."],
+        ["callout", "Quick check: when comparing savings accounts, compare APY with APY. When comparing loans or cards, compare APR with APR, and ask whether fees are included."],
+        ["heading", "What APR can hide"],
+        ["paragraph", "Wikipedia notes limits on APR. It can leave out some one-time fees. It depends on the length of the loan, so a 20-year loan and a 30-year loan are not directly comparable. It can also exaggerate the cost of very short, small loans. In the article's example, a 100 loan repaid after one month at 5 percent interest has an effective APR of about 80 percent, and adding a 10 fee pushes it to about 435 percent, even though the amount of money involved is small."],
+        ["paragraph", "Rules on how APR is calculated and shown vary by country. In the United States, the Truth in Lending Act governs APR calculation and disclosure, and the CFPB implements it through Regulation Z, according to Wikipedia. In the European Union, directives 2008/48/EC and 2011/90/EU set a standard formula based on the present value of cash flows. For a specific product, the lender's own disclosure document is the authoritative source."],
+        ["heading", "Reading an offer"],
+        ["paragraph", "When you see a rate, ask three questions. First, is it a nominal rate, an APR or an APY? Second, how often is interest added? Third, which fees are inside the figure? An account advertised at 5 percent APY and one at 5 percent compounded monthly are slightly different offers, because the second has an APY near 5.12 percent. A bank's deposit terms or a lender's loan estimate will state the exact method used."]
+      ],
+      "sources": [
+        { "title": "Annual percentage yield, Wikipedia", "url": "https://en.wikipedia.org/wiki/Annual_percentage_yield" },
+        { "title": "Annual percentage rate, Wikipedia", "url": "https://en.wikipedia.org/wiki/Annual_percentage_rate" },
+        { "title": "What is the difference between a statement rate and an annual percentage rate (APR)?, Consumer Financial Protection Bureau", "url": "https://www.consumerfinance.gov/ask-cfpb/what-is-the-difference-between-a-statement-rate-and-an-annual-percentage-rate-apr-en-44/" }
+      ],
+      "checkedOn": "2026-11-02"
+    },
+    {
+      "title": "The Benz Patent-Motorwagen and Bertha Benz's 1888 Drive",
+      "category": "Vintage and History",
+      "excerpt": "Karl Benz patented a three-wheeled motor car in 1886. Two years later his wife Bertha drove one more than 100 km, and fixed it on the way. Here is the story.",
+      "tags": ["benz", "first car", "history"],
+      "blocks": [
+        ["paragraph", "The Benz Patent-Motorwagen, a three-wheeled vehicle with a single-cylinder petrol engine, is widely described as the first practical car designed as one complete machine. Karl Benz applied for a patent on it in January 1886. In August 1888 his wife Bertha Benz drove one to her mother's town and back, proving that a motor vehicle could cover a long distance. This article sets out what the sources say, and where they disagree."],
+        ["heading", "The patent"],
+        ["paragraph", "According to Wikipedia, the vehicle was covered by German patent DRP 37435, which Benz filed on 29 January 1886 and which was granted on 2 November 1886. The article says Carl Benz developed the vehicle between 1884 and 1887, and that Benz & Cie built it between 1885 and 1893. Other accounts describe the first running machine as built in 1885, with its public showing in July 1886 in Mannheim."],
+        ["paragraph", "The idea behind the patent was a vehicle designed around its engine, rather than a horse carriage with an engine added. That is why it is often given the credit of being the first true car, although other inventors were building engine-driven vehicles at about the same time."],
+        ["heading", "What the machine was like"],
+        ["paragraph", "A Qatar Museums article describes a motor tricycle with a rear-mounted single-cylinder engine of about 0.75 horsepower and a top speed of about 16 km/h. It had a steel-tube frame, wooden panels, steel-spoked wheels and solid rubber tyres. A large horizontal flywheel helped keep the engine running smoothly."],
+        ["paragraph", "Wikipedia gives the engine as a 954 cc single-cylinder four-stroke running on ligroin, a petroleum solvent, with an output of 0.68 PS at 400 rpm. It adds that later tests at the University of Mannheim reportedly measured 0.91 PS. Top speed also varies by source: about 16 km/h in Benz's own memoir, about 20 km/h in another account, and a maximum of 10 mph in a 1900 caption. The figures are small by modern standards, so the differences between sources are not surprising."],
+        ["heading", "Bertha Benz's drive"],
+        ["paragraph", "Qatar Museums gives the date of the famous trip as 5 August 1888, while other accounts say 4 August. Bertha Benz set out from Mannheim with her sons Eugen and Richard, driving Motorwagen No. 3 to Pforzheim, her birthplace and her mother's home. Accounts say she did so without telling her husband in advance."],
+        ["paragraph", "Distances are given differently. The museum gives about 106 km one way and 180 to 194 km for the round trip, and says the outward journey took about 13 hours. Wikipedia describes the route there as about 60 miles and the return as about 50 miles, and says the car needed pushing on hills while the brakes and fuel line failed repeatedly."],
+        ["heading", "Repairs along the road"],
+        ["paragraph", "The journey is remembered for the problems she solved on the way. According to the museum's account, she cleared a blocked fuel pipe with a hat pin and insulated a frayed ignition wire with a garter. A local cobbler nailed leather strips onto worn brake blocks, which is described as an early form of brake lining. A village blacksmith helped with the drive chain."],
+        ["list", "Fuel pipe blocked: cleared with a hat pin.\nIgnition wire worn: insulated with a garter.\nBrake blocks worn: leather added by a cobbler.\nDrive chain trouble: helped by a blacksmith."],
+        ["paragraph", "The drive required buying more fuel on the way. The museum says she bought ligroin at the Stadtapotheke pharmacy in Wiesloch, a shop often described as the world's first filling station."],
+        ["heading", "How many were made?"],
+        ["paragraph", "Counts differ. Wikipedia says the article it draws on gives no overall total, quotes an estimate that six Patent-Motorwagen had been made by 1888 including prototypes, and says series production is generally dated to 1888. Another account found in a search of the topic mentions 25 vehicles produced between 1886 and 1893 or 1894, but this figure was not confirmed on a page we opened, so it should be treated as unverified."],
+        ["paragraph", "Wikipedia also says about 150 replicas of the 1895 rebuild have been made by various suppliers, and that Daimler began making hand-built replicas in 2001. It notes they can run on petrol but are not permitted on public roads."],
+        ["heading", "Why it matters"],
+        ["paragraph", "The Patent-Motorwagen is a reminder that early motoring depended on the people willing to try it. The patent set out the design on paper, and the 1888 drive tested it on real roads. The trip showed what needed fixing. The Benz name continued through Benz & Cie, and the story of the car's first years is still told with both Karl and Bertha in it."]
+      ],
+      "sources": [
+        { "title": "Benz Patent-Motorwagen, Wikipedia", "url": "https://en.wikipedia.org/wiki/Benz_Patent-Motorwagen" },
+        { "title": "Bertha Benz and the Patent Motorwagen, Qatar Museums", "url": "https://qm.org.qa/en/stories/all-stories/bertha-benz-and-the-patent-motorwagen/" }
+      ],
+      "checkedOn": "2026-11-02"
+    },
+    {
+      "title": "How a Pitot Tube Measures an Aircraft's Airspeed",
+      "category": "Aviation",
+      "excerpt": "A pitot tube compares the pressure of air rammed into its nose with the surrounding air pressure to find airspeed. See how it works and why blockages matter.",
+      "tags": ["pitot tube", "airspeed", "instruments"],
+      "blocks": [
+        ["paragraph", "A pitot tube measures how fast an aircraft is moving through the air by comparing two pressures: the pressure of air that is forced to a stop inside the tube, and the pressure of the still air around the aircraft. The bigger the difference, the faster the aircraft is moving. This article explains the physics, the other instruments that share the system, and what happens when part of it is blocked."],
+        ["heading", "Two pressures, one speed"],
+        ["paragraph", "NASA's Glenn Research Center explains that a pitot tube has a central opening that faces the direction of travel and small holes on its sides. The side holes sense static pressure, which comes from the random motion of the air. The central hole also picks up the pressure from the ordered motion of air flowing into it, so its reading is higher. This higher reading is called total, or stagnation, pressure."],
+        ["paragraph", "Wikipedia gives the relationship as: stagnation pressure equals static pressure plus dynamic pressure. Dynamic pressure is the part that comes from motion. Subtract the static pressure from the total pressure and you are left with dynamic pressure, which depends on speed."],
+        ["heading", "The formula"],
+        ["paragraph", "For air moving at modest speeds, Bernoulli's equation turns the pressure difference into a speed. NASA writes it as static pressure plus half the air density times speed squared, equal to total pressure. Solving for speed gives: speed equals the square root of twice the pressure difference divided by the air density."],
+        ["paragraph", "Because speed depends on the square root of the difference, small pressure changes at low speed are hard to measure, and NASA notes the method is not accurate at low speeds. At supersonic speeds, shock waves break the assumptions behind Bernoulli's equation, so corrections are needed. In practice, an aircraft's instruments or air data computer apply such corrections."],
+        ["heading", "A short history"],
+        ["paragraph", "Wikipedia records that Henri Pitot, a French engineer, invented the device while working on aqueducts, and published it in 1732. Henry Darcy modified it into its modern form in 1858. A pitot-static tube, sometimes called a Prandtl tube, combines both pressure measurements in a single probe."],
+        ["heading", "The pitot-static system"],
+        ["paragraph", "On an aircraft the pitot tube is one part of a larger set. Wikipedia's article on the pitot-static system lists a pitot tube that measures ram air pressure, one or more static ports that measure static pressure, and the instruments connected to them. Air data computers, flight data recorders and cabin pressure controllers may also draw from the same sources."],
+        ["list", "Airspeed indicator: uses the difference between pitot and static pressure.\nAltimeter: a sealed aneroid barometer vented to the static port.\nMachmeter: shows speed as a ratio of the speed of sound.\nVertical speed indicator: a diaphragm vented through a calibrated leak, showing climb or descent."],
+        ["paragraph", "Only the airspeed indicator, and the Machmeter, need the pitot tube. The altimeter and vertical speed indicator rely only on the static port. This split explains why different blockages produce different symptoms."],
+        ["heading", "When something blocks the system"],
+        ["paragraph", "Wikipedia describes a blocked pitot tube as affecting only the airspeed indicator. If the drain hole is also blocked, the indicator shows a higher airspeed in a climb and a lower airspeed in a descent, even if true airspeed stays constant. Ice, water or insects can cause the blockage."],
+        ["paragraph", "A blocked static port is described as more serious because it affects all of the pitot-static instruments. The altimeter freezes at the altitude where the blockage happened, the vertical speed indicator reads zero, and the airspeed indicator reads low in a climb and high in a descent. Wikipedia says many unpressurised aircraft have an alternate static source selectable from the cockpit."],
+        ["paragraph", "Many pitot tubes carry a heating element to prevent icing, and the article says aircraft certificated for instrument flight must have a heated pitot tube, with an exception for experimental amateur-built aircraft."],
+        ["heading", "Real incidents"],
+        ["paragraph", "Wikipedia's article on the pitot tube lists several accidents involving pitot-static failures. The French investigation authority BEA said that pitot tube icing was a contributing factor in the crash of Air France Flight 447 into the Atlantic Ocean. For Birgenair Flight 301, the failure was suspected to involve an insect nest, probably from a mud dauber wasp. For Aeroperú Flight 603, a cleaning crew left the static port covered with tape."],
+        ["callout", "These examples are why aircraft are inspected and why probe covers are used on the ground. The details of any one accident are in the official reports, not in this overview."],
+        ["heading", "Not only for aircraft"],
+        ["paragraph", "The same principle appears elsewhere. Wikipedia says industry uses pitot tubes to measure flow in ducts and pipes, helping to estimate the amount of air supplied to a space, and some weather stations use a modified form as an anemometer. The idea of measuring speed through pressure travels well, but on an aircraft it is tied to safety, so the probe and its heater are among the more closely watched parts of the system."]
+      ],
+      "sources": [
+        { "title": "Pitot tube, Wikipedia", "url": "https://en.wikipedia.org/wiki/Pitot_tube" },
+        { "title": "Pitot-static system, Wikipedia", "url": "https://en.wikipedia.org/wiki/Pitot-static_system" },
+        { "title": "Pitot Tube, NASA Glenn Research Center", "url": "https://www.grc.nasa.gov/www/k-12/VirtualAero/BottleRocket/airplane/pitot.html" }
+      ],
+      "checkedOn": "2026-11-02"
+    },
+    {
+      "title": "mAh vs Wh: How to Read a Battery's Capacity",
+      "category": "Electronics",
+      "excerpt": "mAh counts electric charge while Wh counts energy. Learn the conversion, why voltage matters, and why watt-hours are the figure airlines ask about.",
+      "tags": ["battery", "mah", "watt-hour"],
+      "blocks": [
+        ["paragraph", "A battery's mAh figure tells you how much electric charge it can supply, while its Wh figure tells you how much energy it holds. To compare two batteries fairly, convert mAh to Wh by multiplying the capacity in amp-hours by the battery voltage. This article explains both units, shows the conversion, and says why the watt-hour number is the one that appears in airline rules."],
+        ["heading", "What mAh measures"],
+        ["paragraph", "Wikipedia explains that the ampere-hour measures electric charge, and that one ampere-hour equals 3,600 coulombs, the charge carried by a steady current of one ampere flowing for one hour. A milliampere-hour, or mAh, is one thousandth of that, so 1,000 mAh equals 1 Ah and 3.6 coulombs per mAh."],
+        ["paragraph", "The article stresses that amperes measure current only, not power. A figure in mAh therefore does not say how much work a battery can do until you also know its voltage."],
+        ["heading", "What Wh measures"],
+        ["paragraph", "A watt-hour is a unit of energy: the energy delivered by one watt of power sustained for one hour. Wikipedia's article on the kilowatt-hour makes the same point for its larger unit, that a kilowatt-hour equals 3.6 megajoules and that a kilowatt measures power while a kilowatt-hour measures energy. It also calls the phrase watts per hour a misuse."],
+        ["paragraph", "Energy depends on both charge and voltage, which is why a watt-hour figure works across different batteries."],
+        ["heading", "The conversion"],
+        ["paragraph", "Wikipedia gives the idea that capacity in ampere-hours assumes a commonly known nominal voltage. Energy can be approximated by multiplying the ampere-hours by that nominal voltage. In formula form: Wh = (mAh divided by 1,000) times volts."],
+        ["paragraph", "Here is a worked example. A phone battery rated 5,000 mAh at a nominal 3.7 V has 5 Ah. Multiply 5 by 3.7 and the result is 18.5 Wh. The 3.7 V figure is a typical label value for a single lithium-ion cell, but the actual rating is printed on the battery or in its specification, so use that number."],
+        ["list", "Divide mAh by 1,000 to get Ah.\nMultiply Ah by the nominal voltage in volts.\nThe result is the energy in Wh.\nDivide Wh by 1,000 if you want kWh."],
+        ["heading", "Why voltage changes the answer"],
+        ["paragraph", "Wikipedia's example shows the effect. One ampere-hour at 1.5 V gives roughly 1.5 Wh, while one ampere-hour at 12 V gives roughly 12 Wh, eight times the energy for the same mAh figure. Comparing two power banks by mAh alone can mislead if one uses a different internal or output voltage. A battery's rating on the label might be quoted at the cell voltage, while the output is at a different voltage."],
+        ["paragraph", "The same article gives an electric car example. A battery of 96 cells at 3.6 V and 60 Ah comes to 20,736 Wh, or about 18 kWh of usable energy once reserve is accounted for. The sum is 96 times 3.6 times 60."],
+        ["heading", "Limits of the rating"],
+        ["paragraph", "The Wikipedia article warns that a simple ampere-hour rating is often not enough to compare batteries of different types or layouts. Real output depends on losses, discharge limits, current limits and Peukert's law, which says that the usable capacity falls when the battery is drained at a higher current. Voltage also drops as a battery discharges, so a nominal voltage is an approximation, not an exact value."],
+        ["callout", "A power bank advertised at 20,000 mAh will not recharge a phone with a 5,000 mAh battery exactly four times. Conversion between voltages and the circuit's own losses reduce what you get."],
+        ["heading", "Why airlines use Wh"],
+        ["paragraph", "The International Air Transport Association's lithium battery page says that lithium batteries can be carried depending on configuration and watt-hour rating for rechargeable types, or lithium content for non-rechargeable ones. It also states that spare batteries are not allowed in checked baggage. The limits for passengers are on a separate guidance page, which we did not read, so check your airline or the national aviation authority for the current thresholds."],
+        ["paragraph", "Because the rule is written in watt-hours, a traveller with a power bank labelled only in mAh may need to do the conversion above, using the voltage printed on the label. Many products print the watt-hour rating directly, which avoids the sum."]
+      ],
+      "sources": [
+        { "title": "Ampere hour, Wikipedia", "url": "https://en.wikipedia.org/wiki/Ampere_hour" },
+        { "title": "Kilowatt-hour, Wikipedia", "url": "https://en.wikipedia.org/wiki/Watt-hour" },
+        { "title": "Lithium batteries, IATA", "url": "https://www.iata.org/en/programs/cargo/dgr/lithium-batteries/" }
+      ],
+      "checkedOn": "2026-11-02"
+    }
+  ]
+}
