@@ -1,0 +1,168 @@
+{
+  "date": "2026-11-02",
+  "articles": [
+    {
+      "title": "Diesel vs Petrol Engines: Spark or Squeeze?",
+      "category": "Cars and Bikes",
+      "excerpt": "Petrol engines light their fuel with a spark; diesel engines light it by squeezing air until it is hot. Here is what that one difference changes.",
+      "tags": ["engines", "diesel", "petrol"],
+      "blocks": [
+        ["paragraph", "The main difference between a petrol engine and a diesel engine is how the fuel catches fire. A petrol engine uses a spark plug to ignite a mixture of fuel and air. A diesel engine has no spark plug: it squeezes air until the air is hot enough to set fire to fuel sprayed into it. Almost every other difference, from efficiency to noise to exhaust, follows from that choice."],
+        ["heading", "How a petrol engine lights its fuel"],
+        ["paragraph", "A petrol engine is a spark-ignition engine. Fuel and air are mixed, drawn into a cylinder and squeezed by the piston. At a precisely timed moment the spark plug fires and the mixture burns, pushing the piston down. The spark's high voltage comes from an ignition coil, and in modern cars an electronic control unit decides when it fires."],
+        ["paragraph", "The mixture is already in the cylinder while it is being squeezed, so there is a limit to how hard it can be compressed. Squeeze it too much and it may ignite by itself before the spark, an unwanted event called pre-ignition. This is why petrol engines run at lower compression than diesels. Petrol is also sold with an octane rating, which describes its resistance to burning too early."],
+        ["paragraph", "The first practical petrol engine was built in 1876 by Nicolaus Otto and Eugen Langen in Germany, according to Wikipedia's article on the petrol engine. Most petrol engines still follow the four-stroke cycle named after Otto."],
+        ["heading", "How a diesel engine lights its fuel"],
+        ["paragraph", "A diesel engine is a compression-ignition engine. Only air is drawn into the cylinder. The piston squeezes it to a compression ratio typically between 15:1 and 23:1, which heats the air strongly. Near the top of the stroke, fuel is injected, and the hot air ignites it. No spark is needed."],
+        ["paragraph", "Because fuel arrives only at the last moment, pre-ignition is not a problem, so a diesel can use much higher compression. The Energy Education encyclopedia makes the same point: a petrol engine at diesel-level compression would ignite its fuel-air mixture too early."],
+        ["callout", "Compression ratio compares the cylinder's volume at the bottom of the piston stroke with its volume at the top. A ratio of 20:1 means the air is squeezed into one twentieth of its original space."],
+        ["heading", "Why diesels tend to be more efficient"],
+        ["paragraph", "Squeezing the gas harder lets an engine turn more of the fuel's heat into movement. Wikipedia's diesel engine article gives up to 43 percent efficiency for passenger-car diesels, up to 45 percent for large truck and bus engines and up to 55 percent for large two-stroke marine engines. Its petrol engine article puts the thermodynamic efficiency of petrol engines at about 20 to 30 percent."],
+        ["paragraph", "These are best-case figures. The diesel article notes that average efficiency over a real driving cycle is lower than the peak, giving an example of 37 percent average for an engine with a 44 percent peak."],
+        ["paragraph", "The Energy Education project compares a 2014 Volkswagen Golf TDI (diesel) with the petrol version of the same car. It reports the diesel as 8 miles per gallon better in combined driving and 12 better on the highway. That is one model pair in one year, not a rule for every car."],
+        ["heading", "Torque and starting"],
+        ["paragraph", "Diesels generally make more torque, the twisting force that gets a vehicle moving, for their size. The same source lists 236 lb-ft for the 2015 Golf TDI against 185 lb-ft for its petrol sibling. Starting a diesel is harder work for the starter motor, which must turn the engine against high compression, so diesels need more battery power to start."],
+        ["heading", "Emissions"],
+        ["paragraph", "Burning diesel produces carbon monoxide, unburned hydrocarbons, particulate matter (tiny soot particles) and nitrogen oxides. Wikipedia reports that exhaust treatment can remove about 90 percent of these pollutants and that road diesel has been sulfur-free since 2003. It also notes that particulate matter is classed as a carcinogen or probable carcinogen. The Energy Education project says diesel tends to produce more particulate matter than petrol."],
+        ["paragraph", "Rules differ by country and change over time, so check the current regulations where you live. This article gives general information only."],
+        ["heading", "Where the idea came from"],
+        ["paragraph", "Rudolf Diesel published his proposal, *Theory and Construction of a Rational Heat Motor*, in 1893. His first idea, with compression at constant temperature, would not work, and by June 1893 he had switched to a different cycle. His first prototype fired for the first time on 10 August 1893. A later test on 17 February 1897 rated an engine at 13.1 kilowatts with an effective efficiency of 26.2 percent, and the first commercial diesel engines were installed in 1898."],
+        ["heading", "The short version"],
+        ["list", "Petrol: spark ignition, lower compression, efficiency of about 20 to 30 percent.\nDiesel: compression ignition, compression ratios of about 15:1 to 23:1, higher efficiency.\nDiesel engines make more torque for their size but need heavier starting effort and exhaust treatment for particulates and nitrogen oxides.\nBoth burn fuel in a cylinder to push a piston; only the way the fire starts differs."]
+      ],
+      "sources": [
+        { "title": "Diesel engine, Wikipedia", "url": "https://en.wikipedia.org/wiki/Diesel_engine" },
+        { "title": "Petrol engine, Wikipedia", "url": "https://en.wikipedia.org/wiki/Petrol_engine" },
+        { "title": "Diesel vs gasoline engine, Energy Education", "url": "https://energyeducation.ca/encyclopedia/Diesel_vs_gasoline_engine" }
+      ],
+      "checkedOn": "2026-11-02"
+    },
+    {
+      "title": "What Runway Numbers Mean: Headings, Letters, Arrows",
+      "category": "Aviation",
+      "excerpt": "The big number at the end of a runway is its compass heading, rounded and shortened. Learn how it is chosen and what the other markings show.",
+      "tags": ["airports", "runways", "navigation"],
+      "blocks": [
+        ["paragraph", "The large number painted at the end of a runway is its direction on a compass, rounded to the nearest 10 degrees with the last zero dropped. A runway pointing at about 183 degrees is Runway 18, spoken \"one-eight\". The number tells a pilot which way they will be heading as they land or take off, and it is the reason every runway has two names, one at each end."],
+        ["heading", "How the number is worked out"],
+        ["paragraph", "Runways are named from their magnetic heading, not true north. A magnetic compass points toward the magnetic pole, and pilots navigate with magnetic headings, so the markings match what is on the cockpit instruments. Take the heading from the direction of approach, round it to the nearest 10 degrees and divide by 10. According to Wikipedia, 09 points east, 18 south, 27 west and 36 north."],
+        ["paragraph", "A runway has two ends, and each end faces the opposite way. The two numbers differ by 18, because 180 degrees is half a turn. Runway 15 at one end is Runway 33 at the other. The AOPA (Aircraft Owners and Pilots Association) notes that the leading zero is dropped for runways 1 to 9 in the United States; Wikipedia adds that airports following the ICAO (International Civil Aviation Organization) style keep it, so the same runway is written 09 there."],
+        ["callout", "Every digit is spoken on its own, so Runway 15 is \"one-five\", not \"fifteen\"."],
+        ["heading", "Letters for parallel runways"],
+        ["paragraph", "Large airports often build runways side by side. They would have the same number, so a letter is added: L for left, R for right and C for centre, as in 15L, 15C and 15R. Seen from the other end, the sides swap, so Runway 03L is Runway 21R when used in the opposite direction."],
+        ["paragraph", "With four or more parallel runways, the numbers are shifted by one so that no two runways in the group share a designation. Wikipedia gives Los Angeles as an example, with 6L, 6R, 7L and 7R, and Dallas/Fort Worth with 17L, 17C, 17R, 18L and 18R."],
+        ["heading", "Why runway numbers get repainted"],
+        ["paragraph", "Magnetic north is not fixed, so a runway's magnetic heading slowly changes even though the runway does not move. When the rounded value changes, the runway is renamed. Wikipedia says this happens more often at high latitudes: Fairbanks renames its runways roughly every 24 years, most recently in 2009. A runway at 226 degrees is Runway 23 until its heading drifts to 224 degrees, when it becomes 22."],
+        ["paragraph", "Renaming means updating charts and documents, so it is usually done at night and only when needed. Northern Canada avoids the issue by using true north for designations."],
+        ["heading", "The other markings you can see"],
+        ["paragraph", "The number is only one of several markings. The AOPA describes the main ones for runways used with instrument approaches:"],
+        ["list", "**Threshold stripes:** bold stripes at the very start of the runway. The number of stripes shows the width, from four for a 60-foot runway to sixteen for a 200-foot runway.\n**Touchdown zone marks:** sets of three short parallel stripes at 500-foot steps on precision runways, which help a pilot judge how much runway has been used.\n**Aiming point marks:** two wide white rectangles about 1,000 feet from the threshold, where the approach is aimed.\n**A large X:** the runway is closed."],
+        ["heading", "Displaced thresholds"],
+        ["paragraph", "Sometimes the landing area starts partway along the pavement. This is called a displaced threshold. White arrows along the centreline point toward the point where landing may begin, and a 10-foot-wide bar crosses the runway at that point. The section before it can be used for taxiing, take-off and the roll after landing, but not for touching down. Wikipedia lists obstacles, pavement strength and noise limits as common reasons."],
+        ["heading", "How long are runways?"],
+        ["paragraph", "Runway sizes vary widely. According to Wikipedia, small general aviation strips can be as short as about 245 metres and 8 metres wide, while large international airports can have runways about 5,500 metres long and 80 metres wide. A runway of at least 1,800 metres usually suffices for aircraft under about 100,000 kilograms, and widebody airliners generally need at least 2,400 metres at sea level. The length a given aircraft needs depends on its weight, the weather and the altitude of the airport."],
+        ["paragraph", "This is general information about markings, not guidance for flying. Pilots rely on official charts and training."]
+      ],
+      "sources": [
+        { "title": "Runway, Wikipedia", "url": "https://en.wikipedia.org/wiki/Runway" },
+        { "title": "Runway markings, AOPA Flight Training magazine", "url": "https://aopa.org/news-and-media/all-news/2021/march/flight-training-magazine/runway-markings" }
+      ],
+      "checkedOn": "2026-11-02"
+    },
+    {
+      "title": "How a Steam Locomotive Works, From Coal to Wheels",
+      "category": "Vintage and History",
+      "excerpt": "A steam locomotive is a moving boiler with pistons. Follow the heat from the firebox to the wheels, then the engine's history from 1804 to today.",
+      "tags": ["steam", "railways", "locomotives"],
+      "blocks": [
+        ["paragraph", "A steam locomotive burns fuel to boil water, then uses the steam's pressure to push pistons that turn the wheels. The whole machine is a boiler on wheels, and nearly every part of it serves one of three jobs: making steam, using steam, or getting rid of the used steam in a way that keeps the fire burning."],
+        ["heading", "Step 1: the firebox and the boiler"],
+        ["paragraph", "Coal is the usual fuel, though coke, oil and, rarely, wood have also been used. It burns on a grate in the firebox. Steamlocomotives.org says the fire can reach over 1,000 degrees Celsius. Hot gases from the fire pass through dozens of fire-tubes that run through a water-filled boiler. Wikipedia explains that the water turns to steam, which takes up roughly 1,600 to 1,700 times the volume of the water it came from."],
+        ["paragraph", "The boiler typically holds steam at about 200 to 250 pounds per square inch, according to Steamlocomotives.org, and spring-loaded safety valves release any excess. The crew must keep the water level above the top of the firebox. A fusible plug, which melts if the water runs too low, gives a warning."],
+        ["heading", "Step 2: the regulator and superheater"],
+        ["paragraph", "Steam collects at the top of the boiler. The driver opens a regulator (the throttle) to let it out. On most twentieth-century engines it first passes through a superheater, which reheats it so it expands with more force."],
+        ["heading", "Step 3: cylinders and pistons"],
+        ["paragraph", "Steam enters steam chests and is directed by valves into the cylinders, where it pushes a piston first one way and then the other. Because it works on both strokes, the cylinder is called double-acting. A piston rod pushes a crosshead, which pushes a connecting rod that turns the driving wheels. Coupling rods link the driving wheels so that they turn together."],
+        ["paragraph", "Most engines have two cylinders set a quarter-turn apart, so the engine can always start from a stopped position. Larger engines often had three or four."],
+        ["heading", "Step 4: the valve gear and cut-off"],
+        ["paragraph", "The valve gear times when steam goes in and out of each cylinder. The driver can change how long steam is let in during each stroke, called the cut-off. For starting a heavy train, Steamlocomotives.org says a long cut-off of around 75 percent is used. Wikipedia says about 10 percent can be used for efficient cruising, because the trapped steam keeps expanding and doing work after the supply is shut off."],
+        ["heading", "Step 5: the blastpipe, the sound and the draught"],
+        ["paragraph", "Used steam leaves the cylinders through a nozzle called the blastpipe, pointing up the chimney. The jet drags gases out of the smokebox and pulls fresh air through the fire. The harder the engine works, the more exhaust steam it makes, so the stronger the draught and the more steam it produces. This is also the source of the \"chuff\" sound."],
+        ["callout", "The engine adjusts itself: more demand means more exhaust, which means a hotter fire and more steam."],
+        ["heading", "Crew, tender and injectors"],
+        ["paragraph", "A driver and a fireman are the minimum crew. Larger engines pull a tender holding coal and water. Water is forced into the boiler against its own pressure by injectors, which use a jet of steam. A brake system runs through the whole train and applies automatically if the train parts."],
+        ["heading", "A short history"],
+        ["list", "**1804:** Richard Trevithick's engine hauls a load at Pen-y-darren in South Wales, the first recorded steam-hauled rail journey.\n**1812:** Matthew Murray's Salamanca becomes the first commercially successful steam locomotive.\n**1825:** Locomotion No. 1 begins hauling passengers on the Stockton and Darlington Railway, the first public steam railway.\n**1829:** George and Robert Stephenson's Rocket wins the Rainhill Trials; the Liverpool and Manchester Railway opens in 1830.\n**1934:** Flying Scotsman is the first steam locomotive officially recorded at 100 mph (160 km/h).\n**1938:** Mallard sets an official record of 126 mph (203 km/h), which has not been broken."],
+        ["heading", "Why steam faded"],
+        ["paragraph", "From the early 1900s, electric and diesel locomotives gradually took over. Water quality, boiler maintenance and fuel costs added to the pressure, according to Wikipedia, and by the 1980s most steam locomotives had been retired from regular service. Many survive on heritage and tourist lines. The largest, the Union Pacific Big Boy, weighs 540 long tons and has a tractive effort of 135,375 pounds-force."]
+      ],
+      "sources": [
+        { "title": "Steam locomotive, Wikipedia", "url": "https://en.wikipedia.org/wiki/Steam_locomotive" },
+        { "title": "How a Steam Locomotive Works, Steamlocomotives.org", "url": "https://www.steamlocomotives.org/how-railways-work/how-a-steam-locomotive-works" }
+      ],
+      "checkedOn": "2026-11-02"
+    },
+    {
+      "title": "How Language Models Predict the Next Word",
+      "category": "AI",
+      "excerpt": "Chatbots write by repeatedly guessing the next token from probabilities. Here is how that guessing works, how models are trained and where tuning fits in.",
+      "tags": ["language models", "tokens", "training"],
+      "blocks": [
+        ["paragraph", "A large language model writes by predicting what comes next. Given the text so far, it works out how likely each possible next piece of text is, picks one, adds it to the text and repeats. A whole answer is built one small piece at a time. Understanding this loop explains a lot about what chatbots do well and where they slip."],
+        ["heading", "Tokens: the pieces of text"],
+        ["paragraph", "Models do not read letters or whole words directly. Text is split into tokens, which Google's Machine Learning Crash Course says are usually subwords, though they can also be whole words or single characters. For English, one token is roughly 4 characters or three-quarters of a word, so 400 tokens is about 300 words. Wikipedia adds that each token in the model's vocabulary has a unique integer index, which is mapped to a list of numbers called an embedding. Byte-pair encoding is one common way of building the vocabulary."],
+        ["heading", "Probabilities for the next token"],
+        ["paragraph", "A language model estimates the probability that a token occurs in a longer sequence. Google's course uses the sentence \"When I hear rain on my roof, I _______ in my kitchen\" and shows the model giving probabilities to different completions, with \"cook soup\" at 9.4 percent in its example. The numbers across all options add up to one."],
+        ["paragraph", "An application can then pick the highest-probability option, or pick at random from options above some probability threshold. Allowing some randomness means the same question can produce different wording on different tries."],
+        ["heading", "Why context matters"],
+        ["paragraph", "The words around a gap help predict it. Older methods called N-grams used only the last few words, and longer N-grams become rarer in the data as N grows. Recurrent neural networks carried more context but processed one token at a time, and training them on long sequences was held back by a problem called vanishing gradients, according to Google's course."],
+        ["paragraph", "Large language models can evaluate the whole context at once. Most use an architecture called the transformer, built around attention. Wikipedia describes attention as letting the model relate every element of a sequence to every other element, however far apart, by computing relevance weights. The context window is the limit on how many tokens the model can consider at one time."],
+        ["heading", "Pretraining: learning from text"],
+        ["paragraph", "Before being fine-tuned, models are first pretrained to predict the next word on a large amount of text, in the words of Wikipedia's article. Each time the model guesses wrongly, its internal numbers (parameters) are nudged so that it would guess a little better next time. Repeated over enormous text collections, this teaches patterns of grammar, facts and style."],
+        ["paragraph", "It is costly. Wikipedia gives two examples: GPT-2, with 1.5 billion parameters, cost about $50,000 to train in 2019, and PaLM, with 540 billion parameters, about $8 million in 2022."],
+        ["heading", "Fine-tuning and human feedback"],
+        ["paragraph", "A pretrained model continues text; it does not automatically behave like an assistant. Two further steps shape that behaviour, as described by Wikipedia:"],
+        ["list", "**Instruction fine-tuning:** supervised learning on examples of instructions paired with good answers.\n**Reinforcement learning from human feedback (RLHF):** people compare outputs, a reward model learns to predict which text people prefer, and the language model is then tuned to score well on that reward model."],
+        ["heading", "What this means in practice"],
+        ["paragraph", "Because the core job is to produce a likely continuation, a fluent answer is not a guarantee of a true one. If the model's probabilities favour a plausible but wrong phrase, it will write it with the same confidence as a correct one. That is one reason people check important facts against reliable sources."],
+        ["callout", "The details here describe language models in general. Specific products add other components, and their makers do not always publish how they work."]
+      ],
+      "sources": [
+        { "title": "Large language model, Wikipedia", "url": "https://en.wikipedia.org/wiki/Large_language_model" },
+        { "title": "Large language models, Machine Learning Crash Course, Google for Developers", "url": "https://developers.google.com/machine-learning/crash-course/llm" }
+      ],
+      "checkedOn": "2026-11-02"
+    },
+    {
+      "title": "Why Lithium-Ion Batteries Lose Capacity Over Time",
+      "category": "Technology",
+      "excerpt": "Heat, full charges and deep discharges all wear a lithium-ion battery. Figures from Battery University and Apple show what matters most.",
+      "tags": ["batteries", "lithium-ion", "phones"],
+      "blocks": [
+        ["paragraph", "Lithium-ion batteries wear out because of three things: how many times they are charged and discharged, how hot they get, and how high a voltage they are held at. Battery University, a reference site on batteries, says environmental conditions often matter more than cycling alone. This article gathers the numbers it and Apple publish, with one caution: figures vary by maker and by test."],
+        ["heading", "Depth of discharge: shallow cycles last longer"],
+        ["paragraph", "Depth of discharge (DoD) is how much of the battery's capacity you use before recharging. Battery University's table gives approximate numbers of cycles before capacity falls to 70 percent. The smaller the dip, the more cycles the cell survives."],
+        ["list", "**NMC cells:** about 300 cycles at 100 percent DoD, 400 at 80, 600 at 60, 1,000 at 40, 2,000 at 20 and 6,000 at 10 percent.\n**LiFePO4 cells:** about 600 cycles at 100 percent DoD, 900 at 80, 1,500 at 60, 3,000 at 40, 9,000 at 20 and 15,000 at 10 percent."],
+        ["paragraph", "NMC (nickel manganese cobalt) and LiFePO4 (lithium iron phosphate) are two common chemistries. The site cautions that real-world life is often shorter than laboratory estimates."],
+        ["heading", "Voltage: the cost of a full charge"],
+        ["paragraph", "Charging a cell to a higher voltage stores more energy but wears it faster. Battery University lists roughly 300 to 500 cycles for a cell charged to 4.20 volts, and says that each 0.10-volt reduction in peak charging voltage is said to double the cycle life. The cost is lower usable capacity. The site's prose and table are not fully consistent on the exact cycle counts at slightly lower voltages, so treat the figures as a rough guide."],
+        ["paragraph", "This is one reason some devices offer options that stop charging short of 100 percent. Whether a particular device does so is up to its maker."],
+        ["heading", "Heat does lasting harm"],
+        ["paragraph", "Battery University warns that temperatures above 30 degrees Celsius and sitting at full charge stress the cell. Its estimate of the capacity recoverable after a year of storage at 100 percent charge is about 80 percent at 25 degrees, 65 percent at 40 degrees and 60 percent at 60 degrees (after three months at that last temperature). At 40 percent charge and 40 degrees, it estimates about 85 percent after a year."],
+        ["paragraph", "Apple's guidance on its devices agrees on the main point. It gives an ideal ambient range of 16 to 22 degrees Celsius and says exposure above 35 degrees can permanently reduce battery capacity, and that charging in high heat causes further damage. Cold, by contrast, temporarily reduces battery life, which returns once the battery warms up."],
+        ["heading", "Storage"],
+        ["paragraph", "For a battery to be stored for a long time, Apple suggests charging it to about 50 percent: fully charged storage can reduce capacity over time, while a fully drained battery can fall into a deep-discharge state where it may not hold a charge again. Apple also advises powering the device off, keeping it in a cool, dry place below 32 degrees Celsius, and topping it up to 50 percent every six months if stored longer than that."],
+        ["heading", "Other stresses"],
+        ["paragraph", "Battery University also lists high currents and ultra-fast charging among factors that shorten life. Apple says built-in charge management software aims to reduce battery aging, so some of the wear control happens without any action from the owner."],
+        ["heading", "Summary of the main points"],
+        ["list", "Smaller discharge swings give more total cycles.\nLower peak voltage lengthens life but reduces capacity.\nHeat is the main outside threat; a cool environment helps.\nFor long storage, a half charge in a cool place is the guidance from Apple.\nPublished cycle counts are approximate and depend on the cell and the test."],
+        ["callout", "This is general information. Follow the instructions for your own device and battery, and do not use a swollen or damaged battery."]
+      ],
+      "sources": [
+        { "title": "BU-808: How to Prolong Lithium-based Batteries, Battery University", "url": "https://batteryuniversity.com/article/bu-808-how-to-prolong-lithium-based-batteries" },
+        { "title": "Maximizing Battery Performance, Apple", "url": "https://www.apple.com/batteries/maximizing-performance/" }
+      ],
+      "checkedOn": "2026-11-02"
+    }
+  ]
+}

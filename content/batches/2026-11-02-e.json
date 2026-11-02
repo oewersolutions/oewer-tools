@@ -1,0 +1,104 @@
+{
+  "date": "2026-11-02",
+  "articles": [
+    {
+      "title": "How Language Models Predict the Next Word",
+      "category": "AI",
+      "excerpt": "Chatbots write by repeatedly guessing the next token from probabilities. Here is how that guessing works, how models are trained and where tuning fits in.",
+      "tags": [
+        "language models",
+        "tokens",
+        "training"
+      ],
+      "blocks": [
+        [
+          "paragraph",
+          "A large language model writes by predicting what comes next. Given the text so far, it works out how likely each possible next piece of text is, picks one, adds it to the text and repeats. A whole answer is built one small piece at a time. Understanding this loop explains a lot about what chatbots do well and where they slip."
+        ],
+        [
+          "heading",
+          "Tokens: the pieces of text"
+        ],
+        [
+          "paragraph",
+          "Models do not read letters or whole words directly. Text is split into tokens, which Google's Machine Learning Crash Course says are usually subwords, though they can also be whole words or single characters. For English, one token is roughly 4 characters or three-quarters of a word, so 400 tokens is about 300 words. Wikipedia adds that each token in the model's vocabulary has a unique integer index, which is mapped to a list of numbers called an embedding. Byte-pair encoding is one common way of building the vocabulary."
+        ],
+        [
+          "heading",
+          "Probabilities for the next token"
+        ],
+        [
+          "paragraph",
+          "A language model estimates the probability that a token occurs in a longer sequence. Google's course uses the sentence \"When I hear rain on my roof, I _______ in my kitchen\" and shows the model giving probabilities to different completions, with \"cook soup\" at 9.4 percent in its example. The numbers across all options add up to one."
+        ],
+        [
+          "paragraph",
+          "An application can then pick the highest-probability option, or pick at random from options above some probability threshold. Allowing some randomness means the same question can produce different wording on different tries."
+        ],
+        [
+          "heading",
+          "Why context matters"
+        ],
+        [
+          "paragraph",
+          "The words around a gap help predict it. Older methods called N-grams used only the last few words, and longer N-grams become rarer in the data as N grows. Recurrent neural networks carried more context but processed one token at a time, and training them on long sequences was held back by a problem called vanishing gradients, according to Google's course."
+        ],
+        [
+          "paragraph",
+          "Large language models can evaluate the whole context at once. Most use an architecture called the transformer, built around attention. Wikipedia describes attention as letting the model relate every element of a sequence to every other element, however far apart, by computing relevance weights. The context window is the limit on how many tokens the model can consider at one time."
+        ],
+        [
+          "heading",
+          "Pretraining: learning from text"
+        ],
+        [
+          "paragraph",
+          "Before being fine-tuned, models are first pretrained to predict the next word on a large amount of text, in the words of Wikipedia's article. Each time the model guesses wrongly, its internal numbers (parameters) are nudged so that it would guess a little better next time. Repeated over enormous text collections, this teaches patterns of grammar, facts and style."
+        ],
+        [
+          "paragraph",
+          "It is costly. Wikipedia gives two examples: GPT-2, with 1.5 billion parameters, cost about $50,000 to train in 2019, and PaLM, with 540 billion parameters, about $8 million in 2022."
+        ],
+        [
+          "heading",
+          "Fine-tuning and human feedback"
+        ],
+        [
+          "paragraph",
+          "A pretrained model continues text; it does not automatically behave like an assistant. Two further steps shape that behaviour, as described by Wikipedia:"
+        ],
+        [
+          "list",
+          "**Instruction fine-tuning:** supervised learning on examples of instructions paired with good answers.\n**Reinforcement learning from human feedback (RLHF):** people compare outputs, a reward model learns to predict which text people prefer, and the language model is then tuned to score well on that reward model."
+        ],
+        [
+          "heading",
+          "What this means in practice"
+        ],
+        [
+          "paragraph",
+          "The same loop explains why a very long conversation can lose track of early details: once the text exceeds the context window, the oldest tokens are no longer available for the model to consider. It also explains why small changes to a question can change an answer, since a different starting text gives different probabilities for every token that follows."
+        ],
+        [
+          "paragraph",
+          "Because the core job is to produce a likely continuation, a fluent answer is not a guarantee of a true one. If the model's probabilities favour a plausible but wrong phrase, it will write it with the same confidence as a correct one. That is one reason people check important facts against reliable sources."
+        ],
+        [
+          "callout",
+          "The details here describe language models in general. Specific products add other components, and their makers do not always publish how they work."
+        ]
+      ],
+      "sources": [
+        {
+          "title": "Large language model, Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Large_language_model"
+        },
+        {
+          "title": "Large language models, Machine Learning Crash Course, Google for Developers",
+          "url": "https://developers.google.com/machine-learning/crash-course/llm"
+        }
+      ],
+      "checkedOn": "2026-11-02"
+    }
+  ]
+}
