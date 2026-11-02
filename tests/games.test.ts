@@ -221,3 +221,51 @@ describe("Hive Words", () => {
     expect(checkPuzzleData("hive_words", JSON.stringify(hive), new Set(["AUDIO"]))).toMatch(/not in the word list/);
   });
 });
+
+import { checkMini, entriesOf, entryAt, isSolved as miniSolved, shareText as miniShare, wrongSquares } from "../lib/games/mini-crossword";
+import type { MiniCrosswordData } from "../lib/games/types";
+
+const mini: MiniCrosswordData = {
+  grid: ["#MAIN", "CONDO", "ANGER", "STEAM", "TELL#"],
+  across: { "1": "Principal, as a road or idea", "5": "Flat in a tower block", "6": "Fury", "7": "What a kettle gives off", "8": "Say, as a story" },
+  down: { "1": "Italian city of a famous Carlo, or Cristo", "2": "Heavenly messenger", "3": "Perfect", "4": "Standard or average", "5": "Throw an actor in a play" },
+};
+
+describe("Mini Crossword", () => {
+  it("numbers the entries the usual way", () => {
+    const label = (e: { number: number; direction: string; answer: string }) => `${e.number}${e.direction[0]}:${e.answer}`;
+    expect(entriesOf(mini.grid).map(label)).toEqual(["1a:MAIN", "1d:MONTE", "2d:ANGEL", "3d:IDEAL", "4d:NORM", "5a:CONDO", "5d:CAST", "6a:ANGER", "7a:STEAM", "8a:TELL"]);
+    expect(entriesOf(mini.grid)[0]).toMatchObject({ number: 1, direction: "across", row: 0, col: 1, length: 4 });
+  });
+  it("finds the entry a square belongs to", () => {
+    const entries = entriesOf(mini.grid);
+    expect(entryAt(entries, 0, 3, "across")?.answer).toBe("MAIN");
+    expect(entryAt(entries, 0, 0, "across")).toBeUndefined(); // a black square
+    expect(entryAt(entries, 2, 1, "down")?.answer).toBe("MONTE");
+  });
+  it("marks wrong letters and knows when it is solved", () => {
+    const full = mini.grid.join("").split("").map((ch) => (ch === "#" ? "" : ch));
+    expect(miniSolved(mini.grid, full)).toBe(true);
+    const off = [...full];
+    off[1] = "Z";
+    expect(wrongSquares(mini.grid, off)).toEqual([1]);
+    expect(miniSolved(mini.grid, off)).toBe(false);
+    expect(wrongSquares(mini.grid, Array(25).fill(""))).toEqual([]); // blanks are not wrong
+  });
+  it("shares the result without the answers", () => {
+    expect(miniShare("Mini Crossword", 3, 0)).toBe("Mini Crossword No. 3: solved with no checks");
+    expect(miniShare("Mini Crossword", 3, 2)).toBe("Mini Crossword No. 3: solved with 2 checks");
+    expect(miniShare("Mini Crossword", 3, 1)).toBe("Mini Crossword No. 3: solved with 1 check");
+  });
+  it("accepts a good crossword and explains a bad one", () => {
+    expect(checkMini(mini)).toBeNull();
+    expect(checkMini({ ...mini, grid: ["#MAIN", "CONDO"] })).toMatch(/grid/);
+    expect(checkMini({ ...mini, grid: ["#MAIN", "CONDO", "ANGER", "STEAM", "TELLo"] })).toMatch(/grid/);
+    expect(checkMini({ ...mini, across: { ...mini.across, "5": "" } })).toMatch(/clue .*5 across/);
+    expect(checkMini({ ...mini, across: { ...mini.across, "6": "Fury or ANGER" } })).toMatch(/gives the answer away/);
+    expect(checkMini({ ...mini, down: { ...mini.down, "9": "Extra" } })).toMatch(/not a word in the grid/);
+    expect(checkMini({ ...mini, grid: ["##AIN", "CONDO", "ANGER", "STEAM", "TELL#"] })).toMatch(/needs a clue|letter on its own|three letters/);
+    expect(checkMini({ ...mini, grid: ["MA###", "CONDO", "ANGER", "STEAM", "TELL#"] })).toMatch(/three letters or more|on its own/);
+    expect(checkMini(mini, new Set(["MAIN"]))).toMatch(/not in the word list/);
+  });
+});

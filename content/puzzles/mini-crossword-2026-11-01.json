@@ -1,0 +1,340 @@
+{
+ "puzzles": [
+  {
+   "game": "mini-crossword",
+   "date": "2026-11-01",
+   "title": "",
+   "data": {
+    "grid": [
+     "AGO##",
+     "ROLL#",
+     "MEDIA",
+     "#SEND",
+     "##RED"
+    ],
+    "across": {
+     "1": "Gone by; in the past",
+     "4": "Bread bun, or to tumble over",
+     "6": "News outlets, collectively",
+     "8": "Mail or dispatch",
+     "9": "Colour of a ripe tomato"
+    },
+    "down": {
+     "1": "Limb with an elbow",
+     "2": "Travels or leaves",
+     "3": "More aged",
+     "5": "Queue, or a straight mark",
+     "7": "Put numbers together"
+    }
+   }
+  },
+  {
+   "game": "mini-crossword",
+   "date": "2026-11-02",
+   "title": "",
+   "data": {
+    "grid": [
+     "ACT##",
+     "RARE#",
+     "TRADE",
+     "#SIGN",
+     "##LED"
+    ],
+    "across": {
+     "1": "Perform on stage",
+     "4": "Not often found",
+     "6": "Buy and sell goods",
+     "8": "Road notice, or to put your name on paper",
+     "9": "Guided, past tense"
+    },
+    "down": {
+     "1": "Painting or sculpture",
+     "2": "Vehicles on a road",
+     "3": "Path through the woods",
+     "5": "Border or brink",
+     "7": "Finish; the last part"
+    }
+   }
+  },
+  {
+   "game": "mini-crossword",
+   "date": "2026-11-03",
+   "title": "",
+   "data": {
+    "grid": [
+     "WED##",
+     "HARD#",
+     "OCEAN",
+     "#HATE",
+     "##MET"
+    ],
+    "across": {
+     "1": "Marry",
+     "4": "Not soft",
+     "6": "Vast body of salt water",
+     "8": "Strong dislike",
+     "9": "Came across, past tense"
+    },
+    "down": {
+     "1": "Question word about a person",
+     "2": "Every one, individually",
+     "3": "Something you see in your sleep",
+     "5": "Day of the month",
+     "7": "Mesh used by fishermen or in tennis"
+    }
+   }
+  },
+  {
+   "game": "mini-crossword",
+   "date": "2026-11-04",
+   "title": "",
+   "data": {
+    "grid": [
+     "##TRY",
+     "#SHOE",
+     "GUEST",
+     "ACRE#",
+     "SHE##"
+    ],
+    "across": {
+     "1": "Make an attempt",
+     "4": "Worn on your foot",
+     "5": "Visitor at your home",
+     "6": "Unit of land area",
+     "7": "That woman"
+    },
+    "down": {
+     "1": "Not here",
+     "2": "Flower with thorns, or went up",
+     "3": "Up to now; still",
+     "4": "Of this kind",
+     "5": "Fuel for a cooker, or the pedal in a car"
+    }
+   }
+  },
+  {
+   "game": "mini-crossword",
+   "date": "2026-11-05",
+   "title": "",
+   "data": {
+    "grid": [
+     "##BIG",
+     "#TONE",
+     "SHAFT",
+     "HERO#",
+     "END##"
+    ],
+    "across": {
+     "1": "Large",
+     "4": "Musical sound, or the mood of a voice",
+     "5": "Long pole, as of an arrow",
+     "6": "Brave person who saves the day",
+     "7": "Finish; the last part"
+    },
+    "down": {
+     "1": "Get on a train or plane",
+     "2": "Short for details",
+     "3": "Receive or fetch",
+     "4": "At that time",
+     "5": "That woman"
+    }
+   }
+  },
+  {
+   "game": "mini-crossword",
+   "date": "2026-11-06",
+   "title": "",
+   "data": {
+    "grid": [
+     "HOT##",
+     "IRON#",
+     "SATIN",
+     "#LANE",
+     "##LET"
+    ],
+    "across": {
+     "1": "Not cold",
+     "4": "Metal in steel; also used to press clothes",
+     "6": "Smooth, shiny fabric",
+     "8": "Narrow road, or a strip of a road",
+     "9": "Allow"
+    },
+    "down": {
+     "1": "Belonging to him",
+     "2": "Spoken, not written",
+     "3": "Sum of all the parts",
+     "5": "One less than ten",
+     "7": "Mesh used by fishermen or in tennis"
+    }
+   }
+  },
+  {
+   "game": "mini-crossword",
+   "date": "2026-11-07",
+   "title": "",
+   "data": {
+    "grid": [
+     "ADS##",
+     "LOUD#",
+     "LEGAL",
+     "#SALE",
+     "##RED"
+    ],
+    "across": {
+     "1": "Commercials",
+     "4": "Not quiet",
+     "6": "Allowed by law",
+     "8": "Event with lower prices",
+     "9": "Colour of a ripe tomato"
+    },
+    "down": {
+     "1": "Everything",
+     "2": "Performs, or female deer",
+     "3": "Sweet stuff in tea",
+     "5": "Valley",
+     "7": "Guided, past tense"
+    }
+   }
+  },
+  {
+   "game": "mini-crossword",
+   "date": "2026-11-08",
+   "title": "",
+   "data": {
+    "grid": [
+     "##GAS",
+     "#TRIP",
+     "DRAMA",
+     "RUNS#",
+     "YET##"
+    ],
+    "across": {
+     "1": "Fuel for a cooker, or the pedal in a car",
+     "4": "Journey",
+     "5": "Play or serious show",
+     "6": "Jogs, or scores in cricket",
+     "7": "Up to now; still"
+    },
+    "down": {
+     "1": "Give, or a sum of money awarded",
+     "2": "Goals",
+     "3": "Place for massages and relaxing",
+     "4": "Not false",
+     "5": "Not wet"
+    }
+   }
+  },
+  {
+   "game": "mini-crossword",
+   "date": "2026-11-09",
+   "title": "",
+   "data": {
+    "grid": [
+     "ART##",
+     "DEAN#",
+     "SALAD",
+     "#DEMO",
+     "##SET"
+    ],
+    "across": {
+     "1": "Painting or sculpture",
+     "4": "Head of a university faculty",
+     "6": "Dish of raw vegetables",
+     "8": "Sample version shown to try something",
+     "9": "Put down, or a group of items"
+    },
+    "down": {
+     "1": "Commercials",
+     "2": "Look at words and understand them",
+     "3": "Stories",
+     "5": "What you are called",
+     "7": "Tiny round mark"
+    }
+   }
+  },
+  {
+   "game": "mini-crossword",
+   "date": "2026-11-10",
+   "title": "",
+   "data": {
+    "grid": [
+     "##GNU",
+     "#FEES",
+     "SENSE",
+     "PART#",
+     "ARE##"
+    ],
+    "across": {
+     "1": "African antelope",
+     "4": "Charges for a service",
+     "5": "Sight, hearing or touch, for one",
+     "6": "Piece of a whole",
+     "7": "Form of 'to be' used with you"
+    },
+    "down": {
+     "1": "Type of music, book or film",
+     "2": "Bird's home",
+     "3": "Put to work",
+     "4": "Being scared",
+     "5": "Place for massages and relaxing"
+    }
+   }
+  },
+  {
+   "game": "mini-crossword",
+   "date": "2026-11-11",
+   "title": "",
+   "data": {
+    "grid": [
+     "##HIM",
+     "#SIDE",
+     "SALON",
+     "PILL#",
+     "ADS##"
+    ],
+    "across": {
+     "1": "Objective form of 'he'",
+     "4": "Left or right part",
+     "5": "Hair-cutting shop",
+     "6": "Tablet of medicine",
+     "7": "Commercials"
+    },
+    "down": {
+     "1": "Small mountains",
+     "2": "Someone greatly admired",
+     "3": "Adult males",
+     "4": "Spoke, past tense",
+     "5": "Place for massages and relaxing"
+    }
+   }
+  },
+  {
+   "game": "mini-crossword",
+   "date": "2026-11-12",
+   "title": "",
+   "data": {
+    "grid": [
+     "##THE",
+     "#THAN",
+     "FIELD",
+     "ALTO#",
+     "TEA##"
+    ],
+    "across": {
+     "1": "Most common English word",
+     "4": "Word used when comparing two things",
+     "5": "Open stretch of grass or crops",
+     "6": "Lower female singing voice",
+     "7": "Hot drink made from leaves"
+    },
+    "down": {
+     "1": "Greek letter after eta",
+     "2": "Glowing ring above an angel",
+     "3": "Finish; the last part",
+     "4": "Square on a bathroom floor",
+     "5": "Not thin"
+    }
+   }
+  }
+ ]
+}

@@ -164,3 +164,54 @@ test("Hive Words works with the on-screen letters", async ({ page }) => {
   await page.getByRole("button", { name: "Enter" }).click();
   await expect(page.getByRole("status")).toHaveText("+1 point.");
 });
+
+// Mini Crossword: the first puzzle (1 November 2026) is
+//   AGO## / ROLL# / MEDIA / #SEND / ##RED   (the across answers cover every white square)
+test("Mini Crossword: types answers by clue, marks wrong letters, and is solved", async ({ page }) => {
+  await page.clock.install({ time: DAY });
+  await page.goto("/games/mini-crossword/");
+  await expect(page.getByText("No. 1 · 2026-11-01")).toBeVisible();
+  await expect(page.getByRole("grid", { name: "Crossword grid" })).toBeVisible();
+  await expect(page.getByText("1 Across:")).toBeVisible();
+
+  await page.getByRole("button", { name: /^1\. Gone by/ }).click();
+  await page.keyboard.type("agx");
+  await page.getByRole("button", { name: "Check my letters" }).click();
+  await expect(page.getByRole("status")).toContainText("1 letter is wrong");
+  await expect(page.getByRole("button", { name: /Row 1, column 3.*wrong/ })).toBeVisible();
+
+  await page.getByRole("button", { name: /^1\. Gone by/ }).click();
+  await page.keyboard.type("ago");
+  const across: [string, string][] = [["4", "roll"], ["6", "media"], ["8", "send"], ["9", "red"]];
+  for (const [n, word] of across) {
+    await page.getByRole("button", { name: new RegExp(`^${n}\\. `) }).first().click();
+    await page.keyboard.type(word);
+  }
+  await expect(page.getByText("Solved with 1 check")).toBeVisible();
+  await expect(page.getByRole("button", { name: "Copy my result" })).toBeVisible();
+  await page.reload();
+  await expect(page.getByText("Solved with 1 check")).toBeVisible(); // saved in this browser
+});
+
+test("Mini Crossword: arrow keys move, space turns, backspace rubs out", async ({ page }) => {
+  await page.clock.install({ time: DAY });
+  await page.goto("/games/mini-crossword/");
+  await page.getByRole("button", { name: /^1\. Gone by/ }).click();
+  await page.keyboard.type("a");
+  await expect(page.getByRole("button", { name: /Row 1, column 1.*, A$/ })).toBeVisible();
+  await page.keyboard.press("Backspace"); // moved on to column 2, which is empty, so this rubs out column 1
+  await expect(page.getByRole("button", { name: /Row 1, column 1.*empty/ })).toBeVisible();
+  await page.keyboard.press("ArrowDown");
+  await expect(page.getByRole("button", { name: /Row 2, column 1/ })).toHaveAttribute("tabindex", "0");
+  await page.keyboard.press("Space");
+  await page.keyboard.type("r");
+  await expect(page.getByRole("button", { name: /Row 2, column 1.*, R$/ })).toBeVisible();
+});
+
+test("Mini Crossword works with the on-screen keyboard", async ({ page }) => {
+  await page.clock.install({ time: DAY });
+  await page.goto("/games/mini-crossword/");
+  await page.getByRole("button", { name: /^1\. Gone by/ }).click();
+  for (const l of "AGO") await page.getByRole("button", { name: l, exact: true }).click();
+  await expect(page.getByRole("button", { name: /Row 1, column 3.*, O$/ })).toBeVisible();
+});

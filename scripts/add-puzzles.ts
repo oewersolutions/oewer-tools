@@ -45,6 +45,7 @@ const wordLists: Partial<Record<GameType, Set<string>>> = {
   word_guess: new Set((await readFile(resolve("public/games/words-5.txt"), "utf-8")).split("\n").filter(Boolean)),
   hive_words: new Set((await readFile(resolve("content/games/common-words.txt"), "utf-8")).split("\n").filter(Boolean)),
 };
+wordLists.mini_crossword = wordLists.hive_words;
 
 let bytes: Uint8Array = new Uint8Array(await readFile(workbookPath));
 const wb = await loadWorkbook(bytes);

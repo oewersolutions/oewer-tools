@@ -1,7 +1,7 @@
 export type GameType = "word_guess" | "four_groups" | "word_trail" | "hive_words" | "mini_crossword";
 
 /** The game types that have a playable game. A game of another type can be kept as a draft but not published. */
-export const BUILT_GAME_TYPES: readonly GameType[] = ["word_guess", "four_groups", "hive_words"];
+export const BUILT_GAME_TYPES: readonly GameType[] = ["word_guess", "four_groups", "hive_words", "mini_crossword"];
 
 export interface Game {
   game_id: string;
@@ -42,6 +42,13 @@ export interface HiveWordsData {
   center: string;
   outer: string[];
   words: string[];
+}
+
+/** A 5 by 5 crossword. `grid` holds the answers, with # for black squares; clues are keyed by the entry's number. */
+export interface MiniCrosswordData {
+  grid: string[];
+  across: Record<string, string>;
+  down: Record<string, string>;
 }
 
 export interface WordGuessData {

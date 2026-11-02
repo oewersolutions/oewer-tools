@@ -11,6 +11,7 @@ import { fileURLToPath } from "node:url";
 import { checkWorkbook, formatIssue, schema } from "../lib/workbook";
 import { existsSync } from "node:fs";
 import { checkPuzzleData } from "../lib/games/puzzles";
+import type { GameType } from "../lib/games/types";
 import { missingImageFiles } from "../lib/posts";
 import { TOOL_COMPONENT_KEYS } from "../lib/tools/keys";
 import { buildContent, serialize } from "../lib/workbook/export";
@@ -34,14 +35,15 @@ if (issues.length > 0) {
 }
 
 // Every puzzle answer must be a word players can type: check the word lists (the workbook check cannot read files).
-const wordLists = {
+const wordLists: Record<string, Set<string>> = {
   word_guess: new Set((await readFile(resolve(ROOT, "public/games/words-5.txt"), "utf-8")).split("\n").filter(Boolean)),
   hive_words: new Set((await readFile(resolve(ROOT, "content/games/common-words.txt"), "utf-8")).split("\n").filter(Boolean)),
 };
+wordLists.mini_crossword = wordLists.hive_words!;
 const gameTypes = new Map((data.games ?? []).map((g) => [String(g.values.game_id), String(g.values.game_type)]));
 const puzzleProblems = (data.game_puzzles ?? []).flatMap((p) => {
-  const type = gameTypes.get(String(p.values.game_id)) as keyof typeof wordLists | undefined;
-  const problem = type && type in wordLists ? checkPuzzleData(type, String(p.values.puzzle_data), wordLists[type]) : null;
+  const type = gameTypes.get(String(p.values.game_id));
+  const problem = type && type in wordLists ? checkPuzzleData(type as GameType, String(p.values.puzzle_data), wordLists[type]) : null;
   return problem ? [`game_puzzles row ${p.row} (${String(p.values.puzzle_date)}): the puzzle ${problem}.`] : [];
 });
 if (puzzleProblems.length > 0) {
