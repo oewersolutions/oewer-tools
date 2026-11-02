@@ -1,0 +1,141 @@
+{
+  "date": "2026-11-02",
+  "articles": [
+    {
+      "title": "How Much Electricity Do AI Data Centres Use?",
+      "category": "AI",
+      "excerpt": "Data centres used about 1.5% of the world's electricity in 2024. Here is what the IEA and the US Department of Energy report, what drives the growth and how uncertain the forecasts are.",
+      "tags": ["ai", "data centres", "energy"],
+      "blocks": [
+        ["paragraph", "Data centres, the buildings full of servers behind websites, apps and AI chatbots, used about 415 terawatt-hours (TWh) of electricity in 2024, according to the International Energy Agency (IEA). That is roughly 1.5% of all the electricity used in the world. AI is one reason the number is rising, but it is not the only one, and the forecasts come with wide error bars. This article sets out the main figures from two public reports and explains what sits behind them."],
+        ["heading", "What a terawatt-hour is"],
+        ["paragraph", "A kilowatt-hour (kWh) is the unit on a home electricity bill: a 1,000-watt heater running for one hour. A terawatt-hour is one billion kilowatt-hours. So 415 TWh is 415 billion kWh. The size only makes sense next to something else, which is why reports quote it as a share of total electricity use."],
+        ["heading", "The global picture from the IEA"],
+        ["paragraph", "The IEA's *Energy and AI* report says data centre electricity use has grown by about 12% a year over the last five years. In its Base Case, consumption reaches about 945 TWh by 2030, a little under 3% of global electricity. That growth of roughly 15% a year from 2024 is, according to the IEA, more than four times faster than the growth of electricity use in all other sectors combined."],
+        ["paragraph", "The growth is not spread evenly. The IEA says the United States and China together account for nearly 80% of the global increase to 2030. It projects US data centre use rising by about 240 TWh (up 130%), China's by about 175 TWh (up 170%), Europe's by more than 45 TWh (up 70%) and Japan's by about 15 TWh (up 80%)."],
+        ["heading", "The US view from the Department of Energy"],
+        ["paragraph", "On 20 December 2024 the US Department of Energy published a report written by Lawrence Berkeley National Laboratory, the *2024 Report on U.S. Data Center Energy Use*. It found that data centres used about 4.4% of US electricity in 2023. It projected a share of roughly 6.7% to 12% by 2028. The wide range is itself a message: the authors could not say how fast demand will grow."],
+        ["heading", "Where the electricity goes inside a data centre"],
+        ["paragraph", "Not all of a data centre's power runs AI. The IEA gives an approximate split of the net increase in demand to 2030:"],
+        ["list", "Accelerated servers, the specialised chips used mainly for AI, account for almost half of the increase\nConventional servers account for about 20%\nOther IT equipment accounts for about 10%\nCooling and other infrastructure account for about 20%"],
+        ["paragraph", "Accelerated servers are growing the fastest, at about 30% a year in the IEA's Base Case. Cooling matters because the chips turn nearly all the electricity they use into heat, and that heat has to be carried away or the equipment fails."],
+        ["heading", "Why forecasts disagree"],
+        ["paragraph", "The IEA stresses that there is substantial uncertainty about both today's and tomorrow's data centre use, so it publishes scenarios instead of one forecast. For 2035 it describes three:"],
+        ["list", "Lift-Off: above 1,700 TWh, about 4.4% of global electricity\nHigh Efficiency: about 970 TWh, about 2.6%\nHeadwinds: a plateau near 700 TWh, under 2%"],
+        ["paragraph", "The scenarios differ in how quickly AI is adopted, how many chips can be built and delivered, and how much more work each unit of electricity can do as hardware and software improve. None of these can be known in advance."],
+        ["heading", "A national total hides local effects"],
+        ["paragraph", "The IEA notes that data centre growth is under 10% of the growth in global electricity demand from 2024 to 2030. In other words, at world level it is a small slice. But data centres cluster in particular places, so a single region can see a large jump in demand. The IEA says this can make connecting them to the grid harder than the global figures suggest."],
+        ["heading", "What the figures do not tell you"],
+        ["list", "They do not say how much power a single chatbot question uses. Neither report gives that figure, and estimates vary with the model, the hardware and the length of the answer\nThey do not separate AI from other cloud work such as video streaming and storage, except in the broad split above\nThey are projections, not measurements of the future"],
+        ["callout", "General information only. Figures are those published by the IEA and by the US Department of Energy and Lawrence Berkeley National Laboratory; later editions may revise them."],
+        ["paragraph", "To follow the story as it develops, look for updated editions of the two reports, which restate the numbers as new data arrives."]
+      ],
+      "sources": [
+        { "title": "Energy demand from AI, Energy and AI, International Energy Agency", "url": "https://www.iea.org/reports/energy-and-ai/energy-demand-from-ai" },
+        { "title": "DOE Releases New Report Evaluating Increase in Electricity Demand from Data Centers, US Department of Energy", "url": "https://www.energy.gov/articles/doe-releases-new-report-evaluating-increase-electricity-demand-data-centers" }
+      ],
+      "checkedOn": "2026-11-02"
+    },
+    {
+      "title": "Toyota Production System: Just-in-Time and Jidoka",
+      "category": "Vintage and History",
+      "excerpt": "Toyota's production system rests on two ideas, making only what is needed and stopping when something goes wrong. Both trace back to a loom invented in the 1890s.",
+      "tags": ["toyota", "manufacturing", "history"],
+      "blocks": [
+        ["paragraph", "The Toyota Production System (TPS) is the way Toyota organises its factories. Its goals, as Toyota describes them, are to deliver vehicles quickly, at low cost and with high quality while making work easier for employees. It stands on two pillars: just-in-time, which means making only what is needed, and jidoka, which means stopping the moment something goes wrong. Both ideas have roots that predate Toyota's cars."],
+        ["heading", "Pillar one: just-in-time"],
+        ["paragraph", "Toyota defines just-in-time as producing only what is needed, when it is needed and in the amount needed. A car has more than 30,000 parts, so the plants, processes and partner companies must be synchronised in a continuous flow. Each process replenishes what the next process takes, and only a minimum stock of parts is kept in advance so that orders can be filled quickly."],
+        ["paragraph", "Toyota's own history credits Kiichiro Toyoda, the founder of Toyota Motor Corporation, with advocating this approach. He introduced flow production with a chain conveyor, and in 1938 applied it to body assembly at the Koromo Plant, now the Honsha Plant."],
+        ["heading", "Pillar two: jidoka"],
+        ["paragraph", "Jidoka is loosely translated by Toyota as \"automation with a human touch\". When a machine or a worker detects an abnormality, such as an equipment fault, a quality problem or a delay, the line stops immediately. That prevents a defective product moving on to the next step. Because machines halt themselves, people do not have to watch them constantly."],
+        ["paragraph", "Toyota says work is first done by hand and improved through kaizen, daily step-by-step improvement, to remove waste, inconsistency and unreasonable demands. Only after that is it automated."],
+        ["heading", "The loom behind the idea"],
+        ["paragraph", "Toyota traces jidoka to Sakichi Toyoda (1867 to 1930), the founder of the Toyota Group, who invented an automatic loom to ease his mother's work on a manual one. Toyota's key dates include:"],
+        ["list", "1896: a device that automatically stops the loom when a weft thread breaks\n1924: the Type-G automatic loom, with a non-stop shuttle change\n1927: chain-conveyor flow production introduced into loom assembly, at a capacity of 300 units a month\n1938: flow production applied to body assembly at the Koromo Plant"],
+        ["heading", "Who built the system"],
+        ["paragraph", "Toyota names Eiji Toyoda (1913 to 2013) as the leader who ensured thorough implementation of both pillars, and Taiichi Ohno (1912 to 1990) as the engineer who, with Eiji's strong support, helped establish the system and created the basic framework for just-in-time. Wikipedia's article on the system says Ohno and Eiji Toyoda developed it between 1948 and 1975, and that Toyota published its first official description in 1992."],
+        ["heading", "The supermarket story"],
+        ["paragraph", "A popular account says Ohno took the idea of a pull system from supermarkets. In a supermarket, shoppers take goods from shelves and staff restock only what has gone. Applied to a factory, a work centre withdraws parts from a store, and the process that makes them builds only enough to replace what was taken. The kanban, a card or sign that signals what to make next, is the usual tool for this."],
+        ["paragraph", "Sources are not fully consistent about the details. Wikipedia says Toyota drew inspiration from a supermarket and also says Ohno read descriptions of American supermarkets, and it does not explicitly connect kanban to the supermarket analogy. Toyota's page on the system, the source for the dates above, does not mention kanban at all. Treat the supermarket tale as a widely told explanation, not a documented event with a date."],
+        ["heading", "Waste, in Toyota's vocabulary"],
+        ["paragraph", "The system targets waste, which Japanese manufacturers call *muda*. Wikipedia lists eight kinds: overproduction, waiting, transportation, processing itself, excess inventory, unnecessary movement, defective products and underused workers. You may see lists of seven elsewhere, since counting practice differs between books. Toyota's own page names three related problems to remove: waste (muda), inconsistency (mura) and unreasonable demands (muri)."],
+        ["heading", "Why it still matters"],
+        ["paragraph", "The two pillars are simple to state, and that is the point. Make what is needed, when it is needed, and stop at once when a fault appears. Many factories outside the car industry use variations of the same ideas, though how closely any one of them follows Toyota's own methods is a separate question that these sources do not answer."],
+        ["callout", "Dates and names here come from Toyota's own page on the system. Where Wikipedia differs or adds detail, the text says so."]
+      ],
+      "sources": [
+        { "title": "Toyota Production System, Toyota Motor Corporation (global)", "url": "https://global.toyota/en/company/vision-and-philosophy/production-system/" },
+        { "title": "Toyota Production System, Wikipedia", "url": "https://en.wikipedia.org/wiki/Toyota_Production_System" }
+      ],
+      "checkedOn": "2026-11-02"
+    },
+    {
+      "title": "How End-to-End Encryption Keeps Messages Private",
+      "category": "Technology",
+      "excerpt": "End-to-end encryption means only the sender and receiver can read a message, not even the service carrying it. Here is how keys, ratchets and safety numbers fit together, and what it cannot protect.",
+      "tags": ["encryption", "privacy", "messaging"],
+      "blocks": [
+        ["paragraph", "End-to-end encryption (E2EE) means a message is scrambled on the sender's device and unscrambled only on the recipient's device. The company that runs the messaging service, the phone network and anyone listening on the way can see that data moves, but cannot read what it says. This article explains the idea and how a well-known design, the Signal protocol's Double Ratchet, keeps changing the keys as a chat goes on."],
+        ["heading", "What makes it different"],
+        ["paragraph", "Many services encrypt data only in transit, between your device and their servers. The provider can then decrypt it. In E2EE the provider never holds the keys. Wikipedia notes that the term once meant only encryption during transport, and that around 2014, with WhatsApp's rollout, it came to mean excluding the service provider as well, which is how it is used now."],
+        ["heading", "Keys: public and private"],
+        ["paragraph", "Encryption turns readable text into scrambled data using a secret number called a key. In public-key systems each person has two linked keys: a public one that can be shared and a private one that never leaves the device. People use these to agree on a shared secret over an open connection. That shared secret is then used to encrypt the messages themselves."],
+        ["heading", "The Double Ratchet"],
+        ["paragraph", "The Signal protocol's specification describes the Double Ratchet. It is used after two parties have already agreed on a first shared secret through a separate key-agreement step. Its purpose is to give every message its own key, so that keys keep changing through the conversation. It combines two mechanisms:"],
+        ["list", "**A symmetric-key ratchet.** Each message advances a chain. The step takes a chain key and produces a new chain key plus a message key, and it only works forwards. Once a message has been handled, its key can be deleted\n**A Diffie-Hellman ratchet.** Each message carries a fresh public key from the sender. When one is received, the receiver mixes new secret material into the chain. The two people take turns doing this, so new secrets keep entering the conversation"],
+        ["heading", "Two protections that result"],
+        ["paragraph", "The specification calls the first one forward secrecy. Because keys are derived one way and old keys are deleted, an attacker who obtains today's keys cannot calculate earlier ones. In the spec's words, earlier keys cannot be calculated from later ones."],
+        ["paragraph", "The second is break-in recovery, also called post-compromise security. If an attacker steals a party's current keys, they can read messages until the session state changes. After the parties exchange new public keys, the chain absorbs secrets the attacker does not have, so future keys become unpredictable again. The specification says this works against passive eavesdroppers; an attacker who keeps control of a device or actively interferes can still keep access."],
+        ["heading", "Late and missing messages"],
+        ["paragraph", "Real networks deliver messages late or out of order. The Double Ratchet numbers each message, so a receiver can work out and temporarily keep the keys for skipped ones. The spec sets a limit on how many such keys can be stored."],
+        ["heading", "Checking you are talking to the right person"],
+        ["paragraph", "Encryption does not prove who is at the other end. An attacker sitting in the middle could swap keys. The defence, according to Wikipedia, is to compare key fingerprints or safety numbers through another channel, for example in person or by a call."],
+        ["heading", "What E2EE does not protect"],
+        ["list", "A compromised phone or account. If someone controls the device, they can read the messages after they are decrypted\nBackups, if they are stored without the same protection (a detail that varies by service)\nThe fact that you are communicating, which the network can still observe"],
+        ["paragraph", "Wikipedia also reports that governments and police have raised concerns about E2EE for investigations, and that some businesses need to read messages for compliance and archiving. Services differ in what they offer: it says Signal and WhatsApp use it by default, iMessage supports it, and Telegram offers it only in opt-in secret chats."],
+        ["heading", "Looking ahead: quantum computers"],
+        ["paragraph", "The spec says that the classical, Diffie-Hellman-based ratchet does not resist quantum computers. Revision 4, dated 4 November 2025, describes extensions that run a post-quantum key agreement alongside the existing one, so an attacker would need to break both."],
+        ["callout", "General information only. Check a particular app's own documentation for what it encrypts and when."]
+      ],
+      "sources": [
+        { "title": "The Double Ratchet Algorithm, Signal", "url": "https://signal.org/docs/specifications/doubleratchet/" },
+        { "title": "End-to-end encryption, Wikipedia", "url": "https://en.wikipedia.org/wiki/End-to-end_encryption" }
+      ],
+      "checkedOn": "2026-11-02"
+    },
+    {
+      "title": "How Pilots Navigate: Dead Reckoning, VOR and GPS",
+      "category": "Aviation",
+      "excerpt": "Pilots combine arithmetic, ground radio beacons and satellites to know where they are. A look at dead reckoning, VOR and DME, and GPS, with dates and figures.",
+      "tags": ["navigation", "gps", "pilots"],
+      "blocks": [
+        ["paragraph", "A pilot can work out position in three main ways: calculate it from speed, heading and time (dead reckoning), take bearings from ground radio stations such as VORs, or use satellites such as GPS. Modern aircraft combine them. This article explains each, using the descriptions in Wikipedia and NASA."],
+        ["heading", "Dead reckoning"],
+        ["paragraph", "Dead reckoning estimates where you are now from where you were, by applying your estimated speed and heading over the time that has passed. Distance is speed multiplied by time. Pilots use the wind triangle to correct for the way wind pushes the aircraft sideways, plot the course line with estimated positions, and adjust when something gives a new fix."],
+        ["paragraph", "The method is simple, but errors add up. It cannot see wind or drift unless they are accounted for, and each position depends on the previous one, so small mistakes compound over distance. Wikipedia says navigators reduce this by taking a new fix part-way, such as spotting a known landmark. It adds that dead reckoning is taught in visual flight rules (VFR) pilot training worldwide, even on aircraft with GPS."],
+        ["paragraph", "History is on the same list: Wikipedia says Alcock and Brown navigated across the Atlantic this way in 1919, and Lindbergh used it on his 1927 flight to Paris. It also says the popular claim that the term abbreviates \"deduced reckoning\" is a myth, since that usage did not appear until 1931, while the term was in print by 1613."],
+        ["heading", "VOR: bearings from a ground beacon"],
+        ["paragraph", "A VHF omnidirectional range (VOR) is a ground station. It sends two 30 Hz signals, one fixed and one that changes with direction. An aircraft's receiver measures the phase difference between them to find its bearing from the station. Each station also broadcasts a three-letter Morse identifier."],
+        ["paragraph", "A radial is a line running outward from the station at a given bearing, measured from magnetic north. A pilot selects one with the omni bearing selector and follows a course deviation indicator needle to stay on it. Two radials from different stations cross at the aircraft's position."],
+        ["heading", "Adding distance with DME"],
+        ["paragraph", "Distance measuring equipment (DME) gives the slant-range distance to a station. A VOR with DME is called a VOR-DME, and one radial plus one distance gives a position from a single station. A VOR sharing a site with a military TACAN beacon is a VORTAC."],
+        ["heading", "Range and limits"],
+        ["paragraph", "VOR is line-of-sight, so the horizon and terrain limit its reach. Wikipedia says coverage can reach about 200 nautical miles depending on site elevation and aircraft altitude."],
+        ["heading", "VOR history and the move to satellites"],
+        ["list", "1937: David G. C. Luck filed a patent for the rotating beacon\n1949: the US Civil Aeronautics Administration began deploying VOR\n1950: ICAO standardised VOR and DME\n2013: the United States had 967 stations\n2016: the FAA issued its final policy statement on decommissioning, planning to retire about half and keep a Minimum Operational Network as a backup for GNSS (satellite navigation)"],
+        ["paragraph", "Wikipedia also says the UK cut its stations from 44 to 19 by 2020, and that in Australia satellite navigation became the primary means for instrument flights in 2016."],
+        ["heading", "GPS: timing signals from space"],
+        ["paragraph", "NASA explains that GPS satellites broadcast their positions and the time. A receiver measures how long each signal took to arrive and calculates its own position from those travel times. NASA says GPS can give a position to meter-level accuracy and time to within 10 nanoseconds. Under the published performance standard, the position is good to about 10 metres horizontally and 20 metres vertically at 95% confidence, and the global average error has recently been about a metre or better. NASA's page does not discuss aviation specifically."],
+        ["heading", "Why pilots keep more than one method"],
+        ["paragraph", "Each method has a weakness: dead reckoning drifts, VOR depends on distance and terrain, and satellite signals can be lost. That is why the VOR network is being thinned rather than removed, and why dead reckoning is still taught. Inertial navigation systems on advanced aircraft also use dead reckoning internally, Wikipedia says."],
+        ["callout", "General information only, not flight instruction. Procedures differ by country, aircraft and type of flight."]
+      ],
+      "sources": [
+        { "title": "Dead reckoning, Wikipedia", "url": "https://en.wikipedia.org/wiki/Dead_reckoning" },
+        { "title": "VHF omnidirectional range, Wikipedia", "url": "https://en.wikipedia.org/wiki/VHF_omnidirectional_range" },
+        { "title": "What is GPS?, NASA", "url": "https://www.nasa.gov/general/what-is-gps/" }
+      ],
+      "checkedOn": "2026-11-02"
+    }
+  ]
+}
