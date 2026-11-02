@@ -454,7 +454,7 @@ async function cellOf(buffer: Buffer, sheet: string, pk: string, column: string)
 
 test("every sheet is listed with its row count, and you can switch between them", async ({ page }) => {
   await managerPage(page);
-  await expect(page.getByRole("navigation", { name: "Sheets" }).getByRole("button")).toHaveCount(16);
+  await expect(page.getByRole("navigation", { name: "Sheets" }).getByRole("button")).toHaveCount(18);
   await expect(sheetTab(page, "tools")).toContainText(/\(\d+\)/);
   await sheetTab(page, "tags").click();
   await expect(page.getByRole("heading", { name: "tags", level: 2 })).toBeVisible();

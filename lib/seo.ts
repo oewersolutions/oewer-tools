@@ -58,6 +58,10 @@ export function buildSitemapEntries(content: ContentExport): SitemapEntry[] {
     }
   }
 
+  const games = (sheets.games ?? []).filter((g) => g.status === "published");
+  if (games.length > 0) entries.push({ path: "/games/" });
+  for (const g of games) entries.push({ path: `/games/${g.slug}/` });
+
   const posts = (sheets.posts ?? []).filter((p) => p.status === "published");
   if (posts.length > 0) entries.push({ path: "/blog/" });
   for (const cat of sheets.blog_categories ?? []) {

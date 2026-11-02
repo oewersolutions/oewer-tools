@@ -3,6 +3,12 @@ import {
   BadgeIndianRupee,
   Braces,
   Calculator,
+  Gamepad2,
+  Grid3x3,
+  Hexagon,
+  LayoutGrid,
+  Route,
+  SpellCheck,
   FileText,
   Hash,
   Image as ImageIcon,
@@ -48,6 +54,19 @@ export function ToolIcon({ componentKey, className }: { componentKey: string; cl
 
 export function CategoryIcon({ slug, className }: { slug: string; className?: string }) {
   const Icon = CATEGORY_ICONS[slug] ?? Wrench;
+  return <Icon aria-hidden="true" className={className} />;
+}
+
+const GAME_ICONS: Record<string, LucideIcon> = {
+  word_guess: SpellCheck,
+  four_groups: LayoutGrid,
+  word_trail: Route,
+  hive_words: Hexagon,
+  mini_crossword: Grid3x3,
+};
+
+export function GameIcon({ gameType, className }: { gameType: string; className?: string }) {
+  const Icon = GAME_ICONS[gameType] ?? Gamepad2;
   return <Icon aria-hidden="true" className={className} />;
 }
 

@@ -235,7 +235,7 @@ test("calculators send nothing while you type", async ({ page }) => {
 });
 
 test("every page loads only from its own site, with no uploads", async ({ page, baseURL }) => {
-  test.setTimeout(180_000); // it visits every page in one test
+  test.setTimeout(360_000); // it visits every page in one test
   const origin = new URL(baseURL!).origin;
   for (const path of builtPaths()) {
     const bad: string[] = [];
@@ -244,7 +244,8 @@ test("every page loads only from its own site, with no uploads", async ({ page, 
     };
     page.on("request", listener);
     await page.goto(path);
-    await page.waitForLoadState("networkidle");
+    await page.waitForLoadState("load");
+    await page.waitForTimeout(600); // pages with ads never go quiet, so wait a moment instead of for an idle network
     page.off("request", listener);
     expect(bad, path).toEqual([]);
   }

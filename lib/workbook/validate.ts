@@ -1,4 +1,6 @@
 import { isImagePath } from "../image-size";
+import { checkPuzzleData, isPuzzleDate } from "../games/puzzles";
+import { BUILT_GAME_TYPES, type GameType } from "../games/types";
 import { isPublisherId, isSupportedPlacement, SUPPORTED_PLACEMENTS } from "../ads";
 import { isDashboardUrl, isMeasurementId } from "../analytics";
 import { slugify } from "../posts";
@@ -11,7 +13,7 @@ const HTML = /<\/?[a-z][^>]*>|<!--/i;
 const SLUG = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 const DATETIME = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$/;
 const SCHEME = /^[a-z][a-z0-9+.-]*:/i;
-const RESERVED_PAGE_SLUGS = new Set(["tools", "blog", "admin", "assets", "sitemap", "404"]);
+const RESERVED_PAGE_SLUGS = new Set(["tools", "blog", "games", "admin", "assets", "sitemap", "404"]);
 
 const isEmpty = (v: unknown): boolean => v === undefined || v === null || v === "";
 
@@ -283,6 +285,25 @@ export function validateWorkbook(data: WorkbookData, schema: Schema, options: Va
       if (tool.values.status === "published" && !known.has(String(tool.values.component_key))) {
         add("tools", tool, "component_key", "unknown_component", `'${String(tool.values.component_key)}' has no tool component, so the tool cannot be published.`);
       }
+    }
+  }
+
+  // Games: a published game needs a playable type, and every puzzle needs a real date and data its game can play
+  const gameTypes = new Map<string, string>();
+  for (const game of rowsOf("games")) {
+    gameTypes.set(String(game.values.game_id), String(game.values.game_type));
+    if (game.values.status === "published" && !BUILT_GAME_TYPES.includes(game.values.game_type as GameType)) {
+      add("games", game, "game_type", "unknown_game_type", `'${String(game.values.game_type)}' games cannot be published yet: the game is not built. Keep it as a draft.`);
+    }
+  }
+  for (const puzzle of rowsOf("game_puzzles")) {
+    const date = String(puzzle.values.puzzle_date ?? "");
+    if (date !== "" && !isPuzzleDate(date)) add("game_puzzles", puzzle, "puzzle_date", "invalid_value", "is not a real date; write it as YYYY-MM-DD, for example 2026-11-03.");
+    const type = gameTypes.get(String(puzzle.values.game_id ?? ""));
+    const data = String(puzzle.values.puzzle_data ?? "");
+    if (type && data !== "") {
+      const problem = checkPuzzleData(type as GameType, data);
+      if (problem) add("game_puzzles", puzzle, "puzzle_data", "invalid_puzzle", `${problem}.`);
     }
   }
 

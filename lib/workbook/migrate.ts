@@ -39,6 +39,11 @@ export function addColumn(workbook: RawWorkbook, sheet: string, column: string, 
   for (const row of target.rows) row[column] = value;
 }
 
+/** Add an empty sheet with these headers, unless a sheet of that name is already there, as a migration step. */
+export function addSheet(workbook: RawWorkbook, sheet: string, headers: string[]): void {
+  if (!workbook.sheets[sheet]) workbook.sheets[sheet] = { headers: [...headers], rows: [] };
+}
+
 function setSchemaVersion(workbook: RawWorkbook, version: string): void {
   const row = workbook.sheets.site_settings?.rows.find((r) => r.setting_key === "schema_version");
   if (row) row.setting_value = version;
@@ -66,6 +71,16 @@ export const migrations: Migration[] = [
       addColumn(workbook, "posts", "cover_alt");
       addColumn(workbook, "post_blocks", "caption");
       setSchemaVersion(workbook, "1.0.2");
+    },
+  },
+  {
+    from: "1.0.2",
+    to: "1.1.0",
+    description: "Games: the games and game_puzzles sheets",
+    up(workbook) {
+      addSheet(workbook, "games", ["game_id", "slug", "name", "tagline", "game_type", "how_to_play", "status", "sort_order"]);
+      addSheet(workbook, "game_puzzles", ["puzzle_id", "game_id", "puzzle_date", "title", "puzzle_data", "status", "author_note"]);
+      setSchemaVersion(workbook, "1.1.0");
     },
   },
 ];

@@ -18,8 +18,8 @@ const schema = JSON.parse(
 ) as Schema;
 
 describe("workbook_schema.json", () => {
-  it("defines 16 sheets", () => {
-    expect(Object.keys(schema.sheets)).toHaveLength(16);
+  it("defines 18 sheets", () => {
+    expect(Object.keys(schema.sheets)).toHaveLength(18);
   });
 
   it("uses only known column types, enums and primary keys", () => {

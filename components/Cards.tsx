@@ -1,12 +1,13 @@
 import Link from "next/link";
 import type { Post, Tool, ToolCategory } from "../lib/content";
+import type { Game } from "../lib/games/types";
 import { formatDate } from "../lib/format";
 import { postUrl, toolUrl } from "../lib/search";
 import { getCoverInfo } from "../lib/content";
 import { toolExample } from "../lib/tool-examples";
 import ArticleImage from "./ArticleImage";
 import Cover from "./Cover";
-import { ArrowRight, CategoryIcon, ToolIcon } from "./icons";
+import { ArrowRight, CategoryIcon, GameIcon, ToolIcon } from "./icons";
 
 const ICON_CHIP =
   "flex size-11 shrink-0 items-center justify-center rounded-xl bg-tint text-brand transition-colors group-hover:bg-brand group-hover:text-white";
@@ -51,6 +52,23 @@ export function ToolCard({
             <ArrowRight aria-hidden="true" className="size-4" />
           </span>
         )}
+      </span>
+    </Link>
+  );
+}
+
+/** A game: its icon, name, one line about it and a Play link. */
+export function GameCard({ game, heading: Heading = "h3" }: { game: Game; heading?: "h2" | "h3" }) {
+  return (
+    <Link prefetch={false} href={`/games/${game.slug}/`} className="card card-link group flex h-full flex-col p-6">
+      <span className={ICON_CHIP}>
+        <GameIcon gameType={game.game_type} className="size-5" />
+      </span>
+      <Heading className="t-subheading mt-5 text-ink">{game.name}</Heading>
+      <p className="mt-1.5 text-sm leading-relaxed text-muted">{game.tagline}</p>
+      <span className="mt-auto inline-flex items-center gap-2 pt-6 text-sm font-medium text-brand">
+        Play today&rsquo;s puzzle
+        <ArrowRight aria-hidden="true" className="size-4" />
       </span>
     </Link>
   );

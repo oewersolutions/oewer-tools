@@ -66,7 +66,7 @@ function toolContentRows(first: number): Row[] {
 
 const SEED: Record<string, Row[]> = {
   site_settings: [
-    ["schema_version", "1.0.2", "string", NOW],
+    ["schema_version", "1.1.0", "string", NOW],
     ["site_name", "OEWER Tools", "string", NOW],
     ["site_tagline", "Free online tools that respect your privacy", "string", NOW],
     ["site_url", "https://oewer.in", "string", NOW],
@@ -87,8 +87,9 @@ const SEED: Record<string, Row[]> = {
   ],
   navigation: [
     ["NAV0001", "Tools", "/tools", "header", 1, true],
-    ["NAV0002", "Blog", "/blog", "header", 2, true],
-    ["NAV0003", "About", "/about", "header", 3, true],
+    ["NAV0002", "Blog", "/blog", "header", 3, true],
+    ["NAV0008", "Games", "/games", "header", 2, true],
+    ["NAV0003", "About", "/about", "header", 4, true],
     ["NAV0004", "Contact", "/contact", "footer", 1, true],
     ["NAV0005", "Privacy Policy", "/privacy-policy", "footer_legal", 1, true],
     ["NAV0006", "Terms of Use", "/terms", "footer_legal", 2, true],
@@ -154,7 +155,11 @@ const SEED: Record<string, Row[]> = {
     ["AD0004", "mid_page", "home", false, ""],
     ["AD0005", "list_bottom", "tool_category", false, ""],
     ["AD0006", "list_bottom", "blog_index", false, ""],
+    ["AD0007", "below_game", "game", false, ""],
+    ["AD0008", "list_bottom", "game_hub", false, ""],
   ],
+  games: [["GAME0001", "word-guess", "Word Guess", "Guess the hidden five-letter word in six tries. A new word every day.", "word_guess", "Guess the word in six tries. Green tiles are in the right place, gold tiles are in the word but elsewhere.", "published", 1]],
+  game_puzzles: [["PUZ00001", "GAME0001", "2026-11-01", "", '{"answer":"PLANT"}', "published", ""]],
   redirects: [["RED0001", "/old-emi-calculator", "/tools/finance-calculators/emi-calculator", "301", false]],
   admin_settings: [["rows_per_page", "25", NOW]],
 };

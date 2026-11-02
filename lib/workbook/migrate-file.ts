@@ -62,6 +62,23 @@ export async function migrateWorkbook(input: Uint8Array, target: string): Promis
   const before = JSON.parse(JSON.stringify(raw)) as RawWorkbook;
   applyMigrations(raw, chain);
 
+  // Sheets a migration added: a new tab with the header row styled like the first tab's.
+  const styleSource = wb.worksheets[0]?.getRow(1).getCell(1);
+  for (const [name, added] of Object.entries(raw.sheets)) {
+    if (wb.getWorksheet(name)) continue;
+    const ws = wb.addWorksheet(name);
+    added.headers.forEach((h, i) => {
+      const cell = ws.getRow(1).getCell(i + 1);
+      cell.value = h;
+      if (styleSource) cell.style = { ...styleSource.style };
+      ws.getColumn(i + 1).width = 24;
+    });
+    ws.views = [{ state: "frozen", ySplit: 1 }];
+    rowNumbers[name] = [];
+    originalHeaders[name] = [...added.headers];
+    before.sheets[name] = JSON.parse(JSON.stringify(added));
+  }
+
   for (const ws of wb.worksheets) {
     const after = raw.sheets[ws.name]!;
     const was = originalHeaders[ws.name]!;

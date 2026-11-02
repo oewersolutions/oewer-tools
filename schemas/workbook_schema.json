@@ -1,6 +1,6 @@
 {
   "$comment": "Machine-readable definition of data/oewer_database.xlsx. Consumed by scripts/validate_workbook.py and export_content.py. One worksheet per table, fixed header row in row 1, no merged cells, no formulas.",
-  "schema_version": "1.0.2",
+  "schema_version": "1.1.0",
   "types": {
     "id": "Stable immutable identifier matching the sheet's id_pattern. Never a row number.",
     "string": "Single-line literal text. No newlines, no leading '=', '+', '-', '@' formula characters.",
@@ -26,7 +26,8 @@
     "value_type": ["string", "int", "bool", "json"],
     "nav_location": ["header", "footer", "footer_legal"],
     "block_type": ["paragraph", "heading", "list", "image", "quote", "code", "callout"],
-    "ad_page_type": ["home", "tool_category", "tool", "blog_index", "blog_category", "blog_post", "page"],
+    "ad_page_type": ["home", "tool_category", "tool", "blog_index", "blog_category", "blog_post", "page", "game_hub", "game"],
+    "game_type": ["word_guess", "four_groups", "word_trail", "hive_words", "mini_crossword"],
     "redirect_type": ["301", "302"],
     "seo_entity_type": ["page", "tool_category", "tool", "post", "blog_category"]
   },
@@ -98,6 +99,36 @@
         { "name": "status", "type": "enum", "enum": "status", "required": true, "default": "draft" },
         { "name": "featured", "type": "bool", "required": true, "default": false },
         { "name": "sort_order", "type": "int", "required": true, "default": 0, "min": 0 }
+      ]
+    },
+    "games": {
+      "purpose": "The games on the Games page. Each game has one type, which decides how its puzzles play.",
+      "primary_key": "game_id",
+      "id_pattern": "^GAME\\d{4}$",
+      "columns": [
+        { "name": "game_id", "type": "id", "required": true, "unique": true },
+        { "name": "slug", "type": "slug", "required": true, "unique": true, "max_length": 60 },
+        { "name": "name", "type": "string", "required": true, "max_length": 60 },
+        { "name": "tagline", "type": "string", "required": true, "max_length": 160 },
+        { "name": "game_type", "type": "enum", "enum": "game_type", "required": true },
+        { "name": "how_to_play", "type": "text", "required": true, "max_length": 6000, "note": "Restricted Markdown shown on the game page: the rules, an example and tips." },
+        { "name": "status", "type": "enum", "enum": "status", "required": true, "default": "draft" },
+        { "name": "sort_order", "type": "int", "required": true, "default": 0, "min": 0 }
+      ]
+    },
+    "game_puzzles": {
+      "purpose": "One puzzle for one game on one day. The puzzle itself is JSON text in the shape the game type needs (see docs/games-plan.md).",
+      "primary_key": "puzzle_id",
+      "id_pattern": "^PUZ\\d{5}$",
+      "unique_together": [["game_id", "puzzle_date"]],
+      "columns": [
+        { "name": "puzzle_id", "type": "id", "required": true, "unique": true },
+        { "name": "game_id", "type": "ref", "ref": "games.game_id", "required": true },
+        { "name": "puzzle_date", "type": "string", "required": true, "pattern": "^\\d{4}-\\d{2}-\\d{2}$", "max_length": 10, "note": "The day the puzzle is the puzzle of the day, as YYYY-MM-DD." },
+        { "name": "title", "type": "string", "required": false, "default": "", "max_length": 120 },
+        { "name": "puzzle_data", "type": "text", "required": true, "max_length": 8000 },
+        { "name": "status", "type": "enum", "enum": "status", "required": true, "default": "draft" },
+        { "name": "author_note", "type": "string", "required": false, "default": "", "max_length": 300 }
       ]
     },
     "tool_settings": {
@@ -259,7 +290,8 @@
     "tool_category": "/tools/{slug}",
     "tool": "/tools/{category_slug}/{slug}",
     "post": "/blog/{slug}",
-    "blog_category": "/blog/category/{slug}"
+    "blog_category": "/blog/category/{slug}",
+    "game": "/games/{slug}"
   },
   "global_rules": [
     "Header row 1 must exactly match the column names, in order; unknown or missing columns fail validation.",

@@ -9,7 +9,7 @@ import { buildSeedWorkbook } from "../scripts/create-seed-workbook";
 
 let dir: string;
 let current: Uint8Array;
-/** The seed workbook made to look like one saved by the previous version: without the 1.0.2 columns. */
+/** The seed workbook made to look like one saved by an old version: without the 1.0.2 columns and the 1.1.0 games sheets. */
 let old: Uint8Array;
 
 beforeAll(async () => {
@@ -23,6 +23,8 @@ beforeAll(async () => {
   const find = (sheet: string, name: string) => wb.getWorksheet(sheet)!.getRow(1).values!.toString().split(",").indexOf(name);
   wb.getWorksheet("posts")!.spliceColumns(find("posts", "cover_image"), 2);
   wb.getWorksheet("post_blocks")!.spliceColumns(find("post_blocks", "caption"), 1);
+  wb.removeWorksheet(wb.getWorksheet("games")!.id);
+  wb.removeWorksheet(wb.getWorksheet("game_puzzles")!.id);
   const settings = wb.getWorksheet("site_settings")!;
   settings.eachRow((row) => {
     if (row.getCell(1).value === "schema_version") row.getCell(2).value = "1.0.1";
@@ -46,11 +48,13 @@ describe("migrateWorkbook", () => {
     if (result.status !== "migrated") return;
     expect(result.from).toBe("1.0.1");
     expect(result.to).toBe(schema.schema_version);
-    expect(result.steps).toHaveLength(1);
+    expect(result.steps).toHaveLength(2);
     const check = await checkWorkbook(result.bytes as unknown as ArrayBuffer, result.bytes.length);
     expect(check.issues).toEqual([]);
     expect(check.data.posts!.every((p) => p.values.cover_image === "" && p.values.cover_alt === "")).toBe(true);
     expect(check.data.post_blocks!.every((b) => b.values.caption === "")).toBe(true);
+    expect(check.data.games).toEqual([]); // the games sheets are added empty
+    expect(check.data.game_puzzles).toEqual([]);
   });
 
   it("keeps every existing value and the formatting, changing only what the migration adds", async () => {
@@ -59,7 +63,7 @@ describe("migrateWorkbook", () => {
     const before = await checkWorkbook(current as unknown as ArrayBuffer, current.length);
     const after = await checkWorkbook(result.bytes as unknown as ArrayBuffer, result.bytes.length);
     const strip = (rows: { values: Record<string, unknown> }[], drop: string[]) => rows.map((r) => Object.fromEntries(Object.entries(r.values).filter(([k]) => !drop.includes(k))));
-    for (const sheet of Object.keys(before.data)) {
+    for (const sheet of Object.keys(before.data).filter((s) => s !== "games" && s !== "game_puzzles")) {
       const drop = ["cover_image", "cover_alt", "caption"];
       expect(strip(after.data[sheet]!, drop), sheet).toEqual(strip(before.data[sheet]!, drop));
     }

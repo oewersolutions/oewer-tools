@@ -100,3 +100,13 @@ Source: `docs/OEWER_TOOLS_PROJECT_PLAN.md` (v1.1: JavaScript-only, GitHub Pages,
 
 ## Suggested next order
 T1.3b → T1.3a → T1.4 → T1.5 → T2.1/T2.2 → T3.1 + first calculator → T4.1 first article → T2.6 → T5.1 spike
+
+## Phase 10 — Games (plan: `docs/games-plan.md`)
+- [x] **T10.1** Plan, schema 1.1.0 (`games`, `game_puzzles`, a migration that adds sheets), Games menu link, `/games/` hub, game page template, ad placements, search and sitemap entries
+- [x] **T10.2** Word Guess with 21 daily puzzles, share result, streak, `npm run puzzles:add`
+- [ ] **T10.3** Four Groups
+- [ ] **T10.4** Hive Words
+- [ ] **T10.5** Mini Crossword
+- [ ] **T10.6** Word Trail
+- [ ] **T10.7** Daily puzzle task, and an admin warning when fewer than 5 future days are stocked
+- [ ] **T10.8** Home page section for the games, Firefox, Safari and real-device checks

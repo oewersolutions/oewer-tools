@@ -5,10 +5,11 @@ export interface SearchItem {
   description: string;
   /** Site-relative URL, without any base path. */
   url: string;
-  type: "Tool" | "Article";
+  type: "Tool" | "Article" | "Game";
 }
 
 export const toolUrl = (categorySlug: string, slug: string) => `/tools/${categorySlug}/${slug}/`;
+export const gameUrl = (slug: string) => `/games/${slug}/`;
 export const postUrl = (slug: string) => `/blog/${slug}/`;
 
 /** Published tools and articles that visitors can find through search. */
@@ -34,7 +35,11 @@ export function buildSearchItems(content: ContentExport): SearchItem[] {
       type: "Article",
     }));
 
-  return [...toolItems, ...postItems];
+  const gameItems = (content.sheets.games ?? [])
+    .filter((g) => g.status === "published")
+    .map((g): SearchItem => ({ title: String(g.name), description: String(g.tagline), url: gameUrl(String(g.slug)), type: "Game" }));
+
+  return [...toolItems, ...gameItems, ...postItems];
 }
 
 /** Every word of the query must appear in the title or description. Title matches rank first. */

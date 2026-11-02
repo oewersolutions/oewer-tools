@@ -10,6 +10,8 @@ export const SUPPORTED_PLACEMENTS: Record<string, readonly string[]> = {
   tool: ["below_tool"],
   blog_index: ["list_bottom"],
   blog_post: ["in_article"],
+  game_hub: ["list_bottom"],
+  game: ["below_game"],
 };
 
 export const isSupportedPlacement = (placementKey: string, pageType: string): boolean => SUPPORTED_PLACEMENTS[pageType]?.includes(placementKey) ?? false;

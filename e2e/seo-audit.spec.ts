@@ -100,6 +100,7 @@ for (const path of paths) {
 }
 
 test("every internal link on every page leads to a page that exists", async ({ page }) => {
+  test.setTimeout(360_000); // it visits every page in one test, and pages with ads wait for Google's script
   const known = new Set(paths.map((p) => p.replace(/\/$/, "")));
   const broken: string[] = [];
   for (const path of paths) {

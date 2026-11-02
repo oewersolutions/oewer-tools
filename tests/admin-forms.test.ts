@@ -188,7 +188,7 @@ describe("advertisements", () => {
   it("reads placements and the site-wide switch", () => {
     const ads = readAds(data);
     expect(ads.adsEnabled).toBe(false);
-    expect(ads.placements.map((p) => p.placement_key)).toEqual(["top_banner", "below_tool", "in_article", "mid_page", "list_bottom", "list_bottom"]);
+    expect(ads.placements.map((p) => p.placement_key)).toEqual(["top_banner", "below_tool", "in_article", "mid_page", "list_bottom", "list_bottom", "below_game", "list_bottom"]);
   });
   it("turns ads on and enables one placement with its slot ID", async () => {
     const ads = readAds(data);
@@ -199,7 +199,7 @@ describe("advertisements", () => {
     const next = readAds(result.data);
     expect(next.adsEnabled).toBe(true);
     expect(next.placements[0]).toMatchObject({ enabled: true, ad_unit_id: "1234567890" });
-    expect(next.placements).toHaveLength(6);
+    expect(next.placements).toHaveLength(8);
   });
   it("rejects a placement the pages cannot show, and an enabled one with no slot number", async () => {
     const ads = readAds(data);

@@ -17,6 +17,7 @@
     "migrate": "tsx scripts/migrate-workbook.ts",
     "articles:list": "tsx scripts/list-articles.ts",
     "articles:add": "tsx scripts/add-articles.ts",
+    "puzzles:add": "tsx scripts/add-puzzles.ts",
     "seed": "tsx scripts/create-seed-workbook.ts",
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",

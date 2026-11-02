@@ -3,6 +3,8 @@ import { resolve } from "node:path";
 import type { AdConfig } from "./ads";
 import { getImageInfo, type ImageInfo } from "./images";
 import { readingMinutes } from "./format";
+import { toPuzzles, nextDay } from "./games/puzzles";
+import type { Game, Puzzle, PuzzleRow } from "./games/types";
 import { hasOwnPage, pickRelatedPosts, slugify } from "./posts";
 
 export { MIN_POSTS_FOR_INDEXED_TAG } from "./posts";
@@ -179,6 +181,23 @@ export function getRelatedPosts(post: Post): Post[] {
   const tagsByPost = new Map<string, Set<string>>();
   for (const r of rows) tagsByPost.set(r.post_id, (tagsByPost.get(r.post_id) ?? new Set()).add(r.tag_id));
   return pickRelatedPosts(post, tagsByPost, getPublishedPosts());
+}
+
+// Games
+
+export const getPublishedGames = (): Game[] => sheet<Game>("games").filter((g) => g.status === "published").sort((a, b) => a.sort_order - b.sort_order || (a.game_id < b.game_id ? -1 : 1));
+export const getGameBySlug = (slug: string): Game | undefined => getPublishedGames().find((g) => g.slug === slug);
+
+/** Today in UTC, as YYYY-MM-DD, at the time of the build. */
+export const buildDay = (): string => new Date().toISOString().slice(0, 10);
+
+/**
+ * The published puzzles of a game, oldest first, with none dated after tomorrow (UTC) so answers for later days are not
+ * in the page. Tomorrow is included because visitors east of UTC are already on that date.
+ */
+export function getPuzzles<T = unknown>(gameId: string, today: string = buildDay()): Puzzle<T>[] {
+  const last = nextDay(today);
+  return toPuzzles<T>(sheet<PuzzleRow>("game_puzzles").filter((p) => p.game_id === gameId && p.status === "published" && p.puzzle_date <= last));
 }
 
 // Static pages
