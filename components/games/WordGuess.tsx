@@ -92,7 +92,9 @@ export default function WordGuess({ name, slug, puzzles }: { name: string; slug:
       const t = e.target as HTMLElement;
       if (t.tagName === "SELECT" || t.tagName === "BUTTON" || t.tagName === "A") return; // those keep their own keys
       const k = e.key.length === 1 ? e.key.toUpperCase() : e.key === "Backspace" ? "BACKSPACE" : e.key === "Enter" ? "ENTER" : "";
-      if (k) press(k);
+      if (!k) return;
+      if (k === "BACKSPACE" || k === "ENTER") e.preventDefault(); // some browsers go back a page on Backspace
+      press(k);
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);

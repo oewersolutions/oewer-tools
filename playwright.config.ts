@@ -4,7 +4,7 @@ import { defineConfig, devices } from "@playwright/test";
 // Chrome is the one installed on the machine (preinstalled on GitHub-hosted runners), so no browser download is needed.
 // Set CROSS_BROWSER=1 to add Firefox and Safari's engine (WebKit); CI installs them first with `npx playwright install`.
 const crossBrowser = process.env.CROSS_BROWSER === "1";
-const shared = ["accessibility.spec.ts", "responsive.spec.ts", "tools.spec.ts", "privacy.spec.ts", "admin.spec.ts", "keyboard.spec.ts", "no-javascript.spec.ts"];
+const shared = ["accessibility.spec.ts", "responsive.spec.ts", "tools.spec.ts", "privacy.spec.ts", "admin.spec.ts", "keyboard.spec.ts", "no-javascript.spec.ts", "games.spec.ts"];
 
 export default defineConfig({
   testDir: "e2e",
@@ -19,13 +19,13 @@ export default defineConfig({
     {
       name: "chrome-mobile",
       use: { ...devices["Pixel 7"], channel: "chrome" },
-      testMatch: ["tools.spec.ts", "privacy.spec.ts", "performance.spec.ts", "ads.spec.ts"],
+      testMatch: ["tools.spec.ts", "privacy.spec.ts", "performance.spec.ts", "ads.spec.ts", "games.spec.ts"],
     },
     ...(crossBrowser
       ? [
           { name: "firefox", use: { ...devices["Desktop Firefox"] }, testMatch: shared },
           { name: "safari-webkit", use: { ...devices["Desktop Safari"] }, testMatch: shared },
-          { name: "safari-iphone", use: { ...devices["iPhone 14"] }, testMatch: ["tools.spec.ts", "privacy.spec.ts"] },
+          { name: "safari-iphone", use: { ...devices["iPhone 14"] }, testMatch: ["tools.spec.ts", "privacy.spec.ts", "games.spec.ts"] },
         ]
       : []),
   ],

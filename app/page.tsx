@@ -2,13 +2,14 @@ import AdSlot from "../components/AdSlot";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "../components/icons";
-import { PostCard, ToolCard } from "../components/Cards";
+import { GameCard, PostCard, ToolCard } from "../components/Cards";
 import { Container, SectionHeading } from "../components/layout";
 import SearchBox from "../components/SearchBox";
 import {
   getBlogCategory,
   getFeaturedTools,
   getPostReadingMinutes,
+  getPublishedGames,
   getPublishedPosts,
   getPublishedTools,
   getSetting,
@@ -92,6 +93,7 @@ export default function HomePage() {
   ].slice(0, 4);
   const allTools = getPublishedTools();
   const posts = getPublishedPosts().slice(0, 3);
+  const games = getPublishedGames();
   const popular = allTools
     .flatMap((t) => {
       const c = getToolCategory(t.category_id);
@@ -220,6 +222,27 @@ export default function HomePage() {
           </div>
         </Container>
       </section>
+
+      {/* Daily games */}
+      {games.length > 0 && (
+        <section aria-labelledby="games-heading" className="pb-20 sm:pb-24">
+          <Container>
+            <SectionHeading
+              id="games-heading"
+              eyebrow="Play"
+              title="Today's puzzles"
+              description="A new word game every day. Free, with no sign-up, and your progress stays on your device."
+              href="/games/"
+              hrefLabel="All games"
+            />
+            <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {games.slice(0, 3).map((g) => (
+                <GameCard key={g.game_id} game={g} />
+              ))}
+            </div>
+          </Container>
+        </section>
+      )}
 
       {/* Why: four plain columns */}
       <section

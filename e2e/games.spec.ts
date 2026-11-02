@@ -4,8 +4,17 @@ import { expect, test } from "./fixtures";
 // first puzzle (the answer is PLANT), and every build includes it.
 const DAY = new Date("2026-11-01T10:00:00");
 
+/** Open Word Guess and wait until its word list has arrived, so a guess is never told "still loading". */
+async function openWordGuess(page: import("@playwright/test").Page) {
+  const words = page.waitForResponse(/words-5\.txt/);
+  await page.goto("/games/word-guess/");
+  await words;
+}
+
 test("the Games menu leads to a hub that lists the playable games", async ({ page }) => {
   await page.goto("/");
+  const menu = page.getByRole("button", { name: "Open menu" });
+  if (await menu.isVisible()) await menu.click(); // on a phone the menu is behind a button
   await page.getByRole("banner").getByRole("link", { name: "Games" }).click();
   await expect(page.getByRole("heading", { level: 1, name: "Daily word games" })).toBeVisible();
   const card = page.getByRole("link", { name: /Word Guess/ }).first();
@@ -16,7 +25,7 @@ test("the Games menu leads to a hub that lists the playable games", async ({ pag
 
 test("Word Guess: rejects a non-word, marks letters, wins, and remembers the result", async ({ page }) => {
   await page.clock.install({ time: DAY });
-  await page.goto("/games/word-guess/");
+  await openWordGuess(page);
   const board = page.getByRole("grid", { name: "Your guesses" });
   await expect(board).toBeVisible();
   await expect(page.getByText("No. 1 · 2026-11-01")).toBeVisible();
@@ -45,7 +54,7 @@ test("Word Guess: rejects a non-word, marks letters, wins, and remembers the res
 
 test("Word Guess works with the on-screen keyboard", async ({ page }) => {
   await page.clock.install({ time: DAY });
-  await page.goto("/games/word-guess/");
+  await openWordGuess(page);
   for (const letter of "PLANT") await page.getByRole("button", { name: letter, exact: true }).click();
   await page.getByRole("button", { name: "Enter" }).click();
   await expect(page.getByText("Solved in 1 of 6")).toBeVisible();
@@ -59,7 +68,7 @@ test("Word Guess makes no request to any other site while it is played", async (
     if (/^https?:/.test(r.url()) && u.origin !== origin && !/googlesyndication|doubleclick|adtrafficquality|google\.com/.test(u.hostname)) other.push(r.url());
   });
   await page.clock.install({ time: DAY });
-  await page.goto("/games/word-guess/");
+  await openWordGuess(page);
   await page.keyboard.type("plant");
   await page.keyboard.press("Enter");
   await expect(page.getByText("Solved in 1 of 6")).toBeVisible();
@@ -273,4 +282,13 @@ test("Word Trail: a word traced backwards counts, and arrow keys move between le
   await expect(page.locator('[data-cell="1"]')).toBeFocused();
   await page.keyboard.press("ArrowDown");
   await expect(page.locator('[data-cell="7"]')).toBeFocused();
+});
+
+test("the home page offers today's puzzles and links to all the games", async ({ page }) => {
+  await page.goto("/");
+  const section = page.getByRole("region", { name: "Today's puzzles" });
+  await expect(section).toBeVisible();
+  await expect(section.getByRole("link", { name: /Word Guess/ })).toHaveAttribute("href", /\/games\/word-guess\/$/);
+  await expect(section.getByRole("link", { name: "All games" })).toHaveAttribute("href", /\/games\/$/);
+  await expect(section.getByRole("link", { name: /Play today/ })).toHaveCount(3);
 });
