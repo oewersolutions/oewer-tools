@@ -1,0 +1,175 @@
+{
+  "date": "2026-11-02",
+  "articles": [
+    {
+      "title": "How Attention Lets AI Models Focus on the Right Words",
+      "category": "AI",
+      "excerpt": "Attention is the mechanism that lets a language model weigh every word in a text against every other word. Here is how queries, keys and values do it, and why it gets costly.",
+      "tags": ["transformers", "attention", "language models"],
+      "blocks": [
+        ["paragraph", "Attention is the step inside a modern language model that decides which earlier words matter for the word being processed. Instead of reading a sentence strictly one word at a time, the model scores how relevant every word is to every other word, then blends the information accordingly. This one idea sits at the heart of the Transformer design that today's chatbots are built on."],
+        ["heading", "The problem attention was meant to solve"],
+        ["paragraph", "Before 2017, the leading systems for translating or generating text were recurrent neural networks. These read a sentence in order, squeezing everything seen so far into a running summary. Long sentences were hard, because details from the start had to survive many steps of squeezing."],
+        ["paragraph", "According to the Wikipedia article on attention, a 2014 paper by Bahdanau and colleagues added an attention mechanism to these networks so that, when producing each output word, the model could look back at the input words that mattered most. That helped with long sentences. In 2017 eight researchers then published the paper \"Attention Is All You Need\" on arXiv (submitted 12 June 2017), proposing the Transformer, which is based solely on attention and drops recurrence entirely."],
+        ["heading", "Queries, keys and values"],
+        ["paragraph", "The standard version is called dot-product attention. Every token (a word or word piece) is turned into three lists of numbers, called vectors, using three learned sets of weights. They are named the query, the key and the value."],
+        ["list", "The **query** says what this token is looking for.\nThe **key** says what each token offers to be found by.\nThe **value** is the information a token passes along if it is chosen."],
+        ["paragraph", "For one token, the model compares its query with the key of every token by multiplying the vectors together. A large result means a good match. These scores are then put through a function called softmax, which turns them into weights that are positive and add up to one. Finally, the model adds up the value vectors, each multiplied by its weight. A word with a high weight contributes a lot to the result; a word with a tiny weight contributes almost nothing."],
+        ["paragraph", "The Wikipedia article writes the whole operation as softmax(QKᵀ / √d_k) · V. The division by the square root of the key size keeps the scores from growing so large that a single token swamps the rest of the softmax."],
+        ["callout", "A simple picture: in \"The trophy did not fit in the suitcase because it was too big\", the word \"it\" needs to look back. Attention is the mechanism that lets the model give weight to \"trophy\" or \"suitcase\" when it works out what \"it\" refers to. The weights are learned from data, not written by hand."],
+        ["heading", "Self-attention and several heads"],
+        ["paragraph", "When the queries, keys and values all come from the same piece of text, it is called self-attention. Every position can look at every other position in the input, which the Wikipedia article calls all-to-all attention."],
+        ["paragraph", "A Transformer does not run attention just once. It runs several copies side by side, called heads, each with its own learned weights. Their outputs are joined together and mixed by another learned step. Having several heads lets the model track different kinds of relationships at the same time, although what each head actually learns is something researchers study rather than something designers choose."],
+        ["heading", "Order and masking"],
+        ["paragraph", "Plain attention has no sense of word order; shuffle the words and the maths treats them the same. Transformers therefore add positional information to each token, so the model knows where each word sits."],
+        ["paragraph", "Chatbots that write text one token at a time also use a mask. When the model predicts the next word, it must not peek at words that come after it in the training text. According to the Wikipedia article, this causal masking is done by setting the scores for later positions to negative infinity before the softmax, which makes their weights zero."],
+        ["heading", "Why it is fast to train but costly for long text"],
+        ["paragraph", "The 2017 paper reported that the Transformer was more parallelizable than earlier designs, because all positions can be processed at once rather than one after another. It reported a score of 28.4 BLEU, a standard translation measure, on the WMT 2014 English-to-German task, and 41.8 BLEU for a single model on English-to-French after 3.5 days of training on eight GPUs. Those were the authors' results in 2017, and later systems have moved far beyond them."],
+        ["paragraph", "The cost is that every token is compared with every other token. As Wikipedia puts it, the size of the attention matrix is proportional to the square of the number of input tokens. Double the length of the text and the number of comparisons roughly quadruples. This is one reason long inputs are expensive and why the length a model can handle, its context window, is limited."],
+        ["paragraph", "Engineers work around this in several ways. One named in the article is FlashAttention, which computes the same attention results in blocks small enough to fit in the fast memory on a GPU, reducing memory use without changing the answer."],
+        ["heading", "What attention is and is not"],
+        ["paragraph", "Attention weights are useful for describing what a model is doing, but they are not a full explanation of why it gives a particular answer. A Transformer also contains other layers, such as feed-forward layers and skip connections, that do much of the remaining work. Attention is the part that moves information between tokens; the rest transforms it."],
+        ["paragraph", "The Wikipedia article notes that attention has since largely replaced recurrent networks in frontier models such as BERT, T5 and GPT. That is why the word turns up so often when people describe how chatbots work, and why a basic grasp of queries, keys and values goes a long way."]
+      ],
+      "sources": [
+        { "title": "Attention (machine learning), Wikipedia", "url": "https://en.wikipedia.org/wiki/Attention_(machine_learning)" },
+        { "title": "Attention Is All You Need, arXiv:1706.03762", "url": "https://arxiv.org/abs/1706.03762" }
+      ],
+      "checkedOn": "2026-11-02"
+    },
+    {
+      "title": "The Original Mini: Issigonis's Small Car of 1959",
+      "category": "Vintage and History",
+      "excerpt": "The 1959 Mini fitted four people into a car about ten feet long by turning the engine sideways and driving the front wheels. Here is how it came about and what it was known for.",
+      "tags": ["Mini", "Issigonis", "British cars"],
+      "blocks": [
+        ["paragraph", "The original Mini, launched by the British Motor Corporation (BMC) in 1959, packed seating for four into a car roughly ten feet long. It did this by mounting the engine sideways across the front and driving the front wheels, a layout that most small cars use today. The car stayed in production until October 2000."],
+        ["heading", "Why BMC wanted a small car"],
+        ["paragraph", "According to Wikipedia's article on the Mini, the 1956 Suez Crisis brought fuel rationing to Britain and a rise in sales of tiny German \"bubble cars\". BMC's chief, Leonard Lord, wanted a proper miniature car to counter them. Wikipedia's biography of Alec Issigonis says that at the end of 1956 Lord told Issigonis to bring the small car, project code XC/9003, to production quickly."],
+        ["paragraph", "Issigonis was born on 18 November 1906 in Smyrna, now İzmir in Turkey, and died on 2 October 1988. He had worked on the Morris Minor, which was built from 1948 to 1971 and which the same biography says he was most proud of. He was knighted in 1969."],
+        ["heading", "The design"],
+        ["paragraph", "The Mini was coded ADO15, and design began in 1957, according to the Motor Museum in Miniature. The key choices were these:"],
+        ["list", "**A transverse engine.** The four-cylinder BMC A-Series engine sat across the car instead of along it. Wikipedia says it was reduced from 948 cc to 848 cc during development.\n**Front-wheel drive.** The engine drove the front wheels, so no long shaft ran to the back and there was no bulky hump in the floor.\n**A gearbox in the sump.** The four-speed transmission sat beneath the engine, sharing its oil, which saved length.\n**Small wheels.** The wheels were 10 inches across, and the Motor Museum in Miniature says they helped save interior space.\n**Rubber suspension.** Compact rubber cone springs, designed by Alex Moulton, replaced bulky metal springs. The Motor Museum describes the suspension as all-independent."],
+        ["paragraph", "Wikipedia gives the length as about 3,054 mm (10 ft), the wheelbase as 2,032 mm (6 ft 8 in) and the unladen weight as roughly 590 kg. The small size outside was possible because so little space was wasted by the machinery."],
+        ["heading", "Launch and names"],
+        ["paragraph", "Sources give slightly different pictures of the launch. Wikipedia says the car was shown to the press in April 1959 and officially announced on 26 August 1959. The Motor Museum in Miniature says it was announced at the London Motor Show. Either way, 1959 is the year."],
+        ["paragraph", "At first it was sold under two badges: the Austin Seven and the Morris Mini-Minor. The Austin version was later renamed Austin Mini, and according to Wikipedia, Mini became a marque in its own right in 1969."],
+        ["callout", "Do not confuse the 1959 car with the modern Mini hatchback. The modern line is a later design; this article is only about the original, which is often called the Classic Mini."],
+        ["heading", "The Cooper versions and rallying"],
+        ["paragraph", "A sports version followed. Sources describe the Mini Cooper and Cooper S as the result of Issigonis's friendship with the racing-car builder John Cooper. The Cooper arrived in 1961 with a larger engine of 1,071 cc, claimed to make about 70 horsepower in one account."],
+        ["paragraph", "These cars became known for rallying. Wikipedia says the Cooper and Cooper S won the Monte Carlo Rally in 1964, 1965 and 1967. A BMW timeline mentioned in one search summary treats 1967 as the third official win but notes that some people argue it was the fourth, counting 1966. Sources therefore disagree about the details, and this article does not try to settle them."],
+        ["heading", "How long it lasted"],
+        ["paragraph", "Production ran from 1959 to October 2000, mostly at Longbridge in England. Wikipedia gives a total of about 5.38 million vehicles across all variants. The long run, around 41 years, makes it one of the longest-lived designs of any mass-produced car."],
+        ["paragraph", "The car's real influence was its layout. Putting the engine sideways and driving the front wheels is now so common that it is easy to forget it was unusual in 1959. Issigonis had also built a transverse front-wheel-drive prototype of the Morris Minor, one account notes, which suggests the Mini grew from ideas he had been testing earlier."],
+        ["heading", "Why it is remembered"],
+        ["paragraph", "The Mini is remembered both as a clever piece of packaging and as a cultural symbol of 1960s Britain. As a design lesson, it shows how rethinking where each part sits can free space without making the car bigger. The facts above come from published histories; figures such as production totals and rally results can differ between sources, so check a specialist history if you need exact numbers."]
+      ],
+      "sources": [
+        { "title": "Mini, Wikipedia", "url": "https://en.wikipedia.org/wiki/Mini" },
+        { "title": "Alec Issigonis, Wikipedia", "url": "https://en.wikipedia.org/wiki/Alec_Issigonis" },
+        { "title": "1959 Mini, The Motor Museum in Miniature", "url": "https://www.themotormuseuminminiature.co.uk/1959-mini.php" }
+      ],
+      "checkedOn": "2026-11-02"
+    },
+    {
+      "title": "How a Clock Escapement Turns Swings Into Ticks",
+      "category": "How It Works",
+      "excerpt": "The escapement is the part of a mechanical clock that lets the gears advance one step per swing, gives the pendulum a push, and makes the ticking sound.",
+      "tags": ["clocks", "escapement", "pendulum"],
+      "blocks": [
+        ["paragraph", "A mechanical clock stores energy in a falling weight or a coiled spring, but that energy would unwind in seconds if nothing held it back. The escapement is the part that lets it out in tiny, equal steps. Each swing of a pendulum or balance wheel releases one tooth of a toothed wheel, the hands move forward a fixed amount, and the swinging part gets a small push to keep going."],
+        ["heading", "Three jobs in one part"],
+        ["paragraph", "According to Wikipedia's article on the escapement, it sits between the power source and the timekeeper. It does three things:"],
+        ["list", "It **releases** the gear train one tooth at a time, so the hands advance in fixed steps.\nIt **gives impulses** to the pendulum or balance, replacing the energy lost to friction.\nIt **locks** the gear train again, which causes the ticking sound as each tooth is caught."],
+        ["paragraph", "The tick is the sound of a tooth hitting a stop. A clock that ticks once a second is catching and releasing a tooth once a second, or in many pendulum clocks, one tooth per swing."],
+        ["heading", "The anchor escapement"],
+        ["paragraph", "Pendulum clocks make the idea easy to see. A pendulum clock, which Christiaan Huygens invented on 25 December 1656 according to Wikipedia, uses a gear train that steps up speed for the pendulum and slows it down for the hands. A weight or mainspring supplies power."],
+        ["paragraph", "In the anchor escapement, one of the most common designs, the escape wheel has saw-like teeth. Above it, a curved piece called the anchor rocks back and forth on a pivot. At the ends of the anchor are two pallets, which alternately catch and release the teeth. When one pallet lets a tooth go, a tooth on the other side lands on the opposite pallet. A fork connected to the anchor nudges the pendulum on each swing."],
+        ["paragraph", "Wikipedia notes that in the anchor design the wheel is pushed slightly backward as the pendulum finishes its swing, a motion called recoil. A later deadbeat version uses curved locking faces to avoid the recoil."],
+        ["callout", "An escapement does not choose the speed. The pendulum or balance sets the pace, and the escapement just counts its swings and keeps it supplied with energy."],
+        ["heading", "Why the pendulum sets the pace"],
+        ["paragraph", "The time a pendulum takes to swing depends mainly on its length and on gravity, following the formula T = 2π√(L/g), as given in Wikipedia's pendulum clock article. That is why moving the weight at the bottom up or down changes how fast a clock runs: it changes the effective length."],
+        ["paragraph", "The same article says Robert Hooke's anchor escapement, around 1658, reduced the pendulum's swing to about 4 to 6 degrees. At such small swings, the period is nearly the same whatever the size of the swing, which makes the clock steadier. The other article gives the anchor date as about 1657, so sources vary by a year."],
+        ["heading", "The lever escapement in watches"],
+        ["paragraph", "Watches cannot use a pendulum, so they use a balance wheel that twists back and forth, controlled by a fine spring. Worn & Wound explains that a watch's lever escapement has three main parts: an escape wheel, a pallet fork, and the balance."],
+        ["paragraph", "The pallet fork has two ruby jewels that meet the escape wheel's teeth. A notch in the fork holds a jewel on the balance, called the roller jewel. As the balance swings, it flips the fork, which unlocks one tooth. The escape wheel then pushes the fork, and the fork kicks the balance through the roller jewel. According to the article, the balance turns roughly 300 degrees rather than a full circle."],
+        ["paragraph", "Each vibration lets the escape wheel advance one tooth. Worn & Wound lists common rates of 21,600, 28,800 and 36,000 vibrations per hour, so a watch ticking 28,800 times an hour makes eight ticks every second."],
+        ["heading", "A short history"],
+        ["paragraph", "Wikipedia dates the verge escapement, the first all-mechanical type, to the late 1200s, and says it dominated clocks and watches for centuries. Hooke's anchor followed in the 1650s. John Harrison's grasshopper escapement dates from 1722, and Thomas Mudge's lever from 1750, which became the main type used in watches."],
+        ["heading", "Regulating the result"],
+        ["paragraph", "Fine adjustment happens at the timekeeper, not the escapement. In a watch, curb pins change the active length of the hairspring: Worn & Wound says lengthening it slows the watch and shortening it speeds it up. In a pendulum clock, adjusting the bob does the same job."],
+        ["paragraph", "Understanding the escapement explains a lot about old clocks: why they tick, why they stop when the pendulum is still, and why they need a gentle push to start. Quartz watches replaced it for most everyday use, but the escapement remains the heart of every mechanical timepiece."]
+      ],
+      "sources": [
+        { "title": "Escapement, Wikipedia", "url": "https://en.wikipedia.org/wiki/Escapement" },
+        { "title": "Pendulum clock, Wikipedia", "url": "https://en.wikipedia.org/wiki/Pendulum_clock" },
+        { "title": "Anchor escapement, Wikipedia", "url": "https://en.wikipedia.org/wiki/Anchor_escapement" },
+        { "title": "Watchmaker's Bench: What Makes It Tick? Part 2, The Escapement, Worn & Wound", "url": "https://wornandwound.com/watchmakers-bench-what-makes-it-tick-part-2-the-escapement/" }
+      ],
+      "checkedOn": "2026-11-02"
+    },
+    {
+      "title": "How Authenticator App Codes Work: TOTP Explained",
+      "category": "Technology",
+      "excerpt": "The six-digit codes in an authenticator app come from a shared secret and the current time. Here is how TOTP works, why codes change every 30 seconds, and its limits.",
+      "tags": ["security", "2FA", "TOTP"],
+      "blocks": [
+        ["paragraph", "The six-digit code in an authenticator app is calculated, not sent. Your phone and the website each hold the same secret key and each compute the code from that key and the current time. If their results match, you have shown that you hold the secret. The method is called TOTP, short for time-based one-time password, and it is standardised in RFC 6238."],
+        ["heading", "Where the idea comes from"],
+        ["paragraph", "According to Wikipedia, TOTP was published as IETF RFC 6238 in May 2011 and extends an earlier method called HOTP. HOTP, defined in RFC 4226, makes a code from the secret key and a counter that goes up by one each time a code is used. TOTP replaces the counter with a number derived from the clock, so no counter needs to be kept in step. The RFC states it as TOTP = HOTP(K, T), where K is the shared secret and T is the time value."],
+        ["heading", "Step by step"],
+        ["list", "**Set-up.** The website creates a random secret and shows it to you, usually as a QR code. Scanning it gives the app the secret. According to Wikipedia, the code holds an otpauth://totp/ address with a label and a Base32 secret, plus optional settings such as digits (default 6), hash (default SHA-1) and period (default 30 seconds).\n**Counting time.** Both sides take the current Unix time, subtract a start time T0 (0 by default), and divide by the time step X (30 seconds by default), rounding down. The result, T, changes once every 30 seconds.\n**Hashing.** T is written as an 8-byte number and run through HMAC, a keyed hash, using the secret. The RFC names HMAC-SHA-1 as the base, with SHA-256 or SHA-512 allowed.\n**Shortening.** The long result is trimmed to a few digits. The RFC describes dynamic truncation: the low 4 bits of the last byte pick an offset, four bytes from that point form a 31-bit number, and the number is reduced to the chosen count of digits. Leading zeros are kept.\n**Checking.** You type the digits. The site runs the same calculation and compares."],
+        ["callout", "The secret itself never travels when you log in. Only a short code derived from it does, and the code is useless a short time later."],
+        ["heading", "Why 30 seconds"],
+        ["paragraph", "The RFC discusses the trade-off. A longer step means a code stays valid longer, which gives an attacker more time. A shorter step makes people wait and risks codes expiring while typed. The document recommends 30 seconds as a balance between security and usability."],
+        ["heading", "Clocks that disagree"],
+        ["paragraph", "A phone clock and a server clock are rarely identical, and network delay adds more. The RFC says a verifier may accept codes from adjacent time steps, and it gives an example: accepting two steps back with a 30-second step allows roughly 89 seconds of drift. It recommends allowing at most one step for network delay. After a successful check, a server may record the drift and apply it next time, and for large drift it may require explicit resynchronisation with extra authentication."],
+        ["paragraph", "The RFC also says a verifier must not accept the same code twice once it has been used successfully."],
+        ["heading", "Limits"],
+        ["paragraph", "TOTP raises the bar over a password alone, but it is not perfect. Wikipedia lists two main weaknesses."],
+        ["list", "**Phishing.** You type the code into a web page, so a fake page can capture it. The short validity limits the attack, because the attacker must pass it on quickly, but real-time relay is possible.\n**Shared secret.** The website and your phone both hold the secret. If either is stolen, the thief can produce valid codes indefinitely. This matters most if a large server database leaks."],
+        ["paragraph", "The RFC says each user's key should be unique and ideally random, stored securely on the server with access limited to the processes that need it. How keys are delivered to users is outside its scope."],
+        ["heading", "How it compares with passkeys"],
+        ["paragraph", "Passkeys use public-key cryptography rather than a shared secret, so a server breach does not expose anything that could generate your login. That is a design difference, not a judgement that one is right for every situation, and many sites support both methods. This article is general information, and the account help pages of each service describe its own options."],
+        ["paragraph", "In short, TOTP works because two devices agree on a secret and on what time it is. The code is a short summary of both, which is why it can be checked without ever being stored."]
+      ],
+      "sources": [
+        { "title": "RFC 6238: TOTP: Time-Based One-Time Password Algorithm, IETF", "url": "https://datatracker.ietf.org/doc/html/rfc6238" },
+        { "title": "Time-based one-time password, Wikipedia", "url": "https://en.wikipedia.org/wiki/Time-based_one-time_password" }
+      ],
+      "checkedOn": "2026-11-02"
+    },
+    {
+      "title": "How Winglets Cut Drag at the Wingtip",
+      "category": "Aviation",
+      "excerpt": "Winglets are upturned wingtips that weaken the swirling vortex at the tip of a wing, cutting induced drag. Here is how they work, where they came from and what savings are claimed.",
+      "tags": ["winglets", "drag", "aerodynamics"],
+      "blocks": [
+        ["paragraph", "A winglet is a small, near-vertical extension at the end of a wing. Its job is to weaken the whirling air that forms at the wingtip, which reduces a kind of drag called induced drag. Less drag means less fuel burned for the same flight, which is why many airliners now have them."],
+        ["heading", "Where induced drag comes from"],
+        ["paragraph", "A wing makes lift because the air pressure under it is higher than above it. At the tip, the high-pressure air tries to curl around to the low-pressure side. This creates a spiralling vortex trailing behind each wingtip. According to Wikipedia's article on wingtip devices, the vortex forms as high-pressure air beneath the wing flows around the tip."],
+        ["paragraph", "NASA Glenn's winglets page explains that flow near the tips produces these tip vortices, and that they strongly affect how much induced drag the wing makes. It gives the induced drag coefficient as Cdi = Cl² / (π × AR × e). Here AR is the aspect ratio, how long and thin the wing is, and e is an efficiency factor. A higher aspect ratio lowers induced drag; an elliptical wing has e = 1.0 and a rectangular one about 0.7."],
+        ["heading", "Why not just make the wing longer?"],
+        ["paragraph", "A longer wing would indeed cut induced drag. But Wikipedia notes it would also add drag from the extra surface and need a stronger, heavier wing, so the benefit eventually disappears. Airport gate widths can also limit wingspan. A winglet raises the effective height of the wing without adding much span."],
+        ["paragraph", "NASA Glenn puts the idea simply: the idea behind the winglet is to reduce the strength of the tip vortex."],
+        ["heading", "The history"],
+        ["paragraph", "Early flat end-plates did not help overall, because the extra drag from their surface outweighed what they saved, according to Wikipedia. The breakthrough came in the 1970s. NASA Langley engineer Richard Whitcomb tested and analysed winglets in the mid-1970s using wind tunnels and computer methods, per NASA Glenn. Wikipedia links this work to the 1973 oil crisis and says carefully designed near-vertical winglets gave a net drag reduction. Whitcomb's own biography on Wikipedia says he reported improvements of about 5 percent and notes it took nearly three decades for his proposals to become commonplace."],
+        ["paragraph", "Flight tests followed. Wikipedia says NASA and the US Air Force tested the designs on a KC-135 in 1979 and 1980. NASA Glenn says NASA flight tests found a 6.5 percent reduction in fuel use for a Boeing 707-type airliner fitted with winglets. Learjet fitted the first production winglets in 1977 according to Wikipedia, which reports a range increase of about 6.5 percent, so the dates and figures in different accounts do not all line up."],
+        ["heading", "Kinds of winglet"],
+        ["list", "**Canted winglets** angle upward from the wing, as on the Boeing 747-400, which Wikipedia says gained about 3.5 percent in range.\n**Blended winglets** join the wing in a smooth curve to reduce interference drag. Wikipedia credits the Boeing 737 version with about 4 percent fuel savings on long flights.\n**Sharklets** are Airbus's blended winglets for the A320 family, which Wikipedia says are claimed to cut fuel burn by up to 4 percent on longer routes.\n**Raked wingtips** sweep back at the tip rather than turning up. Wikipedia reports tests of up to 5.5 percent drag reduction, but notes they can worsen flutter."],
+        ["callout", "Quoted savings are claims made under particular conditions. Wikipedia cites a range of 4 to 6 percent for the average airliner, and says actual results depend on the aircraft, route and flight conditions."],
+        ["heading", "Trade-offs"],
+        ["paragraph", "Winglets add weight and cost. Wikipedia says Boeing's 747-400D left them off on short-haul routes where the benefit is small. NASA Glenn also cautions that winglets must be integrated into the whole wing design, which is why so many shapes exist. In its student wind tunnel tests on a scale Cessna 172 model, some winglets had little effect and some even increased drag because of their added surface area."],
+        ["paragraph", "Wikipedia adds two side benefits: reduced take-off noise and weaker wake vortices behind the aircraft. These depend on the design."],
+        ["heading", "The short version"],
+        ["paragraph", "Winglets do not add lift. They reduce the energy wasted in the tip vortex. The same job could be done by a longer wing, but a winglet does it within a fixed span. The result, a few percent less fuel on suitable routes, adds up over thousands of flights, which explains why the idea moved from NASA test aircraft to everyday airliners. For specific aircraft, the manufacturer's own figures are the best guide."]
+      ],
+      "sources": [
+        { "title": "Wingtip device, Wikipedia", "url": "https://en.wikipedia.org/wiki/Wingtip_device" },
+        { "title": "Winglets, NASA Glenn Research Center", "url": "https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/winglets/" },
+        { "title": "Richard T. Whitcomb, Wikipedia", "url": "https://en.wikipedia.org/wiki/Richard_T._Whitcomb" }
+      ],
+      "checkedOn": "2026-11-02"
+    }
+  ]
+}
