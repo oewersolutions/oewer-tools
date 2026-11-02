@@ -1,0 +1,180 @@
+{
+  "date": "2026-11-02",
+  "articles": [
+    {
+      "title": "SAE Self-Driving Levels 0 to 5: Who Is Actually Driving?",
+      "category": "Cars and Bikes",
+      "excerpt": "The six SAE levels of driving automation explained in plain words: what the car does at each level, who is responsible, and where the big dividing line sits.",
+      "tags": ["self-driving", "driver assistance", "SAE"],
+      "blocks": [
+        ["paragraph", "Cars are often described as having 'Level 2' or 'Level 4' self-driving. Those numbers come from a standard called SAE J3016, and they answer one question: at each level, who is driving, the person or the system? The most important point is that the line between 'the person drives' and 'the system drives' sits between Level 2 and Level 3."],
+        ["heading", "Where the levels come from"],
+        ["paragraph", "SAE International, a professional body for engineers, first published the six-level scheme in 2014 and updated it in 2016. According to the Wikipedia article on self-driving cars, the US safety regulator NHTSA then adopted the 2016 version. SAE and ISO revised the document again in 2021. A report on that update says the basic structure stayed the same, but the wording about Levels 3 and 4 became more detailed and Levels 0 to 2 were grouped together as driver support features."],
+        ["paragraph", "The levels are about the feature, not the whole car. One vehicle can have simple warning systems, a Level 2 highway assistant and, in some markets, a separate Level 3 feature. A level also says nothing about how good a system is or how many roads it works on."],
+        ["heading", "Levels 0 to 2: the driver is driving"],
+        ["list", "**Level 0, no automation.** The driver does everything. The car may warn or briefly intervene, as with a blind-spot warning or automatic emergency braking, but these are not counted as sustained driving.\n**Level 1, driver assistance.** The system controls either steering or speed, for example adaptive cruise control or lane centring. The driver handles the rest.\n**Level 2, partial automation.** The system controls both steering and speed together. The driver must keep watching the road and be ready to take over at short notice."],
+        ["paragraph", "At Level 2 it does not matter whether the driver's hands are on the wheel. One summary of the 2021 update notes that a driver still counts as driving even with feet off the pedals and no steering input. Some Level 2 systems demand hands on the wheel, others allow hands-free use on certain roads, and both remain Level 2 as long as the person must supervise."],
+        ["heading", "Level 3: the system drives, with a catch"],
+        ["paragraph", "At Level 3, called conditional automation, the system does the driving while the feature is switched on and conditions allow. The person no longer has to watch the road continuously, but must be ready to take over when the system asks. This is the point where responsibility for monitoring the road passes from the human to the system."],
+        ["paragraph", "Level 3 features are limited to set conditions, such as slow traffic on certain roads. The Wikipedia article gives one example: a Mercedes-Benz traffic jam feature that worked up to 40 mph and that the article says was removed in January 2026."],
+        ["heading", "Levels 4 and 5: no takeover needed"],
+        ["paragraph", "At Level 4, high automation, the system drives within certain conditions or places and does not need a person to take over. If something goes wrong, the system itself brings the vehicle to a safe stop. The Wikipedia article lists Waymo's robotaxi service in Phoenix and San Francisco as a Level 4 example. A local driverless taxi is the example used in the 2021 update report."],
+        ["paragraph", "Level 5, full automation, is Level 4 capability everywhere and in all conditions a human driver could handle. Steering wheels and pedals would not be needed in theory. The Wikipedia article says that, as of late 2025, no system had reached Level 5."],
+        ["heading", "Quick comparison"],
+        ["list", "Levels 0, 1, 2: the driver drives and monitors the road.\nLevel 3: the system drives, but the driver must answer a request to take over.\nLevel 4: the system drives and handles problems itself, within limits.\nLevel 5: the system drives everywhere, in all conditions."],
+        ["heading", "Criticisms of the scheme"],
+        ["paragraph", "The Wikipedia article records some criticism. The levels focus on technology rather than on what the driver experiences. Their numbering can suggest that automation rises step by step and that a higher level is always better, which may not be true. They also do not account for road infrastructure or how other road users behave. The chip company Mobileye proposed an alternative based on how engaged the driver is: hands-on and eyes-on, hands-off and eyes-on, eyes-off and hands-off, and no driver."],
+        ["callout", "Marketing names such as 'autopilot' or 'self-driving package' are not SAE levels. To know what a feature really does, look for the level the maker states and read the owner's manual for what the driver must still do. This is general information, not advice for any particular car."],
+        ["heading", "Why the labels matter"],
+        ["paragraph", "The levels give buyers, regulators and engineers a shared vocabulary. A report in January 2018 noted that Levels 0 and 1 were common, Level 2 was just emerging, and no production car yet offered Levels 4 or 5. Rules for who is responsible after a crash also tend to depend on the level: at Levels 0 to 2 the driver is responsible for driving, while at higher levels the question moves toward the maker of the system. The details differ by country, and anyone needing them should check local law."],
+        ["paragraph", "The takeaway is simple. If a person must supervise at all times, the feature is Level 2 or lower, however advanced it feels. If the system is the one driving, and the person is only a fallback, it is Level 3. If no fallback person is needed, within some limits, it is Level 4."]
+      ],
+      "sources": [
+        { "title": "Self-driving car, Wikipedia", "url": "https://en.wikipedia.org/wiki/Self-driving_car" },
+        { "title": "SAE refines definitions of driving automation levels, Paul Tan's Automotive News", "url": "https://paultan.org/2021/05/10/sae-refines-definitions-of-driving-automation-levels/" },
+        { "title": "Autonomous Driving Levels Explained, Consumer Guide", "url": "https://blog.consumerguide.com/autonomous-driving-levels-explained/" }
+      ],
+      "checkedOn": "2026-11-02"
+    },
+    {
+      "title": "How Video Streaming Adapts Quality to Your Connection",
+      "category": "Technology",
+      "excerpt": "Why a video drops from sharp to blurry and back: how adaptive bitrate streaming cuts video into short segments and picks a quality level for each one.",
+      "tags": ["streaming", "video", "HLS", "DASH"],
+      "blocks": [
+        ["paragraph", "When a streamed video gets blurry for a few seconds and then sharpens again, nothing is broken. It is adaptive bitrate streaming doing its job. The video exists in several quality levels, and the player switches between them while you watch, choosing whichever your connection can handle right now. This article explains how that works and where it came from."],
+        ["heading", "The video is prepared in several versions"],
+        ["paragraph", "Before a video is streamed, it is encoded at multiple bitrates. Bitrate means how much data each second of video uses. A low bitrate version is small and fits a slow connection but looks softer. A high bitrate version looks sharper but needs a fast connection. According to Wikipedia's article on adaptive bitrate streaming, each version is then cut into short segments, each a few seconds long."],
+        ["paragraph", "Because the segments are ordinary files, they can be served by normal web servers and delivered through content delivery networks, the networks of servers that keep copies of popular files close to viewers. Apple's page on its streaming format makes the same point: it uses the same HTTP protocol as the web, so ordinary web servers and delivery networks can handle it."],
+        ["heading", "The manifest is a menu"],
+        ["paragraph", "The player first downloads a small text file that lists what is available. In Apple's HTTP Live Streaming (HLS), described in the standard RFC 8216, this is a Master Playlist. It lists several 'variant streams', which are different encodings of the same content that vary in bit rate, format or resolution. Each variant points to its own Media Playlist, which lists the segments in order and says how long each lasts."],
+        ["list", "Master playlist: the list of quality levels on offer.\nMedia playlist: the ordered segments for one quality level.\nSegment: a few seconds of audio and video, downloaded as a small file."],
+        ["heading", "How the player chooses"],
+        ["paragraph", "The Wikipedia article explains that the player usually starts at the lowest bitrate so playback begins quickly. It then requests higher bitrate segments when its measured download speed allows and drops to lower ones when the network slows. The decision rule is called an ABR algorithm and lives in the player. Some algorithms look mainly at recent download speed, some at how much video is waiting in the buffer, and some at both."],
+        ["paragraph", "The buffer is the stretch of video already downloaded but not yet played. If the buffer is shrinking, the player can fetch a lower quality segment to avoid stalling. Since quality can be adjusted segment by segment, the player does not need to hold a large buffer, which helps video start sooner."],
+        ["heading", "Switching without a glitch"],
+        ["paragraph", "For switching to look smooth, all the versions must line up. RFC 8216 says the server must make each variant stream present the same content with matching timestamps, so the player can jump from one to another at a segment boundary without a visible break."],
+        ["heading", "A short history"],
+        ["paragraph", "Wikipedia traces modern HTTP-based adaptive streaming to the company Move Networks, whose work in 2004 to 2006 was first called Quantum Streaming; the article says ABC chose it for its HD video site in 2007. Microsoft demonstrated adaptive streaming on NBC's Olympics website in August 2008 and made Smooth Streaming generally available in April 2009. Apple released HLS in June 2009 with iOS 3.0. The standards body MPEG developed Dynamic Adaptive Streaming over HTTP, known as DASH, which became an international standard in November 2011 and was published as ISO/IEC 23009-1:2012 in April 2012."],
+        ["paragraph", "Apple's HLS was later published as RFC 8216 in August 2017. The Wikipedia article states that HLS and DASH are the two adaptive systems still actively developed, and that a shared container format called CMAF, proposed in 2016 and published in 2018, can be used by both."],
+        ["heading", "Why it sometimes looks poor anyway"],
+        ["list", "The best version on offer may be low: the player can only choose among the versions that were prepared.\nThe connection may fluctuate faster than the player reacts.\nThe player may be cautious after a recent stall, staying at a lower level.\nThe device's own limits, such as screen size, may influence the choice."],
+        ["callout", "Exact player behaviour differs between services and apps, and most publish few details about their own algorithms. The description here covers the common design in the standards and reference articles, not any specific service."],
+        ["heading", "The key idea"],
+        ["paragraph", "Adaptive streaming trades a steady picture for a steady flow. Instead of one long file at one quality, the video is a stack of short, interchangeable pieces. The player's job is to keep picking the largest piece it can download in time, and the quality changes you notice are the visible result of that choice, made again every few seconds."]
+      ],
+      "sources": [
+        { "title": "Adaptive bitrate streaming, Wikipedia", "url": "https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming" },
+        { "title": "HTTP Live Streaming, Apple Developer", "url": "https://developer.apple.com/streaming/" },
+        { "title": "RFC 8216: HTTP Live Streaming, RFC Editor", "url": "https://www.rfc-editor.org/rfc/rfc8216" }
+      ],
+      "checkedOn": "2026-11-02"
+    },
+    {
+      "title": "How a Drone Stays Level: Gyros, Motors and PID Loops",
+      "category": "Electronics",
+      "excerpt": "A quadcopter is naturally unstable. See how four motors, motion sensors and a fast feedback loop called PID let it hover and hold its angle.",
+      "tags": ["drone", "gyroscope", "PID", "sensors"],
+      "blocks": [
+        ["paragraph", "A small quadcopter has no wings to give it stability and no tail rotor. It stays steady because a computer reads motion sensors hundreds of times a second and adjusts the speed of four motors each time. This article explains the pieces: how the motors move the drone, what the sensors measure, and the feedback loop that ties them together."],
+        ["heading", "Four rotors, two directions"],
+        ["paragraph", "According to Wikipedia's article on quadcopters, two of the four rotors usually spin clockwise and two counterclockwise. When all four spin at the same speed, their twisting forces cancel, so the body does not rotate. Equal thrust from all four holds the drone in a hover or changes its altitude."],
+        ["list", "**Yaw (turning left or right):** the controller makes the clockwise pair and the counterclockwise pair produce different torque totals.\n**Pitch and roll (tilting and moving):** more thrust on one rotor, or two neighbouring rotors, and less on the diagonally opposite side shifts the net thrust, so the drone tilts.\n**Climb or descend:** all four rotors speed up or slow down together."],
+        ["paragraph", "Unlike a helicopter, a quadcopter usually does not change the angle of its blades. All control comes from varying motor speed, as the same article explains. That makes the machine mechanically simple and puts the work on the electronics."],
+        ["heading", "What the sensors measure"],
+        ["paragraph", "The motion sensors sit in a unit called an inertial measurement unit, or IMU. Wikipedia describes it as a device that reports a body's specific force and angular rate, combining accelerometers and gyroscopes and sometimes magnetometers."],
+        ["list", "**Gyroscope:** measures how fast the drone is rotating around each axis.\n**Accelerometer:** measures acceleration, including the pull of gravity, which shows which way is down.\n**Magnetometer:** senses the magnetic field and gives a heading reference."],
+        ["paragraph", "Each sensor has a weakness. The IMU article explains that navigation with an IMU works by adding up, or integrating, measurements over time, so small errors accumulate into a growing gap between the estimate and reality, called drift. A gyroscope integrated alone drifts. To correct this, the article says a Kalman filter can combine the gyroscope's rotation rate with the gravity direction measured by the accelerometers to estimate attitude, meaning the drone's tilt. Outside references such as GPS can help correct drift too."],
+        ["paragraph", "The same article notes that low-cost IMUs enabled the consumer drone industry. The quadcopter article places the arrival of cheap, light flight controllers, accelerometers, GPS and cameras at around 2005 to 2010."],
+        ["heading", "The feedback loop"],
+        ["paragraph", "A flight controller compares what the pilot wants with what the sensors report, then corrects. Hobbyist flight-controller guides describe this with a PID controller, a standard feedback method. Wikipedia's PID article defines it as a loop that compares a setpoint (the target) with a measured value and adjusts its output to shrink the difference, called the error."],
+        ["list", "**P, proportional:** reacts to the current error. A bigger error gives a bigger correction. Alone it can leave a small steady offset.\n**I, integral:** adds up the error over time, so a lingering gap keeps growing the correction until it closes.\n**D, derivative:** looks at how quickly the error is changing and eases off as it closes, which reduces overshoot."],
+        ["paragraph", "One flight-controller write-up describes a controller that maps the pilot's stick position onto the same degree scale the IMU reports, subtracts the measured angle from the desired one to get the error, and runs that through the three terms. Each term is weighted by a gain, and tuning those gains decides whether the aircraft flies slowly and smoothly or quickly and aggressively. Too much proportional gain can cause oscillation, and too much integral gain can cause overshoot."],
+        ["heading", "From correction to motor speed"],
+        ["paragraph", "The controller's output is turned into signals for electronic speed controllers, which set how fast each motor spins. The exact mixing of roll, pitch, yaw and throttle into four motor commands varies between designs, and the sources used here do not cover it in detail."],
+        ["heading", "Flight modes"],
+        ["paragraph", "The write-up mentions two common modes. In rate or acrobatic mode, only gyroscope feedback is used, so the drone holds a rotation speed and does not level itself. In stable mode the accelerometer, and the magnetometer if fitted, are also used, so the drone levels itself when the pilot releases the stick. In that project the bank and pitch were limited to 60 degrees in stable mode."],
+        ["callout", "Real products add more: GPS for position hold, barometers for height, and obstacle sensors. Makers do not usually publish their exact control software, so this article describes the general method rather than any specific drone."],
+        ["heading", "Summary"],
+        ["paragraph", "A quadcopter's steadiness is software, not shape. Motors give it the ability to tilt and turn, the IMU tells it how it is moving, and a PID loop running many times a second turns the difference between 'wanted' and 'measured' into small motor adjustments. When all three work together, a drone that would tumble within a second looks like it is resting on air."]
+      ],
+      "sources": [
+        { "title": "Quadcopter, Wikipedia", "url": "https://en.wikipedia.org/wiki/Quadcopter" },
+        { "title": "Inertial measurement unit, Wikipedia", "url": "https://en.wikipedia.org/wiki/Inertial_measurement_unit" },
+        { "title": "PID controller, Wikipedia", "url": "https://en.wikipedia.org/wiki/PID_controller" },
+        { "title": "How I Developed the Scout Flight Controller, Part 4: Stabilizing Flight with PID Controllers, Tim Hanewich", "url": "https://reefwing.substack.com/p/how-to-write-your-own-flight-controller-79d" }
+      ],
+      "checkedOn": "2026-11-02"
+    },
+    {
+      "title": "How a Fuel Nozzle Knows When the Tank Is Full",
+      "category": "How It Works",
+      "excerpt": "The click that stops a petrol pump uses no electronics: a tiny sensing hole, a venturi and a diaphragm. Here is how the shut-off works and why it trips early.",
+      "tags": ["fuel pump", "venturi", "mechanics"],
+      "blocks": [
+        ["paragraph", "When the fuel flow stops with a click as the tank fills, no electronic sensor is involved. The nozzle senses 'full' with a tiny hole, a trick of airflow called the Venturi effect and a small flexible diaphragm. The answer in one line: the hole gets covered by fuel, air stops flowing through it, and the resulting change in pressure releases a latch that closes the valve."],
+        ["heading", "The parts"],
+        ["list", "**Sensing hole:** a small opening near the tip of the spout, inside the part that enters the tank.\n**Sensing tube:** a thin passage that connects the hole to the handle.\n**Venturi:** a narrowed section in the fuel path inside the nozzle.\n**Diaphragm and latch:** a flexible membrane in the handle that, when it moves, releases the catch that holds the main valve open.\n**Spring:** snaps the valve shut once the catch is released."],
+        ["paragraph", "Wikipedia's article on petrol pumps describes the same layout: a sensing tube runs from just inside the nozzle's mouth to a venturi in the pump handle, and a mechanical valve in the handle responds to a pressure change by closing."],
+        ["heading", "The Venturi effect in short"],
+        ["paragraph", "The Venturi effect is a drop in the pressure of a fluid when it speeds up as it passes through a narrower section of pipe. It is an example of Bernoulli's principle and is used in measuring flow and in devices such as atomizer nozzles and wine aerators. In the nozzle, fuel rushing through the venturi creates a small suction."],
+        ["heading", "While the tank is filling"],
+        ["paragraph", "The suction from the venturi pulls air in through the sensing hole and along the tube. Because air is moving freely, the pressure on the two sides of the diaphragm stays roughly balanced. The diaphragm therefore stays put and the latch holds the main valve open, so fuel keeps flowing."],
+        ["heading", "When the fuel reaches the hole"],
+        ["paragraph", "As the tank fills, the rising fuel eventually covers the sensing hole. Air can no longer be drawn in. The venturi keeps pulling, so the pressure in the diaphragm chamber falls. Atmospheric pressure on the other side of the diaphragm now pushes it, and it releases the latch. A spring then snaps the main valve shut. One explainer on the subject describes it as the diaphragm tripping a switch that stops the flow, while another describes the diaphragm being drawn inward to release the latch; both agree on the sequence."],
+        ["heading", "A patent from the 1930s"],
+        ["paragraph", "Wikipedia says the shut-off valve was invented in 1939 by Richard C. Corson of Olean, New York, who was inspired by a worker filling a barrel at a Socony-Vacuum loading dock. It was first intended to let one person fill several barrels at the same time. The same article notes that the first petrol pump was sold by Sylvanus Bowser in Fort Wayne, Indiana, on 5 September 1885, originally for kerosene."],
+        ["heading", "Why it sometimes clicks off early"],
+        ["paragraph", "The nozzle responds to the hole being blocked, not to the tank actually being full. Anything that covers the hole can trigger it. A science explainer gives three examples: squeezing the lever hard can splash fuel back into the spout, parking on a steep slope can make fuel rise unevenly toward the spout, and vapour from the tank on a hot day can disturb the airflow near the port. The same page says easing off the lever once fuel is flowing steadily reduces splashback. That explainer is a popular-science site rather than a manufacturer, so treat the specific causes as common explanations rather than a technical rule."],
+        ["heading", "Vapour recovery"],
+        ["paragraph", "Many modern pumps also have equipment to stop fuel vapour escaping into the air. According to Wikipedia, new forecourts in the UK expected to pump more than 500 cubic metres a month must have active vapour recovery. The article also notes that forcing extra fuel in after the cut-off can flood the vapour trap, so the click is a signal to stop rather than a challenge to squeeze in more."],
+        ["callout", "Designs vary between manufacturers and countries, and some nozzles add a second sensing path in the vapour-recovery line. This article describes the basic, widely documented design."],
+        ["heading", "Why this design lasts"],
+        ["paragraph", "It has no power supply, no software and almost no moving parts that could fail in a way that overfills a tank. The sensing is done by the fuel itself, which makes the hole a reliable indicator wherever it sits. That simplicity, together with the physics of a narrow pipe, explains why the same idea has lasted for generations of pumps."]
+      ],
+      "sources": [
+        { "title": "Gasoline pump, Wikipedia", "url": "https://en.wikipedia.org/wiki/Gasoline_pump" },
+        { "title": "Venturi effect, Wikipedia", "url": "https://en.wikipedia.org/wiki/Venturi_effect" },
+        { "title": "How does the gas pump automatically shut off when the tank is full?, Science ABC", "url": "https://www.scienceabc.com/pure-sciences/how-does-the-gas-pump-automatically-shut-off-when-the-tank-is-full.html" },
+        { "title": "How the Gas Pump Knows When to Shut Off, Mental Floss", "url": "https://www.mentalfloss.com/article/28113/how-gas-pump-knows-when-shut" }
+      ],
+      "checkedOn": "2026-11-02"
+    },
+    {
+      "title": "How Speech Recognition Turns Your Voice Into Text",
+      "category": "AI",
+      "excerpt": "From the 1952 digit recognizer to today's neural networks: how speech recognition converts sound into words, and how its accuracy is measured.",
+      "tags": ["speech recognition", "neural networks", "voice"],
+      "blocks": [
+        ["paragraph", "Speech recognition software turns spoken audio into written text. It does this in two broad steps: first the sound is converted into numbers that describe it, then a set of models works out which words most likely produced those numbers. Modern systems use neural networks for most of the work, but the basic problem has stayed the same for decades."],
+        ["heading", "Step one: turning sound into numbers"],
+        ["paragraph", "A Microsoft documentation page describes the front end as isolating segments of sound that are probably speech and converting them into numeric values that characterise the vocal sounds. Wikipedia's article on speech recognition gives more detail on the classic approach: the audio is digitised (telephone speech at 8,000 samples per second), split into short frames computed about every 10 milliseconds, and each frame's frequency content is analysed with a Fourier transform. Extra values capture how the sound changes over time, and normalisation compensates for differences between speakers and recording conditions."],
+        ["heading", "Step two: finding the likely words"],
+        ["paragraph", "The Microsoft page calls the back end a specialised search engine that looks across three sources of knowledge."],
+        ["list", "**Acoustic model:** represents the sounds of a language and can be trained for a particular speaker or environment.\n**Lexicon:** lists words and how each is pronounced.\n**Language model:** represents how words combine, so 'recognise speech' is judged more likely than a similar-sounding nonsense phrase."],
+        ["paragraph", "For any stretch of sound many things could have been said. The page says a recognizer's quality depends on how well it narrows the search, throwing out poor matches and choosing likely ones, which in turn depends on the quality of its models and algorithms."],
+        ["heading", "A short history"],
+        ["list", "**1952:** Bell Labs' 'Audrey' recognised digits spoken by a single speaker.\n**Mid-1980s:** IBM's Tangora handled a 20,000-word vocabulary using statistical methods based on hidden Markov models, which became the standard approach for decades.\n**1992:** Carnegie Mellon University's Sphinx-II became the first speaker-independent, large-vocabulary, continuous recognizer, and won DARPA's 1992 evaluation.\n**2009 and 2010:** deep neural networks were applied to acoustic modelling, producing a major accuracy improvement.\n**2017:** Microsoft researchers reported reaching human parity on the Switchboard conversational speech benchmark."],
+        ["paragraph", "All dates above are from Wikipedia's article, which also notes that LSTM networks, published in 1997, trained with a method called Connectionist Temporal Classification began outperforming earlier methods around 2007."],
+        ["heading", "End-to-end systems"],
+        ["paragraph", "Older systems trained the acoustic, pronunciation and language parts separately. Since about 2014, 'end-to-end' systems have learned everything together in one network. Wikipedia credits the first major attempt to Alex Graves and Navdeep Jaitly in 2014, using CTC. CTC is a training method for tasks where the input and output are not aligned in time: audio has far more time slices than there are letters or sounds, and the system does not know in advance which slice matches which label, so CTC lets the network predict a probability at each step and scores all the alignments that give the same text."],
+        ["paragraph", "Attention-based models, introduced in 2016, learn all components directly and need no separate language model when deployed; 'Listen, Attend and Spell' is an example. Transformers, which also rely on attention, were adopted for speech afterwards."],
+        ["heading", "How accuracy is measured"],
+        ["paragraph", "The usual measure is word error rate, or WER. The recognised text is aligned with a correct reference transcript and the errors are counted: substitutions (wrong word), deletions (missing word) and insertions (extra word). WER is their total divided by the number of words in the reference. A WER of 0 means a perfect match, and it can exceed 1 if there are many insertions."],
+        ["paragraph", "WER has limits. It treats all errors the same, although some change the meaning more than others; it does not say why errors happen; and a lower WER does not always mean better understanding, according to Wikipedia's article on the measure. It also notes that dictation is generally considered unacceptable below 95 percent accuracy, though the right standard depends on the use."],
+        ["heading", "What still makes it hard"],
+        ["list", "Accents and unfamiliar pronunciations.\nBackground noise.\nSpontaneous speech with pauses and corrections.\nSimilar-sounding words.\nLarge vocabularies: Wikipedia gives approximate error rates of 3 percent for 200 words, 7 percent for 5,000 words and 45 percent for 100,000 words, which shows why vocabulary size matters."],
+        ["callout", "Those vocabulary figures come from older research cited by Wikipedia. Current systems differ by product, language and conditions, and companies measure accuracy in their own ways, so numbers from different sources are not directly comparable."],
+        ["heading", "The short version"],
+        ["paragraph", "Speech recognition converts sound into numbers, then searches for the words most likely to have produced them, using knowledge of sounds, pronunciations and language. The search used to be built from separate hand-designed parts. Today a single neural network often does it all, but the goal is the same: pick the transcript with the fewest errors."]
+      ],
+      "sources": [
+        { "title": "Speech recognition, Wikipedia", "url": "https://en.wikipedia.org/wiki/Speech_recognition" },
+        { "title": "How Speech Recognition Works, Microsoft Learn (archived)", "url": "https://learn.microsoft.com/en-us/previous-versions/office/developer/speech-technologies/hh361622(v=office.14)" },
+        { "title": "Word error rate, Wikipedia", "url": "https://en.wikipedia.org/wiki/Word_error_rate" },
+        { "title": "Connectionist temporal classification, Wikipedia", "url": "https://en.wikipedia.org/wiki/Connectionist_temporal_classification" }
+      ],
+      "checkedOn": "2026-11-02"
+    }
+  ]
+}
