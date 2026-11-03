@@ -1,0 +1,170 @@
+{
+  "date": "2026-11-03",
+  "articles": [
+    {
+      "title": "How a FICO Credit Score Is Built From Five Factors",
+      "category": "Money Guides",
+      "excerpt": "A FICO credit score blends five kinds of information from your credit report. Here is what each factor covers, how much weight it carries, and what the score is used for.",
+      "tags": ["credit score", "FICO", "borrowing"],
+      "blocks": [
+        ["paragraph", "A credit score is a number that estimates how likely a person is to repay borrowed money on time. The best-known family of scores, FICO, is built from five groups of information in a credit report, and two of them, payment history and amounts owed, make up about two thirds of the result. This article explains each group in plain terms. It is general information about the United States system, not advice about any person's finances."],
+        ["heading", "What a credit score is"],
+        ["paragraph", "According to the US Consumer Financial Protection Bureau (CFPB), a credit score is a number produced by a mathematical formula, called a scoring model, that takes the data in your credit report and turns it into a single figure. Most credit scores fall between 300 and 850, the CFPB says. A higher score generally makes it easier to qualify for a loan and can lead to a lower interest rate or better terms."],
+        ["paragraph", "Lenders are not the only users. The CFPB lists mortgages, credit cards, car loans, tenant screening and insurance decisions among the places a score may be used."],
+        ["heading", "You do not have just one score"],
+        ["paragraph", "People often talk about \"my credit score\" as if there were one. The CFPB says there is not. A score depends on which data is used, which scoring model is applied, where the data came from, and when the score was calculated. A lender may also use a different model for a car loan than for a credit card. This is why two apps can show two different numbers on the same day without either being wrong."],
+        ["heading", "The five factors and their weights"],
+        ["paragraph", "FICO, the company behind the FICO Score, publishes the general weights on its consumer site, myFICO. The percentages describe the typical breakdown, and the exact effect on any one person depends on their whole report."],
+        ["list", "**Payment history, 35%.** Whether you have paid past accounts on time.\n**Amounts owed, 30%.** How much debt you carry and how much of your available credit you are using.\n**Length of credit history, 15%.** How old your accounts are.\n**New credit, 10%.** Recently opened accounts and recent applications.\n**Credit mix, 10%.** The variety of credit types you hold."],
+        ["heading", "Payment history"],
+        ["paragraph", "This is the largest factor. It records whether past accounts were paid on time. myFICO notes that a few late payments are not automatically a \"score-killer\", but it also says a clean record alone will not produce a perfect score, because the other factors count too."],
+        ["heading", "Amounts owed"],
+        ["paragraph", "This factor looks at how much debt you have in total and how much of your available credit you are using. For example, if a card has a limit of 1,000 and the balance is 800, that card is using 80 per cent of its limit. According to myFICO, high usage can suggest a person is overextended. The same page says that having debt is not automatically a negative."],
+        ["heading", "Length of credit history"],
+        ["paragraph", "myFICO says this factor considers the age of your oldest account, the age of your newest account, and the average age of all your accounts. It also looks at how long particular accounts have been open and how long it has been since certain accounts were used. A long history helps, but myFICO states that it is not required for a good score."],
+        ["heading", "New credit"],
+        ["paragraph", "Each time you apply for credit, the lender usually checks your report, which creates an inquiry. myFICO says FICO Scores consider only inquiries from the last 12 months, although inquiries stay on the report for two years. Opening several accounts in a short time is viewed as riskier, especially when the credit history is short."],
+        ["heading", "Credit mix"],
+        ["paragraph", "Credit mix is the range of account types: credit cards, retail accounts, instalment loans such as car loans, finance company accounts and mortgages. myFICO makes clear that you do not need one of each. It is the smallest group, tied with new credit at 10%."],
+        ["heading", "Other items that can appear in a report"],
+        ["paragraph", "The CFPB adds that debts sent to collection, foreclosures and bankruptcies can affect a score, and that how long ago they happened matters. These show up through the payment and amounts-owed information in the report rather than as a separate factor in the FICO list."],
+        ["callout", "Because weights are typical figures and models differ between lenders, treat the percentages as a guide to what matters, not as a calculator for your own number."],
+        ["heading", "Why the weights matter"],
+        ["paragraph", "Seeing the weights explains why some actions move a score more than others. Paying accounts on time and keeping balances well below limits touch the two largest groups. A single new application sits in a group worth 10%, and it only counts for 12 months. None of this predicts a specific change in a particular person's score, since each report is different."],
+        ["paragraph", "The CFPB also points out that people can access their credit scores for free, so checking is usually possible without paying a fee. Which score a service shows, and which model it uses, is worth reading before comparing numbers."]
+      ],
+      "sources": [
+        { "title": "What's in your credit score, myFICO", "url": "https://www.myfico.com/credit-education/whats-in-your-credit-score" },
+        { "title": "What is a credit score?, Consumer Financial Protection Bureau", "url": "https://www.consumerfinance.gov/ask-cfpb/what-is-a-credit-score-en-315/" }
+      ],
+      "checkedOn": "2026-11-03"
+    },
+    {
+      "title": "How a Car Airbag Senses a Crash and Inflates in Time",
+      "category": "Cars and Bikes",
+      "excerpt": "An airbag must decide, fire and fill within about 50 milliseconds. Here is how crash sensors, a control module and a gas inflator do that, and what airbags can and cannot do.",
+      "tags": ["airbag", "safety", "sensors"],
+      "blocks": [
+        ["paragraph", "A front airbag is a fabric cushion that fills with gas during a crash, and the whole sequence from impact to a full bag takes about 50 milliseconds, a twentieth of a second. In that time, sensors must decide whether the crash is serious, a small chemical charge must make gas, and the bag must unfold before the occupant moves forward into it. This article walks through those steps using material from the Insurance Institute for Highway Safety (IIHS) and a University of British Columbia engineering text."],
+        ["heading", "Sensors and the control module"],
+        ["paragraph", "The brain of the system is the airbag control module. According to the UBC text, it draws on accelerometers, impact sensors, brake pressure sensors and seat occupancy sensors. Some sensors sit near the module and act as a safeguard against missing a real deployment in a violent crash. Others sit near the likely impact area and help avoid false deployments in minor bumps."],
+        ["paragraph", "The module samples constantly and estimates how severe a crash is from the acceleration and from how quickly that acceleration changes. The UBC text says the decision must be made within roughly 45 to 50 milliseconds of a frontal collision. More advanced systems also consider occupant weight and position, and can switch off deployment for a small occupant or a child."],
+        ["heading", "When a front airbag deploys"],
+        ["paragraph", "IIHS says front airbags inflate in moderate-to-severe frontal crashes. For unbelted occupants, deployment happens in a crash equal to hitting a rigid wall at about 10 to 12 miles per hour (mph). For belted occupants the threshold is about 16 mph. IIHS adds that newer systems use a belt sensor and a computer program to decide whether to deploy. The UBC text gives a range of roughly 16 to 18 mph and notes that US federal safety standards do not regulate the threshold, so manufacturers set it."],
+        ["heading", "How the gas is made"],
+        ["paragraph", "When the module signals a crash, an electrical igniter starts a chemical reaction inside the inflator. The UBC text explains that the main gas source in this type of inflator is sodium azide, which breaks down when heated into nitrogen gas. The pellets also contain potassium nitrate and silicon dioxide, which react with the leftover sodium and form a harmless-looking glassy residue."],
+        ["paragraph", "The same source says one gram of the compound gives roughly 0.56 litres of nitrogen at standard conditions. That adds up to about 28 to 45 litres for a driver bag and about 140 litres for a passenger bag. It also notes that sodium azide is toxic, which is a concern when airbags are recycled."],
+        ["heading", "Filling, restraining and venting"],
+        ["paragraph", "The UBC text describes six phases: the trigger, the first gas, the bag beginning to unfold, complete unfolding, full inflation and then restraint of the occupant. Inflation has to be slow enough not to injure the person and fast enough to meet them before they reach the steering wheel or dashboard. Small vents let gas out as the person presses into the bag, so it works as a cushion. The text shows deflation happening around 150 milliseconds in one example."],
+        ["heading", "Side and curtain airbags"],
+        ["paragraph", "Side crashes leave little room between the door and the occupant, so side airbags must be quicker. IIHS says they have to inflate within the first 10 to 20 milliseconds, with thresholds as low as 8 mph for narrow objects such as poles and trees and 18 mph for vehicle-to-vehicle side impacts. Curtain airbags can also deploy in rollovers and may stay inflated for 10 seconds or more to cover several rolls."],
+        ["heading", "How much difference they make"],
+        ["paragraph", "IIHS reports that front airbags reduce driver deaths in frontal crashes by 29 per cent and deaths of front-seat passengers aged 13 and over by 32 per cent. It states that an airbag combined with a lap-and-shoulder belt reduces the risk of death by 61 per cent, compared with 50 per cent for belts alone and 34 per cent for airbags alone. Airbags are meant to work with seat belts, not replace them. IIHS also says airbags alone are not enough in side crashes, because the vehicle structure must resist intrusion into the cabin."],
+        ["callout", "IIHS says federal law required driver and passenger front airbags in all new US cars, light trucks and vans from the 1999 model year."],
+        ["heading", "Risks and the Takata recall"],
+        ["paragraph", "IIHS notes that from 1990 to 2008, NHTSA estimated more than 290 deaths from frontal airbag inflation in low-speed crashes, nearly 90 per cent in vehicles built before 1998, and over 90 per cent of the passenger deaths were children and infants, many unbelted or in rear-facing seats near the bag. Airbag force was reduced from 1998 models, and IIHS says serious injuries from properly working airbags are now rare."],
+        ["paragraph", "The Takata inflator recall, which began in 2015, is described by IIHS as the largest in US history. About 67 million vehicles had been recalled by 2022, with 6 million still needing replacement, and it has been linked to 23 confirmed US deaths and more than 250 injuries. Owners who are unsure about their vehicle can follow the manufacturer's and regulator's recall notices. This article is general information, not a safety instruction."]
+      ],
+      "sources": [
+        { "title": "Airbags, Insurance Institute for Highway Safety", "url": "https://www.iihs.org/topics/airbags" },
+        { "title": "Engineering Design Considerations of Frontal Airbags, University of British Columbia Wiki", "url": "https://wiki.ubc.ca/Documentation:FIB_book/Engineering_Design_Considerations_of_Frontal_Airbags_with_a_focus_on_deployment_and_inflation_mechanics" }
+      ],
+      "checkedOn": "2026-11-03"
+    },
+    {
+      "title": "The Willys MB Jeep: Three Makers, One Wartime Design",
+      "category": "Vintage and History",
+      "excerpt": "The Jeep that served in the Second World War combined ideas from American Bantam, Willys-Overland and Ford. Here is how the US Army's 1940 request led to the Willys MB.",
+      "tags": ["jeep", "Willys", "World War II"],
+      "blocks": [
+        ["paragraph", "The Willys MB, the best-known wartime Jeep, was not the work of one company. It came out of a 1940 US Army request that three firms answered, and the final design mixed parts from all of them. About 639,000 Jeeps were built for the Allied forces in the Second World War, including the near-identical Ford GPW. This article follows how the design took shape, using the Studebaker National Museum and the National Motor Museum in the United Kingdom."],
+        ["heading", "The Army's 1940 request"],
+        ["paragraph", "According to the Studebaker National Museum, the Army wanted a small, light, general-purpose vehicle with four-wheel drive that could carry a light machine gun. In 1940 the first two suppliers were American Bantam, with its BRC model, and Willys-Overland, with its Quad, a four-by-four. Fewer than 100 vehicles were built that year."],
+        ["paragraph", "The National Motor Museum says Bantam built a prototype four-wheel-drive runabout to meet the specification, and that the firm built 1,500 production vehicles but lacked the capacity for military demand. Assembly was therefore split between Willys-Overland and Ford."],
+        ["heading", "Three versions in 1941"],
+        ["paragraph", "After early trials the Army asked for changes and opened development to other makers, notably Ford. The Studebaker museum reports that almost 8,500 vehicles were built in 1941 in three versions: the Bantam BRC-40, the Willys MA and the Ford GP. Each firm was now producing its own take on the same brief."],
+        ["heading", "How the MB took shape"],
+        ["paragraph", "Late in 1941 the design was standardised. The Studebaker museum says it used a Spicer differential, the Willys Go-Devil engine and Ford's body configuration, and describes the result as Bantam's Spicer-sourced drivetrain combined with the Go-Devil engine and Ford GP bodywork. Willys built this standard model as the MB, and Ford built it as the GPW."],
+        ["paragraph", "Sources differ in how they spread the credit. The National Motor Museum names Bantam as the builder of the original prototype, while the Studebaker museum stresses the shared nature of the final design. Both agree the MB and GPW used the Willys Go-Devil engine."],
+        ["list", "**Bantam:** the early prototype and the drivetrain parts used in the standard design.\n**Willys-Overland:** the Go-Devil engine, and the MB version.\n**Ford:** the body configuration, and the GPW version."],
+        ["heading", "The engine and the specifications"],
+        ["paragraph", "The National Motor Museum describes its 1943 Willys MB as having a 2,199 cc, in-line four-cylinder, side-valve engine, four-wheel drive and a top speed of 60 miles per hour. It notes that the car was not marketed to the public until 1945."],
+        ["heading", "Production numbers"],
+        ["paragraph", "The Studebaker museum gives 639,235 Jeeps built during the war and says Willys made over 360,000 of them. It also reports almost 13,000 amphibious Ford GPA Jeeps, nicknamed the \"Seep\", and a total of 647,925 Jeeps from 1940 to 1945. The National Motor Museum gives 639,245 military Jeeps between 1941 and 1945. These counts are close but not identical, and the museum figures do not fully reconcile with each other, so it is safest to say about 640,000."],
+        ["callout", "Neither source opened for this article explains where the name \"Jeep\" came from, so this article does not claim an origin for the word."],
+        ["heading", "Service in the war"],
+        ["paragraph", "The National Motor Museum says the Jeep served with Allied forces in virtually every theatre of the Second World War. The example in its collection took part in the Normandy landings of June 1944."],
+        ["heading", "After the war"],
+        ["paragraph", "Civilian production continued after 1945. The National Motor Museum calls the Jeep the ancestor of the modern off-road four-wheel-drive vehicle and the sport utility vehicle (SUV). That claim is a museum's summary rather than a precise count of descendants, but it shows how far the Army's small reconnaissance vehicle reached beyond the battlefield."],
+        ["paragraph", "The story is also a reminder that wartime products often came from shared work. The Army set the requirements, three firms competed and borrowed ideas, and two of them built the final model side by side."]
+      ],
+      "sources": [
+        { "title": "The Jeep in World War II, Studebaker National Museum", "url": "https://studebakermuseum.org/the-jeep-in-world-war-ii/" },
+        { "title": "Willys MB Jeep, National Motor Museum", "url": "https://nationalmotormuseum.org.uk/vehicle-collection/willys-mb-jeep/" }
+      ],
+      "checkedOn": "2026-11-03"
+    },
+    {
+      "title": "Dynamic vs Condenser Microphones: How Each Hears Sound",
+      "category": "Electronics",
+      "excerpt": "Dynamic microphones use a coil and magnet, while condenser microphones use a charged plate and need power. Here is how each works and where each is usually used.",
+      "tags": ["microphones", "audio", "phantom power"],
+      "blocks": [
+        ["paragraph", "A microphone turns sound waves into an electrical signal, and the two most common designs do it in different ways. A dynamic microphone uses a coil moving in a magnetic field and needs no power, while a condenser microphone senses the changing gap to a charged plate and does need power. This article explains both, with material from Shure, a microphone maker, and the Historical Voices oral history guide."],
+        ["heading", "What every microphone has to do"],
+        ["paragraph", "Sound is moving air. Every microphone has a thin, light surface called a diaphragm that is pushed back and forth by the changing air pressure. The difference between designs lies in how that tiny movement is turned into electricity."],
+        ["heading", "How a dynamic microphone works"],
+        ["paragraph", "Shure describes the dynamic element as a diaphragm with a voice coil attached, sitting in the field of a magnet. When sound moves the diaphragm, the coil moves within the magnetic field, and this generates the signal. Historical Voices adds that the diaphragm is a Mylar film and that the coil is suspended in the magnetic field. The idea is much like a loudspeaker working in reverse."],
+        ["paragraph", "Because the diaphragm and coil together have some weight, the Historical Voices guide says dynamic microphones may not respond well to sharp transient sounds, meaning very sudden sounds. In exchange, it calls them rugged, low in cost and in no need of external power."],
+        ["heading", "How a condenser microphone works"],
+        ["paragraph", "Shure says a condenser has a thinner diaphragm placed close to an electrically charged back plate. Vibration changes the spacing between them, which changes the signal. Historical Voices explains it more fully: a light plastic diaphragm, coated with gold or nickel, sits near a fixed backplate, and a 48 volt phantom power supply charges the plates, so that the capacitance, the ability to store charge, changes as the diaphragm moves."],
+        ["paragraph", "The light diaphragm is the reason condensers respond so closely to subtle detail. Shure says their low mass lets them pick up quiet sounds and high frequencies, and the Historical Voices guide says it gives very accurate response, often with a rich frequency and dynamic range."],
+        ["heading", "What phantom power is"],
+        ["paragraph", "Shure says condenser microphones need a power source, either a battery inside the microphone or phantom power sent down the cable from a mixer or recorder. Most accept roughly 12 to 48 volts, and some studio models need the highest voltage. Shure advises checking that your mixer or recorder supplies phantom power before using a condenser microphone."],
+        ["heading", "Strengths and trade-offs"],
+        ["list", "**Dynamic:** handles very loud sounds. Shure says a typical SM58 would need more than 150 decibels of sound pressure level to distort. It also tolerates rough handling, temperature and moisture.\n**Condenser:** more sensitive and better at high-frequency detail and percussive sounds, but it needs power and, according to Historical Voices, is more fragile and less convenient in the field."],
+        ["heading", "Where each is typically used"],
+        ["paragraph", "Shure suggests condensers for acoustic guitar, stringed instruments, cymbals, nature recordings and sound effects. It adds that condensers can be made very small, which is why lavalier clip-on, headworn and thin gooseneck microphones are usually condensers. The rugged, power-free character of dynamics makes them a natural fit where handling is rough or no power is available, such as the field recorders mentioned by Historical Voices."],
+        ["callout", "Neither source opened here covers ribbon microphones, so this article does not describe them. Always check a particular microphone's manual before connecting phantom power."],
+        ["heading", "Choosing between them"],
+        ["paragraph", "The choice comes down to the sound and the setting. A sturdy dynamic microphone suits loud or rough conditions and needs only a cable. A condenser suits quiet, detailed sources and needs a power supply and gentler care. Many recording setups use both, picking one per source. Product recommendations are beyond what these sources set out, so this is a general explanation of the designs rather than a buying guide."]
+      ],
+      "sources": [
+        { "title": "Mic Basics: Transducers, Shure", "url": "https://www.shure.com/en-MEA/insights/mic-basics-transducers" },
+        { "title": "Microphone introduction, Historical Voices", "url": "https://www.historicalvoices.org/oralhistory/mic-intro.html" }
+      ],
+      "checkedOn": "2026-11-03"
+    },
+    {
+      "title": "How a Heat Pump Moves Heat Instead of Making It",
+      "category": "How It Works",
+      "excerpt": "A heat pump uses electricity to carry heat from a cold place to a warm one. Here is the four-step refrigerant cycle and what its coefficient of performance means.",
+      "tags": ["heat pump", "refrigerant", "efficiency"],
+      "blocks": [
+        ["paragraph", "A heat pump heats a building by moving heat from outside to inside, rather than by burning fuel or making heat from electricity directly. A typical household unit delivers around four units of heat for every one unit of electricity it uses, according to the International Energy Agency (IEA). This article explains the cycle that makes this possible, using the IEA and the Energy Education encyclopedia from the University of Calgary."],
+        ["heading", "Moving heat, not making it"],
+        ["paragraph", "The IEA says a heat pump uses technology similar to a refrigerator or air conditioner and extracts heat from a source such as outside air, the ground, nearby water or waste heat from a factory. Energy Education states the same idea and notes that heat pumps require an input of energy to move the heat. That is how they stay within the laws of physics: electricity drives heat from a cold place to a warm one, which does not happen on its own."],
+        ["heading", "The main parts"],
+        ["paragraph", "The IEA names a compressor, which moves a refrigerant through a refrigeration cycle, and two heat exchangers, one taking heat from the source and one passing it to the place being heated. Energy Education describes the same four working parts in its heating cycle: an evaporator, a compressor, condenser coils and a pressure-reducing valve."],
+        ["heading", "The heating cycle in four steps"],
+        ["list", "**Evaporator:** liquid refrigerant absorbs heat from outdoor air and becomes a gas.\n**Compressor:** it raises the pressure and temperature of that gas.\n**Condenser coils:** the hot gas flows through coils indoors, gives up its heat and turns back into a liquid.\n**Pressure-reducing valve:** the liquid passes through a valve that lowers its pressure and temperature, and the cycle begins again."],
+        ["paragraph", "The refrigerant can absorb heat from cold outdoor air because, after the valve, it is even colder than that air. The compressor then makes it hotter than the room, so the heat flows into the room."],
+        ["heading", "Running the cycle in reverse"],
+        ["paragraph", "Energy Education says that in cooling mode, the evaporator and condenser swap roles and the refrigerant flow reverses. Heat is absorbed from indoor air and released outdoors. The IEA agrees that many heat pumps can also cool spaces in summer. Neither page explains the mechanical part that reverses the flow, so this article does not describe it."],
+        ["heading", "Coefficient of performance"],
+        ["paragraph", "Efficiency is described by the coefficient of performance, or COP. Energy Education defines it as the heat delivered divided by the electrical work put in. A higher value means less work is needed for each unit of heat moved. The page also says a theoretical limit to COP is set by entropy and the second law of thermodynamics."],
+        ["paragraph", "The IEA says a typical household heat pump has a COP of around 4, so its heat output is about four times its electrical input. It also says current household models are three to five times more energy efficient than gas boilers and can be cheaper to run. These are figures for typical models, and the IEA does not give them for every climate or home."],
+        ["callout", "A COP of 4 does not mean four times as much energy is created. Three of the four units of heat were already in the outdoor air, and the electricity moved them."],
+        ["heading", "Delivering the heat"],
+        ["paragraph", "The IEA says that in buildings heat can be delivered through forced air or through hydronic systems, meaning water-based systems such as radiators or underfloor heating. Heat pumps can also supply hot water through a tank. In industry, they supply hot air, water or steam. The IEA adds that large commercial, industrial and district-heating units need higher input temperatures, which can come from industrial processes, data centres or wastewater."],
+        ["heading", "What the sources do not say"],
+        ["paragraph", "Neither source gives details of how performance changes in very cold weather, and the Energy Education page gives no typical COP values. Readers choosing a system for a real home should consult an installer or the manufacturer's data for their climate. This article is a general explanation of how the technology works."]
+      ],
+      "sources": [
+        { "title": "How a heat pump works, The Future of Heat Pumps, International Energy Agency", "url": "https://www.iea.org/reports/the-future-of-heat-pumps/how-a-heat-pump-works" },
+        { "title": "Heat pump, Energy Education, University of Calgary", "url": "https://energyeducation.ca/encyclopedia/Heat_pump" }
+      ],
+      "checkedOn": "2026-11-03"
+    }
+  ]
+}
