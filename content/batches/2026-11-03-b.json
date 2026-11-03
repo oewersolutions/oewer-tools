@@ -1,0 +1,165 @@
+{
+  "date": "2026-11-03",
+  "articles": [
+    {
+      "title": "What Is an AI Embedding? Turning Meaning Into Numbers",
+      "category": "AI",
+      "excerpt": "An embedding turns a word, sentence or picture into a list of numbers so that similar things sit close together. Here is how that works and what it is used for.",
+      "tags": ["embeddings", "word2vec"],
+      "blocks": [
+        ["paragraph", "An embedding is a list of numbers that stands for something, such as a word, a sentence or a meal on a menu. The numbers are chosen so that things with similar meaning get similar lists. A computer cannot judge meaning directly, but it can compare numbers, so embeddings give software a way to say that two things are alike."],
+        ["heading", "The problem embeddings solve"],
+        ["paragraph", "The simplest way to give a word to a computer is one-hot encoding. Give every item in a vocabulary its own position in a very long list, put a 1 in that position and a 0 everywhere else. Google's machine learning course uses a food example: with 5,000 meals, each meal becomes a list 5,000 numbers long, and almost all of them are zero."],
+        ["paragraph", "That is wasteful. According to the same course, such long vectors mean a neural network needs more weights, more data, more computation and more memory, which also makes models harder to run on devices. And one-hot lists say nothing about how items relate: borscht is as far from a hot dog as it is from a salad."],
+        ["paragraph", "An embedding is a lower-dimensional representation of that sparse data. Instead of 5,000 mostly empty slots, each item gets a short list of real numbers that carries more information per slot."],
+        ["heading", "Meaning as position in a space"],
+        ["paragraph", "Think of each embedding as a point on a map. Google's course builds the idea step by step with meals. On one axis, call it \"sandwichness\", a hot dog and shawarma land close together and apple strudel lands far away. Add a second axis for \"dessertness\" and the strudel moves even further from the sandwiches. A third axis for \"liquidness\" separates borscht from the rest."],
+        ["paragraph", "The distance between two points can then be read as how related the items are. Real embedding spaces have many more dimensions than three; the course says word embeddings often use 256, 512 or 1,024. Unlike the food example, the individual dimensions are rarely easy to name. The meaning sits in the pattern across all of them, not in any one number."],
+        ["callout", "The same item can get different embeddings for different jobs. Google's course notes that a model sorting meals into vegetarian and non-vegetarian would place dishes differently from one suggesting food by time of day."],
+        ["heading", "From distributional ideas to word2vec"],
+        ["paragraph", "The idea behind word embeddings is old. Wikipedia's article on the subject traces it to the linguist J. R. Firth, who in 1957 described a word as characterised by the company it keeps. Words that appear in similar surroundings tend to mean similar things. Methods such as latent semantic analysis, from the 1980s, used this by compressing counts of which words occur together."],
+        ["paragraph", "In 2000, Bengio and colleagues proposed learning word representations with neural networks. In 2013 a Google team led by Tomas Mikolov released word2vec, a toolkit that trained word vectors faster than earlier approaches and helped bring them into wide use. Google's course gives a classic example of what such a model learns: horse and burro appear in similar contexts, so they end up near each other."],
+        ["paragraph", "These are called static embeddings because each word has exactly one vector, whatever sentence it appears in. The vectors also depend on the text used for training. Wikipedia notes a 2016 study showing that word2vec trained on Google News reflected gender and racial biases found in that text."],
+        ["heading", "Contextual embeddings"],
+        ["paragraph", "A single vector per word struggles with words that have several senses. \"Bank\" can be a riverbank or a place to keep money, and a static embedding merges them. Models such as ELMo and BERT, developed in the late 2010s, instead produce an embedding for each occurrence of a word, so the vector reflects the sentence around it. The same approach extends to whole sentences and documents; Wikipedia lists skip-thought vectors from 2015 and Sentence-BERT among the sentence-level methods."],
+        ["heading", "What embeddings are used for"],
+        ["list", "Recommendations: Google's course uses a food app that suggests crepes to someone who likes pancakes because the two sit near each other.\nSearch: documents and queries can both be turned into vectors, and the closest vectors are returned, which is the vector space idea Wikipedia calls the first generation of semantic space models.\nText analysis: embeddings are fed into systems for tasks such as sentiment analysis and syntactic parsing, where Wikipedia says they improve performance.\nOther data: the same idea has been applied to DNA, RNA and protein sequences, and to analysing gameplay logs."],
+        ["paragraph", "Embeddings are also commonly used to find passages for chatbots to read before answering, but neither source used for this article covers that, so it is not described in detail here."],
+        ["heading", "What embeddings cannot do"],
+        ["paragraph", "An embedding is a compressed summary, not a definition. Nearby points are expected to be similar in meaning, as Wikipedia puts it, but closeness depends on the training data and on the task the embedding was built for. Two items that are close for one purpose may be far apart for another. Because the dimensions are hard to read, it is also hard to explain exactly why two items were judged similar."],
+        ["paragraph", "The short version: an embedding replaces a long, empty list with a short, dense one in which distance stands for similarity. That one trick underlies a great deal of modern language software."]
+      ],
+      "sources": [
+        { "title": "Word embedding, Wikipedia", "url": "https://en.wikipedia.org/wiki/Word_embedding" },
+        { "title": "Embeddings, Machine Learning Crash Course, Google for Developers", "url": "https://developers.google.com/machine-learning/crash-course/embeddings" },
+        { "title": "Embedding space, Machine Learning Crash Course, Google for Developers", "url": "https://developers.google.com/machine-learning/crash-course/embeddings/embedding-space" }
+      ],
+      "checkedOn": "2026-11-03"
+    },
+    {
+      "title": "5G Explained: Bands, Speeds and What Changed From 4G",
+      "category": "Technology",
+      "excerpt": "5G uses low, mid and high radio bands with very different speeds and range. This guide covers the bands, the targets, standalone versus non-standalone and the launch dates.",
+      "tags": ["5g", "mobile networks"],
+      "blocks": [
+        ["paragraph", "5G is the fifth generation of mobile network technology. It is not one fixed speed but a family of radio bands and network designs, and what a phone actually gets depends mostly on which band it is using. This article explains the bands, the speed and delay figures, the difference between the two ways of building a 5G network, and when the first services started."],
+        ["heading", "Who defines 5G"],
+        ["paragraph", "Two layers of standards sit behind 5G. The International Telecommunication Union (ITU) defines a framework called IMT-2020, which sets the goals. The 3GPP group of standards bodies writes the detailed technical specifications. According to Wikipedia, 3GPP Release 15 specified the 5G radio, called New Radio or NR, and the 5G system. Release 16 added NR-U for using unlicensed spectrum, Release 17 added RedCap for simpler, lower-cost devices, and Release 18, called 5G-Advanced, adds AI and machine-learning tools for managing networks and better energy efficiency."],
+        ["paragraph", "The ITU describes three usage scenarios for 5G, taken from its Recommendation ITU-R M.2083: enhanced mobile broadband (eMBB), ultra-reliable and low-latency communications (URLLC) and massive machine-type communications (mMTC). In plain terms: faster phone data, dependable low-delay links, and very large numbers of connected sensors."],
+        ["heading", "Three kinds of band"],
+        ["list", "Low band: below roughly 1 GHz and up into the sub-6 GHz range (Wikipedia gives 410 MHz to 7.125 GHz for the whole of this \"FR1\" range). Signals travel far and pass through walls. Wikipedia gives about 5 to 250 Mbit/s for a low band example.\nMid band: also in the sub-6 GHz range and the most widely deployed. Wikipedia gives roughly 10 to 1,000 Mbit/s, with better reach than the high band.\nHigh band (millimetre wave, \"FR2\"): 24.25 to 71 GHz, with channels up to 400 MHz wide and multi-gigabit speeds. Range is short and signals are blocked by walls, windows and foliage; Wikipedia says they can lose over 100 dB through common building materials."],
+        ["paragraph", "The trade-off is familiar: a wider slice of spectrum carries more data, but higher frequencies travel less far. That is why mid band, a compromise between the two, is common."],
+        ["heading", "Speed and delay: targets versus reality"],
+        ["paragraph", "The ITU's IMT-2020 targets are 20 Gbit/s downlink and 10 Gbit/s uplink under ideal conditions, according to Wikipedia. These are peak goals, not what people usually see. The ITU's own page points to Report ITU-R M.2410 for the minimum performance requirements. Wikipedia reports a highest measured speed on a deployed network of 5.9 Gbit/s in 2023, and average real-world speeds of about 186 Mbit/s in the United States on T-Mobile and about 430 Mbit/s in South Korea in 2022."],
+        ["paragraph", "For delay, Wikipedia says the radio link typically adds 8 to 12 milliseconds, with early Verizon deployments reporting about 30 ms. It also notes that delay rises to around 50 to 150 ms during a handover between cells. Wikipedia describes 5G as up to about ten times faster than 4G and projected to carry up to 100 times the capacity, though it also says early non-standalone networks reportedly gained 15 to 50 per cent more throughput than advanced 4G in favourable conditions."],
+        ["callout", "Peak figures are lab or ideal-condition goals. Actual speed depends on the band, how many people share the cell and how far you are from the mast."],
+        ["heading", "Non-standalone and standalone"],
+        ["paragraph", "Early 5G networks were non-standalone (NSA): they added 5G radio but kept the existing 4G core network behind it. A standalone (SA) network uses a dedicated 5G core, which Wikipedia describes as replacing the 4G Evolved Packet Core with modular, software-based functions. Standalone is a prerequisite for voice calls over the 5G radio, known as Voice over NR. Wikipedia says T-Mobile launched the first nationwide standalone network in 2020."],
+        ["heading", "When 5G launched"],
+        ["list", "3 April 2019: South Korea launched the first full national commercial network, and Verizon began limited service in some US cities hours later.\nJune 2019: Globe Telecom launched the first 5G-era network in the Philippines.\nDecember 2019: AT&T launched a consumer service in the United States, expanding nationwide during 2020."],
+        ["paragraph", "Wikipedia also records that India's 5Gi variant was merged into the standard in April 2022 as part of Release 17."],
+        ["heading", "What this means in practice"],
+        ["paragraph", "When a phone shows a 5G symbol, that tells you little by itself. It could be a low band with modest gains over 4G or a millimetre-wave link with far higher speeds but very short range. Operators in different countries have used different band mixes, so figures such as the ones above are examples of reported results, not guarantees. This is general information; check your own operator's coverage maps and plan details for what applies to you."]
+      ],
+      "sources": [
+        { "title": "5G, Wikipedia", "url": "https://en.wikipedia.org/wiki/5G" },
+        { "title": "IMT-2020 (5G), ITU-R Working Party 5D, International Telecommunication Union", "url": "https://www.itu.int/en/ITU-R/study-groups/rsg5/rwp5d/imt-2020/Pages/default.aspx" }
+      ],
+      "checkedOn": "2026-11-03"
+    },
+    {
+      "title": "How Qi Wireless Charging Works, From Qi to Qi2",
+      "category": "Electronics",
+      "excerpt": "Qi chargers move power through a magnetic field between two coils. This guide explains the coils, the feedback, the power levels and what Qi2 adds.",
+      "tags": ["wireless charging", "qi"],
+      "blocks": [
+        ["paragraph", "Qi (pronounced \"chee\") wireless charging sends power from a charging pad to a device through a magnetic field, with no plug in the device. Two coils do the work: one in the charger and one in the device. This article explains how that works, how the pad and device talk to each other, and how the standard has grown from 5 watts to Qi2 with magnets."],
+        ["heading", "Two coils and a changing magnetic field"],
+        ["paragraph", "Qi uses electromagnetic induction between flat coils. According to Wikipedia's article on the standard, the charger contains a transmitting coil that produces an oscillating magnetic field. A receiving coil in the device picks up that field and produces an electric current, which charges the battery."],
+        ["paragraph", "The coils need to sit close together; the article says close spacing keeps the transfer efficient. That is why a phone has to rest on the pad rather than a few centimetres away. Wikipedia says Qi transmitters typically start at 140 kHz and can adjust their frequency to suit the distance between coils, with reference designs operating anywhere from 105 to 205 kHz."],
+        ["heading", "How the phone talks back"],
+        ["paragraph", "The charger needs to know how much power the device wants. The device tells it using backscatter modulation: it varies how it loads the magnetic field, and the charger watches for those small changes and adjusts the power it sends. No separate radio link is needed for this basic control."],
+        ["heading", "Safety: detecting objects that should not be heated"],
+        ["paragraph", "A magnetic field can warm metal objects. Wikipedia records that foreign object detection first appeared in version 1.1 of the specification, to stop nearby metal such as coins from heating up. Version 1.2 improved its sensitivity, and version 2.2 added a check based on the Q-factor and power-loss calibration. The article does not describe the detection method in detail."],
+        ["heading", "Who runs the standard"],
+        ["paragraph", "Qi is developed by the Wireless Power Consortium (WPC). Wikipedia dates version 1.0 to July 2010. The consortium's own site says Qi launched in 2010, that more than 13,000 Qi Certified products are on the market, and that only certified products may show the Qi or Qi2 logo. Certification involves safety and interoperability testing at independent authorised labs."],
+        ["heading", "Power levels over the versions"],
+        ["list", "Baseline profile: 5 W, from the first versions in 2010 to 2012.\nExtended Power Profile: 15 W, introduced with version 1.2 in October 2015.\nVersion 1.2.3 (February 2017): allowed negotiation up to 30 W.\nMedium power: 30 to 65 W as of 2019, according to Wikipedia.\nKi, for kitchen appliances: 1 kW in 2015, raised to 2.2 kW in 2024.\nQi2 (version 2.0, April 2023): 15 W with magnetic alignment.\nQi 2.2 (April 2025): up to 25 W. Version 2.2.1 in July 2025 introduced the \"Qi2 25 W\" branding."],
+        ["paragraph", "Dates in the list come from Wikipedia's version table. The consortium states that Qi2 25 W launched in July 2025 as v2.2.1 and delivers nearly 70 per cent more power than Qi2 15 W; it says this can take a smartphone battery from 0 to 50 per cent in about 30 minutes."],
+        ["heading", "What Qi2 changes"],
+        ["paragraph", "Earlier Qi relied on the user placing the device correctly, and a misaligned coil wastes energy. Qi2 adds a ring of magnets so the device snaps into position. Wikipedia says the magnetic ring is based on Apple's MagSafe. The consortium says the alignment makes charging more efficient and easier to use, and that the magnetic hold also supports accessories such as AR and VR headsets and add-ons that attach to the back of a phone."],
+        ["callout", "Look for the Qi or Qi2 logo. The consortium says only certified products are allowed to display it."],
+        ["heading", "Limits"],
+        ["paragraph", "Because the coils must be near each other, wireless charging is a short-range technology. Neither source used here gives efficiency figures, so this article does not compare it with a cable. Wikipedia also lists version 2.3 from December 2025, which adds reporting of system gain changes, but the sources do not say how that affects ordinary users. For the power your own phone and charger support, check the maker's specifications."]
+      ],
+      "sources": [
+        { "title": "Qi (standard), Wikipedia", "url": "https://en.wikipedia.org/wiki/Qi_(standard)" },
+        { "title": "Qi wireless charging, Wireless Power Consortium", "url": "https://www.wirelesspowerconsortium.com/qi/" }
+      ],
+      "checkedOn": "2026-11-03"
+    },
+    {
+      "title": "How a Pin Tumbler Lock Works: Pins, Plug, Shear Line",
+      "category": "How It Works",
+      "excerpt": "The common door lock uses spring-loaded pins of different lengths. Only the right key lifts them all to the shear line. Here is how, and where it is weak.",
+      "tags": ["locks", "mechanisms"],
+      "blocks": [
+        ["paragraph", "Most door locks in the world use the pin tumbler design. A key with the right pattern of cuts lifts a set of small pins to exactly the right heights, which frees a rotating part so it can turn. Without the correct key, at least one pin blocks the turn. This article explains the parts, shows how the key works step by step, and covers the history and the known weaknesses."],
+        ["heading", "The parts"],
+        ["list", "Shell (housing or cylinder): the fixed outer part with a round hole in it.\nPlug: the inner cylinder that rotates when the lock is opened. The key slot, called the keyway, is in the plug. A cam or lever at the back moves the bolt.\nChambers: small vertical holes drilled through both shell and plug.\nKey pins: pins of differing lengths that sit at the bottom and touch the key.\nDriver pins: pins above the key pins, usually of uniform length.\nSprings: push the pin stacks down toward the key."],
+        ["paragraph", "Wikipedia says most cylinders have five or six pin stacks. The thin gap between the plug and the shell is the shear line."],
+        ["heading", "Locked: pins straddle the gap"],
+        ["paragraph", "With no key in, the springs push each stack down. The driver pins cross the shear line, so they sit partly in the shell and partly in the plug. The plug cannot turn because the pins are in the way, like a bolt through two hinged parts."],
+        ["heading", "Unlocked: the key lifts each pin to the line"],
+        ["paragraph", "Each cut on the key has a depth. As the key slides in, every cut raises its key pin by a set amount. When the right key is fully in, the joint between each key pin and its driver pin sits exactly at the shear line. Nothing crosses the gap, so the plug turns freely and the cam pulls back the bolt. A wrong key leaves at least one pin straddling the shear line, and the plug stays locked. Because every pin must be correct, the number of possible key patterns grows quickly with the number of pins."],
+        ["heading", "Master keys"],
+        ["paragraph", "Some buildings need one key for a single door and another key that opens many doors. Wikipedia explains that master-keyed locks usually add a spacer pin to each stack, giving driver, spacer and key pins. That creates two shear points per stack, so two different key heights will open the lock."],
+        ["heading", "A short history"],
+        ["paragraph", "Locks are very old. Wikipedia's article on lock and key says they have been used for over 6,000 years, with an early example found at Nineveh in ancient Assyria. The Egyptian wooden pin lock followed, in which a key lifted pins out of holes in the bolt. The article on the pin tumbler lock says the basic principle may date to about 2000 BC in Egypt."],
+        ["paragraph", "The modern form came much later. In 1805 Abraham Stansbury received an English patent for a double-acting design, where lifting pins too far or not far enough prevents opening. Linus Yale Sr. created the modern pin tumbler lock in 1848, according to Wikipedia. In 1861 his son, Linus Yale Jr., patented a smaller flat key with serrated edges, and pins of varying lengths inside the lock, which is the basis of today's design."],
+        ["heading", "Why picking works"],
+        ["paragraph", "No lock is made perfectly. Science ABC explains that manufacturing tolerances mean the chambers never line up exactly, so when someone applies light turning force, one pin binds before the others. This weakness is why the design can be opened without the key by someone with the right tools and skill. Security therefore depends on factors such as the number of pins and how accurately the lock is made."],
+        ["paragraph", "Wikipedia lists other known attacks, including lock bumping and snap guns, and a method called lock snapping, which breaks the cylinder by force and which it says can take about 50 seconds to 2 minutes. Security pins such as spool and serrated pins can mislead or delay a picker but may not stop an experienced one. Cylinders certified to standards such as Sold Secure SS312 Diamond or TS007 3-Star are described as resisting drilling, picking, bumping, snapping and plug extraction."],
+        ["callout", "A lock is one part of security. Whether a particular lock suits your home or business is a question for a qualified locksmith or your insurer; this article is general information only."]
+      ],
+      "sources": [
+        { "title": "Pin tumbler lock, Wikipedia", "url": "https://en.wikipedia.org/wiki/Pin_tumbler_lock" },
+        { "title": "Lock and key, Wikipedia", "url": "https://en.wikipedia.org/wiki/Lock_and_key" },
+        { "title": "How Do Pin Tumbler Locks Work? Science ABC", "url": "https://www.scienceabc.com/innovation/pick-door-locks-pin-tumbler-sherlock-doors-open" }
+      ],
+      "checkedOn": "2026-11-03"
+    },
+    {
+      "title": "How Cabin Pressurisation Keeps Airliner Air Breathable",
+      "category": "Aviation",
+      "excerpt": "At cruise height the outside air is too thin to breathe. Airliners pump in air and control how fast it leaves. Here is how, and why cabins sit near 6,000 to 8,000 feet.",
+      "tags": ["pressurisation", "airliners"],
+      "blocks": [
+        ["paragraph", "Airliners cruise where the outside air is too thin for people to breathe. To make the cabin safe, the aircraft continuously pumps air in and carefully controls how quickly it escapes, so that the pressure inside stays far higher than outside. The pressure is not kept at sea-level pressure; it is held at about the equivalent of 8,000 feet or lower, a compromise between comfort and the strength of the fuselage."],
+        ["heading", "Why pressurise at all"],
+        ["paragraph", "Wikipedia says that above about 10,000 feet pressurisation is needed to prevent hypoxia, a shortage of oxygen reaching the body. Most people tolerate a cabin at 8,000 feet, though some with heart or lung disease may be affected from about 5,000 feet. Rapid pressure changes can also cause barotrauma, the ear and sinus pain many passengers know on descent."],
+        ["heading", "Where the air comes from"],
+        ["paragraph", "On most jetliners the air is bled from the compressor stages of the engines. Wikipedia says it reaches about 200°C by the time it arrives at the bleed valves. The aircraft's environmental control system cools it, passes it through a heat exchanger and air cycle machine, and mixes it with recirculated cabin air before it enters the cabin. An article from Destination.com describes the same process: bleed air is cooled and filtered by environmental control units before it is distributed."],
+        ["paragraph", "Not every aircraft works this way. According to Wikipedia, the Boeing 787 uses electric compressors instead of bleed air."],
+        ["heading", "The outflow valve sets the pressure"],
+        ["paragraph", "Air that goes in must also leave. It exits through an outflow valve, usually near the rear of the fuselage. Both sources say this valve controls the pressure: because air is admitted faster than it leaves, the cabin pressure builds, and closing the valve further raises it. An automatic controller adjusts the valve, and pilots can control it by hand if the automatic system fails."],
+        ["paragraph", "Wikipedia gives typical pressure differences between cabin and outside of 540 to 650 hPa (7.8 to 9.4 psi). At 39,000 feet the cabin may be held near 6,900 feet."],
+        ["heading", "Cabin altitude"],
+        ["paragraph", "\"Cabin altitude\" is the height in a standard atmosphere that has the same pressure as the cabin air. Wikipedia says regulations limit it to 8,000 feet (2,438 metres) at the aircraft's maximum operating altitude under normal conditions, citing the US rule in 14 CFR Part 25, section 841. Destination.com says the limit effectively caps how high an airliner can cruise."],
+        ["paragraph", "Examples from Wikipedia: a Boeing 767 cruising at 37,000 feet holds about 7,000 feet in the cabin, and the median cabin altitudes were 6,128 feet on the A380 and 5,159 feet on the 747-400. Wikipedia gives about 6,000 feet for the Boeing 787. For the Airbus A350 it says the maker states 6,000 feet or lower. Composite fuselages avoid some of the fatigue and corrosion concerns of metal ones, which the article links to these lower values."],
+        ["heading", "Safety valves and warnings"],
+        ["paragraph", "Destination.com says a safety valve prevents over-pressurisation, equalises pressure if outside air is higher than cabin air, and lets the crew release pressure quickly if needed. If pressure is lost above 10,000 feet, Wikipedia says an emergency descent to about 10,000 feet is required and oxygen masks must be deployed to every seat. Another Wikipedia article on the aircraft cabin says masks drop automatically on most airliners when cabin pressure falls to the equivalent of 14,000 feet."],
+        ["heading", "A short history"],
+        ["list", "1937: Lockheed XC-35, an experimental aircraft whose fuselage skin was the pressure vessel.\n1938: Boeing 307 Stratoliner, the first pressurised airliner in commercial service, though only ten were built.\n1943: Lockheed Constellation, the first pressurised airliner in wide service.\n1949: de Havilland Comet, the first jetliner. Two catastrophic failures in 1954 were traced to metal fatigue and stress around square windows, which led to oval windows on later jets.\n1988: Aloha Airlines Flight 243, a Boeing 737-200 with more than 89,680 flight cycles, over twice its design limit."],
+        ["paragraph", "Concorde flew up to 60,000 feet with a 6,000 foot cabin altitude and used small windows to slow any decompression."],
+        ["callout", "This is a general explanation. Pressurisation limits and procedures differ between aircraft types and are set by regulators and manufacturers."]
+      ],
+      "sources": [
+        { "title": "Cabin pressurization, Wikipedia", "url": "https://en.wikipedia.org/wiki/Cabin_pressurization" },
+        { "title": "Aircraft cabin, Wikipedia", "url": "https://en.wikipedia.org/wiki/Aircraft_cabin" },
+        { "title": "How aircraft pressurization systems keep passengers safe at cruise altitude, Destination.com", "url": "https://www.destination.com/news/how-aircraft-pressurization-systems-keep-passengers-safe-cruise-altitude" }
+      ],
+      "checkedOn": "2026-11-03"
+    }
+  ]
+}
