@@ -37,6 +37,27 @@ const WORD_GUESS_HOW = `Guess the hidden five-letter word in six tries.
 
 Your streak and results are saved only in your own browser. Nothing is sent to us. After you finish, **Copy my result** gives you a row of coloured squares to share without giving the word away. Missed a day? Use the puzzle picker above the board to play an earlier puzzle.`;
 
+const SNAKE_HOW = `Steer the snake to the apples. Every apple makes it longer, and the longer it gets, the harder it is to avoid yourself.
+
+# How it works
+
+- Press **Start**, or any arrow key. The snake moves by itself; you only choose where it turns.
+- Steer with the **arrow keys** or **W, A, S, D**. On a phone, swipe on the board or use the four buttons under it.
+- Eat the red apples. Each one scores a point and adds a square to the snake.
+- The game ends if the snake runs into a wall or into itself.
+- Press **Space** or the Pause button to take a break.
+
+# Tips
+
+- Keep to the edges early on and leave room in the middle to turn.
+- Plan two moves ahead. A turn right next to a wall can leave you nowhere to go.
+- The snake speeds up as your score grows, so settle into a loop that sweeps the whole board.
+- Turning straight back on yourself is ignored, so a quick double tap will not end the game.
+
+# Your score
+
+Your best score is saved only in your own browser. Nothing is sent to us. After a game, **Copy my score** gives you a line to share with a friend.`;
+
 const DRAFT = "This game is being built. Check back soon.";
 const GAMES: [slug: string, name: string, tagline: string, type: string, how: string, status: string][] = [
   ["word-guess", "Word Guess", "Guess the hidden five-letter word in six tries. A new word every day.", "word_guess", WORD_GUESS_HOW, "published"],
@@ -44,6 +65,7 @@ const GAMES: [slug: string, name: string, tagline: string, type: string, how: st
   ["word-trail", "Word Trail", "Trace themed words through a grid of letters. Every letter is used once.", "word_trail", DRAFT, "draft"],
   ["hive-words", "Hive Words", "Make as many words as you can from seven letters. One letter is always needed.", "hive_words", DRAFT, "draft"],
   ["mini-crossword", "Mini Crossword", "A quick crossword on a small grid, with a fresh set of clues each day.", "mini_crossword", DRAFT, "draft"],
+  ["snake", "Snake", "Steer the snake to the apples without hitting a wall or yourself. How long can you grow?", "snake", SNAKE_HOW, "published"],
 ];
 // The games pages reuse the below-tool and blog-list ad slots until separate ones are made in AdSense.
 const ADS: [placement: string, page: string, slot: string][] = [

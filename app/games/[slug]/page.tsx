@@ -7,6 +7,7 @@ import { GameCard } from "../../../components/Cards";
 import GamePlayer from "../../../components/games/GamePlayer";
 import { Container, PageBand } from "../../../components/layout";
 import { Prose } from "../../../components/Prose";
+import { ARCADE_GAME_TYPES } from "../../../lib/games/types";
 import { getGameBySlug, getPublishedGames, getPuzzles } from "../../../lib/content";
 import { pageMetadata } from "../../../lib/metadata";
 import { nonEmptyParams } from "../../../lib/static";
@@ -23,7 +24,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const game = getGameBySlug(slug);
-  return game ? pageMetadata({ title: `${game.name}: a free daily word game`, description: game.tagline, path: `/games/${game.slug}/` }) : {};
+  return game ? pageMetadata({ title: `${game.name}: a free ${ARCADE_GAME_TYPES.includes(game.game_type) ? "online game" : "daily word game"}`, description: game.tagline, path: `/games/${game.slug}/` }) : {};
 }
 
 export default async function GamePage({ params }: Props) {
@@ -31,13 +32,14 @@ export default async function GamePage({ params }: Props) {
   const game = getGameBySlug(slug);
   if (!game) notFound();
   const puzzles = getPuzzles(game.game_id);
+  const arcade = ARCADE_GAME_TYPES.includes(game.game_type);
   const others = getPublishedGames().filter((g) => g.game_id !== game.game_id);
 
   return (
     <>
       <PageBand
         breadcrumbs={<Breadcrumbs trail={[{ label: "Games", path: "/games/" }, { label: game.name }]} />}
-        eyebrow="Daily game"
+        eyebrow={arcade ? "Arcade game" : "Daily game"}
         title={game.name}
         description={game.tagline}
       />

@@ -1,7 +1,10 @@
-export type GameType = "word_guess" | "four_groups" | "word_trail" | "hive_words" | "mini_crossword";
+export type GameType = "word_guess" | "four_groups" | "word_trail" | "hive_words" | "mini_crossword" | "snake";
+
+/** Arcade games have no daily puzzle: they are played any time and keep a best score. */
+export const ARCADE_GAME_TYPES: readonly GameType[] = ["snake"];
 
 /** The game types that have a playable game. A game of another type can be kept as a draft but not published. */
-export const BUILT_GAME_TYPES: readonly GameType[] = ["word_guess", "four_groups", "hive_words", "mini_crossword", "word_trail"];
+export const BUILT_GAME_TYPES: readonly GameType[] = ["word_guess", "four_groups", "hive_words", "mini_crossword", "word_trail", "snake"];
 
 export interface Game {
   game_id: string;

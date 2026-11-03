@@ -49,6 +49,9 @@ export default function GamesIndexPage() {
             sign up for and we never see how you played. Missed a day? Each game lets you play earlier puzzles too.
           </p>
           <p className="text-ink-2">
+            Snake is different: it has no daily puzzle. Play it whenever you like and try to beat your best score.
+          </p>
+          <p className="text-ink-2">
             Games on this site are original. They borrow the familiar ideas of word puzzles (guess a word, sort words into groups, find words in a grid) but use their own words,
             names and rules, and the puzzles are written fresh for this site.
           </p>

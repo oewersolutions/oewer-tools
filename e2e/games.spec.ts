@@ -292,3 +292,17 @@ test("the home page offers today's puzzles and links to all the games", async ({
   await expect(section.getByRole("link", { name: "All games" })).toHaveAttribute("href", /\/games\/$/);
   await expect(section.getByRole("link", { name: /Play today/ })).toHaveCount(3);
 });
+
+test("Snake: starts on a key press, steers, ends at a wall and remembers the best score", async ({ page }) => {
+  await page.goto("/games/snake/");
+  const board = page.getByRole("application", { name: /Snake board/ });
+  await expect(board).toBeVisible();
+  await page.getByRole("button", { name: "Start" }).click();
+  await expect(page.getByText("Apples:")).toBeVisible();
+  await board.focus();
+  await page.keyboard.press("ArrowUp"); // up, then it runs into the top wall
+  await expect(page.getByRole("status").filter({ hasText: "Game over" })).toHaveText(/You ate 0 apples/, { timeout: 15_000 });
+  await expect(page.getByRole("button", { name: "Play again" })).toBeVisible();
+  await page.getByRole("button", { name: "Play again" }).click();
+  await expect(page.getByRole("button", { name: "Start" })).toBeHidden();
+});

@@ -4,6 +4,7 @@ import type { FourGroupsData, Game, HiveWordsData, MiniCrosswordData, Puzzle, Wo
 import FourGroups from "./FourGroups";
 import HiveWords from "./HiveWords";
 import MiniCrossword from "./MiniCrossword";
+import Snake from "./Snake";
 import WordGuess from "./WordGuess";
 import WordTrail from "./WordTrail";
 
@@ -20,6 +21,8 @@ export default function GamePlayer({ game, puzzles }: { game: Pick<Game, "slug" 
       return <MiniCrossword name={game.name} slug={game.slug} puzzles={puzzles as Puzzle<MiniCrosswordData>[]} />;
     case "word_trail":
       return <WordTrail name={game.name} slug={game.slug} puzzles={puzzles as Puzzle<WordTrailData>[]} />;
+    case "snake":
+      return <Snake name={game.name} slug={game.slug} />;
     default:
       return <p className="text-muted">This game is not available yet.</p>;
   }

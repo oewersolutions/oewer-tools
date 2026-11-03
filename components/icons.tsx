@@ -63,6 +63,7 @@ const GAME_ICONS: Record<string, LucideIcon> = {
   word_trail: Route,
   hive_words: Hexagon,
   mini_crossword: Grid3x3,
+  snake: Gamepad2,
 };
 
 export function GameIcon({ gameType, className }: { gameType: string; className?: string }) {

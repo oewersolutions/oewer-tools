@@ -1,5 +1,6 @@
 import { isDashboardUrl, isMeasurementId } from "../analytics";
 import { stockFrom } from "../games/make";
+import { ARCADE_GAME_TYPES, type GameType } from "../games/types";
 import type { WorkbookData } from "../workbook";
 
 export interface CountRow {
@@ -51,7 +52,7 @@ export interface PuzzleStock {
 export function puzzleStock(data: WorkbookData, today: string): PuzzleStock[] {
   const puzzles = data.game_puzzles ?? [];
   return (data.games ?? [])
-    .filter((g) => g.values.status === "published")
+    .filter((g) => g.values.status === "published" && !ARCADE_GAME_TYPES.includes(g.values.game_type as GameType))
     .sort((a, b) => Number(a.values.sort_order) - Number(b.values.sort_order))
     .map((g) => {
       const dates = new Set(puzzles.filter((p) => p.values.game_id === g.values.game_id && p.values.status === "published").map((p) => String(p.values.puzzle_date)));

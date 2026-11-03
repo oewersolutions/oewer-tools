@@ -27,7 +27,7 @@
     "nav_location": ["header", "footer", "footer_legal"],
     "block_type": ["paragraph", "heading", "list", "image", "quote", "code", "callout"],
     "ad_page_type": ["home", "tool_category", "tool", "blog_index", "blog_category", "blog_post", "page", "game_hub", "game"],
-    "game_type": ["word_guess", "four_groups", "word_trail", "hive_words", "mini_crossword"],
+    "game_type": ["word_guess", "four_groups", "word_trail", "hive_words", "mini_crossword", "snake"],
     "redirect_type": ["301", "302"],
     "seo_entity_type": ["page", "tool_category", "tool", "post", "blog_category"]
   },

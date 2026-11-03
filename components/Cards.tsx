@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Post, Tool, ToolCategory } from "../lib/content";
-import type { Game } from "../lib/games/types";
+import { ARCADE_GAME_TYPES, type Game } from "../lib/games/types";
 import { formatDate } from "../lib/format";
 import { postUrl, toolUrl } from "../lib/search";
 import { getCoverInfo } from "../lib/content";
@@ -67,7 +67,7 @@ export function GameCard({ game, heading: Heading = "h3" }: { game: Game; headin
       <Heading className="t-subheading mt-5 text-ink">{game.name}</Heading>
       <p className="mt-1.5 text-sm leading-relaxed text-muted">{game.tagline}</p>
       <span className="mt-auto inline-flex items-center gap-2 pt-6 text-sm font-medium text-brand">
-        Play today&rsquo;s puzzle
+        {ARCADE_GAME_TYPES.includes(game.game_type) ? "Play now" : "Play today\u2019s puzzle"}
         <ArrowRight aria-hidden="true" className="size-4" />
       </span>
     </Link>
