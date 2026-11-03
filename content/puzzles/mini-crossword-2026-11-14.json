@@ -1,0 +1,31 @@
+{
+ "puzzles": [
+  {
+   "game": "mini-crossword",
+   "date": "2026-11-14",
+   "data": {
+    "grid": [
+     "AND##",
+     "DARE#",
+     "SMELL",
+     "#EASE",
+     "##MET"
+    ],
+    "across": {
+     "1": "Word that joins two things",
+     "4": "To be brave enough to try",
+     "6": "What your nose senses",
+     "8": "Freedom from difficulty",
+     "9": "Came together with, past tense"
+    },
+    "down": {
+     "1": "Short notices that try to sell things",
+     "2": "What you are called",
+     "3": "Pictures your mind makes while asleep",
+     "5": "Other; different",
+     "7": "Allow"
+    }
+   }
+  }
+ ]
+}

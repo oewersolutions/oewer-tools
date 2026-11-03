@@ -1,0 +1,31 @@
+{
+ "puzzles": [
+  {
+   "game": "mini-crossword",
+   "date": "2026-11-16",
+   "data": {
+    "grid": [
+     "##BIN",
+     "#TUNE",
+     "SHIFT",
+     "HALO#",
+     "END##"
+    ],
+    "across": {
+     "1": "Container for rubbish",
+     "4": "A melody",
+     "5": "A change of position, or a work period",
+     "6": "Ring of light above a saint",
+     "7": "The last part; finish"
+    },
+    "down": {
+     "1": "To put together, as a house",
+     "2": "Facts about a subject, in short",
+     "3": "Mesh used to catch fish or divide a tennis court",
+     "4": "Compared with, as in \"taller ___ me\"",
+     "5": "That woman"
+    }
+   }
+  }
+ ]
+}

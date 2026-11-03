@@ -1,0 +1,31 @@
+{
+ "puzzles": [
+  {
+   "game": "mini-crossword",
+   "date": "2026-11-13",
+   "data": {
+    "grid": [
+     "##TRY",
+     "#TRUE",
+     "FAULT",
+     "ELSE#",
+     "WET##"
+    ],
+    "across": {
+     "1": "Make an attempt",
+     "4": "Correct; not false",
+     "5": "A mistake or flaw",
+     "6": "Other; different",
+     "7": "Not dry"
+    },
+    "down": {
+     "1": "Firm belief that someone is honest and reliable",
+     "2": "A guide for how things must be done",
+     "3": "Even so; up to now",
+     "4": "A story, often an old one",
+     "5": "Not many"
+    }
+   }
+  }
+ ]
+}

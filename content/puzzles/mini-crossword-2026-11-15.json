@@ -1,0 +1,31 @@
+{
+ "puzzles": [
+  {
+   "game": "mini-crossword",
+   "date": "2026-11-15",
+   "data": {
+    "grid": [
+     "HOT##",
+     "IRON#",
+     "SATIN",
+     "#LANE",
+     "##LET"
+    ],
+    "across": {
+     "1": "Having a high temperature",
+     "4": "Strong grey metal used for bridges",
+     "6": "Smooth, shiny cloth",
+     "8": "Narrow road or path",
+     "9": "Allowed; permitted"
+    },
+    "down": {
+     "1": "Belonging to him",
+     "2": "Spoken, not written",
+     "3": "The full amount when added up",
+     "5": "The number after eight",
+     "7": "Mesh used to catch fish or divide a tennis court"
+    }
+   }
+  }
+ ]
+}
