@@ -1,0 +1,261 @@
+{
+ "date": "2026-11-03",
+ "articles": [
+  {
+   "title": "Harley-Davidson X350 T Unveiled at EICMA 2026 (Nov 2026)",
+   "category": "News and Launches",
+   "categoryDescription": "Recent news and new launches: vehicles, gadgets, AI and aviation, explained from official sources.",
+   "excerpt": "The Hero-built Harley-Davidson X350 T, a 350cc version of the X440 T, was shown at EICMA 2026 on 3 November 2026. What is reported, what is not confirmed, and why 350cc matters.",
+   "tags": [
+    "news",
+    "launch",
+    "harley-davidson",
+    "hero motocorp",
+    "eicma"
+   ],
+   "blocks": [
+    [
+     "paragraph",
+     "Harley-Davidson showed the X350 T, a 350cc roadster, at the EICMA motorcycle show in Milan, according to reports published on 3 November 2026. It is a smaller-engined version of the X440 T, the motorcycle that Hero MotoCorp builds and sells in India under licence from Harley-Davidson. No price and no on-sale date have been reported. This article is based on two motorcycle news outlets, ZigWheels and Autocar India; we could not find a manufacturer press release to read, so treat every figure below as reported, not as confirmed by the maker."
+    ],
+    [
+     "heading",
+     "What was shown"
+    ],
+    [
+     "paragraph",
+     "Both outlets describe the X350 T as essentially an X440 T with a smaller engine. ZigWheels says the bike has the same muscular roadster look, a round headlamp, a sculpted fuel tank and a new dark green colour, with X350 T badging on both sides of the tank. Autocar India lists a few differences from the X440 T: conventional mirrors instead of bar-end mirrors, no machined finish on the engine fins and no alloy wheels."
+    ],
+    [
+     "paragraph",
+     "The engine is a 350cc, air-and-oil-cooled single-cylinder unit, as described by Autocar India. Autocar India also reports the same electronic throttle body as the X440 T, Road and Rain riding modes, switchable traction control and dual-channel ABS (anti-lock brakes) as standard."
+    ],
+    [
+     "heading",
+     "The numbers: where the reports differ"
+    ],
+    [
+     "paragraph",
+     "The two outlets do not agree on power. ZigWheels gives 22 PS and 30 Nm of torque, and says Harley-Davidson has not officially confirmed the full specifications. Autocar India says official figures were not disclosed and expects output below the X440 T's 27 hp and 38 Nm. Hero is quoted by that outlet as claiming best-in-class torque among air-cooled 350cc rivals. Until the maker publishes a figure, the safest reading is that power and torque are not officially confirmed."
+    ],
+    [
+     "list",
+     "Engine: 350cc, air-and-oil-cooled (as reported by Autocar India)\nReported power and torque: 22 PS and 30 Nm (ZigWheels, not confirmed by the maker)\nX440 T for comparison: 27 PS and 38 Nm (both outlets)\nBrakes: dual-channel ABS (Autocar India)\nPrice: not announced\nOn-sale date: not announced"
+    ],
+    [
+     "heading",
+     "Why 350cc"
+    ],
+    [
+     "paragraph",
+     "Both outlets link the smaller engine to India's tax rules. ZigWheels refers to the revised GST structure (called GST 2.0 in the report) that treats motorcycles up to 350cc differently from larger ones, and Autocar India attributes the downsizing to a 40 percent GST rate on bigger bikes. Neither outlet quotes a government document, so the exact rates are not repeated here. The practical point reported is that a 350cc bike can be priced lower than a 440cc one."
+    ],
+    [
+     "heading",
+     "Price and rivals"
+    ],
+    [
+     "paragraph",
+     "No official price exists yet. Autocar India expects the X350 T to sit below the X440 S at Rs 2.35 lakh and the X440 T at Rs 2.86 lakh (the prices it quotes for those models). That is an expectation, not an announcement. ZigWheels names the Royal Enfield Classic 350 and the Triumph Bonneville T40 as competitors; Autocar India compares it with air-cooled 350cc bikes from Royal Enfield and Honda."
+    ],
+    [
+     "heading",
+     "What is still unknown"
+    ],
+    [
+     "list",
+     "Whether and when it goes on sale in India, and in which markets\nOfficial power, torque and weight\nPrice and variants\nWhether the frame, suspension and brakes are unchanged (the outlets expect they are, but call this unconfirmed)"
+    ],
+    [
+     "callout",
+     "As of 3 November 2026 this is a show unveiling, not a launch. Check Hero MotoCorp or Harley-Davidson for official specifications and prices once they are published."
+    ]
+   ],
+   "sources": [
+    {
+     "title": "Harley-Davidson X350T Unveiled At EICMA 2026, ZigWheels",
+     "url": "https://www.zigwheels.com/news-features/general-news/breaking-harley-davidson-x350t-unveiled-at-eicma-2026-a-smaller-x440t-with-a-dark-green-twist/58421/"
+    },
+    {
+     "title": "Hero-built Harley-Davidson X350 T revealed, Autocar India",
+     "url": "https://www.autocarindia.com/bike-news/hero-built-harley-davidson-x350-t-revealed-441230"
+    }
+   ],
+   "checkedOn": "2026-11-03"
+  },
+  {
+   "title": "What Quantum Computers Are For, and What They Cannot Do",
+   "category": "Technology",
+   "excerpt": "Quantum computers use qubits, superposition and interference to attack a narrow set of problems. What they may be good at, why errors hold them back, and what that means for encryption.",
+   "tags": [
+    "quantum computing",
+    "qubits",
+    "encryption"
+   ],
+   "blocks": [
+    [
+     "paragraph",
+     "A quantum computer is not a faster version of the laptop on your desk. It is a different kind of machine that uses quantum physics to handle a narrow set of problems, such as simulating molecules or breaking certain kinds of encryption, far more efficiently than ordinary computers can. The US standards body NIST says quantum computers will not replace familiar classical computers but could work alongside them. This article explains the basic ideas, what the machines may be for, and the large obstacle that remains: errors."
+    ],
+    [
+     "heading",
+     "Bits and qubits"
+    ],
+    [
+     "paragraph",
+     "An ordinary computer stores information in bits, each of which is 0 or 1. A quantum computer uses qubits. A qubit can be 0, 1, or a superposition of both, which in plain terms means it carries two numbers that set the probability of reading 0 or 1 when it is measured. Qubits can also be entangled, meaning their states are linked and cannot be described one by one."
+    ],
+    [
+     "paragraph",
+     "NIST gives a simple picture of the scaling: two qubits can hold four combinations of 0 and 1, three hold eight, four hold sixteen, and each extra qubit doubles the count. That doubling is why quantum machines are interesting, but it is easy to misread. A measurement gives back only a small amount of information, so a quantum computer cannot simply try every answer at once and pick the right one."
+    ],
+    [
+     "heading",
+     "Interference does the real work"
+    ],
+    [
+     "paragraph",
+     "The probabilities in a qubit are described by amplitudes, and amplitudes can be negative. That lets a well-designed algorithm make wrong answers cancel each other out and right answers reinforce each other, much like waves on water. Designing sequences of operations that do this is hard, which is why only a small number of useful quantum algorithms are known."
+    ],
+    [
+     "heading",
+     "What they may be good at"
+    ],
+    [
+     "list",
+     "**Simulating nature.** Physicist Richard Feynman proposed in 1981 that simulating physics might need a computer built on physics itself. Seth Lloyd showed in 1996 that quantum computers can simulate quantum systems without the exponential cost that classical methods face. Molecules and materials, including catalysts, are the usual examples.\n**Factoring large numbers.** Peter Shor published an algorithm in 1994 that factors integers in polynomial time, far faster than any known classical method.\n**Searching.** Grover's algorithm (1996) searches an unstructured list with a quadratic speedup, which is useful but much smaller than Shor's gain.\n**Optimization.** NIST lists complex optimization problems, such as aircraft assembly, as a possible target."
+    ],
+    [
+     "heading",
+     "Why encryption is part of the story"
+    ],
+    [
+     "paragraph",
+     "Shor's algorithm threatens public-key systems such as RSA, which rely on factoring being hard. Estimates in the literature suggest factoring a 2,048-bit number would need on the order of 3 million physical qubits, far beyond today's machines. In August 2024 NIST released its first three finalised post-quantum encryption standards, designed to resist quantum attacks, and encourages organisations to adopt them."
+    ],
+    [
+     "heading",
+     "The error problem"
+    ],
+    [
+     "paragraph",
+     "Qubits are fragile. Stray electric or magnetic fields, temperature changes and even cosmic rays can disturb them, a process called decoherence. NIST says the best machines today have hundreds of connected qubits and make an error about once in 1,000 operations; classical computers make about one error in a quintillion (10 to the power 18) operations. Running Shor's algorithm on useful sizes may need millions of qubits kept error-free, and Wikipedia's overview notes that fully fault-tolerant quantum computing had not been achieved as of 2026."
+    ],
+    [
+     "paragraph",
+     "Today's devices are called noisy intermediate-scale quantum (NISQ) machines. Some designs must be cooled to about 20 millikelvin, close to absolute zero, using a dilution refrigerator, which is one reason NIST expects quantum computers to sit in computing centres, labs and universities rather than on desks."
+    ],
+    [
+     "heading",
+     "Types of qubit"
+    ],
+    [
+     "list",
+     "**Trapped ion:** holds its state a long time but computes relatively slowly\n**Superconducting:** fast and made with chip-making techniques, but states last a shorter time\n**Neutral atom, semiconductor and photonic:** also under development\n**Topological:** hypothetical, not yet made in a lab, designed to resist errors"
+    ],
+    [
+     "heading",
+     "Claims of advantage"
+    ],
+    [
+     "paragraph",
+     "In October 2019 Google claimed quantum supremacy with a 54-qubit machine on a specially chosen task; IBM disputed this, arguing a classical supercomputer could do it in about 2.5 days rather than the 10,000 years claimed. NIST says early demonstrations of quantum advantage, such as small-molecule energies, have not yet proved truly useful and that classical computers have sometimes matched them."
+    ],
+    [
+     "callout",
+     "This is general information. Figures such as qubit counts and error rates change quickly; the numbers here are as reported by NIST and Wikipedia and were checked on 3 November 2026."
+    ]
+   ],
+   "sources": [
+    {
+     "title": "Quantum Computing Explained, NIST",
+     "url": "https://www.nist.gov/quantum-information-science/quantum-computing-explained"
+    },
+    {
+     "title": "Quantum computing, Wikipedia",
+     "url": "https://en.wikipedia.org/wiki/Quantum_computing"
+    }
+   ],
+   "checkedOn": "2026-11-03"
+  },
+  {
+   "title": "How Electric Aircraft Work and Why Range Is the Problem",
+   "category": "Aviation",
+   "excerpt": "Electric aircraft swap engines for motors and fuel for batteries. Why batteries hold far less energy than jet fuel, which small planes already fly, and where hybrids and hydrogen fit.",
+   "tags": [
+    "electric aircraft",
+    "batteries",
+    "hybrid"
+   ],
+   "blocks": [
+    [
+     "paragraph",
+     "An electric aircraft replaces the fuel-burning engine with an electric motor that turns a propeller or rotor, and replaces the fuel tank with batteries. Motors are very efficient, but batteries hold only a small fraction of the energy that the same weight of aviation fuel does. That single fact explains why electric flying works today for small, short trips and why airliners are a much harder target. This article explains how the pieces fit, using figures from Wikipedia's overview of electric aircraft."
+    ],
+    [
+     "heading",
+     "How an electric aircraft is built"
+    ],
+    [
+     "paragraph",
+     "Most designs use electric motors driving propellers or rotors. According to the overview, motors are about 90 percent efficient, compared with roughly 50 percent for jet engines, and they do not lose power as altitude rises the way combustion engines do. The energy can come from onboard batteries or fuel cells, or from offboard sources such as solar cells, microwave beaming or tethered cables."
+    ],
+    [
+     "heading",
+     "The energy gap"
+    ],
+    [
+     "paragraph",
+     "Energy per kilogram is the key number. The overview cites an estimate of about 160 Wh/kg for packaged lithium-ion batteries in 2018, against about 12,500 Wh/kg for aviation fuel, so electricity storage held roughly 2 percent of the fuel's specific energy. By 2019 the best lithium-ion cells reached 250 to 300 Wh/kg, enough for small aircraft; a regional airliner would need about 500 Wh/kg, and an A320-sized jet about 2 kWh/kg."
+    ],
+    [
+     "list",
+     "Packaged Li-ion, 2018 estimate: about 160 Wh/kg\nBest Li-ion cells, 2019: 250 to 300 Wh/kg\nRegional airliner need: about 500 Wh/kg\nA320-sized jet need: about 2 kWh/kg\nAviation fuel: about 12,500 Wh/kg"
+    ],
+    [
+     "heading",
+     "Weight does not fall as the flight goes on"
+    ],
+    [
+     "paragraph",
+     "A fuel-burning plane gets lighter as it uses fuel. A battery weighs the same empty or full. Safety reserves add to the load: for a 19-seat aircraft, the overview gives about 308 kg of turboprop fuel versus about 4,300 kg of 250 Wh/kg batteries for the same job. A model estimate for a 1,500 kg aircraft using 150 Wh/kg batteries gave around 80 miles with one passenger, about 60 with two and under 30 with three."
+    ],
+    [
+     "heading",
+     "What has flown"
+    ],
+    [
+     "list",
+     "**Pipistrel Velis Electro:** on 10 June 2020 it became the first electric aircraft to receive type certification, from the European Union Aviation Safety Agency (EASA). It has a 57 kW motor, 170 kg payload, 90-knot cruise and about 50 minutes of endurance.\n**Alia CX300 (BETA Technologies):** on 3 June 2025 it made what the overview calls the first passenger flight of an electric-powered plane in North America, 72 nautical miles in 45 minutes to JFK airport.\n**Solar Impulse 2:** flew around the world in 2015 and 2016 on solar power.\n**QinetiQ Zephyr:** set an uncrewed endurance record of 336 hours in July 2010."
+    ],
+    [
+     "heading",
+     "Hybrids and hydrogen"
+    ],
+    [
+     "paragraph",
+     "Hybrid-electric designs typically take off and land on electric power and cruise on a piston or jet engine, which keeps the battery small. The overview says more than 30 hybrid projects existed by May 2018, with short-haul hybrid airliners envisioned from around 2032. Hydrogen fuel cells combine stored hydrogen with oxygen from the air to make electricity. The aircraft must carry the hydrogen, which adds complexity and risk. Boeing flew a fuel-cell demonstrator in 2008, and ZeroAvia has developed fuel-cell propulsion for small aircraft."
+    ],
+    [
+     "heading",
+     "Plans that have slipped"
+    ],
+    [
+     "paragraph",
+     "Several announced timelines have been optimistic. Airbus revealed its CityAirbus demonstrator in 2017 with certification and service planned for 2023, and EasyJet and Wright Electric announced a 180-seat electric plan for 2027 in September 2017. The overview does not report these as having been met, so they are better read as examples of how hard the target is than as schedules."
+    ],
+    [
+     "callout",
+     "Specifications and plans change. Figures here are as given by Wikipedia's article on electric aircraft, checked on 3 November 2026, and are general information only."
+    ]
+   ],
+   "sources": [
+    {
+     "title": "Electric aircraft, Wikipedia",
+     "url": "https://en.wikipedia.org/wiki/Electric_aircraft"
+    }
+   ],
+   "checkedOn": "2026-11-03"
+  }
+ ]
+}

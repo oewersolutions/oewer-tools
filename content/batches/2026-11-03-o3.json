@@ -1,0 +1,100 @@
+{
+ "date": "2026-11-03",
+ "articles": [
+  {
+   "title": "How Electric Aircraft Work and Why Range Is the Problem",
+   "category": "Aviation",
+   "excerpt": "Electric aircraft swap engines for motors and fuel for batteries. Why batteries hold far less energy than jet fuel, which small planes already fly, and where hybrids and hydrogen fit.",
+   "tags": [
+    "electric aircraft",
+    "batteries",
+    "hybrid"
+   ],
+   "blocks": [
+    [
+     "paragraph",
+     "An electric aircraft replaces the fuel-burning engine with an electric motor that turns a propeller or rotor, and replaces the fuel tank with batteries. Motors are very efficient, but batteries hold only a small fraction of the energy that the same weight of aviation fuel does. That single fact explains why electric flying works today for small, short trips and why airliners are a much harder target. This article explains how the pieces fit, using figures from Wikipedia's overview of electric aircraft."
+    ],
+    [
+     "heading",
+     "How an electric aircraft is built"
+    ],
+    [
+     "paragraph",
+     "Most designs use electric motors driving propellers or rotors. According to the overview, motors are about 90 percent efficient, compared with roughly 50 percent for jet engines, and they do not lose power as altitude rises the way combustion engines do. The energy can come from onboard batteries or fuel cells, or from offboard sources such as solar cells, microwave beaming or tethered cables."
+    ],
+    [
+     "heading",
+     "The energy gap"
+    ],
+    [
+     "paragraph",
+     "Energy per kilogram is the key number. The overview cites an estimate of about 160 Wh/kg for packaged lithium-ion batteries in 2018, against about 12,500 Wh/kg for aviation fuel, so electricity storage held roughly 2 percent of the fuel's specific energy. By 2019 the best lithium-ion cells reached 250 to 300 Wh/kg, enough for small aircraft; a regional airliner would need about 500 Wh/kg, and an A320-sized jet about 2 kWh/kg."
+    ],
+    [
+     "list",
+     "Packaged Li-ion, 2018 estimate: about 160 Wh/kg\nBest Li-ion cells, 2019: 250 to 300 Wh/kg\nRegional airliner need: about 500 Wh/kg\nA320-sized jet need: about 2 kWh/kg\nAviation fuel: about 12,500 Wh/kg"
+    ],
+    [
+     "paragraph",
+     "The Velis Electro shows what the energy gap means in practice. Wikipedia's article on the aircraft says it seats two side by side, has a maximum takeoff weight of 600 kg and a Pipistrel E-811 motor rated at 57.6 kW for a 90-second takeoff and 49.2 kW for continuous use. Endurance is up to 50 minutes plus 10 minutes of VFR (visual flight rules) reserve. EASA certified it on 10 June 2020 for day VFR flying, and it is intended mainly for training, where short flights with many takeoffs and landings suit a battery. The article gives two different battery sizes, about 20 kWh in the text and 24.8 kWh in the specifications, so the exact figure is uncertain."
+    ],
+    [
+     "paragraph",
+     "EASA's own announcement of 10 June 2020 describes the Velis Electro (model Virus SW 128) as the first type certification worldwide of a fully electric aircraft, and says the certification was completed in less than three years through close cooperation with Pipistrel. The aircraft's engine, the E-811-268MVLC, was certified separately on 18 May 2020. EASA says the plane is intended primarily for pilot training and gives no range figures."
+    ],
+    [
+     "heading",
+     "Weight does not fall as the flight goes on"
+    ],
+    [
+     "paragraph",
+     "A fuel-burning plane gets lighter as it uses fuel. A battery weighs the same empty or full. Safety reserves add to the load: for a 19-seat aircraft, the overview gives about 308 kg of turboprop fuel versus about 4,300 kg of 250 Wh/kg batteries for the same job. A model estimate for a 1,500 kg aircraft using 150 Wh/kg batteries gave around 80 miles with one passenger, about 60 with two and under 30 with three."
+    ],
+    [
+     "heading",
+     "What has flown"
+    ],
+    [
+     "list",
+     "**Pipistrel Velis Electro:** on 10 June 2020 it became the first electric aircraft to receive type certification, from the European Union Aviation Safety Agency (EASA). It has a 57 kW motor, 170 kg payload, 90-knot cruise and about 50 minutes of endurance.\n**Alia CX300 (BETA Technologies):** on 3 June 2025 it made what the overview calls the first passenger flight of an electric-powered plane in North America, 72 nautical miles in 45 minutes to JFK airport.\n**Solar Impulse 2:** flew around the world in 2015 and 2016 on solar power.\n**QinetiQ Zephyr:** set an uncrewed endurance record of 336 hours in July 2010."
+    ],
+    [
+     "heading",
+     "Hybrids and hydrogen"
+    ],
+    [
+     "paragraph",
+     "Hybrid-electric designs typically take off and land on electric power and cruise on a piston or jet engine, which keeps the battery small. The overview says more than 30 hybrid projects existed by May 2018, with short-haul hybrid airliners envisioned from around 2032. Hydrogen fuel cells combine stored hydrogen with oxygen from the air to make electricity. The aircraft must carry the hydrogen, which adds complexity and risk. Boeing flew a fuel-cell demonstrator in 2008, and ZeroAvia has developed fuel-cell propulsion for small aircraft."
+    ],
+    [
+     "heading",
+     "Plans that have slipped"
+    ],
+    [
+     "paragraph",
+     "Several announced timelines have been optimistic. Airbus revealed its CityAirbus demonstrator in 2017 with certification and service planned for 2023, and EasyJet and Wright Electric announced a 180-seat electric plan for 2027 in September 2017. The overview does not report these as having been met, so they are better read as examples of how hard the target is than as schedules."
+    ],
+    [
+     "callout",
+     "Specifications and plans change. Figures here are as given by Wikipedia's article on electric aircraft, checked on 3 November 2026, and are general information only."
+    ]
+   ],
+   "sources": [
+    {
+     "title": "Electric aircraft, Wikipedia",
+     "url": "https://en.wikipedia.org/wiki/Electric_aircraft"
+    },
+    {
+     "title": "Pipistrel Velis Electro, Wikipedia",
+     "url": "https://en.wikipedia.org/wiki/Pipistrel_Velis_Electro"
+    },
+    {
+     "title": "EASA certifies electric aircraft: first type certification of a fully electric plane, EASA",
+     "url": "https://www.easa.europa.eu/en/newsroom-and-events/news/easa-certifies-electric-aircraft-first-type-certification-fully-electric"
+    }
+   ],
+   "checkedOn": "2026-11-03"
+  }
+ ]
+}

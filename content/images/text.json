@@ -293,5 +293,20 @@
   "coverAlt": "Close-up of the engine and gearbox of a BMW R1150GS motorcycle",
   "figureAlt": null,
   "figureCaption": null
+ },
+ "harley-davidson-x350-t-unveiled-at-eicma-2026-nov-2026": {
+  "coverAlt": "A grey Harley-Davidson Street 750 roadster motorcycle parked on a car park, seen from the front left",
+  "figureAlt": "A grey Harley-Davidson Street 750 roadster motorcycle seen from the front left",
+  "figureCaption": "A Harley-Davidson Street 750, an earlier and different model, shown for illustration. This is not the X350 T."
+ },
+ "what-quantum-computers-are-for-and-what-they-cannot-do": {
+  "coverAlt": "The gold-coloured cooling and wiring stack inside an IBM Quantum System One",
+  "figureAlt": null,
+  "figureCaption": null
+ },
+ "how-electric-aircraft-work-and-why-range-is-the-problem": {
+  "coverAlt": "A white Pipistrel Velis Electro two-seat electric training aeroplane flying over farmland",
+  "figureAlt": null,
+  "figureCaption": null
  }
 }

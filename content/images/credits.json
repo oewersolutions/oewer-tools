@@ -1409,5 +1409,62 @@
    "/images/blog/bmw-m-1000-rs-unveiled-at-eicma-2026-218-hp-1-000-units/cover-1600.jpg",
    "/images/blog/bmw-m-1000-rs-unveiled-at-eicma-2026-218-hp-1-000-units/cover-800.jpg"
   ]
+ },
+ "harley-davidson-x350-t-unveiled-at-eicma-2026-nov-2026/cover": {
+  "title": "File:2014 Harley-Davidson Street 750 front.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3A2014_Harley-Davidson_Street_750_front.jpg",
+  "author": "Ryan Urlacher from USA",
+  "licence": "CC BY 2.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+  "description": "2014 Harley-Davidson Street 750",
+  "width": 4660,
+  "height": 3620,
+  "files": [
+   "/images/blog/harley-davidson-x350-t-unveiled-at-eicma-2026-nov-2026/cover-1600.jpg",
+   "/images/blog/harley-davidson-x350-t-unveiled-at-eicma-2026-nov-2026/cover-800.jpg"
+  ]
+ },
+ "what-quantum-computers-are-for-and-what-they-cannot-do/cover": {
+  "title": "File:IBM Quantum System One.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3AIBM_Quantum_System_One.jpg",
+  "author": "OJB Quantum",
+  "licence": "CC BY 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/4.0",
+  "description": "Photo of an IBM Quantum System One, taken at the ThinkLab of IBM's TJ Watson Research Center in Yorktown Heights, New York.",
+  "width": 6144,
+  "height": 8160,
+  "files": [
+   "/images/blog/what-quantum-computers-are-for-and-what-they-cannot-do/cover-1600.jpg",
+   "/images/blog/what-quantum-computers-are-for-and-what-they-cannot-do/cover-800.jpg"
+  ]
+ },
+ "how-electric-aircraft-work-and-why-range-is-the-problem/cover": {
+  "title": "File:Pipistrel Velis Electro 9944.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3APipistrel_Velis_Electro_9944.jpg",
+  "author": "Airjuice Photography",
+  "licence": "CC BY-SA 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "description": "Pipistrel Velis Electro",
+  "width": 1920,
+  "height": 1280,
+  "files": [
+   "/images/blog/how-electric-aircraft-work-and-why-range-is-the-problem/cover-1600.jpg",
+   "/images/blog/how-electric-aircraft-work-and-why-range-is-the-problem/cover-800.jpg"
+  ]
+ },
+ "harley-davidson-x350-t-unveiled-at-eicma-2026-nov-2026/figure": {
+  "title": "File:2014 Harley-Davidson Street 750 front.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3A2014_Harley-Davidson_Street_750_front.jpg",
+  "author": "Ryan Urlacher from USA",
+  "licence": "CC BY 2.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+  "description": "2014 Harley-Davidson Street 750",
+  "width": 4660,
+  "height": 3620,
+  "files": [
+   "/images/blog/harley-davidson-x350-t-unveiled-at-eicma-2026-nov-2026/figure-1200.jpg",
+   "/images/blog/harley-davidson-x350-t-unveiled-at-eicma-2026-nov-2026/figure-600.jpg",
+   "/images/blog/harley-davidson-x350-t-unveiled-at-eicma-2026-nov-2026/figure-800.jpg"
+  ]
  }
 }
