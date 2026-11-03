@@ -1,0 +1,115 @@
+{
+  "date": "2026-11-03",
+  "articles": [
+    {
+      "title": "How Credit Card Interest Is Calculated Day by Day",
+      "category": "Money Guides",
+      "excerpt": "Card interest is usually worked out daily from the APR and your balance. See the daily rate, the average daily balance, the grace period and a worked example.",
+      "tags": ["credit cards", "APR", "interest", "grace period"],
+      "blocks": [
+        ["paragraph", "Most credit card issuers do not charge interest once a month on a flat figure. They convert the yearly rate into a small **daily rate**, apply it to what you owe, and add up the result over the billing cycle. The main point is that the balance you carry on each day matters, so the same APR can cost different amounts depending on when you pay. This is general information, not advice, and your own card agreement has the exact method."],
+        ["heading", "APR and the daily periodic rate"],
+        ["paragraph", "APR stands for annual percentage rate. The US Consumer Financial Protection Bureau (CFPB) describes it as a standard yearly measure of what borrowing costs, which lets people compare products on equal terms. It combines the interest rate with fees, so it can differ from the plain interest rate."],
+        ["paragraph", "To charge interest daily, an issuer needs a **daily periodic rate**. The usual step is to divide the APR by 365, although some issuers divide by 360. Capital One's help pages give the example of a 19.99% APR: divided by 365, it becomes about 0.0548% per day."],
+        ["heading", "Two ways the daily rate is applied"],
+        ["paragraph", "Capital One describes one method in which the issuer multiplies the daily rate by what you owe at the end of each day and adds that amount to the previous day's balance. Because yesterday's interest is part of today's balance, the interest compounds daily."],
+        ["paragraph", "The other common method uses the **average daily balance**. You add up the balance for every day in the cycle and divide by the number of days. Then you multiply that average by the daily rate and by the number of days in the cycle. The result is the interest for that statement."],
+        ["callout", "Issuers differ on the divisor (365 or 360), on whether interest compounds daily, and on how the balance is counted. The cardholder agreement is the authority for any one card."],
+        ["heading", "A worked example"],
+        ["paragraph", "The figures below are made up to show the arithmetic. They are not from any real card."],
+        ["list", "APR: 24%\nDaily periodic rate: 24% divided by 365, about 0.0658% a day\nAverage daily balance over a 30-day cycle: 1,000\nInterest per day: 1,000 x 0.000658, about 0.66\nInterest for the cycle: about 0.66 x 30, about 19.73"],
+        ["paragraph", "If the balance had been lower for the first half of the cycle, the average would be lower and so would the interest. A payment made early in the cycle helps more than the same payment made on the last day, because it lowers the balance for more days."],
+        ["heading", "Different balances can carry different rates"],
+        ["paragraph", "A card can hold several kinds of balance at once, such as purchases and cash advances, and each can have its own APR. The CFPB notes that a statement must show the APR and the balance for each category. Interest is worked out for each category separately and then added together."],
+        ["heading", "The grace period"],
+        ["paragraph", "The CFPB defines the grace period as the time between the end of a billing cycle and the payment due date. If you pay the full balance by the due date, you may not be charged interest on purchases. Issuers are not required to offer a grace period, but the CFPB says most cards give one on purchases."],
+        ["paragraph", "A grace period generally applies to new purchases, and usually only when you were not already carrying a balance from the month before. Once a balance carries over, new purchases often start collecting interest straight away. Cash advances typically have no grace period at all, so check your terms."],
+        ["heading", "How payments are applied"],
+        ["paragraph", "The CFPB explains that when you pay more than the minimum but less than the full balance, the issuer generally applies the amount above the minimum to the balance with the highest rate first, then to the others in descending order of rate. The issuer decides how the minimum portion is applied."],
+        ["heading", "What to look for on a statement"],
+        ["list", "The APR for each type of balance\nThe balance subject to interest for the cycle\nThe interest charged in dollars or your local currency\nThe payment due date and the minimum payment\nAny fees shown separately from interest"],
+        ["paragraph", "Reading these lines against the formula above shows where the interest came from. If a figure looks wrong, the issuer's customer service or the regulator in your country is the place to ask."],
+        ["heading", "Summary"],
+        ["paragraph", "Credit card interest starts with the APR, turns it into a daily rate, and applies that rate to the balance you carry. Whether the issuer compounds daily or uses an average daily balance, the idea is the same: the longer a balance sits, the more it costs. A grace period can remove interest on purchases when the full balance is paid by the due date. The exact rules sit in the cardholder agreement, which is why two cards with the same APR can still charge slightly different amounts."]
+      ],
+      "sources": [
+        { "title": "How is my credit card interest calculated? Consumer Financial Protection Bureau", "url": "https://www.consumerfinance.gov/ask-cfpb/how-is-my-credit-card-interest-calculated-en-51/" },
+        { "title": "Key terms for credit cards, Consumer Financial Protection Bureau", "url": "https://www.consumerfinance.gov/consumer-tools/credit-cards/answers/key-terms/" },
+        { "title": "How to calculate daily interest, Capital One", "url": "https://www.capitalone.com/learn-grow/money-management/calculate-daily-interest/" }
+      ],
+      "checkedOn": "2026-11-03"
+    },
+    {
+      "title": "How Electronic Stability Control Keeps a Car on Course",
+      "category": "Cars and Bikes",
+      "excerpt": "Electronic stability control compares where you steer with where the car goes and brakes single wheels to correct a skid. Here is how it works, its history and limits.",
+      "tags": ["ESC", "safety", "braking", "skids"],
+      "blocks": [
+        ["paragraph", "Electronic stability control (ESC) is a safety system that notices when a car is not going where the driver is steering, and then brakes individual wheels to bring it back in line. Transport Canada describes it as a system that automatically brakes one or more wheels for short periods, reduces engine power, or both. The main point is that it helps a driver keep control in a skid, but it cannot create grip that the tyres and road do not have."],
+        ["heading", "Comparing intention with reality"],
+        ["paragraph", "ESC works by comparing two things. The first is what the driver wants, which the system reads mainly from the steering wheel angle. The second is what the car is actually doing, which comes from sensors for yaw (how fast the car rotates), sideways acceleration and the speed of each wheel."],
+        ["paragraph", "When the two disagree, the system decides that control is slipping. Wikipedia's article on the technology explains that it can then brake individual wheels and, in some systems, cut engine power too. Transport Canada says only that it uses sensors and a computer, without naming the sensors, so the list above follows the more detailed Wikipedia description."],
+        ["heading", "Understeer and oversteer"],
+        ["paragraph", "There are two classic ways a car loses its line in a corner. In **understeer**, the front tyres slide and the car runs wide of the curve. In **oversteer**, the rear tyres slide and the tail swings out."],
+        ["paragraph", "ESC treats them differently. According to Wikipedia, it brakes the outer front wheel to counter oversteer and the inner rear wheel to counter understeer. Braking one wheel creates a turning force on the car that nudges the nose or tail back toward the path the driver chose, without the driver having to do anything special."],
+        ["heading", "It builds on anti-lock brakes"],
+        ["paragraph", "ESC reuses hardware already fitted for anti-lock brakes (ABS): wheel-speed sensors, a hydraulic unit that can apply pressure to each wheel separately, and a control computer. The addition is the extra sensing of steering angle and rotation, plus the software that decides which wheel to brake and by how much."],
+        ["heading", "A short history"],
+        ["paragraph", "Wikipedia reports that Mercedes-Benz and Bosch developed their Electronic Stability Program between 1987 and 1992. Mercedes-Benz was the first to put it on a production car, in 1995 on the S 600 Coupe. Toyota's Vehicle Stability Control appeared the same year on the Crown Majesta."],
+        ["paragraph", "The same article describes a well-known test in October 1997, in which a Mercedes A-Class rolled over in a swerving test at 78 km/h. Mercedes then recalled and retrofitted about 130,000 cars with ESC and firmer suspension. The episode is often cited as a turning point for the technology becoming common."],
+        ["heading", "Where it is required"],
+        ["list", "Canada: required on new passenger vehicles from 1 September 2011, and Transport Canada says mandatory on cars, SUVs, pickups, minivans, heavy trucks and buses from the 2012 model year\nUnited States: required for 2012 model-year passenger vehicles under FMVSS 126, phased in from 2009 models\nEuropean Union: from 1 November 2011 for new type approvals, and from 1 November 2014 for all newly registered cars"],
+        ["paragraph", "The dates for Canada's passenger cars and for the US and EU come from Wikipedia; Transport Canada's own page confirms the 2012 model-year requirement."],
+        ["heading", "What studies found"],
+        ["paragraph", "Wikipedia summarises two older studies. A 2004 field study by the US National Highway Traffic Safety Administration found ESC reduced crashes by 35%. In June 2006, the Insurance Institute for Highway Safety estimated it cut the likelihood of fatal crashes by 43%, fatal single-vehicle crashes by 56% and fatal single-vehicle rollovers by 77 to 80%. These figures are from the mid-2000s, and the article itself notes that parts of it need updating, so current agency data may differ."],
+        ["heading", "What ESC cannot do"],
+        ["callout", "Transport Canada states that ESC does not and cannot change the laws of physics. Driving too fast for the conditions can still lead to a loss of control."],
+        ["paragraph", "Wikipedia makes a related point: ESC does not improve a car's cornering ability. It helps the driver keep control on slippery surfaces. Transport Canada adds that worn, under-inflated or overloaded tyres and poor brakes reduce its effectiveness."],
+        ["heading", "Summary"],
+        ["paragraph", "ESC compares the driver's steering with the car's actual motion, and when they diverge it brakes single wheels and may trim engine power. It grew out of ABS, reached production in 1995, and is now required on new cars in Canada, the United States and the European Union. It is a safety net, not a way to drive faster, and its benefit depends on tyres, brakes and sensible speed."]
+      ],
+      "sources": [
+        { "title": "Electronic stability control, Wikipedia", "url": "https://en.wikipedia.org/wiki/Electronic_stability_control" },
+        { "title": "Electronic stability control, Transport Canada", "url": "https://tc.canada.ca/en/road-transportation/driver-assistance-technologies/electronic-stability-control" }
+      ],
+      "checkedOn": "2026-11-03"
+    },
+    {
+      "title": "How Ailerons, Elevators and Rudder Steer an Aeroplane",
+      "category": "Aviation",
+      "excerpt": "Three movable surfaces control roll, pitch and yaw. Learn what each one does, why turning needs more than ailerons, and how trim tabs ease the pilot's load.",
+      "tags": ["flight controls", "ailerons", "rudder", "elevator"],
+      "blocks": [
+        ["paragraph", "A conventional aeroplane is steered with three main control surfaces: **ailerons** on the wings, an **elevator** on the tail and a **rudder** on the tail fin. Each one tilts the aircraft about a different axis. The main point is that every surface works by changing the airflow over a part of the aircraft, which creates a force away from the centre of gravity and so turns the plane."],
+        ["heading", "Three axes of rotation"],
+        ["paragraph", "NASA's education material explains that an aircraft can rotate about three axes that pass through its centre of gravity and are at right angles to one another. Each rotation has its own name and its own control."],
+        ["list", "**Roll:** the wingtips move up and down, about an axis running along the fuselage. The ailerons control it.\n**Pitch:** the nose moves up or down, about an axis lying along the wings. The elevator controls it.\n**Yaw:** the nose swings left or right, about an axis perpendicular to the wings. The rudder controls it."],
+        ["paragraph", "NASA adds that each surface produces a force at its own centre of pressure, which sits away from the centre of gravity. That offset makes a twisting force, called a torque, and the aircraft rotates."],
+        ["heading", "Ailerons: roll"],
+        ["paragraph", "Wikipedia's article on flight control surfaces describes ailerons as hinged parts on the rear edge of each wing near the tip. They move in opposite directions. Raising one reduces lift on that wing, and lowering the other increases lift on its wing. The aircraft rolls toward the wing with less lift and begins to turn."],
+        ["heading", "Elevator: pitch"],
+        ["paragraph", "The elevator is the movable rear part of the horizontal stabiliser, the small wing at the tail. Both sides move together. Raising the elevator pushes the tail down and the nose up, which increases the angle at which the wing meets the air. Lowering it does the opposite. This is how a pilot climbs, descends and sets the nose position."],
+        ["heading", "Rudder: yaw"],
+        ["paragraph", "The rudder is usually hinged to the rear of the vertical stabiliser, the tail fin, and is moved by foot pedals. Wikipedia calls it the primary means of controlling yaw. It points the nose left or right but does not, on its own, bank the aircraft."],
+        ["heading", "Why a turn uses more than one control"],
+        ["paragraph", "Rolling with the ailerons starts a turn, but there is a side effect called **adverse yaw**. The wing that is producing more lift also produces more drag from that lift, so the nose tends to swing opposite to the direction of the roll. Wikipedia says this is most noticeable in low-speed aircraft with long wings, such as gliders."],
+        ["paragraph", "Pilots counter adverse yaw with the rudder. Designers also help with **differential ailerons**, where the aileron that moves up travels further than the one that moves down, reducing the difference in drag."],
+        ["callout", "A coordinated turn blends aileron to bank the aircraft, rudder to keep the nose pointing along the flight path, and a little elevator to hold the nose position."],
+        ["heading", "Trim tabs"],
+        ["paragraph", "Holding a control against air pressure for a whole flight would be tiring. Trimming balances those forces so the pilot does not have to keep pressing on the controls. Wikipedia notes that elevator trim is the most common. Larger aircraft may also have rudder trim, to counter thrust that is stronger on one side, and aileron trim, to offset a heavy wing such as one with more fuel. On very large aircraft, the whole tailplane is often adjusted instead, because small tabs cannot supply enough force."],
+        ["heading", "Combined surfaces on other designs"],
+        ["list", "**Flaperons:** ailerons that also droop when flaps are lowered, so they act as both aileron and flap\n**Elevons:** surfaces on the rear edge of delta wings that combine the jobs of elevators and ailerons"],
+        ["paragraph", "These show the same idea in other shapes. What changes is how many jobs one surface performs."],
+        ["heading", "A bit of history"],
+        ["paragraph", "NASA states that the Wright brothers' 1902 glider was the first aircraft to achieve complete active control. Having control about all three axes is what separates an aeroplane that can be steered from one that merely glides where the air takes it."],
+        ["heading", "Summary"],
+        ["paragraph", "Ailerons roll the aircraft, the elevator pitches it and the rudder yaws it. Each works by changing airflow and so creating a turning force about the centre of gravity. Turning properly uses all three, with the rudder dealing with adverse yaw and trim tabs taking the effort out of holding steady. Modern designs fold these roles into combined surfaces, but the three axes remain the same."]
+      ],
+      "sources": [
+        { "title": "Aircraft Rotations, NASA Glenn Research Center", "url": "https://www.grc.nasa.gov/www/k-12/VirtualAero/BottleRocket/airplane/rotations.html" },
+        { "title": "Flight control surfaces, Wikipedia", "url": "https://en.wikipedia.org/wiki/Flight_control_surfaces" }
+      ],
+      "checkedOn": "2026-11-03"
+    }
+  ]
+}
