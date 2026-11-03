@@ -16,9 +16,10 @@ The site earns money from ads, and Google can refuse or remove ads on sites with
 6. **Save the day's batch** as `content/batches/YYYY-MM-DD.json` (format below) and run:
    `npx tsx scripts/add-articles.ts content/batches/YYYY-MM-DD.json --status published`
    Read what it says. For every article it rejects, fix the problems it lists and try that article again (up to twice). Do not weaken an article just to pass; if it cannot be made good, drop it.
-7. **Check the whole site builds:** `npm run validate` then `npm run build`. If either fails, do not commit; undo the workbook change (`git checkout data/oewer_database.xlsx`), and report what failed.
-8. **Commit locally, do not push.** Commit with the message `Daily articles YYYY-MM-DD` plus a line per article. The owner pushes later in an interactive session; unpushed commits simply wait. If the workbook changed upstream meanwhile, that is handled at push time, not here.
-9. **Report** in the final message: how many were published, how many daily commits are waiting to be pushed, titles and categories, anything rejected or dropped and why, and anything the owner should look at.
+7. **Add a picture to every article, news first.** Every new article gets a real cover photo (a news article should never be left with only the generated cover if a suitable photo exists), and a second picture in the text where one fits. Follow "Pictures" below. Do this after step 6 so the article exists, and before the build check.
+8. **Check the whole site builds:** `npm run validate` then `npm run build`. If either fails, do not commit; undo the workbook change (`git checkout data/oewer_database.xlsx`), and report what failed.
+9. **Commit locally, do not push.** Commit with the message `Daily articles YYYY-MM-DD` plus a line per article. The owner pushes later in an interactive session; unpushed commits simply wait. If the workbook changed upstream meanwhile, that is handled at push time, not here.
+10. **Report** in the final message: how many were published, how many daily commits are waiting to be pushed, titles and categories, which pictures were added (and which articles kept the generated cover, and why), anything rejected or dropped and why, and anything the owner should look at.
 
 ## The batch file
 
@@ -47,7 +48,7 @@ The site earns money from ads, and Google can refuse or remove ads on sites with
 }
 ```
 
-Block types: `paragraph`, `heading`, `list` (one item per line), `quote`, `callout`, `code`. Text supports `**bold**`, `*italic*` and `[link text](https://…)`. No HTML, no `#` marks, no images. The tool adds the "Checked on" note and the **Sources** list at the end; do not write them yourself. New categories need `"categoryDescription"`; these exist already: News and Launches (once the first news article is published), AI, Technology, Cars and Bikes, Aviation, Vintage and History, Electronics, How It Works, Money Guides, How-To.
+Block types: `paragraph`, `heading`, `list` (one item per line), `quote`, `callout`, `code`. Text supports `**bold**`, `*italic*` and `[link text](https://…)`. No HTML, no `#` marks, and no image blocks in the batch file (pictures are added in step 7). The tool adds the "Checked on" note and the **Sources** list at the end; do not write them yourself. New categories need `"categoryDescription"`; these exist already: News and Launches (once the first news article is published), AI, Technology, Cars and Bikes, Aviation, Vintage and History, Electronics, How It Works, Money Guides, How-To.
 
 ## News articles
 
@@ -79,6 +80,23 @@ Extra rules for political news (these protect readers, and the site's ad approva
 5. **Avoid on this site:** violence and graphic events, communal or religious conflict, hate speech, conspiracy claims, and live election results or seat predictions. If a political story is mostly about those, skip it.
 6. **Category:** `News and Launches`, tagged `news` and `politics`. At most **1 political article per run**, and not more than 2 political articles among the 5 news items in a day's total, so vehicles and technology stay the core of the news.
 7. **Titles** name the decision plainly with no judgement, for example "Union Budget 2027: Income Tax Slab Changes Explained".
+
+## Pictures
+
+Pictures make the lists, the home page and shared links work, so each article gets one. The tools are described in `docs/blog-content.md` ("Where the pictures came from"); the steps for a new article are:
+
+1. Search Wikimedia Commons for a photo of the subject: `npx tsx scripts/commons-images.ts search queries.json sheet.png` (write `queries.json` first), then look at the contact sheet.
+2. Fetch the best one: `npx tsx scripts/commons-images.ts fetch "File:Name.jpg" <article-slug> cover` (and, if a second photo fits, once more with a name such as `figure`). Then run `npx tsx scripts/shrink-images.ts`.
+3. Add an entry for the article's slug to `content/images/text.json` (`coverAlt`, and `figureAlt` and `figureCaption`, or `null` for both when there is no second picture), then run `npx tsx scripts/apply-article-images.ts`. It sets the cover, adds the picture in the text, and writes the "Image credits" line.
+
+Rules for pictures:
+
+- **Only openly licensed pictures from Wikimedia Commons** (Public domain, CC0, CC BY, CC BY-SA). The tool refuses the rest. Never use a manufacturer's press photo, a news agency or newspaper photo, a screenshot from a website or a social media picture, even to illustrate a launch. If you cannot get an openly licensed photo, the article keeps the generated cover.
+- **The picture must be honest.** It must really show what the alt text and caption say. A brand-new vehicle often has no free photo yet: use a free photo of the **earlier model, the same maker's previous generation, or the same type of vehicle**, and **say so in the caption** ("The previous-generation Tata Nexon", "An electric SUV charging", never "the new ..."). Never present an old photo as the new product, and never draw or generate a picture of a product that has not been photographed.
+- **Alt text** says what the picture shows, in plain words. **Captions** are short and name the subject and, for an older model or stand-in, say so.
+- **Politics:** use a neutral picture of the building, institution, document or place (a parliament building, a court, a flag, a rupee note). Never a photo of a living politician unless the article is about their official act and the photo is a plain official portrait; do not use pictures of crowds, protests or violence.
+- **Keep the credits.** CC BY and CC BY-SA need the author and licence shown; the tool adds the "Image credits" line, and it must stay.
+- If fetching pictures fails (no internet or Commons is down), publish the article with its generated cover and say so in the report.
 
 ## How to write
 
@@ -118,7 +136,7 @@ Scheduled runs have no token and never push. The owner pushes the waiting commit
 
 ## Safety stops
 
-- Never force-push, never rewrite history, never change files other than the workbook, the batch file and the generated summary.
+- Never force-push, never rewrite history, never change files other than the workbook, the batch file, the generated summary and the pictures (`public/images/blog/`, `content/images/credits.json`, `content/images/text.json`); commit the pictures with the articles.
 - Never publish more than 12 articles in a run (the tool refuses).
 - If the build or the deploy fails, revert and report; do not try to patch the site code.
 - If the web research tools do not work, publish only evergreen articles you can write accurately from established knowledge **and** can support with at least two sources you have opened; if you cannot open sources, publish nothing that day.
