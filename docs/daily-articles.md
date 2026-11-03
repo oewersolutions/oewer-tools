@@ -10,9 +10,9 @@ The site earns money from ads, and Google can refuse or remove ads on sites with
 
 1. **Get the latest.** In the project folder: `git fetch` and make the working copy equal to `origin/main` plus any earlier local daily-article commits that have not been pushed yet (never rewrite or force anything). This run has no GitHub token and must not look for one.
 2. **See what exists.** `npm run articles:list`. Note every title and how many articles each category has.
-3. **Choose 5 subjects.** Take them from different categories, favouring the categories with the fewest articles. Use the topic bank below or anything else that suits the site. Never repeat a title or a near-duplicate angle. Mix evergreen explainers (how it works, history) with at most two "current" subjects (prices, launches, announcements) a day.
-4. **Research each one properly.** Use web search, then **open and read** the pages. Prefer official and primary sources (a company's own page, a manufacturer, a standards body, a museum, a government site). Use at least **two sources on different websites**. Only list a source you actually opened and that supports the claims you used it for. Note any dates.
-5. **Write each article** (see "How to write" below), 700 to 1,100 words.
+3. **Choose 5 subjects: news first.** Since 3 November 2026 the daily articles lead with **recent news**, and **at least 3 of the 5 are news** (see "News articles" below). The rest are evergreen explainers from the topic bank. Before choosing, run `npm run articles:list` and skip any story the site already covers. Where the news is thin that day, write fewer news articles rather than stretching an old story.
+4. **Research each one properly.** For news, start with a web search for the newest stories (add the month and year to the query), then **open and read** the pages. Prefer official and primary sources (a company's own page, a manufacturer, a standards body, a museum, a government site). Use at least **two sources on different websites**. Only list a source you actually opened and that supports the claims you used it for. Note any dates.
+5. **Write each article** (see "How to write" below), 700 to 1,100 words (news: 500 to 900).
 6. **Save the day's batch** as `content/batches/YYYY-MM-DD.json` (format below) and run:
    `npx tsx scripts/add-articles.ts content/batches/YYYY-MM-DD.json --status published`
    Read what it says. For every article it rejects, fix the problems it lists and try that article again (up to twice). Do not weaken an article just to pass; if it cannot be made good, drop it.
@@ -47,7 +47,38 @@ The site earns money from ads, and Google can refuse or remove ads on sites with
 }
 ```
 
-Block types: `paragraph`, `heading`, `list` (one item per line), `quote`, `callout`, `code`. Text supports `**bold**`, `*italic*` and `[link text](https://…)`. No HTML, no `#` marks, no images. The tool adds the "Checked on" note and the **Sources** list at the end; do not write them yourself. New categories need `"categoryDescription"`; these exist already: AI, Technology, Cars and Bikes, Aviation, Vintage and History, Electronics, How It Works, Money Guides, How-To.
+Block types: `paragraph`, `heading`, `list` (one item per line), `quote`, `callout`, `code`. Text supports `**bold**`, `*italic*` and `[link text](https://…)`. No HTML, no `#` marks, no images. The tool adds the "Checked on" note and the **Sources** list at the end; do not write them yourself. New categories need `"categoryDescription"`; these exist already: News and Launches (once the first news article is published), AI, Technology, Cars and Bikes, Aviation, Vintage and History, Electronics, How It Works, Money Guides, How-To.
+
+## News articles
+
+News is the main point of the site's blog now. Focus on what people in India and worldwide are searching for this week:
+
+- **New vehicle launches and unveilings:** cars, SUVs, motorcycles, scooters, electric vehicles, trucks and buses, with launch dates, variants, prices (ex-showroom for India, say so), battery and range figures, engines and features the maker announces. Also facelifts, price changes, recalls and safety ratings (Bharat NCAP, Global NCAP, Euro NCAP).
+- **Political and government news:** decisions, laws, budgets, policies, court rulings, elections and official announcements in India first, then major world politics. Written as a plain **explainer of what was decided and what it changes for ordinary people** (see the extra rules below).
+- **Recent news** in the site's other areas: new phones and gadgets, AI models and product announcements, aviation (new aircraft, routes, airline announcements), major technology and electronics launches, and changes to money-related rules or prices that affect everyday readers.
+
+Rules for news:
+
+1. **Fresh.** The story must be from the **last 7 days** (the last 3 days is better). Check the date on the source page. Put the event's date and the "as of" date in the text.
+2. **Primary source first.** The maker's or company's own press release or page, a regulator, an airline or airport, a standards body. A reputable news outlet is the second source. Open both. If only one source can be found, or the sources disagree on a figure, say so in the article; if the story rests on a single unofficial source, do not publish it.
+3. **Official facts only.** Report what the company or regulator has said. Rumours, leaks, spy shots and "expected" prices are never stated as fact; if you mention them at all, label them clearly and keep them to one short line.
+4. **Your own explanation.** Do not rewrite another outlet's article. Give the key facts in the first paragraph (what, who, when, price or figure), then explain what it means for a reader: who it competes with by facts, what changes from the previous model, what is still unknown. Use a list for specifications and a short table-like list for variants and prices.
+5. **No opinion, no verdict, no "best".** No test-drive voice; you did not drive it. Compare using the published numbers.
+6. **Prices and dates are exact and labelled** (currency, ex-showroom or on-road, launch or booking date). Never round a price up or down.
+7. **Category:** use `News and Launches` for these (new category; give it `"categoryDescription": "Recent news and new launches: vehicles, gadgets, AI and aviation, explained from official sources."`). Tag each with `news`, plus `launch` for a launch, and the maker or topic.
+8. **Titles** state the news plainly and carry the name and the month, for example "Tata Motors Launches the Sierra EV in India: Price and Range (Nov 2026)". Keep within the 20 to 60 character limit.
+9. News articles may be shorter: **500 to 900 words** is fine. Clean facts beat length.
+10. A news article stays accurate by being dated. It is never edited later by this job.
+
+Extra rules for political news (these protect readers, and the site's ad approval):
+
+1. **Report, never take sides.** Describe what a government, minister, party, court or commission officially said or decided, and attribute it every time ("the Finance Ministry said", "the court ruled"). No praise, blame, labels or loaded words, and no "good for" or "bad for" a party. Where parties or governments disagree, give each position in its own words, with the same weight.
+2. **Primary sources first:** the government or ministry notification (PIB, gazette, the ministry's own site), the court's order, the Election Commission, parliament records, the party's official statement. A reputable news outlet is the second source. Rumours, anonymous "sources say" claims, opinion columns, exit polls and predictions are not used.
+3. **Explain, do not campaign.** Lead with the decision, the date and what it changes (who is affected, from when, any amount or deadline). Add short background. No calls to vote, donate, protest or support anyone.
+4. **People:** name office-holders by role and name as the source does; never speculate about anyone's motives, health, family or private life; nothing about private individuals. Allegations are stated as allegations, attributed, with the person's or body's response if the source gives it. Court cases: report the order, never guilt or innocence.
+5. **Avoid on this site:** violence and graphic events, communal or religious conflict, hate speech, conspiracy claims, and live election results or seat predictions. If a political story is mostly about those, skip it.
+6. **Category:** `News and Launches`, tagged `news` and `politics`. At most **1 political article per run**, and not more than 2 political articles among the 5 news items in a day's total, so vehicles and technology stay the core of the news.
+7. **Titles** name the decision plainly with no judgement, for example "Union Budget 2027: Income Tax Slab Changes Explained".
 
 ## How to write
 
