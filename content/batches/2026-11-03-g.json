@@ -1,0 +1,137 @@
+{
+  "date": "2026-11-03",
+  "articles": [
+    {
+      "title": "Stephenson's Rocket and the 1829 Rainhill Trials",
+      "category": "Vintage and History",
+      "excerpt": "In October 1829 five engines competed at Rainhill for £500 and a railway contract. Only Stephenson's Rocket finished, and the result shaped the steam age.",
+      "tags": ["steam locomotive", "railways", "rainhill", "history"],
+      "blocks": [
+        ["paragraph", "In October 1829, five machines were entered in a contest at Rainhill in Lancashire, England, to decide what should pull trains on a new railway. Only one finished the course: Robert Stephenson's *Rocket*. It averaged 12 mph, reached a top speed of 30 mph, won a £500 prize and won its makers the order to supply the railway's locomotives. This article explains why the contest was held, how it was run, what happened to each entrant and why *Rocket* is still remembered."],
+        ["heading", "Why the trials were held"],
+        ["paragraph", "The Liverpool and Manchester Railway was nearly finished in 1829. Its directors had to choose how to move trains along it. According to the account of the trials on Wikipedia, George Stephenson argued that locomotives would be the best option, and the trials were a public test of that claim. The alternative at the time was fixed steam engines that pulled trains along by rope. Running a competition let the company compare machines on the same track under the same rules."],
+        ["paragraph", "The prize was £500. The trials ran from 6 to 14 October 1829 on a level one-mile stretch of track at Rainhill. Three judges oversaw them: John Urpeth Rastrick, Nicholas Wood and John Kennedy."],
+        ["heading", "The rules"],
+        ["paragraph", "The rules were demanding for the time. Each engine pulled a load of three times its own weight, and the tender (the wagon carrying fuel and water) counted as part of that load. The engine had to make ten trips each way along the track, giving 35 miles in each direction, with at least 30 miles at full speed. The average speed had to be at least 10 mph, and steam pressure had to reach 50 psi before the engine set off. The track gauge was 4 ft 8½ in, the width still used on much of the world's railways."],
+        ["heading", "The five entrants"],
+        ["list", "**Cycloped** was powered by a horse on a treadmill. It was withdrawn after an accident in which the horse broke through the floor of the engine.\n**Perseverance** was damaged on the way to Rainhill and repaired over five days. It then failed to reach 10 mph and was withdrawn, receiving a £25 consolation prize.\n**Sans Pareil** was reported to be 300 lb overweight at the start. It completed eight trips before a cylinder cracked. The railway bought it afterwards.\n**Novelty** was the crowd favourite and reached 28 mph on the first day. A boiler pipe failed, and after a second failure it was withdrawn.\n**Rocket**, built by Robert Stephenson and Company in Newcastle upon Tyne, was the only engine to complete the course."],
+        ["heading", "How Rocket performed"],
+        ["paragraph", "The Science Museum Group, which cares for the surviving locomotive, describes *Rocket* as the clear winner, averaging 12 mph with a top speed of 30 mph. Wikipedia's account quotes *The Times* of 12 October 1829: the engine ran 35 miles in 3 hours 10 minutes, then another 35 miles in 2 hours 52 minutes, including stops. Its speed under load was reported as 14 to 17 mph, with bursts to 18 mph, and it was said to have used no more than half a ton of coke over the 70 miles."],
+        ["paragraph", "Afterwards, *Rocket* was tested on the Whiston incline, where it hauled 12 tons at 12½ mph up a gradient of 1 in 96, according to the same account."],
+        ["callout", "Note that the sources give 30 mph as the top speed in the trials, while the speeds from *The Times* are lower averages over long runs with stops. They measure different things."],
+        ["heading", "What made the design effective"],
+        ["paragraph", "The Science Museum Group says the design combined a multi-tube boiler with a blast-pipe, and calls this a substantial advance over earlier locomotives. A multi-tube boiler passes hot gases through many small tubes surrounded by water, so more heat reaches the water than with a single large flue. A blast-pipe sends used steam up the chimney, which pulls more air through the fire and so makes it burn hotter. Together they let the engine make steam quickly, which is what a fast, sustained run needs. The museum lists the locomotive's weight as 3,000 kg."],
+        ["heading", "What the win led to"],
+        ["paragraph", "The Stephensons won the £500 prize and the contract to build locomotives for the railway. The line opened in 1830. On the opening day, according to the Science Museum Group, *Rocket*, driven by John Locke, struck William Huskisson MP at Parkside station, and his injury proved fatal. The accident is a reminder that early railways had few of the safety systems taken for granted today."],
+        ["heading", "What became of Rocket"],
+        ["paragraph", "The original did not stay in its Rainhill form for long. The Science Museum Group says it was rebuilt within 18 months and set aside within ten years. In 1862 it was preserved, in an incomplete and semi-derelict state, and given to the Patent Office Museum in London, which later became the Science Museum. In 1998 it went on display outside the United Kingdom for the first time, travelling to Japan for Festival UK 98. The museum has displayed it in a much-modified form, since the rebuilding changed the engine from its 1829 shape. Where it is shown now has changed over the years, so check the museum's own site before planning a visit."],
+        ["paragraph", "Wikipedia notes that a restaging of the trials in 2002 with replica engines found that *Rocket* would still have won, while replicas of *Sans Pareil* and *Novelty* failed to finish the course in many runs. That does not prove what happened in 1829, but it suggests the result was not luck."],
+        ["heading", "Why it matters"],
+        ["paragraph", "Rainhill was not the invention of the steam locomotive, and *Rocket* was not the first one. What the trials did was test several competing ideas side by side, under written rules and in front of crowds, and pick the one that worked. The winning combination of a multi-tube boiler and a blast-pipe became a pattern for later steam engines, and the Liverpool and Manchester Railway became an early example of a line built to run on steam locomotives from the start."]
+      ],
+      "sources": [
+        { "title": "Rocket locomotive, Science Museum Group Collection", "url": "https://collection.sciencemuseumgroup.org.uk/objects/co26704/rocket-locomotive" },
+        { "title": "Rainhill Trials, Wikipedia", "url": "https://en.wikipedia.org/wiki/Rainhill_Trials" }
+      ],
+      "checkedOn": "2026-11-03"
+    },
+    {
+      "title": "Chain-of-Thought Prompting: Making AI Show Its Steps",
+      "category": "AI",
+      "excerpt": "Chain-of-thought prompting asks a language model to write out its reasoning steps before answering. Here is what the 2022 paper found and where the idea has limits.",
+      "tags": ["prompting", "reasoning", "language models"],
+      "blocks": [
+        ["paragraph", "Chain-of-thought prompting is a way of asking an AI language model to write out the intermediate steps of its reasoning before it gives a final answer. In a 2022 research paper, the technique improved results on maths, common-sense and symbolic puzzles, but only in large models. This article explains the idea, what the authors reported and why it is worth treating with some care."],
+        ["heading", "The basic idea"],
+        ["paragraph", "A language model produces text one piece at a time. If you ask a hard question and expect the answer straight away, the model has to jump from question to result in one go. For a multi-step problem, such as a maths word problem, that is difficult. Chain-of-thought prompting changes the prompt so that the model writes the in-between steps first."],
+        ["paragraph", "The method in the paper is simple. The prompt includes a few worked examples. Each example has a question, then the reasoning written out step by step, then the answer. The model sees the pattern and tends to answer a new question in the same style, with its own steps first."],
+        ["heading", "A small example"],
+        ["paragraph", "Suppose the question is: a shop sells pens at 3 for 90 rupees, and you buy 12 pens. A direct answer is just a number. A chain-of-thought answer reads more like this: 12 pens is 4 groups of 3 pens; each group costs 90 rupees; 4 times 90 is 360; the answer is 360 rupees. Each step is small and easy to check. This example is made up to show the format; it is not taken from the paper."],
+        ["heading", "What the paper reported"],
+        ["paragraph", "The paper is titled *Chain-of-Thought Prompting Elicits Reasoning in Large Language Models*. Its authors are Jason Wei, Xuezhi Wang, Dale Schuurmans, Maarten Bosma, Brian Ichter, Fei Xia, Ed Chi, Quoc Le and Denny Zhou. It was first posted on arXiv on 28 January 2022, revised several times (the latest version is dated 10 January 2023), and published in the proceedings of NeurIPS 2022."],
+        ["paragraph", "According to the abstract, the authors tested the method on arithmetic, common-sense and symbolic reasoning tasks, across three language models, and saw improvements that were sometimes large. Their headline result was on GSM8K, a benchmark of maths word problems. A model with 540 billion parameters, prompted with just eight chain-of-thought examples, reached what the authors call state-of-the-art accuracy, beating a version of GPT-3 that had been fine-tuned and paired with a separate verifier."],
+        ["heading", "It works mainly in large models"],
+        ["paragraph", "The abstract says this reasoning ability appears in sufficiently large models. In other words, the technique is not a trick that helps every system. Smaller models can write steps that look reasonable but do not lead to the right answer, so the gain depends on the size of the model. The paper's wording is about models that are large enough; the exact threshold is a research question, and the abstract does not give one."],
+        ["heading", "Why writing steps can help"],
+        ["paragraph", "The paper presents several reasons why this might help, and they are best read as explanations offered by the authors rather than proven facts about how the model works inside. One is that a problem can be broken into smaller parts, each of which is easier to get right. Another is that the written steps give the model more text to work from as it continues, so later steps can use earlier ones. A third is that people reading the output can see where an answer came from and spot a mistake."],
+        ["list", "It needs no extra training, only a change to the prompt.\nThe steps make the answer easier for a person to inspect.\nThe same style of prompt can be used for different kinds of problems."],
+        ["heading", "Limits worth knowing"],
+        ["paragraph", "A written chain of reasoning is not a guarantee of a correct answer. A model can write steps that read well and still contain an arithmetic slip or a wrong assumption, and the final answer can be wrong. Longer answers also use more tokens, the small units of text a model reads and writes, so they take longer and can cost more where usage is billed per token."],
+        ["callout", "Treat the steps as a helpful display, not as proof. Check the working, especially for numbers, before relying on the result."],
+        ["paragraph", "It is also worth being careful about what the steps mean. Whether the written reasoning matches what is actually happening inside the model is a separate question, and this article does not claim to answer it. The paper's claim is narrower: prompting with step-by-step examples improved measured accuracy on the tasks it tested."],
+        ["heading", "Where the idea shows up today"],
+        ["paragraph", "The paper helped popularise asking a model to think step by step, and many later techniques build on the same observation that more written reasoning can improve results on hard problems. Which products use such methods, and how, varies and changes quickly, so check each provider's own documentation for current details."]
+      ],
+      "sources": [
+        { "title": "Chain-of-Thought Prompting Elicits Reasoning in Large Language Models, arXiv:2201.11903", "url": "https://arxiv.org/abs/2201.11903" },
+        { "title": "Chain-of-Thought Prompting Elicits Reasoning in Large Language Models, NeurIPS 2022 Proceedings", "url": "https://proceedings.neurips.cc/paper/2022/hash/9d5609613524ecf4f15af0f7b31abca4-Abstract-Conference.html" }
+      ],
+      "checkedOn": "2026-11-03"
+    },
+    {
+      "title": "What Bypass Ratio Means in a Jet Engine",
+      "category": "Aviation",
+      "excerpt": "Bypass ratio compares the air going around a jet engine's core with the air going through it. Here is why airliners use high ratios and fighters do not.",
+      "tags": ["turbofan", "jet engine", "bypass ratio", "efficiency"],
+      "blocks": [
+        ["paragraph", "Bypass ratio is the mass of air that flows around a jet engine's core divided by the mass of air that flows through it. A ratio of 10 to 1 means 10 kilograms of air go around the core for every 1 kilogram that goes through it. Airliners use high ratios because moving a lot of air gently is more efficient than moving a little air very fast. This article explains the number, typical values, and the trade-offs."],
+        ["heading", "What the number measures"],
+        ["paragraph", "Most modern jet engines are turbofans. A large fan at the front pulls in air. Some of that air goes into the core, where it is compressed, mixed with fuel and burned. The rest goes through a duct that bypasses the core and leaves at the back. According to the Wikipedia article on the subject, the bypass ratio is the mass flow in that bypass duct divided by the mass flow entering the core."],
+        ["paragraph", "An older turbojet has no bypass at all, so its ratio is zero. Wikipedia lists early jet aircraft and Concorde as examples of zero-bypass engines."],
+        ["heading", "Why moving more air helps"],
+        ["paragraph", "An engine makes thrust by speeding air backwards. The same thrust can come from speeding a small amount of air by a large amount, or a large amount of air by a small amount. Wikipedia explains the physics: thrust grows in proportion to the change in air speed, but the kinetic energy carried away in the exhaust grows with the square of that change. So a slower, wider stream wastes less energy. The result is lower fuel use for the same thrust, which is why high-bypass designs dominate transport aircraft. The extra bypass air also reduces jet noise."],
+        ["callout", "A simple picture: a rowing boat moved by one big, slow oar stroke uses less effort than one moved by quick, tiny splashes. The high-bypass fan is like the big, slow stroke."],
+        ["heading", "Typical values"],
+        ["paragraph", "Wikipedia gives these example figures, which vary by engine version:"],
+        ["list", "Combat aircraft: usually below 1. The F119 in the F-22 is listed at 0.45 and the F414 in the F/A-18E/F at 0.25.\nBusiness jets: roughly 2 to 6. The Honda HF120 is listed at 2.9 and the PW800 at 5.5.\nAirliners: up to about 12. The CFM56 used on the Airbus A320 and Boeing 737 is listed at 5.0 to 6.6, the GEnx at 8.0 to 9.3, the Rolls-Royce Trent XWB at 9.6, the GE9X at 10.0 and the PW1000G series at 9.0 to 12.5.\nTurboprops: 50 to 100, because a propeller acts like a very large bypass."],
+        ["heading", "Why fighters keep it low"],
+        ["paragraph", "Fighter engines need high power for their weight, supersonic performance and afterburners, which add thrust by burning extra fuel in the exhaust. A low bypass ratio suits those needs better than a wide, slow stream. So the same physics that favours high bypass for airliners favours low bypass for combat aircraft."],
+        ["heading", "The trade-offs of going bigger"],
+        ["paragraph", "A higher ratio generally means a larger fan, and so a larger and heavier engine. A NASA technical memorandum on engine design for single-aisle aircraft of the 737 and A320 class makes an important point: higher bypass ratios improve engine-level measures such as specific fuel consumption, but those benefits may not carry over to the whole aircraft because of what it calls integration penalties. A bigger engine can add weight and drag and is harder to fit under the wing, so the best choice depends on the whole aircraft, not the engine alone."],
+        ["paragraph", "The same NASA report notes that the trend has been from turbojets to low-bypass first-generation turbofans and then to today's high-bypass designs, mainly to improve efficiency. It also says a geared fan drive makes higher bypass ratios practical, and that such designs produce lower noise. A gearbox lets the large fan turn slowly while the turbine that drives it spins fast, and each can run at a more suitable speed. The report adds that the bypass ratio that minimises fuel use for a whole mission may not need geared fan technology."],
+        ["heading", "Reading the figures carefully"],
+        ["list", "A bypass ratio is a design figure and can change with the version of an engine.\nIt describes air flow, not thrust or size, though higher ratios usually come with larger fans.\nThe figures above come from a general reference and are for comparison, not engineering use."],
+        ["paragraph", "In short, bypass ratio is a simple way to see how an engine is meant to be used. Near zero suggests speed and power at any cost in fuel. In the range of 5 to 12 it suggests a commercial airliner, where fuel and noise matter most."]
+      ],
+      "sources": [
+        { "title": "Bypass ratio, Wikipedia", "url": "https://en.wikipedia.org/wiki/Bypass_ratio" },
+        { "title": "Engine design study for advanced single-aisle aircraft, NASA/TM-2009-215784, NASA Technical Reports Server", "url": "https://ntrs.nasa.gov/citations/20090030897" }
+      ],
+      "checkedOn": "2026-11-03"
+    },
+    {
+      "title": "How a Transistor Works as a Switch and an Amplifier",
+      "category": "Electronics",
+      "excerpt": "A transistor lets a small signal control a larger current. Learn how that makes amplifiers and digital switches, from the 1947 invention to the modern MOSFET.",
+      "tags": ["transistor", "MOSFET", "semiconductors"],
+      "blocks": [
+        ["paragraph", "A transistor is a small semiconductor part in which a weak signal controls a larger electric current. Used one way it is an amplifier. Used another way it is an on-off switch, and that is how it is used inside computer chips. This article covers the idea, the 1947 invention, how the common MOSFET type works, and why one design came to dominate."],
+        ["heading", "The basic idea"],
+        ["paragraph", "According to Wikipedia, a transistor is a semiconductor device with at least three terminals. A voltage or current applied to one pair of terminals controls a larger current flowing through another pair. Because the output power can be greater than the input power, a transistor can act as an amplifier. Because it can be driven fully on or fully off, it can also act as an electronic switch, which is how it is used in digital logic."],
+        ["heading", "The first transistor, 1947"],
+        ["paragraph", "The Computer History Museum describes the first one: in 1947, John Bardeen and Walter Brattain, working under William Shockley at Bell Labs, demonstrated the point-contact transistor. It was a sliver of germanium touched by two closely spaced gold contacts held in place by a plastic wedge. A small change in the current through one contact caused a larger change in the current at the other, so the device amplified current."],
+        ["paragraph", "Wikipedia adds that Shockley went on to develop the bipolar junction transistor, and that the three men shared the 1956 Nobel Prize in Physics."],
+        ["heading", "How a MOSFET works"],
+        ["paragraph", "The most widely used type today is the MOSFET, short for metal-oxide-semiconductor field-effect transistor. It has three main terminals: the source, the drain and the gate. Current flows between source and drain, and the gate decides whether it can."],
+        ["paragraph", "The gate is separated from the semiconductor channel by a thin insulating layer, traditionally silicon dioxide. Because that layer blocks steady current, the gate draws almost none. Applying a voltage between the gate and the source creates an electric field that pulls charge carriers toward the surface and forms a conducting path between source and drain, which Wikipedia calls an inversion layer."],
+        ["list", "Below the threshold voltage there is essentially no channel, and only a tiny leakage current flows. The switch is off.\nAbove the threshold the channel conducts, and the more gate voltage, the more current. The switch is on.\nWhen used as a digital switch, the aim is to be fully on or fully off."],
+        ["heading", "Two flavours: NMOS and PMOS"],
+        ["paragraph", "An n-channel device (NMOS) conducts using electrons. A p-channel device (PMOS) is the mirror image and conducts using positive charge carriers called holes. Pairing one of each gives CMOS logic. Wikipedia explains that CMOS circuits draw significant power mainly while they are switching, which is why the approach dominates processors and memory."],
+        ["heading", "Amplifier or switch?"],
+        ["paragraph", "The same part can do both jobs, depending on how it is biased. In what Wikipedia calls the saturation mode, the current depends mainly on the gate-to-source voltage, which suits amplification. In the linear mode it behaves like a resistor controlled by voltage. For switching, the device is pushed fully on or fully off. Switching speed is limited by how quickly the gate, which behaves like a small capacitor, can be charged and discharged."],
+        ["callout", "A real switch is not perfect. A transistor that is on still has a small resistance, so it wastes a little energy as heat."],
+        ["heading", "From one part to billions"],
+        ["paragraph", "Wikipedia reports that Mohamed Atalla and Dawon Kahng at Bell Labs proposed the silicon MOS transistor in 1959 and demonstrated a working device in 1960. It says MOSFETs now account for about 99.9% of all transistors made. Most transistors are built into integrated circuits, and a single advanced processor chip can hold tens of billions of them. The page cites a microprocessor with as many as 92 billion transistors on one piece of silicon as of 2023."],
+        ["paragraph", "The field-effect idea is older than the working device. The same source credits Julius Edgar Lilienfeld with proposing it in 1925, though a working version was not built then."],
+        ["heading", "Why it matters"],
+        ["paragraph", "Every digital choice a computer makes comes down to billions of tiny switches turning on and off. The transistor also amplifies weak signals from antennas and microphones. Replacing earlier bulky parts with something this small made today's phones and computers possible. General information only; for circuit design, use the manufacturer's datasheet."]
+      ],
+      "sources": [
+        { "title": "Transistor, Wikipedia", "url": "https://en.wikipedia.org/wiki/Transistor" },
+        { "title": "MOSFET, Wikipedia", "url": "https://en.wikipedia.org/wiki/MOSFET" },
+        { "title": "The transistor, Computer History Museum", "url": "https://www.computerhistory.org/revolution/digital-logic/12/273" }
+      ],
+      "checkedOn": "2026-11-03"
+    }
+  ]
+}
