@@ -1,0 +1,537 @@
+{
+ "date": "2026-11-03",
+ "articles": [
+  {
+   "title": "Why Bond Prices Fall When Interest Rates Rise",
+   "category": "Money Guides",
+   "excerpt": "A bond is a loan with a fixed payment. Here is why its market price moves the opposite way to interest rates, and how yield and duration measure that move.",
+   "tags": [
+    "bonds",
+    "interest rates",
+    "yield",
+    "investing basics"
+   ],
+   "blocks": [
+    [
+     "paragraph",
+     "A bond's market price moves in the opposite direction to interest rates. When rates rise, existing bonds usually fall in price; when rates fall, they usually rise. The reason is simple once you see a bond as a loan with a fixed schedule of payments. This article explains the parts of a bond, why the price and the rate pull against each other, and what yield and duration tell you. It is general information, not advice about what to buy or sell."
+    ],
+    [
+     "heading",
+     "What a bond is"
+    ],
+    [
+     "paragraph",
+     "A bond is a loan. The buyer lends money to an issuer, such as a company or a government, and the issuer promises to pay interest and to repay the original amount on a set date. According to FINRA, the US securities industry regulator, most bonds have a maturity date on which the issuer repays the face value, also called par value."
+    ],
+    [
+     "paragraph",
+     "The coupon is the yearly interest, set when the bond is issued and quoted as a percentage of par. FINRA gives the example of a bond with a face value of $1,000 and a 4.5% coupon: it pays $45 a year, usually as two payments of $22.50. The coupon normally stays the same for the life of the bond, even though the price people will pay for the bond on the market changes every day."
+    ],
+    [
+     "heading",
+     "Why the price moves against rates"
+    ],
+    [
+     "paragraph",
+     "Imagine you hold a bond that pays a 4% coupon. Later, market interest rates rise, and new bonds of similar quality are being issued with a 5% coupon. Nobody will pay full price for your 4% bond when a 5% bond is available for the same money. To find a buyer, you must lower the price until the bond's overall return matches what new bonds offer. FINRA states it directly: when interest rates rise, bond prices generally fall."
+    ],
+    [
+     "paragraph",
+     "The reverse also holds. If rates drop to 3%, your 4% bond now pays more than new bonds do, so buyers will pay a premium for it. Bond prices are quoted as a percentage of par. A price of 105 means $1,050 for a $1,000 bond, and a price of 95 means $950."
+    ],
+    [
+     "heading",
+     "How price is worked out"
+    ],
+    [
+     "paragraph",
+     "The standard method treats a bond's price as the present value of all the cash it will pay. Each future coupon, and the final repayment, is discounted back to today using the market rate of return. Wikipedia's article on bond valuation gives a small example. A bond has two half-year periods left, pays a coupon of 3 per period, repays 100 at the end, and is discounted at 3.5% per period. Its price is about 3 divided by 1.035 plus 103 divided by 1.035 squared, which comes to roughly 99.05."
+    ],
+    [
+     "paragraph",
+     "Notice what happens if the discount rate goes up. Every payment is divided by a bigger number, so the total shrinks. A higher market rate means a lower price, and a lower market rate means a higher price. The payments themselves have not changed; only the rate used to value them has."
+    ],
+    [
+     "heading",
+     "Coupon, current yield and yield to maturity"
+    ],
+    [
+     "paragraph",
+     "Because the price changes, the coupon alone does not describe what a buyer earns. Two other measures are used."
+    ],
+    [
+     "list",
+     "**Current yield** is the yearly coupon divided by the current price. Wikipedia's example has a yearly coupon of 6 and a price of 98.20, giving a current yield of about 6.11%.\n**Yield to maturity** is the single discount rate that makes the present value of all remaining payments equal to the market price. It assumes the bond is held to maturity and that the issuer pays everything on time.\nFor a bond trading below par, the yield to maturity is higher than the current yield, which is higher than the coupon rate."
+    ],
+    [
+     "paragraph",
+     "When people say a bond's yield has risen, they usually mean its yield to maturity. A falling price and a rising yield are two ways of describing the same event."
+    ],
+    [
+     "heading",
+     "Duration: how sensitive is the price?"
+    ],
+    [
+     "paragraph",
+     "Not all bonds react equally. Duration, measured in years, estimates how much a bond's price may change for a one percentage point change in yield. Wikipedia's example is a bond with a duration of 7: if its yield rises by one percentage point, its price falls by about 7%, ignoring a smaller second-order effect called convexity. Bonds with longer maturities and lower coupons generally have higher durations, so their prices swing more when rates change."
+    ],
+    [
+     "callout",
+     "If you hold a bond to maturity and the issuer pays as promised, you receive the coupons and the face value regardless of the price in between. The price fall matters most if you need to sell before maturity."
+    ],
+    [
+     "heading",
+     "Other risks besides interest rates"
+    ],
+    [
+     "paragraph",
+     "FINRA lists several other risks that sit alongside interest rate risk."
+    ],
+    [
+     "list",
+     "Credit risk: the issuer may miss payments. Credit ratings are one way to judge it, and US Treasuries are generally regarded as free of default risk.\nCall risk: the issuer may repay a callable bond early, often when rates have fallen, forcing the holder to reinvest at lower yields.\nInflation risk: fixed payments lose buying power when prices rise. Inflation-linked bonds such as TIPS adjust the principal to address this.\nLiquidity risk: some bonds trade rarely and may be hard to sell at a fair price.\nCurrency risk: for foreign bonds, exchange-rate moves can raise or cut the return."
+    ],
+    [
+     "heading",
+     "Putting it together"
+    ],
+    [
+     "paragraph",
+     "A bond's fixed payments are what make its price sensitive to rates. A higher rate lowers what those payments are worth today; a lower rate raises it. Yield to maturity expresses the return implied by the price, and duration estimates how far the price might move. Understanding these three ideas explains most headlines about bond markets, though real-world prices also reflect credit quality, supply and demand, and expectations about future rates."
+    ]
+   ],
+   "sources": [
+    {
+     "title": "Bonds, FINRA",
+     "url": "https://www.finra.org/investors/investing/investment-products/bonds"
+    },
+    {
+     "title": "Bond valuation, Wikipedia",
+     "url": "https://en.wikipedia.org/wiki/Bond_valuation"
+    }
+   ],
+   "checkedOn": "2026-11-03"
+  },
+  {
+   "title": "What Is a Mixture of Experts AI Model?",
+   "category": "AI",
+   "excerpt": "A mixture of experts model uses a router to send each token to a few specialist sub-networks, so a huge model runs only part of itself at a time.",
+   "tags": [
+    "mixture of experts",
+    "transformers",
+    "language models",
+    "mixtral"
+   ],
+   "blocks": [
+    [
+     "paragraph",
+     "A mixture of experts, or MoE, is a type of AI model that contains many specialist sub-networks but uses only a few of them for each piece of text it processes. A small component called a router picks which ones. The result is a model with a very large total number of parameters, yet a much lower compute cost per word than a conventional model of the same size. This article explains the parts, the benefits and the costs, using Hugging Face's guide and Wikipedia's summary of the field."
+    ],
+    [
+     "heading",
+     "Dense models versus sparse models"
+    ],
+    [
+     "paragraph",
+     "In an ordinary, or dense, transformer language model, every parameter takes part in processing every token. A token is a chunk of text, often a word or part of a word. If the model has 70 billion parameters, all 70 billion are used for each token."
+    ],
+    [
+     "paragraph",
+     "A sparse MoE model changes this. According to Hugging Face, it replaces the feed-forward layers of a transformer with sparse MoE layers. Those layers hold most of a transformer's parameters, so changing them has a large effect. Each MoE layer contains a set of experts, often eight, and a router. For each token, only the selected experts run. This idea is called conditional computation: the work done depends on the input."
+    ],
+    [
+     "heading",
+     "Experts and the router"
+    ],
+    [
+     "paragraph",
+     "The experts are usually ordinary feed-forward networks, though Hugging Face notes they could be more complex. Despite the name, they are not hand-labelled specialists such as a maths expert or a French expert. They are trained together with the rest of the model, and over training they tend to specialise in different regions of the input space, as Wikipedia describes."
+    ],
+    [
+     "paragraph",
+     "The router, also called the gate, is a small learned network. It looks at each token and produces scores for the experts. A top-k choice keeps only the highest scores, with k often 1 or 2, and the token's output is a weighted combination of those experts' outputs. The router is trained at the same time as everything else by gradient descent."
+    ],
+    [
+     "heading",
+     "A worked example: Mixtral 8x7B"
+    ],
+    [
+     "paragraph",
+     "Mistral AI released Mixtral 8x7B in December 2023 under the Apache 2.0 licence, according to Wikipedia. It has eight experts per layer and sends each token to two. The name suggests 56 billion parameters, but Hugging Face explains that the total is about 47 billion, because only the feed-forward layers are duplicated as experts; attention layers and others are shared. Wikipedia gives the total as 46.7 billion."
+    ],
+    [
+     "paragraph",
+     "Because only two experts run per token, the compute per token is comparable to a dense model of roughly 12 billion parameters, rather than the 14 billion that two full 7-billion models would imply, since the shared layers are computed once. So the model stores about 47 billion parameters but behaves, in cost per token, like a much smaller one."
+    ],
+    [
+     "heading",
+     "Benefits"
+    ],
+    [
+     "list",
+     "Faster pretraining than a dense model given the same compute budget, according to Hugging Face.\nFaster inference than a dense model with the same total number of parameters.\nRoom for more total knowledge capacity without a matching rise in cost per token."
+    ],
+    [
+     "heading",
+     "Challenges"
+    ],
+    [
+     "paragraph",
+     "MoE models bring their own difficulties."
+    ],
+    [
+     "list",
+     "**Memory.** All experts must be loaded even though only some run for each token, so MoE models need a lot of video memory.\n**Load balancing.** A router can favour a few experts, which then train more and get chosen more, a self-reinforcing loop. Wikipedia explains that early methods added an auxiliary loss to encourage even use. A capacity factor limits how many tokens each expert may handle per batch, and overflow tokens can pass through unchanged thanks to residual connections.\n**Fine-tuning.** Hugging Face reports that sparse models are more prone to overfitting, although instruction tuning helps considerably."
+    ],
+    [
+     "paragraph",
+     "Different developers handle balancing in different ways. Wikipedia says DeepSeek uses per-expert bias terms that shift routing toward under-used experts, avoiding an auxiliary loss, and also adds shared experts that every token uses."
+    ],
+    [
+     "heading",
+     "A short history"
+    ],
+    [
+     "paragraph",
+     "The idea is older than large language models. Wikipedia traces adaptive mixtures of local experts to work in the 1990s. A 2013 paper first applied the idea to deep networks. The 2017 sparsely-gated MoE layer from Google Brain made large-scale use practical, and the Switch Transformer, which sends each token to a single expert, followed in 2022. Other named examples include Google's GLaM, with 1.2 trillion parameters and top-2 routing among 64 experts per layer, and Databricks' DBRX, released in March 2024 with 132 billion parameters and 16 experts."
+    ],
+    [
+     "callout",
+     "Many companies do not publish a model's internal design, so it is often unknown whether a given commercial chatbot uses MoE. The examples above are models whose designs have been described publicly."
+    ],
+    [
+     "heading",
+     "Why it matters"
+    ],
+    [
+     "paragraph",
+     "MoE shows one way to get more out of a fixed computing budget: store a lot, use a little. The price is higher memory needs and extra engineering to keep the experts evenly used. Understanding the router, the experts and the trade-offs helps explain why a model's headline parameter count and its running cost can be so different."
+    ]
+   ],
+   "sources": [
+    {
+     "title": "Mixture of Experts Explained, Hugging Face",
+     "url": "https://huggingface.co/blog/moe"
+    },
+    {
+     "title": "Mixture of experts, Wikipedia",
+     "url": "https://en.wikipedia.org/wiki/Mixture_of_experts"
+    }
+   ],
+   "checkedOn": "2026-11-03"
+  },
+  {
+   "title": "How Public-Key Cryptography Works: Two Keys, One Secret",
+   "category": "Technology",
+   "excerpt": "Public-key cryptography uses a shareable public key and a secret private key. Learn how it enables encryption, signatures and secure key exchange online.",
+   "tags": [
+    "cryptography",
+    "public key",
+    "RSA",
+    "TLS"
+   ],
+   "blocks": [
+    [
+     "paragraph",
+     "Public-key cryptography, also called asymmetric cryptography, uses a pair of related keys: a public key that can be shared with anyone and a private key that its owner keeps secret. Whatever one key does, only the other can undo. This solves an old problem, which was how two people who have never met can communicate secretly. It underpins HTTPS, secure shell logins, signed software and more. This article explains the idea, the two main uses and the limits."
+    ],
+    [
+     "heading",
+     "The problem it solved"
+    ],
+    [
+     "paragraph",
+     "Before the 1970s, all ciphers were symmetric: the sender and receiver used the same secret key. That meant the key had to be delivered securely in advance, which is hard at scale. If you wanted to talk privately to a thousand strangers, you would need a safe way to give each one a key first."
+    ],
+    [
+     "paragraph",
+     "The US National Institute of Standards and Technology (NIST) defines public-key cryptography as a system using two related keys, one public and one private, where data protected with one key can be recovered only with the other, and where deriving the private key from the public key should be practically impossible. That last condition is the heart of the matter."
+    ],
+    [
+     "heading",
+     "Encryption: lock with the public key"
+    ],
+    [
+     "paragraph",
+     "To send a secret message, you take the recipient's public key and encrypt the message with it. Anyone can do this, because the public key is meant to be shared. Only the holder of the matching private key can decrypt the result. A useful comparison is a padlock that anyone can snap shut, but that only its owner can open. Encryption hides the content, but it does not by itself prove who sent the message."
+    ],
+    [
+     "heading",
+     "Signatures: prove it came from you"
+    ],
+    [
+     "paragraph",
+     "Digital signatures run the other way round. The sender signs a message with their private key. Anyone with the public key can check the signature. A valid signature shows that the message came from the holder of the private key and that it has not been altered since. The message itself is not hidden. Software updates and certificates commonly rely on signatures."
+    ],
+    [
+     "heading",
+     "Key exchange and the hybrid approach"
+    ],
+    [
+     "paragraph",
+     "Public-key operations are much slower than symmetric ones. So real systems combine them. Wikipedia explains that protocols such as TLS, SSH and OpenPGP use public-key methods to agree a symmetric key, then encrypt the bulk of the data with that faster symmetric key."
+    ],
+    [
+     "paragraph",
+     "One method for agreeing the key is Diffie-Hellman. Two parties swap public values, and each combines the other's public value with their own private one to compute the same shared secret, which an eavesdropper watching the exchange cannot easily work out. RSA, another well-known scheme, uses modular exponentiation with the product of two very large primes, and its security depends on how hard it is to factor large integers."
+    ],
+    [
+     "heading",
+     "A short history"
+    ],
+    [
+     "paragraph",
+     "According to Wikipedia, British intelligence at GCHQ reached these ideas first, in secret. James Ellis conceived non-secret encryption in 1970, Clifford Cocks devised an RSA-like scheme in 1973 and Malcolm Williamson developed a Diffie-Hellman-like method in 1974, but all of it stayed classified until 1997. Publicly, Whitfield Diffie and Martin Hellman published a practical key-agreement method in 1976, and Rivest, Shamir and Adleman developed RSA in 1977 and published it in 1978."
+    ],
+    [
+     "heading",
+     "Limits and weak points"
+    ],
+    [
+     "list",
+     "**Private key theft.** Whoever obtains a private key can read what it protects. Forward secrecy reduces this by using short-lived keys for each session.\n**Fake public keys.** If an attacker swaps in their own public key, they can sit between two people unnoticed. This is a man-in-the-middle attack, and it is why keys must be shown to be authentic.\n**Trust in authorities.** On the web, certificate authorities vouch for keys. A compromised authority can issue fraudulent certificates.\n**Quantum computers.** Many current asymmetric algorithms are considered vulnerable to a large enough quantum computer, which has driven work on quantum-resistant schemes.\n**Metadata.** Encryption usually leaves sizes, timing and addresses visible."
+    ],
+    [
+     "callout",
+     "A public key is safe to publish; a private key must never be shared. If you ever see a request for your private key, it is not how the system is meant to work."
+    ],
+    [
+     "heading",
+     "Where you meet it"
+    ],
+    [
+     "paragraph",
+     "Every time a browser shows a padlock, public-key methods have been used to check the site's identity and set up a session key. They also sit behind secure shell logins, signed emails, signed software and some digital currencies. The core idea is the same everywhere: a pair of keys, one open and one secret, where the maths makes it impractical to get from one to the other."
+    ]
+   ],
+   "sources": [
+    {
+     "title": "Public-key cryptography, Wikipedia",
+     "url": "https://en.wikipedia.org/wiki/Public-key_cryptography"
+    },
+    {
+     "title": "Public key cryptography, NIST Computer Security Resource Center glossary",
+     "url": "https://csrc.nist.gov/glossary/term/public_key_cryptography"
+    }
+   ],
+   "checkedOn": "2026-11-03"
+  },
+  {
+   "title": "The Tata Indica: India's Home-Designed Hatchback of 1998",
+   "category": "Vintage and History",
+   "excerpt": "The Tata Indica was Tata Motors' first passenger hatchback, launched in December 1998. Here is how it was made, why it struggled at first and how it ended.",
+   "tags": [
+    "tata",
+    "indica",
+    "indian cars",
+    "hatchback"
+   ],
+   "blocks": [
+    [
+     "paragraph",
+     "The Tata Indica was Tata Motors' first passenger hatchback and, as the company presented it, India's first car developed for Indian buyers with a diesel engine option. It was unveiled in January 1998, reached the market on 30 December 1998, suffered early quality problems, recovered with the V2 version in 2001, and was discontinued in 2018. This article follows that story using Autocar India and Wikipedia. Where sources differ, it says so."
+    ],
+    [
+     "heading",
+     "A truck maker builds a car"
+    ],
+    [
+     "paragraph",
+     "Tata Motors, then known as Telco, was best known for trucks and buses. Autocar India reports that Ratan Tata drove the project to make a car designed for India. Telco's own prototypes were rejected, and the styling work went to the Italian design house I.DE.A, with Tata approving changes personally. Wikipedia adds that the engine was developed in India, based on an earlier Tata pickup and SUV engine with a shorter stroke."
+    ],
+    [
+     "heading",
+     "Unveiling and launch"
+    ],
+    [
+     "paragraph",
+     "Autocar India says the car was unveiled at the Auto Expo at Pragati Maidan, Delhi, on 15 January 1998, and reached the market on 30 December 1998 at a starting price of Rs 2.6 lakh. Wikipedia also gives 30 December 1998 for the introduction. Some other publications place the launch events slightly differently, so the exact dates in popular retellings vary."
+    ],
+    [
+     "paragraph",
+     "Orders were strong. Autocar India says about 1,10,000 orders were reported before launch; Wikipedia says the company reported 115,000 orders within a week of the unveiling. The figures differ a little, but both describe heavy early demand. Autocar India adds that Maruti cut the price of the Maruti 800 by about Rs 30,000 in response."
+    ],
+    [
+     "heading",
+     "Early trouble"
+    ],
+    [
+     "paragraph",
+     "The first cars did not live up to their promise. Wikipedia says early buyers complained about power and fuel economy. Autocar India describes serious quality problems and links them partly to a workforce used to building buses and trucks and to demand arriving faster than production could scale up. Sales dropped, and Autocar India reports that Ratan Tata considered separating the passenger car division but did not."
+    ],
+    [
+     "heading",
+     "The V2 recovery"
+    ],
+    [
+     "paragraph",
+     "In February 2001 Tata launched the Indica V2, re-engineered to fix the main reliability and quality problems. Autocar India says it became a top seller, and Wikipedia says it addressed most complaints. A CNG version was offered from 2001, and Wikipedia notes a 2007 recall and retrofit to fix issues with the gas system."
+    ],
+    [
+     "heading",
+     "A family of cars"
+    ],
+    [
+     "list",
+     "**Indigo, December 2002.** A sedan version, according to Autocar India.\n**MG CityRover, 2003.** MG Rover sold a badge-engineered Indica in the UK. Wikipedia says it ended with Rover's bankruptcy in 2005, and Autocar India calls it overpriced and poorly received.\n**One million, November 2007.** Autocar India says one million cars on the Indica platform had been sold by then.\n**Indica Vista, 2008.** A new platform, not a facelift. Wikipedia says it used Fiat engines, including a 1.3-litre diesel, and was 3,795 mm long. Wikipedia dates it to August 2008, Autocar India to January 2008, so sources disagree."
+    ],
+    [
+     "paragraph",
+     "Wikipedia reports annual Indica sales peaked at about 144,690 units in 2006-2007 and that exports to Europe and Africa began in late 2004. An electric Indica Vista EV, shown in 2011 with a 55 kW motor and 26.5 kWh battery, was tested in the UK but never sold commercially."
+    ],
+    [
+     "heading",
+     "The end"
+    ],
+    [
+     "paragraph",
+     "Autocar India says the original Indica was discontinued in 2018 after about 20 years, with monthly sales down to double digits, though it was still used as a budget taxi in rural areas. Wikipedia gives April 2018. Autocar India lists the successors that grew from the work: the Tiago and Tigor on one platform, and the Zest, Bolt and Nexon on another."
+    ],
+    [
+     "callout",
+     "The claim that the Indica was India's first fully home-designed car mostly comes from Tata's own statements and the Indian business press. The styling involved an Italian design house, so the claim depends on how design is counted."
+    ],
+    [
+     "heading",
+     "The market it entered"
+    ],
+    [
+     "paragraph",
+     "When the Indica arrived, the small-car segment was dominated by the Maruti 800, which Autocar India's account shows reacted with a price cut. The Indica offered a larger cabin than most rivals and a diesel engine, which Autocar India says was the only diesel in its class for years. That combination explains much of the early rush of orders, and it is also why quality lapses in the first cars were so damaging to the new brand's reputation."
+    ],
+    [
+     "heading",
+     "Why it is remembered"
+    ],
+    [
+     "paragraph",
+     "The Indica showed that an Indian commercial-vehicle maker could enter the passenger car market against established brands, stumble badly, and recover by fixing the product. Its platform fed several later Tata models, so its influence outlasted the car itself."
+    ]
+   ],
+   "sources": [
+    {
+     "title": "Indica: The end of an era, Autocar India",
+     "url": "https://www.autocarindia.com/auto-features/indica-the-end-of-an-era-408445"
+    },
+    {
+     "title": "Tata Indica, Wikipedia",
+     "url": "https://en.wikipedia.org/wiki/Tata_Indica"
+    }
+   ],
+   "checkedOn": "2026-11-03"
+  },
+  {
+   "title": "How a Vacuum Flask Keeps Drinks Hot or Cold",
+   "category": "How It Works",
+   "excerpt": "A vacuum flask slows heat flow with a near-empty gap between two walls and a shiny coating. See how it works, where heat still escapes and where it came from.",
+   "tags": [
+    "thermos",
+    "heat transfer",
+    "insulation",
+    "dewar"
+   ],
+   "blocks": [
+    [
+     "paragraph",
+     "A vacuum flask keeps drinks hot or cold by putting a near-empty gap between an inner and an outer wall. Heat moves in three ways, and the flask slows all of them: the vacuum limits conduction and convection, and a shiny coating limits radiation. Heat still leaks through the neck, which is why a hot drink eventually cools. This article explains each part and the flask's history, using Wikipedia and a short inventions reference."
+    ],
+    [
+     "heading",
+     "Three ways heat travels"
+    ],
+    [
+     "paragraph",
+     "Heat moves from warm things to cooler things by conduction, convection and radiation. Conduction passes energy between touching particles. Convection carries heat in moving fluid, such as air or liquid. Radiation sends energy as infrared light and needs no material at all. A good insulator has to deal with all three."
+    ],
+    [
+     "heading",
+     "The double wall and the vacuum"
+    ],
+    [
+     "paragraph",
+     "Wikipedia describes a vacuum flask as two vessels joined at the neck, with the gap between them partly evacuated. Conduction and convection both need particles to carry heat. With most of the air pumped out of the gap, there is very little to carry it, so heat transfer by these two routes falls sharply. The gap is a partial vacuum, not a perfect one."
+    ],
+    [
+     "heading",
+     "The shiny coating"
+    ],
+    [
+     "paragraph",
+     "A vacuum does not stop radiation, since radiation travels through empty space. To reduce it, the surfaces facing the gap are silvered or otherwise made reflective. A reflective surface sends heat radiation back rather than absorbing it, which helps keep hot contents hot and cold contents cold. Wikipedia notes that radiation becomes a bigger problem for very hot contents, which is one reason flasks are generally used for liquids below boiling point."
+    ],
+    [
+     "heading",
+     "Where the heat still escapes"
+    ],
+    [
+     "paragraph",
+     "Most remaining heat transfer happens at the neck and opening, where the two walls meet and there is no vacuum. Wikipedia says this is where the majority of heat transfer takes place. The stopper, usually cork or polyethylene, adds some insulation, and designers keep the neck as narrow as practical. Very large flasks may need spacers between the shells for support, and those act as thermal bridges that reduce insulation at the contact points."
+    ],
+    [
+     "list",
+     "The vacuum cuts conduction and convection across the gap.\nThe reflective coating cuts radiation.\nThe narrow neck and stopper limit what leaks at the opening.\nSpacers and joins, where needed, are weak points."
+    ],
+    [
+     "heading",
+     "Materials"
+    ],
+    [
+     "paragraph",
+     "Wikipedia says flasks are typically made of metal, borosilicate glass, foam or plastic. The reference site Edinformatics notes that early flasks were glass and that metal versions are now common because they are more durable and less likely to break."
+    ],
+    [
+     "heading",
+     "A short history"
+    ],
+    [
+     "paragraph",
+     "Both sources credit the Scottish scientist James Dewar with inventing the flask in 1892 during low-temperature research. Wikipedia says he did not patent it. In 1904 the German firm Thermos GmbH began selling flasks for everyday use. Wikipedia names glassblowers Reinhold Burger and Albert Aschenbrenner and says Dewar later lost a court case over rights, while Edinformatics lists a 1907 US patent to R. Burger for a double-walled vessel with a space for a vacuum. Wikipedia adds that in 1963 a US court ruled that lowercase thermos had become a generic term."
+    ],
+    [
+     "heading",
+     "Beyond the lunch box"
+    ],
+    [
+     "paragraph",
+     "The same principle is used in laboratories and industry. Wikipedia lists storage of liquid nitrogen and oxygen, helium systems for NMR and MRI machines, rocket propellant tanks and vaccine shipping as uses. Cryogenic versions are usually pressurised and need pressure-relief valves."
+    ],
+    [
+     "heading",
+     "Hot versus cold"
+    ],
+    [
+     "paragraph",
+     "The design works in both directions. For a hot drink, the vacuum and reflective wall slow the escape of heat to the room. For a cold drink, the same barrier slows the entry of heat from the room. The flask does not heat or cool anything; it only slows the exchange, so a drink that starts warm or cold stays closer to its starting temperature for longer than it would in an ordinary cup. Pre-filling with hot or cold water first is a commonly mentioned habit, but it is not a claim made by the sources used here."
+    ],
+    [
+     "heading",
+     "Limits and cautions"
+    ],
+    [
+     "callout",
+     "Glass vacuum flasks can implode, particularly if chipped or cracked or when very hot or cold liquid is added suddenly. This is general information from Wikipedia; follow the maker's instructions for any flask."
+    ],
+    [
+     "paragraph",
+     "No flask is perfect. Over time the contents move toward room temperature, and how long that takes depends on the design, the starting temperature and the surroundings. Makers' claims of hours of heat retention are their own figures, and they vary between products."
+    ],
+    [
+     "paragraph",
+     "The takeaway is simple: separate two walls with almost nothing, make the facing surfaces shiny, and keep the neck small. Each step blocks one route for heat, and together they slow it dramatically."
+    ]
+   ],
+   "sources": [
+    {
+     "title": "Vacuum flask, Wikipedia",
+     "url": "https://en.wikipedia.org/wiki/Vacuum_flask"
+    },
+    {
+     "title": "Vacuum flask, Edinformatics",
+     "url": "https://edinformatics.com/inventions_inventors/vacuum_flask.htm"
+    }
+   ],
+   "checkedOn": "2026-11-03"
+  }
+ ]
+}
