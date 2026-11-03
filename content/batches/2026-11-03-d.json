@@ -1,0 +1,349 @@
+{
+  "date": "2026-11-03",
+  "articles": [
+    {
+      "title": "How HTTPS and TLS Protect a Website Connection",
+      "category": "Technology",
+      "excerpt": "HTTPS is ordinary web traffic wrapped in TLS. Here is what TLS protects, how a certificate fits in, and what changed in TLS 1.3.",
+      "tags": [
+        "HTTPS",
+        "TLS",
+        "certificates",
+        "security"
+      ],
+      "blocks": [
+        [
+          "paragraph",
+          "When a browser shows a padlock and the address starts with https, the page travels over a protected connection. That protection comes from a protocol called Transport Layer Security, or TLS. It gives a connection three things: secrecy, a check that data was not changed on the way, and proof of who the server is. This article explains each of the three, the part a certificate plays, and what the newest version, TLS 1.3, changed."
+        ],
+        [
+          "heading",
+          "HTTPS is HTTP run over TLS"
+        ],
+        [
+          "paragraph",
+          "HTTP is the set of rules a browser and a web server use to ask for and send pages. On its own it sends everything in a form that anyone along the route can read. HTTPS is the same HTTP carried inside a TLS connection. According to Mozilla's web security documentation, TLS lets a client talk to a server across a network that cannot be trusted and still keep the exchange safe."
+        ],
+        [
+          "paragraph",
+          "The network in between is made of many links: a home router, a café hotspot, the internet provider and many machines beyond. TLS is designed so that none of them needs to be trusted for the conversation to stay private."
+        ],
+        [
+          "heading",
+          "The three protections"
+        ],
+        [
+          "list",
+          "**Confidentiality.** Data is encrypted in transit, so an outsider who captures it sees scrambled bytes rather than readable content.\n**Integrity.** If anyone changes data on the way, the change is detected.\n**Authentication.** Each side can prove who it is. On the web, the server proves its identity to the browser. The browser usually does not prove its identity to the server."
+        ],
+        [
+          "paragraph",
+          "The standard that defines TLS 1.3, RFC 8446 from the Internet Engineering Task Force, states the same goal in its own words: communication designed to prevent eavesdropping, tampering and message forgery. In TLS 1.3 the server is always authenticated, while authenticating the client is optional."
+        ],
+        [
+          "heading",
+          "What happens when a connection starts"
+        ],
+        [
+          "paragraph",
+          "Before any page content is sent, the browser and server run a short exchange called the handshake. Mozilla describes its purpose: the two sides agree on a TLS version, agree on a set of algorithms called a cipher suite, optionally check each other's identity, and arrive at a shared secret key. That key is then used to encrypt everything that follows."
+        ],
+        [
+          "paragraph",
+          "The shared key is the clever part. The two sides never send the key itself across the network. They exchange enough information to each work it out, in a way that an observer cannot repeat. The details are mathematical, but the outcome is simple: both ends hold a key that nobody in the middle holds."
+        ],
+        [
+          "heading",
+          "Where the certificate fits in"
+        ],
+        [
+          "paragraph",
+          "Encryption alone is not enough. A connection could be perfectly encrypted and still lead to an impostor. To prevent that, a website has a digital certificate that ties its public key to its domain name. The browser checks the certificate during the handshake, which is how the authentication protection works."
+        ],
+        [
+          "paragraph",
+          "Certificates are issued by organisations called certificate authorities. Let's Encrypt is one that issues certificates free of charge. Its documentation says it issues Domain Validation certificates only. That means a certificate confirms that whoever requested it controls the domain name. It does not confirm the identity of the company or person behind the site, because Let's Encrypt does not offer Organisation Validation or Extended Validation certificates."
+        ],
+        [
+          "paragraph",
+          "Certificates also expire. Per Let's Encrypt's FAQ, its default certificates last 90 days, and it also offers short-lived certificates that last six days. It recommends renewing the 90-day kind about every 60 days. The site's own server creates and keeps the private key; Let's Encrypt says it never generates or stores those keys."
+        ],
+        [
+          "callout",
+          "A padlock means the connection is protected and the domain name matches the certificate. It is not a statement that the site itself is honest or safe."
+        ],
+        [
+          "heading",
+          "What changed in TLS 1.3"
+        ],
+        [
+          "paragraph",
+          "Mozilla describes TLS 1.3 as the current version and the most widely used. TLS 1.2 is still used by some sites, while TLS 1.1 and 1.0 should no longer be used. RFC 8446 lists how version 1.3 differs from 1.2:"
+        ],
+        [
+          "list",
+          "The full handshake takes one round trip before application data can flow. An optional 0-RTT mode lets a returning client send early data in its first message, though the RFC notes this comes with weaker security guarantees.\nOlder encryption methods were removed, leaving only a modern type called AEAD ciphers.\nStatic RSA and static Diffie-Hellman key exchange were removed, so every key exchange provides forward secrecy. In plain terms, recording today's traffic and stealing the server's key later does not let an attacker read the recording.\nFeatures such as compression were dropped.\nMost handshake messages after the server's first reply are encrypted."
+        ],
+        [
+          "paragraph",
+          "Taken together, version 1.3 has fewer options than version 1.2. Removing old choices reduces the number of ways a connection can be set up badly."
+        ],
+        [
+          "heading",
+          "What a site owner adds on top"
+        ],
+        [
+          "paragraph",
+          "Mozilla recommends that all sites serve every page and every file they load over HTTPS. A page that is secure but loads one script over plain HTTP is called mixed content, and browsers block or upgrade such requests. A site can also redirect plain HTTP requests to HTTPS using a 301 response, and send a header called Strict-Transport-Security so that browsers go straight to HTTPS on later visits. That helps guard against an attack known as SSL stripping, where an attacker quietly keeps a visitor on the unprotected version."
+        ],
+        [
+          "heading",
+          "What HTTPS does not do"
+        ],
+        [
+          "paragraph",
+          "TLS protects data while it moves between the browser and the server. It does not protect data once it arrives. A server that stores or shares your information carelessly is not made safe by HTTPS. It also does not hide which site you are visiting from every observer. This is general information, not security advice for a particular situation."
+        ]
+      ],
+      "sources": [
+        {
+          "title": "Transport Layer Security (TLS), MDN Web Docs, Mozilla",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/Security/Transport_Layer_Security"
+        },
+        {
+          "title": "RFC 8446: The Transport Layer Security (TLS) Protocol Version 1.3, IETF",
+          "url": "https://datatracker.ietf.org/doc/html/rfc8446"
+        },
+        {
+          "title": "FAQ, Let's Encrypt",
+          "url": "https://letsencrypt.org/docs/faq/"
+        }
+      ],
+      "checkedOn": "2026-11-03"
+    },
+    {
+      "title": "What Is Model Quantization in AI? Smaller, Faster Models",
+      "category": "AI",
+      "excerpt": "Quantization stores an AI model's numbers in fewer bits so it needs less memory and can run faster. Here is how it works and what it costs in accuracy.",
+      "tags": [
+        "quantization",
+        "AI models",
+        "inference",
+        "memory"
+      ],
+      "blocks": [
+        [
+          "paragraph",
+          "Quantization is a way of shrinking an AI model by storing its numbers with less precision. Instead of keeping each value as a 32-bit or 16-bit floating-point number, a quantized model might keep it as an 8-bit integer. The model then needs less memory and can often run faster, at the price of some accuracy. This article explains how the conversion works, the main methods and what trade-offs a user should expect."
+        ],
+        [
+          "heading",
+          "The idea in one paragraph"
+        ],
+        [
+          "paragraph",
+          "A neural network is mostly a very large collection of numbers called weights, plus intermediate numbers called activations that appear while it runs. Hugging Face's documentation describes quantization as representing those weights and activations with low-precision data types such as 8-bit integers (int8) instead of the usual 32-bit floating point (float32). Fewer bits per number means a smaller file, and integer arithmetic can be faster on suitable hardware."
+        ],
+        [
+          "heading",
+          "How much memory it saves"
+        ],
+        [
+          "paragraph",
+          "NVIDIA's technical blog gives a worked example. A Llama 2 model with 7 billion parameters needs about 14 GB for its weights in 16-bit form, because each parameter takes 2 bytes. Stored in 8-bit form, the weights need about 7 GB, half as much. The blog adds that models which generate text also keep a working memory called the KV cache, which can add several gigabytes at long context lengths such as 4,096 tokens."
+        ],
+        [
+          "callout",
+          "Memory saved is simple arithmetic: parameters multiplied by bytes per parameter. Halving the bits halves the weight storage."
+        ],
+        [
+          "heading",
+          "How a float becomes an integer"
+        ],
+        [
+          "paragraph",
+          "Going from float32 to float16 is straightforward because both use the same style of number. Going to int8 is harder, because an 8-bit integer can hold only 256 different values while a float can cover a huge range. The task is to map a range of float values, from a lowest value a to a highest value b, onto the integers."
+        ],
+        [
+          "paragraph",
+          "Hugging Face describes the usual scheme with two settings. The **scale** says how big a step between neighbouring integers is. The **zero-point** is the integer that stands for the real value zero; keeping zero exactly representable matters because zero appears everywhere in these models. A real number is turned into an integer by dividing by the scale, adding the zero-point and rounding. Values outside the chosen range are clipped to the nearest end."
+        ],
+        [
+          "paragraph",
+          "NVIDIA shows a small example using a method called AbsMax, which sets the scale from the largest absolute value in the data. With values spanning roughly minus 6.2 to 12.8, the scale comes out near 0.028, and the number 6.4 maps to about 228.57 before rounding. Rounding is where precision is lost: two nearby real values can end up as the same integer."
+        ],
+        [
+          "heading",
+          "Symmetric and asymmetric"
+        ],
+        [
+          "paragraph",
+          "The scheme above, with a zero-point, is called affine or asymmetric. A common special case is symmetric quantization, where the real range runs from minus a to plus a and the zero-point is fixed at 0. Hugging Face notes this gives up one of the 256 integer values but can be faster because some additions can be skipped. NVIDIA states that its TensorRT tools use the symmetric approach and that asymmetric quantization gave no significant accuracy gain over it in its discussion."
+        ],
+        [
+          "heading",
+          "Per-tensor versus finer groups"
+        ],
+        [
+          "paragraph",
+          "A tensor is a block of numbers, such as one layer's weights. The simplest choice is one scale for the whole tensor. A finer choice is one scale per channel or per small block. Both sources agree on the trade: finer groups isolate unusual large values, which reduces error, but they require storing more scale values."
+        ],
+        [
+          "heading",
+          "Deciding the range: calibration"
+        ],
+        [
+          "paragraph",
+          "Weights are known in advance, so their range is easy to measure. Activations depend on the input, so the range is harder. Hugging Face lists three approaches:"
+        ],
+        [
+          "list",
+          "**Dynamic quantization:** the range is worked out on the fly while the model runs. It needs little preparation but adds some overhead.\n**Static quantization:** the ranges are measured beforehand by passing example data through the model. Hugging Face says around 200 examples is typically enough.\n**Quantization-aware training:** the model is trained while simulating the rounding errors, so it learns to cope with them."
+        ],
+        [
+          "paragraph",
+          "NVIDIA groups the first two under post-training quantization, applied to a model that is already trained, and contrasts them with quantization-aware training, which usually recovers accuracy better but requires more work."
+        ],
+        [
+          "heading",
+          "The costs"
+        ],
+        [
+          "paragraph",
+          "NVIDIA states plainly that quantization can lead to some accuracy degradation compared with the original model. How much depends on the model, the number of bits and the method. Techniques with names such as AWQ, GPTQ and SmoothQuant aim to reduce that loss at low bit widths."
+        ],
+        [
+          "paragraph",
+          "Energy savings are not guaranteed either. Hugging Face describes lower energy use as true only in theory and cites one benchmark study on two NVIDIA graphics cards. That study found that for small models of under 3 billion parameters, a 4-bit format could raise energy use by 25 to 56 percent despite cutting memory by 75 percent, because the work of converting numbers back costs more than the saved memory traffic. For models of 5 billion parameters and above, energy stayed near the 16-bit level while memory fell. These results come from a single third-party benchmark and one hardware family."
+        ],
+        [
+          "heading",
+          "Why it matters to ordinary users"
+        ],
+        [
+          "paragraph",
+          "Quantization is a main reason large models can be run on laptops, phones and embedded devices that would otherwise lack the memory. When a model is offered in versions labelled with bit counts such as 8-bit or 4-bit, those labels describe how heavily it has been quantized. A smaller version fits on smaller hardware; the original is usually the reference for quality."
+        ]
+      ],
+      "sources": [
+        {
+          "title": "Quantization, Hugging Face Optimum documentation",
+          "url": "https://huggingface.co/docs/optimum/concept_guides/quantization"
+        },
+        {
+          "title": "Model Quantization: Concepts, Methods, and Why It Matters, NVIDIA Technical Blog",
+          "url": "https://developer.nvidia.com/blog/model-quantization-concepts-methods-and-why-it-matters/"
+        }
+      ],
+      "checkedOn": "2026-11-03"
+    },
+    {
+      "title": "How LED Bulbs Make Light and Why They Last So Long",
+      "category": "Electronics",
+      "excerpt": "LED bulbs turn electric current into light far more efficiently than old filament bulbs. Learn how white light is made, how long LEDs last, and why heat matters.",
+      "tags": [
+        "LED",
+        "lighting",
+        "efficiency",
+        "energy"
+      ],
+      "blocks": [
+        [
+          "paragraph",
+          "An LED, short for light emitting diode, makes light from an electric current passing through a small chip rather than by heating a wire until it glows. That difference is why LED bulbs waste far less energy as heat and last far longer than the filament bulbs they replaced. This article covers how LEDs produce white light, what their lifespan figures mean and why temperature is the thing that wears them out."
+        ],
+        [
+          "heading",
+          "A different way to make light"
+        ],
+        [
+          "paragraph",
+          "A traditional incandescent bulb passes current through a thin filament that gets hot enough to glow. The US Department of Energy's consumer pages say such bulbs release about 90 percent of their energy as heat, so only a small share becomes visible light. An LED works differently. According to the Department of Energy, an electrical current passes through a microchip, which lights tiny light sources, and the heat that is produced is drawn away by a heat sink. The department says LED products produce light up to 90 percent more efficiently than incandescent bulbs. Wikipedia's article on the LED gives the underlying physics: electrons recombine with electron holes inside a semiconductor and release the energy as photons, and the semiconductor's band gap sets the colour."
+        ],
+        [
+          "heading",
+          "Why LEDs start out coloured"
+        ],
+        [
+          "paragraph",
+          "An LED does not naturally emit white light. The Department of Energy explains that LEDs emit nearly monochromatic light, meaning light of essentially one colour. That suits uses such as traffic lights and exit signs. To get white light for a room, makers use one of three approaches:"
+        ],
+        [
+          "list",
+          "**Phosphor conversion:** a phosphor coating on or near the LED converts the coloured light into white.\n**Colour mixing:** red, green and blue LEDs are combined so that together they look white.\n**Hybrid:** phosphor-converted LEDs are combined with single-colour LEDs."
+        ],
+        [
+          "paragraph",
+          "A phosphor is a material that absorbs light of one colour and gives out light of other colours. The Department of Energy's overview names these three methods but does not rank them for any particular product, so it is not possible to say from that source which method a given bulb uses. The packaging or manufacturer's data sheet is the place to look. Wikipedia adds that phosphor conversion, typically a blue or ultraviolet LED coated with phosphor, is the more common method because it is simpler and cheaper to make, while red-green-blue mixing is seldom used for white lighting because the colour balance can shift with viewing angle."
+        ],
+        [
+          "heading",
+          "Efficacy: how much light per watt"
+        ],
+        [
+          "paragraph",
+          "Lighting efficiency is often given as efficacy, measured in lumens per watt. A lumen is a unit of visible light output, and a watt is the electrical power used. The Department of Energy says LED efficacy reaches up to about 150 lumens per watt in some specialised cases, and it sets long-term research goals of 250 to 325 lumens per watt for warm-white LED packages and 250 to 275 for complete lighting products. Those are goals, not the performance of bulbs on shop shelves today."
+        ],
+        [
+          "paragraph",
+          "The department also points out that with many conventional fixture types, only 50 to 60 percent of the light a lamp produces actually leaves the fixture. LEDs are directional, which means they emit light in one direction rather than in all directions as incandescent and compact fluorescent bulbs do. In some fittings that helps, because less light is trapped inside the fixture."
+        ],
+        [
+          "heading",
+          "How long they last, and what that means"
+        ],
+        [
+          "paragraph",
+          "The Department of Energy expects good-quality white LEDs to last 30,000 to 50,000 hours. For comparison it gives about 1,000 hours for incandescent lamps, 8,000 to 10,000 hours for compact fluorescents and more than 30,000 hours for the best linear fluorescent tubes."
+        ],
+        [
+          "paragraph",
+          "These numbers describe something different from an ordinary burn-out. The department explains that LEDs typically do not burn out suddenly. Instead they go through lumen depreciation, which means the light slowly dims. The rated life is measured as the point where light output has fallen to 70 percent of its starting level. One Energy Saver page describes the same measure as a 30 percent drop. A bulb past its rated life may therefore still shine, only more dimly."
+        ],
+        [
+          "callout",
+          "A 30,000-hour rating is a dimming milestone, not a guarantee that the bulb stops working at that point."
+        ],
+        [
+          "heading",
+          "Heat is the main enemy"
+        ],
+        [
+          "paragraph",
+          "Although LEDs waste far less energy than filament bulbs, they still produce some heat, and it is concentrated in a small chip. The Department of Energy says heat is the biggest factor in an LED's lifespan: the hotter it runs, the faster it degrades. That is why LED bulbs carry heat sinks, the metal fins or bodies that carry heat away from the chip. It is also a reason that enclosed fittings with poor airflow can shorten life, though the exact effect depends on the product."
+        ],
+        [
+          "heading",
+          "Colour quality"
+        ],
+        [
+          "paragraph",
+          "Brightness is not the only property of a light. Colour rendering index, or CRI, is a score for how faithfully a light shows colours compared with a reference. The Department of Energy recommends a minimum CRI of 80 for interior lighting and says a CRI of 90 or higher indicates excellent colour fidelity."
+        ],
+        [
+          "heading",
+          "Price"
+        ],
+        [
+          "paragraph",
+          "The Department of Energy notes that some LED lamps cost only 1 to 2 US dollars, with prices varying by performance features. That figure is from the department's page and prices differ by country and over time, so treat it as an indication only. This article is general information, not a buying recommendation."
+        ]
+      ],
+      "sources": [
+        {
+          "title": "LED Basics, Office of Energy Efficiency and Renewable Energy, US Department of Energy",
+          "url": "https://www.energy.gov/eere/ssl/led-basics"
+        },
+        {
+          "title": "LED Lighting, Energy Saver, US Department of Energy",
+          "url": "https://www.energy.gov/energysaver/led-lighting"
+        },
+        {
+          "title": "Light-emitting diode, Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Light-emitting_diode"
+        }
+      ],
+      "checkedOn": "2026-11-03"
+    }
+  ]
+}
