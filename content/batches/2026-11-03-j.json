@@ -1,0 +1,35 @@
+{
+  "date": "2026-11-03",
+  "articles": [
+    {
+      "title": "Hero Xpulse 450 Unveiled at EICMA 2026: Key Specs",
+      "category": "News and Launches",
+      "categoryDescription": "Recent news and new launches: vehicles, gadgets, AI and aviation, explained from official sources.",
+      "excerpt": "Hero MotoCorp unveiled the Xpulse 450 at EICMA 2026 on 3 November 2026. Here are the published engine, suspension and feature details, and what is still not announced.",
+      "tags": ["news", "launch", "hero", "xpulse", "adventure-bike"],
+      "blocks": [
+        ["paragraph", "Hero MotoCorp unveiled the Xpulse 450 at the EICMA motorcycle show in Milan on 3 November 2026. It is a new adventure motorcycle with a 421cc liquid-cooled single-cylinder engine rated at 46.7 hp and 38 Nm, according to figures reported by Autocar India. Hero has not announced a price or an India launch date. This article is accurate as of 3 November 2026."],
+        ["heading", "What was unveiled"],
+        ["paragraph", "The Xpulse 450 is the largest motorcycle in Hero's Xpulse family. Both Bikewale and Autocar India describe it as powered by a brand-new 421cc engine. Autocar India notes that the bike is also referred to as the Xpulse 421, a name used in earlier reports before the show. The bike has been in development since 2020. It was first shown as a rolling chassis prototype and later as a concept sketch at EICMA, and Hero says its MotoSports team, which competes in rally events, contributed to the design."],
+        ["paragraph", "EICMA is an annual international motorcycle exhibition held in Milan, Italy, where manufacturers often show new models to European buyers first. That fits Hero's statement that the bike will reach Europe before India. The company has not said when European sales begin, and it has not said which versions of the bike each market will get."],
+        ["heading", "Published specifications"],
+        ["list", "Engine: 421cc, liquid-cooled, single-cylinder\nPower: 46.7 hp at 9,100 rpm (as reported by Autocar India)\nTorque: 38 Nm at 7,500 rpm (as reported by Autocar India)\nGearbox: 6-speed, with a slip-and-assist clutch fitted as standard\nFront suspension: KYB 43 mm cartridge-type upside-down fork with 225 mm of travel, adjustable in 22 steps for compression and rebound\nWheels: tubeless spoked wheels, which appear to be 19-inch at the front and 17-inch at the rear\nDisplay: what appears to be a 7-inch TFT screen with built-in Android Auto and Apple CarPlay"],
+        ["paragraph", "A slip-and-assist clutch is designed to ease lever effort and to limit rear-wheel hop when the rider shifts down quickly, which is why it is useful on a bike meant for varied surfaces. Hero has not published separate claims for this clutch beyond saying it is standard. Autocar India describes the built-in Android Auto and Apple CarPlay as a first in this segment. Rear suspension, weight and brake details were not given in the coverage this article draws on, so they are left out here rather than guessed."],
+        ["heading", "How it compares with the Xpulse 210"],
+        ["paragraph", "Autocar India gives the smaller Xpulse 210 as 24.6 hp at 9,250 rpm and 20.7 Nm at 7,250 rpm. Its front fork has 210 mm of travel and is not adjustable. The new bike's reported 46.7 hp is therefore close to double that output, and its front fork has 15 mm more travel and adjustable damping."],
+        ["paragraph", "Hero says the Xpulse 450 will sit alongside the Xpulse 200 4V, the Xpulse 210 Dakar Edition and the Xpulse 210 MX, so it adds a larger option to the range rather than replacing any of them."],
+        ["heading", "Price and launch: what is not known"],
+        ["paragraph", "Hero has said the bike will go to Europe first, with India to follow. No timeline has been given for either market, and no price has been announced. Price figures shown on some listing pages are not from Hero and are not used here."],
+        ["paragraph", "For context only, Autocar India lists the likely Indian rivals and their current prices as the KTM 390 Adventure S at Rs 4.06 lakh, the KTM 390 Adventure R at Rs 3.87 lakh and the Royal Enfield Himalayan 450 at Rs 3.08 lakh. Bikewale also names the Norton Atlas. These are the outlets' own comparisons, not statements from Hero, and the prices are as listed by Autocar India on 3 November 2026."],
+        ["callout", "Hero has not published a launch date or price for India. Treat any figure for either as unconfirmed until the company announces it."],
+        ["heading", "What to watch next"],
+        ["list", "Hero's official announcement of India launch timing\nThe full specification sheet, including weight, rear suspension and brakes\nThe confirmed name for the production model, since coverage uses both Xpulse 450 and Xpulse 421\nPrice and variants, once announced"]
+      ],
+      "sources": [
+        { "title": "EICMA 2026: Hero Xpulse 450 Unveiled, Bikewale", "url": "https://www.bikewale.com/news/eicma-2026-hero-xpulse-450-unveiled-dakar-experience-comes-to-the-road/" },
+        { "title": "Hero Xpulse 450 unveiled with Android Auto and Apple CarPlay, Autocar India", "url": "https://www.autocarindia.com/bike-news/hero-xpulse-450-unveiled-with-android-auto-and-apple-carplay-441231" }
+      ],
+      "checkedOn": "2026-11-03"
+    }
+  ]
+}
