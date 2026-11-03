@@ -1,0 +1,114 @@
+{
+ "date": "2026-11-03",
+ "articles": [
+  {
+   "title": "Moto Guzzi The Trip 500 Unveiled at EICMA 2026",
+   "category": "News and Launches",
+   "excerpt": "Moto Guzzi has shown The Trip, a new 500 roadster with a parallel-twin engine of almost 48 hp, at EICMA 2026. Price and exact dates have not been announced.",
+   "tags": [
+    "news",
+    "launch",
+    "moto-guzzi",
+    "motorcycles",
+    "eicma"
+   ],
+   "blocks": [
+    [
+     "paragraph",
+     "Moto Guzzi presented **The Trip**, a new 500cc roadster, at EICMA 2026 in Milan, according to the show's own website and Motorbox. It has a parallel-twin engine, which is new for the brand, a declared output of almost 48hp that fits the A2 licence limit, and a declared weight of 180kg in running order. Moto Guzzi has not announced a price. This article is current as of 3 November 2026."
+    ],
+    [
+     "heading",
+     "Published specifications"
+    ],
+    [
+     "list",
+     "Engine: 500cc parallel-twin\nPower: almost 48hp, as declared by the manufacturer (within A2 licence limits)\nWeight: 180kg in running order, declared by the manufacturer\nSeat height: 790mm\nFuel tank: 15 litres\nGearbox: six-speed, with quick shifter\nFrame: newly developed steel frame"
+    ],
+    [
+     "paragraph",
+     "Torque figures were not given in either source. Motorbox says the manufacturer states most of the torque is available at low revs, with full values to follow in the complete technical sheet."
+    ],
+    [
+     "heading",
+     "Suspension, electronics and display"
+    ],
+    [
+     "paragraph",
+     "The EICMA page lists upside-down front forks and a pair of adjustable rear shock absorbers. The bike has three riding modes: Road, Sport and Rain. A 3.6-inch circular TFT display can connect to a smartphone, and the switchgear is backlit. Neither source states the brake or wheel specification."
+    ],
+    [
+     "heading",
+     "Colours and special edition"
+    ],
+    [
+     "paragraph",
+     "The Trip comes in three colours: Green Grove, Black Metropolis and Red Beat. A special edition called The Opening will mark the debut of the new generation of Moto Guzzi motorcycles. Motorbox says the company has not yet disclosed what extra equipment it carries."
+    ],
+    [
+     "heading",
+     "Why it matters to the brand"
+    ],
+    [
+     "paragraph",
+     "The EICMA page describes The Trip as the start of a new generation for Moto Guzzi. The company is best known for its V-twin engines mounted across the frame, so a parallel-twin is a different layout. The sources do not name the engine's origin or say whether it is shared with another maker, so this article does not guess."
+    ],
+    [
+     "heading",
+     "Availability and price"
+    ],
+    [
+     "paragraph",
+     "The EICMA page says the bike will reach dealers in early 2027. Motorbox says that availability and price have not yet been announced and notes only that it was shown at the Moto Guzzi stand in Pavilion 9. The two sources differ on availability, so treat the early 2027 date as the show page's statement until the company confirms it. Prices circulating online are estimates, not company figures, and are not repeated here."
+    ],
+    [
+     "heading",
+     "India"
+    ],
+    [
+     "paragraph",
+     "Neither source mentions India. Moto Guzzi has not announced an Indian price or launch date for The Trip in the information read for this article."
+    ],
+    [
+     "heading",
+     "Terms used in this article"
+    ],
+    [
+     "paragraph",
+     "EICMA is the international motorcycle exhibition held every year in Milan, Italy, where makers often show new models before they reach showrooms. A \"declared\" figure is one stated by the maker; it has not been measured independently. \"Running order\" weight normally means the bike with fluids and fuel but without a rider, though the exact definition differs between makers."
+    ],
+    [
+     "paragraph",
+     "The A2 licence is a European category for riders stepping up from the smallest motorcycles. It limits a bike's power, and Moto Guzzi's page says the almost 48hp of The Trip falls within that limit. Rules for licence categories differ by country, and the Indian licensing system is different, so this statement relates to European rules."
+    ],
+    [
+     "heading",
+     "What the numbers tell you, and what they do not"
+    ],
+    [
+     "paragraph",
+     "The reports available describe a motorcycle as it was shown at a stand, not as it is sold. Final specifications can change before sales start, and the manufacturer has said that a complete technical sheet is still to come, according to Motorbox. Torque, brakes, wheels and price are all missing from the sources read for this article, so none of them is stated here."
+    ],
+    [
+     "heading",
+     "Open questions"
+    ],
+    [
+     "paragraph",
+     "Several basic facts are still unpublished in the sources read: the engine's torque, the brake and wheel specification, the price, and the equipment of The Opening edition. Moto Guzzi has said a full technical sheet will follow, and this article is not updated after publication, so readers should check the company's own site for the final specification once it appears."
+    ]
+   ],
+   "sources": [
+    {
+     "title": "The Trip, the new 500 roadster ushers in a new generation of Moto Guzzi, EICMA",
+     "url": "https://www.eicma.it/en/the-trip-the-new-500-roadster-ushers-in-a-new-generation-of-moto-guzzi/"
+    },
+    {
+     "title": "EICMA 2026, Moto Guzzi presenta The Trip: la nuova 500, Motorbox",
+     "url": "https://www.motorbox.com/moto/magazine-moto/moto-novita/moto-guzzi-the-trip-500-novita-caratteristiche-e-foto"
+    }
+   ],
+   "checkedOn": "2026-11-03"
+  }
+ ]
+}
