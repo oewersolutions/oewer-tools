@@ -1,5 +1,7 @@
 import { isDashboardUrl, isMeasurementId } from "../analytics";
+import { prevDay } from "../games/puzzles";
 import { stockFrom } from "../games/make";
+import type { Change } from "./changes";
 import { ARCADE_GAME_TYPES, type GameType } from "../games/types";
 import type { WorkbookData } from "../workbook";
 
@@ -59,6 +61,15 @@ export function puzzleStock(data: WorkbookData, today: string): PuzzleStock[] {
       const { days, nextMissing } = stockFrom(dates, today);
       return { game: String(g.values.name), days, nextMissing, tone: days === 0 ? "bad" : days < LOW_PUZZLE_STOCK ? "warn" : "good" };
     });
+}
+
+/**
+ * Changes that delete the daily puzzles of earlier days. Yesterday is kept, because visitors west of the admin's time zone
+ * are still on that date, and so is every puzzle from today on. Arcade games have none.
+ */
+export function oldPuzzleChanges(data: WorkbookData, today: string): Change[] {
+  const keep = prevDay(today);
+  return (data.game_puzzles ?? []).filter((p) => String(p.values.puzzle_date) < keep).map((p) => ({ type: "delete", sheet: "game_puzzles", pk: String(p.values.puzzle_id) }));
 }
 
 /** Sheets that have no status, shown as plain totals. */

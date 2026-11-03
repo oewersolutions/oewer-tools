@@ -79,6 +79,7 @@ Two new sheets, plus a Games link in the header menu:
 ## How to add or change things now
 
 - **A puzzle:** admin, Manager, sheet `game_puzzles`, or write `content/puzzles/<date>.json` (`{"puzzles":[{"game":"word-guess","date":"2026-11-22","data":{"answer":"CRANE"}}]}`) and run `npm run puzzles:add -- content/puzzles/<date>.json`. The script checks the date, the word list and that an answer is never repeated.
+- **Old puzzles:** admin, Dashboard, "Daily puzzles" card, **Remove old puzzles** (asks to confirm, then saves one commit). It deletes the `game_puzzles` rows dated before yesterday; yesterday, today and later stay. The earlier puzzles remain in the save history. Note that the checks against repeating an answer, a group title or a theme only see the puzzles still in the workbook.
 - **A game's name, line or rules text:** sheet `games`. Only games whose type is built can be published.
 - **The menu link:** sheet `navigation` (the Games row).
 - **Ads on the games pages:** sheet `advertisements`, rows `below_game` (game) and `list_bottom` (game_hub). They reuse the below-tool and blog-list slots for now; create separate units in AdSense when you want separate numbers.

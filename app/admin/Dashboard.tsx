@@ -2,8 +2,9 @@
 
 import { useEffect, useState } from "react";
 import { listDeployRuns, type DeployRun } from "../../lib/admin/actions";
-import { analyticsInfo, contentCounts, LOW_PUZZLE_STOCK, plainCounts, puzzleStock } from "../../lib/admin/dashboard";
-import { GithubError, type GithubSession } from "../../lib/admin/github";
+import { analyticsInfo, contentCounts, LOW_PUZZLE_STOCK, oldPuzzleChanges, plainCounts, puzzleStock } from "../../lib/admin/dashboard";
+import { commitWorkbook, GithubError, readWorkbookFile, type GithubSession, type WorkbookFile } from "../../lib/admin/github";
+import { saveChanges, type Repo } from "../../lib/admin/save";
 import { listHistory, type HistoryEntry } from "../../lib/admin/history";
 import type { WorkbookData } from "../../lib/workbook";
 import type { MenuId } from "./AdminShell";
@@ -13,7 +14,31 @@ const when = (iso: string) => (iso ? new Date(iso).toLocaleString("en-GB", { dat
 const STATE: Record<DeployRun["state"], string> = { waiting: "Waiting to start", building: "Updating the site", live: "Live", failed: "Failed", cancelled: "Cancelled" };
 
 /** At-a-glance overview: how much content there is, the latest saves, and how the latest site update ended. */
-export default function Dashboard({ session, data, refreshKey, onNavigate, onRebuild, rebuilding }: { session: GithubSession; data: WorkbookData; refreshKey: string; onNavigate: (id: MenuId) => void; onRebuild: () => void; rebuilding: boolean }) {
+export default function Dashboard({
+  session,
+  data,
+  file,
+  refreshKey,
+  onNavigate,
+  onRebuild,
+  rebuilding,
+  onSaved,
+  onPublished,
+}: {
+  session: GithubSession;
+  data: WorkbookData;
+  /** The workbook as last read from GitHub, and whether this account may save to it. */
+  file: { bytes: Uint8Array; sha: string; canPush: boolean };
+  refreshKey: string;
+  onNavigate: (id: MenuId) => void;
+  onRebuild: () => void;
+  rebuilding: boolean;
+  onSaved: (base: WorkbookFile) => void | Promise<void>;
+  onPublished: (commitSha: string) => void;
+}) {
+  const [confirming, setConfirming] = useState(false);
+  const [clearing, setClearing] = useState(false);
+  const [cleared, setCleared] = useState<{ ok: boolean; text: string }>();
   const [commits, setCommits] = useState<HistoryEntry[]>();
   const [commitsProblem, setCommitsProblem] = useState<string>();
   const [run, setRun] = useState<DeployRun | null>();
@@ -39,6 +64,32 @@ export default function Dashboard({ session, data, refreshKey, onNavigate, onReb
   const analytics = analyticsInfo(data);
   const stock = puzzleStock(data, new Date().toLocaleDateString("en-CA")); // en-CA writes dates as YYYY-MM-DD, in the viewer's own time zone
   const low = stock.filter((s) => s.tone !== "good");
+  const old = oldPuzzleChanges(data, new Date().toLocaleDateString("en-CA"));
+
+  async function removeOld() {
+    setClearing(true);
+    setCleared(undefined);
+    try {
+      const repo: Repo = { read: () => readWorkbookFile(session), commit: (bytes, sha, text) => commitWorkbook(session, bytes, sha, text) };
+      const base: WorkbookFile = { bytes: file.bytes, sha: file.sha, size: file.bytes.length };
+      const result = await saveChanges(repo, base, old, `Remove ${old.length} old daily puzzle${old.length === 1 ? "" : "s"}`);
+      if (result.status === "saved") {
+        await onSaved(result.base);
+        onPublished(result.commit.commitSha);
+        setCleared({ ok: true, text: `Removed ${old.length} old puzzle${old.length === 1 ? "" : "s"}. The site updates by itself in a minute or two.` });
+      } else if (result.status === "invalid") {
+        setCleared({ ok: false, text: "Nothing was removed: the workbook would no longer be valid." });
+      } else {
+        await onSaved(result.base);
+        setCleared({ ok: false, text: "Someone saved a newer version first, so nothing was removed. Try again." });
+      }
+    } catch (e) {
+      setCleared({ ok: false, text: e instanceof GithubError ? e.message : "The puzzles could not be removed. Nothing was changed." });
+    } finally {
+      setClearing(false);
+      setConfirming(false);
+    }
+  }
 
   const kpis: { label: string; menu: MenuId }[] = [
     { label: "Tools", menu: "tools" },
@@ -119,6 +170,35 @@ export default function Dashboard({ session, data, refreshKey, onNavigate, onReb
               </li>
             ))}
           </ul>
+          <div className="mt-4 border-t border-slate-100 pt-4">
+            {confirming ? (
+              <div role="alertdialog" aria-label="Remove old puzzles" className="space-y-3 text-sm">
+                <p className="text-slate-800">
+                  Remove <strong>{old.length}</strong> puzzle{old.length === 1 ? "" : "s"} from days before yesterday? Yesterday&rsquo;s, today&rsquo;s and coming puzzles stay. The earlier puzzles leave the website, and they remain in the save history if you ever need them back.
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  <button type="button" className={PRIMARY_BUTTON} onClick={() => void removeOld()} disabled={clearing}>
+                    {clearing ? "Removing…" : `Yes, remove ${old.length}`}
+                  </button>
+                  <button type="button" className={TOOLBAR_BUTTON} onClick={() => setConfirming(false)} disabled={clearing}>
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <div className="flex flex-wrap items-center gap-3">
+                <button type="button" className={TOOLBAR_BUTTON} onClick={() => (setCleared(undefined), setConfirming(true))} disabled={old.length === 0 || !file.canPush}>
+                  Remove old puzzles
+                </button>
+                <span className="text-sm text-slate-600">{old.length === 0 ? "There are no old puzzles to remove." : `${old.length} puzzle${old.length === 1 ? "" : "s"} from earlier days.`}</span>
+              </div>
+            )}
+            {cleared && (
+              <p role={cleared.ok ? "status" : "alert"} className={`mt-3 text-sm ${cleared.ok ? "text-brand" : "text-red-800"}`}>
+                {cleared.text}
+              </p>
+            )}
+          </div>
         </Card>
       )}
 

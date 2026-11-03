@@ -918,6 +918,21 @@ test("the dashboard shows how many days of puzzles each game has ready", async (
   await expect(list).toContainText(/\d+ days? ready|None for today/);
 });
 
+test("the dashboard removes old daily puzzles after a confirmation", async ({ page }) => {
+  await fakeGithub(page);
+  await signIn(page, undefined, "Dashboard");
+  const dash = page.getByRole("region", { name: "Dashboard" });
+  await dash.getByRole("button", { name: "Remove old puzzles" }).click();
+  const confirm = dash.getByRole("alertdialog", { name: "Remove old puzzles" });
+  await expect(confirm).toContainText("before yesterday");
+  await confirm.getByRole("button", { name: "Cancel" }).click();
+  await expect(confirm).toBeHidden();
+  await dash.getByRole("button", { name: "Remove old puzzles" }).click();
+  await confirm.getByRole("button", { name: /^Yes, remove \d+$/ }).click();
+  await expect(dash.getByRole("status").filter({ hasText: "Removed" })).toContainText("old puzzle");
+  await expect(dash.getByRole("button", { name: "Remove old puzzles" })).toBeDisabled();
+});
+
 test("the dashboard still shows counts when the token cannot read site updates", async ({ page }) => {
   await fakeGithub(page, { deploy: "forbidden" });
   await signIn(page, undefined, "Dashboard");

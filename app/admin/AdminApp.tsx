@@ -340,7 +340,17 @@ function Workbook({
                 </ul>
               )}
             </Card>
-            <Dashboard session={loaded.session} data={loaded.data} refreshKey={`${loaded.sha}:${tick}`} onNavigate={navigate} onRebuild={() => void rebuild()} rebuilding={rebuilding} />
+            <Dashboard
+              session={loaded.session}
+              data={loaded.data}
+              file={{ bytes: loaded.bytes, sha: loaded.sha, canPush: loaded.canPush }}
+              refreshKey={`${loaded.sha}:${tick}`}
+              onNavigate={navigate}
+              onRebuild={() => void rebuild()}
+              rebuilding={rebuilding}
+              onSaved={async (base) => setLoaded({ ...loaded, bytes: base.bytes, sha: base.sha, ...(await analyse(base.bytes)) })}
+              onPublished={setWatchSha}
+            />
           </>
         )}
 
