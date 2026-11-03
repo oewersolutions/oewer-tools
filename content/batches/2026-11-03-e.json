@@ -1,0 +1,174 @@
+{
+  "date": "2026-11-03",
+  "articles": [
+    {
+      "title": "How Airborne Weather Radar Shows Storms Ahead",
+      "category": "Aviation",
+      "excerpt": "An airliner's nose radar sends microwave pulses at rain and hail and paints the echoes in colour. Here is what it shows, what it misses, and how pilots allow for that.",
+      "tags": ["weather radar", "avionics", "thunderstorms", "pilots"],
+      "blocks": [
+        ["paragraph", "Behind the nose cone of most airliners sits a small radar that looks ahead for rain. It sends out short pulses of radio energy, listens for the echoes that bounce back from water in the air, and shows the strength of those echoes as coloured patches on a cockpit screen. The main point is that it detects **precipitation**, not turbulence itself, so pilots read it as a guide to where the worst weather probably is rather than as a perfect map."],
+        ["heading", "The basic idea: pulse and echo"],
+        ["paragraph", "Airborne weather radar works like other radar. A transmitter sends a very brief pulse of microwaves through an antenna. Raindrops and wet hail scatter a little of that energy back. The set measures how long the echo takes to return, which gives distance, and how strong it is, which gives an idea of how intense the precipitation is. The Wikipedia article on weather radar describes ground-based radars that use pulses about one microsecond long and wavelengths of 1 to 10 centimetres, because that range suits detecting droplets. The aviation article on the Aerocorner site says most airborne sets use X-band, a wavelength of about 3 centimetres, which allows a compact antenna that fits in a nose."],
+        ["paragraph", "The antenna sweeps from side to side so the screen shows a fan-shaped view ahead of the aircraft. SKYbrary, the aviation safety knowledge base, notes that the antenna is typically in the nose and that a computer turns the signals into colour-coded patterns for the pilots."],
+        ["heading", "What the colours mean"],
+        ["paragraph", "Colours rise with echo strength. Wikipedia's weather radar article gives a three-level aviation scale: level 1 (green) usually means light precipitation, level 2 (yellow) means moderate precipitation and possible moderate turbulence, and level 3 (red) means heavy precipitation with possible thunderstorms and severe turbulence. According to that article, aircraft try to avoid level 2 where they can and always avoid level 3. Aerocorner adds that modern sets may use magenta to mark turbulence detected through Doppler shifts."],
+        ["list", "Green: light rain\nYellow: moderate rain, some bumpiness possible\nRed: heavy rain, thunderstorms and severe turbulence possible\nMagenta (on some sets): turbulence flagged by Doppler measurement"],
+        ["paragraph", "Echo power grows very quickly with drop size. Aerocorner states that it rises with the sixth power of the drop's diameter, so a small increase in drop size makes a large jump in the returned signal. That is why big drops and wet hail stand out sharply."],
+        ["heading", "Doppler and wind shear"],
+        ["paragraph", "SKYbrary says modern airborne weather radars are mostly Doppler radars. A Doppler radar compares the signal of successive pulses to find how fast the targets are moving toward or away from the aircraft. This lets the set pick out strong air movement inside a storm, and SKYbrary adds that some systems can predict wind shear, a sudden change of wind speed or direction over a short distance. Wikipedia's article explains the same principle for ground radars: an inbound and outbound velocity pair side by side is a sign of strong wind changes such as downbursts."],
+        ["heading", "What the radar misses"],
+        ["paragraph", "Because the radar sees liquid water, several things can fool it. Aerocorner lists these limits:"],
+        ["list", "It does not detect clouds, fog, snow or dry ice crystals well, so frozen storm tops can fade from the display, especially if the antenna is tilted too high.\nHeavy rain absorbs the beam, which can leave a 'radar shadow' that looks clear but may hide more weather behind it.\nThe beam is wide, so two nearby cells can merge into one patch until the aircraft gets closer.\nDoppler turbulence detection relies on precipitation, so it cannot find clear-air turbulence."],
+        ["paragraph", "Wikipedia makes a related point about attenuation: shorter wavelengths resolve small particles but are weakened faster as they pass through heavy rain, which is why ground services prefer longer wavelengths where they can afford them."],
+        ["callout", "A black area on the screen does not guarantee smooth air. It may be clear, or it may be hidden behind a strong storm cell."],
+        ["heading", "Tilt and keeping a margin"],
+        ["paragraph", "Pilots can tilt the antenna up or down to sample different heights. Aerocorner advises tilting up and down from time to time, because one fixed angle can miss the top or the base of a storm. It also says that hazardous turbulence may extend up to 20 miles from the edge of an echo, and gives guidance of avoiding severe echoes by at least 20 miles and passing between two of them only if they are at least 40 miles apart. These are figures from that article; operators set their own procedures."],
+        ["paragraph", "Pilots also use other sources. The same article says air traffic control precipitation data can be up to 6 minutes old, and ground radar pictures sent by datalink can lag by 5 to 15 minutes or more, so they show past conditions, not the present. Airline dispatchers can pass on new storm information during a flight."],
+        ["heading", "Is it required?"],
+        ["paragraph", "Rules vary by region. SKYbrary reports that the European operating rule EU-OPS 1.670 requires airborne weather radar on pressurised aeroplanes, and on certain unpressurised ones, when flying at night or in cloud where thunderstorms or other radar-detectable hazards may be expected along the route. Small propeller-driven pressurised aeroplanes up to 5,700 kg with no more than nine passenger seats may use other approved equipment instead."],
+        ["heading", "A recent reminder of the limits"],
+        ["paragraph", "Aerocorner also mentions a June 2024 case in which an Austrian Airlines A320 flew into hail that its radar did not show. According to that article, no final report had been published as of February 2026, so the cause is not settled and should not be assumed."],
+        ["paragraph", "In short, weather radar turns echoes from rain and hail into a picture of where the heaviest weather lies. It is powerful, but it sees only part of the sky, so pilots combine it with forecasts, ground information and generous distances. This is general information, not operating guidance."]
+      ],
+      "sources": [
+        { "title": "Weather radar, Wikipedia", "url": "https://en.wikipedia.org/wiki/Weather_radar" },
+        { "title": "Weather Radar, SKYbrary Aviation Safety", "url": "https://skybrary.aero/articles/weather-radar" },
+        { "title": "How Pilots See Weather Radar, Aerocorner", "url": "https://aerocorner.com/blog/how-pilots-see-weather-radar/" }
+      ],
+      "checkedOn": "2026-11-03"
+    },
+    {
+      "title": "How a Car Cooling System Keeps an Engine at Temperature",
+      "category": "Cars and Bikes",
+      "excerpt": "A pump, radiator, thermostat and pressurised coolant work together to shed engine heat. Here is what each part does and why the mix and pressure matter.",
+      "tags": ["cooling system", "radiator", "thermostat", "engines"],
+      "blocks": [
+        ["paragraph", "Burning fuel makes a petrol or diesel engine very hot, and a car's cooling system carries away enough of that heat to keep the metal within safe limits. It does not try to make the engine as cold as possible. A thermostat holds the engine near a working temperature, because an overcooled engine wastes fuel. The system is a closed loop: coolant picks up heat in the engine, gives it to the air in a radiator, and returns."],
+        ["heading", "The loop in order"],
+        ["paragraph", "YourMechanic describes the circuit in six steps. A pump pushes coolant through the radiator, where airflow cools it. The thermostat stays shut while the engine warms up and opens at operating temperature. Coolant then passes through channels around the engine, called the coolant jacket, and absorbs heat. It also flows through the heater core, a small radiator behind the dashboard, which warms the cabin. Then it returns to the pump."],
+        ["heading", "The water pump"],
+        ["paragraph", "Wikipedia's article on engine radiators explains that a centrifugal pump circulates the coolant, because natural circulation caused by hot liquid rising is far too slow for a car. YourMechanic says the pump is driven by a belt or timing chain, and that flow rises roughly in step with engine speed."],
+        ["heading", "The radiator and fans"],
+        ["paragraph", "The radiator is a network of thin tubes with a large surface area. Heat passes from the coolant into the air moving past. When the car is driving, air is forced through the front. When it is slow or stopped, a fan draws air through. Wikipedia notes that engine-driven fans often use a clutch that slips when cool to save power, while electric fans are switched on by a temperature switch or the engine control unit. Both types cool well at low engine speed or when stationary, and the article observes that airflow speed has a strong effect on how much heat is shed."],
+        ["heading", "The thermostat"],
+        ["paragraph", "Modern thermostats use a wax pellet. When the engine is cold the valve stays nearly closed, so coolant circulates only inside the engine and warms it up faster. As the coolant warms, the wax expands and pushes the valve open, sending flow to the radiator. According to Wikipedia, this keeps the engine at its optimum temperature, and overcooling reduces fuel efficiency and raises emissions."],
+        ["callout", "Normal operating temperature, according to YourMechanic, is roughly 190 to 210 degrees Fahrenheit (about 88 to 99 degrees Celsius). Sustained readings of 240 degrees Fahrenheit (about 116 degrees Celsius) or more can damage the engine."],
+        ["heading", "Why coolant is not plain water"],
+        ["paragraph", "Water boils at 100 degrees Celsius and freezes at 0, and it can corrode metal parts. Wikipedia says coolant is normally water mixed with antifreeze, usually ethylene glycol or propylene glycol, plus a small amount of corrosion inhibitor, in proportions suited to the climate. It adds that corrosion protection became more important with aluminium engines. YourMechanic gives a 50/50 mix of ethylene glycol and water as the typical coolant."],
+        ["heading", "Pressure raises the boiling point"],
+        ["paragraph", "The system is sealed and runs above atmospheric pressure, which raises the temperature at which coolant boils. A calibrated relief valve sits in the filler cap. Wikipedia gives a typical range of 4 to 30 psi (30 to 200 kPa) and says modern vehicles typically run around 15 psi, a figure YourMechanic also quotes. If pressure goes above the cap's rating, the valve releases a little coolant."],
+        ["paragraph", "Wikipedia also warns of why a hot system should be treated with care: opening the cap of a hot radiator can cause the coolant to boil and be ejected. Caps are designed to relieve internal pressure before they fully open, but the safest approach is general caution around hot cooling systems."],
+        ["heading", "Common causes of overheating"],
+        ["paragraph", "Sources on this subject note that a coolant leak, a blocked radiator, a thermostat stuck shut or a failing pump can all stop heat from leaving the engine. A fan that does not switch on matters mostly in slow traffic, when there is little natural airflow. Because the parts work as a loop, a fault in one place can show up as a high temperature reading somewhere else."],
+        ["heading", "A short summary"],
+        ["list", "Pump: moves coolant around the loop\nCoolant jacket: carries heat out of the engine block\nThermostat: stays closed when cold, opens when warm\nRadiator and fan: pass heat to the air\nPressure cap: raises the boiling point\nHeater core: lends warmth to the cabin"],
+        ["paragraph", "Electric vehicles and hybrids also use liquid cooling loops for batteries and power electronics, but the details differ and are not covered by the sources used here. This article is general information about conventional liquid-cooled engines; a vehicle's own manual has the correct coolant type and service steps."]
+      ],
+      "sources": [
+        { "title": "Radiator (engine cooling), Wikipedia", "url": "https://en.wikipedia.org/wiki/Radiator_(engine_cooling)" },
+        { "title": "How a Car's Cooling System Works, YourMechanic", "url": "https://www.yourmechanic.com/article/how-a-car-s-cooling-system-works" }
+      ],
+      "checkedOn": "2026-11-03"
+    },
+    {
+      "title": "How a Fire Extinguisher Works: Classes and Agents",
+      "category": "How It Works",
+      "excerpt": "Extinguishers put out fire by cooling it, smothering it or interrupting its chemistry. Learn the fire classes, what each agent does and why the wrong one is risky.",
+      "tags": ["fire safety", "extinguisher", "fire classes"],
+      "blocks": [
+        ["paragraph", "A portable fire extinguisher is a pressurised container that sprays a substance chosen to take away one of the things a fire needs. Different fuels need different substances, which is why extinguishers are sold by class and why using the wrong one can make matters worse. This article explains the idea in general terms; it is not a substitute for fire safety training."],
+        ["heading", "What a fire needs"],
+        ["paragraph", "Fire is often explained with the fire triangle: heat, fuel and oxygen. Remove any one and the fire stops. Wikipedia's article on fire extinguishers describes agents in these terms, and some safety guides add a fourth element, the chemical chain reaction, to make a tetrahedron. Each extinguishing agent mainly attacks one of those parts."],
+        ["heading", "The classes of fire"],
+        ["paragraph", "Fires are grouped by fuel. The US list, as set out by NFPA 10 and summarised by FEMA's life safety page, is:"],
+        ["list", "Class A: ordinary combustibles such as wood, paper, cloth, rubber and many plastics\nClass B: flammable liquids such as petrol, oils, paints and solvents, and flammable gases such as propane\nClass C: energised electrical equipment; once power is removed it becomes another class\nClass D: combustible metals such as magnesium, titanium, sodium and lithium\nClass K: cooking oils and fats"],
+        ["paragraph", "Systems differ by region. Wikipedia's table shows that in the US, electrical fires sit in class C and cooking fires in class K, while Europe and the UK use class F for cooking fats in some standards and treat class C as flammable gases. Australia and New Zealand use class F for cooking oils and class E for electrical equipment. Sources therefore disagree on how many classes there are, and the letters on a label depend on the country."],
+        ["heading", "What each agent does"],
+        ["list", "**Water:** absorbs heat as it turns to steam, which cools burning material. It is unsuited to electrical and flammable-liquid fires.\n**Foam:** forms a blanket on the fuel that keeps oxygen out, and also cools.\n**Dry chemical powder:** interrupts the chemical reaction in the flames. Multipurpose types are rated for A, B and C; ordinary dry chemical is for B and C only.\n**Wet chemical:** reacts with hot cooking oil to form a soapy layer that seals the surface and cools the oil.\n**Carbon dioxide (CO2):** mainly displaces oxygen. Wikipedia says its cooling effect is considered negligible for most fires, while FEMA's page lists it for classes B and C and says it is usually ineffective on class A.\n**Water mist:** removes heat, mostly for class A and safe on class C, according to the FEMA page.\n**Clean agents:** leave no residue and work by displacing oxygen, removing heat or inhibiting the chain reaction.\n**Dry powder for metals:** sodium chloride and similar powders form a crust that excludes oxygen; graphite and copper powders also soak up heat."],
+        ["callout", "Water on a flammable-liquid fire can spread it, and on an electrical fire it can create a shock hazard. The FEMA page also warns that the wrong agent can let a fire reignite after it appears to be out."],
+        ["heading", "Colour codes"],
+        ["paragraph", "Wikipedia explains that colours differ by country. In the UK and Europe (BS EN 3), bodies are red with a coloured panel naming the contents, for example cream for foam, blue for dry powder, black for CO2 and canary yellow for wet chemical. In Australia and New Zealand, bodies are signal red with a band, such as white for dry chemical and black for CO2. In the US there is no official colour standard, and pictograms show which classes the unit is approved for. Reading the label is therefore the dependable way to know what is inside."],
+        ["heading", "Using one: the general guidance"],
+        ["paragraph", "The FEMA life safety page advises that people first raise the alarm or call the emergency number and help anyone in immediate danger leave. It says to fight a fire only if it is small and contained, you are safe from toxic smoke, you have a way out, and your instincts say it is all right. It recommends knowing where extinguishers are and what type they are before an emergency, and using the PASS method when discharging: pull the pin, aim at the base of the fire, squeeze the handle and sweep side to side. It also suggests a quick monthly check of location, gauge pressure and nozzle, and a thorough annual check by a professional."],
+        ["heading", "Why the choice matters"],
+        ["paragraph", "The same fire can need different tools at different moments. A kitchen pan fire is a cooking-oil fire, not an ordinary one. A computer fire is electrical only while the power is on. A lithium fire is a metal fire. That is why safety guides stress identifying the fuel and why workplaces often put several types side by side."],
+        ["paragraph", "In short, an extinguisher is a tool aimed at one corner of the fire's needs. Cool it, smother it or break its chemistry, and match the agent to the fuel. This is general information; for your home or workplace, follow local fire authority advice and the instructions on your equipment."]
+      ],
+      "sources": [
+        { "title": "Fire extinguisher, Wikipedia", "url": "https://en.wikipedia.org/wiki/Fire_extinguisher" },
+        { "title": "Fire Extinguishers, FEMA Life Safety", "url": "https://www.femalifesafety.org/fire-extinguishers.html" }
+      ],
+      "checkedOn": "2026-11-03"
+    },
+    {
+      "title": "How Email Travels: SMTP, MX Records, IMAP and POP3",
+      "category": "Technology",
+      "excerpt": "Email passes through several programs and servers between sender and inbox. Here is the route, what MX records and SMTP do, and how IMAP differs from POP3.",
+      "tags": ["email", "SMTP", "IMAP", "DNS"],
+      "blocks": [
+        ["paragraph", "An email moves in two stages. First it is pushed from the sender's mail program to the recipient's mail server using SMTP. Then the recipient's own program collects it using IMAP or POP3. In between, the DNS system tells the sending server where the recipient's mail server lives, through a record type called MX. Knowing these steps makes sense of settings screens and error messages."],
+        ["heading", "The cast of programs"],
+        ["paragraph", "Wikipedia's article on email follows a message from a sender, Alice, to a recipient, Bob. Several roles appear:"],
+        ["list", "**MUA (mail user agent):** the email app or webmail page you use.\n**MSA (mail submission agent):** the outgoing server that accepts the message from the app.\n**MTA (message transfer agent):** a server that passes mail onward using SMTP.\n**MDA (message delivery agent):** the final step that places the message in the recipient's mailbox."],
+        ["paragraph", "In practice one service often performs several of these roles, but the model helps explain what happens."],
+        ["heading", "Step 1: handing the message over"],
+        ["paragraph", "Alice's app sends the message to her outgoing server using the submission protocol, which Wikipedia describes as a profile of SMTP, the Simple Mail Transfer Protocol. The server reads the recipient's address from the SMTP envelope, which is the delivery information, not the header lines that appear in the message. It uses the part after the @ sign to decide where to send the mail."],
+        ["heading", "Step 2: finding the destination with MX records"],
+        ["paragraph", "The sending server asks DNS for the MX (mail exchanger) records of the recipient's domain. These name the servers that accept mail for that domain. RFC 5321, the main SMTP standard, says intermediate hosts are normally found through MX records rather than through the sender spelling out a route. A domain can list more than one MX record, and the priority numbers let a backup take over if the first server is down. This detail comes from general descriptions of DNS mail routing."],
+        ["heading", "Step 3: SMTP conversation"],
+        ["paragraph", "RFC 5321 describes SMTP as a lock-step dialogue. The client sends a command, and the server replies with a three-digit code. Examples listed in the standard include 220 for the server's greeting, 250 for OK, 354 to say it is ready for the message text, 450 and 451 for temporary failures, and 550 when the mailbox is not found or relay is refused. The first digit tells the client the broad outcome, which is why a temporary failure can be retried later and a permanent one is returned to the sender as a bounce."],
+        ["paragraph", "The receiving server may be the final destination or a relay that becomes a client itself and forwards the message to the next server. According to Wikipedia, the message can pass through other MTAs before reaching its destination. RFC 5321 was published in October 2008 by J. Klensin and replaced earlier standards including RFC 821 and RFC 2821."],
+        ["heading", "Step 4: collecting the message"],
+        ["paragraph", "Delivery to the mailbox is not the same as reading it. Bob's app fetches the message with one of two protocols."],
+        ["list", "**POP3:** the app downloads messages, and Wikipedia notes they are often deleted from the server afterwards. It allows reading offline.\n**IMAP:** the mailbox stays on the server in folders. Wikipedia says the app first shows message headers and downloads specific messages on request, so one mailbox can be managed from several devices."],
+        ["paragraph", "This is why a message you delete in an IMAP app usually disappears on your other devices too, while with POP3 the behaviour depends on settings."],
+        ["heading", "A short history"],
+        ["paragraph", "According to Wikipedia, the first network mail on the ARPANET was sent in 1971 and introduced the @ address style. The conventions for To, From, CC and BCC fields began with RFC 680 in 1975. SMTP was implemented on the ARPANET in 1983. The message format standard RFC 822 dates to 1982 and was later replaced by RFC 2822 in 2001 and RFC 5322 in 2008. The article says the suite of SMTP, POP3 and IMAP became the standard after restrictions on commercial traffic on the Internet ended in 1995."],
+        ["callout", "SMTP sends, MX records route, and IMAP or POP3 retrieve. When mail fails, the error code often shows which of these steps went wrong."],
+        ["heading", "What this article does not cover"],
+        ["paragraph", "Modern mail also uses sender checks and encryption to fight spam and forgery. The sources I opened for this article did not explain those systems in detail, so they are left out. Port numbers also vary by provider and are not given here; your provider's help page lists the right settings for your account."]
+      ],
+      "sources": [
+        { "title": "Email, Wikipedia", "url": "https://en.wikipedia.org/wiki/Email" },
+        { "title": "RFC 5321: Simple Mail Transfer Protocol, RFC Editor", "url": "https://www.rfc-editor.org/rfc/rfc5321" }
+      ],
+      "checkedOn": "2026-11-03"
+    },
+    {
+      "title": "How a Capacitor Stores Energy: Plates, Farads, Dielectrics",
+      "category": "Electronics",
+      "excerpt": "A capacitor holds energy in an electric field between two plates. See what a farad is, how plate area and spacing set capacitance, and why voltage matters most.",
+      "tags": ["capacitor", "capacitance", "dielectric", "components"],
+      "blocks": [
+        ["paragraph", "A capacitor is a two-terminal electronic part that stores energy by keeping opposite electric charges on two conductors separated by an insulator. It does not make energy; it holds some for a short time and gives it back. The key relationship is that the energy stored depends on the capacitance and on the **square** of the voltage, so voltage matters more than size."],
+        ["heading", "The structure"],
+        ["paragraph", "Wikipedia describes a capacitor as a passive component with two terminals, built from two closely spaced conductors insulated from each other. In the simplest form these are two flat plates. The insulating layer between them is called the dielectric. When a voltage is applied, charge collects on the plates, positive on one and negative on the other, and an electric field forms across the gap. The energy is held in that field."],
+        ["heading", "What a farad measures"],
+        ["paragraph", "Capacitance is the ratio of charge to voltage, written C = Q/V. The LibreTexts electronics text defines one farad as one coulomb of charge per volt. A capacitor with a larger capacitance holds more charge at the same voltage. Wikipedia gives the same definition. The LibreTexts page notes practical values range from picofarads to farads, which is a spread of many orders of magnitude."],
+        ["heading", "What sets the capacitance"],
+        ["paragraph", "For two parallel plates, capacitance is C = εA/d. Here A is plate area, d is the gap and ε is the permittivity of the dielectric. Three consequences follow:"],
+        ["list", "Bigger plates give more capacitance.\nA smaller gap gives more capacitance.\nA dielectric with higher permittivity gives more capacitance."],
+        ["paragraph", "LibreTexts points out that the relative permittivity is the ratio to the permittivity of vacuum, about 8.85 x 10^-12 farads per metre. It also says the highest permittivity is not always the best choice, because temperature stability, leakage, equivalent series resistance and breakdown strength also matter."],
+        ["heading", "How much energy is stored"],
+        ["paragraph", "Both Wikipedia and LibreTexts give the stored energy as W = ½CV². Doubling the capacitance doubles the energy, but doubling the voltage quadruples it. As an example calculation, a 100 microfarad capacitor charged to 10 volts holds ½ x 0.0001 x 100, which is 0.005 joules. That is a small amount, which is why ordinary capacitors suit short bursts and smoothing rather than long-term storage."],
+        ["heading", "Voltage rating and breakdown"],
+        ["paragraph", "Capacitors are rated by maximum voltage, not power. LibreTexts explains that breakdown strength limits the rating, so halving the plate spacing doubles the capacitance but halves the voltage rating. Wikipedia notes that exceeding the breakdown voltage can cause a short circuit that may damage the part and, because the short draws current from the rest of the circuit, can be explosive."],
+        ["callout", "A charged capacitor can keep its voltage after power is removed. This is general information, not a handling guide; follow the instructions for the equipment you work on."],
+        ["heading", "How it behaves in a circuit"],
+        ["paragraph", "LibreTexts states that voltage across a capacitor cannot change instantly. Once fully charged by a steady DC source, it acts like an open circuit and no DC current flows. Wikipedia summarises the practical result: capacitors block direct current while passing alternating current. That makes them useful for smoothing power-supply output, tuning radio circuits and acting as memory cells in DRAM."],
+        ["heading", "Families of capacitors"],
+        ["paragraph", "The Wikipedia article names several construction types:"],
+        ["list", "**Ceramic:** early versions used porcelain.\n**Electrolytic:** the first were invented by Charles Pollak, using an oxide layer on aluminium.\n**Film:** polymer films replaced paper as the industry developed during World War II.\n**Supercapacitors:** electric double-layer capacitors, first described in a 1957 patent by H. Becker."],
+        ["heading", "Where the idea came from"],
+        ["paragraph", "Wikipedia dates the earliest storage of charge to October 1745, when Ewald Georg von Kleist found that charge could be held in a water-filled glass jar. The following year Pieter van Musschenbroek developed a similar device, which became known as the Leyden jar."],
+        ["paragraph", "In summary, a capacitor is two conductors, a gap and an electric field. Its capacitance comes from geometry and material, and its energy grows with the square of the voltage."]
+      ],
+      "sources": [
+        { "title": "Capacitor, Wikipedia", "url": "https://en.wikipedia.org/wiki/Capacitor" },
+        { "title": "8.2: Capacitance and Capacitors, LibreTexts Engineering", "url": "https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/DC_Electrical_Circuit_Analysis_-_A_Practical_Approach_(Fiore)/08%3A_Capacitors/8.2%3A_Capacitance_and_Capacitors" }
+      ],
+      "checkedOn": "2026-11-03"
+    }
+  ]
+}
