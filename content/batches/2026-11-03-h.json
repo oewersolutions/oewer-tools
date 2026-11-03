@@ -1,0 +1,175 @@
+{
+  "date": "2026-11-03",
+  "articles": [
+    {
+      "title": "How a VPN Works: Tunnels, Encryption and Limits",
+      "category": "Technology",
+      "excerpt": "A VPN wraps your traffic in an encrypted tunnel to another network. Here is how that works, which protocols are used and what a VPN cannot hide from others.",
+      "tags": ["vpn", "encryption", "privacy", "networking"],
+      "blocks": [
+        ["paragraph", "A virtual private network, or VPN, stretches a private network across a public one such as the internet. It does this by placing your data inside encrypted packets and sending them to a VPN server, which forwards them on. The main point to remember is that a VPN moves trust rather than removing it: the people between you and the VPN server can no longer read your traffic, but the VPN operator and the websites you visit still can see things. This article explains the tunnel, the common protocols, the main types of VPN and the limits."],
+        ["heading", "The tunnel: wrapping one packet inside another"],
+        ["paragraph", "Data on the internet travels in small units called packets. A tunnelling protocol carries one network's messages from one computer to another by putting them inside packets that the public network knows how to deliver. The outer packet is addressed to the VPN server. The original packet, with its real destination, rides inside it."],
+        ["paragraph", "On its own, tunnelling does not hide anything. The privacy comes from encryption. According to Wikipedia's article on VPNs, encryption protects data in transit and lowers the chance that someone listening on the network can read it. Some VPNs also add a message authentication code, a short value that lets the receiver detect and reject messages that were altered on the way."],
+        ["heading", "What happens when you connect"],
+        ["list", "Your device and the VPN server agree on keys, usually by exchanging public keys or certificates.\nYour device encrypts each outgoing packet and wraps it in an outer packet addressed to the VPN server.\nThe server unwraps and decrypts the packet, then sends it to its real destination.\nThe reply comes back to the server, which encrypts it and sends it down the tunnel to you."],
+        ["paragraph", "To the website at the other end, the request appears to come from the VPN server's internet address, not from yours. To your internet provider or the operator of a public Wi-Fi network, you appear to be talking only to the VPN server, and the contents are unreadable."],
+        ["heading", "Types of VPN"],
+        ["paragraph", "Wikipedia describes three broad kinds. A **remote-access** VPN connects a single device, such as a laptop belonging to someone working from home, to an office or private network. Each device sets up its own tunnel. A **site-to-site** VPN joins whole networks: gateway devices at two locations link them together. When the sites belong to one organisation this is called an intranet VPN, and when they belong to several it is an extranet VPN. A third kind, a provider-provisioned VPN, is run inside a carrier's own network, with MPLS VPNs as one example."],
+        ["paragraph", "The consumer VPN apps most people know are a form of remote access: your phone or computer connects to a server run by a company, and your traffic exits to the internet from there."],
+        ["heading", "Common protocols"],
+        ["paragraph", "A protocol is an agreed set of rules for setting up and running the tunnel. Wikipedia lists these widely used ones, with dates as given there:"],
+        ["list", "**IPsec** (1996): a standards-based suite from the IETF, the body that writes internet standards. A part called IKE sets up the tunnels. Its IKEv2 version, developed by Microsoft and Cisco, copes well when a device's address changes, for example when a phone moves from Wi-Fi to mobile data.\n**OpenVPN** (2001): free, open-source software built on TLS, the same technology that secures websites. It supports modern ciphers such as AES.\n**WireGuard** (2015): designed to be lighter than OpenVPN. Wikipedia says Linux and Android kernels gained support for it in 2020.\n**SSTP** (2007): a Microsoft protocol that runs over SSL/TLS."],
+        ["paragraph", "The WireGuard project's own website describes its goals as being faster, simpler and leaner than IPsec, and easy to set up, like SSH. It lists its cryptographic building blocks, including the Noise protocol framework, Curve25519 for key exchange, ChaCha20 and Poly1305 for encryption and authentication, and BLAKE2 for hashing. The project states that it keeps the code small so that individuals can audit it. Its design ties each peer's public key to a list of allowed tunnel addresses, and it sends replies to the most recent address from which it successfully decrypted data, which is how it handles a device changing networks."],
+        ["heading", "What a VPN does not do"],
+        ["paragraph", "Wikipedia is direct about the limits. A VPN does not make you anonymous to your internet provider: the provider can see that you are connected to a VPN server, but not what is inside the tunnel. The VPN provider, however, can see your activity, and so can the websites you visit. If you log in to an account, the site knows who you are whatever address you appear to have."],
+        ["callout", "Choosing a VPN means choosing whom to trust. Whoever runs the server sits where your internet provider used to sit."],
+        ["paragraph", "Another limit is split tunnelling, a setting that lets some traffic go through the VPN and the rest go straight to the internet, which saves bandwidth. Wikipedia notes that it can cause DNS leaks, where address lookups escape the tunnel, and can bypass an employer's security controls."],
+        ["heading", "Why organisations use them"],
+        ["paragraph", "Businesses use remote-access and site-to-site VPNs so that staff and branch offices can reach internal systems as though they were on the same local network. Individuals use VPN services on public Wi-Fi or to appear to browse from another place. Wikipedia estimates about 1.75 billion VPN users worldwide as of 2025, though it flags that some of the statements in its article lack citations, so figures like this are best treated as rough."],
+        ["paragraph", "This is general information, not advice on which service or setting to use. Laws on VPN use differ between countries, and the rules of an employer or a streaming service may also apply."]
+      ],
+      "sources": [
+        { "title": "Virtual private network, Wikipedia", "url": "https://en.wikipedia.org/wiki/Virtual_private_network" },
+        { "title": "WireGuard: fast, modern, secure VPN tunnel", "url": "https://www.wireguard.com/" }
+      ],
+      "checkedOn": "2026-11-03"
+    },
+    {
+      "title": "What Is Temperature in AI Text Generation?",
+      "category": "AI",
+      "excerpt": "Temperature is a setting that makes an AI model's word choices more predictable or more varied. Here is the maths idea behind it and how top-k and top-p fit in.",
+      "tags": ["temperature", "sampling", "language models", "softmax"],
+      "blocks": [
+        ["paragraph", "Temperature is a setting that controls how adventurous an AI language model is when it picks its next word. A low temperature makes the model favour its most likely choice nearly every time, so answers are steady and repeatable. A high temperature spreads the choices out, so answers vary more and sometimes become strange. This article explains where the setting comes from, what it does to the numbers and how it differs from two related settings, top-k and top-p."],
+        ["heading", "How a model picks the next word"],
+        ["paragraph", "A language model writes one small piece of text at a time. At each step it scores every possible next piece, then turns those scores into probabilities that add up to 1. The function that does this is called softmax. Once there are probabilities, the system has to decide how to choose from them. That choice is called decoding."],
+        ["paragraph", "The simplest method is greedy decoding: always take the single most probable option. The Hugging Face guide on text generation explains the weakness. Greedy search can miss a good sequence of words that is hidden behind a first word that is only the second most likely. In its small worked example, the greedy path ends with an overall probability of 0.2, while a path starting with the less likely word leads to a word with probability 0.9 right after it."],
+        ["paragraph", "The alternative is sampling, where the system draws the next word at random, weighted by those probabilities. The same guide notes that plain sampling can produce incoherent text, which is one reason temperature exists."],
+        ["heading", "What temperature does to the numbers"],
+        ["paragraph", "The word comes from physics. In Wikipedia's article on the softmax function, temperature appears as a value that divides the scores before they are turned into probabilities. The article's formula writes this with a factor called beta, which is proportional to one divided by the temperature."],
+        ["list", "**Low temperature** sharpens the distribution. The top choice gets even more of the probability and weaker choices fade. As the temperature approaches zero, softmax converges to picking the maximum, which is the same as greedy decoding.\n**High temperature** flattens the distribution. The options move toward equal probability, so unlikely words are picked more often."],
+        ["paragraph", "Wikipedia gives a small example. With two scores of 0 and 10 and a temperature of 1, the probabilities come out at roughly 0.00005 and 0.99995, so one option almost always wins. At a temperature of 100, the same scores give roughly 0.475 and 0.525, close to a coin toss. Its seven-score example shows the highest probability dropping from about 0.475 to about 0.169 when the temperature is multiplied by 10."],
+        ["callout", "Temperature does not add knowledge or skill. It only reshapes how the model's existing probabilities are used when picking words."],
+        ["heading", "Top-k and top-p"],
+        ["paragraph", "Two other settings limit the pool of words before sampling. Hugging Face describes both."],
+        ["list", "**Top-k** keeps only the k most likely next words and shares the probability among them. A weakness, the guide says, is that a fixed k does not adapt: it may let poor candidates in when the model is very sure, and may cut off good ones when the model is unsure.\n**Top-p**, also called nucleus sampling, keeps the smallest group of words whose combined probability passes a threshold p. The size of the group changes from step to step. In the guide's example with p set to 0.92, the group held 9 words in one case and only 3 in another."],
+        ["paragraph", "The guide notes that top-k and top-p can be combined, and temperature can be used alongside them. Temperature changes the shape of the probabilities; top-k and top-p decide which words stay in the running."],
+        ["heading", "Why it matters in practice"],
+        ["paragraph", "Chatbot services and developer tools often expose a temperature setting, though the allowed range and default value differ between providers and models, so the documentation for the specific tool is the place to check. The general pattern is consistent. Lower values suit tasks where the same input should give the same kind of answer, such as extracting data or answering a factual question. Higher values suit tasks where variety is welcome, such as brainstorming names or writing stories."],
+        ["paragraph", "Even at a temperature near zero, outputs are not always identical from run to run. Other parts of the system can introduce small differences, so repeatability is usually close rather than guaranteed. A low setting also does not make an answer more true. A model can confidently pick its most likely word and still be wrong, which is a separate problem from randomness."],
+        ["heading", "A quick summary"],
+        ["list", "Softmax turns model scores into probabilities.\nTemperature divides the scores first: low values sharpen, high values flatten.\nZero temperature behaves like greedy decoding.\nTop-k and top-p trim the list of candidates; they are separate from temperature.\nThe right setting depends on whether you want consistency or variety."]
+      ],
+      "sources": [
+        { "title": "Softmax function, Wikipedia", "url": "https://en.wikipedia.org/wiki/Softmax_function" },
+        { "title": "How to generate text: decoding methods for language generation, Hugging Face", "url": "https://huggingface.co/blog/how-to-generate" }
+      ],
+      "checkedOn": "2026-11-03"
+    },
+    {
+      "title": "How a Hydraulic Jack Multiplies Force with Oil",
+      "category": "How It Works",
+      "excerpt": "A hydraulic jack lets a small push lift a heavy load by using oil in a sealed system. Here is Pascal's principle, the pump and check valves, and the trade-off in distance.",
+      "tags": ["hydraulics", "pascal's law", "jack", "force"],
+      "blocks": [
+        ["paragraph", "A hydraulic jack lets one person raise a load far heavier than they could lift, by pushing a small handle that moves oil through a sealed system. The trick is that pressure in a trapped liquid acts equally everywhere, so a small piston can push on a big piston with a much larger force. The price is distance: the big piston moves much less than the small one. This article walks through the principle, the parts of a typical jack and the safety points that sources mention."],
+        ["heading", "Pascal's principle"],
+        ["paragraph", "The French mathematician Blaise Pascal established the law in 1653 and published it in 1663, according to Wikipedia's article on Pascal's law. It says that a change in pressure at any point in a confined, incompressible fluid is passed on throughout the fluid, so the same change occurs everywhere. Wikipedia quotes the older wording that the change is transmitted \"equally and undiminished\" in all directions."],
+        ["paragraph", "Pressure is force divided by the area it acts on. If the same pressure acts on a small piston and a large one, the force on each is the pressure multiplied by its area. So the ratio of the output force to the input force equals the ratio of the two areas."],
+        ["heading", "A worked example"],
+        ["paragraph", "NASA's Glenn Research Center explains this with simple numbers. A force of 1 pound pressing on a piston of 1 square inch creates pressure in the fluid. That same pressure acts on a second piston of 10 square inches and lifts a 10-pound weight. The ideal force gain, called the mechanical advantage, equals the area ratio, here 10 to 1."],
+        ["paragraph", "Wikipedia gives a similar example: if the output piston has 50 times the area of the input piston, a 1 newton push becomes a 50 newton force at the output."],
+        ["heading", "Where the energy goes"],
+        ["paragraph", "This does not create energy from nothing. NASA points out that the volume of fluid pushed out of the small cylinder equals the volume that enters the large one. In its example the small piston has to travel 10 inches to raise the big piston by 1 inch. Wikipedia gives a larger-ratio case: pushing the small piston down 100 cm raises the large one only 2 cm. In both, input force times input distance equals output force times output distance, the same bargain a lever makes."],
+        ["heading", "Inside a typical jack"],
+        ["paragraph", "A real jack must lift in many small strokes, because the pump chamber is small. Wikipedia's article on hydraulic jacks describes how the pump manages this using oil and two one-way valves, called check valves."],
+        ["list", "When the pump plunger pulls back, it draws oil from the reservoir through a suction check valve into the pump chamber.\nWhen the plunger pushes forward, the suction valve closes and a discharge check valve opens, sending the oil into the main cylinder.\nPressure builds in the cylinder and raises the load.\nThe closed valves keep the oil from flowing back between strokes."],
+        ["paragraph", "Wikipedia notes that the oil is incompressible and self-lubricating, which suits the job."],
+        ["heading", "Floor jacks and bottle jacks"],
+        ["paragraph", "Two common shapes are described. A **floor jack** uses a horizontal piston that pushes the short end of a bellcrank, a pivoting lever, while the long arm moves the lifting pad up. Its low profile lets it fit under vehicles, and Wikipedia says it should be used only on a hard, smooth, level floor. A **bottle jack** has a vertical ram that rises out of a cylindrical body. Its range is limited, so it suits short lifts, and blocks can be used to gain height."],
+        ["heading", "Safety notes from the sources"],
+        ["paragraph", "Wikipedia says that a jack not designed for a particular vehicle needs extra care with ground conditions, the jacking point and stability when fully extended. It also says hydraulic jacks are typically used for shop work, rather than as an emergency jack carried in a vehicle. For the correct way to lift a specific vehicle, follow the manufacturer's manual."],
+        ["callout", "A jack is a lifting tool, not a support. This is general information; always follow the instructions that come with the equipment."],
+        ["heading", "The limits of the principle"],
+        ["paragraph", "Pascal's law, as Wikipedia states it, applies to confined, incompressible fluids at rest, and it is usually applied to static systems. The area ratio is also an ideal figure: NASA calls it the ideal mechanical advantage, so a real jack, with friction and other losses, delivers somewhat less."]
+      ],
+      "sources": [
+        { "title": "Pascal's law, Wikipedia", "url": "https://en.wikipedia.org/wiki/Pascal%27s_law" },
+        { "title": "Hydraulic jack, Wikipedia", "url": "https://en.wikipedia.org/wiki/Hydraulic_jack" },
+        { "title": "Pascal's Principle, NASA Glenn Research Center", "url": "https://www.grc.nasa.gov/www/k-12/WindTunnel/Activities/Pascals_principle.html" }
+      ],
+      "checkedOn": "2026-11-03"
+    },
+    {
+      "title": "The Maruti 800: India's People's Car, 1983 to 2014",
+      "category": "Vintage and History",
+      "excerpt": "The Maruti 800 was handed to its first buyer in New Delhi on 14 December 1983 and stayed in production for 31 years. Here is its story, with the dates and figures.",
+      "tags": ["maruti 800", "maruti suzuki", "india", "small car"],
+      "blocks": [
+        ["paragraph", "The Maruti 800 was a small Indian-built car based on a Suzuki design. Its first unit was handed to a buyer in New Delhi on 14 December 1983, and the last was built in January 2014, after 31 years of production. About 2.87 million were made. It is widely described as India's first affordable people's car. This article sets out how it came about, what it was, how it changed and why production ended."],
+        ["heading", "How Maruti came to build it"],
+        ["paragraph", "The 800's story begins with an earlier company. Wikipedia's article on Maruti Suzuki says Maruti Motors Limited was set up in August 1971 with Sanjay Gandhi as its first managing director. It fell short of its targets, with only 21 units made by 31 March 1976, and the Government of India took control of Maruti by legislation in 1980."],
+        ["paragraph", "The company that built the 800 is a later one. Wikipedia gives 24 February 1981 as the date Maruti Udyog Limited was established as a joint venture between the Government of India and Suzuki of Japan. The article on the car says the licence and joint-venture agreement with Suzuki was signed on 2 October 1982, and a production facility opened in Gurugram in 1982. Suzuki's initial holding was 26 per cent, which Wikipedia says rose to 50 per cent in 1992 and 56.21 per cent by 2013."],
+        ["heading", "The first car"],
+        ["paragraph", "According to Wikipedia, the first car was handed over in New Delhi on 14 December 1983. Prime Minister Indira Gandhi gave the keys to Harpal Singh, who had won the car in a lucky draw. Autocar Professional, an Indian trade publication, also names Harpal Singh as an Indian Airlines employee from Delhi, and says the car came from the Maruti Udyog plant in Gurgaon, Haryana. CarWale gives the launch date as 14 December 1983."],
+        ["heading", "What the car was"],
+        ["paragraph", "The first generation was known as the SS80. Wikipedia says it was based on the 1979 Suzuki Alto and used an 800 cc engine; the engine's displacement was 796 cc, with three cylinders in a line. Gearboxes were a four-speed manual, with a three-speed automatic available as an option."],
+        ["paragraph", "Autocar Professional describes it as a four-door, four-seater, much smaller than the Hindustan Ambassador and the Premier Padmini that were common on Indian roads, and lists front-wheel drive, bucket seats, a floor-mounted gear lever, a moulded plastic dashboard and front disc brakes. CarWale says it was the first model in India with a front-wheel-drive layout. Early cars arrived from Japan as completely knocked-down kits and were assembled at Gurgaon; production later moved fully to India."],
+        ["heading", "Price and demand"],
+        ["paragraph", "CarWale says the first-generation car retailed for around Rs 50,000, and that early buyers in the lottery system sometimes paid a lakh or more for the car. Autocar Professional says buyers queued for long periods to get one. Autocar Professional does not state a price, and other outlets give slightly different figures for the launch price, so treat the number as approximate."],
+        ["heading", "Changes over the years"],
+        ["list", "**1986:** a full model change brought the second generation, called SB308, based on the 1984 Alto, according to Wikipedia.\n**1987:** exports began, with 500 cars shipped to Hungary. Sales later reached markets including France, the Netherlands, the UK and Italy.\n**1997:** a facelift.\n**2000:** fuel injection and four valves per cylinder raised output to 46 hp and met Euro II emission standards.\n**2005 and 2008:** a Euro III version, then an LPG version."],
+        ["heading", "The end of production"],
+        ["paragraph", "Wikipedia says sales were halted in 13 major cities from April 2010, because the car could not meet the Euro IV emission norms, and that Maruti replaced it with the second-generation Alto 800. The last car came off the line on 18 January 2014. CarWale puts the end of production in February 2014, so sources differ slightly on the month."],
+        ["paragraph", "Production totals are given as about 2.87 million built and about 2.66 million sold in India. Wikipedia calls it India's best-selling car until 2004, when the Alto passed it. CarWale instead says the 800 was the best-selling model until the Alto passed 29 lakh unit sales in October 2015. The two claims use different measures, as one looks at yearly sales and the other at cumulative sales, and the sources do not explain further."],
+        ["callout", "Wikipedia calls the 800 the second-longest-produced car in India, behind the Hindustan Ambassador."],
+        ["heading", "Why it is remembered"],
+        ["paragraph", "Autocar Professional credits the 800 with helping to urbanise and industrialise India, citing easy repairs, low running costs and a service network that set a benchmark. It also says the car gave many Indian women the confidence to drive. Its engine lives on, the article says, in the modern Maruti Suzuki Alto. Maruti Suzuki's growth afterwards is part of the same story: Wikipedia lists a stock-market listing in 2003 and the ten-millionth vehicle sold in India in 2012."]
+      ],
+      "sources": [
+        { "title": "Maruti 800, Wikipedia", "url": "https://en.wikipedia.org/wiki/Maruti_800" },
+        { "title": "Maruti Suzuki, Wikipedia", "url": "https://en.wikipedia.org/wiki/Maruti_Suzuki" },
+        { "title": "India @75: How the 800 reshaped mobility, Autocar Professional", "url": "https://www.autocarpro.in/feature/how-the-800-reshaped-mobility-92490" },
+        { "title": "Maruti Suzuki 800 celebrates 35th anniversary, CarWale", "url": "https://www.carwale.com/news/maruti-suzuki-800-celebrates-35th-anniversary-top-10-things-you-should-know/" }
+      ],
+      "checkedOn": "2026-11-03"
+    },
+    {
+      "title": "How Car Suspension Works: Springs, Dampers, Bars",
+      "category": "Cars and Bikes",
+      "excerpt": "Car suspension links the wheels to the body with springs, dampers and bars. See what each part does, how common layouts differ and the history behind them.",
+      "tags": ["suspension", "shock absorbers", "macpherson strut", "handling"],
+      "blocks": [
+        ["paragraph", "A car's suspension connects its wheels to its body and lets each wheel move up and down over bumps while the tyres stay in contact with the road. Three kinds of part do most of the work: springs that absorb bumps, dampers that stop the springing from continuing, and anti-roll bars that limit body lean in corners. Every design is a trade-off between ride comfort and handling. This article covers what each part does, the main layouts and some history."],
+        ["heading", "The job of the suspension"],
+        ["paragraph", "According to the How a Car Works guide, the suspension lets each wheel move on its springs and dampers while keeping the spacing between wheels, and the angle of the tyres to the road, nearly constant. It has extra demands at some wheels: the front wheels must pivot for steering, and driven wheels must keep turning with their drive shafts."],
+        ["heading", "Springs"],
+        ["paragraph", "Springs take the impact when a wheel hits a bump. Wikipedia's article on vehicle suspension covers leaf springs, torsion bars and coil springs, along with alternatives such as rubber bushings, air springs and hydropneumatic systems. A spring stores energy and releases it, which is the problem: left alone, it keeps bouncing."],
+        ["heading", "Dampers"],
+        ["paragraph", "A damper, commonly called a shock absorber, controls that bouncing. Wikipedia's article on shock absorbers explains that it turns the kinetic energy of the movement into heat, which is dissipated. In a hydraulic damper, a piston with small holes moves inside an oil-filled body. The oil is forced through the holes and through valves, and the resistance converts motion into heat. The valving can make the damper softer when compressing and stiffer when extending, to control rebound."],
+        ["paragraph", "Two designs are described. A **twin-tube** damper has an inner working tube and an outer reserve tube holding extra fluid. A **monotube** damper has a single tube with a floating piston that separates the oil from high-pressure nitrogen gas, which the article puts at about 260 to 360 psi. The article says gas-charged twin-tube units account for most original-equipment installations, and that overheating can cause foaming that temporarily reduces damping."],
+        ["heading", "Anti-roll bars"],
+        ["paragraph", "An anti-roll bar is a torsion bar, a bar that resists twisting, that runs across the car and pivots on the body, with each end linked to a wheel through rubber bushes. The How a Car Works guide says that when one wheel rises, the bar twists and pulls the opposite wheel up, keeping the car more level. Bars are usually fitted at the front, sometimes at the rear, or at both. Wikipedia adds that engineers use them to tune how much the body leans and how cornering load is shared between the front and rear."],
+        ["heading", "Sprung and unsprung mass"],
+        ["paragraph", "Wikipedia separates the car's weight into two groups. The sprung mass is what the springs carry, mainly the body, chassis and cargo. The unsprung mass is the rest: wheels, tyres, hubs, brakes and part of the control arms. Lower unsprung weight generally improves ride and handling, which is one reason lighter aluminium wheels are valued."],
+        ["heading", "Common layouts"],
+        ["paragraph", "Layouts divide into those where the wheels on an axle move together and those where each moves alone."],
+        ["list", "**Solid or live axle:** both wheels are linked by one axle. Wikipedia calls it simple and suited to heavy loads, though the axle adds unsprung weight. A live axle carries the drive shafts and differential and is used on many rear-wheel-drive cars.\n**Torsion beam:** a semi-independent design where the wheels are linked by a beam that twists. The twist-beam rear suspension is the most common example, Wikipedia says.\n**Double wishbone:** two stacked arms keep the wheel upright. It gives engineers more control over geometry but costs more and takes more space.\n**MacPherson strut:** a telescopic strut carries the hub. It is very compact, which is why it is common on front-engined cars, and it is used at the front and rear."],
+        ["heading", "The MacPherson strut"],
+        ["paragraph", "It is named for Earle S. MacPherson, an American engineer. Wikipedia's article on the design says he became chief engineer of Chevrolet's Light Car project in 1945, and that General Motors cancelled the Cadet, meant to be the first production car with struts, in 1947, the year patents were filed. The first production car with MacPherson struts was the British-built 1950 Ford Consul, according to the article, which says the French 1949 Ford Vedette is often cited but was developed before MacPherson and used wishbones."],
+        ["paragraph", "Listed advantages are low manufacturing cost, simplicity and compact packaging that frees width in the engine bay for small front-wheel-drive cars. Listed disadvantages are some camber change or sideways movement as the wheel moves vertically, and less freedom to tune geometry, so handling is generally considered inferior to a double wishbone or multi-link design."],
+        ["heading", "A short history"],
+        ["list", "Leaf springs began appearing on carriages around 1750.\nIn 1901, Mors fitted an automobile with shock absorbers, and Henri Fournier won the Paris to Berlin race in it.\nCoil springs first appeared on a production vehicle in 1906, the Brush Runabout.\nIndependent front suspension was pioneered on the Lancia Lambda in 1922.\nThe 1948 Citroën 2CV was the first mass-production car with mechanical front-to-rear interconnected suspension."],
+        ["callout", "Suspension is a safety system. This is general information; have worn or damaged parts checked by a qualified mechanic."]
+      ],
+      "sources": [
+        { "title": "Suspension (vehicle), Wikipedia", "url": "https://en.wikipedia.org/wiki/Suspension_(vehicle)" },
+        { "title": "Shock absorber, Wikipedia", "url": "https://en.wikipedia.org/wiki/Shock_absorber" },
+        { "title": "MacPherson strut, Wikipedia", "url": "https://en.wikipedia.org/wiki/MacPherson_strut" },
+        { "title": "How car suspension works, How a Car Works", "url": "https://api.howacarworks.com/basics/how-car-suspension-works" }
+      ],
+      "checkedOn": "2026-11-03"
+    }
+  ]
+}
