@@ -1,0 +1,35 @@
+{
+ "date": "2026-11-04",
+ "articles": [
+  {
+   "title": "Mercedes GLC Electric Launched in India at Rs 78.5 Lakh",
+   "category": "News and Launches",
+   "excerpt": "Mercedes-Benz launched the GLC Electric (GLC 400 4MATIC) in India on 4 November 2026 at Rs 78.50 lakh ex-showroom, with a 94 kWh battery and a claimed WLTP range of 711 km.",
+   "tags": ["news", "launch", "mercedes-benz", "electric-suv"],
+   "blocks": [
+     ["paragraph", "Mercedes-Benz launched the GLC Electric in India on 4 November 2026. It is sold in a single variant, the GLC 400 4MATIC, at Rs 78.50 lakh ex-showroom according to CarWale; ZigWheels describes the same figure as an introductory price. The SUV has a 94 kWh battery and a claimed range of 711 km on the WLTP test cycle. Deliveries were reported to begin straight away. This article is based on published launch coverage as of 4 November 2026."],
+     ["heading", "Price and availability"],
+     ["list", "Launch date: 4 November 2026\nVariant: GLC 400 4MATIC (one variant)\nPrice: Rs 78.50 lakh, ex-showroom (ZigWheels calls this an introductory price)\nOn-road prices listed by CarWale: Rs 82.84 lakh in Mumbai and Pune, Rs 90.73 lakh in Delhi, Rs 90.70 lakh in Bengaluru, Rs 82.85 lakh in Chennai\nBookings: opened in October 2026\nAssembly: locally assembled at the Mercedes-Benz plant near Pune"],
+     ["paragraph", "Ex-showroom prices leave out insurance, registration and local taxes, which is why on-road prices differ by city. ZigWheels also shows a sidebar on the same page listing the price as not yet announced, so readers should confirm the final figure with a Mercedes-Benz dealer."],
+     ["heading", "Battery, motors and range"],
+     ["list", "Battery: 94 kWh\nMotors: two, giving all-wheel drive\nPower: 489 PS according to ZigWheels (CarWale lists 482.4 bhp, the same output in a different unit)\nTorque: 800 Nm\nTransmission: two-speed\nAcceleration: 0 to 100 km/h in 4.3 seconds, claimed\nRange: 711 km on the WLTP cycle, claimed"],
+     ["paragraph", "WLTP is a standardised laboratory test. Real-world range depends on speed, temperature, road conditions and how the car is driven, and is usually lower than a laboratory figure. Charging speed is reported as about 300 km of range added in 10 minutes on a DC fast charger; the two sources do not give the same level of detail on charger power, so this article does not state a charging power in kW."],
+     ["heading", "Features reported at launch"],
+     ["paragraph", "ZigWheels reports a 39.1-inch screen that spans the driver display, central touchscreen and passenger display, wireless Android Auto and Apple CarPlay, and a 15-speaker Burmester audio system. Comfort items include powered and ventilated front seats, a powered tailgate, two wireless chargers, ambient lighting, a panoramic glass roof and acoustic glass."],
+     ["paragraph", "On the chassis side, it lists rear-wheel steering of up to 4.5 degrees and adaptive air suspension. Safety equipment includes up to nine airbags, Level 2 driver assistance (ADAS), a 360-degree camera, parking sensors with remote parking assist, and tyre pressure monitoring. The same report says the model has a five-star Bharat NCAP rating."],
+     ["heading", "How it relates to the global model"],
+     ["paragraph", "The electric GLC was first shown globally at the IAA Mobility show in Munich in September 2025. At that reveal Mercedes-Benz described a 94 kWh battery with silicon-oxide anodes, an 800-volt electrical system, a claimed range of up to 713 km, 360 kW of system output and a top speed of 210 km/h, as reported by Autocar Professional. The India-specific WLTP figure of 711 km is slightly different from the 713 km quoted at the global reveal."],
+     ["paragraph", "The electric GLC is sold alongside the petrol and diesel GLC, not instead of it. Autocar Professional reported at the reveal that it is intended as the electric counterpart of the brand's best-selling SUV line."],
+     ["heading", "What is still unclear"],
+     ["list", "Warranty terms for the vehicle and battery were not stated in the pages used\nAC home-charging specifications were not given\nA single report said a maker had bookings sold out until March 2027, but the page did not clearly say whether this meant the GLC, so it is not reported here as fact\nThis article did not use a Mercedes-Benz India press release, which could not be opened; figures come from the two launch reports named below"],
+     ["callout", "All figures are those published in launch coverage on 4 November 2026. Prices, offers and specifications can change; check with an authorised dealer before buying. This is general information, not a recommendation."]
+   ],
+   "sources": [
+     {"title": "Mercedes-Benz GLC Electric Launched in India at Rs. 78.50 lakh, CarWale", "url": "https://www.carwale.com/news/mercedes-benz-glc-electric-launched-in-india-at-rs-7850-lakh/"},
+     {"title": "2026 Mercedes-Benz GLC Electric Launched In India At Rs 78.5 Lakh, ZigWheels", "url": "https://zigwheels.com/news-features/general-news/2026-mercedes-benz-glc-electric-launched-in-india-at-rs-78.5-lakh-gets-a-massive-screen-and-over-700-km-of-claimed-range/58426"},
+     {"title": "Mercedes-Benz Unveils All-New Electric GLC with EQ Technology, Autocar Professional", "url": "https://www.autocarpro.in/news/mercedes-benz-unveils-all-new-electric-glc-with-eq-technology-128544"}
+   ],
+   "checkedOn": "2026-11-04"
+  }
+ ]
+}
