@@ -1,0 +1,315 @@
+{
+  "date": "2026-11-04",
+  "articles": [
+    {
+      "title": "Honda SENSING RIDE Motorcycle Safety System (Nov 2026)",
+      "category": "News and Launches",
+      "excerpt": "Honda introduced SENSING RIDE at EICMA 2026 on 3 November: radar at both ends of the motorcycle and 10 functions, first on the 2027 CRF1150L Africa Twin Adventure Sports.",
+      "tags": [
+        "news",
+        "honda",
+        "motorcycle safety",
+        "eicma"
+      ],
+      "blocks": [
+        [
+          "paragraph",
+          "Honda introduced \"Honda SENSING RIDE\", a safety and rider-assistance system for motorcycles, on 3 November 2026 at the EICMA motorcycle show in Milan. Honda says the first model to get it is the 2027 CRF1150L Africa Twin Adventure Sports, and that it plans to add the system to more models. The system uses two millimeter-wave radar units, one at each end of the motorcycle, and offers 10 functions. This article is based on Honda's own announcement and is correct as of 4 November 2026."
+        ],
+        [
+          "heading",
+          "What the system is"
+        ],
+        [
+          "paragraph",
+          "Honda says SENSING RIDE builds on Honda SENSING, the driver-assistance package the company offers on cars, with functions added that suit motorcycles. According to Honda, the system looks at the situation of the rider and the motorcycle and then gives notifications, warnings and operational assistance, including help with avoiding a collision."
+        ],
+        [
+          "paragraph",
+          "Honda also says the system works together with its Dual Clutch Transmission (DCT), an automatic gearbox that removes the need to operate a clutch by hand. Honda states that DCT was first used on motorcycles in 2010."
+        ],
+        [
+          "heading",
+          "How radar-based rider aids work in general"
+        ],
+        [
+          "paragraph",
+          "Honda's pages do not describe how the radar is used, so this section gives general background from a reference article on adaptive cruise control in cars. Radar measures distance by timing radio waves that bounce back from an object, and it can also tell how fast the gap is changing. Car systems commonly use radar at 24 GHz or 77 GHz. The same reference says that most adaptive cruise control systems count as Level 1 on the SAE scale of driving automation, which means the system helps with one task, such as speed, while the driver does everything else."
+        ],
+        [
+          "paragraph",
+          "The Insurance Institute for Highway Safety (IIHS) in the United States makes the same point about cars: the driver still steers and must be ready to act if the system does not respond well. It also says that some drivers overestimate what such systems can do. These comments are about car systems and not about Honda's motorcycle system, but they match the warning Honda itself gives."
+        ],
+        [
+          "heading",
+          "The 10 functions Honda lists"
+        ],
+        [
+          "list",
+          "Adaptive Cruise Control: keeps a set speed and following distance\nAdaptive Cruise Control with Stop and Go: reduces throttle and brake inputs in slow, stop-start traffic\nGroup Ride Assist: helps riders keep suitable spacing in a group, including a staggered formation\nDistance Assist: adjusts following distance when the rider opens the throttle while approaching a vehicle ahead\nEmergency Brake Assist: adds braking help when the rider brakes and a collision is likely\nForward Collision Warning: shows an alert on the meter when a collision ahead is possible\nBrake Pulse: works with the forward warning to make the rider more aware\nBlind Spot Information: lights a signal at the mirror when a vehicle is diagonally behind\nRear Collision Warning: flashes the indicators to warn traffic behind\nRear Distance Information: shows a display on the meter when a vehicle approaches from behind"
+        ],
+        [
+          "heading",
+          "Which motorcycle gets it first"
+        ],
+        [
+          "paragraph",
+          "Honda's European press release describes the 2027 model year Africa Twin family as having more power, more technology and more choice for riders, and says SENSING RIDE debuts on the Adventure Sports version. The Africa Twin range and the CBR1000RR-R Fireblade were Honda's two headline motorcycle premieres at the show, which runs at Fiera Milano from 3 to 8 November 2026, with public days from 5 to 8 November."
+        ],
+        [
+          "heading",
+          "Honda's stated safety goal"
+        ],
+        [
+          "paragraph",
+          "In the announcement Honda repeats a company target: to cut the number of traffic fatalities involving its motorcycles and cars, per 10,000 units sold, by 50 percent by 2030 compared with 2020, and to reach zero by 2050."
+        ],
+        [
+          "heading",
+          "Limits Honda states"
+        ],
+        [
+          "paragraph",
+          "Honda says each function has limits and may not work as intended depending on road, weather and vehicle conditions. It asks riders to stay alert to their surroundings, and its release says riders should not overestimate what each function can do. Like the assistance systems on cars, these features are described as aids to the rider and not as a replacement for the rider's attention."
+        ],
+        [
+          "heading",
+          "What is not yet known"
+        ],
+        [
+          "list",
+          "Price of the Africa Twin Adventure Sports with the system\nOn-sale dates and the countries where it will be sold, including India\nWhich other Honda models will follow\nTechnical details of the radar units, which Honda's page does not give"
+        ],
+        [
+          "callout",
+          "Honda's pages reviewed for this article gave no price, no on-sale date and no India plans. Check Honda's own announcements for those details when they appear."
+        ]
+      ],
+      "sources": [
+        {
+          "title": "Honda Introduces Honda SENSING RIDE Advanced Safety and Rider-Assistive System for Motorcycles, Honda Global Newsroom",
+          "url": "https://global.honda/en/newsroom/news/2026/2261103beng.html"
+        },
+        {
+          "title": "Honda Showcases Its Mobility and Technology Strength at EICMA 2026, Honda Europe Newsroom",
+          "url": "https://hondanews.eu/eu/en/cars/media/pressreleases/598538/honda-showcases-its-mobility-and-technology-strength-at-eicma-2026"
+        },
+        {
+          "title": "Adaptive cruise control, Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Adaptive_cruise_control"
+        },
+        {
+          "title": "Advanced driver assistance, Insurance Institute for Highway Safety",
+          "url": "https://www.iihs.org/topics/advanced-driver-assistance"
+        }
+      ],
+      "checkedOn": "2026-11-04"
+    },
+    {
+      "title": "Honda RN0 Electric Mountain Bike Unveiled (Nov 2026)",
+      "category": "News and Launches",
+      "excerpt": "Honda unveiled the RN0, its first high-end electric-assist mountain bike, at EICMA 2026: about 24 kg, a Shimano motor with 100 Nm and a 720 Wh battery. Price and sale dates are not given.",
+      "tags": [
+        "news",
+        "honda",
+        "e-mtb",
+        "electric bicycle",
+        "eicma"
+      ],
+      "blocks": [
+        [
+          "paragraph",
+          "Honda showed the RN0, its first high-end electric-assist mountain bike, in a world premiere at EICMA 2026 in Milan on 3 November 2026. Honda says it developed the bike with ROTWILD, a German maker of electric mountain bikes. The company lists a weight of about 24 kg, a Shimano drive unit with 100 Nm of torque and 750 W peak output, and a 720 Wh battery. Honda's pages do not give a price or a sale date. Details are as of 4 November 2026."
+        ],
+        [
+          "heading",
+          "Key specifications from Honda"
+        ],
+        [
+          "list",
+          "Frame: proprietary carbon monocoque frame with a \"gull-arm\" swingarm, in sizes S, M and L\nWeight: about 24 kg\nMotor: new Shimano drive unit weighing 2.3 kg, 100 Nm maximum torque, 750 W maximum output\nBattery: 720 Wh\nFront suspension: FOX 36 FLOAT Factory Kashima fork, 160 mm of travel\nRear suspension: FOX FLOAT X Factory Kashima shock\nWheels: DT Swiss H1900 SPLINE, in a mixed setup with a 29-inch front wheel and a 27.5-inch rear wheel\nTyres: Schwalbe Albert EVO Trail\nBrakes: Shimano DEORE XT four-piston disc brakes\nDisplay: 2.2-inch colour display on the top tube, with a USB-C port for charging a device"
+        ],
+        [
+          "heading",
+          "What \"electric-assist\" means"
+        ],
+        [
+          "paragraph",
+          "An electric-assist mountain bike, or e-MTB, still has pedals. The motor adds power only while the rider pedals, and the battery capacity, measured in watt-hours (Wh), is a rough guide to how long that help can last. The 720 Wh figure is Honda's battery capacity. Honda's pages reviewed here do not state a range, because range depends on the rider, the terrain and the assistance level chosen."
+        ],
+        [
+          "heading",
+          "How pedal assist generally works"
+        ],
+        [
+          "paragraph",
+          "The following is general background from a reference article on electric bicycles, not a statement about the RN0. A bike with pedal assist, often called a pedelec, only helps while the rider pedals. Sensors measure how fast or how hard the rider pedals, or both, and the controller sets the motor output to match. The article says that bikes from the 2020s commonly use torque sensors, which give smoother power delivery."
+        ],
+        [
+          "paragraph",
+          "Electric mountain bikes often put the motor near the pedals, a layout called a mid-drive. Because that motor drives the chain and the bike's own gears, the same article says mid-drive power is usually limited to roughly 250 to 500 W to reduce wear. Honda lists the RN0's maximum output at 750 W, so it quotes a peak figure; it has not said what continuous rating applies."
+        ],
+        [
+          "heading",
+          "Rules that differ by country"
+        ],
+        [
+          "paragraph",
+          "In the European Union, the standard EN 15194 defines a pedelec as a bike whose motor helps above 6 km/h only while the rider pedals, cuts out at 25 km/h, and has a maximum continuous rated power of 250 W, though it may briefly exceed that. Honda's pages do not say which legal class the RN0 will fall into in any market, and rules in other countries can differ."
+        ],
+        [
+          "paragraph",
+          "The same article notes that range depends on assistance level, battery size, speed, hills and the combined weight of bike and rider, and gives about 40 to 120 km per charge as a typical spread for e-bikes in general. Honda has not published a range for the RN0."
+        ],
+        [
+          "heading",
+          "Honda's e-MTB entry in Europe"
+        ],
+        [
+          "paragraph",
+          "Honda's European press release describes the RN0 as an all-new electric mountain bike and Honda's first entry into the European e-MTB market, and lists it among its key announcements for 2027. It names ROTWILD and Shimano as development partners."
+        ],
+        [
+          "heading",
+          "The mixed wheel size"
+        ],
+        [
+          "paragraph",
+          "The bike uses a larger 29-inch wheel at the front and a smaller 27.5-inch wheel at the rear. Honda lists the sizes but does not explain its reasons in the pages reviewed here."
+        ],
+        [
+          "heading",
+          "What is not yet known"
+        ],
+        [
+          "list",
+          "Price and sale date\nWhich countries will sell it, and whether it will come to India\nClaimed range\nHow many bikes will be made"
+        ],
+        [
+          "callout",
+          "EICMA 2026 runs at Fiera Milano from 3 to 8 November 2026. Press days were 3 and 4 November, and public days are 5 to 8 November."
+        ]
+      ],
+      "sources": [
+        {
+          "title": "Honda Unveils Its First High-End Electric-Assist Mountain Bike, the Honda RN0, Honda Global Newsroom",
+          "url": "https://global.honda/en/newsroom/news/2026/2261103eeng.html"
+        },
+        {
+          "title": "Honda Showcases Its Mobility and Technology Strength at EICMA 2026, Honda Europe Newsroom",
+          "url": "https://hondanews.eu/eu/en/cars/media/pressreleases/598538/honda-showcases-its-mobility-and-technology-strength-at-eicma-2026"
+        },
+        {
+          "title": "Electric bicycle, Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Electric_bicycle"
+        }
+      ],
+      "checkedOn": "2026-11-04"
+    },
+    {
+      "title": "Cabinet Approves Rs 10,000 Crore Container Scheme (Oct 2026)",
+      "category": "News and Launches",
+      "excerpt": "The Union Cabinet approved a Rs 10,000 crore scheme to build shipping containers in India, running to FY 2039-40. The government says it aims for about tenfold capacity.",
+      "tags": [
+        "news",
+        "politics",
+        "union cabinet",
+        "shipping",
+        "manufacturing"
+      ],
+      "blocks": [
+        [
+          "paragraph",
+          "The Union Cabinet, chaired by Prime Minister Narendra Modi, approved the Container Manufacturing Promotion Scheme on 28 October 2026, according to the UNI news agency. The scheme has an outlay of Rs 10,000 crore and runs until the financial year 2039-40. Information and Broadcasting Minister Ashwini Vaishnaw announced the decision after the Cabinet meeting. One other report, from IBEF, gives the approval date as 29 October. The scheme was first announced in the Union Budget for 2026-27. This article is correct as of 4 November 2026."
+        ],
+        [
+          "heading",
+          "What the scheme is for"
+        ],
+        [
+          "paragraph",
+          "The government's stated aims are to build a globally competitive container manufacturing industry in India, reduce dependence on imports and strengthen supply chains. It targets raising annual container manufacturing capacity about tenfold, to 7.5 lakh twenty-foot equivalent units (TEUs). A TEU is the standard measure of container capacity, equal to one 20-foot container."
+        ],
+        [
+          "heading",
+          "What a TEU is and why the target is stated that way"
+        ],
+        [
+          "paragraph",
+          "Most shipping containers are 8 feet (2.4 m) wide and either 20 feet or 40 feet long, under the ISO 668 standard. A TEU counts one standard 20-foot container as one unit, so a 40-foot container is two TEU, whatever its height. A reference article on intermodal containers says 40-foot boxes make up about 70 percent of the world's container volume measured in TEU. The scheme's target of 7.5 lakh TEUs a year is therefore a measure of capacity, not a count of boxes."
+        ],
+        [
+          "heading",
+          "Why container manufacturing is a policy topic"
+        ],
+        [
+          "paragraph",
+          "The same reference article says about 90 percent of the world's containers are made in China. The government's own stated reasons, as reported by UNI and IBEF, are to reduce import dependence and strengthen supply chains. This article does not assess those aims; it only reports them."
+        ],
+        [
+          "paragraph",
+          "A standard container is a closed steel box made of corrugated weathering steel with a plywood floor, with a steel casting at each of its eight corners used for lifting, stacking and securing. IBEF lists specialised steel, corner castings, wooden frames and paints among the industries the scheme is meant to support, which fits that construction."
+        ],
+        [
+          "heading",
+          "How the money is divided"
+        ],
+        [
+          "list",
+          "Operational expenditure assistance: Rs 8,891 crore, for containers made to international shipping standards and sold by eligible manufacturers\nInterest subvention: Rs 859 crore, a 3 percent a year subsidy on interest for eligible term loans, for new (greenfield) plants and expansions of existing (brownfield) plants\nTesting and certification: Rs 150 crore, including common testing facilities, for example for dynamic longitudinal impact testing"
+        ],
+        [
+          "paragraph",
+          "These three amounts add up to Rs 9,900 crore, which is Rs 100 crore less than the stated outlay. The two reports opened for this article do not explain the difference."
+        ],
+        [
+          "heading",
+          "Expected jobs"
+        ],
+        [
+          "paragraph",
+          "The government estimates about 3,000 direct jobs and more than 50,000 indirect jobs. IBEF says the scheme is also meant to support related industries such as specialised steel, corner castings, wooden flooring frames and paints."
+        ],
+        [
+          "heading",
+          "Per-container support"
+        ],
+        [
+          "paragraph",
+          "A search of official material found a figure reported as Rs 49,500 for a 20-foot container and Rs 86,625 for a 40-foot container under the operational expenditure assistance. The government pages opened for this article did not show these numbers, so they are not confirmed here and should be checked against the official release."
+        ],
+        [
+          "paragraph",
+          "Schemes of this kind are normally put into effect through guidelines issued by the ministry responsible, which set out who can apply and how payments are claimed. The reports opened for this article did not name the ministry or give a date for the guidelines, so readers should not assume a start date from the Cabinet approval alone. The scheme's long run, to the financial year 2039-40, means that payments are planned over about 13 years."
+        ],
+        [
+          "heading",
+          "What the reports do not say"
+        ],
+        [
+          "list",
+          "Detailed eligibility conditions, which the pages opened for this article do not set out\nWhen applications open\nWhich companies or locations may take part"
+        ],
+        [
+          "callout",
+          "The Cabinet decision is a government approval of a scheme. How it works in practice depends on the guidelines the responsible ministry issues. Readers who need exact conditions should consult the official release and the scheme guidelines."
+        ]
+      ],
+      "sources": [
+        {
+          "title": "Cabinet clears Rs 10,000 cr scheme to boost domestic container manufacturing, UNI",
+          "url": "https://www.uniindia.com/national/cabinet-clears-rs-10000-cr-scheme-to-boost-domestic-container-manufacturing/228180"
+        },
+        {
+          "title": "Cabinet approves Container Manufacturing Promotion Scheme, IBEF",
+          "url": "https://www.ibef.org/news/cabinet-approves-container-manufacturing-promotion-scheme"
+        },
+        {
+          "title": "Intermodal container, Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Intermodal_container"
+        }
+      ],
+      "checkedOn": "2026-11-04"
+    }
+  ]
+}
