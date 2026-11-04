@@ -1,0 +1,102 @@
+{
+  "date": "2026-11-04",
+  "articles": [
+    {
+      "title": "Honda CBR500R Four Shown at EICMA 2026: Specs (Nov 2026)",
+      "category": "News and Launches",
+      "categoryDescription": "Recent news and new launches: vehicles, gadgets, AI and aviation, explained from official sources.",
+      "excerpt": "Honda showed the CBR500R Four at EICMA 2026: a 502 cc inline-four with 72 hp, a standard E-Clutch and a claimed 189 kg. Price and India plans are not announced.",
+      "tags": [
+        "news",
+        "honda",
+        "motorcycles",
+        "eicma"
+      ],
+      "blocks": [
+        [
+          "paragraph",
+          "Honda showed the **CBR500R Four** at the EICMA motorcycle show in Milan, with coverage published on 3 and 4 November 2026. It is a small sports bike powered by a new 502 cc inline-four engine rated at 72 hp, and it comes with Honda's E-Clutch as standard. As of 4 November 2026, no price has been announced and it is not confirmed for India."
+        ],
+        [
+          "callout",
+          "Source note: the figures below come from two published reports (Insella, 3 November 2026, and BikeDekho, 4 November 2026) that agree with each other. We could not open Honda's own press page, so treat the numbers as reported, not as a Honda data sheet."
+        ],
+        [
+          "heading",
+          "Engine and performance"
+        ],
+        [
+          "paragraph",
+          "The engine is a 502 cc, liquid-cooled, in-line four-cylinder with 16 valves. Insella reports 72 hp at 11,000 rpm and 47.4 Nm of torque at 9,750 rpm, with the rev limiter at 12,500 rpm. BikeDekho gives the same 72 PS and 47.4 Nm. Insella adds a claimed top speed of 210 km/h and a claimed fuel use of 4.5 litres per 100 km on the WMTC test cycle."
+        ],
+        [
+          "paragraph",
+          "A version limited to 35 kW is also mentioned, which suits the A2 licence class in Europe. A 35 kW limit is the ceiling for riders on that licence."
+        ],
+        [
+          "heading",
+          "What E-Clutch does"
+        ],
+        [
+          "paragraph",
+          "E-Clutch is Honda's system that works the clutch for you. According to Insella's description, it handles pulling away, stopping and gear changes, while the clutch lever still works if the rider wants to use it. On this bike it is standard, so there is no manual-only version. Pedal pressure for upshifts and downshifts can be set on three levels."
+        ],
+        [
+          "heading",
+          "Electronics and display"
+        ],
+        [
+          "list",
+          "Throttle-by-wire\nRiding modes: Standard, Sport and Urban, plus two user-set modes\nThree power levels and adjustable engine braking\nHSTC traction control, which can be switched off in custom maps\n5-inch TFT display with smartphone connection (RoadSync) and a USB-C port"
+        ],
+        [
+          "heading",
+          "Chassis and brakes"
+        ],
+        [
+          "list",
+          "Steel diamond frame with the engine as a stressed part\n41 mm inverted front fork (not adjustable); rear monoshock with preload adjustment\nTwo 296 mm front discs with radial two-piston calipers; 240 mm rear disc; two-channel ABS\nPirelli Diablo Rosso IV tyres, 120/70-17 front and 160/60-17 rear\nSeat height 78 cm, fuel tank 14 litres, claimed weight 189 kg with a full tank"
+        ],
+        [
+          "paragraph",
+          "Insella lists two colours: red with HRC tricolour graphics, and matt black."
+        ],
+        [
+          "heading",
+          "How the engine is built"
+        ],
+        [
+          "paragraph",
+          "Insella reports several details of the engine's construction. The cylinder bores are coated with nickel-silicon carbide instead of using separate liners, and the valve tappets have a diamond-like carbon (DLC) treatment, both aimed at reducing friction and wear. Air enters through a downdraft intake with a 5.8-litre airbox and ram-air ducts, and the exhaust is a 4-2-1 layout, where four pipes join into two and then one. Bore and stroke are 60 mm by 44.4 mm, and the compression ratio is 12.3:1."
+        ],
+        [
+          "paragraph",
+          "A short stroke and four small cylinders let an engine rev high, which is why the peak power comes at 11,000 rpm. The torque figure of 47.4 Nm is modest compared with larger bikes, which is normal for this engine size."
+        ],
+        [
+          "heading",
+          "What is not known"
+        ],
+        [
+          "paragraph",
+          "No price has been published in either report. BikeDekho says it is unclear whether the bike will come to India. Both reports name the Kawasaki Ninja ZX-4RR as a rival with a four-cylinder engine in this size, and BikeDekho also names the ZXMoto 500RR. Insella says the new design draws on Honda's CB400 Super Four and CBR400R Four, which were sold in Asian markets last year."
+        ],
+        [
+          "paragraph",
+          "Earlier reports from 2025 had said the engine made about 80 hp; the 72 hp figure is the one given in both November 2026 reports used here. This article will not be updated; check Honda's website for current specifications and prices."
+        ]
+      ],
+      "sources": [
+        {
+          "title": "EICMA 2026: Honda CBR500R Four, Insella",
+          "url": "https://www.insella.it/news/eicma-2026-honda-cbr500r-four-4-cilindri-frizione-automatica-79311"
+        },
+        {
+          "title": "Honda CBR500R Four Showcased At EICMA 2026, BikeDekho",
+          "url": "https://www.bikedekho.com/news/honda-cbr500r-four-showcased-at-eicma-2026-20612"
+        }
+      ],
+      "checkedOn": "2026-11-04"
+    }
+  ]
+}
