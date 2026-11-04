@@ -1,0 +1,109 @@
+{
+ "date": "2026-11-04",
+ "articles": [
+  {
+   "title": "Cabinet Raises DA and DR to 63% From 1 July 2026",
+   "category": "News and Launches",
+   "excerpt": "On 28 October 2026 the Union Cabinet approved a 3 percentage point rise in dearness allowance and relief, from 60% to 63%, effective 1 July 2026.",
+   "tags": [
+    "news",
+    "politics",
+    "dearness-allowance",
+    "central-government"
+   ],
+   "blocks": [
+    [
+     "paragraph",
+     "The Union Cabinet approved on Wednesday, 28 October 2026, an additional instalment of dearness allowance (DA) for central government employees and dearness relief (DR) for central government pensioners. The rate goes up by 3 percentage points, from 60% to 63% of basic pay or basic pension, with effect from 1 July 2026. This article reports the decision as described in the Cabinet's statement, as reproduced by a government-staff news site, and in a news agency report, and is accurate as of 4 November 2026."
+    ],
+    [
+     "heading",
+     "What was decided"
+    ],
+    [
+     "list",
+     "**Decision date:** 28 October 2026, at a meeting of the Union Cabinet.\n**Rate:** DA and DR rise from 60% to 63% of basic pay or pension.\n**Effective from:** 1 July 2026.\n**Stated purpose:** to offset the rise in prices.\n**Basis:** the accepted formula that follows the recommendations of the 7th Central Pay Commission."
+    ],
+    [
+     "heading",
+     "Who is covered and what it costs"
+    ],
+    [
+     "paragraph",
+     "According to the Cabinet statement, about 48.54 lakh central government employees receive DA and about 68.71 lakh pensioners receive DR. That is roughly 1.17 crore people in total. The statement puts the combined extra cost to the government at Rs 10,016.10 crore a year for DA and DR together."
+    ],
+    [
+     "heading",
+     "What DA and DR are"
+    ],
+    [
+     "paragraph",
+     "Dearness allowance is a payment added to basic pay to help employees cope with rising prices. Dearness relief does the same for pensioners. Each is stated as a percentage of basic pay or basic pension. In general terms, the rates are reviewed twice a year, with revisions counted from 1 January and 1 July."
+    ],
+    [
+     "paragraph",
+     "A rise of 3 percentage points means that for every Rs 100 of basic pay, the allowance goes from Rs 60 to Rs 63. For example, on a basic pay of Rs 50,000 a month, the DA component would move from Rs 30,000 to Rs 31,500, a difference of Rs 1,500 a month. This is a simple illustration of the percentage, not a statement about any individual's pay, which also depends on other rules and deductions."
+    ],
+    [
+     "heading",
+     "What the sources do not say"
+    ],
+    [
+     "list",
+     "The reports reviewed do not say when arrears for the months since 1 July 2026 will be paid.\nThey do not give a date for the first payment at the new rate.\nThe government will issue the detailed orders through the relevant departments; readers should check those orders for their own case."
+    ],
+    [
+     "heading",
+     "What the minister said"
+    ],
+    [
+     "paragraph",
+     "A news agency report quotes Union Minister Ashwini Vaishnaw, who briefed the media after the meeting, as describing the decision as a \"Diwali gift\". Reports in different outlets give his portfolio differently, so it is not stated here."
+    ],
+    [
+     "callout",
+     "This is general information about an official decision. Individual entitlements depend on pay level, rules and orders issued by the employer or pension authority."
+    ],
+    [
+     "heading",
+     "How the two rates relate"
+    ],
+    [
+     "paragraph",
+     "DA is paid to serving employees and DR to retired staff, and both move together. Because the new rate is counted from 1 July 2026 but the decision came on 28 October, the months in between are the period for which payments at the higher rate would be settled. The sources opened for this article do not describe how or when that settlement happens, so none is assumed here."
+    ],
+    [
+     "paragraph",
+     "The same percentage applies to the base on which it is calculated, which is basic pay for employees and basic pension for pensioners. It does not apply to other pay components unless the relevant rules say so. A pensioner with a basic pension of Rs 20,000 a month, for instance, would see the DR figure move from Rs 12,000 to Rs 12,600 on the percentage alone, a difference of Rs 600 a month. Again, this is arithmetic on the announced rate and not a statement about any person's actual payment."
+    ],
+    [
+     "heading",
+     "Why the rise is 3 percentage points"
+    ],
+    [
+     "paragraph",
+     "The Cabinet statement says the increase follows the accepted formula based on the 7th Central Pay Commission's recommendations and is meant to offset the rise in prices. An earlier report on a similar decision in October 2024, published by an outlet that was opened for this article, describes the calculation as based on the 12-month average of the All India Consumer Price Index for Industrial Workers, with revisions twice a year in January and July. The 2026 sources opened here do not repeat that detail, so it is given as background from the earlier report, not as part of this decision."
+    ],
+    [
+     "heading",
+     "Background on the earlier rate"
+    ],
+    [
+     "paragraph",
+     "The 60% rate that applied before this decision was the rate in force from the previous review. One report mentions an increase of 2 percentage points earlier in 2026, but the sources opened for this article do not give a full history, so that figure is not relied on here."
+    ]
+   ],
+   "sources": [
+    {
+     "title": "DA and DR from 01.07.2026 at 3%: Cabinet approval, StaffNews",
+     "url": "https://www.staffnews.in/?p=169952"
+    },
+    {
+     "title": "Cabinet approves 3 pc hike in DA/DR for central govt employees, pensioners, DT Next",
+     "url": "https://www.dtnext.in/news/business/cabinet-approves-3-pc-hike-in-dadr-for-central-govt-employees-pensioners"
+    }
+   ],
+   "checkedOn": "2026-11-04"
+  }
+ ]
+}
