@@ -1,0 +1,36 @@
+{
+  "date": "2026-11-04",
+  "articles": [
+    {
+      "title": "India Car Sales October 2026: Maruti, Tata, Mahindra Data",
+      "category": "News and Launches",
+      "excerpt": "Maruti Suzuki reported 276,120 units in October 2026, its highest monthly volume. Autocar India's table puts car makers' October figures above 5 lakh units; the makers count differently.",
+      "tags": ["news", "car sales", "maruti suzuki", "tata motors", "mahindra"],
+      "blocks": [
+        ["paragraph", "Maruti Suzuki India said on 1 November 2026 that it sold 276,120 vehicles in October 2026, the highest monthly volume in its history. Of these, 216,789 were domestic sales, 49,872 were exports and 9,459 were sold to other manufacturers. Autocar India, in a report published the same day, put India's four-wheeler passenger vehicle registrations above 5 lakh units for the month. This article sets out the published numbers and explains why they are not all measured the same way. Figures are as of 4 November 2026."],
+        ["heading", "What Maruti Suzuki reported"],
+        ["paragraph", "The company's press release dated 1 November 2026 gives the three parts of its total. The parts add up to the headline number, which is a useful check because companies often use different totals in different documents."],
+        ["list", "Total sales: 276,120 units\nDomestic sales: 216,789 units, which the company called an all-time high\nExports: 49,872 units\nSales to other original equipment manufacturers (OEMs): 9,459 units"],
+        ["paragraph", "The page of the release that we could read states these totals in text. The detailed table by vehicle type is an image, so this article does not quote a split between cars and light commercial vehicles from the release."],
+        ["heading", "The wider October table"],
+        ["paragraph", "Autocar India's report lists October 2026 numbers for several makers, with the change from October 2025. These are the figures it gives for the largest five. The report notes that its table mixes sales, wholesale and registration data, so the numbers are best read maker by maker."],
+        ["list", "Maruti Suzuki: 2,12,384 units, up 20.46% from 1,76,318\nTata Motors: 73,894 units, up 20.87% from 61,134\nMahindra: 73,338 units, up 2.39% from 71,624\nHyundai: 62,799 units (domestic), up 16.74% from 53,792\nKia: 33,462 units, up 13.22% from 29,556\nToyota: 29,521 units (domestic), down 26.67% from 40,257"],
+        ["paragraph", "Autocar India also gives total figures that include exports: Hyundai 82,299 units (up 17.7%), Mahindra 74,904 units and Toyota 30,360 units."],
+        ["heading", "Why the numbers do not match"],
+        ["paragraph", "Maruti's 2,12,384 in the Autocar table is lower than the 216,789 domestic figure in the company's own release. Autocar India describes the first as domestic passenger vehicle sales. The release's 216,789 is the company's domestic total. The two sources do not say whether the gap is the light commercial vehicles that the release's domestic figure may include, and neither page states it, so this article does not explain the difference beyond noting it."],
+        ["paragraph", "The same caution applies elsewhere. Autocar India's report uses sales for some makers, wholesale for others and registrations for Honda and Skoda. Wholesale means vehicles sent from the factory to dealers; registrations count vehicles registered by buyers, as recorded in the government's Vahan system. Wholesale and registrations can move differently in the same month."],
+        ["heading", "What the data shows and what it does not"],
+        ["paragraph", "According to Autocar India, monthly passenger-vehicle volume crossed 5 lakh units for the first time. The report's table adds up to about 5,15,101 units across 11 makers; that sum is a calculation from its table, not a total the report itself states, and because of the mixed measures it should be read as approximate."],
+        ["paragraph", "The makers' own explanations for the month, such as demand around the festive season, are not covered in the pages used here, so this article does not give reasons for the changes. October 2025 figures in the comparison are the ones quoted by Autocar India."],
+        ["heading", "How to read monthly sales reports"],
+        ["paragraph", "When comparing makers, check three things in each report: whether the number is wholesale or registrations, whether exports and supplies to other manufacturers are included, and which month the comparison year is. A figure that excludes exports will always look smaller than one that includes them, even for the same company in the same month. Using the maker's own release for its own total, and a third-party table only for comparison, keeps the numbers consistent."],
+        ["callout", "General information from published reports as of 4 November 2026. Sales figures can be revised and are counted differently by each maker; check each company's own release for its definition."]
+      ],
+      "sources": [
+        { "title": "Maruti Suzuki sales in October 2026, press release, Maruti Suzuki India", "url": "https://www.marutisuzuki.com/corporate/media/press-releases/2026/november/maruti-suzuki-sales-in-october-2026" },
+        { "title": "October 2026 car sales: Monthly wholesales cross 5 lakh for first time, Autocar India", "url": "https://autocarindia.com/car-news/october-2026-car-sales-tata-retains-second-place-441189" }
+      ],
+      "checkedOn": "2026-11-04"
+    }
+  ]
+}
