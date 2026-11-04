@@ -1,0 +1,20 @@
+{
+ "puzzles": [
+  {
+   "game": "hive-words",
+   "date": "2026-11-17",
+   "title": "",
+   "data": {
+    "center": "R",
+    "outer": [
+     "A",
+     "B",
+     "C",
+     "D",
+     "K",
+     "O"
+    ]
+   }
+  }
+ ]
+}
