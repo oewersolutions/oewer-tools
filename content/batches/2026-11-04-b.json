@@ -1,0 +1,98 @@
+{
+  "date": "2026-11-04",
+  "articles": [
+    {
+      "title": "IndiGo Confirms Lie-Flat Beds on A350s (Nov 2026)",
+      "category": "News and Launches",
+      "excerpt": "At Aviation India 2026 on 2 November, IndiGo's CEO said its first 10 Airbus A350-900s will have 16 lie-flat business seats, with deliveries from Q2 2028.",
+      "tags": ["news", "indigo", "airbus", "a350", "aviation"],
+      "blocks": [
+        ["paragraph", "IndiGo's chief executive, Willie Walsh, said on 2 November 2026 that the airline's first Airbus A350-900 aircraft will have lie-flat beds in business class, and that its future A321XLR jets will get them too. Two reports published on 3 November describe his remarks at Aviation India 2026 in New Delhi. The A350 deliveries are expected to begin in the second quarter of 2028. This article is based on those reports and is accurate as of 4 November 2026."],
+        ["heading", "What was announced"],
+        ["list", "**Aircraft:** IndiGo has 60 Airbus A350-900 aircraft on order.\n**First ten A350s:** three cabins, with 16 lie-flat business seats, premium economy and economy.\n**Delivery timing:** deliveries are expected to begin in Q2 2028.\n**Later aircraft:** Walsh said more lie-flat business seats could be fitted to later A350s.\n**A321XLR:** future A321XLR deliveries will also have lie-flat business seats."],
+        ["paragraph", "According to Aerospace Global News, Walsh said the airline \"needed to have flatbeds as part of the business class product\" because that is what customers expect on long routes. The same report says IndiGo has not yet confirmed who will make the seats, the detailed cabin layout or the amenities."],
+        ["heading", "What flies today"],
+        ["paragraph", "Business Today reports that IndiGo currently has four A321XLR aircraft, expects one more by the end of 2026, and plans to have 14 by the end of December 2027. The A321XLR is a single-aisle jet with extra fuel capacity for longer routes. According to Aerospace Global News, the A321XLRs flying now use reclining seats under the airline's IndiGoStretch product, not lie-flat beds."],
+        ["paragraph", "Aerospace Global News also reports that IndiGo will keep operating A321XLR flights to Amsterdam to hold its airport slots before the A350 arrives, and that its London Heathrow service stays suspended until the A350 enters service."],
+        ["heading", "The wider fleet and network plans"],
+        ["list", "IndiGo operates more than 440 aircraft now and expects a fleet of 600 by 2030 (Business Today).\nThe airline has stopped flying leased Boeing 787 aircraft, citing high fuel prices and airspace restrictions (Business Today).\nInternational capacity is expected to make up 40% of the network (Business Today).\nIndiGo reported a loss of Rs 1,879.1 crore for the September quarter, which Business Today links to fuel costs and rupee depreciation."],
+        ["paragraph", "Walsh also said, according to Business Today, that the short-haul network will not be weakened to support long-haul flying, and that the domestic network can feed long-haul services. He said he is not currently considering fuel hedging, though that may be reviewed as long-haul flying grows."],
+        ["heading", "What is still unknown"],
+        ["paragraph", "The reports do not give a launch route for the A350, ticket prices, the exact number of A350s by year, or the seat supplier. Delivery dates for aircraft can also move. The A350 date given here is the one stated at the briefing, as reported, not a delivery contract seen by this site."],
+        ["callout", "Where the facts come from: remarks by IndiGo's CEO at Aviation India 2026 on 2 November 2026, as reported by Business Today and Aerospace Global News on 3 November 2026. IndiGo's own press page was not opened for this article."]
+      ],
+      "sources": [
+        { "title": "IndiGo CEO as airline prepares for international expansion, Business Today (3 Nov 2026)", "url": "https://www.businesstoday.in/latest/corporate/story/youre-looked-down-upon-when-indigo-ceo-as-airline-prepares-for-intl-expansion-565355-2026-11-03" },
+        { "title": "IndiGo confirms lie-flat business class on Airbus A350s, Aerospace Global News", "url": "https://aerospaceglobalnews.com/news/indigo-airbus-a350-lie-flat-business-class/" }
+      ],
+      "checkedOn": "2026-11-04"
+    },
+    {
+      "title": "How a Turboprop Engine Turns a Jet Core Into Propeller Power",
+      "category": "Aviation",
+      "excerpt": "A turboprop is a gas turbine that spends nearly all its energy spinning a propeller through a gearbox. Here is how it works and why short routes use it.",
+      "tags": ["turboprop", "engines", "propellers"],
+      "blocks": [
+        ["paragraph", "A turboprop engine is a gas turbine, the same kind of core found in a jet engine, but built to turn a propeller instead of pushing out a fast jet of exhaust. Almost all of its thrust comes from the propeller. This makes turboprops efficient at the moderate speeds and short distances flown by regional airliners, cargo planes and many business aircraft."],
+        ["heading", "The gas generator at the core"],
+        ["paragraph", "Like a basic turbojet, a turboprop has a compressor, a combustor (burner) and a turbine. Air is squeezed by the compressor, mixed with fuel and burned, and the hot gas expands through turbine stages. NASA's Glenn Research Center describes it as a turbojet core with an extra turbine behind the main one. That core is called the gas generator."],
+        ["paragraph", "In a jet engine most of the leftover energy leaves as a fast exhaust jet. In a turboprop, extra turbines take almost all of that energy and use it to drive a shaft. SKYbrary notes that the turbines extract almost all the energy from the exhaust. Some of it powers the compressor, and the rest drives the propeller."],
+        ["heading", "Why there is a gearbox"],
+        ["paragraph", "A turbine spins very fast and with relatively little twisting force. A propeller works best turning slowly with a lot of twisting force. A reduction gearbox sits between the two and converts one into the other. Wikipedia describes it as turning the turbine's high-speed, low-torque output into the low-speed, high-torque input a propeller needs."],
+        ["heading", "Two layouts: fixed shaft and free turbine"],
+        ["list", "**Fixed shaft:** the same shaft drives the compressor and, through the gearbox, the propeller. The TPE331 is given as an example.\n**Free turbine:** a separate power turbine drives its own shaft that runs through the middle of the compressor shaft. The propeller can turn independently of the gas generator. The Pratt & Whitney Canada PT6 is an example."],
+        ["paragraph", "SKYbrary calls the second type a free turbine engine. Wikipedia adds that this layout can help protect the core if the propeller is damaged."],
+        ["heading", "How much thrust comes from where"],
+        ["paragraph", "A propeller moves a large mass of air and changes its speed only slightly. NASA says this is an efficient way to make thrust. The exhaust that is left over is slow and adds little. Wikipedia puts the exhaust's share at about 10% of thrust. Together, the propeller thrust plus the core's small thrust make up the total."],
+        ["paragraph", "Wikipedia also says turboprops have bypass ratios of roughly 50 to 100, because the air passing through the propeller is so much larger than the air through the core."],
+        ["heading", "The propeller itself"],
+        ["paragraph", "Most turboprops use a constant-speed propeller, which changes the blade angle (pitch) so the engine can stay at its best speed. According to Wikipedia, the same pitch control allows reverse thrust on the ground and feathering, which turns the blades edge-on to the airflow after an engine failure to cut drag."],
+        ["heading", "Where turboprops fit"],
+        ["paragraph", "Propellers lose efficiency as their blade tips near the speed of sound. For that reason, NASA says turboprops suit low-speed aircraft such as cargo planes and small commuter aircraft, while high-speed transports use high-bypass turbofans. Wikipedia says turboprops generally fly below about Mach 0.6 to 0.7. SKYbrary says they are most efficient below Mach 0.6, burn less fuel per seat-mile and need much less runway than similar-sized jets."],
+        ["paragraph", "Wikipedia adds that modern turboprop airliners fly at about the speed of small regional jets while using about two-thirds of the fuel per passenger. The ATR 42 and 72 are described as the most widespread turboprop airliners, with 950 in service in 2017, and the Bombardier Dash 8 Q400 had 506 in service in the same year. The Pilatus PC-12 is another SKYbrary example."],
+        ["heading", "A short history"],
+        ["list", "1929: Hungarian engineer György Jendrassik patented what Wikipedia calls the first turboprop design.\n20 September 1945: a Gloster Meteor test aircraft with Rolls-Royce engines became the first turboprop-powered aircraft to fly.\n16 July 1948: the Vickers Viscount first flew. It was the first turboprop airliner to enter production and sell in large numbers.\nDecember 1963: the first PT6 was delivered, for the Beechcraft 87."],
+        ["heading", "Turboprop versus turboshaft"],
+        ["paragraph", "A turboshaft engine is very similar but drives a transmission instead of a propeller, as in helicopters. SKYbrary notes that many engines come in both versions, and a turboprop must be built sturdier to handle propeller loads."],
+        ["callout", "This is general information on how the engines work. Figures are as stated by NASA, SKYbrary and Wikipedia and refer to the years given."]
+      ],
+      "sources": [
+        { "title": "Turboprop Engine, NASA Glenn Research Center", "url": "https://www.grc.nasa.gov/www/k-12/airplane/turbprp.html" },
+        { "title": "Turboprop, Wikipedia", "url": "https://en.wikipedia.org/wiki/Turboprop" },
+        { "title": "Turboprop Engine, SKYbrary", "url": "https://www.skybrary.aero/articles/turboprop-engine" }
+      ],
+      "checkedOn": "2026-11-04"
+    },
+    {
+      "title": "What an Aerodynamic Stall Is: Angle of Attack Explained",
+      "category": "Aviation",
+      "excerpt": "A stall is a sudden loss of lift when a wing's angle of attack gets too high. It is not an engine failure, and it can happen at any speed.",
+      "tags": ["stall", "angle-of-attack", "aerodynamics"],
+      "blocks": [
+        ["paragraph", "An aerodynamic stall is a sudden drop in lift that happens when a wing is tilted too steeply into the airflow. It has nothing to do with an engine stopping. Wikipedia states plainly that a stall does not mean the engines have stopped working, and notes that gliders, which have no engine, also stall. What matters is the wing's angle, not the aircraft's speed alone."],
+        ["heading", "What angle of attack means"],
+        ["paragraph", "NASA's Glenn Research Center defines angle of attack as the angle between the wing's chord line (an imaginary line from the front edge to the back edge) and the direction the aircraft is moving through the air. This angle strongly affects how much lift the wing makes."],
+        ["paragraph", "For small angles, roughly within 10 degrees either way, NASA says lift changes almost in a straight line with the angle. Tilt the wing up a little more and you get a little more lift. A pilot raises the nose on take-off for just this reason, to increase the angle and make extra lift."],
+        ["heading", "Why lift suddenly falls"],
+        ["paragraph", "The straight-line rule does not continue forever. At higher angles the air can no longer follow the curve of the wing's upper surface. It separates from the wing and becomes turbulent. NASA explains that this separation of the boundary layer, the thin layer of air next to the surface, is why wings lose lift abruptly at high inclination."],
+        ["paragraph", "Wikipedia gives a typical critical angle of about 8 to 20 degrees for subsonic wing sections. It varies with the wing shape. NASA adds that the exact stall point is hard to predict by calculation, so engineers usually find it through wind tunnel tests."],
+        ["heading", "Stall speed is a result, not a cause"],
+        ["paragraph", "Because a stall depends on the angle, a wing can stall at any speed. Wikipedia defines stall speed as the speed at which the critical angle is reached in a given set-up, such as a particular weight and flap setting. A heavier load or a steep turn needs more lift, so a higher angle is needed and the stall speed rises. The article says that higher load factors, such as in steep turns, raise the stall speed."],
+        ["heading", "Recovering from a stall"],
+        ["paragraph", "The cure follows from the cause. Wikipedia says that lowering the nose reduces the angle of attack and lets smooth airflow return. It adds that a properly handled stall typically costs only about 20 to 30 metres of height. Pilots train for this under supervision, and this article is general information, not flight instruction."],
+        ["heading", "Related hazards"],
+        ["list", "**Spin:** can develop when one wing stalls before the other.\n**Deep stall:** can lock an aircraft in a condition it cannot recover from, typically one with a T-tail and rear-mounted engines.\n**Tip stall:** on swept wings, this can cause a dangerous nose pitch-up."],
+        ["heading", "Devices that help"],
+        ["paragraph", "Wikipedia lists several safety devices: stall warning horns, stick shakers and stick pushers, stall strips, vortex generators, washout (a built-in twist in the wing) and angle-of-attack indicators. Their job is to warn the crew or to make the wing stall in a gentler, more predictable way."],
+        ["heading", "Stall versus spoilers"],
+        ["paragraph", "Stalls are normally unwanted, but spoilers deliberately break up the airflow to reduce lift. Wikipedia notes this difference."],
+        ["callout", "A stall is about angle of attack, not engine power or speed on its own. Sources: NASA Glenn Research Center and Wikipedia, as opened on 4 November 2026."]
+      ],
+      "sources": [
+        { "title": "Angle of Attack, NASA Glenn Research Center", "url": "https://www.grc.nasa.gov/www/k-12/VirtualAero/BottleRocket/airplane/incline.html" },
+        { "title": "Stall (fluid dynamics), Wikipedia", "url": "https://en.wikipedia.org/wiki/Stall_(fluid_dynamics)" }
+      ],
+      "checkedOn": "2026-11-04"
+    }
+  ]
+}
