@@ -1,0 +1,97 @@
+{
+  "date": "2026-11-04",
+  "articles": [
+    {
+      "title": "Cabinet Approves Rs 14,500 Crore Grid Storage Scheme",
+      "category": "News and Launches",
+      "excerpt": "On 4 November 2026 the Union Cabinet approved Rs 14,500 crore of viability gap funding for 92 GWh of grid-scale energy storage. Here is what it covers and what is still unknown.",
+      "tags": [
+        "news",
+        "politics",
+        "energy storage",
+        "cabinet"
+      ],
+      "blocks": [
+        [
+          "paragraph",
+          "On 4 November 2026 the Union Cabinet, chaired by Prime Minister Narendra Modi, approved a Viability Gap Funding (VGF) scheme for grid-scale energy storage. According to the Press Information Bureau release as reported by several outlets, the scheme provides Rs 14,500 crore over the financial years 2026-27 to 2030-31 and aims to support about 92 GWh of new storage capacity that has not yet been commissioned. Business Today reports that Information and Broadcasting Minister Ashwini Vaishnaw announced the decisions after the meeting. This article is as of 4 November 2026."
+        ],
+        [
+          "heading",
+          "What the scheme is"
+        ],
+        [
+          "paragraph",
+          "Viability gap funding is government money that covers part of the cost of a project that would otherwise struggle to earn enough to pay for itself. Grid-scale storage holds electricity when supply is high and releases it when demand is high, which helps the grid use more renewable power such as solar and wind. Sauer Energy lists the stated goals as integrating renewables, improving grid stability and round-the-clock supply, boosting domestic battery manufacturing, and strengthening long-term energy security."
+        ],
+        [
+          "heading",
+          "The numbers as reported"
+        ],
+        [
+          "list",
+          "Government support: Rs 14,500 crore, FY 2026-27 to FY 2030-31\nTarget: 92 GWh of storage capacity not yet commissioned\nHydro pumped storage plants: 60 GWh\nBattery energy storage systems (BESS): 30 GWh\nAlternative storage technologies: 2 GWh\nEstimated total investment: Rs 97,600 crore"
+        ],
+        [
+          "paragraph",
+          "The release says the 92 GWh equals 170% of India's present grid-scale storage capacity, and that the country needs about 411 GWh of grid-scale storage by 2031-32. A GWh (gigawatt-hour) is a measure of stored energy: one GWh could supply one gigawatt of power for one hour."
+        ],
+        [
+          "heading",
+          "How projects will be chosen"
+        ],
+        [
+          "paragraph",
+          "Capacity will be allocated through tariff-based competitive bidding. Public and private electricity distribution companies are eligible for VGF support for battery and pumped storage projects. Projects using alternative storage technologies can be implemented by public and private entities. Battery projects must meet a minimum domestic content requirement of 40%, meaning at least that share of the project has to come from domestic sources."
+        ],
+        [
+          "heading",
+          "Two kinds of storage"
+        ],
+        [
+          "paragraph",
+          "Pumped storage uses spare electricity to pump water uphill to a reservoir, then lets it run back down through turbines when power is needed. Battery systems store electricity chemically and can respond within moments. The scheme as reported puts about two thirds of the target in pumped storage and about one third in batteries."
+        ],
+        [
+          "callout",
+          "The photo of a pumped storage plant on this page is from the United States, and the battery photo is from Switzerland. They show the two technologies in general, not projects under this scheme."
+        ],
+        [
+          "heading",
+          "Who is affected"
+        ],
+        [
+          "paragraph",
+          "The scheme is aimed at project developers and electricity distribution companies rather than households directly. Distribution companies, public or private, can seek VGF support for battery and pumped storage projects, and the competitive bidding is meant to set the tariff at which stored power is supplied. Any effect on electricity bills is not stated in the sources, and this article makes no forecast about it. The scheme period runs to the end of FY 2030-31, so the 92 GWh is a five-year target rather than something that will be in place soon."
+        ],
+        [
+          "heading",
+          "What has not been stated"
+        ],
+        [
+          "paragraph",
+          "The sources opened for this article do not say how the Rs 14,500 crore will be divided between the three technologies, what the per-project funding limits are, when the first bids will open, or what counts as an alternative technology. They also do not say whether the 40% domestic content rule applies beyond batteries, or how the 411 GWh requirement and the 170% comparison were calculated. The Ministry of Power or the implementing agency may publish these details later."
+        ],
+        [
+          "paragraph",
+          "This is a summary of an official announcement, not an assessment of it. Readers who need the exact scheme terms should read the Cabinet decision on the Press Information Bureau website."
+        ]
+      ],
+      "sources": [
+        {
+          "title": "Cabinet approves Rs 14,500 crore VGF Scheme for 92 GWh Grid-Scale Energy Storage Systems, BioEnergy Times",
+          "url": "https://bioenergytimes.com/cabinet-approves-rs-14500-crore-viability-gap-funding-scheme-for-development-of-92-gwh-grid-scale-energy-storage-systems/"
+        },
+        {
+          "title": "Cabinet Approves Rs. 14,500 Crore Support for 92 GWh Energy Storage, Sauer Energy",
+          "url": "https://www.saurenergy.com/solar-energy-news/cabinet-approves-rs-14500-crore-support-for-92-gwh-energy-storage-12783084"
+        },
+        {
+          "title": "Cabinet approves Rs 14,500 cr energy storage scheme, Business Today",
+          "url": "https://www.businesstoday.in/india/story/cabinet-approves-rs-14500-cr-energy-storage-scheme-rs-4371-cr-vistar-plan-850-fast-track-courts-cleared-565711-2026-11-04"
+        }
+      ],
+      "checkedOn": "2026-11-04"
+    }
+  ]
+}
