@@ -1,0 +1,109 @@
+{
+ "date": "2026-11-04",
+ "articles": [
+  {
+   "title": "Apple Reports Record $114.5 Billion Quarter (Nov 2026)",
+   "category": "News and Launches",
+   "excerpt": "Apple reported revenue of $114.5 billion for the quarter ended 26 September 2026, up 12%, with iPhone at $57.6 billion and Services at an all-time high of $31.6 billion.",
+   "tags": [
+    "news",
+    "apple",
+    "earnings",
+    "iphone"
+   ],
+   "blocks": [
+    [
+     "paragraph",
+     "Apple reported revenue of $114.5 billion for its fiscal fourth quarter, which ended on 26 September 2026. That is 12% more than a year earlier and a record for a September quarter. Diluted earnings per share were $2.10, up 14%. The figures come from Apple's results statement filed with the US Securities and Exchange Commission (SEC) and announced on 2 November 2026. This article is accurate as of 4 November 2026."
+    ],
+    [
+     "heading",
+     "The headline numbers"
+    ],
+    [
+     "list",
+     "**Revenue:** $114.5 billion, up 12% year on year.\n**Earnings per share (diluted):** $2.10, up from $1.85 a year earlier (up 14%).\n**Gross margin:** 47.9%.\n**Full-year revenue (fiscal 2026):** $478.8 billion, which Apple's statement describes as an all-time record.\n**Dividend:** $0.27 per share, payable on 16 November 2026 to shareholders of record on 12 November 2026."
+    ],
+    [
+     "paragraph",
+     "Apple's statement says tariff refunds added about $0.05 to earnings per share and roughly one percentage point to the gross margin in this quarter. Without that item, both numbers would have been lower. The statement does not include forward-looking guidance."
+    ],
+    [
+     "heading",
+     "Sales by product"
+    ],
+    [
+     "paragraph",
+     "The table below lists the quarter's revenue by product line, compared with the same quarter a year earlier. The figures are from the SEC filing, and the Wearables, iPad and regional numbers were checked against a report by GSMArena dated 3 November 2026."
+    ],
+    [
+     "list",
+     "**iPhone:** $57.6 billion, up from $49.0 billion. Apple describes it as a September-quarter record.\n**Services:** $31.6 billion, up from $28.8 billion. Apple describes it as an all-time high.\n**Mac:** $10.8 billion, up from $8.7 billion.\n**Wearables, Home and Accessories:** $8.3 billion, down from $9.0 billion.\n**iPad:** $6.2 billion, down from $6.9 billion."
+    ],
+    [
+     "paragraph",
+     "So iPhone, Mac and Services grew, while Wearables, Home and Accessories and iPad fell. GSMArena adds that Mac is now Apple's third-largest product category for the full year, ahead of Wearables, Home and Accessories."
+    ],
+    [
+     "heading",
+     "How the mix looks"
+    ],
+    [
+     "paragraph",
+     "Using the published figures, iPhone made up about 50% of the quarter's revenue ($57.6 billion of $114.5 billion), Services about 28% ($31.6 billion), Mac about 9% ($10.8 billion), Wearables, Home and Accessories about 7% and iPad about 5%. These shares are simple divisions of the reported numbers and are rounded, so they are not figures Apple itself states. They show how much of the quarter's growth came from the three lines that rose: iPhone grew by $8.6 billion, Services by $2.8 billion and Mac by $2.1 billion compared with the same quarter a year earlier."
+    ],
+    [
+     "heading",
+     "Sales by region"
+    ],
+    [
+     "paragraph",
+     "According to GSMArena's summary of the report, the Americas contributed $48.7 billion in the quarter, Europe $32 billion and Greater China $17.5 billion. The Apple statement itself should be consulted for the full geographic table, including other regions."
+    ],
+    [
+     "heading",
+     "Full-year figures"
+    ],
+    [
+     "paragraph",
+     "For the whole of fiscal 2026, GSMArena reports iPhone revenue of $254.1 billion, up from $209.6 billion, and Services revenue of $123.3 billion, up from $109.2 billion. The company's own statement gives the total for the year as $478.8 billion."
+    ],
+    [
+     "heading",
+     "What the company said"
+    ],
+    [
+     "paragraph",
+     "John Ternus, named in the statement as Apple's chief executive, is quoted on the year, with Services reaching an all-time high at its close. Kevan Parekh, the chief financial officer, is also quoted in the release. Apple held its earnings call on 2 November 2026, and the statement and the call are the places to find any comment on supply, memory costs or products."
+    ],
+    [
+     "callout",
+     "Fiscal years differ from calendar years. Apple's fiscal 2026 ended on 26 September 2026, so the fourth quarter covers roughly July to September."
+    ],
+    [
+     "heading",
+     "What is not in the figures"
+    ],
+    [
+     "paragraph",
+     "The release does not give unit sales for iPhone, Mac or iPad, so how many devices were sold is not stated. It also does not give India-specific revenue. Readers looking for those details would need Apple's later filings or its own commentary. This article reports only what the statement and the second source say and makes no forecast."
+    ],
+    [
+     "paragraph",
+     "These are company results, not investment advice. Anyone making decisions about shares should read Apple's full filing and a licensed adviser's guidance."
+    ]
+   ],
+   "sources": [
+    {
+     "title": "Apple Inc. Form 8-K, Exhibit 99.1: fourth quarter fiscal 2026 results, SEC",
+     "url": "https://www.sec.gov/Archives/edgar/data/0000320193/000032019326000024/a8-kex991q4202609262026.htm"
+    },
+    {
+     "title": "Apple reports record quarter, GSMArena, 3 November 2026",
+     "url": "https://www.gsmarena.com/apple_reports_record_quarter__iphone_and_mac_sales_are_up_services_reach_an_alltime_high-news-75321.php"
+    }
+   ],
+   "checkedOn": "2026-11-04"
+  }
+ ]
+}

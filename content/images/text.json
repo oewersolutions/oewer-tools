@@ -1,367 +1,372 @@
 {
- "how-emi-is-calculated": {
-  "coverAlt": "A four-storey brick apartment building with shops on the ground floor",
-  "figureAlt": "Apartment towers beside a river under a blue sky",
-  "figureCaption": "A home is the most common reason for a long loan."
- },
- "compress-images-without-losing-quality": {
-  "coverAlt": "A row of camera lenses and lens tubes standing on a shelf",
-  "figureAlt": "The same street scene shown four times to compare image compression settings",
-  "figureCaption": "Four versions of one picture, saved with different compression settings, side by side."
- },
- "gst-explained-add-and-remove-gst": {
-  "coverAlt": "Close-up of an Indian 50-rupee banknote showing Mahatma Gandhi's portrait",
-  "figureAlt": "Indian 100 and 2000 rupee banknotes lying together",
-  "figureCaption": "Prices and bills in rupees."
- },
- "fixed-deposit-interest-simple-vs-compound": {
-  "coverAlt": "Several Indian one-rupee coins lying on a dark surface",
-  "figureAlt": "Both sides of an Indian one-rupee coin",
-  "figureCaption": "Both sides of an Indian one-rupee coin."
- },
- "make-a-qr-code-that-scans-every-time": {
-  "coverAlt": "A hand holding a phone that is scanning a QR code on a printed page",
-  "figureAlt": "Two children using a phone to scan a QR code on an information board in a park",
-  "figureCaption": "QR codes on a sign, scanned with a phone."
- },
- "why-browser-based-tools-keep-your-files-private": {
-  "coverAlt": "A closed laptop wrapped in orange chains",
-  "figureAlt": "A clear practice padlock with its inner mechanism visible",
-  "figureCaption": "A padlock, opened up to show how it works."
- },
- "how-a-hybrid-car-works-engine-motor-and-battery-explained": {
-  "coverAlt": "A silver Toyota Prius hybrid car parked at the roadside",
-  "figureAlt": "The fuse box cover under the bonnet of a Toyota Prius",
-  "figureCaption": "The fuse box cover in the engine bay of a Toyota Prius."
- },
- "how-airplanes-stay-in-the-air-the-four-forces-of-flight": {
-  "coverAlt": "View from an aircraft window of a green wing over a river and city",
-  "figureAlt": "A white research aircraft with an angled wing flying over a desert",
-  "figureCaption": "NASA's oblique wing research aircraft in flight."
- },
- "how-ford-s-moving-assembly-line-cut-model-t-build-time-to-93-minutes": {
-  "coverAlt": "Black-and-white photograph of workers assembling Ford cars on a factory floor in 1923",
-  "figureAlt": "A museum model of a Model T assembly line",
-  "figureCaption": "A museum model of a Model T assembly line."
- },
- "what-is-a-context-window-why-ai-chatbots-forget-things": {
-  "coverAlt": "A wall covered with colourful sticky notes",
-  "figureAlt": "Four square pads of sticky notes in purple, blue, pink and green",
-  "figureCaption": "A sticky note has room for only so much, a little like a context window."
- },
- "how-usb-c-chargers-decide-how-much-power-to-send": {
-  "coverAlt": "A USB-C cable plugged into a power bank",
-  "figureAlt": "A hand holding the end of a USB-C connector",
-  "figureCaption": "A USB-C connector, reversible and the same on both ends."
- },
- "sip-returns-explained-how-a-monthly-investment-grows": {
-  "coverAlt": "A newly sprouted green seedling growing from dark soil",
-  "figureAlt": "A young seedling pushing up through the soil",
-  "figureCaption": "A seedling: small at first, then faster as it grows."
- },
- "lumpsum-investment-calculator-explained-the-formula-and-an-example": {
-  "coverAlt": "Stacks of copper and silver coins",
-  "figureAlt": "Six gold British sovereign coins laid out in two rows",
-  "figureCaption": "Gold coins."
- },
- "compound-interest-explained-formula-and-examples": {
-  "coverAlt": "A stack of pine log ends showing round growth rings",
-  "figureAlt": "Close-up of a tree cross-section showing growth rings and a central crack",
-  "figureCaption": "Growth rings: each year builds on the one before."
- },
- "simple-interest-formula-how-it-works-with-examples": {
-  "coverAlt": "A page of an old handwritten business ledger with columns of figures",
-  "figureAlt": "A page from a blacksmith's handwritten account book",
-  "figureCaption": "A handwritten account book of the kind used to record debts and interest."
- },
- "recurring-deposit-how-rd-maturity-is-calculated": {
-  "coverAlt": "Two colourful plastic chicken-shaped piggy banks on a shelf",
-  "figureAlt": "A collectible piggy bank shaped like a delivery truck",
-  "figureCaption": "A piggy bank: small amounts, saved regularly."
- },
- "successive-discounts-why-20-off-plus-10-is-28": {
-  "coverAlt": "A street scene with a red and white clearance sale sign",
-  "figureAlt": "A shop poster advertising a 50 per cent discount",
-  "figureCaption": "A shop poster advertising a 50 per cent discount."
- },
- "how-to-calculate-age-in-years-months-and-days": {
-  "coverAlt": "A chocolate birthday cake topped with the candle numbers 2 and 6",
-  "figureAlt": "A birthday cake with a single candle in the shape of the number 1",
-  "figureCaption": "A first birthday: the age in whole years is the number of birthdays so far."
- },
- "how-to-count-days-between-two-dates-end-included": {
-  "coverAlt": "A wall calendar showing September and October 2007 with 24 October marked in red",
-  "figureAlt": "A round wooden desk calendar showing Saturday the 13th",
-  "figureCaption": "A wooden wall calendar with turning day and date."
- },
- "how-to-convert-units-length-weight-temperature": {
-  "coverAlt": "A blue and orange tape measure marked 3 m (10 ft)",
-  "figureAlt": "A retractable tape measure with a yellow blade",
-  "figureCaption": "A retractable tape measure."
- },
- "how-to-create-a-strong-random-password": {
-  "coverAlt": "A brass padlock on a key ring with two keys",
-  "figureAlt": "A clear practice padlock with two keys",
-  "figureCaption": "A padlock is only as good as its key, and a password is only as good as its randomness."
- },
- "what-is-base64-how-to-encode-and-decode-it": {
-  "coverAlt": "Rows of green digits on a dark background, like computer code",
-  "figureAlt": "Binary digits carved into a stone paving brick",
-  "figureCaption": "Binary digits: Base64 writes bytes using 64 safe characters."
- },
- "url-encoding-explained-what-20-and-3d-mean": {
-  "coverAlt": "A signpost with several direction signs beside a canal",
-  "figureAlt": null,
-  "figureCaption": null
- },
- "uuids-explained-versions-4-and-7-and-when-to-use-them": {
-  "coverAlt": "A green barcode printed on a yellow label with its number underneath",
-  "figureAlt": "A white label printed with a barcode and the word CONFERENCE",
-  "figureCaption": "A barcode label: an identifier a machine can read."
- },
- "what-is-a-hash-sha-256-vs-sha-1-explained": {
-  "coverAlt": "An ink fingerprint of a right thumb on an old paper form",
-  "figureAlt": "A fingerprint scanner mounted on a wall",
-  "figureCaption": "A fingerprint scanner: a person's print is reduced to a short code for comparison."
- },
- "hex-rgb-and-hsl-colours-how-they-relate": {
-  "coverAlt": "A circular chart of colours showing complementary pairs around a wheel",
-  "figureAlt": "Coloured pencils arranged in a circle by hue",
-  "figureCaption": "Coloured pencils arranged by hue, much like the hue angle in HSL."
- },
- "unix-timestamps-explained-seconds-milliseconds-zones": {
-  "coverAlt": "A black Casio digital watch showing the time 16:08:53",
-  "figureAlt": "A black wall clock with white numerals and a second hand",
-  "figureCaption": "A clock shows a local time. A Unix timestamp has no time zone."
- },
- "regular-expressions-basics-flags-groups-and-pitfalls": {
-  "coverAlt": "A hand holding a magnifying glass over a German postage stamp",
-  "figureAlt": "A magnifying glass lying on an antique desk next to a fountain pen",
-  "figureCaption": "Searching text for a pattern is like looking closely for one detail."
- },
- "how-to-read-a-jwt-header-payload-and-signature": {
-  "coverAlt": "A white identification wristband with a barcode on a person's wrist",
-  "figureAlt": "A purple festival wristband",
-  "figureCaption": "A wristband is a token: it proves a right to enter, until it expires."
- },
- "how-to-merge-pdf-files-in-order-without-uploading": {
-  "coverAlt": "A stack of loose papers and documents",
-  "figureAlt": "A black long-arm stapler on a white background",
-  "figureCaption": "A long-arm stapler, for binding sheets together."
- },
- "how-to-split-a-pdf-and-extract-pages": {
-  "coverAlt": "A paper guillotine trimmer with a wooden base and a long cutting arm",
-  "figureAlt": "A rotary paper trimmer with a blue cutting mat",
-  "figureCaption": "A paper trimmer: cutting a stack into the pieces you need."
- },
- "how-to-turn-pictures-into-a-pdf-sizes-and-quality": {
-  "coverAlt": "Close-up of the glass and rail inside an open flatbed scanner",
-  "figureAlt": null,
-  "figureCaption": null
- },
- "what-is-exif-data-why-and-how-to-remove-it": {
-  "coverAlt": "Four smartphones with different coloured backs shown side by side, each with rear cameras",
-  "figureAlt": "Two women taking photographs with their phones outdoors",
-  "figureCaption": "Phones record the time, the device and sometimes the place."
- },
- "how-to-crop-rotate-and-flip-a-photo-without-losing-quality": {
-  "coverAlt": "A yellow sunflower in sharp focus with leaves and white flowers softly blurred behind",
-  "figureAlt": null,
-  "figureCaption": null
- },
- "what-are-ai-tokens-how-chatbots-split-and-count-text": {
-  "coverAlt": "Scrabble letter tiles scattered on a table",
-  "figureAlt": null,
-  "figureCaption": null
- },
- "oled-vs-lcd-how-each-screen-makes-light-and-black": {
-  "coverAlt": "A thin curved LG OLED television seen from the front",
-  "figureAlt": "Three phone screens glowing solid blue, green and red",
-  "figureCaption": "Phone screens lit in solid blue, green and red."
- },
- "how-passkeys-work-signing-in-without-a-password": {
-  "coverAlt": "A YubiKey 5C NFC security key next to its packaging and a set of keys",
-  "figureAlt": null,
-  "figureCaption": null
- },
- "how-bicycle-gears-work-chainrings-cogs-and-derailleurs": {
-  "coverAlt": "A Shimano rear derailleur mounted next to the rear sprockets of a bicycle",
-  "figureAlt": "A bicycle crankset with two chainrings",
-  "figureCaption": "A crankset with two chainrings, the toothed wheels at the pedals."
- },
- "concorde-how-the-supersonic-airliner-flew-and-why-it-ended": {
-  "coverAlt": "An Air France Concorde displayed in the air on a mount, seen from below",
-  "figureAlt": "The crowded flight deck of a Concorde with its many dials",
-  "figureCaption": "The flight deck of a Concorde."
- },
- "how-a-turbocharger-works-exhaust-power-made-useful": {
-  "coverAlt": "A turbocharger cut open to show the turbine and compressor wheels inside",
-  "figureAlt": "A turbocharger removed from an engine, showing its housings and connections",
-  "figureCaption": "A turbocharger: the exhaust turbine and air compressor share one shaft."
- },
- "why-airliners-cruise-at-about-35-000-feet": {
-  "coverAlt": "A United Airlines Airbus A320 airliner on the ground",
-  "figureAlt": "A Jetstar Airbus A320 airliner in flight",
-  "figureCaption": "An Airbus A320, a single-aisle airliner that cruises in the 31,000 to 38,000 foot band."
- },
- "how-ai-image-generators-turn-noise-into-pictures": {
-  "coverAlt": "A dark photograph covered in coloured speckles of image noise",
-  "figureAlt": "An illustration of an artificial neural network with a computer chip",
-  "figureCaption": "Image generators use neural networks to remove noise step by step."
- },
- "how-noise-cancelling-headphones-work": {
-  "coverAlt": "Black over-ear wireless noise-cancelling headphones",
-  "figureAlt": "Over-ear noise-cancelling headphones seen from the side",
-  "figureCaption": "Over-ear headphones with microphones and speakers in each ear cup."
- },
- "how-a-lift-stays-safe-brakes-governors-and-rails": {
-  "coverAlt": "The inside of a passenger lift cabin with buttons beside the doors",
-  "figureAlt": "The interior of a lift cabin in a tall tower",
-  "figureCaption": "A lift car rides on guide rails that its safety gear can grip."
- },
- "how-abs-brakes-stop-wheels-from-locking-up": {
-  "coverAlt": "A Bosch ABS-8M anti-lock braking control unit with its hydraulic block and electronics",
-  "figureAlt": null,
-  "figureCaption": null
- },
- "what-a-flight-recorder-records-and-how-it-survives": {
-  "coverAlt": "A flight data recorder and a cockpit voice recorder, both bright orange, side by side",
-  "figureAlt": null,
-  "figureCaption": null
- },
- "the-volkswagen-beetle-a-people-s-car-s-65-year-run": {
-  "coverAlt": "A Volkswagen Type 1 Beetle from the late 1960s parked beside a street",
-  "figureAlt": null,
-  "figureCaption": null
- },
- "how-an-ssd-stores-data-without-moving-parts": {
-  "coverAlt": "A Samsung 960 EVO M.2 solid-state drive, a small circuit board with memory chips",
-  "figureAlt": null,
-  "figureCaption": null
- },
- "why-ai-chatbots-make-things-up-hallucinations-explained": {
-  "coverAlt": "A large question mark sign mounted on the front of an old brick building",
-  "figureAlt": null,
-  "figureCaption": null
- },
- "kawasaki-z650-s-launched-in-india-at-rs-7-59-lakh": {
-  "coverAlt": "A black Kawasaki Z650 naked motorcycle, the earlier model, parked on a street",
-  "figureAlt": null,
-  "figureCaption": null
- },
- "honda-names-its-india-electric-suv-alpha-debut-2-dec": {
-  "coverAlt": "The Honda 0 Alpha electric SUV concept on display at the Japan Mobility Show, the concept the ALPHA is based on",
-  "figureAlt": null,
-  "figureCaption": null
- },
- "royal-enfield-himalayan-750-unveiled-specs-and-colours": {
-  "coverAlt": "A Royal Enfield Himalayan 450 adventure motorcycle, a different Himalayan model, parked outdoors",
-  "figureAlt": null,
-  "figureCaption": null
- },
- "how-a-12-volt-car-battery-works-lead-acid-basics": {
-  "coverAlt": "A 12-volt lead-acid battery connected to a charger with red and black cables",
-  "figureAlt": null,
-  "figureCaption": null
- },
- "how-tyre-pressure-monitoring-systems-work": {
-  "coverAlt": "A hand-held tyre pressure gauge with a dial and a rubber-covered head",
-  "figureAlt": null,
-  "figureCaption": null
- },
- "hero-destini-110-classique-edition-launched-at-rs-76-400": {
-  "coverAlt": "Rear view of a parked Hero Honda Pleasure scooter in a corridor",
-  "figureAlt": null,
-  "figureCaption": null
- },
- "bmw-m-1000-rs-unveiled-at-eicma-2026-218-hp-1-000-units": {
-  "coverAlt": "Two BMW superbikes on a showroom floor, a BMW S 1000 RR and a BMW M 1000 RR",
-  "figureAlt": null,
-  "figureCaption": null
- },
- "suzuki-gsx-10r-unveiled-at-eicma-2026-specs-and-dates": {
-  "coverAlt": "A blue Suzuki GSX-R1000R sportbike parked on tarmac",
-  "figureAlt": null,
-  "figureCaption": null
- },
- "moto-guzzi-the-trip-500-unveiled-at-eicma-2026": {
-  "coverAlt": "A Moto Guzzi V7 Stone roadster parked beside other motorcycles at a show",
-  "figureAlt": null,
-  "figureCaption": null
- },
- "how-a-motorcycle-quickshifter-works-without-the-clutch": {
-  "coverAlt": "Close-up of the engine and gearbox of a BMW R1150GS motorcycle",
-  "figureAlt": null,
-  "figureCaption": null
- },
- "harley-davidson-x350-t-unveiled-at-eicma-2026-nov-2026": {
-  "coverAlt": "A grey Harley-Davidson Street 750 roadster motorcycle parked on a car park, seen from the front left",
-  "figureAlt": "A grey Harley-Davidson Street 750 roadster motorcycle seen from the front left",
-  "figureCaption": "A Harley-Davidson Street 750, an earlier and different model, shown for illustration. This is not the X350 T."
- },
- "what-quantum-computers-are-for-and-what-they-cannot-do": {
-  "coverAlt": "The gold-coloured cooling and wiring stack inside an IBM Quantum System One",
-  "figureAlt": null,
-  "figureCaption": null
- },
- "how-electric-aircraft-work-and-why-range-is-the-problem": {
-  "coverAlt": "A white Pipistrel Velis Electro two-seat electric training aeroplane flying over farmland",
-  "figureAlt": null,
-  "figureCaption": null
- },
- "rbi-eases-export-form-rules-for-small-services-nov-2026": {
-  "coverAlt": "The stone front of a Reserve Bank of India building in Mumbai with trees in front",
-  "figureAlt": null,
-  "figureCaption": null
- },
- "honda-2027-cbr1000rr-r-fireblade-unveiled-at-eicma-2026": {
-  "coverAlt": "A red, white and blue Honda CBR1000RR-R Fireblade SP motorcycle on display",
-  "figureAlt": null,
-  "figureCaption": null
- },
- "honda-crf1150l-africa-twin-unveiled-at-eicma-2026-specs": {
-  "coverAlt": "A red and white Honda CRF1100L Africa Twin adventure motorcycle on display",
-  "figureAlt": null,
-  "figureCaption": null
- },
- "indigo-confirms-lie-flat-beds-on-a350s-nov-2026": {
-  "coverAlt": "An IndiGo Airbus A321neo-family jet climbing after take-off, seen from below",
-  "figureAlt": null,
-  "figureCaption": null
- },
- "how-a-turboprop-engine-turns-a-jet-core-into-propeller-power": {
-  "coverAlt": "An ATR 72-600 twin-turboprop airliner in Azul colours on approach to land",
-  "figureAlt": null,
-  "figureCaption": null
- },
- "what-an-aerodynamic-stall-is-angle-of-attack-explained": {
-  "coverAlt": "A Schweizer SGS 2-33 training glider parked on an airfield apron",
-  "figureAlt": null,
-  "figureCaption": null
- },
- "cabinet-raises-da-and-dr-to-63-from-1-july-2026": {
-  "coverAlt": "A hand holding several fanned Indian 500-rupee banknotes",
-  "figureAlt": null,
-  "figureCaption": null
- },
- "vinfast-vf-mpv-7-price-cut-to-rs-20-39-lakh-nov-2026": {
-  "coverAlt": "A white VinFast VF 8 electric SUV parked inside a showroom",
-  "figureAlt": null,
-  "figureCaption": null
- },
- "nissan-magnite-gravite-free-cng-kit-offer-nov-2026": {
-  "coverAlt": "A red Nissan Magnite compact SUV seen from the side at a car show",
-  "figureAlt": null,
-  "figureCaption": null
- },
- "how-automatic-gearboxes-work-torque-converter-and-gears": {
-  "coverAlt": "A cutaway display of a four-speed Jatco automatic transmission showing its internal parts",
-  "figureAlt": null,
-  "figureCaption": null
- },
- "countersteering-how-motorcycles-and-bikes-turn": {
-  "coverAlt": "A rider leaning a motorcycle through a mountain road bend",
-  "figureAlt": null,
-  "figureCaption": null
- }
+  "how-emi-is-calculated": {
+    "coverAlt": "A four-storey brick apartment building with shops on the ground floor",
+    "figureAlt": "Apartment towers beside a river under a blue sky",
+    "figureCaption": "A home is the most common reason for a long loan."
+  },
+  "compress-images-without-losing-quality": {
+    "coverAlt": "A row of camera lenses and lens tubes standing on a shelf",
+    "figureAlt": "The same street scene shown four times to compare image compression settings",
+    "figureCaption": "Four versions of one picture, saved with different compression settings, side by side."
+  },
+  "gst-explained-add-and-remove-gst": {
+    "coverAlt": "Close-up of an Indian 50-rupee banknote showing Mahatma Gandhi's portrait",
+    "figureAlt": "Indian 100 and 2000 rupee banknotes lying together",
+    "figureCaption": "Prices and bills in rupees."
+  },
+  "fixed-deposit-interest-simple-vs-compound": {
+    "coverAlt": "Several Indian one-rupee coins lying on a dark surface",
+    "figureAlt": "Both sides of an Indian one-rupee coin",
+    "figureCaption": "Both sides of an Indian one-rupee coin."
+  },
+  "make-a-qr-code-that-scans-every-time": {
+    "coverAlt": "A hand holding a phone that is scanning a QR code on a printed page",
+    "figureAlt": "Two children using a phone to scan a QR code on an information board in a park",
+    "figureCaption": "QR codes on a sign, scanned with a phone."
+  },
+  "why-browser-based-tools-keep-your-files-private": {
+    "coverAlt": "A closed laptop wrapped in orange chains",
+    "figureAlt": "A clear practice padlock with its inner mechanism visible",
+    "figureCaption": "A padlock, opened up to show how it works."
+  },
+  "how-a-hybrid-car-works-engine-motor-and-battery-explained": {
+    "coverAlt": "A silver Toyota Prius hybrid car parked at the roadside",
+    "figureAlt": "The fuse box cover under the bonnet of a Toyota Prius",
+    "figureCaption": "The fuse box cover in the engine bay of a Toyota Prius."
+  },
+  "how-airplanes-stay-in-the-air-the-four-forces-of-flight": {
+    "coverAlt": "View from an aircraft window of a green wing over a river and city",
+    "figureAlt": "A white research aircraft with an angled wing flying over a desert",
+    "figureCaption": "NASA's oblique wing research aircraft in flight."
+  },
+  "how-ford-s-moving-assembly-line-cut-model-t-build-time-to-93-minutes": {
+    "coverAlt": "Black-and-white photograph of workers assembling Ford cars on a factory floor in 1923",
+    "figureAlt": "A museum model of a Model T assembly line",
+    "figureCaption": "A museum model of a Model T assembly line."
+  },
+  "what-is-a-context-window-why-ai-chatbots-forget-things": {
+    "coverAlt": "A wall covered with colourful sticky notes",
+    "figureAlt": "Four square pads of sticky notes in purple, blue, pink and green",
+    "figureCaption": "A sticky note has room for only so much, a little like a context window."
+  },
+  "how-usb-c-chargers-decide-how-much-power-to-send": {
+    "coverAlt": "A USB-C cable plugged into a power bank",
+    "figureAlt": "A hand holding the end of a USB-C connector",
+    "figureCaption": "A USB-C connector, reversible and the same on both ends."
+  },
+  "sip-returns-explained-how-a-monthly-investment-grows": {
+    "coverAlt": "A newly sprouted green seedling growing from dark soil",
+    "figureAlt": "A young seedling pushing up through the soil",
+    "figureCaption": "A seedling: small at first, then faster as it grows."
+  },
+  "lumpsum-investment-calculator-explained-the-formula-and-an-example": {
+    "coverAlt": "Stacks of copper and silver coins",
+    "figureAlt": "Six gold British sovereign coins laid out in two rows",
+    "figureCaption": "Gold coins."
+  },
+  "compound-interest-explained-formula-and-examples": {
+    "coverAlt": "A stack of pine log ends showing round growth rings",
+    "figureAlt": "Close-up of a tree cross-section showing growth rings and a central crack",
+    "figureCaption": "Growth rings: each year builds on the one before."
+  },
+  "simple-interest-formula-how-it-works-with-examples": {
+    "coverAlt": "A page of an old handwritten business ledger with columns of figures",
+    "figureAlt": "A page from a blacksmith's handwritten account book",
+    "figureCaption": "A handwritten account book of the kind used to record debts and interest."
+  },
+  "recurring-deposit-how-rd-maturity-is-calculated": {
+    "coverAlt": "Two colourful plastic chicken-shaped piggy banks on a shelf",
+    "figureAlt": "A collectible piggy bank shaped like a delivery truck",
+    "figureCaption": "A piggy bank: small amounts, saved regularly."
+  },
+  "successive-discounts-why-20-off-plus-10-is-28": {
+    "coverAlt": "A street scene with a red and white clearance sale sign",
+    "figureAlt": "A shop poster advertising a 50 per cent discount",
+    "figureCaption": "A shop poster advertising a 50 per cent discount."
+  },
+  "how-to-calculate-age-in-years-months-and-days": {
+    "coverAlt": "A chocolate birthday cake topped with the candle numbers 2 and 6",
+    "figureAlt": "A birthday cake with a single candle in the shape of the number 1",
+    "figureCaption": "A first birthday: the age in whole years is the number of birthdays so far."
+  },
+  "how-to-count-days-between-two-dates-end-included": {
+    "coverAlt": "A wall calendar showing September and October 2007 with 24 October marked in red",
+    "figureAlt": "A round wooden desk calendar showing Saturday the 13th",
+    "figureCaption": "A wooden wall calendar with turning day and date."
+  },
+  "how-to-convert-units-length-weight-temperature": {
+    "coverAlt": "A blue and orange tape measure marked 3 m (10 ft)",
+    "figureAlt": "A retractable tape measure with a yellow blade",
+    "figureCaption": "A retractable tape measure."
+  },
+  "how-to-create-a-strong-random-password": {
+    "coverAlt": "A brass padlock on a key ring with two keys",
+    "figureAlt": "A clear practice padlock with two keys",
+    "figureCaption": "A padlock is only as good as its key, and a password is only as good as its randomness."
+  },
+  "what-is-base64-how-to-encode-and-decode-it": {
+    "coverAlt": "Rows of green digits on a dark background, like computer code",
+    "figureAlt": "Binary digits carved into a stone paving brick",
+    "figureCaption": "Binary digits: Base64 writes bytes using 64 safe characters."
+  },
+  "url-encoding-explained-what-20-and-3d-mean": {
+    "coverAlt": "A signpost with several direction signs beside a canal",
+    "figureAlt": null,
+    "figureCaption": null
+  },
+  "uuids-explained-versions-4-and-7-and-when-to-use-them": {
+    "coverAlt": "A green barcode printed on a yellow label with its number underneath",
+    "figureAlt": "A white label printed with a barcode and the word CONFERENCE",
+    "figureCaption": "A barcode label: an identifier a machine can read."
+  },
+  "what-is-a-hash-sha-256-vs-sha-1-explained": {
+    "coverAlt": "An ink fingerprint of a right thumb on an old paper form",
+    "figureAlt": "A fingerprint scanner mounted on a wall",
+    "figureCaption": "A fingerprint scanner: a person's print is reduced to a short code for comparison."
+  },
+  "hex-rgb-and-hsl-colours-how-they-relate": {
+    "coverAlt": "A circular chart of colours showing complementary pairs around a wheel",
+    "figureAlt": "Coloured pencils arranged in a circle by hue",
+    "figureCaption": "Coloured pencils arranged by hue, much like the hue angle in HSL."
+  },
+  "unix-timestamps-explained-seconds-milliseconds-zones": {
+    "coverAlt": "A black Casio digital watch showing the time 16:08:53",
+    "figureAlt": "A black wall clock with white numerals and a second hand",
+    "figureCaption": "A clock shows a local time. A Unix timestamp has no time zone."
+  },
+  "regular-expressions-basics-flags-groups-and-pitfalls": {
+    "coverAlt": "A hand holding a magnifying glass over a German postage stamp",
+    "figureAlt": "A magnifying glass lying on an antique desk next to a fountain pen",
+    "figureCaption": "Searching text for a pattern is like looking closely for one detail."
+  },
+  "how-to-read-a-jwt-header-payload-and-signature": {
+    "coverAlt": "A white identification wristband with a barcode on a person's wrist",
+    "figureAlt": "A purple festival wristband",
+    "figureCaption": "A wristband is a token: it proves a right to enter, until it expires."
+  },
+  "how-to-merge-pdf-files-in-order-without-uploading": {
+    "coverAlt": "A stack of loose papers and documents",
+    "figureAlt": "A black long-arm stapler on a white background",
+    "figureCaption": "A long-arm stapler, for binding sheets together."
+  },
+  "how-to-split-a-pdf-and-extract-pages": {
+    "coverAlt": "A paper guillotine trimmer with a wooden base and a long cutting arm",
+    "figureAlt": "A rotary paper trimmer with a blue cutting mat",
+    "figureCaption": "A paper trimmer: cutting a stack into the pieces you need."
+  },
+  "how-to-turn-pictures-into-a-pdf-sizes-and-quality": {
+    "coverAlt": "Close-up of the glass and rail inside an open flatbed scanner",
+    "figureAlt": null,
+    "figureCaption": null
+  },
+  "what-is-exif-data-why-and-how-to-remove-it": {
+    "coverAlt": "Four smartphones with different coloured backs shown side by side, each with rear cameras",
+    "figureAlt": "Two women taking photographs with their phones outdoors",
+    "figureCaption": "Phones record the time, the device and sometimes the place."
+  },
+  "how-to-crop-rotate-and-flip-a-photo-without-losing-quality": {
+    "coverAlt": "A yellow sunflower in sharp focus with leaves and white flowers softly blurred behind",
+    "figureAlt": null,
+    "figureCaption": null
+  },
+  "what-are-ai-tokens-how-chatbots-split-and-count-text": {
+    "coverAlt": "Scrabble letter tiles scattered on a table",
+    "figureAlt": null,
+    "figureCaption": null
+  },
+  "oled-vs-lcd-how-each-screen-makes-light-and-black": {
+    "coverAlt": "A thin curved LG OLED television seen from the front",
+    "figureAlt": "Three phone screens glowing solid blue, green and red",
+    "figureCaption": "Phone screens lit in solid blue, green and red."
+  },
+  "how-passkeys-work-signing-in-without-a-password": {
+    "coverAlt": "A YubiKey 5C NFC security key next to its packaging and a set of keys",
+    "figureAlt": null,
+    "figureCaption": null
+  },
+  "how-bicycle-gears-work-chainrings-cogs-and-derailleurs": {
+    "coverAlt": "A Shimano rear derailleur mounted next to the rear sprockets of a bicycle",
+    "figureAlt": "A bicycle crankset with two chainrings",
+    "figureCaption": "A crankset with two chainrings, the toothed wheels at the pedals."
+  },
+  "concorde-how-the-supersonic-airliner-flew-and-why-it-ended": {
+    "coverAlt": "An Air France Concorde displayed in the air on a mount, seen from below",
+    "figureAlt": "The crowded flight deck of a Concorde with its many dials",
+    "figureCaption": "The flight deck of a Concorde."
+  },
+  "how-a-turbocharger-works-exhaust-power-made-useful": {
+    "coverAlt": "A turbocharger cut open to show the turbine and compressor wheels inside",
+    "figureAlt": "A turbocharger removed from an engine, showing its housings and connections",
+    "figureCaption": "A turbocharger: the exhaust turbine and air compressor share one shaft."
+  },
+  "why-airliners-cruise-at-about-35-000-feet": {
+    "coverAlt": "A United Airlines Airbus A320 airliner on the ground",
+    "figureAlt": "A Jetstar Airbus A320 airliner in flight",
+    "figureCaption": "An Airbus A320, a single-aisle airliner that cruises in the 31,000 to 38,000 foot band."
+  },
+  "how-ai-image-generators-turn-noise-into-pictures": {
+    "coverAlt": "A dark photograph covered in coloured speckles of image noise",
+    "figureAlt": "An illustration of an artificial neural network with a computer chip",
+    "figureCaption": "Image generators use neural networks to remove noise step by step."
+  },
+  "how-noise-cancelling-headphones-work": {
+    "coverAlt": "Black over-ear wireless noise-cancelling headphones",
+    "figureAlt": "Over-ear noise-cancelling headphones seen from the side",
+    "figureCaption": "Over-ear headphones with microphones and speakers in each ear cup."
+  },
+  "how-a-lift-stays-safe-brakes-governors-and-rails": {
+    "coverAlt": "The inside of a passenger lift cabin with buttons beside the doors",
+    "figureAlt": "The interior of a lift cabin in a tall tower",
+    "figureCaption": "A lift car rides on guide rails that its safety gear can grip."
+  },
+  "how-abs-brakes-stop-wheels-from-locking-up": {
+    "coverAlt": "A Bosch ABS-8M anti-lock braking control unit with its hydraulic block and electronics",
+    "figureAlt": null,
+    "figureCaption": null
+  },
+  "what-a-flight-recorder-records-and-how-it-survives": {
+    "coverAlt": "A flight data recorder and a cockpit voice recorder, both bright orange, side by side",
+    "figureAlt": null,
+    "figureCaption": null
+  },
+  "the-volkswagen-beetle-a-people-s-car-s-65-year-run": {
+    "coverAlt": "A Volkswagen Type 1 Beetle from the late 1960s parked beside a street",
+    "figureAlt": null,
+    "figureCaption": null
+  },
+  "how-an-ssd-stores-data-without-moving-parts": {
+    "coverAlt": "A Samsung 960 EVO M.2 solid-state drive, a small circuit board with memory chips",
+    "figureAlt": null,
+    "figureCaption": null
+  },
+  "why-ai-chatbots-make-things-up-hallucinations-explained": {
+    "coverAlt": "A large question mark sign mounted on the front of an old brick building",
+    "figureAlt": null,
+    "figureCaption": null
+  },
+  "kawasaki-z650-s-launched-in-india-at-rs-7-59-lakh": {
+    "coverAlt": "A black Kawasaki Z650 naked motorcycle, the earlier model, parked on a street",
+    "figureAlt": null,
+    "figureCaption": null
+  },
+  "honda-names-its-india-electric-suv-alpha-debut-2-dec": {
+    "coverAlt": "The Honda 0 Alpha electric SUV concept on display at the Japan Mobility Show, the concept the ALPHA is based on",
+    "figureAlt": null,
+    "figureCaption": null
+  },
+  "royal-enfield-himalayan-750-unveiled-specs-and-colours": {
+    "coverAlt": "A Royal Enfield Himalayan 450 adventure motorcycle, a different Himalayan model, parked outdoors",
+    "figureAlt": null,
+    "figureCaption": null
+  },
+  "how-a-12-volt-car-battery-works-lead-acid-basics": {
+    "coverAlt": "A 12-volt lead-acid battery connected to a charger with red and black cables",
+    "figureAlt": null,
+    "figureCaption": null
+  },
+  "how-tyre-pressure-monitoring-systems-work": {
+    "coverAlt": "A hand-held tyre pressure gauge with a dial and a rubber-covered head",
+    "figureAlt": null,
+    "figureCaption": null
+  },
+  "hero-destini-110-classique-edition-launched-at-rs-76-400": {
+    "coverAlt": "Rear view of a parked Hero Honda Pleasure scooter in a corridor",
+    "figureAlt": null,
+    "figureCaption": null
+  },
+  "bmw-m-1000-rs-unveiled-at-eicma-2026-218-hp-1-000-units": {
+    "coverAlt": "Two BMW superbikes on a showroom floor, a BMW S 1000 RR and a BMW M 1000 RR",
+    "figureAlt": null,
+    "figureCaption": null
+  },
+  "suzuki-gsx-10r-unveiled-at-eicma-2026-specs-and-dates": {
+    "coverAlt": "A blue Suzuki GSX-R1000R sportbike parked on tarmac",
+    "figureAlt": null,
+    "figureCaption": null
+  },
+  "moto-guzzi-the-trip-500-unveiled-at-eicma-2026": {
+    "coverAlt": "A Moto Guzzi V7 Stone roadster parked beside other motorcycles at a show",
+    "figureAlt": null,
+    "figureCaption": null
+  },
+  "how-a-motorcycle-quickshifter-works-without-the-clutch": {
+    "coverAlt": "Close-up of the engine and gearbox of a BMW R1150GS motorcycle",
+    "figureAlt": null,
+    "figureCaption": null
+  },
+  "harley-davidson-x350-t-unveiled-at-eicma-2026-nov-2026": {
+    "coverAlt": "A grey Harley-Davidson Street 750 roadster motorcycle parked on a car park, seen from the front left",
+    "figureAlt": "A grey Harley-Davidson Street 750 roadster motorcycle seen from the front left",
+    "figureCaption": "A Harley-Davidson Street 750, an earlier and different model, shown for illustration. This is not the X350 T."
+  },
+  "what-quantum-computers-are-for-and-what-they-cannot-do": {
+    "coverAlt": "The gold-coloured cooling and wiring stack inside an IBM Quantum System One",
+    "figureAlt": null,
+    "figureCaption": null
+  },
+  "how-electric-aircraft-work-and-why-range-is-the-problem": {
+    "coverAlt": "A white Pipistrel Velis Electro two-seat electric training aeroplane flying over farmland",
+    "figureAlt": null,
+    "figureCaption": null
+  },
+  "rbi-eases-export-form-rules-for-small-services-nov-2026": {
+    "coverAlt": "The stone front of a Reserve Bank of India building in Mumbai with trees in front",
+    "figureAlt": null,
+    "figureCaption": null
+  },
+  "honda-2027-cbr1000rr-r-fireblade-unveiled-at-eicma-2026": {
+    "coverAlt": "A red, white and blue Honda CBR1000RR-R Fireblade SP motorcycle on display",
+    "figureAlt": null,
+    "figureCaption": null
+  },
+  "honda-crf1150l-africa-twin-unveiled-at-eicma-2026-specs": {
+    "coverAlt": "A red and white Honda CRF1100L Africa Twin adventure motorcycle on display",
+    "figureAlt": null,
+    "figureCaption": null
+  },
+  "indigo-confirms-lie-flat-beds-on-a350s-nov-2026": {
+    "coverAlt": "An IndiGo Airbus A321neo-family jet climbing after take-off, seen from below",
+    "figureAlt": null,
+    "figureCaption": null
+  },
+  "how-a-turboprop-engine-turns-a-jet-core-into-propeller-power": {
+    "coverAlt": "An ATR 72-600 twin-turboprop airliner in Azul colours on approach to land",
+    "figureAlt": null,
+    "figureCaption": null
+  },
+  "what-an-aerodynamic-stall-is-angle-of-attack-explained": {
+    "coverAlt": "A Schweizer SGS 2-33 training glider parked on an airfield apron",
+    "figureAlt": null,
+    "figureCaption": null
+  },
+  "cabinet-raises-da-and-dr-to-63-from-1-july-2026": {
+    "coverAlt": "A hand holding several fanned Indian 500-rupee banknotes",
+    "figureAlt": null,
+    "figureCaption": null
+  },
+  "vinfast-vf-mpv-7-price-cut-to-rs-20-39-lakh-nov-2026": {
+    "coverAlt": "A white VinFast VF 8 electric SUV parked inside a showroom",
+    "figureAlt": null,
+    "figureCaption": null
+  },
+  "nissan-magnite-gravite-free-cng-kit-offer-nov-2026": {
+    "coverAlt": "A red Nissan Magnite compact SUV seen from the side at a car show",
+    "figureAlt": null,
+    "figureCaption": null
+  },
+  "how-automatic-gearboxes-work-torque-converter-and-gears": {
+    "coverAlt": "A cutaway display of a four-speed Jatco automatic transmission showing its internal parts",
+    "figureAlt": null,
+    "figureCaption": null
+  },
+  "countersteering-how-motorcycles-and-bikes-turn": {
+    "coverAlt": "A rider leaning a motorcycle through a mountain road bend",
+    "figureAlt": null,
+    "figureCaption": null
+  },
+  "apple-reports-record-114-5-billion-quarter-nov-2026": {
+    "coverAlt": "An aerial view of Apple Park, the ring-shaped headquarters building in Cupertino, California, at sunrise",
+    "figureAlt": "A high aerial view of the circular Apple Park building surrounded by green grounds and suburban streets",
+    "figureCaption": "Apple Park in Cupertino, California, Apple's headquarters."
+  }
 }
