@@ -1,0 +1,192 @@
+{
+  "date": "2026-11-05",
+  "articles": [
+    {
+      "title": "Ducati DesertX Rally 2027 Unveiled at EICMA 2026",
+      "category": "News and Launches",
+      "excerpt": "Ducati showed the 2027 DesertX Rally at EICMA 2026 with an 890 cc V2, a monocoque frame, 110 hp and a European price of 19,290 euros.",
+      "tags": [
+        "news",
+        "launch",
+        "ducati",
+        "eicma"
+      ],
+      "blocks": [
+        [
+          "paragraph",
+          "Ducati has shown the 2027 DesertX Rally at the EICMA motorcycle show in Milan (press days 3 and 4 November 2026, public days 5 to 8 November). The off-road focused model moves from the old 937 cc Testastretta engine and tubular steel frame to an 890 cc V2 in an aluminium monocoque frame. The reported European price is 19,290 euros, excluding delivery costs, and European showroom arrivals are listed for April 2027. This article is based on reports from Il Sole 24 Ore and Motorrad as of 5 November 2026; Ducati's own press material was not opened for this article."
+        ],
+        [
+          "heading",
+          "Background: the Rally version"
+        ],
+        [
+          "paragraph",
+          "The DesertX is Ducati's off-road focused adventure model, and the Rally version is the more specialised one, drawing on the maker's rally-raid racing experience according to Il Sole 24 Ore. Motorrad says the new Rally is based on the DesertX that was already updated for the 2026 model year. Ducati's stated aim, as Motorrad reports it, is to keep the Rally character while making the bike easier for less experienced off-road riders. The 2027 changes therefore sit mostly in the engine and frame, while the long-travel KYB suspension, the 21 and 18-inch wheels and the tripmaster carry over."
+        ],
+        [
+          "heading",
+          "Key facts"
+        ],
+        [
+          "list",
+          "Engine: 890 cc V2 with variable intake timing, replacing the 937 cc Testastretta\nPower and torque: 110 hp (about 110 PS) and 92 Nm, figures the German magazine Motorrad says are unchanged from the older engine\nFrame: aluminium monocoque that uses the engine as a stressed part and holds the airbox; the rear subframe stays a steel tube design\nPrice: 19,290 euros, excluding delivery costs (Motorrad)\nEuropean showrooms: April 2027, with other markets after that (Motorrad)\nA2 licence version: 35 kW (48 PS), also planned"
+        ],
+        [
+          "heading",
+          "What changes from the earlier engine"
+        ],
+        [
+          "paragraph",
+          "Motorrad reports that peak power and torque stay the same, but the new V2 gives 70 percent of its maximum torque at 3,000 rpm, which should help in slow, technical terrain. The first four gears are shorter and the fifth and sixth are longer, aiming for a balance between off-road use and road comfort. Service intervals also change: valve clearance checks are listed every 45,000 km and oil changes every 15,000 km or two years."
+        ],
+        [
+          "heading",
+          "Chassis and equipment"
+        ],
+        [
+          "list",
+          "Suspension: fully adjustable KYB closed-cartridge units, 250 mm travel at the front and 240 mm at the rear\nWheels: 21-inch front and 18-inch rear tubeless spoked rims; the rear wheel now has 36 spokes, four more than before\nTyres: Pirelli Scorpion Rally STR as factory fit, according to Motorrad\nSteering damper: Ohlins, per Il Sole 24 Ore\nFuel tank: 18 litres, three litres less than before\nWeight: 209 kg without fuel, one kilogram less than the predecessor (Motorrad)\nSeat height: 900 mm, down from 910 mm; an optional low seat gives 880 mm\nDisplay: 5-inch TFT with Road, Road Pro and Rally views, keeping the tripmaster\nElectronics: six-axis sensor unit, cornering ABS, traction control, wheelie control, engine-brake control and six riding modes (Sport, Touring, Urban, Wet, Enduro and Rally); ABS can be switched off in the off-road modes\nGearbox aid: Ducati Quick Shift 2.0, which Motorrad says needs no external sensor"
+        ],
+        [
+          "heading",
+          "Accessories mentioned"
+        ],
+        [
+          "paragraph",
+          "Motorrad lists an extra 8-litre tank, crash bars, a larger windscreen and aluminium or soft luggage from Mosko Moto. A Termignoni racing exhaust that is not road legal is offered; with its own engine tune, Motorrad says it adds about 6 hp. Il Sole 24 Ore describes a Termignoni titanium exhaust as part of the specification, so the two reports describe the exhaust differently and buyers should check Ducati's final accessory list."
+        ],
+        [
+          "heading",
+          "What is not yet known"
+        ],
+        [
+          "paragraph",
+          "The sources opened for this article do not give an Indian price or launch date, and no figure should be assumed for markets outside Europe. Prices elsewhere usually differ because of taxes and import duties. The article will not be updated; readers should check Ducati's official pages for current information."
+        ],
+        [
+          "paragraph",
+          "For comparison, Motorrad gives the earlier Rally's tank as 21 litres and its seat height as 910 mm, which is where the 18-litre and 900 mm figures above come from. The reports also mention the high front mudguard, one-piece seat and reinforced aluminium engine guard staying in the design, and structured side panels intended to give better grip when riding standing up."
+        ],
+        [
+          "callout",
+          "Il Sole 24 Ore also reports that Ducati showed the 2027 Diavel V4, the Panigale V2 SP and the Panigale V4 SP and Streetfighter V4 SP at the same stand. The Panigale V4 SP and Streetfighter V4 SP are listed for European showrooms from March 2027."
+        ]
+      ],
+      "sources": [
+        {
+          "title": "Ducati unveils the new DesertX Rally, Il Sole 24 ORE",
+          "url": "https://en.ilsole24ore.com/art/ducati-unveils-the-new-desertx-rally-AJqdMI2B"
+        },
+        {
+          "title": "Update für die Edel-Enduro: Ducati DesertX Rally 2027 mit neuem V2-Motor und Rahmen, Motorrad",
+          "url": "https://www.motorradonline.de/enduro/update-fuer-die-edel-enduro-ducati-desertx-rally-2027/"
+        },
+        {
+          "title": "EICMA 2026: Which new models in Milan are really new, motorcycles.news",
+          "url": "https://www.motorcycles.news/en/eicma-2026-new-models-world-premieres/"
+        }
+      ],
+      "checkedOn": "2026-11-05"
+    },
+    {
+      "title": "How a Wind Turbine Turns Moving Air Into Electricity",
+      "category": "How It Works",
+      "excerpt": "A wind turbine uses wind to spin blades, a shaft and a generator. Here is each part, why most have three blades, and the physical limit on what they can capture.",
+      "tags": [
+        "wind",
+        "energy",
+        "generators"
+      ],
+      "blocks": [
+        [
+          "paragraph",
+          "A wind turbine works like a fan in reverse. A fan uses electricity to make wind; a turbine uses wind to make electricity. Moving air pushes the blades, the blades turn a shaft, and the shaft drives a generator. The US Department of Energy describes it in just that order: wind turns the blades around a rotor, the rotor spins a generator, and the generator creates electricity."
+        ],
+        [
+          "heading",
+          "Where the wind comes from"
+        ],
+        [
+          "paragraph",
+          "The Department of Energy describes wind as a form of solar energy. The Sun heats the Earth unevenly, and air moves as a result. Wind speeds vary with location, bodies of water, vegetation and terrain, which is why turbines are placed where measurements show steady wind."
+        ],
+        [
+          "heading",
+          "The main parts"
+        ],
+        [
+          "list",
+          "Blades: catch the wind and turn the rotor. Most are made of glass-fibre composites; carbon fibre, which is stiffer and lighter, is also used.\nRotor and hub: the blades attach to the hub, which turns the main shaft.\nNacelle: the housing at the top of the tower that holds the shaft, gearbox and generator.\nGearbox: most turbines have one, to turn the slow rotation of the rotor into the fast rotation a generator needs.\nGenerator: converts the shaft's rotation into electricity.\nTower: lifts the rotor into stronger, steadier wind.\nYaw system: turns the nacelle to face the wind."
+        ],
+        [
+          "heading",
+          "Why most turbines look the same"
+        ],
+        [
+          "paragraph",
+          "According to Wikipedia's summary of the field, large three-bladed horizontal-axis turbines, with the blades upwind of the tower, produce the great majority of the world's wind power. Their main shaft and generator sit at the top of the tower, so the whole head must be pointed into the wind. Small turbines use a simple wind vane for this; large ones generally use a wind sensor linked to a yaw system."
+        ],
+        [
+          "paragraph",
+          "Vertical-axis designs also exist, such as the eggbeater-shaped Darrieus turbine. They do not need to face the wind, which helps where wind direction changes a lot, and their generator can sit near the ground. The same source notes that the Darrieus type produces large torque ripple and cyclical stress on the tower, which hurts reliability."
+        ],
+        [
+          "heading",
+          "How much of the wind can a turbine capture?"
+        ],
+        [
+          "paragraph",
+          "Betz's law, named after the German physicist Albert Betz, says no wind turbine can capture more than 59.3 percent of the wind's kinetic energy. The air must keep moving after it passes the rotor, so it still carries some energy away. Real machines lose more in the blades, gearbox, generator and converter."
+        ],
+        [
+          "paragraph",
+          "Wind power also rises steeply with wind speed: the theoretical power grows with the cube of the speed. To protect parts from wear, turbines hold their output constant above their rated operating speed, which reduces efficiency at the highest wind speeds."
+        ],
+        [
+          "heading",
+          "Size and lifespan"
+        ],
+        [
+          "paragraph",
+          "As one example, a 1.5 megawatt turbine of a type common in the United States has a tower about 80 metres (260 feet) tall and a rotor roughly 80 metres across; its nacelle weighs around 300 tons. Wikipedia gives an average turbine lifespan of about 30 years, with blades and gearboxes usually lasting up to 25 years."
+        ],
+        [
+          "heading",
+          "Pitch, yaw and staying safe in storms"
+        ],
+        [
+          "paragraph",
+          "Because power climbs so quickly with wind speed, a turbine needs a way to control what it takes in. Large machines do this by holding their output constant once the wind passes the rated speed, as noted above. The yaw system keeps the rotor facing the wind so that the blades see the full flow, and sensors on the nacelle tell the controller which way the wind is blowing. Structural monitoring also matters: Wikipedia says accelerometers and strain gauges on the nacelle are commonly used to watch the gearbox and other equipment for signs of wear or defects."
+        ],
+        [
+          "heading",
+          "The catch: output follows the wind"
+        ],
+        [
+          "paragraph",
+          "Wikipedia adds that most turbine parts other than the blades, including the hub, gearbox, frame and tower, are largely made of steel. Some smaller turbines have started using aluminium alloys to save weight, and pre-stressed concrete is increasingly used for towers, though it still needs a lot of reinforcing steel."
+        ],
+        [
+          "paragraph",
+          "Wind turbines produce some of the cheapest renewable energy and emit no greenhouse gases while running, according to Wikipedia. But output follows the wind, not demand, so it is an intermittent source unless energy storage is available. They can also affect wildlife, though the same source says this can be reduced."
+        ],
+        [
+          "callout",
+          "This is general information. Figures such as sizes and lifespan are examples from the cited sources, not a rule for every turbine."
+        ]
+      ],
+      "sources": [
+        {
+          "title": "How Do Wind Turbines Work?, US Department of Energy",
+          "url": "https://www.energy.gov/eere/wind/how-do-wind-turbines-work"
+        },
+        {
+          "title": "Wind turbine, Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Wind_turbine"
+        }
+      ],
+      "checkedOn": "2026-11-05"
+    }
+  ]
+}

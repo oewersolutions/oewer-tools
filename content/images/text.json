@@ -418,5 +418,15 @@
     "coverAlt": "A dark grey Denza D9 MPV on display at a motor show; the plug-in hybrid version shown in Europe, not the electric model for India",
     "figureAlt": null,
     "figureCaption": null
+  },
+  "ducati-desertx-rally-2027-unveiled-at-eicma-2026": {
+    "coverAlt": "A white and red Ducati DesertX adventure motorcycle parked on a city street",
+    "figureAlt": "Front three-quarter view of a Ducati DesertX with a tall front mudguard and spoked wheels",
+    "figureCaption": "The earlier Ducati DesertX, shown for reference; this is not the 2027 Rally model."
+  },
+  "how-a-wind-turbine-turns-moving-air-into-electricity": {
+    "coverAlt": "The nacelle and blades of a wind turbine seen from below against a grey sky",
+    "figureAlt": "A wind turbine nacelle and three blades seen from the base of the tower",
+    "figureCaption": "The nacelle at the top of a turbine tower houses the shaft, gearbox and generator."
   }
 }
