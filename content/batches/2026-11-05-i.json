@@ -1,0 +1,106 @@
+{
+  "date": "2026-11-05",
+  "articles": [
+    {
+      "title": "Mini Cooper Electric India Launch Set for 27 Nov 2026",
+      "category": "News and Launches",
+      "categoryDescription": "Recent news and new launches: vehicles, gadgets, AI and aviation, explained from official sources.",
+      "excerpt": "Mini India will launch the second-generation Cooper Electric and a Paul Smith Edition on 27 November 2026. Here is what is reported about range, charging and price.",
+      "tags": [
+        "news",
+        "launch",
+        "mini",
+        "electric cars"
+      ],
+      "blocks": [
+        [
+          "paragraph",
+          "Mini India is set to launch the second-generation Cooper Electric (called the Cooper SE) and a Cooper Paul Smith Edition in India on **27 November 2026**, according to reports published on 4 November 2026. Prices have not been announced. This article is written as of 5 November 2026 and covers what is known before the launch."
+        ],
+        [
+          "heading",
+          "What has been announced"
+        ],
+        [
+          "paragraph",
+          "Two Indian outlets, Autocar India and Times Drive, both report the 27 November date and say the car will be offered in the SE trim along with the special Paul Smith Edition. Times Drive says prices and India-specific variant details are expected at the launch event. Neither report says that Mini India has published a price."
+        ],
+        [
+          "paragraph",
+          "The launch will take place about three weeks after the reports appeared. Dates for launch events can change, so the 27 November date should be read as the one reported on 4 November 2026, not as a final booking or delivery date."
+        ],
+        [
+          "paragraph",
+          "The Cooper Electric is not new to India. Autocar India notes that an earlier all-electric Cooper was sold here in 2022 in limited numbers as a completely built unit (CBU) import, meaning it was brought in fully assembled."
+        ],
+        [
+          "heading",
+          "Reported specifications"
+        ],
+        [
+          "paragraph",
+          "The figures below describe the international-specification car as reported by the two outlets. India-specific details may differ and were not confirmed at the time of writing."
+        ],
+        [
+          "list",
+          "Battery: 54.2 kWh, up from 32.6 kWh in the previous generation\nClaimed range: 402 km on the WLTP test cycle, up from a claimed 270 km\nMotor: front-mounted, 330 Nm of torque; Autocar India gives 218 hp and Times Drive gives 215 bhp, so the sources differ slightly on power\nPerformance (Autocar India): 0 to 100 km/h in 6.7 seconds, top speed 170 km/h\nDC fast charging: up to 95 kW, 10 to 80 per cent in about 30 minutes\nAC charging (Autocar India): 7.4 kW, 0 to 100 per cent in 7.75 hours"
+        ],
+        [
+          "paragraph",
+          "WLTP is a standard laboratory test used in Europe. Real-world range depends on speed, temperature and driving style, and range figures measured under other test rules, including the one used for Indian approvals, can be different."
+        ],
+        [
+          "heading",
+          "Design and features"
+        ],
+        [
+          "paragraph",
+          "Compared with the previous generation, the 2026 car has revised circular LED headlights, a blanked-off hexagonal or octagonal grille (the two outlets describe the shape differently), flush door handles and triangular or flush-fitted LED tail-lights. Inside, the main feature is a round OLED touchscreen of 9.45 inches that also acts as the instrument display, according to Autocar India."
+        ],
+        [
+          "paragraph",
+          "Autocar India lists these features on the international car: panoramic sunroof, wireless phone charger, dual-zone climate control, heated front seats, six airbags, a 360-degree camera and driver-assistance (ADAS) functions. Which of these will be fitted to the India car has not been confirmed."
+        ],
+        [
+          "heading",
+          "The Paul Smith Edition"
+        ],
+        [
+          "paragraph",
+          "The Paul Smith Edition was developed with the British designer Paul Smith. According to Autocar India it has colour options of Inspired White, Statement Grey and Midnight Black II with a green, black or body-coloured roof, 18-inch black alloy wheels, signature stripes on the roof edge, blue leatherette seats and special floor mats. The powertrain and the feature list are the same as the standard Cooper SE."
+        ],
+        [
+          "heading",
+          "Price: what is known"
+        ],
+        [
+          "paragraph",
+          "Mini India has not announced a price. Autocar India says the car is *expected* to cost around Rs 50 lakh ex-showroom; this is the outlet's estimate, not a company figure, and it should be treated as unconfirmed until the launch. For reference, the 2022 Cooper SE was listed at a launch price of Rs 47.2 lakh ex-showroom, according to CarDekho's report from that time."
+        ],
+        [
+          "callout",
+          "Everything on this page except the launch date is pre-launch information. Check Mini India's own announcement on 27 November for the final variants, specifications and prices."
+        ],
+        [
+          "heading",
+          "What is still unknown"
+        ],
+        [
+          "list",
+          "The launch price of each version\nWhether the car will be assembled in India or imported\nThe exact India specification and equipment\nBooking and delivery dates"
+        ]
+      ],
+      "sources": [
+        {
+          "title": "Second-gen Mini Cooper Electric to launch on November 27, Autocar India",
+          "url": "https://autocarindia.com/car-news/second-gen-mini-cooper-electric-to-launch-on-november-27-441233"
+        },
+        {
+          "title": "New Mini Cooper SE India Launch on November 27, Times Drive",
+          "url": "https://www.timesdrive.in/news/new-mini-cooper-se-india-launch-on-november-27-expected-price-range-battery-features-and-more-article-156449342"
+        }
+      ],
+      "checkedOn": "2026-11-05"
+    }
+  ]
+}

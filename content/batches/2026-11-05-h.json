@@ -1,0 +1,72 @@
+{
+  "date": "2026-11-05",
+  "articles": [
+    {
+      "title": "Mini Cooper Electric India Launch Set for 27 Nov 2026",
+      "category": "News and Launches",
+      "categoryDescription": "Recent news and new launches: vehicles, gadgets, AI and aviation, explained from official sources.",
+      "excerpt": "Mini India will launch the second-generation Cooper Electric and a Paul Smith Edition on 27 November 2026. Here is what is reported about range, charging and price.",
+      "tags": ["news", "launch", "mini", "electric cars"],
+      "blocks": [
+        ["paragraph", "Mini India is set to launch the second-generation Cooper Electric (called the Cooper SE) and a Cooper Paul Smith Edition in India on **27 November 2026**, according to reports published on 4 November 2026. Prices have not been announced. This article is written as of 5 November 2026 and covers what is known before the launch."],
+        ["heading", "What has been announced"],
+        ["paragraph", "Two Indian outlets, Autocar India and Times Drive, both report the 27 November date and say the car will be offered in the SE trim along with the special Paul Smith Edition. Times Drive says prices and India-specific variant details are expected at the launch event. Neither report says that Mini India has published a price."],
+        ["paragraph", "The Cooper Electric is not new to India. Autocar India notes that an earlier all-electric Cooper was sold here in 2022 in limited numbers as a completely built unit (CBU) import, meaning it was brought in fully assembled."],
+        ["heading", "Reported specifications"],
+        ["paragraph", "The figures below describe the international-specification car as reported by the two outlets. India-specific details may differ and were not confirmed at the time of writing."],
+        ["list", "Battery: 54.2 kWh, up from 32.6 kWh in the previous generation\nClaimed range: 402 km on the WLTP test cycle, up from a claimed 270 km\nMotor: front-mounted, 330 Nm of torque; Autocar India gives 218 hp and Times Drive gives 215 bhp, so the sources differ slightly on power\nPerformance (Autocar India): 0 to 100 km/h in 6.7 seconds, top speed 170 km/h\nDC fast charging: up to 95 kW, 10 to 80 per cent in about 30 minutes\nAC charging (Autocar India): 7.4 kW, 0 to 100 per cent in 7.75 hours"],
+        ["paragraph", "WLTP is a standard laboratory test used in Europe. Real-world range depends on speed, temperature and driving style, and range figures measured under other test rules, including the one used for Indian approvals, can be different."],
+        ["heading", "Design and features"],
+        ["paragraph", "Compared with the previous generation, the 2026 car has revised circular LED headlights, a blanked-off hexagonal or octagonal grille (the two outlets describe the shape differently), flush door handles and triangular or flush-fitted LED tail-lights. Inside, the main feature is a round OLED touchscreen of 9.45 inches that also acts as the instrument display, according to Autocar India."],
+        ["paragraph", "Autocar India lists these features on the international car: panoramic sunroof, wireless phone charger, dual-zone climate control, heated front seats, six airbags, a 360-degree camera and driver-assistance (ADAS) functions. Which of these will be fitted to the India car has not been confirmed."],
+        ["heading", "The Paul Smith Edition"],
+        ["paragraph", "The Paul Smith Edition was developed with the British designer Paul Smith. According to Autocar India it has colour options of Inspired White, Statement Grey and Midnight Black II with a green, black or body-coloured roof, 18-inch black alloy wheels, signature stripes on the roof edge, blue leatherette seats and special floor mats. The powertrain and the feature list are the same as the standard Cooper SE."],
+        ["heading", "Price: what is known"],
+        ["paragraph", "Mini India has not announced a price. Autocar India says the car is *expected* to cost around Rs 50 lakh ex-showroom; this is the outlet's estimate, not a company figure, and it should be treated as unconfirmed until the launch. For reference, the 2022 Cooper SE was listed at a launch price of Rs 47.2 lakh ex-showroom, according to CarDekho's report from that time."],
+        ["callout", "Everything on this page except the launch date is pre-launch information. Check Mini India's own announcement on 27 November for the final variants, specifications and prices."],
+        ["heading", "What is still unknown"],
+        ["list", "The launch price of each version\nWhether the car will be assembled in India or imported\nThe exact India specification and equipment\nBooking and delivery dates"]
+      ],
+      "sources": [
+        { "title": "Second-gen Mini Cooper Electric to launch on November 27, Autocar India", "url": "https://autocarindia.com/car-news/second-gen-mini-cooper-electric-to-launch-on-november-27-441233" },
+        { "title": "New Mini Cooper SE India Launch on November 27, Times Drive", "url": "https://www.timesdrive.in/news/new-mini-cooper-se-india-launch-on-november-27-expected-price-range-battery-features-and-more-article-156449342" }
+      ],
+      "checkedOn": "2026-11-05"
+    },
+    {
+      "title": "How a Four-Stroke Engine Works: Intake to Exhaust",
+      "category": "Cars and Bikes",
+      "excerpt": "Most cars, motorcycles and light aircraft use a four-stroke engine. See what the piston does in each of the four strokes and why two turns of the crankshaft make one cycle.",
+      "tags": ["engines", "four-stroke", "petrol", "diesel"],
+      "blocks": [
+        ["paragraph", "A four-stroke engine is an internal combustion engine in which each piston completes four separate strokes, in a fixed order, while turning the crankshaft. The four strokes are intake, compression, combustion (also called power) and exhaust. This design is the most common one for road transport, used in cars, trucks, diesel trains, light aircraft and motorcycles, according to the Wikipedia article on the four-stroke engine. This article explains each step in plain terms."],
+        ["heading", "First, two words: stroke and cylinder"],
+        ["paragraph", "Inside the engine are one or more cylinders, which are round tubes. A piston, a close-fitting plug, slides up and down in each cylinder. A *stroke* is one full trip of the piston along the cylinder, either up or down. The two ends of that trip have names: top dead centre (TDC) at the highest point and bottom dead centre (BDC) at the lowest. The piston is joined to a crankshaft, which turns the up-and-down motion into rotation."],
+        ["paragraph", "NASA's Glenn Research Center explains the idea with the engine of the Wright brothers' 1903 Flyer. That engine had four cylinders, each with a piston connected to a common crankshaft, and the crankshaft drove two propellers. NASA calls it a good engine for students to study because its design is simple by today's standards."],
+        ["heading", "Stroke 1: intake"],
+        ["paragraph", "The piston starts at the top and moves down. The intake valve is open, and the downward motion creates a partial vacuum in the cylinder. This pulls in an air and fuel mixture in a petrol engine. The stroke ends when the piston reaches the bottom."],
+        ["heading", "Stroke 2: compression"],
+        ["paragraph", "The piston now moves back up. Both the intake valve and the exhaust valve are closed, so the mixture is squeezed into a much smaller space. This prepares it for ignition in the next step. The stroke ends at the top."],
+        ["heading", "Stroke 3: combustion, also called power"],
+        ["paragraph", "With the piston at the top and the mixture compressed, the fuel is ignited. In a petrol engine a spark plug does this. In a diesel engine the heat generated by compression itself ignites the fuel. The burning gas pushes the piston back down hard, and this is the only stroke that produces mechanical work to turn the crankshaft."],
+        ["heading", "Stroke 4: exhaust"],
+        ["paragraph", "The piston travels up again, this time with the exhaust valve open. It pushes the burnt gas out through the exhaust port. The cycle then begins again with a new intake stroke."],
+        ["callout", "One power stroke needs four strokes, which is two full turns of the crankshaft. Wikipedia notes that the start of the combustion stroke is the beginning of the second revolution of the cycle, because the crankshaft has already turned 360 degrees by then."],
+        ["heading", "Why more than one cylinder"],
+        ["paragraph", "Since only one stroke in four does the pushing, a single cylinder delivers its power in short bursts. Engines with several cylinders are arranged so that the power strokes fall at different times, and all the pistons are connected to the same crankshaft, as in the Wright engine with its four cylinders. This evens out the delivery of power."],
+        ["heading", "Where the design came from"],
+        ["paragraph", "According to Wikipedia, Nicolaus Otto realised in the 1860s that compressing the fuel charge before ignition mattered. The earlier Lenoir engine of 1860, which ran on illuminating gas, reached only 4 per cent efficiency. By 1876 Otto and Eugen Langen had built the first internal combustion engine that compressed the mixture before combustion, with far higher efficiency. Gottlieb Daimler and Wilhelm Maybach then developed a high-speed Otto engine in 1883, and in 1885 produced a vehicle with one, the Daimler Reitwagen. In 1886 Karl Benz produced a four-stroke automobile that Wikipedia says is regarded as the first car."],
+        ["heading", "Variations on the cycle"],
+        ["paragraph", "Not every four-stroke engine runs the plain Otto cycle. The Atkinson cycle, invented by James Atkinson in 1882, trades power density for efficiency by making the power stroke longer than the compression stroke. Wikipedia says the original design is a historical curiosity, but many modern engines use unusual valve timing to get a similar effect, and the cycle is used in some hybrid cars. The main alternative to the four-stroke design is the two-stroke cycle, and six-stroke engines have been studied and some have been built."],
+        ["heading", "Quick summary"],
+        ["list", "Intake: the piston goes down, a valve opens and air or an air-fuel mixture enters\nCompression: the piston goes up with the valves closed and squeezes the mixture\nCombustion: the mixture is ignited by a spark (petrol) or by the heat of compression (diesel), and the piston is pushed down\nExhaust: the piston goes up with the exhaust valve open and pushes out the burnt gas"],
+        ["paragraph", "This is general information about how the engine cycle works. Details such as valve timing, fuel injection and turbocharging differ between engines and are covered in other articles on this site."]
+      ],
+      "sources": [
+        { "title": "Four-stroke engine, Wikipedia", "url": "https://en.wikipedia.org/wiki/Four-stroke_engine" },
+        { "title": "4-Stroke Internal Combustion Engine, NASA Glenn Research Center", "url": "https://www.grc.nasa.gov/www/k-12/airplane/engopt.html" }
+      ],
+      "checkedOn": "2026-11-05"
+    }
+  ]
+}
