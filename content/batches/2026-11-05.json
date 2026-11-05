@@ -1,0 +1,35 @@
+{
+  "date": "2026-11-05",
+  "articles": [
+    {
+      "title": "Zero Project Ventura Electric Supermoto Shown (Nov 2026)",
+      "category": "News and Launches",
+      "categoryDescription": "Recent news and new launches: vehicles, gadgets, AI and aviation, explained from official sources.",
+      "excerpt": "Zero Motorcycles showed Project Ventura at EICMA 2026: a lightweight electric supermoto with over 20 kW, an estimated 75 miles of range, and a production-intent bike due in Summer 2027.",
+      "tags": ["news", "Zero Motorcycles", "electric motorcycle", "EICMA"],
+      "blocks": [
+        ["paragraph", "Zero Motorcycles revealed **Project Ventura** on 3 November 2026 at the EICMA motorcycle show in Milan. The company describes it as a lightweight, multi-purpose electric street motorcycle with supermoto styling. Zero quotes \"over 20 kW\" of power and an estimated 75 miles of real-world range, and says a production-intent motorcycle inspired by it will be available in Summer 2027. This article is based on information available as of 5 November 2026."],
+        ["heading", "What Zero has officially said"],
+        ["paragraph", "Zero published a page on Project Ventura dated 3 November 2026. It calls the bike \"supermoto style, everyday fun\" and says it builds on the company's existing XE platform, with purpose-built wheels and bespoke bodywork. The lighting is shared with the XE."],
+        ["list", "Power: over 20 kW\nTop speed: 65 mph sustained, 81 mph momentary\nRange: an estimated 75 miles of real-world range\nWheels: 17-inch cast wheels with road tyres\nSeating: built for two, so two-up riding is possible\nCharging: onboard charging, at home or at a public charging station"],
+        ["paragraph", "Zero adds a footnote that these are \"projected figures for a production vehicle, subject to change\". In other words, the numbers are targets, not final specifications."],
+        ["heading", "What is still unknown"],
+        ["paragraph", "Zero's page gives no price, no battery capacity, no charging time and no pre-order details. It also does not say which countries will get the bike. Zero says it will keep refining the production-intent motorcycle \"over the coming months\" using feedback from riders and dealers, so the bike that reaches showrooms may differ from the one shown in Milan."],
+        ["paragraph", "No India launch or price has been announced by Zero for this model. The company's page says only that the production-intent motorcycle will be \"available\" in Summer 2027, without naming markets, dealers or a month. Until Zero publishes a price list and a specification sheet, any comparison with other electric motorcycles on sale today can only use the projected figures above, and those may change before the production bike is shown."],
+        ["heading", "Where other reports differ"],
+        ["paragraph", "The UK outlet Visordown, which reported the reveal on 3 November 2026, gives some figures that do not match Zero's own page. It reports a range of around 150 km (93 miles) as a target, while Zero's page says an estimated 75 miles. It also reports a projected price below £8,000 and says ABS is standard and that the bike suits the European A1 licence. Visordown itself says Zero has not confirmed the price, and none of these three points appears on Zero's page. They are not confirmed here and should be treated as unofficial until Zero publishes them."],
+        ["callout", "Where Zero and a news outlet disagree, this article uses Zero's figure. The power figure is a minimum (\"over 20 kW\"), and the range is an estimate."],
+        ["heading", "Concept versus production"],
+        ["paragraph", "The name \"Project Ventura\" and the show setting suggest a concept, but Zero calls the model on its page \"production-intent\". The company has said it will make a motorcycle inspired by Project Ventura in Summer 2027, not that the show bike will be built exactly as displayed. Readers should expect changes to design, specifications and price between now and then."],
+        ["heading", "How the numbers can be read"],
+        ["paragraph", "A power rating in kilowatts can be compared with horsepower by multiplying by about 1.34, so 20 kW is roughly 27 hp. Zero states only the kilowatt figure, and that figure is a minimum. Range for an electric motorcycle depends heavily on speed, load and road type, which is why Zero calls its figure an estimate of real-world range and gives a separate sustained top speed of 65 mph."],
+        ["paragraph", "The picture on this page is not of Project Ventura. It shows an earlier Zero electric motorcycle, the FX, because no openly licensed photo of the new bike is available."]
+      ],
+      "sources": [
+        { "title": "Project Ventura, Zero Motorcycles (3 November 2026)", "url": "https://www.zeromotorcycles.com/stories/project-ventura" },
+        { "title": "Zero Motorcycles Project Ventura electric supermoto revealed at EICMA 2026, Visordown", "url": "https://www.visordown.com/news/zero-motorcycles-project-ventura-electric-supermoto-revealed-eicma-2026" }
+      ],
+      "checkedOn": "2026-11-05"
+    }
+  ]
+}
