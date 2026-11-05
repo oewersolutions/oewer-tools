@@ -1,0 +1,121 @@
+{
+  "date": "2026-11-05",
+  "articles": [
+    {
+      "title": "How a Battery Electric Car Works: Motor, Pack, Charger",
+      "category": "Cars and Bikes",
+      "excerpt": "A battery electric car swaps the engine, fuel tank and gearbox for a battery pack, power electronics and a motor. This guide names each part and what it does.",
+      "tags": [
+        "electric cars",
+        "battery",
+        "drivetrain",
+        "ev"
+      ],
+      "blocks": [
+        [
+          "paragraph",
+          "A battery electric vehicle, or BEV, gets all its drive energy from a battery pack on board and moves with one or more electric motors. There is no engine, no fuel tank and no exhaust. This guide goes through the main parts of a BEV's drivetrain, following the energy from the plug to the wheels, using the descriptions published by the US Department of Energy's Alternative Fuels Data Center and by Wikipedia."
+        ],
+        [
+          "heading",
+          "What counts as a battery electric vehicle"
+        ],
+        [
+          "paragraph",
+          "Wikipedia defines a BEV as a vehicle that uses electrical energy only from an on-board battery pack to power its traction motors. That leaves out hybrids, which add an internal combustion engine, and fuel cell vehicles and range-extended electric vehicles, which burn or consume fuel to make electricity. A BEV refills by plugging into a charging station or the grid, or in some designs by swapping in a charged battery."
+        ],
+        [
+          "heading",
+          "From the plug to the pack"
+        ],
+        [
+          "paragraph",
+          "Three parts handle charging, according to the Energy Department's description."
+        ],
+        [
+          "list",
+          "Charge port: the socket that connects the car to an external power supply\nOnboard charger: takes the incoming AC electricity from the charge port and converts it to DC to charge the battery; it also talks to the charging equipment and watches voltage, current, temperature and state of charge\nTraction battery pack: stores the electricity used by the drive motor"
+        ],
+        [
+          "paragraph",
+          "Fast chargers deliver DC directly. The onboard charger is the part that matters when you plug into ordinary AC supply."
+        ],
+        [
+          "heading",
+          "From the pack to the wheels"
+        ],
+        [
+          "list",
+          "Power electronics controller: manages the flow of electricity from the battery and controls the speed of the motor and the torque it produces\nElectric traction motor: uses the battery's power to turn the wheels; some vehicles use motor-generators that both drive and regenerate\nElectric transmission: passes mechanical power from the motor to the wheels"
+        ],
+        [
+          "paragraph",
+          "The controller is how the driver's pedal input becomes motion. Wikipedia notes that BEVs use motor controllers to vary output power and torque, which removes the need for clutches, multi-gear transmissions and sophisticated engine cooling that conventional engines need."
+        ],
+        [
+          "heading",
+          "The small parts that still matter"
+        ],
+        [
+          "list",
+          "DC/DC converter: changes the battery's high-voltage DC to the lower voltage that runs lights, screens and other accessories, and recharges the auxiliary battery\nAuxiliary battery: provides electricity for vehicle accessories, much like the 12-volt battery in a petrol car\nThermal system: keeps the motor, power electronics, battery and other parts in a proper temperature range"
+        ],
+        [
+          "paragraph",
+          "A conventional car has a radiator because an engine wastes a lot of energy as heat. An electric drivetrain wastes less, but batteries and power electronics still have a working temperature range, which is the job of the cooling system."
+        ],
+        [
+          "heading",
+          "Why efficiency differs from a petrol car"
+        ],
+        [
+          "paragraph",
+          "Wikipedia compares energy density. Modern lithium-ion batteries store 0.9 to 2.63 megajoules per litre, against 34.2 megajoules per litre for petrol, so a battery holds far less energy for its volume. The article says this is partly offset by the high conversion efficiency of electric motors, and states that BEVs travel roughly three times further than similar-size combustion vehicles per megajoule of stored energy. That comparison is a general figure; real results depend on the vehicle and use."
+        ],
+        [
+          "heading",
+          "How charging and driving fit together"
+        ],
+        [
+          "paragraph",
+          "The Energy Department notes that a BEV must be plugged into a wall outlet or charging equipment, which it calls electric vehicle supply equipment. The onboard charger is the translator between the grid and the battery: it takes AC in and gives DC to the pack, and it monitors the pack while charging so that it is not overheated or overfilled. Faster public chargers can supply DC directly, which is why they can deliver power more quickly than the charger built into the car."
+        ],
+        [
+          "paragraph",
+          "When you drive, the process runs the other way. The power electronics controller reads the pedal, takes energy from the pack and tells the motor how much torque to make. Because an electric motor can make torque from a standstill, many BEVs need only a single fixed gear ratio in their transmission rather than a multi-speed gearbox."
+        ],
+        [
+          "heading",
+          "Units on a spec sheet"
+        ],
+        [
+          "list",
+          "Kilowatt-hour (kWh): the size of the battery, like the size of a fuel tank\nKilowatt (kW): how fast energy flows, used for motor power and charging speed\nRange: how far the car travels on a full pack under a stated test cycle, which differs from real-world driving"
+        ],
+        [
+          "heading",
+          "What is not a BEV"
+        ],
+        [
+          "list",
+          "Hybrid: a combustion engine works alongside electric motors\nPlug-in hybrid: a hybrid whose battery can be charged from the grid\nRange-extended electric vehicle: an engine-driven generator makes electricity\nFuel cell electric vehicle: a fuel cell makes electricity from fuel"
+        ],
+        [
+          "callout",
+          "General information only. Charging speeds, range and battery warranties differ between models, so use the manufacturer's own figures for any specific car."
+        ]
+      ],
+      "sources": [
+        {
+          "title": "How Do All-Electric Cars Work?, Alternative Fuels Data Center, US Department of Energy",
+          "url": "https://afdc.energy.gov/vehicles/how-do-all-electric-cars-work"
+        },
+        {
+          "title": "Battery electric vehicle, Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Battery_electric_vehicle"
+        }
+      ],
+      "checkedOn": "2026-11-05"
+    }
+  ]
+}
