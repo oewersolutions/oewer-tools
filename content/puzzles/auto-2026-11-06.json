@@ -1,0 +1,36 @@
+{
+ "puzzles": [
+  {
+   "game": "hive-words",
+   "date": "2026-11-18",
+   "title": "",
+   "data": {
+    "center": "T",
+    "outer": [
+     "E",
+     "G",
+     "M",
+     "O",
+     "R",
+     "U"
+    ]
+   }
+  },
+  {
+   "game": "hive-words",
+   "date": "2026-11-19",
+   "title": "",
+   "data": {
+    "center": "D",
+    "outer": [
+     "G",
+     "I",
+     "N",
+     "O",
+     "R",
+     "U"
+    ]
+   }
+  }
+ ]
+}
