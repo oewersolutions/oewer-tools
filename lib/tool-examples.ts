@@ -2,6 +2,7 @@ import { calculateEmi, calculateFd, calculateGst } from "./tools/finance";
 import { calculateLumpsum, calculateSip } from "./tools/growth";
 import { calculateDiscount, calculateRd } from "./tools/deposits";
 import { monthlyPayment } from "./tools/loans";
+import { futureValue } from "./tools/planning";
 import { evaluateMotion } from "./tools/motion";
 import { formatQuantity } from "./tools/units";
 import { calculateCompound, calculateSimple } from "./tools/interest";
@@ -63,6 +64,16 @@ export function toolExample(componentKey: string): ToolExample | null {
       const r = evaluateMotion({ solve: "speed", distance: "150", distanceUnit: "km", speed: "", speedUnit: "kmh", hours: "2", minutes: "30", seconds: "" }).result!;
       return { note: "150 km in 2 h 30 min", value: `${formatQuantity(r.mps * 3.6)} km/h` };
     }
+    case "investment-calculator":
+      return { note: "₹1,00,000 and ₹5,000 a month at 12% for 10 years", value: rupees(futureValue(100_000, 5000, 0.01, 120)) };
+    case "retirement-calculator":
+      return { note: "Will your savings last?", value: "Check your plan" };
+    case "inflation-calculator":
+      return { note: "₹1,00,000 today at 6% for 10 years", value: `${rupees(100_000 * 1.06 ** 10)} later` };
+    case "finance-calculator":
+      return { note: "Final amount, start, deposit, rate or time", value: "Solve any one" };
+    case "interest-calculator":
+      return { note: "Simple against compound interest", value: "Side by side" };
     case "loan-calculator":
       return { note: "₹10,00,000 at 9% for 5 years", value: `${rupees(monthlyPayment(1_000_000, 9, 60))} a month` };
     case "auto-loan-calculator":

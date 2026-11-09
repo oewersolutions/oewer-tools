@@ -27,6 +27,11 @@ const MORTGAGE = "/tools/finance-calculators/mortgage-calculator/";
 const PAYMENT = "/tools/finance-calculators/payment-calculator/";
 const AMORT = "/tools/finance-calculators/amortization-calculator/";
 const RATE = "/tools/finance-calculators/interest-rate-calculator/";
+const INVEST = "/tools/finance-calculators/investment-calculator/";
+const RETIRE = "/tools/finance-calculators/retirement-calculator/";
+const INFLATION = "/tools/finance-calculators/inflation-calculator/";
+const FINANCE = "/tools/finance-calculators/finance-calculator/";
+const INTEREST = "/tools/finance-calculators/interest-calculator/";
 const PASSWORD = "/tools/utilities/password-generator/";
 const BASE64 = "/tools/developer-tools/base64-encoder-decoder/";
 const URLTOOL = "/tools/developer-tools/url-encoder-decoder/";
@@ -199,6 +204,84 @@ test("age and days between show their working", async ({ page }) => {
   await page.getByLabel("Start date").fill("2026-01-01");
   await page.getByLabel("End date", { exact: true }).fill("2026-01-31");
   await expect(page.locator("[data-workings]")).toContainText("Days between = ");
+});
+
+test("investment calculator shows the balance, the returns and a year-by-year table", async ({ page }) => {
+  test.skip(!published.has(INVEST), "Investment calculator is not published");
+  await page.goto(INVEST);
+  const result = page.getByRole("status");
+  await expect(result).toContainText("₹14,80,232.14");
+  await expect(result).toContainText("₹7,00,000.00");
+  await expect(page.getByRole("region", { name: "Year by year" }).getByRole("row")).toHaveCount(11); // header and ten years
+  await expect(page.locator("[data-workings]")).toContainText("Balance = P × (1 + i)^n");
+  await page.getByLabel("Monthly additions are made").selectOption("start");
+  await expect(result).toContainText("₹14,91,734.07");
+  await page.getByLabel("Starting amount (₹)").fill("");
+  await page.getByLabel("Monthly addition (₹)").fill("");
+  await expect(result).toContainText("Enter a starting amount or a monthly addition");
+});
+
+test("retirement calculator shows a shortfall, the extra saving, and checks the ages", async ({ page }) => {
+  test.skip(!published.has(RETIRE), "Retirement calculator is not published");
+  await page.goto(RETIRE);
+  const result = page.getByRole("status");
+  await expect(result).toContainText("Estimated shortfall at retirement");
+  await expect(result).toContainText("₹47,79,896.28");
+  await expect(result).toContainText("₹2,114.54");
+  await expect(page.locator("[data-workings]")).toContainText("Corpus needed");
+  await page.getByLabel("Monthly saving (₹)").fill("200000");
+  await expect(result).toContainText("Estimated surplus at retirement");
+  await page.getByLabel("Retire at").fill("25");
+  await expect(page.getByText("Retirement age must be after your current age.")).toBeVisible();
+});
+
+test("inflation calculator finds the future cost, today's worth and the average rate", async ({ page }) => {
+  test.skip(!published.has(INFLATION), "Inflation calculator is not published");
+  await page.goto(INFLATION);
+  const result = page.getByRole("status");
+  await expect(result).toContainText("₹1,79,084.77");
+  await page.getByLabel("Find").selectOption("value");
+  await page.getByLabel("Future amount (₹)").fill("179084.77");
+  await expect(result).toContainText("₹1,00,000.00");
+  await page.getByLabel("Find").selectOption("rate");
+  await page.getByLabel("Old price (₹)").fill("100");
+  await page.getByLabel("New price (₹)").fill("179.0847696");
+  await expect(result).toContainText("6%");
+  await expect(page.locator("[data-workings]")).toContainText("Yearly rate");
+});
+
+test("finance calculator solves for each value and explains impossible cases", async ({ page }) => {
+  test.skip(!published.has(FINANCE), "Finance calculator is not published");
+  await page.goto(FINANCE);
+  const result = page.getByRole("status");
+  await expect(result).toContainText("₹14,80,232.14");
+  await page.getByLabel("Find").selectOption("pmt");
+  await page.getByLabel("Starting amount (₹)").fill("");
+  await page.getByLabel("Final amount (₹)").fill("1000000");
+  await expect(result).toContainText("₹4,347.09");
+  await page.getByLabel("Find").selectOption("years");
+  await page.getByLabel("Starting amount (₹)").fill("100000");
+  await page.getByLabel("Regular deposit each period (₹)").fill("5000");
+  await expect(result).toContainText("7.67 years");
+  await page.getByLabel("Find").selectOption("rate");
+  await page.getByLabel("Time (years)").fill("10");
+  await page.getByLabel("Final amount (₹)").fill("1480232.14");
+  await expect(result).toContainText("12% per year");
+  await expect(page.locator("[data-workings]")).toContainText("Check:");
+  await page.getByLabel("Final amount (₹)").fill("100000");
+  await expect(page.getByText(/less than the money put in/)).toBeVisible();
+});
+
+test("interest calculator compares simple and compound interest", async ({ page }) => {
+  test.skip(!published.has(INTEREST), "Interest calculator is not published");
+  await page.goto(INTEREST);
+  const result = page.getByRole("status");
+  await expect(result).toContainText("₹35,892.50");
+  await expect(result).toContainText("₹80,000.00");
+  await expect(result).toContainText("₹1,15,892.50");
+  await page.getByLabel("Compound interest is added").selectOption("12");
+  await expect(result).toContainText("₹1,21,9");
+  await expect(page.locator("[data-workings]")).toContainText("Compounding earns");
 });
 
 test("loan calculator gives the EMI and shows what an extra payment saves", async ({ page }) => {
