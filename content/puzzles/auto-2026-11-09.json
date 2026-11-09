@@ -1,0 +1,60 @@
+{
+ "puzzles": [
+  {
+   "game": "word-guess",
+   "date": "2026-11-22",
+   "title": "",
+   "data": {
+    "answer": "COLIN"
+   }
+  },
+  {
+   "game": "hive-words",
+   "date": "2026-11-20",
+   "title": "",
+   "data": {
+    "center": "R",
+    "outer": [
+     "E",
+     "I",
+     "P",
+     "U",
+     "V",
+     "W"
+    ]
+   }
+  },
+  {
+   "game": "hive-words",
+   "date": "2026-11-21",
+   "title": "",
+   "data": {
+    "center": "I",
+    "outer": [
+     "C",
+     "E",
+     "F",
+     "L",
+     "T",
+     "Y"
+    ]
+   }
+  },
+  {
+   "game": "hive-words",
+   "date": "2026-11-22",
+   "title": "",
+   "data": {
+    "center": "C",
+    "outer": [
+     "A",
+     "M",
+     "O",
+     "P",
+     "R",
+     "T"
+    ]
+   }
+  }
+ ]
+}

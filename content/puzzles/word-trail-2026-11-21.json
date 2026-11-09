@@ -1,0 +1,117 @@
+{
+ "puzzles": [
+  {
+   "game": "word-trail",
+   "date": "2026-11-21",
+   "data": {
+    "theme": "Party time",
+    "grid": [
+     "SNOOSO",
+     "ECLGNS",
+     "MAELTB",
+     "IANLAE",
+     "GFGDER",
+     "YETWTI",
+     "KADHSB",
+     "CADRAC"
+    ],
+    "words": [
+     {
+      "word": "BIRTHDAY",
+      "cells": [
+       41,
+       35,
+       29,
+       34,
+       39,
+       38,
+       37,
+       30
+      ],
+      "key": true
+     },
+     {
+      "word": "CAKE",
+      "cells": [
+       42,
+       43,
+       36,
+       31
+      ]
+     },
+     {
+      "word": "BALLOON",
+      "cells": [
+       17,
+       22,
+       15,
+       8,
+       3,
+       2,
+       1
+      ]
+     },
+     {
+      "word": "CANDLE",
+      "cells": [
+       7,
+       13,
+       20,
+       27,
+       21,
+       14
+      ]
+     },
+     {
+      "word": "GIFT",
+      "cells": [
+       24,
+       18,
+       25,
+       32
+      ]
+     },
+     {
+      "word": "GAMES",
+      "cells": [
+       26,
+       19,
+       12,
+       6,
+       0
+      ]
+     },
+     {
+      "word": "SONG",
+      "cells": [
+       4,
+       5,
+       10,
+       9
+      ]
+     },
+     {
+      "word": "CARD",
+      "cells": [
+       47,
+       46,
+       45,
+       44
+      ]
+     },
+     {
+      "word": "SWEETS",
+      "cells": [
+       40,
+       33,
+       28,
+       23,
+       16,
+       11
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}

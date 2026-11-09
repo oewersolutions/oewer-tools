@@ -1,0 +1,52 @@
+{
+ "puzzles": [
+  {
+   "game": "four-groups",
+   "date": "2026-11-22",
+   "data": {
+    "groups": [
+     {
+      "title": "Farm animals",
+      "level": 1,
+      "words": [
+       "COW",
+       "GOAT",
+       "HEN",
+       "SHEEP"
+      ]
+     },
+     {
+      "title": "Shops",
+      "level": 2,
+      "words": [
+       "BAKERY",
+       "CHEMIST",
+       "TAILOR",
+       "BUTCHER"
+      ]
+     },
+     {
+      "title": "___work",
+      "level": 3,
+      "words": [
+       "HOME",
+       "FIRE",
+       "TEAM",
+       "NET"
+      ]
+     },
+     {
+      "title": "Hide a vehicle",
+      "level": 4,
+      "words": [
+       "CARPET",
+       "BUSHY",
+       "VANISH",
+       "CABLE"
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,52 @@
+{
+ "puzzles": [
+  {
+   "game": "four-groups",
+   "date": "2026-11-20",
+   "data": {
+    "groups": [
+     {
+      "title": "Insects",
+      "level": 1,
+      "words": [
+       "ANT",
+       "MOTH",
+       "WASP",
+       "FLEA"
+      ]
+     },
+     {
+      "title": "Headwear",
+      "level": 2,
+      "words": [
+       "TURBAN",
+       "BERET",
+       "HELMET",
+       "CAP"
+      ]
+     },
+     {
+      "title": "___box",
+      "level": 3,
+      "words": [
+       "LETTER",
+       "MATCH",
+       "TOOL",
+       "POST"
+      ]
+     },
+     {
+      "title": "Hide a metal",
+      "level": 4,
+      "words": [
+       "TINY",
+       "IRONY",
+       "LEADER",
+       "GOLDEN"
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}

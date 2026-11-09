@@ -1,0 +1,112 @@
+{
+ "puzzles": [
+  {
+   "game": "word-trail",
+   "date": "2026-11-22",
+   "data": {
+    "theme": "Quiet please",
+    "grid": [
+     "OWAERY",
+     "RRUTRO",
+     "REHTPT",
+     "AOROSA",
+     "YDBAHE",
+     "ERPCGS",
+     "IRTAOY",
+     "LBRERP"
+    ],
+    "words": [
+     {
+      "word": "LIBRARY",
+      "cells": [
+       42,
+       36,
+       43,
+       44,
+       39,
+       46,
+       41
+      ],
+      "key": true
+     },
+     {
+      "word": "READER",
+      "cells": [
+       7,
+       13,
+       18,
+       25,
+       30,
+       37
+      ]
+     },
+     {
+      "word": "AUTHOR",
+      "cells": [
+       2,
+       8,
+       15,
+       14,
+       21,
+       20
+      ]
+     },
+     {
+      "word": "POETRY",
+      "cells": [
+       47,
+       40,
+       45,
+       38,
+       31,
+       24
+      ]
+     },
+     {
+      "word": "STORY",
+      "cells": [
+       22,
+       17,
+       11,
+       4,
+       5
+      ]
+     },
+     {
+      "word": "PAGES",
+      "cells": [
+       32,
+       27,
+       34,
+       29,
+       35
+      ]
+     },
+     {
+      "word": "CHAPTER",
+      "cells": [
+       33,
+       28,
+       23,
+       16,
+       9,
+       3,
+       10
+      ]
+     },
+     {
+      "word": "BORROW",
+      "cells": [
+       26,
+       19,
+       12,
+       6,
+       0,
+       1
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,31 @@
+{
+ "puzzles": [
+  {
+   "game": "mini-crossword",
+   "date": "2026-11-20",
+   "data": {
+    "grid": [
+     "OFF##",
+     "LIES#",
+     "DREAM",
+     "#EDGE",
+     "##SET"
+    ],
+    "across": {
+     "1": "Not switched on",
+     "4": "Untrue statements",
+     "6": "What you see while asleep",
+     "8": "Border or rim of something",
+     "9": "Put down, or a group of matching things"
+    },
+    "down": {
+     "1": "Aged; not young",
+     "2": "Flames that burn wood",
+     "3": "Gives food to",
+     "5": "Wise person, or a herb",
+     "7": "Came across, past tense"
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,112 @@
+{
+ "puzzles": [
+  {
+   "game": "word-trail",
+   "date": "2026-11-20",
+   "data": {
+    "theme": "From the ocean",
+    "grid": [
+     "ENRUQS",
+     "RAIDIO",
+     "SETLDY",
+     "CRSMOS",
+     "SAUBTN",
+     "BALSOE",
+     "LESMDR",
+     "SEAFOO"
+    ],
+    "words": [
+     {
+      "word": "SEAFOOD",
+      "cells": [
+       42,
+       37,
+       44,
+       45,
+       46,
+       47,
+       40
+      ],
+      "key": true
+     },
+     {
+      "word": "CRAB",
+      "cells": [
+       18,
+       19,
+       25,
+       30
+      ]
+     },
+     {
+      "word": "SQUID",
+      "cells": [
+       5,
+       4,
+       3,
+       10,
+       16
+      ]
+     },
+     {
+      "word": "LOBSTER",
+      "cells": [
+       15,
+       22,
+       27,
+       20,
+       14,
+       13,
+       6
+      ]
+     },
+     {
+      "word": "SALMON",
+      "cells": [
+       24,
+       31,
+       32,
+       39,
+       34,
+       29
+      ]
+     },
+     {
+      "word": "OYSTER",
+      "cells": [
+       11,
+       17,
+       23,
+       28,
+       35,
+       41
+      ]
+     },
+     {
+      "word": "SARDINE",
+      "cells": [
+       12,
+       7,
+       2,
+       9,
+       8,
+       1,
+       0
+      ]
+     },
+     {
+      "word": "MUSSEL",
+      "cells": [
+       21,
+       26,
+       33,
+       38,
+       43,
+       36
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}

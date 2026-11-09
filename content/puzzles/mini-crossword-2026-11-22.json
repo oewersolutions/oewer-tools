@@ -1,0 +1,31 @@
+{
+ "puzzles": [
+  {
+   "game": "mini-crossword",
+   "date": "2026-11-22",
+   "data": {
+    "grid": [
+     "AND##",
+     "CORN#",
+     "TRAIL",
+     "#MINE",
+     "##NET"
+    ],
+    "across": {
+     "1": "Word that joins two things",
+     "4": "Maize",
+     "6": "Path through the countryside",
+     "8": "Belonging to me",
+     "9": "Mesh used to catch fish"
+    },
+    "down": {
+     "1": "Do something; or a part of a play",
+     "2": "Usual standard",
+     "3": "Pipe that carries away water",
+     "5": "One less than ten",
+     "7": "Allow"
+    }
+   }
+  }
+ ]
+}

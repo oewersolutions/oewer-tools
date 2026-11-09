@@ -1,0 +1,31 @@
+{
+ "puzzles": [
+  {
+   "game": "mini-crossword",
+   "date": "2026-11-21",
+   "data": {
+    "grid": [
+     "##TRY",
+     "#TREE",
+     "GIANT",
+     "EDIT#",
+     "TEN##"
+    ],
+    "across": {
+     "1": "Make an attempt",
+     "4": "Tall plant with a trunk and branches",
+     "5": "Huge, very tall being in fairy tales",
+     "6": "Correct and improve a piece of writing",
+     "7": "The number after nine"
+    },
+    "down": {
+     "1": "Railway vehicle",
+     "2": "Money paid monthly for a home",
+     "3": "Up to now; still",
+     "4": "Rising and falling of the sea",
+     "5": "Obtain; receive"
+    }
+   }
+  }
+ ]
+}

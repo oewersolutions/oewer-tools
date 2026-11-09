@@ -1,0 +1,52 @@
+{
+ "puzzles": [
+  {
+   "game": "four-groups",
+   "date": "2026-11-21",
+   "data": {
+    "groups": [
+     {
+      "title": "Languages of India",
+      "level": 1,
+      "words": [
+       "TAMIL",
+       "HINDI",
+       "BENGALI",
+       "URDU"
+      ]
+     },
+     {
+      "title": "Ways to cook",
+      "level": 2,
+      "words": [
+       "FRY",
+       "ROAST",
+       "STEAM",
+       "BAKE"
+      ]
+     },
+     {
+      "title": "___light",
+      "level": 3,
+      "words": [
+       "MOON",
+       "FLASH",
+       "SPOT",
+       "DAY"
+      ]
+     },
+     {
+      "title": "Lose the first letter for a body part",
+      "level": 4,
+      "words": [
+       "CLIP",
+       "CHAIR",
+       "WHIP",
+       "BEAR"
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}
