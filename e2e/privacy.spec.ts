@@ -248,6 +248,28 @@ test("the maths calculators send nothing while you type", async ({ page }) => {
   }
 });
 
+test("the GPA, grade, concrete and subnet calculators send nothing while you type", async ({
+  page,
+}) => {
+  for (const [path, label] of [
+    ["/tools/utilities/gpa-calculator/", "Course 1 credits"],
+    ["/tools/utilities/grade-calculator/", "Score 1 (%)"],
+    ["/tools/utilities/concrete-calculator/", "Length (m)"],
+    ["/tools/utilities/subnet-calculator/", "IPv4 address"],
+  ] as const) {
+    test.skip(!published.has(path), "tool is not published");
+    await open(page, path);
+    const requests = await requestsDuring(
+      page,
+      async () => {
+        await page.getByLabel(label, { exact: true }).fill("4242");
+      },
+      "4242",
+    );
+    expect(requests).toEqual([]);
+  }
+});
+
 test("the salary, sales tax and income tax calculators send nothing while you type", async ({
   page,
 }) => {

@@ -69,6 +69,10 @@ export const TOOL_COMPONENT_KEYS = [
   "triangle-calculator",
   "standard-deviation-calculator",
   "scientific-calculator",
+  "gpa-calculator",
+  "grade-calculator",
+  "concrete-calculator",
+  "subnet-calculator",
 ] as const;
 
 export type ToolComponentKey = (typeof TOOL_COMPONENT_KEYS)[number];

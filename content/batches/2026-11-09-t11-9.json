@@ -1,0 +1,357 @@
+{
+  "date": "2026-11-09",
+  "articles": [
+    {
+      "title": "How to Calculate GPA, and Convert CGPA to Percentage",
+      "category": "How-To",
+      "excerpt": "How a grade point average is worked out from grades and credits, the common 4.0 scale, worked examples, and the 9.5 rule used to convert a 10-point CGPA to a percentage.",
+      "tags": [
+        "gpa",
+        "cgpa",
+        "grades"
+      ],
+      "sources": [
+        {
+          "title": "Grade point average, Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Grade_point_average"
+        },
+        {
+          "title": "Academic grading in the United States, Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Academic_grading_in_the_United_States"
+        },
+        {
+          "title": "Grade Point Average (GPA), Investopedia",
+          "url": "https://www.investopedia.com/terms/g/gpa.asp"
+        }
+      ],
+      "blocks": [
+        [
+          "paragraph",
+          "A grade point average, or GPA, turns all your course grades into one number. Universities use it to rank students, decide on honours and scholarships, and filter applications. The idea is simple: each letter grade is worth a number of points, each course counts in proportion to its credits, and the GPA is the credit-weighted average of the points. This guide shows the calculation step by step, the usual points table, and how the 10-point CGPA used in India relates to a percentage. You can check every example with the GPA Calculator on this site, which shows the same steps with your own grades."
+        ],
+        [
+          "heading",
+          "The formula"
+        ],
+        [
+          "paragraph",
+          "GPA = (sum of grade points × credits) ÷ (sum of credits). Each product of grade points and credits is called the quality points for that course. Wikipedia describes the GPA as the average of grade points weighted by credit hours, which is exactly this calculation. A course with more credits therefore moves your GPA more than a course with fewer."
+        ],
+        [
+          "heading",
+          "The usual 4.0 table"
+        ],
+        [
+          "paragraph",
+          "On the common unweighted 4.0 scale used by many US colleges, an A is worth 4.0 points, A− is 3.7, B+ is 3.3, B is 3.0, B− is 2.7, C+ is 2.3, C is 2.0, C− is 1.7, D+ is 1.3, D is 1.0, D− is 0.7 and F is 0. Many schools count A+ as 4.0 too, which is how this calculator treats it. Schools do not all use exactly the same table: some have no plus or minus grades, some give an A+ more than 4.0 for honours courses, and some skip the D−. Wikipedia notes that grading systems vary between institutions, so always check the table your own school publishes."
+        ],
+        [
+          "heading",
+          "A worked example"
+        ],
+        [
+          "paragraph",
+          "Suppose you took three courses. You got an A in a 3-credit course, a B in a 4-credit course and a C+ in a 3-credit course. The quality points are 4.0 × 3 = 12.0, 3.0 × 4 = 12.0 and 2.3 × 3 = 6.9. The total is 12.0 + 12.0 + 6.9 = 30.9 quality points across 3 + 4 + 3 = 10 credits. The GPA is 30.9 ÷ 10 = 3.09. Notice that the simple average of the three grade values, (4.0 + 3.0 + 2.3) ÷ 3 = 3.10, is slightly different, because the 4-credit course counts for more."
+        ],
+        [
+          "paragraph",
+          "A second example shows how a failing grade pulls the average down. An A− in a 2-credit course gives 3.7 × 2 = 7.4 points. An F in another 2-credit course gives 0. The total is 7.4 points across 4 credits, so the GPA is 1.85, much lower than the A− alone."
+        ],
+        [
+          "heading",
+          "Cumulative GPA"
+        ],
+        [
+          "paragraph",
+          "A cumulative GPA covers every course you have taken so far. You can find it by adding all the quality points from all terms and dividing by all the credits. Do not average the term GPAs directly unless every term had the same number of credits, because that gives the wrong weight to light terms. If you want to see what a future term would do to your cumulative figure, add the new quality points and credits to your running totals."
+        ],
+        [
+          "heading",
+          "CGPA and percentage in India"
+        ],
+        [
+          "paragraph",
+          "Many Indian boards and universities report a cumulative grade point average, or CGPA, on a 10-point scale. To convert it to a percentage, the widely published rule for CBSE results is to multiply by 9.5. For example, a CGPA of 8.2 is 8.2 × 9.5 = 77.9 per cent. To go the other way, divide the percentage by 9.5: 76 per cent is 76 ÷ 9.5 = 8.0. The 9.5 factor is specific to that scheme. Some universities use a different multiplier, such as 10, and some publish their own conversion table, so for an admission form use the rule of the institution that asks for the figure."
+        ],
+        [
+          "list",
+          "Weighting by credits is the key step; a simple average of grades is usually wrong\nOnly count courses that carry credits towards the GPA, and check how your school treats repeated courses\nPass or fail courses are normally left out of the GPA\nThe 9.5 rule converts a 10-point CGPA, not a 4.0 GPA\nA GPA on a 4.0 scale cannot be turned into a percentage by one universal formula"
+        ],
+        [
+          "heading",
+          "Common mistakes"
+        ],
+        [
+          "paragraph",
+          "The commonest mistake is averaging the grade values without weighting by credits. Another is mixing scales, for example treating a 4.0 GPA as if it were out of 10. A third is using one school's table for another school's grades. If your transcript already shows a GPA, compare it with your own calculation: a difference usually points to a different grade table or to courses the school leaves out."
+        ],
+        [
+          "callout",
+          "Tip: for an application to a foreign university, ask which scale and conversion it expects. Many accept your own institution's published conversion, and some use an independent evaluation service."
+        ]
+      ],
+      "checkedOn": "2026-11-09"
+    },
+    {
+      "title": "How to Work Out a Weighted Grade and the Final Score Needed",
+      "category": "How-To",
+      "excerpt": "How weights turn assignment and exam scores into one course grade, how to find the score needed on a final exam to reach a target, with worked examples.",
+      "tags": [
+        "grades",
+        "weighted average",
+        "exams"
+      ],
+      "sources": [
+        {
+          "title": "Weighted arithmetic mean, Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Weighted_arithmetic_mean"
+        },
+        {
+          "title": "Weighted Mean, Wolfram MathWorld",
+          "url": "https://mathworld.wolfram.com/WeightedMean.html"
+        }
+      ],
+      "blocks": [
+        [
+          "paragraph",
+          "In most courses, not every mark counts equally. A final exam might be worth 40 per cent of the course while a quiz is worth 5. The course grade is then a weighted average of all the scores. Knowing how it works lets you check your standing during the term, and, more usefully, work out what you need on the final exam to reach the grade you want. This guide explains both calculations with worked examples that you can verify in the Grade Calculator on this site."
+        ],
+        [
+          "heading",
+          "The weighted average"
+        ],
+        [
+          "paragraph",
+          "A weighted average multiplies each score by its weight, adds the results, and divides by the total of the weights. Wikipedia gives the weighted arithmetic mean as the sum of each value times its weight, divided by the sum of the weights, and MathWorld gives the same definition. For course grades the formula is: grade = (score1 × weight1 + score2 × weight2 + …) ÷ (weight1 + weight2 + …). If your weights add up to 100, the division changes nothing; if you have only entered part of the course, the division makes the answer an average of what you have so far."
+        ],
+        [
+          "heading",
+          "A worked example"
+        ],
+        [
+          "paragraph",
+          "Say you scored 90 on assignments worth 20 per cent of the course, 80 on a midterm worth 30 per cent and 70 on a project worth 50 per cent. Multiply each score by its weight: 90 × 20 = 1,800, 80 × 30 = 2,400 and 70 × 50 = 3,500. The sum is 7,700. The weights add up to 100, so the grade is 7,700 ÷ 100 = 77 per cent. On a common scale with cut-offs at 90, 80, 70 and 60, that is a C. A simple average of the three scores would be 80, which shows how much the heavier project pulls the result down."
+        ],
+        [
+          "heading",
+          "What you need on the final exam"
+        ],
+        [
+          "paragraph",
+          "Suppose the final exam is worth 40 per cent, and the rest of the course is already marked. First work out the points you have earned so far: each score times its weight, divided by 100. Then find what the final must contribute to reach your target, and divide by the final's share of the course. The formula is: needed = (target − points earned) ÷ (final weight ÷ 100)."
+        ],
+        [
+          "paragraph",
+          "For example, you scored 80 on a 30 per cent item and 90 on another 30 per cent item. The points earned are 80 × 30 ÷ 100 = 24 and 90 × 30 ÷ 100 = 27, a total of 51 out of the 60 available so far. The final is worth 40. You want an overall 85. You still need 85 − 51 = 34 points, and the final is worth 40 points in total, so you need 34 ÷ 0.40 = 85 per cent on the final."
+        ],
+        [
+          "heading",
+          "When the target is out of reach"
+        ],
+        [
+          "paragraph",
+          "Sometimes the answer is above 100 per cent. If you earned 30 points from a 60 per cent share, and the final is worth the other 40, then reaching 90 overall needs (90 − 30) ÷ 0.40 = 150 per cent. That cannot be done without extra credit, so the realistic choices are a lower target or asking your teacher about options. In the other direction, if you already have enough points that even a zero on the final would reach your target, the calculator says so."
+        ],
+        [
+          "list",
+          "Weights are each item's share of the whole course, not of the part you have finished\nEnter scores as percentages; convert marks out of 20 or 50 first\nThe weights you enter plus the final exam's weight cannot add up to more than 100\nLetter grade cut-offs differ between schools, so treat the letter as a guide\nIf a lowest score is dropped, remove it before you enter your figures"
+        ],
+        [
+          "heading",
+          "Common mistakes"
+        ],
+        [
+          "paragraph",
+          "A frequent mistake is to average the scores without weights, which overstates or understates your grade. Another is to enter the weight as a share of the finished part only. For example, two items worth 30 per cent each are 30 and 30, not 50 and 50. A third is forgetting that the final also has a share of the grade, so a score of 100 on it does not mean a final course grade of 100. Re-check the course outline whenever the figures look odd."
+        ],
+        [
+          "callout",
+          "Tip: update the calculator after every graded item. It takes seconds, and it tells you early whether you need to work harder before the final."
+        ]
+      ],
+      "checkedOn": "2026-11-09"
+    },
+    {
+      "title": "How to Estimate Concrete, Cement, Sand and Aggregate",
+      "category": "How-To",
+      "excerpt": "How to find the volume of a slab, beam or column, add wastage, and turn it into bags of cement and cubic metres of sand and aggregate for a standard mix.",
+      "tags": [
+        "concrete",
+        "cement",
+        "construction"
+      ],
+      "sources": [
+        {
+          "title": "Concrete, Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Concrete"
+        },
+        {
+          "title": "Cement, Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Cement"
+        },
+        {
+          "title": "Cement and concrete basics, American Cement Association",
+          "url": "https://www.cement.org/cement-concrete"
+        }
+      ],
+      "blocks": [
+        [
+          "paragraph",
+          "Before pouring a slab, a footing or a column, you need to know how much concrete to make. Order too little and the work stops with a cold joint; order too much and money is wasted. The method is the same for any shape: find the volume, add an allowance for wastage, convert to dry volume, and split it between cement, sand and aggregate in the ratio of the mix. This guide explains each step with worked numbers that you can check in the Concrete Calculator on this site, which shows its working. It is a planning estimate, and your engineer or supplier has the final say."
+        ],
+        [
+          "heading",
+          "Step 1: the volume"
+        ],
+        [
+          "paragraph",
+          "For a slab, beam or footing, the volume is length × width × depth. A slab 5 m long, 4 m wide and 0.15 m (150 mm) thick has a volume of 5 × 4 × 0.15 = 3 cubic metres. For a round column, the volume is π × (diameter ÷ 2)² × height. A column 0.4 m across and 3 m high has a volume of 3.1416 × 0.2² × 3 = 0.377 cubic metres. If you measure in feet, convert to metres first, since 1 foot is 0.3048 metres. If you have several identical pieces, multiply by the number of pieces."
+        ],
+        [
+          "heading",
+          "Step 2: wastage"
+        ],
+        [
+          "paragraph",
+          "Some concrete is always lost to spillage, uneven ground, formwork leaks and over-excavation. A common allowance is 5 per cent for simple work and more for awkward sites. For the 3 cubic metre slab, 5 per cent wastage makes 3 × 1.05 = 3.15 cubic metres."
+        ],
+        [
+          "heading",
+          "Step 3: dry volume"
+        ],
+        [
+          "paragraph",
+          "Concrete is made from dry materials, and when they are mixed with water the volume shrinks, because fine sand and cement fill the gaps between the aggregate. To end up with 1 cubic metre of wet concrete, you need about 1.54 cubic metres of dry materials. This factor is commonly used in India, and some references use 1.52 or 1.57. For our slab: 3.15 × 1.54 = 4.851 cubic metres of dry materials."
+        ],
+        [
+          "heading",
+          "Step 4: the mix ratio"
+        ],
+        [
+          "paragraph",
+          "A nominal mix such as M20 is written as 1 : 1.5 : 3, meaning 1 part cement to 1.5 parts sand to 3 parts coarse aggregate by volume. The total parts are 1 + 1.5 + 3 = 5.5. Cement is then 1 ÷ 5.5 of the dry volume, sand is 1.5 ÷ 5.5 and aggregate is 3 ÷ 5.5. Other commonly used nominal mixes are M10 (1 : 3 : 6), M15 (1 : 2 : 4) and M25 (1 : 1 : 2). Stronger mixes use more cement per cubic metre."
+        ],
+        [
+          "paragraph",
+          "For the slab: cement = 4.851 ÷ 5.5 = 0.882 cubic metres, sand = 4.851 × 1.5 ÷ 5.5 = 1.323 cubic metres and aggregate = 4.851 × 3 ÷ 5.5 = 2.646 cubic metres."
+        ],
+        [
+          "heading",
+          "Step 5: bags of cement"
+        ],
+        [
+          "paragraph",
+          "Cement is bought by weight. Loose cement has a bulk density of about 1,440 kilograms per cubic metre, so 0.882 cubic metres weighs 0.882 × 1,440 = 1,270 kilograms. A bag in India holds 50 kilograms, so you need 1,270 ÷ 50 = 25.4 bags, which you would round up to 26. Wikipedia explains that cement is the binder that sets and hardens the mixture, which is why it is measured so carefully."
+        ],
+        [
+          "list",
+          "Slab 5 m × 4 m × 0.15 m: 3 m³ of concrete, about 25 bags of cement for M20 with 5% wastage\nColumn 0.4 m across and 3 m high: 0.377 m³, about 3.2 bags of cement for M20 with 5% wastage\nAlways round bags up, and order sand and aggregate with a margin\nFor structural work, follow the mix design and strength grade your engineer specifies"
+        ],
+        [
+          "heading",
+          "What the estimate leaves out"
+        ],
+        [
+          "paragraph",
+          "The estimate does not include water, admixtures, reinforcement steel, formwork or the moisture content of the sand, which can make damp sand bulk up. It also uses nominal mixes by volume. Larger or structural jobs normally use designed mixes, proportioned by weight, and ready-mixed concrete is ordered by the cubic metre. For those, use the volume result as your order quantity and let the supplier handle the proportions."
+        ],
+        [
+          "callout",
+          "This is a planning estimate only. Confirm the mix, strength grade and quantities with a qualified engineer before ordering materials for structural work."
+        ]
+      ],
+      "checkedOn": "2026-11-09"
+    },
+    {
+      "title": "How IPv4 Subnetting Works: Network, Broadcast and Hosts",
+      "category": "How-To",
+      "excerpt": "How a prefix length and mask split an IPv4 address into network and host parts, how to find the network, broadcast and usable host range, with worked examples.",
+      "tags": [
+        "subnet",
+        "ipv4",
+        "networking"
+      ],
+      "sources": [
+        {
+          "title": "Classless Inter-domain Routing (CIDR), RFC 4632",
+          "url": "https://datatracker.ietf.org/doc/html/rfc4632"
+        },
+        {
+          "title": "Address Allocation for Private Internets, RFC 1918",
+          "url": "https://datatracker.ietf.org/doc/html/rfc1918"
+        },
+        {
+          "title": "Classless Inter-Domain Routing, Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing"
+        }
+      ],
+      "blocks": [
+        [
+          "paragraph",
+          "Every device on an IPv4 network has an address made of four numbers from 0 to 255, such as 192.168.1.10. Behind the numbers is a 32-bit value, and a network is a block of consecutive addresses. Subnetting is the way of describing that block: how many of the 32 bits identify the network, and how many identify the individual device. This guide explains the idea with worked examples, which you can check in the Subnet Calculator on this site. It shows the binary working, so you can see where each answer comes from."
+        ],
+        [
+          "heading",
+          "Prefix length and mask"
+        ],
+        [
+          "paragraph",
+          "Today's networks are described with CIDR notation, defined in RFC 4632. A slash and a number follow the address, for example 192.168.1.0/24. The number is the prefix length, the count of leading bits that belong to the network. The same information can be written as a subnet mask, a 32-bit value with that many 1s followed by 0s. A /24 prefix is 24 ones and 8 zeros, which is 255.255.255.0. A /27 is 27 ones and 5 zeros, which is 255.255.255.224, and a /20 is 255.255.240.0. A valid mask is always a run of 1s then a run of 0s, so 255.0.255.0 is not a mask."
+        ],
+        [
+          "heading",
+          "Finding the network address"
+        ],
+        [
+          "paragraph",
+          "The network address is the address with all host bits set to zero. You get it by a bitwise AND of the address and the mask. Take 10.20.30.200 with a /27 prefix. The last octet, 200, is 11001000 in binary. The /27 mask has 27 ones, so in the last octet it is 11100000, which is 224. The AND of 11001000 and 11100000 is 11000000, which is 192. The network address is 10.20.30.192/27."
+        ],
+        [
+          "heading",
+          "Broadcast address and host range"
+        ],
+        [
+          "paragraph",
+          "The wildcard mask is the mask with every bit flipped; for a /27 it is 0.0.0.31. The broadcast address is the network address OR the wildcard: 192 + 31 = 223, giving 10.20.30.223. The usable host addresses lie between the network and broadcast addresses, so here they run from 10.20.30.193 to 10.20.30.222."
+        ],
+        [
+          "heading",
+          "How many addresses"
+        ],
+        [
+          "paragraph",
+          "A prefix of length p leaves 32 − p host bits, so the block has 2 to the power (32 − p) addresses. A /24 has 2⁸ = 256 addresses, a /27 has 2⁵ = 32, and a /30 has 4. Two addresses in a normal subnet are reserved, the network address and the broadcast address, so usable hosts = addresses − 2. A /24 therefore has 254 usable hosts, and a /27 has 30. Two special cases exist. RFC 3021 allows a /31, with just two addresses, to be used on point-to-point links with no network or broadcast address. A /32 is a single host address."
+        ],
+        [
+          "paragraph",
+          "The example from the first paragraph: 192.168.1.10/24 gives the network 192.168.1.0, the broadcast 192.168.1.255, the hosts 192.168.1.1 to 192.168.1.254, a mask of 255.255.255.0 and 254 usable hosts."
+        ],
+        [
+          "heading",
+          "Private and public ranges"
+        ],
+        [
+          "paragraph",
+          "RFC 1918 sets aside three blocks for private networks that are not routed on the public internet: 10.0.0.0/8, 172.16.0.0/12 (172.16.0.0 to 172.31.255.255) and 192.168.0.0/16. Homes and offices use these and share one public address through network address translation. Addresses outside these blocks, and a few other special ranges such as loopback 127.0.0.0/8, are treated differently."
+        ],
+        [
+          "heading",
+          "Old classes"
+        ],
+        [
+          "paragraph",
+          "Before CIDR, addresses were divided into classes by their first number: class A for 1 to 126, class B for 128 to 191, and class C for 192 to 223, with D for multicast and E reserved. Wikipedia explains that CIDR replaced this rigid scheme in the 1990s so blocks could be sized to need. The calculator shows the class only for reference."
+        ],
+        [
+          "list",
+          "Add the prefix length to see the mask: /8 is 255.0.0.0, /16 is 255.255.0.0, /24 is 255.255.255.0\nEach step of one in the prefix halves or doubles the block\nThe network address always ends in a pattern that fits the block size, for example multiples of 32 for a /27\nTo split a network into smaller subnets, increase the prefix length"
+        ],
+        [
+          "callout",
+          "This guide covers IPv4 only. IPv6 uses 128-bit addresses and a different convention for subnet sizes."
+        ]
+      ],
+      "checkedOn": "2026-11-09"
+    }
+  ]
+}

@@ -104,6 +104,14 @@ export function toolExample(componentKey: string): ToolExample | null {
       return { note: "Sample or population", value: "Spread" };
     case "scientific-calculator":
       return { note: "2 + 3 × 4", value: "14" };
+    case "gpa-calculator":
+      return { note: "Grades and credits to GPA", value: "4.0 scale" };
+    case "grade-calculator":
+      return { note: "Weighted grade or final needed", value: "Your grade" };
+    case "concrete-calculator":
+      return { note: "Cement, sand and aggregate", value: "Cement bags" };
+    case "subnet-calculator":
+      return { note: "192.168.1.10/24", value: "254 hosts" };
     case "bmi-calculator":
       return { note: "70 kg at 175 cm", value: "BMI 22.9" };
     case "bmr-calculator":

@@ -48,6 +48,10 @@ const RANDOM = "/tools/math-calculators/random-number-generator/";
 const TRIANGLE = "/tools/math-calculators/triangle-calculator/";
 const STDDEV = "/tools/math-calculators/standard-deviation-calculator/";
 const SCIENTIFIC = "/tools/math-calculators/scientific-calculator/";
+const GPA = "/tools/utilities/gpa-calculator/";
+const GRADE = "/tools/utilities/grade-calculator/";
+const CONCRETE = "/tools/utilities/concrete-calculator/";
+const SUBNET = "/tools/utilities/subnet-calculator/";
 const PASSWORD = "/tools/utilities/password-generator/";
 const BASE64 = "/tools/developer-tools/base64-encoder-decoder/";
 const URLTOOL = "/tools/developer-tools/url-encoder-decoder/";
@@ -1500,6 +1504,94 @@ test("scientific calculator follows the order of operations, shows its steps and
   await expect(
     page.getByText(/not a function|cannot be used|Unexpected/).first(),
   ).toBeVisible();
+});
+
+test("GPA calculator weights grades by credits and converts CGPA", async ({
+  page,
+}) => {
+  test.skip(!published.has(GPA), "GPA calculator is not published");
+  await page.goto(GPA);
+  const result = page.getByRole("status");
+  await expect(result).toContainText("3.63");
+  await expect(page.locator("[data-workings]")).toContainText(
+    "Σ(grade points × credits) ÷ Σ credits",
+  );
+  await page.getByLabel("Course 4 grade").selectOption("F");
+  await page.getByLabel("Course 4 credits").fill("2");
+  await expect(result).toContainText("3.03");
+  await page.getByLabel("Course 4 credits").fill("0");
+  await expect(page.getByText(/greater than 0/)).toBeVisible();
+  await page.getByLabel("Calculate").selectOption("cgpa");
+  await expect(result).toContainText("77.9%");
+  await page.getByLabel("Convert").selectOption("toCgpa");
+  await page.getByLabel("Percentage").fill("76");
+  await expect(result).toContainText("8");
+});
+
+test("grade calculator gives the weighted grade and the final exam score needed", async ({
+  page,
+}) => {
+  test.skip(!published.has(GRADE), "Grade calculator is not published");
+  await page.goto(GRADE);
+  const result = page.getByRole("status");
+  await expect(result).toContainText("77%");
+  await expect(result).toContainText("C");
+  await page.getByLabel("Work out").selectOption("final");
+  await page.getByLabel("Score 1 (%)").fill("80");
+  await page.getByLabel("Weight 1 (%)").fill("30");
+  await page.getByLabel("Score 2 (%)").fill("90");
+  await page.getByLabel("Weight 2 (%)").fill("30");
+  await page.getByLabel("Score 3 (%)").fill("");
+  await page.getByLabel("Weight 3 (%)").fill("");
+  await expect(result).toContainText("85%");
+  await expect(page.locator("[data-workings]")).toContainText(
+    "Score needed on the final",
+  );
+  await page.getByLabel("Grade you want (%)").fill("99");
+  await expect(result).toContainText("above 100%");
+});
+
+test("concrete calculator estimates volume, cement bags, sand and aggregate", async ({
+  page,
+}) => {
+  test.skip(!published.has(CONCRETE), "Concrete calculator is not published");
+  await page.goto(CONCRETE);
+  const result = page.getByRole("status");
+  await expect(result).toContainText("25.4 bags");
+  await expect(result).toContainText("3.15 m³");
+  await expect(result).toContainText("1.323 m³");
+  await expect(page.locator("[data-workings]")).toContainText(
+    "Dry volume of materials",
+  );
+  await page.getByLabel("Shape").selectOption("round");
+  await expect(result).toContainText("0.37699");
+  await page.getByLabel("Diameter (m)").fill("0");
+  await expect(page.getByText(/greater than 0/)).toBeVisible();
+  await page.getByLabel("Measured in").selectOption("ft");
+  await expect(page.getByLabel("Diameter (ft)")).toBeVisible();
+});
+
+test("subnet calculator finds the network, broadcast and hosts, with the binary working", async ({
+  page,
+}) => {
+  test.skip(!published.has(SUBNET), "Subnet calculator is not published");
+  await page.goto(SUBNET);
+  const result = page.getByRole("status");
+  await expect(result).toContainText("192.168.1.0/24");
+  await expect(result).toContainText("192.168.1.255");
+  await expect(result).toContainText("254");
+  await expect(page.locator("[data-workings]")).toContainText(
+    "11000000.10101000.00000001",
+  );
+  await page.getByLabel("IPv4 address").fill("10.20.30.200");
+  await page.getByLabel("Prefix length or mask").fill("255.255.255.224");
+  await expect(result).toContainText("10.20.30.192/27");
+  await expect(result).toContainText("10.20.30.223");
+  await page.getByLabel("IPv4 address").fill("1.2.3.999");
+  await expect(page.getByText(/four numbers from 0 to 255/)).toBeVisible();
+  await page.getByLabel("IPv4 address").fill("10.0.0.1");
+  await page.getByLabel("Prefix length or mask").fill("255.0.255.0");
+  await expect(page.getByText(/run of 1s/)).toBeVisible();
 });
 
 test("word counter counts as you type", async ({ page }) => {

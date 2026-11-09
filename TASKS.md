@@ -120,5 +120,5 @@ T1.3b → T1.3a → T1.4 → T1.5 → T2.1/T2.2 → T3.1 + first calculator → 
 - [x] **T11.6** Batch D: Salary, Sales tax, Income tax (decision needed on yearly updates)
 - [x] **T11.7** Batch E: BMI, BMR, Calorie, Body fat, Ideal weight, Pregnancy, Conception
 - [x] **T11.8** Batch F: Fraction, Random number, Triangle, Standard deviation, Scientific (new "Math Calculators" category; safe expression parser, no eval)
-- [ ] **T11.9** Batch G: GPA, Grade, Concrete, Subnet
+- [x] **T11.9** Batch G: GPA, Grade, Concrete, Subnet (in Utilities)
 
