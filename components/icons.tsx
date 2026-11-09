@@ -4,6 +4,7 @@ import {
   Braces,
   Calculator,
   Gamepad2,
+  HeartPulse,
   Grid3x3,
   Hexagon,
   LayoutGrid,
@@ -44,6 +45,7 @@ const CATEGORY_ICONS: Record<string, LucideIcon> = {
   "finance-calculators": Calculator,
   "developer-tools": Braces,
   utilities: Wrench,
+  "health-fitness": HeartPulse,
 };
 
 /** Icon for a tool, chosen by its component_key. Unknown keys get a generic icon. */

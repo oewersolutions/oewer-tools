@@ -1,0 +1,749 @@
+{
+  "date": "2026-11-09",
+  "articles": [
+    {
+      "title": "How to Calculate BMI and What the Categories Mean",
+      "category": "How-To",
+      "excerpt": "How body mass index is worked out from height and weight, the standard and Asian cut-offs, worked examples, the weight range for your height, and what BMI cannot tell you.",
+      "tags": [
+        "bmi",
+        "weight",
+        "health"
+      ],
+      "blocks": [
+        [
+          "paragraph",
+          "Body mass index, or BMI, is a quick way to compare a person's weight with their height. It is worked out as weight in kilograms divided by height in metres squared. Health services use it as a first check on whether weight may be a concern, but it is only a starting point. This guide shows how to calculate it, what the categories are, how the cut-offs differ for some backgrounds, and what the number cannot tell you. The BMI Calculator does the sum and shows each step."
+        ],
+        [
+          "heading",
+          "The formula"
+        ],
+        [
+          "paragraph",
+          "BMI = weight (kg) ÷ height (m)². The World Health Organization describes BMI in exactly these terms. For a person who weighs 70 kg and is 175 cm (1.75 m) tall, the height squared is 1.75 × 1.75 = 3.0625, so BMI = 70 ÷ 3.0625 = 22.9. In pounds and inches the same value comes from converting first: 154 lb is about 69.9 kg, and 5 ft 9 in is about 175.3 cm."
+        ],
+        [
+          "heading",
+          "The usual adult categories"
+        ],
+        [
+          "paragraph",
+          "For most adults, a BMI of 25 to 29.9 is overweight and a BMI of 30 or more is obese. WHO uses the same cut-offs, defining adult overweight as a BMI of 25 or more and obesity as 30 or more. A BMI under 18.5 is generally classed as underweight, and 18.5 to 24.9 as normal weight. So the example above, 22.9, falls in the normal range."
+        ],
+        [
+          "heading",
+          "Different cut-offs for some backgrounds"
+        ],
+        [
+          "paragraph",
+          "The NHS explains that people from a South Asian, Chinese, other Asian, Middle Eastern, Black African or African-Caribbean background are at risk of health problems at a slightly lower BMI. For them a BMI of 23 to 27.4 is overweight and a BMI of 27.5 or higher is obese. The calculator has a switch for these cut-offs. The same 85 kg person at 175 cm has a BMI of 27.8: overweight on the standard scale, but obese on the lower one."
+        ],
+        [
+          "heading",
+          "Your weight range for your height"
+        ],
+        [
+          "paragraph",
+          "Because BMI depends only on weight and height, you can turn it round to find the weights that fall in a category. At 175 cm, a BMI of 18.5 is 56.7 kg and a BMI of 24.9 is 76.3 kg, so the normal range is about 56.7 kg to 76.3 kg. On the lower cut-offs the top of the range is a BMI of 22.9, which is 70.1 kg. For the 85 kg person that means about 8.7 kg above the standard range, or about 14.9 kg above the lower one."
+        ],
+        [
+          "heading",
+          "What BMI cannot tell you"
+        ],
+        [
+          "list",
+          "It cannot tell muscle from fat. The NHS notes that someone with a lot of muscle may be placed in the overweight or obese category without having much body fat\nIt says nothing about where fat is carried. The NHS suggests that, if your BMI is under 35, a waist measurement of less than half your height is a useful extra check\nThe adult categories do not apply to children, whose weight is judged with BMI-for-age\nIt is a screening number, not a diagnosis"
+        ],
+        [
+          "callout",
+          "This guide is general information, not medical advice. Speak to a doctor or a registered dietitian about your own health."
+        ],
+        [
+          "heading",
+          "Using BMI sensibly"
+        ],
+        [
+          "paragraph",
+          "Treat your BMI as one piece of information among several. If it is in the normal range and your waist is less than half your height, there is usually little to worry about from these numbers alone. If it is outside the range, that is a reason to look at your diet, activity and other health measures, not a reason for panic or for drastic changes. Check it every few months rather than every day, because small changes in weight move the number only slightly. A doctor or dietitian can put the figure in context for your age, health and background."
+        ],
+        [
+          "heading",
+          "Common mistakes"
+        ],
+        [
+          "list",
+          "Using pounds and inches in the metric formula without converting\nForgetting to square the height\nTreating the category as a verdict on health: two people with the same BMI can have very different health\nUsing adult cut-offs for a child or teenager"
+        ],
+        [
+          "paragraph",
+          "In the calculator, choose your units, enter your height and weight, and pick the cut-offs that apply to you. It shows your BMI, the category, the weight range for your height and how far you are from it, with a How this is calculated panel."
+        ]
+      ],
+      "sources": [
+        {
+          "title": "Obesity and overweight, World Health Organization",
+          "url": "https://www.who.int/news-room/fact-sheets/detail/obesity-and-overweight"
+        },
+        {
+          "title": "Obesity, NHS",
+          "url": "https://www.nhs.uk/conditions/obesity/"
+        },
+        {
+          "title": "Body mass index, Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Body_mass_index"
+        }
+      ],
+      "checkedOn": "2026-11-09"
+    },
+    {
+      "title": "What Is BMR? How to Estimate Your Basal Metabolic Rate",
+      "category": "How-To",
+      "excerpt": "What basal metabolic rate is, the Mifflin–St Jeor and revised Harris–Benedict equations with a worked example, how to convert to kilojoules, and what changes the number.",
+      "tags": [
+        "bmr",
+        "metabolism",
+        "calories"
+      ],
+      "blocks": [
+        [
+          "paragraph",
+          "Your basal metabolic rate, or BMR, is the energy your body uses at complete rest to keep you alive: breathing, circulating blood, keeping warm and running the brain and organs. It is a large part of the energy most people use in a day. This guide explains the two equations commonly used to estimate it, works through an example, and explains what the number does and does not mean. The BMR Calculator does the sums and shows the steps."
+        ],
+        [
+          "heading",
+          "Why it is only an estimate"
+        ],
+        [
+          "paragraph",
+          "A true BMR is measured in a laboratory under strict conditions. For everyday use, scientists have fitted equations that estimate it from weight, height, age and sex. The equations are averages for groups of people, so they will not match any one person exactly. Other things, such as muscle mass, health and hormones, also affect the real figure."
+        ],
+        [
+          "heading",
+          "The Mifflin–St Jeor equation"
+        ],
+        [
+          "paragraph",
+          "Published in 1990, this equation gives BMR in kilocalories a day as 10 × weight (kg) + 6.25 × height (cm) − 5 × age (years) + s, where s is +5 for men and −161 for women. Frankenfield and colleagues found it to be about 5% more accurate than the older equation. For a 30-year-old man weighing 80 kg and 180 cm tall, BMR = 800 + 1,125 − 150 + 5 = 1,780 kcal a day. For a 28-year-old woman weighing 60 kg and 165 cm, BMR = 600 + 1,031.25 − 140 − 161 = about 1,330 kcal a day."
+        ],
+        [
+          "heading",
+          "The revised Harris–Benedict equation"
+        ],
+        [
+          "paragraph",
+          "The Harris–Benedict equation dates from 1919 and was revised in 1984 using new data. For men, BMR = 13.397 × kg + 4.799 × cm − 5.677 × age + 88.362, and for women, BMR = 9.247 × kg + 3.098 × cm − 4.330 × age + 447.593. For the same man this gives about 1,854 kcal a day, which is about 4% higher than the Mifflin figure, and for the same woman about 1,392 kcal. The calculator lets you choose either equation and shows the other for comparison."
+        ],
+        [
+          "heading",
+          "Calories and kilojoules"
+        ],
+        [
+          "paragraph",
+          "Energy is given in kilocalories (kcal), often just called calories, or in kilojoules (kJ). The NHS notes that calorie information is often given in kcals, and may also be given in kJ. One kilocalorie is 4.184 kilojoules, so 1,780 kcal is 7,448 kJ."
+        ],
+        [
+          "heading",
+          "What changes your BMR"
+        ],
+        [
+          "list",
+          "Body size: a heavier or taller body uses more energy even at rest, which is why weight and height are in both equations\nAge: both equations take a little off the estimate for each year of age\nSex: the equations differ for men and women, mainly because of differences in body mass\nBody composition: the equations use only weight, height, age and sex, so they cannot see how much of your weight is muscle"
+        ],
+        [
+          "heading",
+          "Comparing the two equations"
+        ],
+        [
+          "paragraph",
+          "The two equations usually land within a few per cent of each other, but not always. For the 30-year-old man the Mifflin figure is 1,780 kcal and the revised Harris–Benedict figure is 1,854 kcal, a gap of 74 kcal. For the 28-year-old woman it is about 1,330 against 1,392, a gap of about 62 kcal. These differences are small compared with the uncertainty in the estimate itself, which is why it is fine to pick one equation and use it consistently, rather than to switch between them to find the answer you prefer."
+        ],
+        [
+          "heading",
+          "How BMR is used"
+        ],
+        [
+          "paragraph",
+          "BMR is the starting point for estimating how many calories you use in a whole day. Multiplying it by a physical activity level gives your total daily energy use, which is what the Calorie Calculator does. BMR alone is not a target for how much to eat, and eating well below it is not usually advised without medical supervision."
+        ],
+        [
+          "callout",
+          "This guide is general information, not medical advice. Speak to a doctor or a registered dietitian about your own health."
+        ],
+        [
+          "heading",
+          "Common mistakes"
+        ],
+        [
+          "list",
+          "Treating the number as exact when it is an estimate from a population equation\nUsing pounds or inches in an equation that needs kilograms and centimetres\nConfusing BMR with the calories you use in a whole day, which is higher\nChoosing a calorie target below BMR without medical advice"
+        ],
+        [
+          "paragraph",
+          "Enter your age, height and weight in the BMR Calculator, choose an equation, and read the result in kcal and kJ with a How this is calculated panel."
+        ]
+      ],
+      "sources": [
+        {
+          "title": "Basal metabolic rate, Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Basal_metabolic_rate"
+        },
+        {
+          "title": "Understanding calories, NHS",
+          "url": "https://www.nhs.uk/live-well/healthy-weight/managing-your-weight/understanding-calories/"
+        }
+      ],
+      "checkedOn": "2026-11-09"
+    },
+    {
+      "title": "How Many Calories Do You Need? Maintenance and Goals",
+      "category": "How-To",
+      "excerpt": "How to estimate the calories you use in a day from your BMR and activity level, what a daily change does to weight, why a target below your BMR is a warning, and a worked example.",
+      "tags": [
+        "calories",
+        "tdee",
+        "diet"
+      ],
+      "blocks": [
+        [
+          "paragraph",
+          "To stay at the same weight, the calories you take in from food and drink have to match the calories your body uses. The NHS puts it simply: if you eat and drink more calories than you use, you are likely to put on weight, because the body stores the extra energy as fat, and if you eat fewer, you are likely to lose weight, because the body uses its stored fat. This guide shows how to estimate your daily need, what a change of a few hundred calories does, and where the estimate can mislead. The Calorie Calculator does the sums and shows each step."
+        ],
+        [
+          "heading",
+          "Step 1: your basal metabolic rate"
+        ],
+        [
+          "paragraph",
+          "Start with the energy your body uses at rest, the BMR. The calculator uses the Mifflin–St Jeor equation: 10 × weight (kg) + 6.25 × height (cm) − 5 × age + 5 for men or − 161 for women. For a 30-year-old man, 80 kg and 180 cm, BMR is 1,780 kcal a day."
+        ],
+        [
+          "heading",
+          "Step 2: your activity level"
+        ],
+        [
+          "paragraph",
+          "On top of rest, you use energy moving about. The physical activity level, or PAL, is total daily energy use divided by BMR. Published ranges include 1.40 to 1.69 for a sedentary person such as an office worker getting little or no exercise, 1.70 to 1.99 for a moderately active person such as a construction worker or someone running for an hour a day, and 2.00 to 2.40 for a vigorously active person such as a farm worker on foot or someone swimming two hours a day. The calculator uses the middle of each range: 1.55, 1.85 and 2.2."
+        ],
+        [
+          "heading",
+          "Step 3: the maintenance calories"
+        ],
+        [
+          "paragraph",
+          "Maintenance = BMR × PAL. For the example man, a sedentary level gives 1,780 × 1.55 = 2,759 kcal a day. At the moderately active level it is 3,293 kcal, and at the vigorously active level 3,916 kcal. The NHS gives general guides of 2,500 kcal a day for an average man and 2,000 for an average woman, and says your own figure depends on your age, weight, height and how much exercise you do."
+        ],
+        [
+          "heading",
+          "Step 4: adding a goal"
+        ],
+        [
+          "paragraph",
+          "The calculator lets you try eating 250, 500 or 750 fewer calories a day, or 250 or 500 more. A commonly used rule of thumb is that a kilogram of body weight holds roughly 7,700 kcal, so 500 fewer calories a day is about 3,500 fewer a week, or around 0.45 kg a week. It is only a rough guide, because the body adjusts as weight changes. For the example man, 500 fewer calories gives a target of 2,259 kcal a day."
+        ],
+        [
+          "callout",
+          "If a target comes out below your BMR, the calculator warns you. Eating less than your body needs at rest is not usually advised without medical supervision, so speak to a doctor or a registered dietitian first."
+        ],
+        [
+          "heading",
+          "Where the estimate can be wrong"
+        ],
+        [
+          "list",
+          "The activity level is a middle value from a range, and real life is more varied\nEquations are population averages, so your own needs can differ\nThe 7,700 kcal rule is approximate and the body adapts over weeks\nThe tool does not know about medical conditions, medicines, pregnancy or breastfeeding, all of which change energy needs"
+        ],
+        [
+          "callout",
+          "This guide is general information, not medical advice. Speak to a doctor or a registered dietitian about your own health."
+        ],
+        [
+          "heading",
+          "Common mistakes"
+        ],
+        [
+          "list",
+          "Choosing a higher activity level than your usual week\nExpecting a calorie change to produce the same weight change every week\nCounting only exercise and forgetting that BMR is most of the total\nFollowing a very low target without advice"
+        ],
+        [
+          "paragraph",
+          "In the Calorie Calculator, enter your age, sex, height and weight, choose your activity level and a daily change, and read the target, the maintenance figure, your BMR and the rough weekly change, with the steps in a panel."
+        ]
+      ],
+      "sources": [
+        {
+          "title": "Understanding calories, NHS",
+          "url": "https://www.nhs.uk/live-well/healthy-weight/managing-your-weight/understanding-calories/"
+        },
+        {
+          "title": "Physical activity level, Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Physical_activity_level"
+        },
+        {
+          "title": "Basal metabolic rate, Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Basal_metabolic_rate"
+        }
+      ],
+      "checkedOn": "2026-11-09"
+    },
+    {
+      "title": "How to Estimate Body Fat With a Tape Measure",
+      "category": "How-To",
+      "excerpt": "How the US Navy circumference method estimates body fat from height, neck, waist and hip measurements, how to measure, what fat mass and lean mass mean, and the limits of the method.",
+      "tags": [
+        "body fat",
+        "fitness",
+        "measurements"
+      ],
+      "blocks": [
+        [
+          "paragraph",
+          "Body fat percentage is the share of your body mass that is fat. Body fat includes essential fat, which the body needs to work and, for women, to support childbearing, and storage fat. You do not need special equipment for a rough estimate: a tape measure is enough for the US Navy circumference method. This guide explains how the method works, how to take the measurements, and what the answer means. The Body Fat Calculator does the sums and shows the steps."
+        ],
+        [
+          "heading",
+          "How the method works"
+        ],
+        [
+          "paragraph",
+          "The US Navy method uses the logarithms of a few body measurements to estimate body density, and then turns density into a body fat percentage. For men it uses height, neck and waist; for women it also uses the hip. The coefficients come from a published study and are shown in the calculator's How this is calculated panel. Wikipedia notes that methods like this one actually estimate body density and then apply a second formula to get body fat, so they carry the error of two statistical models and are inferior to a direct measurement of body density."
+        ],
+        [
+          "heading",
+          "How to measure"
+        ],
+        [
+          "list",
+          "Neck: just below the larynx (Adam's apple), with the tape sloping slightly down at the front\nWaist for men: at the navel level\nWaist for women: at the narrowest point\nHip for women: at the widest point of the buttocks\nKeep the tape snug but not squeezing the skin, stand relaxed, and take each measurement twice"
+        ],
+        [
+          "paragraph",
+          "Measure in the same places, in the same way, at the same time of day, so that changes between measurements mean something."
+        ],
+        [
+          "heading",
+          "A worked example"
+        ],
+        [
+          "paragraph",
+          "A man 180 cm tall weighs 80 kg, with a neck of 38 cm and a waist of 90 cm. The waist minus the neck is 52 cm. The equation gives a body density of about 1.0536 and a body fat of about 19.8%. His fat mass is 80 × 19.8 ÷ 100 = about 15.8 kg, and his lean mass is the rest, about 64.2 kg. For a woman 165 cm tall weighing 60 kg with a neck of 33 cm, a waist of 75 cm and hips of 95 cm, waist plus hip minus neck is 137 cm and the estimate is about 26.9%, or 16.2 kg of fat."
+        ],
+        [
+          "heading",
+          "What it can and cannot tell you"
+        ],
+        [
+          "paragraph",
+          "The number is an estimate, and the error can be several percentage points. It is most useful for watching your own trend over weeks and months, measured the same way each time. It does not say whether a given percentage is healthy for you, because healthy ranges depend on age, sex and activity, and some formulas based on BMI alone have been found unreliable for adults. The NHS also suggests a simple check on abdominal fat: keeping your waist to less than half your height."
+        ],
+        [
+          "callout",
+          "This guide is general information, not medical advice. Speak to a doctor or a registered dietitian about your own health."
+        ],
+        [
+          "heading",
+          "Tracking changes over time"
+        ],
+        [
+          "paragraph",
+          "The best use of a tape-measure estimate is to follow your own trend. Measure on the same day each month, in the same places, at the same time of day, and enter the numbers into the calculator each time. If your waist falls while your weight stays about the same, the estimate will fall too, which suggests you are losing fat and keeping lean tissue. If your waist and weight both rise, the estimate will rise. A change of one or two percentage points between two measurements is within the error of the method, so look at the direction over several months, not at any single result."
+        ],
+        [
+          "heading",
+          "Common mistakes"
+        ],
+        [
+          "list",
+          "Measuring in different places each time\nPulling the tape tight or letting it sag\nMixing inches and centimetres\nTreating the percentage as precise or comparing it with a different method's result"
+        ],
+        [
+          "paragraph",
+          "Enter your units, sex, height, weight, neck and waist, and hip for women. The calculator shows the estimated percentage, the fat mass and the lean mass, with the steps. If the measurements give an unrealistic result, it asks you to check them."
+        ]
+      ],
+      "sources": [
+        {
+          "title": "Body fat percentage, Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Body_fat_percentage"
+        },
+        {
+          "title": "Obesity, NHS",
+          "url": "https://www.nhs.uk/conditions/obesity/"
+        }
+      ],
+      "checkedOn": "2026-11-09"
+    },
+    {
+      "title": "How to Estimate Ideal Body Weight: Devine and Hamwi Formulas",
+      "category": "How-To",
+      "excerpt": "How the Devine and Hamwi formulas estimate ideal body weight from height and sex, worked examples, how the BMI range compares, and why muscle and body fat change the picture.",
+      "tags": [
+        "ideal weight",
+        "height",
+        "health"
+      ],
+      "blocks": [
+        [
+          "paragraph",
+          "Ideal body weight formulas give a weight that is expected to suit a person of a given height and sex. They are simple to use and still often quoted. This guide shows the Devine and Hamwi formulas, compares them with the BMI range, and explains why they should be treated as rough estimates. The Ideal Weight Calculator does the sums and shows the steps."
+        ],
+        [
+          "heading",
+          "The Devine formula"
+        ],
+        [
+          "paragraph",
+          "The most common estimate of ideal body weight is the Devine formula. For men, ideal weight = 50 kg + 0.9 kg × (height in cm − 152). For women it is 45.5 kg + 0.9 kg × (height in cm − 152). The 152 cm is 5 feet. For a man 175 cm tall, that is 50 + 0.9 × 23 = 70.7 kg. For a woman 165 cm tall, it is 45.5 + 0.9 × 13 = 57.2 kg."
+        ],
+        [
+          "heading",
+          "The Hamwi method"
+        ],
+        [
+          "paragraph",
+          "The Hamwi method uses a similar idea with different numbers. For men, ideal weight = 48 kg + 1.1 kg × (height in cm − 152), and for women, 45.4 kg + 0.9 kg × (height in cm − 152). The man at 175 cm gets 48 + 1.1 × 23 = 73.3 kg, and the woman at 165 cm gets 45.4 + 0.9 × 13 = 57.1 kg. The different formulas give similar results for most heights, which is why they are often treated as interchangeable."
+        ],
+        [
+          "heading",
+          "The BMI range for your height"
+        ],
+        [
+          "paragraph",
+          "Another way to find a weight for your height is the BMI range. A body mass index of 18.5 to 24.9 is the normal range for most adults, so you can multiply the height in metres squared by those two numbers. At 175 cm, that is 56.7 kg to 76.3 kg, and at 165 cm, 50.4 kg to 67.8 kg. The Devine and Hamwi figures for the same people fall inside those ranges. A range is more honest than a single number, since healthy bodies come in many sizes."
+        ],
+        [
+          "heading",
+          "What the formulas leave out"
+        ],
+        [
+          "list",
+          "Muscle and fat: Wikipedia points out that ideal body weight does not show your fat or muscle percentage, so athletes may appear overweight when they are actually very fit and healthy\nFrame size, age and ethnic background, which affect where a healthy weight sits\nHeight below 5 feet, where the formulas were not designed to apply\nThe fact that a healthy weight depends on health, not only on a number"
+        ],
+        [
+          "paragraph",
+          "The NHS notes that people from some backgrounds are at risk of health problems at a slightly lower BMI, so a single ideal weight may not suit everyone."
+        ],
+        [
+          "callout",
+          "This guide is general information, not medical advice. Speak to a doctor or a registered dietitian about your own health."
+        ],
+        [
+          "heading",
+          "Reading the three numbers together"
+        ],
+        [
+          "paragraph",
+          "For a man of 175 cm the three estimates are 70.7 kg (Devine), 73.3 kg (Hamwi) and a BMI range of 56.7 to 76.3 kg. They overlap, and a weight anywhere in that band is in the normal BMI range. For a woman of 165 cm the figures are 57.2 kg, 57.1 kg and 50.4 to 67.8 kg. So the single-number formulas sit near the middle of the BMI range, and the range is wide. If you are inside it, a difference of a few kilograms from either formula says very little. If you are well outside it, the better step is to talk to a doctor, not to aim for a formula figure."
+        ],
+        [
+          "heading",
+          "Common mistakes"
+        ],
+        [
+          "list",
+          "Treating an ideal weight as a target everyone must reach\nUsing the formula for a child or in pregnancy\nIgnoring muscle: a very muscular person can be heavier than the figure and healthy\nMixing inches and centimetres"
+        ],
+        [
+          "paragraph",
+          "Enter your sex and height in the calculator. It shows the Devine and Hamwi weights and the BMI range, in kilograms or pounds, with the steps in a panel."
+        ]
+      ],
+      "sources": [
+        {
+          "title": "Human body weight (ideal body weight), Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Ideal_body_weight"
+        },
+        {
+          "title": "Obesity, NHS",
+          "url": "https://www.nhs.uk/conditions/obesity/"
+        }
+      ],
+      "checkedOn": "2026-11-09"
+    },
+    {
+      "title": "How Your Due Date Is Worked Out: LMP and Conception",
+      "category": "How-To",
+      "excerpt": "How a due date is estimated from the first day of the last period, how a longer or shorter cycle changes it, how to count from a conception date, and what the date really means.",
+      "tags": [
+        "due date",
+        "pregnancy",
+        "dates"
+      ],
+      "blocks": [
+        [
+          "paragraph",
+          "A due date is an estimate of when a baby is expected. The usual method counts 40 weeks, or 280 days, from the first day of the last menstrual period. Childbirth on average occurs at a gestational age of 280 days, which is why it is the standard figure. This guide shows the sums, including for a longer cycle and from a conception date, and explains how to read the result. The Due Date Calculator works it out and shows the steps."
+        ],
+        [
+          "heading",
+          "From the first day of your last period"
+        ],
+        [
+          "paragraph",
+          "Gestational age, the age of a pregnancy, is counted from the first day of the last menstrual period, not from conception. The due date is that day plus 280 days. Naegele's rule is the same thing in calendar terms: add a year, subtract three months and add seven days. For a last period that began on 1 January 2026, adding 280 days gives Thursday 8 October 2026."
+        ],
+        [
+          "heading",
+          "A longer or shorter cycle"
+        ],
+        [
+          "paragraph",
+          "The 280-day count assumes a menstrual cycle of 28 days. The NHS notes that your cycle may not be exactly 28 days and suggests adjusting the cycle length in its calculator. A common way to adjust is to add or take off the difference. With a 35-day cycle, the due date for the same example moves 7 days later, to 15 October 2026. With a 26-day cycle it moves 2 days earlier, to 6 October."
+        ],
+        [
+          "heading",
+          "From the date of conception"
+        ],
+        [
+          "paragraph",
+          "Conception happens about 14 days after the start of the last period in a 28-day cycle, and gestational age is estimated by adding 14 days to the time since fertilization. So from a known conception date, the due date is 266 days later: 280 days less the 14. If conception was on 15 January 2026, the due date is 8 October 2026, the same as in the first example."
+        ],
+        [
+          "heading",
+          "Key dates along the way"
+        ],
+        [
+          "paragraph",
+          "From the first day of the last period, 14 weeks is 9 April 2026, 20 weeks is 21 May, 28 weeks is 16 July, 37 weeks is 17 September and 42 weeks is 22 October. The NHS says that pregnancy normally lasts from 37 weeks to 42 weeks from the first day of the last period, and the calculator lists these dates so you can see the range. Your midwife will also offer you a scan at around 12 weeks as part of antenatal care, which can refine the estimate."
+        ],
+        [
+          "heading",
+          "What a due date really means"
+        ],
+        [
+          "paragraph",
+          "A due date is a guide, not a deadline. Normal pregnancies last between 38 and 42 weeks, and children are delivered on their expected due date about 4% of the time. The NHS says that the 12-week scan can more accurately estimate how many weeks pregnant you are, so the date your own care team gives you is the one to use."
+        ],
+        [
+          "callout",
+          "This guide is general information, not medical advice. Speak to a doctor or a registered dietitian about your own health."
+        ],
+        [
+          "heading",
+          "When the dates do not agree"
+        ],
+        [
+          "paragraph",
+          "It is common for the date from the last period and the date from a scan to differ by a few days. Wikipedia notes that alternative durations and more individualised methods have been suggested, because the 280-day figure is an average, not a rule for every pregnancy. If your midwife or doctor gives you a different date from the calculator, use theirs: it is based on more information. You can still use the calculator to see how the dates were reached, for example what a longer cycle does to the count."
+        ],
+        [
+          "heading",
+          "Common mistakes"
+        ],
+        [
+          "list",
+          "Counting from the day of conception instead of the first day of the last period\nIgnoring a longer or shorter cycle\nTreating the due date as a precise day\nUsing the date of the end of the period instead of the first day"
+        ],
+        [
+          "paragraph",
+          "In the calculator, choose to work from the last period or the conception date, enter the date and the cycle length, and read the due date, the weekday, the estimated conception date and the milestones."
+        ]
+      ],
+      "sources": [
+        {
+          "title": "Pregnancy due date calculator, NHS",
+          "url": "https://www.nhs.uk/pregnancy/finding-out/due-date-calculator/"
+        },
+        {
+          "title": "Estimated date of delivery, Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Estimated_date_of_delivery"
+        },
+        {
+          "title": "Gestational age, Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Gestational_age"
+        }
+      ],
+      "checkedOn": "2026-11-09"
+    },
+    {
+      "title": "How Many Weeks Pregnant Am I? Weeks, Days and Trimesters",
+      "category": "How-To",
+      "excerpt": "How gestational age is counted in weeks and days, how to find how far along you are from your last period or due date, how the trimesters are defined, and a worked example.",
+      "tags": [
+        "pregnancy",
+        "weeks",
+        "trimesters"
+      ],
+      "blocks": [
+        [
+          "paragraph",
+          "Pregnancy is described in weeks and days, such as 10 weeks and 0 days, and the count starts from the first day of the last menstrual period, not from the day of conception. This guide shows how to work out how far along you are, how the three trimesters are defined, and why different sources give slightly different boundaries. The Pregnancy Calculator does the counting from a date you enter and shows the steps."
+        ],
+        [
+          "heading",
+          "How the weeks are counted"
+        ],
+        [
+          "paragraph",
+          "Gestational age is the age of a pregnancy counted from the beginning of the last menstrual period, or the equivalent date worked out by a more accurate method if one is available. A pregnancy at childbirth is about 280 days, or 40 weeks. To find the weeks, take the number of days since the start and divide by 7: the whole number is the weeks and the remainder is the days."
+        ],
+        [
+          "heading",
+          "A worked example"
+        ],
+        [
+          "paragraph",
+          "Suppose the first day of the last period was 1 January 2026 and today is 12 March 2026. The days between the two dates are 70. Divided by 7 that is exactly 10 weeks and 0 days. The estimated due date is 280 days after 1 January, which is 8 October 2026, and there are 210 days to go. The progress is 70 ÷ 280, which is 25% of the 40 weeks."
+        ],
+        [
+          "heading",
+          "If you know the due date instead"
+        ],
+        [
+          "paragraph",
+          "If you only have an estimated due date, for example from a scan, the start of the pregnancy is 280 days earlier. A due date of 8 October 2026 puts the start at 1 January 2026, so the weeks work out the same. The calculator accepts either date."
+        ],
+        [
+          "heading",
+          "The trimesters"
+        ],
+        [
+          "paragraph",
+          "Pregnancy is divided into three trimesters, each lasting about three months, but the exact boundaries vary between sources. The first trimester ends at the end of week 12 (11 weeks and 6 days) in some definitions, or at the end of week 14 (13 weeks and 6 days) in others. The second ends at 26 weeks 6 days or at 27 weeks 6 days, and the third begins around 27 or 28 weeks. The calculator uses one common convention, which is stated on the page: the first trimester runs to 13 weeks 6 days, the second to 27 weeks 6 days and the third from 28 weeks. Your own care team may use a different one."
+        ],
+        [
+          "heading",
+          "Using the milestone dates"
+        ],
+        [
+          "paragraph",
+          "The calculator also lists the dates on which you reach 14 weeks, 20 weeks, 28 weeks, 37 weeks and 42 weeks, counted from the same start. These are handy for planning: for a start of 1 January 2026 they are 9 April, 21 May, 16 July, 17 September and 22 October 2026. The 20-week date is the halfway point, and the 37 to 42-week dates mark the range the NHS describes as the normal length of pregnancy. Appointments and scans are arranged by your care team, so treat these dates as a guide, not a schedule."
+        ],
+        [
+          "heading",
+          "Past the due date"
+        ],
+        [
+          "paragraph",
+          "Normal pregnancies last between 38 and 42 weeks, and the NHS says pregnancy normally lasts from 37 weeks to 42 weeks from the first day of the last period. If the date you choose is after the estimated due date, the calculator shows how many days past it you are, and if it is more than 43 weeks after the start it asks you to check your dates."
+        ],
+        [
+          "callout",
+          "This guide is general information, not medical advice. Speak to a doctor or a registered dietitian about your own health."
+        ],
+        [
+          "heading",
+          "Common mistakes"
+        ],
+        [
+          "list",
+          "Counting from conception instead of the last period\nForgetting to adjust for a longer or shorter cycle\nExpecting every source to agree on the trimester dates\nTreating the estimated due date as exact"
+        ],
+        [
+          "paragraph",
+          "Enter the first day of the last period or the due date, the cycle length, and the date to count to, which is today unless you change it. The calculator shows the weeks and days, the trimester, the due date, the days to go, the progress and key milestone dates."
+        ]
+      ],
+      "sources": [
+        {
+          "title": "Pregnancy due date calculator, NHS",
+          "url": "https://www.nhs.uk/pregnancy/finding-out/due-date-calculator/"
+        },
+        {
+          "title": "Pregnancy, Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Pregnancy"
+        },
+        {
+          "title": "Gestational age, Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Gestational_age"
+        }
+      ],
+      "checkedOn": "2026-11-09"
+    },
+    {
+      "title": "How to Estimate Your Conception Date From a Due Date",
+      "category": "How-To",
+      "excerpt": "How the conception date is estimated from a due date or the last period, why ovulation timing changes the answer, worked examples, and why the date is only approximate.",
+      "tags": [
+        "conception",
+        "pregnancy",
+        "dates"
+      ],
+      "blocks": [
+        [
+          "paragraph",
+          "Many people want to know roughly when conception happened, either out of curiosity or to check dates against a scan. The date can be estimated from the due date or from the first day of the last period, but it is only approximate. This guide shows the two sums, explains what a longer cycle does, and explains why the answer can be several days out. The Pregnancy Conception Calculator does the sums and shows the steps."
+        ],
+        [
+          "heading",
+          "From a due date"
+        ],
+        [
+          "paragraph",
+          "A due date is 280 days from the first day of the last period, and gestational age is estimated by adding 14 days to the time since fertilization. So conception is estimated to be 266 days before the due date. For a due date of 8 October 2026, subtracting 266 days gives 15 January 2026. Subtracting 280 days gives 1 January 2026, the estimated first day of the last period."
+        ],
+        [
+          "heading",
+          "From the first day of the last period"
+        ],
+        [
+          "paragraph",
+          "Ovulation, when an egg is released, usually happens about 14 days before the next period would start. In a 28-day cycle, that is 14 days after the first day of the last period, so conception is about 14 days later: 15 January 2026 for a period starting on 1 January. In a 35-day cycle, ovulation is later, 21 days after the period started, which is 22 January 2026. The calculator uses cycle length minus 14 days."
+        ],
+        [
+          "heading",
+          "Why the answer is only approximate"
+        ],
+        [
+          "paragraph",
+          "The calculator says so on the page and shows the working, so you can see the assumption that each date rests on."
+        ],
+        [
+          "heading",
+          "Working back from a scan date"
+        ],
+        [
+          "paragraph",
+          "If a scan has given a different due date from the one you expected, enter the scan's date in the calculator. Suppose the scan says 8 October 2026: the calculator gives 15 January 2026 for conception and 1 January for the start of the last period. If you expected a period that began on 8 January, the calculator's version of the dates is one week earlier. That difference is normal between a last-period estimate and an ultrasound estimate, and a midwife can explain which one your care uses. The NHS says the 12-week scan can more accurately estimate how many weeks pregnant you are."
+        ],
+        [
+          "heading",
+          "A longer cycle, step by step"
+        ],
+        [
+          "paragraph",
+          "Take a period that began on 1 January 2026 in a 35-day cycle. Ovulation is estimated at 35 − 14 = 21 days after the period began, which is 22 January 2026, so conception is estimated for about that date. Adding 266 days to 22 January gives 15 October 2026, which matches the due date you get by adding 280 days to 1 January and then 7 days for the longer cycle. Both routes agree, which is a useful check: if the dates from the two methods differ in your own numbers, one of the inputs has probably been entered wrongly."
+        ],
+        [
+          "heading",
+          "What the dates are good for"
+        ],
+        [
+          "paragraph",
+          "The estimate is useful for a rough picture of how the pregnancy is progressing, for matching dates with a scan, or for talking with a midwife. It is not suitable for deciding legal questions or anything that depends on a precise date. For those, speak to a doctor or the clinic that holds your records."
+        ],
+        [
+          "callout",
+          "This guide is general information, not medical advice. Speak to a doctor or a registered dietitian about your own health."
+        ],
+        [
+          "heading",
+          "Common mistakes"
+        ],
+        [
+          "list",
+          "Treating the estimated conception date as exact\nUsing a 28-day cycle when the cycle is much longer or shorter\nMixing up the first day of the last period with the last day\nConfusing the conception date with the date gestational age starts from, which is about two weeks earlier"
+        ],
+        [
+          "paragraph",
+          "In the calculator, choose whether you know the due date or the first day of the last period, enter the date and the cycle length if needed, and read the estimated conception date, the weekday, the start of the last period and the due date, with the steps."
+        ]
+      ],
+      "sources": [
+        {
+          "title": "Gestational age, Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Gestational_age"
+        },
+        {
+          "title": "Estimated date of delivery, Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Estimated_date_of_delivery"
+        },
+        {
+          "title": "Pregnancy due date calculator, NHS",
+          "url": "https://www.nhs.uk/pregnancy/finding-out/due-date-calculator/"
+        }
+      ],
+      "checkedOn": "2026-11-09"
+    }
+  ]
+}

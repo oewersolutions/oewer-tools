@@ -134,6 +134,30 @@ test("the pace, time, hours and date calculators send nothing while you type", a
   }
 });
 
+test("the health and pregnancy calculators send nothing while you type", async ({ page }) => {
+  for (const [path, label] of [
+    ["/tools/health-fitness/bmi-calculator/", "Weight (kg)"],
+    ["/tools/health-fitness/bmr-calculator/", "Weight (kg)"],
+    ["/tools/health-fitness/calorie-calculator/", "Weight (kg)"],
+    ["/tools/health-fitness/body-fat-calculator/", "Waist (cm)"],
+    ["/tools/health-fitness/ideal-weight-calculator/", "Height (cm)"],
+    ["/tools/health-fitness/due-date-calculator/", "Cycle length (days)"],
+    ["/tools/health-fitness/pregnancy-calculator/", "Cycle length (days)"],
+    ["/tools/health-fitness/pregnancy-conception-calculator/", "Estimated due date"],
+  ] as const) {
+    test.skip(!published.has(path), "tool is not published");
+    await open(page, path);
+    const requests = await requestsDuring(
+      page,
+      async () => {
+        await page.getByLabel(label, { exact: true }).fill(label.startsWith("Estimated") ? "2026-10-08" : "4242");
+      },
+      label.startsWith("Estimated") ? "2026-10-08" : "4242",
+    );
+    expect(requests).toEqual([]);
+  }
+});
+
 test("the salary, sales tax and income tax calculators send nothing while you type", async ({ page }) => {
   for (const [path, label] of [
     ["/tools/finance-calculators/salary-calculator/", "Pay (₹)"],

@@ -51,6 +51,14 @@ import InterestCalculator from "./InterestCalculator";
 import SalaryCalculator from "./SalaryCalculator";
 import SalesTaxCalculator from "./SalesTaxCalculator";
 import IncomeTaxCalculator from "./IncomeTaxCalculator";
+import BmiCalculator from "./BmiCalculator";
+import BmrCalculator from "./BmrCalculator";
+import CalorieCalculator from "./CalorieCalculator";
+import BodyFatCalculator from "./BodyFatCalculator";
+import IdealWeightCalculator from "./IdealWeightCalculator";
+import DueDateCalculator from "./DueDateCalculator";
+import PregnancyCalculator from "./PregnancyCalculator";
+import ConceptionCalculator from "./ConceptionCalculator";
 import type { ToolComponentKey } from "../../lib/tools/keys";
 
 /**
@@ -111,6 +119,14 @@ export const toolComponents: { [K in ToolComponentKey]: ComponentType } = {
   "salary-calculator": SalaryCalculator,
   "sales-tax-calculator": SalesTaxCalculator,
   "income-tax-calculator": IncomeTaxCalculator,
+  "bmi-calculator": BmiCalculator,
+  "bmr-calculator": BmrCalculator,
+  "calorie-calculator": CalorieCalculator,
+  "body-fat-calculator": BodyFatCalculator,
+  "ideal-weight-calculator": IdealWeightCalculator,
+  "due-date-calculator": DueDateCalculator,
+  "pregnancy-calculator": PregnancyCalculator,
+  "conception-calculator": ConceptionCalculator,
 };
 
 export function getToolComponent(key: string): ComponentType {

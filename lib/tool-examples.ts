@@ -64,6 +64,22 @@ export function toolExample(componentKey: string): ToolExample | null {
       const r = evaluateMotion({ solve: "speed", distance: "150", distanceUnit: "km", speed: "", speedUnit: "kmh", hours: "2", minutes: "30", seconds: "" }).result!;
       return { note: "150 km in 2 h 30 min", value: `${formatQuantity(r.mps * 3.6)} km/h` };
     }
+    case "bmi-calculator":
+      return { note: "70 kg at 175 cm", value: "BMI 22.9" };
+    case "bmr-calculator":
+      return { note: "Calories your body uses at rest", value: "Your BMR" };
+    case "calorie-calculator":
+      return { note: "From your BMR and activity level", value: "Daily calories" };
+    case "body-fat-calculator":
+      return { note: "From tape measurements", value: "Body fat %" };
+    case "ideal-weight-calculator":
+      return { note: "Devine, Hamwi and the BMI range", value: "By height" };
+    case "due-date-calculator":
+      return { note: "From the last period or conception", value: "Due date" };
+    case "pregnancy-calculator":
+      return { note: "Weeks, days and trimester", value: "Weeks and days" };
+    case "conception-calculator":
+      return { note: "From a due date or the last period", value: "Conception date" };
     case "salary-calculator":
       return { note: "₹6,00,000 a year, 40 hours a week", value: `${rupees(600_000 / 52 / 40)} an hour` };
     case "sales-tax-calculator":

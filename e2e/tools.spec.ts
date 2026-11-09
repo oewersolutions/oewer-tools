@@ -35,6 +35,14 @@ const INTEREST = "/tools/finance-calculators/interest-calculator/";
 const SALARY = "/tools/finance-calculators/salary-calculator/";
 const SALESTAX = "/tools/finance-calculators/sales-tax-calculator/";
 const INCOMETAX = "/tools/finance-calculators/income-tax-calculator/";
+const BMI = "/tools/health-fitness/bmi-calculator/";
+const BMR = "/tools/health-fitness/bmr-calculator/";
+const CALORIES = "/tools/health-fitness/calorie-calculator/";
+const BODYFAT = "/tools/health-fitness/body-fat-calculator/";
+const IDEAL = "/tools/health-fitness/ideal-weight-calculator/";
+const DUEDATE = "/tools/health-fitness/due-date-calculator/";
+const PREGNANCY = "/tools/health-fitness/pregnancy-calculator/";
+const CONCEPTION = "/tools/health-fitness/pregnancy-conception-calculator/";
 const PASSWORD = "/tools/utilities/password-generator/";
 const BASE64 = "/tools/developer-tools/base64-encoder-decoder/";
 const URLTOOL = "/tools/developer-tools/url-encoder-decoder/";
@@ -207,6 +215,141 @@ test("age and days between show their working", async ({ page }) => {
   await page.getByLabel("Start date").fill("2026-01-01");
   await page.getByLabel("End date", { exact: true }).fill("2026-01-31");
   await expect(page.locator("[data-workings]")).toContainText("Days between = ");
+});
+
+test("BMI calculator gives the BMI, the category and the weight range, in both units", async ({ page }) => {
+  test.skip(!published.has(BMI), "BMI calculator is not published");
+  await page.goto(BMI);
+  const result = page.getByRole("status");
+  await expect(result).toContainText("22.9");
+  await expect(result).toContainText("Normal weight");
+  await expect(result).toContainText("56.7 kg to 76.3 kg");
+  await expect(page.locator("[data-workings]")).toContainText("BMI = weight (kg) ÷ height (m)²");
+  await expect(result).toContainText("not medical advice");
+  await page.getByLabel("Weight (kg)").fill("85");
+  await expect(result).toContainText("Overweight");
+  await expect(result).toContainText("8.7 kg");
+  await page.getByLabel("Categories").selectOption("asian");
+  await expect(result).toContainText("Obese");
+  await page.getByLabel("Units").selectOption("imperial");
+  await page.getByLabel("Height (feet)").fill("5");
+  await page.getByLabel("Height (inches)").fill("9");
+  await page.getByLabel("Weight (lb)").fill("154");
+  await expect(result).toContainText("22.7");
+  await page.getByLabel("Age (years)").fill("12");
+  await expect(page.locator("[data-workings]")).toContainText("do not apply under 18");
+});
+
+test("BMR calculator uses either equation and shows kilojoules", async ({ page }) => {
+  test.skip(!published.has(BMR), "BMR calculator is not published");
+  await page.goto(BMR);
+  const result = page.getByRole("status");
+  await expect(result).toContainText("1,649 kcal a day");
+  await page.getByLabel("Weight (kg)").fill("80");
+  await page.getByLabel("Height (cm)").fill("180");
+  await expect(result).toContainText("1,780 kcal a day");
+  await expect(result).toContainText("7,448 kJ");
+  await page.getByLabel("Equation").selectOption("harris");
+  await expect(result).toContainText("1,854 kcal a day");
+  await expect(page.locator("[data-workings]")).toContainText("88.362");
+  await page.getByLabel("Age (years)").fill("");
+  await expect(result).toContainText("Enter your age");
+});
+
+test("calorie calculator gives maintenance, a target and a warning below the BMR", async ({ page }) => {
+  test.skip(!published.has(CALORIES), "Calorie calculator is not published");
+  await page.goto(CALORIES);
+  const result = page.getByRole("status");
+  await expect(result).toContainText("2,556 kcal a day"); // 1,649 × 1.55
+  await page.getByLabel("Change from maintenance").selectOption("-500");
+  await expect(result).toContainText("2,056 kcal a day");
+  await expect(result).toContainText("0.45 kg a week lost");
+  await expect(page.locator("[data-workings]")).toContainText("7,700 kcal per kg");
+  await page.getByLabel("Activity level").selectOption("vigorous");
+  await expect(result).toContainText("3,627 kcal"); // 1,649 × 2.2 = 3,627 maintenance
+  await page.getByLabel("Activity level").selectOption("sedentary");
+  await page.getByLabel("Change from maintenance").selectOption("-750");
+  await expect(result).toContainText("1,806 kcal a day");
+  await expect(result).not.toContainText("Below your BMR");
+});
+
+test("body fat calculator estimates with the Navy method and asks women for the hip", async ({ page }) => {
+  test.skip(!published.has(BODYFAT), "Body fat calculator is not published");
+  await page.goto(BODYFAT);
+  const result = page.getByRole("status");
+  await expect(page.getByLabel("Hip (cm)")).toHaveCount(0);
+  await expect(result).toContainText("19.8%");
+  await expect(result).toContainText("15.8 kg");
+  await expect(page.locator("[data-workings]")).toContainText("Waist − neck = 52 cm");
+  await page.getByLabel("Neck (cm)").fill("95"); // bigger than the waist
+  await expect(page.getByText(/Waist must be more than the neck/)).toBeVisible();
+  await page.getByLabel("Neck (cm)").fill("38");
+  await page.getByLabel("Sex").selectOption("female");
+  await page.getByLabel("Hip (cm)").fill("95");
+  await expect(page.locator("[data-workings]")).toContainText("Waist + hip − neck");
+});
+
+test("ideal weight calculator shows the Devine, Hamwi and BMI range figures", async ({ page }) => {
+  test.skip(!published.has(IDEAL), "Ideal weight calculator is not published");
+  await page.goto(IDEAL);
+  const result = page.getByRole("status");
+  await expect(result).toContainText("70.7 kg");
+  await expect(result).toContainText("73.3 kg");
+  await expect(result).toContainText("56.7 kg to 76.3 kg");
+  await page.getByLabel("Sex").selectOption("female");
+  await page.getByLabel("Height (cm)").fill("165");
+  await expect(result).toContainText("57.2 kg");
+  await expect(page.locator("[data-workings]")).toContainText("Hamwi: 45.4 kg");
+});
+
+test("due date calculator works from the last period, the cycle length and conception", async ({ page }) => {
+  test.skip(!published.has(DUEDATE), "Due date calculator is not published");
+  await page.goto(DUEDATE);
+  const result = page.getByRole("status");
+  await page.getByLabel("First day of your last period").fill("2026-01-01");
+  await expect(result).toContainText("8 October 2026");
+  await expect(result).toContainText("Thursday");
+  await expect(result).toContainText("17 September 2026"); // 37 weeks
+  await expect(result).toContainText("not medical advice");
+  await page.getByLabel("Cycle length (days)").fill("35");
+  await expect(result).toContainText("15 October 2026");
+  await page.getByLabel("Work it out from").selectOption("conception");
+  await page.getByLabel("Date of conception").fill("2026-01-15");
+  await expect(result).toContainText("8 October 2026");
+  await page.getByLabel("Work it out from").selectOption("lmp");
+  await page.getByLabel("Cycle length (days)").fill("10");
+  await expect(page.getByText("Cycle length must be at least 20 days.")).toBeVisible();
+});
+
+test("pregnancy calculator gives the weeks, the trimester and the days to go", async ({ page }) => {
+  test.skip(!published.has(PREGNANCY), "Pregnancy calculator is not published");
+  await page.goto(PREGNANCY);
+  const result = page.getByRole("status");
+  await page.getByLabel("First day of your last period").fill("2026-01-01");
+  await page.getByLabel("How far along on").fill("2026-03-12");
+  await expect(result).toContainText("10 weeks 0 days");
+  await expect(result).toContainText("first trimester");
+  await expect(result).toContainText("210");
+  await expect(result).toContainText("25% of 40 weeks");
+  await expect(page.locator("[data-workings]")).toContainText("10 weeks and 0 days");
+  await page.getByLabel("How far along on").fill("2026-10-12");
+  await expect(result).toContainText("Days past the due date");
+  await page.getByLabel("How far along on").fill("2025-12-01");
+  await expect(page.getByText(/before the pregnancy started/)).toBeVisible();
+});
+
+test("pregnancy conception calculator works back from a due date and from the last period", async ({ page }) => {
+  test.skip(!published.has(CONCEPTION), "Pregnancy conception calculator is not published");
+  await page.goto(CONCEPTION);
+  const result = page.getByRole("status");
+  await page.getByLabel("Estimated due date").fill("2026-10-08");
+  await expect(result).toContainText("15 January 2026");
+  await expect(result).toContainText("1 January 2026");
+  await page.getByLabel("Work it out from").selectOption("lmp");
+  await page.getByLabel("First day of your last period").fill("2026-01-01");
+  await page.getByLabel("Cycle length (days)").fill("35");
+  await expect(result).toContainText("22 January 2026");
+  await expect(page.locator("[data-workings]")).toContainText("(35 − 14)");
 });
 
 test("salary calculator converts pay between every period", async ({ page }) => {
