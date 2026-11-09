@@ -16,6 +16,7 @@ const DISCOUNT = "/tools/finance-calculators/discount-calculator/";
 const AGE = "/tools/utilities/age-calculator/";
 const DAYS = "/tools/utilities/days-between-dates/";
 const UNITS = "/tools/utilities/unit-converter/";
+const MOTION = "/tools/utilities/speed-distance-time-calculator/";
 const PASSWORD = "/tools/utilities/password-generator/";
 const BASE64 = "/tools/developer-tools/base64-encoder-decoder/";
 const URLTOOL = "/tools/developer-tools/url-encoder-decoder/";
@@ -153,6 +154,31 @@ test("days between dates counts the gap and, on request, the end date", async ({
   await expect(page.getByRole("status")).toContainText("10");
   await page.getByLabel("Start date").fill("2026-12-31");
   await expect(page.getByRole("status")).toContainText("Counted from");
+});
+
+test("speed, distance and time finds each value and shows the equation with the working", async ({ page }) => {
+  test.skip(!published.has(MOTION), "Speed, distance and time calculator is not published");
+  await page.goto(MOTION);
+  await page.getByLabel("Distance", { exact: true }).fill("150");
+  await page.getByLabel("Hours").fill("2");
+  await page.getByLabel("Minutes").fill("30");
+  const result = page.getByRole("status");
+  await expect(result).toContainText("60 km/h");
+  const workings = page.locator("[data-workings]");
+  await expect(workings.getByRole("heading", { name: "How this is calculated" })).toBeVisible();
+  await expect(workings).toContainText("Speed = Distance ÷ Time");
+  await expect(workings).toContainText("1,50,000 m");
+  await page.getByLabel("Find").selectOption("distance");
+  await page.getByLabel("Speed", { exact: true }).fill("60");
+  await page.getByLabel("Speed unit").selectOption("mph");
+  await page.getByLabel("Show distance in").selectOption("mi");
+  await page.getByLabel("Hours").fill("");
+  await page.getByLabel("Minutes").fill("90");
+  await expect(result).toContainText("90 mi");
+  await expect(workings).toContainText("Distance = Speed × Time");
+  await page.getByLabel("Find").selectOption("time");
+  await page.getByLabel("Distance", { exact: true }).fill("0");
+  await expect(page.getByText("Distance must be greater than 0.")).toBeVisible();
 });
 
 test("unit converter shows a value in every unit of the chosen measure", async ({ page }) => {

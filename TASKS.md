@@ -110,3 +110,15 @@ T1.3b → T1.3a → T1.4 → T1.5 → T2.1/T2.2 → T3.1 + first calculator → 
 - [x] **T10.6** Word Trail with 14 daily puzzles (1 to 14 November 2026)
 - [x] **T10.7** Daily puzzle task (`daily-puzzles`, 06:30, `docs/daily-puzzles.md`), puzzle tools (`npm run puzzles:make`), and an admin dashboard warning when a game has fewer than 5 days ready
 - [x] **T10.8** Home page "Today's puzzles" section; the game tests now run on Chrome, mobile Chrome, Safari's engine and an iPhone profile (Firefox and real devices still to check)
+
+## Phase 11 — More calculators (plan: `docs/calculators-plan.md`)
+- [x] **T11.1** Shared "How this is calculated" panel (equation plus steps with the visitor's numbers) and the **Speed, Distance and Time** calculator
+- [ ] **T11.2** Show the equation and workings on the existing calculators (EMI, FD, GST, SIP, lumpsum, compound, simple, RD, discount, percentage, age, days between)
+- [ ] **T11.3** Batch A: Pace, Time, Hours and Date calculators
+- [ ] **T11.4** Batch B: Loan, Auto loan, Mortgage, Payment, Amortization, Interest rate
+- [ ] **T11.5** Batch C: Investment, Retirement, Inflation, Finance, Interest
+- [ ] **T11.6** Batch D: Salary, Sales tax, Income tax (decision needed on yearly updates)
+- [ ] **T11.7** Batch E: BMI, BMR, Calorie, Body fat, Ideal weight, Pregnancy, Conception
+- [ ] **T11.8** Batch F: Fraction, Random number, Triangle, Standard deviation, Scientific
+- [ ] **T11.9** Batch G: GPA, Grade, Concrete, Subnet
+

@@ -1,6 +1,8 @@
 import { calculateEmi, calculateFd, calculateGst } from "./tools/finance";
 import { calculateLumpsum, calculateSip } from "./tools/growth";
 import { calculateDiscount, calculateRd } from "./tools/deposits";
+import { evaluateMotion } from "./tools/motion";
+import { formatQuantity } from "./tools/units";
 import { calculateCompound, calculateSimple } from "./tools/interest";
 
 /** Whole rupees in the Indian number format, for the figures on cards. */
@@ -56,6 +58,10 @@ export function toolExample(componentKey: string): ToolExample | null {
       return { note: "Years, months and days", value: "Exact age" };
     case "days-between-dates":
       return { note: "With or without the end date", value: "Count days" };
+    case "speed-distance-time": {
+      const r = evaluateMotion({ solve: "speed", distance: "150", distanceUnit: "km", speed: "", speedUnit: "kmh", hours: "2", minutes: "30", seconds: "" }).result!;
+      return { note: "150 km in 2 h 30 min", value: `${formatQuantity(r.mps * 3.6)} km/h` };
+    }
     case "unit-converter":
       return { note: "Length, weight, temperature and more", value: "Every unit" };
     case "password-generator":

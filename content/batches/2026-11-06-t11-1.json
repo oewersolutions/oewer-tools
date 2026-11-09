@@ -1,0 +1,121 @@
+{
+  "date": "2026-11-06",
+  "articles": [
+    {
+      "title": "How to Calculate Speed, Distance and Time",
+      "category": "How-To",
+      "excerpt": "The three formulas that link speed, distance and time, with worked examples, unit conversions for km/h, m/s, mph and knots, and the mistakes that give wrong answers.",
+      "tags": [
+        "speed",
+        "distance",
+        "time",
+        "calculator"
+      ],
+      "blocks": [
+        [
+          "paragraph",
+          "Speed, distance and time are linked by one simple relationship, so if you know any two of them you can work out the third. This guide gives the three formulas, shows each with a worked example, explains how to convert between kilometres per hour, metres per second, miles per hour and knots, and lists the mistakes that most often give a wrong answer. You can check any of it with the Speed, Distance and Time calculator, which shows its working step by step."
+        ],
+        [
+          "heading",
+          "The three formulas"
+        ],
+        [
+          "paragraph",
+          "Speed is how far something travels in a given time. The average speed over a trip is the total distance divided by the total time taken. Rearranged, that gives three formulas:"
+        ],
+        [
+          "list",
+          "Speed = Distance ÷ Time\nDistance = Speed × Time\nTime = Distance ÷ Speed"
+        ],
+        [
+          "paragraph",
+          "A handy way to remember them is a triangle with distance at the top and speed and time at the bottom: cover the one you want and the other two show how to get it. Divide when distance is on top, multiply when speed and time sit side by side."
+        ],
+        [
+          "heading",
+          "Worked example 1: finding speed"
+        ],
+        [
+          "paragraph",
+          "A bus covers 150 km in 2 hours 30 minutes. First put the time into one unit: 2 hours 30 minutes is 2.5 hours. Then Speed = 150 ÷ 2.5 = 60 km/h. The calculator does the same sum in metres and seconds (150,000 m ÷ 9,000 s = 16.67 m/s) and then converts back, which is why it can show the answer in any unit."
+        ],
+        [
+          "heading",
+          "Worked example 2: finding distance"
+        ],
+        [
+          "paragraph",
+          "A car travels at 60 miles per hour for 90 minutes. Ninety minutes is 1.5 hours, so Distance = 60 × 1.5 = 90 miles. In kilometres that is about 144.8 km, because one mile is exactly 1.609344 km."
+        ],
+        [
+          "heading",
+          "Worked example 3: finding time"
+        ],
+        [
+          "paragraph",
+          "A runner holds an average of 12 km/h over a 42.195 km marathon. Time = 42.195 ÷ 12 = 3.516 hours. The decimal part is a fraction of an hour, so multiply it by 60: 0.516 × 60 = 30.97 minutes. The time is about 3 hours 31 minutes (3 hours 30 minutes 58.5 seconds exactly)."
+        ],
+        [
+          "callout",
+          "Keep the units matching. If the speed is in km/h, the time must be in hours and the distance in kilometres. Convert minutes to hours by dividing by 60 before you divide or multiply."
+        ],
+        [
+          "heading",
+          "Converting between speed units"
+        ],
+        [
+          "paragraph",
+          "The metre per second (m/s) is the SI unit of speed. The other units you will meet are kilometres per hour (km/h), miles per hour (mph) in the United States and the United Kingdom, and the knot at sea and in the air. The conversions are fixed values:"
+        ],
+        [
+          "list",
+          "1 m/s = 3.6 km/h, so divide km/h by 3.6 to get m/s\n1 mph = 1.609344 km/h = 0.44704 m/s\n1 knot = 1 nautical mile per hour = exactly 1.852 km/h, about 0.5144 m/s"
+        ],
+        [
+          "paragraph",
+          "So 72 km/h is 72 ÷ 3.6 = 20 m/s, and 30 knots is 30 × 1.852 = 55.56 km/h."
+        ],
+        [
+          "heading",
+          "Average speed is not a simple average"
+        ],
+        [
+          "paragraph",
+          "The formulas give the average speed over the whole trip. If you drive a route at 60 km/h and come back at 40 km/h, the average speed is not 50 km/h. The two legs take different times: with a 120 km route, the way out takes 2 hours and the way back 3 hours, so the 240 km trip takes 5 hours and the average is 240 ÷ 5 = 48 km/h. Always use total distance divided by total time."
+        ],
+        [
+          "heading",
+          "Common mistakes"
+        ],
+        [
+          "list",
+          "Mixing units, such as a speed in km/h with a time in minutes\nTreating 2 hours 30 minutes as 2.30 hours (it is 2.5 hours)\nAveraging two speeds instead of dividing total distance by total time\nIgnoring stops: the time in the formula should include any waiting if you want the average for the whole journey\nUsing a top speed from a speedometer or a specification sheet as if it were the average"
+        ],
+        [
+          "heading",
+          "What the calculator shows"
+        ],
+        [
+          "paragraph",
+          "Choose what you want to find, fill in the two values you know, and the calculator shows the answer at the top, the same quantity in the other units, and a panel called How this is calculated. That panel writes out the formula and each step with your own numbers, so you can follow the sum or copy it into homework or a report. The result is an estimate based on a steady average speed; real journeys include traffic, stops and changes of speed."
+        ]
+      ],
+      "sources": [
+        {
+          "title": "Speed, Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Speed"
+        },
+        {
+          "title": "Knot (unit), Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Knot_(unit)"
+        },
+        {
+          "title": "Speed and Velocity, The Physics Classroom",
+          "url": "https://www.physicsclassroom.com/class/1DKin/Lesson-1/Speed-and-Velocity"
+        }
+      ],
+      "checkedOn": "2026-11-06"
+    }
+  ]
+}

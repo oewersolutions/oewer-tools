@@ -163,37 +163,78 @@ const ToneContext = createContext(false);
  * The tool's two panels: the inputs, and the result. Calculators pass `dark` for a dark result panel with the answer
  * in large white type; tools that show images or text keep a light panel.
  */
+/** The equation and the working behind a result, with the visitor's own numbers in the steps. */
+export interface WorkingsInfo {
+  formula: string[];
+  steps: string[];
+  note?: string;
+}
+
+function Workings({ workings }: { workings: WorkingsInfo }) {
+  const id = useId();
+  return (
+    <section
+      aria-labelledby={id}
+      className="panel mt-6 p-6 sm:p-8"
+      data-workings
+    >
+      <h2 id={id} className="t-subheading text-ink">
+        How this is calculated
+      </h2>
+      <div className="mt-4 space-y-1 rounded-xl bg-tint px-4 py-3 font-mono text-sm text-ink sm:text-base">
+        {workings.formula.map((line) => (
+          <p key={line}>{line}</p>
+        ))}
+      </div>
+      <ol className="mt-4 list-decimal space-y-2 pl-6 text-sm leading-relaxed text-ink-2 sm:text-base">
+        {workings.steps.map((step) => (
+          <li key={step}>{step}</li>
+        ))}
+      </ol>
+      {workings.note && (
+        <p className="mt-4 text-sm text-muted">{workings.note}</p>
+      )}
+    </section>
+  );
+}
+
 export function ToolLayout({
   inputs,
   results,
   dark = false,
+  workings,
 }: {
   inputs: ReactNode;
   results: ReactNode;
   dark?: boolean;
+  /** Shown under the two panels once there is a result; leave it out (or null) before that. */
+  workings?: WorkingsInfo | null;
 }) {
   return (
-    <div className="grid gap-6 md:grid-cols-2">
-      <form
-        onSubmit={(e) => e.preventDefault()}
-        className="panel space-y-5 p-6 sm:p-8"
-      >
-        {inputs}
-      </form>
-      <ToneContext.Provider value={dark}>
-        <div
-          role="status"
-          aria-live="polite"
-          className={
-            dark
-              ? "hero-bg on-dark rounded-[1.5rem] p-6 text-white sm:p-8"
-              : "panel bg-surface p-6 sm:p-8"
-          }
+    <>
+      <div className="grid gap-6 md:grid-cols-2">
+        <form
+          onSubmit={(e) => e.preventDefault()}
+          className="panel space-y-5 p-6 sm:p-8"
         >
-          {results}
-        </div>
-      </ToneContext.Provider>
-    </div>
+          {inputs}
+        </form>
+        <ToneContext.Provider value={dark}>
+          <div
+            role="status"
+            aria-live="polite"
+            className={
+              dark
+                ? "hero-bg on-dark rounded-[1.5rem] p-6 text-white sm:p-8"
+                : "panel bg-surface p-6 sm:p-8"
+            }
+          >
+            {results}
+          </div>
+        </ToneContext.Provider>
+      </div>
+      {workings && <Workings workings={workings} />}
+    </>
   );
 }
 
@@ -314,7 +355,10 @@ export function CopyButton({
       >
         {label}
       </button>
-      <span role={insideStatus ? undefined : "status"} className="ml-2 text-sm text-slate-700">
+      <span
+        role={insideStatus ? undefined : "status"}
+        className="ml-2 text-sm text-slate-700"
+      >
         {state === "copied"
           ? "Copied"
           : state === "failed"
