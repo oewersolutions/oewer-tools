@@ -121,6 +121,24 @@ export function DateField({
   );
 }
 
+/** A time of day (HH:MM), with the browser's own time picker. */
+export function TimeField({ label, value, onChange, error }: { label: string; value: string; onChange: (value: string) => void; error?: string }) {
+  const id = useId();
+  return (
+    <div>
+      <label htmlFor={id} className="block text-sm font-semibold text-slate-800">
+        {label}
+      </label>
+      <input id={id} type="time" value={value} onChange={(e) => onChange(e.target.value)} aria-invalid={error ? true : undefined} aria-describedby={error ? `${id}-error` : undefined} className={control} />
+      {error && (
+        <p id={`${id}-error`} className="mt-1 text-sm text-red-800">
+          {error}
+        </p>
+      )}
+    </div>
+  );
+}
+
 export function SelectField<T extends string>({
   label,
   value,

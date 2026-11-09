@@ -17,6 +17,10 @@ const AGE = "/tools/utilities/age-calculator/";
 const DAYS = "/tools/utilities/days-between-dates/";
 const UNITS = "/tools/utilities/unit-converter/";
 const MOTION = "/tools/utilities/speed-distance-time-calculator/";
+const PACE = "/tools/utilities/pace-calculator/";
+const TIMECALC = "/tools/utilities/time-calculator/";
+const HOURS = "/tools/utilities/hours-calculator/";
+const DATECALC = "/tools/utilities/date-calculator/";
 const PASSWORD = "/tools/utilities/password-generator/";
 const BASE64 = "/tools/developer-tools/base64-encoder-decoder/";
 const URLTOOL = "/tools/developer-tools/url-encoder-decoder/";
@@ -189,6 +193,86 @@ test("age and days between show their working", async ({ page }) => {
   await page.getByLabel("Start date").fill("2026-01-01");
   await page.getByLabel("End date", { exact: true }).fill("2026-01-31");
   await expect(page.locator("[data-workings]")).toContainText("Days between = ");
+});
+
+test("pace calculator finds pace, finish time and distance, with the working", async ({ page }) => {
+  test.skip(!published.has(PACE), "Pace calculator is not published");
+  await page.goto(PACE);
+  const result = page.getByRole("status");
+  await expect(result).toContainText("5:30"); // the default: 10 km in 55 minutes
+  await expect(result).toContainText("8:51");
+  await expect(result).toContainText("Marathon at this pace");
+  await expect(page.locator("[data-workings]")).toContainText("Pace = Time ÷ Distance");
+  await page.getByLabel("Find").selectOption("time");
+  await page.getByLabel("Distance", { exact: true }).fill("42.195");
+  await page.getByLabel("Pace minutes").fill("5");
+  await page.getByLabel("Pace seconds").fill("0");
+  await expect(result).toContainText("3:30:59");
+  await page.getByLabel("Find").selectOption("distance");
+  await page.getByLabel("Hours", { exact: true }).fill("1");
+  await page.getByLabel("Minutes", { exact: true }).fill("0");
+  await page.getByLabel("Pace minutes").fill("6");
+  await page.getByLabel("Pace per").selectOption("mi");
+  await page.getByLabel("Show distance in").selectOption("mi");
+  await expect(result).toContainText("10 mi");
+  await page.getByLabel("Pace minutes").fill("0");
+  await expect(page.getByText("Pace must be greater than 0.")).toBeVisible();
+});
+
+test("time calculator adds and subtracts, and shows a negative result", async ({ page }) => {
+  test.skip(!published.has(TIMECALC), "Time calculator is not published");
+  await page.goto(TIMECALC);
+  const result = page.getByRole("status");
+  await expect(result).toContainText("4 h 16 min 20 s"); // the default sum
+  await expect(page.locator("[data-workings]")).toContainText("Total = First time + Second time");
+  await page.getByLabel("Operation").selectOption("subtract");
+  await expect(result).toContainText("1 h 14 min 40 s");
+  await page.getByLabel("Hours").first().fill("0");
+  await page.getByLabel("Minutes").first().fill("10");
+  await page.getByLabel("Seconds").first().fill("0");
+  await expect(result).toContainText("−");
+  await expect(page.locator("[data-workings]")).toContainText("negative");
+});
+
+test("hours calculator finds hours worked, an overnight shift and pay", async ({ page }) => {
+  test.skip(!published.has(HOURS), "Hours calculator is not published");
+  await page.goto(HOURS);
+  const result = page.getByRole("status");
+  await expect(result).toContainText("8:00"); // 09:00 to 17:30, 30 minute break
+  await expect(result).toContainText("40:00"); // five days
+  await page.getByLabel("Hourly rate (optional)").fill("250");
+  await expect(result).toContainText("₹10,000.00");
+  await page.getByLabel("Start time").fill("22:00");
+  await page.getByLabel("End time").fill("06:00");
+  await page.getByLabel("Break (minutes)").fill("0");
+  await expect(result).toContainText("Ends after midnight");
+  await expect(page.locator("[data-workings]")).toContainText("after midnight");
+  await page.getByLabel("End time").fill("22:00");
+  await expect(page.getByText(/same as the start time/)).toBeVisible();
+});
+
+test("date calculator adds and subtracts and handles month ends and leap years", async ({ page }) => {
+  test.skip(!published.has(DATECALC), "Date calculator is not published");
+  await page.goto(DATECALC);
+  await page.getByLabel("Start date").fill("2026-11-09");
+  await page.getByLabel("Days").fill("15");
+  await page.getByLabel("Months").fill("");
+  const result = page.getByRole("status");
+  await expect(result).toContainText("24 November 2026");
+  await expect(result).toContainText("Tuesday");
+  await page.getByLabel("Start date").fill("2026-01-31");
+  await page.getByLabel("Days").fill("");
+  await page.getByLabel("Months").fill("1");
+  await expect(result).toContainText("28 February 2026");
+  await expect(page.locator("[data-workings]")).toContainText("does not exist");
+  await page.getByLabel("Start date").fill("2024-02-29");
+  await page.getByLabel("Months").fill("");
+  await page.getByLabel("Years").fill("1");
+  await expect(result).toContainText("28 February 2025");
+  await page.getByLabel("Operation").selectOption("subtract");
+  await page.getByLabel("Years").fill("0");
+  await page.getByLabel("Days").fill("1");
+  await expect(result).toContainText("28 February 2024");
 });
 
 test("speed, distance and time finds each value and shows the equation with the working", async ({ page }) => {

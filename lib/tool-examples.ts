@@ -62,6 +62,14 @@ export function toolExample(componentKey: string): ToolExample | null {
       const r = evaluateMotion({ solve: "speed", distance: "150", distanceUnit: "km", speed: "", speedUnit: "kmh", hours: "2", minutes: "30", seconds: "" }).result!;
       return { note: "150 km in 2 h 30 min", value: `${formatQuantity(r.mps * 3.6)} km/h` };
     }
+    case "pace-calculator":
+      return { note: "10 km in 55 minutes", value: "5:30 per km" };
+    case "time-calculator":
+      return { note: "2 h 45 min plus 1 h 30 min", value: "4 h 15 min" };
+    case "hours-calculator":
+      return { note: "09:00 to 17:30, 30 min break", value: "8 hours" };
+    case "date-calculator":
+      return { note: "9 Nov 2026 plus 15 days", value: "24 Nov 2026" };
     case "unit-converter":
       return { note: "Length, weight, temperature and more", value: "Every unit" };
     case "password-generator":

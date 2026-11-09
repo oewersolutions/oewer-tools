@@ -114,6 +114,26 @@ test("the speed, distance and time calculator sends nothing while you type", asy
   expect(requests).toEqual([]);
 });
 
+test("the pace, time, hours and date calculators send nothing while you type", async ({ page }) => {
+  for (const [path, label] of [
+    ["/tools/utilities/pace-calculator/", "Distance"],
+    ["/tools/utilities/time-calculator/", "Hours"],
+    ["/tools/utilities/hours-calculator/", "Days worked"],
+    ["/tools/utilities/date-calculator/", "Days"],
+  ] as const) {
+    test.skip(!published.has(path), "tool is not published");
+    await open(page, path);
+    const requests = await requestsDuring(
+      page,
+      async () => {
+        await page.getByLabel(label, { exact: true }).first().fill("4242");
+      },
+      "4242",
+    );
+    expect(requests).toEqual([]);
+  }
+});
+
 test("the unit converter sends nothing while you type", async ({ page }) => {
   const path = "/tools/utilities/unit-converter/";
   test.skip(!published.has(path), "tool is not published");

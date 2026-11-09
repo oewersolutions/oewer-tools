@@ -33,6 +33,10 @@ import SipCalculator from "./SipCalculator";
 import UnitConverter from "./UnitConverter";
 import WordCounter from "./WordCounter";
 import SpeedDistanceTimeCalculator from "./SpeedDistanceTimeCalculator";
+import PaceCalculator from "./PaceCalculator";
+import TimeCalculator from "./TimeCalculator";
+import HoursCalculator from "./HoursCalculator";
+import DateCalculator from "./DateCalculator";
 import type { ToolComponentKey } from "../../lib/tools/keys";
 
 /**
@@ -75,6 +79,10 @@ export const toolComponents: { [K in ToolComponentKey]: ComponentType } = {
   "qr-code-generator": QrCodeGenerator,
   "word-counter": WordCounter,
   "speed-distance-time": SpeedDistanceTimeCalculator,
+  "pace-calculator": PaceCalculator,
+  "time-calculator": TimeCalculator,
+  "hours-calculator": HoursCalculator,
+  "date-calculator": DateCalculator,
 };
 
 export function getToolComponent(key: string): ComponentType {
