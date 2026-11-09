@@ -1,0 +1,274 @@
+{
+  "date": "2026-11-09",
+  "articles": [
+    {
+      "title": "How to Convert Salary: Yearly, Monthly, Weekly, Hourly",
+      "category": "Money Guides",
+      "excerpt": "How to convert a salary between per year, month, week, day and hour, the formulas, a worked example, and why weeks worked and hours per week change the hourly figure.",
+      "tags": [
+        "salary",
+        "pay",
+        "hourly rate"
+      ],
+      "blocks": [
+        [
+          "paragraph",
+          "A salary is usually quoted for a year or a month, while a job offer, a freelance quote or a part-time shift may be quoted per day or per hour. Converting between them is simple arithmetic, but the answer depends on three numbers: how many hours you work in a week, how many days, and how many weeks in a year. This guide gives the formulas, a worked example, and the choices that change the result. The Salary Calculator converts one figure into all five periods and shows each step."
+        ],
+        [
+          "heading",
+          "The conversions"
+        ],
+        [
+          "list",
+          "Yearly pay = monthly pay × 12\nYearly pay = weekly pay × weeks worked in a year\nYearly pay = daily pay × days per week × weeks per year\nYearly pay = hourly pay × hours per week × weeks per year"
+        ],
+        [
+          "paragraph",
+          "Going the other way, divide the yearly figure by the same numbers: monthly is yearly ÷ 12, weekly is yearly ÷ weeks per year, daily is weekly ÷ days per week, and hourly is weekly ÷ hours per week. A salary is a fixed payment for work, usually stated for a year or a month and paid at regular intervals, so these conversions give an equivalent rate, not what appears on any one payslip."
+        ],
+        [
+          "heading",
+          "A worked example"
+        ],
+        [
+          "paragraph",
+          "Take a yearly salary of ₹6,00,000 for a 40-hour week over 5 days and 52 weeks. Monthly pay is 6,00,000 ÷ 12 = ₹50,000. Weekly pay is 6,00,000 ÷ 52 = ₹11,538.46. Daily pay is 11,538.46 ÷ 5 = ₹2,307.69, and hourly pay is 11,538.46 ÷ 40 = ₹288.46. So a job paying about ₹288 an hour is worth roughly ₹6 lakh a year at that schedule."
+        ],
+        [
+          "heading",
+          "Going from an hourly rate"
+        ],
+        [
+          "paragraph",
+          "An hourly rate of ₹300 for 40 hours a week and 52 weeks a year is 300 × 40 × 52 = ₹6,24,000 a year, or ₹52,000 a month. If a contract only pays for 48 weeks, because of unpaid leave or gaps between jobs, the same rate gives 300 × 40 × 48 = ₹5,76,000. The weeks field in the calculator is there for that case: use fewer weeks if some leave is unpaid."
+        ],
+        [
+          "heading",
+          "Why the hours matter"
+        ],
+        [
+          "paragraph",
+          "The same yearly salary gives a different hourly figure depending on the working week. At 48 hours a week, ₹6,00,000 is about ₹240 an hour, compared with ₹288 at 40 hours. The number of hours people work in a week differs between countries and jobs. In the United Kingdom, for example, the working time rules say you normally cannot work more than 48 hours a week on average, though you can choose to opt out. Always use the hours in your own contract."
+        ],
+        [
+          "heading",
+          "Part-time and shift work"
+        ],
+        [
+          "paragraph",
+          "For part-time work, use your actual hours: 20 hours a week at ₹300 an hour is 300 × 20 × 52 = ₹3,12,000 a year, or ₹26,000 a month. For shifts that vary, take your average hours a week over a few months instead of a single week, and work from that."
+        ],
+        [
+          "heading",
+          "Gross and take-home"
+        ],
+        [
+          "paragraph",
+          "All of these figures are gross, which means before tax and other deductions. Take-home pay is lower and depends on income tax, provident fund contributions, insurance and any other deductions your employer makes. The calculator does not include them. If you also want an estimate of tax, the Income Tax Calculator works from the slabs you enter."
+        ],
+        [
+          "heading",
+          "Common mistakes"
+        ],
+        [
+          "list",
+          "Assuming a month is 4 weeks: a year has 52 weeks, so a month averages about 4.33\nUsing 52 weeks when some weeks are unpaid\nMixing a cost-to-company figure with take-home pay\nForgetting that bonuses, overtime and allowances are not in a basic hourly conversion"
+        ],
+        [
+          "paragraph",
+          "In the calculator, enter the pay, choose the period it is for, and set the hours a week, days a week and weeks a year. The result shows yearly, monthly, weekly, daily and hourly pay, with a How this is calculated panel listing each division with your numbers."
+        ]
+      ],
+      "sources": [
+        {
+          "title": "Salary, Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Salary"
+        },
+        {
+          "title": "Maximum weekly working hours, GOV.UK",
+          "url": "https://www.gov.uk/maximum-weekly-working-hours"
+        }
+      ],
+      "checkedOn": "2026-11-09"
+    },
+    {
+      "title": "How to Add or Remove Sales Tax, GST or VAT From a Price",
+      "category": "Money Guides",
+      "excerpt": "How to add a sales tax, GST or VAT rate to a price, how to take it out of a price that already includes it, and how a discount and a second tax change the total.",
+      "tags": [
+        "sales tax",
+        "gst",
+        "vat"
+      ],
+      "blocks": [
+        [
+          "paragraph",
+          "A sales tax is a tax charged on the sale of goods and services. The seller usually collects it from the buyer at the point of purchase and passes it to the government. Value-added tax (VAT) and goods and services tax (GST) are consumption taxes of the same general kind, charged as a percentage at each stage of the supply. This guide shows how to add a rate to a price, how to take it out of a price that already includes it, and how a discount or a second tax changes the sum. The Sales Tax Calculator does these sums and shows each step."
+        ],
+        [
+          "heading",
+          "Adding tax to a price"
+        ],
+        [
+          "paragraph",
+          "The tax is the price before tax times the rate, and the total is the price plus the tax. At a rate of 18% on ₹1,000, the tax is 1,000 × 18 ÷ 100 = ₹180, and the total is ₹1,180. A shortcut for the total is to multiply by 1 + rate ÷ 100, which here is 1.18."
+        ],
+        [
+          "heading",
+          "Taking tax out of a price"
+        ],
+        [
+          "paragraph",
+          "When a price already includes tax, do not subtract 18% of it. The tax was worked out on the lower price, so 18% of ₹1,180 is ₹212.40, which is too much. The correct method is Price before tax = Price with tax × 100 ÷ (100 + rate). For ₹1,180 at 18% that is 1,180 × 100 ÷ 118 = ₹1,000, and the tax is ₹180. This is the same idea as dividing by 1.18."
+        ],
+        [
+          "heading",
+          "Quantity and a discount"
+        ],
+        [
+          "paragraph",
+          "When you buy several items with a discount, the order of the steps matters. Take the discount off first, then add tax to the reduced price. For 3 items at ₹1,000 each with 10% off and 18% tax: the subtotal is ₹3,000, the discount is ₹300, the price before tax is ₹2,700, the tax is 2,700 × 18 ÷ 100 = ₹486, and the total is ₹3,186. If the tax were applied first and the discount after, the total would be the same here, but shops and invoices follow their own rules, so check which one applies to you."
+        ],
+        [
+          "heading",
+          "Two taxes on one price"
+        ],
+        [
+          "paragraph",
+          "Some places charge two taxes on the same sale, such as a state and a central tax, or a sales tax and a local tax. Often both are worked out on the same price before tax, so a 5% tax and a 3% tax on ₹1,000 add ₹50 and ₹30, for a total of ₹1,080. This is the same as a single 8% tax. If one tax were charged on the price that already included the other, the total would be 1,000 × 1.05 × 1.03 = ₹1,081.50, so it matters whether the second tax is charged on the first. The calculator applies both to the same price, as stated in the notes under the result."
+        ],
+        [
+          "heading",
+          "Rates and rules differ"
+        ],
+        [
+          "paragraph",
+          "Tax rates differ by place, by type of goods and over time, and some goods are exempt or taxed at a different rate. Businesses may also be able to claim credit for tax they have paid on their purchases, which is the idea behind a value-added tax. The calculator works out the arithmetic for the rate you enter. It does not know which rate applies to your purchase, so check the tax rules that apply to you. In the United Kingdom, for example, VAT is a tax added to most products and services sold by VAT-registered businesses, and the rules on which sales it applies to are set by the government."
+        ],
+        [
+          "heading",
+          "Common mistakes"
+        ],
+        [
+          "list",
+          "Subtracting the rate from a price that includes tax, instead of dividing by 1 plus the rate\nAdding the tax before the discount without checking which order applies\nUsing a rate for one kind of goods on another\nForgetting that a displayed shop price may already include tax"
+        ],
+        [
+          "paragraph",
+          "In the calculator, choose whether to add tax to a price or to find the price before tax. Enter the price, the quantity and a discount if there is one, the tax rate and an optional second rate. The result shows the tax, the total and the steps."
+        ]
+      ],
+      "sources": [
+        {
+          "title": "Sales tax, Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Sales_tax"
+        },
+        {
+          "title": "Value-added tax, Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Value-added_tax"
+        },
+        {
+          "title": "How VAT works, GOV.UK",
+          "url": "https://www.gov.uk/how-vat-works"
+        }
+      ],
+      "checkedOn": "2026-11-09"
+    },
+    {
+      "title": "How Tax Slabs Work: Marginal and Effective Tax Rates",
+      "category": "Money Guides",
+      "excerpt": "How income tax slabs or brackets are applied to each part of income, the difference between marginal and effective tax rates, a worked example, and common mistakes.",
+      "tags": [
+        "income tax",
+        "tax slabs",
+        "marginal rate"
+      ],
+      "blocks": [
+        [
+          "paragraph",
+          "Most income tax systems charge different rates on different parts of your income. The ranges are called slabs, bands or brackets, and each has its own rate. A higher slab does not mean all your income is taxed at that rate: only the part that falls inside the slab is. This guide explains how slabs work, the difference between the marginal and the effective rate, and works through an example. The Income Tax Calculator applies slabs that you enter and shows the tax for each one."
+        ],
+        [
+          "heading",
+          "How slabs are applied"
+        ],
+        [
+          "paragraph",
+          "A tax bracket is the division at which a tax rate changes. To work out the tax, take the income inside each slab and multiply it by that slab's rate, then add the results. The tax on a bracket is the tax on the bottom amount of the bracket plus the tax on the part of income within it. GOV.UK describes it this way for the United Kingdom: how much tax you pay depends on how much of your income falls within each tax band. Tax systems where the rate rises as income rises are called progressive."
+        ],
+        [
+          "heading",
+          "Marginal and effective rates"
+        ],
+        [
+          "paragraph",
+          "The marginal tax rate is the tax paid on each extra rupee of income, which is the rate of the highest slab your income reaches. The average or effective tax rate is the total tax divided by total income. Because the lower slabs have lower rates, the effective rate is always below the marginal rate once your income reaches a higher slab. That is why earning a little more never reduces your take-home pay in a slab system, whatever the headline rate of the next slab."
+        ],
+        [
+          "heading",
+          "A worked example with example slabs"
+        ],
+        [
+          "paragraph",
+          "The slabs below are only an example to show the method, not the current law of any country. Suppose income of ₹12,00,000 with ₹75,000 of deductions, so taxable income is ₹11,25,000. The example slabs are 0% up to ₹3,00,000, 5% from ₹3,00,000 to ₹7,00,000, 10% from ₹7,00,000 to ₹10,00,000 and 15% from ₹10,00,000 to ₹12,00,000."
+        ],
+        [
+          "list",
+          "₹0 to ₹3,00,000 at 0%: ₹0\n₹3,00,000 to ₹7,00,000 at 5%: 4,00,000 × 5% = ₹20,000\n₹7,00,000 to ₹10,00,000 at 10%: 3,00,000 × 10% = ₹30,000\n₹10,00,000 to ₹11,25,000 at 15%: 1,25,000 × 15% = ₹18,750"
+        ],
+        [
+          "paragraph",
+          "The tax before cess is ₹68,750. With a cess of 4% of the tax, ₹2,750 is added, so the total is ₹71,500. The marginal rate is 15%, but the effective rate on the full income is 71,500 ÷ 12,00,000 = 5.96%. The mistake of applying 15% to the whole of ₹11,25,000 would give ₹1,68,750, more than twice the correct amount."
+        ],
+        [
+          "heading",
+          "What the calculator leaves out"
+        ],
+        [
+          "paragraph",
+          "The calculator uses only the slabs, deductions and cess you enter. It does not apply rebates, surcharge, special rates for some kinds of income, the choice between tax regimes or any other rule. Slabs and rules change from year to year, and from regime to regime, so always check the current rules from the tax authority or a tax professional. The result is an estimate for planning, not tax advice."
+        ],
+        [
+          "heading",
+          "Why enter the slabs yourself"
+        ],
+        [
+          "paragraph",
+          "Tax rates in many countries change with each Budget. A calculator with fixed slabs goes out of date and can mislead, so this one lets you type the slabs for the year and regime you want, and the numbers on the page are labelled as an example. If you use the slabs from the official source for your year, the method does the rest."
+        ],
+        [
+          "heading",
+          "Common mistakes"
+        ],
+        [
+          "list",
+          "Applying the highest slab rate to all income\nForgetting deductions, which reduce the income the slabs apply to\nIgnoring cess or surcharge where they apply\nUsing last year's slabs"
+        ],
+        [
+          "paragraph",
+          "Enter your yearly income, any deductions, the slabs as a start amount and a rate, and an optional cess. The result shows the tax in each slab, the total tax, the effective rate, the highest slab reached and what is left after tax, with a How this is calculated panel."
+        ]
+      ],
+      "sources": [
+        {
+          "title": "Tax bracket, Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Tax_bracket"
+        },
+        {
+          "title": "Progressive tax, Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Progressive_tax"
+        },
+        {
+          "title": "Income Tax rates and Personal Allowances, GOV.UK",
+          "url": "https://www.gov.uk/income-tax-rates"
+        },
+        {
+          "title": "Marginal Tax Rate, Tax Foundation",
+          "url": "https://taxfoundation.org/taxedu/glossary/marginal-tax-rate/"
+        }
+      ],
+      "checkedOn": "2026-11-09"
+    }
+  ]
+}

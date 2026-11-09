@@ -48,6 +48,9 @@ import RetirementCalculator from "./RetirementCalculator";
 import InflationCalculator from "./InflationCalculator";
 import FinanceCalculator from "./FinanceCalculator";
 import InterestCalculator from "./InterestCalculator";
+import SalaryCalculator from "./SalaryCalculator";
+import SalesTaxCalculator from "./SalesTaxCalculator";
+import IncomeTaxCalculator from "./IncomeTaxCalculator";
 import type { ToolComponentKey } from "../../lib/tools/keys";
 
 /**
@@ -105,6 +108,9 @@ export const toolComponents: { [K in ToolComponentKey]: ComponentType } = {
   "inflation-calculator": InflationCalculator,
   "finance-calculator": FinanceCalculator,
   "interest-calculator": InterestCalculator,
+  "salary-calculator": SalaryCalculator,
+  "sales-tax-calculator": SalesTaxCalculator,
+  "income-tax-calculator": IncomeTaxCalculator,
 };
 
 export function getToolComponent(key: string): ComponentType {

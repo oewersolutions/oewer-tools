@@ -134,6 +134,25 @@ test("the pace, time, hours and date calculators send nothing while you type", a
   }
 });
 
+test("the salary, sales tax and income tax calculators send nothing while you type", async ({ page }) => {
+  for (const [path, label] of [
+    ["/tools/finance-calculators/salary-calculator/", "Pay (₹)"],
+    ["/tools/finance-calculators/sales-tax-calculator/", "Price of one item (₹)"],
+    ["/tools/finance-calculators/income-tax-calculator/", "Yearly income (₹)"],
+  ] as const) {
+    test.skip(!published.has(path), "tool is not published");
+    await open(page, path);
+    const requests = await requestsDuring(
+      page,
+      async () => {
+        await page.getByLabel(label, { exact: true }).fill("4242424");
+      },
+      "4242424",
+    );
+    expect(requests).toEqual([]);
+  }
+});
+
 test("the investment, retirement, inflation, finance and interest calculators send nothing while you type", async ({ page }) => {
   for (const [path, label] of [
     ["/tools/finance-calculators/investment-calculator/", "Starting amount (₹)"],

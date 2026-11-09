@@ -64,6 +64,12 @@ export function toolExample(componentKey: string): ToolExample | null {
       const r = evaluateMotion({ solve: "speed", distance: "150", distanceUnit: "km", speed: "", speedUnit: "kmh", hours: "2", minutes: "30", seconds: "" }).result!;
       return { note: "150 km in 2 h 30 min", value: `${formatQuantity(r.mps * 3.6)} km/h` };
     }
+    case "salary-calculator":
+      return { note: "₹6,00,000 a year, 40 hours a week", value: `${rupees(600_000 / 52 / 40)} an hour` };
+    case "sales-tax-calculator":
+      return { note: "₹1,000 plus 18% tax", value: rupees(1180) };
+    case "income-tax-calculator":
+      return { note: "Slabs you enter, with deductions and cess", value: "Tax by slab" };
     case "investment-calculator":
       return { note: "₹1,00,000 and ₹5,000 a month at 12% for 10 years", value: rupees(futureValue(100_000, 5000, 0.01, 120)) };
     case "retirement-calculator":

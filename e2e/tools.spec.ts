@@ -32,6 +32,9 @@ const RETIRE = "/tools/finance-calculators/retirement-calculator/";
 const INFLATION = "/tools/finance-calculators/inflation-calculator/";
 const FINANCE = "/tools/finance-calculators/finance-calculator/";
 const INTEREST = "/tools/finance-calculators/interest-calculator/";
+const SALARY = "/tools/finance-calculators/salary-calculator/";
+const SALESTAX = "/tools/finance-calculators/sales-tax-calculator/";
+const INCOMETAX = "/tools/finance-calculators/income-tax-calculator/";
 const PASSWORD = "/tools/utilities/password-generator/";
 const BASE64 = "/tools/developer-tools/base64-encoder-decoder/";
 const URLTOOL = "/tools/developer-tools/url-encoder-decoder/";
@@ -204,6 +207,56 @@ test("age and days between show their working", async ({ page }) => {
   await page.getByLabel("Start date").fill("2026-01-01");
   await page.getByLabel("End date", { exact: true }).fill("2026-01-31");
   await expect(page.locator("[data-workings]")).toContainText("Days between = ");
+});
+
+test("salary calculator converts pay between every period", async ({ page }) => {
+  test.skip(!published.has(SALARY), "Salary calculator is not published");
+  await page.goto(SALARY);
+  const result = page.getByRole("status");
+  await expect(result).toContainText("₹6,00,000.00");
+  await expect(result).toContainText("₹50,000.00");
+  await expect(result).toContainText("₹288.46");
+  await expect(page.locator("[data-workings]")).toContainText("Hourly = Weekly ÷ hours per week");
+  await page.getByLabel("Pay is").selectOption("hourly");
+  await page.getByLabel("Pay (₹)").fill("300");
+  await expect(result).toContainText("₹6,24,000.00");
+  await page.getByLabel("Weeks a year").fill("48");
+  await expect(result).toContainText("₹5,76,000.00");
+  await page.getByLabel("Hours a week").fill("200");
+  await expect(page.getByText("Hours per week cannot be more than 168.")).toBeVisible();
+});
+
+test("sales tax calculator adds tax, applies a discount and removes tax", async ({ page }) => {
+  test.skip(!published.has(SALESTAX), "Sales tax calculator is not published");
+  await page.goto(SALESTAX);
+  const result = page.getByRole("status");
+  await expect(result).toContainText("₹1,180.00");
+  await page.getByLabel("Quantity").fill("3");
+  await page.getByLabel("Discount before tax (%, optional)").fill("10");
+  await expect(result).toContainText("₹3,186.00");
+  await expect(page.locator("[data-workings]")).toContainText("Discount");
+  await page.getByLabel("Calculation").selectOption("remove");
+  await page.getByLabel("Price including tax (₹)").fill("1180");
+  await expect(result).toContainText("₹1,000.00");
+  await page.getByLabel("Second tax rate (%, optional)").fill("2");
+  await expect(page.locator("[data-workings]")).toContainText("18% + 2% = 20%");
+});
+
+test("income tax calculator applies the slabs you enter and explains bad slabs", async ({ page }) => {
+  test.skip(!published.has(INCOMETAX), "Income tax calculator is not published");
+  await page.goto(INCOMETAX);
+  const result = page.getByRole("status");
+  await expect(result).toContainText("₹71,500.00");
+  await expect(result).toContainText("5.96%");
+  await expect(page.getByRole("region", { name: "Tax by slab" }).getByRole("row")).toHaveCount(7); // header and six slabs
+  await expect(page.locator("[data-workings]")).toContainText("₹1,25,000.00 × 15 ÷ 100 = ₹18,750.00");
+  await page.getByLabel("Slab 2 rate (%)").fill("10");
+  await expect(result).toContainText("₹92,300.00"); // 20,000 more tax before cess (₹88,750), plus 4% cess
+  await page.getByLabel("Slab 3 starts at (₹)").fill("200000");
+  await expect(page.getByText(/must start above/)).toBeVisible();
+  await page.getByLabel("Slab 3 starts at (₹)").fill("700000");
+  await page.getByLabel("Yearly income (₹)").fill("");
+  await expect(result).toContainText("Enter your income and the tax slabs");
 });
 
 test("investment calculator shows the balance, the returns and a year-by-year table", async ({ page }) => {
