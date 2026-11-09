@@ -1,0 +1,436 @@
+{
+  "date": "2026-11-09",
+  "articles": [
+    {
+      "title": "How to Add, Subtract, Multiply and Divide Fractions",
+      "category": "How-To",
+      "excerpt": "Step-by-step methods for adding, subtracting, multiplying and dividing fractions and mixed numbers, with worked examples and the mistakes to avoid.",
+      "tags": [
+        "fractions",
+        "maths",
+        "arithmetic"
+      ],
+      "sources": [
+        {
+          "title": "Fraction, Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Fraction"
+        },
+        {
+          "title": "Fraction, Wolfram MathWorld",
+          "url": "https://mathworld.wolfram.com/Fraction.html"
+        }
+      ],
+      "blocks": [
+        [
+          "paragraph",
+          "A fraction describes a part of a whole. It is written as one whole number over another, such as 3/4, where the top number (the numerator) says how many parts you have and the bottom number (the denominator) says how many equal parts the whole is split into. Fractions turn up in recipes, measurements, discounts and school maths, and the four basic operations on them follow a small set of rules. This guide walks through each one with worked examples that you can check with the Fraction Calculator, which shows the same steps with your own numbers."
+        ],
+        [
+          "heading",
+          "Adding and subtracting fractions"
+        ],
+        [
+          "paragraph",
+          "Fractions can only be added or subtracted directly when they have the same denominator, because only then are the parts the same size. When the denominators differ, first find a common denominator. The most convenient choice is the lowest common denominator, which is the smallest number that both denominators divide into exactly. Rewrite each fraction over that number by multiplying its top and bottom by the same amount, then add or subtract the numerators and keep the denominator."
+        ],
+        [
+          "paragraph",
+          "For example, to work out 1/2 + 1/3, the denominators 2 and 3 both divide into 6. Rewrite 1/2 as 3/6 and 1/3 as 2/6. Now add the numerators: 3 + 2 = 5, so the answer is 5/6. For a subtraction such as 5/6 − 3/8, the lowest common denominator of 6 and 8 is 24. Then 5/6 = 20/24 and 3/8 = 9/24, so the answer is 20/24 − 9/24 = 11/24, which is about 0.4583 as a decimal."
+        ],
+        [
+          "heading",
+          "Multiplying fractions"
+        ],
+        [
+          "paragraph",
+          "Multiplication is the simplest operation. Multiply the numerators together and multiply the denominators together: a/b × c/d = (a × c) ÷ (b × d). There is no need for a common denominator. For example, 2/3 × 3/4 = 6/12, and dividing the top and bottom by 6 gives 1/2. You can also cancel before you multiply: the 3 on the top of the second fraction and the 3 on the bottom of the first cancel, leaving 2/1 × 1/4 = 2/4 = 1/2, the same answer with smaller numbers."
+        ],
+        [
+          "heading",
+          "Dividing fractions"
+        ],
+        [
+          "paragraph",
+          "To divide by a fraction, multiply by its reciprocal, which is the fraction turned upside down. So a/b ÷ c/d = a/b × d/c = (a × d) ÷ (b × c). For example, 3/4 ÷ 2/5 becomes 3/4 × 5/2 = 15/8. As a mixed number that is 1 7/8, and as a decimal it is 1.875. Dividing by zero is not possible, so the second fraction must not be 0. The rule works because 2/5 fits into 1 exactly 5/2 times, so dividing by 2/5 is the same as multiplying by 5/2."
+        ],
+        [
+          "heading",
+          "Mixed numbers"
+        ],
+        [
+          "paragraph",
+          "A mixed number such as 2 1/2 combines a whole number and a fraction. To calculate with it, turn it into an improper fraction first, where the top is larger than the bottom. Multiply the whole number by the denominator, add the numerator, and keep the denominator: 2 1/2 = (2 × 2 + 1)/2 = 5/2. For example, 2 1/2 × 1 1/3 becomes 5/2 × 4/3 = 20/6 = 10/3, which is 3 1/3 as a mixed number. To turn an improper fraction back into a mixed number, divide the top by the bottom: 10 ÷ 3 is 3 with a remainder of 1, giving 3 1/3."
+        ],
+        [
+          "heading",
+          "Simplifying the answer"
+        ],
+        [
+          "paragraph",
+          "A fraction is in its simplest form when the top and bottom share no common factor other than 1. To simplify, divide both numbers by their greatest common divisor, often written GCD. For 20/24, the GCD is 4, so the fraction becomes 5/6. One way to find the GCD is the Euclidean method: divide the larger number by the smaller, then divide the smaller by the remainder, and repeat until the remainder is zero. The last divisor is the GCD. Wikipedia describes the same idea of reducing a fraction to lowest terms, and MathWorld defines the terms used for fractions."
+        ],
+        [
+          "list",
+          "Adding or subtracting the denominators as well as the numerators, for example writing 1/2 + 1/3 = 2/5\nForgetting to turn mixed numbers into improper fractions before multiplying or dividing\nFlipping the wrong fraction when dividing: only the second fraction, the divisor, is turned over\nLeaving the answer unsimplified when a common factor remains\nPutting a minus sign on both the top and the bottom, which cancels out"
+        ],
+        [
+          "heading",
+          "Checking your answer"
+        ],
+        [
+          "paragraph",
+          "A quick check is to convert each fraction to a decimal and do the sum on a calculator. For 1/2 + 1/3, the decimals are 0.5 and 0.3333, which add to 0.8333, matching 5/6. Another check is to ask whether the answer is sensible: adding two positive fractions must give something larger than either, while multiplying two fractions smaller than 1 must give something smaller than both. The Fraction Calculator on this site works with exact whole numbers rather than decimals, so even large fractions are never rounded until the final decimal is shown."
+        ],
+        [
+          "callout",
+          "Tip: if the denominators are large, find the greatest common divisor first. The lowest common denominator is then the product of the two denominators divided by that divisor, which keeps the numbers as small as possible."
+        ]
+      ],
+      "checkedOn": "2026-11-09"
+    },
+    {
+      "title": "How Random Numbers Are Made, and How to Pick One Fairly",
+      "category": "How-To",
+      "excerpt": "How a random number generator turns random bits into a fair pick from a range, why a simple remainder can be biased, and when to use unique numbers.",
+      "tags": [
+        "random numbers",
+        "maths",
+        "probability"
+      ],
+      "sources": [
+        {
+          "title": "Random number generation, Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Random_number_generation"
+        },
+        {
+          "title": "Crypto: getRandomValues(), MDN Web Docs",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/API/Crypto/getRandomValues"
+        }
+      ],
+      "blocks": [
+        [
+          "paragraph",
+          "Picking a random number sounds simple: choose a lowest and a highest value and let chance decide. Behind the scenes, though, there are two separate jobs. The first is to get a supply of unpredictable random bits. The second is to turn those bits into a number inside your range so that every value has exactly the same chance. Getting the second step wrong is a common source of subtle unfairness. This guide explains both jobs, with examples that you can try in the Random Number Generator on this site, which shows its working under the result."
+        ],
+        [
+          "heading",
+          "Where the randomness comes from"
+        ],
+        [
+          "paragraph",
+          "Computers are built to be predictable, so most random numbers are produced by an algorithm called a pseudorandom number generator. It starts from a seed value and produces a long sequence that looks random. Wikipedia explains that such generators are fast and repeatable, which is useful for simulations and testing, but their output can be predicted by anyone who learns the seed or the internal state. For a game or a classroom draw that does not matter. For anything where guessing the next value would cause harm, a cryptographically secure source is used instead."
+        ],
+        [
+          "paragraph",
+          "Web browsers provide such a source through the Web Crypto interface. MDN Web Docs describes the getRandomValues() method as filling an array with cryptographically strong random values, using a generator seeded with enough entropy. The Random Number Generator on this site uses that method rather than the simpler Math.random function, and everything happens in your browser, so no numbers are sent anywhere."
+        ],
+        [
+          "heading",
+          "From random bits to a number in your range"
+        ],
+        [
+          "paragraph",
+          "Suppose you want a whole number from 1 to 100. There are 100 possible values, so the generator needs a number from 0 to 99 and then adds the lowest value, which is 1. The general formula is: number = lowest + a random whole number from 0 to (highest − lowest). A range of 1 to 100 gives 100 − 1 + 1 = 100 values, so the offset runs from 0 to 99. If the offset is 37, the result is 1 + 37 = 38."
+        ],
+        [
+          "paragraph",
+          "The obvious way to get an offset from a large random value is to take the remainder after dividing by the number of possible values. That is where the bias hides. Imagine the generator produced only the values 0 to 9 and you wanted a number from 0 to 5, six values. Taking the remainder after dividing by 6 maps 0 and 6 to 0, 1 and 7 to 1, 2 and 8 to 2, 3 and 9 to 3, but only 4 and 5 once each. The values 0 to 3 are now twice as likely as 4 and 5. With 53 random bits the effect is much smaller, but it is still present unless it is dealt with."
+        ],
+        [
+          "heading",
+          "Rejection sampling removes the bias"
+        ],
+        [
+          "paragraph",
+          "The fix is called rejection sampling. Work out the largest multiple of the number of values that fits inside the supply of random numbers, and throw away any draw at or above it, drawing again. With 53 random bits there are 2 to the power 53, or 9,007,199,254,740,992, possible draws. For six values the largest multiple of 6 that fits is 9,007,199,254,740,990, so only the last two draws are discarded and every remaining draw maps evenly onto the six values. The generator on this site does exactly this, which is why every value in your range has the same chance."
+        ],
+        [
+          "heading",
+          "Unique numbers and repeats"
+        ],
+        [
+          "paragraph",
+          "When repeats are allowed, every draw is independent, so the same number can appear twice in a row, just as a die can land on six twice. When repeats are not allowed, such as when drawing raffle tickets, a number that has already come up is skipped. If you ask for nearly the whole range, for example 10 different numbers from 1 to 10, the generator instead shuffles the full list and takes the first ones, which is quicker than repeatedly rejecting numbers already used. Asking for more unique numbers than the range holds is impossible, and the tool tells you so."
+        ],
+        [
+          "list",
+          "Whole numbers from 1 to 6 imitate a die; 1 to 100 suits a quick draw or a game\nUse the unique option for raffles, lotteries and picking students without repeats\nDecimals are made by picking a whole number in steps and dividing, for example 0.00 to 1.00 in steps of 0.01\nA draw of 1,000 numbers is the largest the tool makes at once"
+        ],
+        [
+          "heading",
+          "What a random pick is not"
+        ],
+        [
+          "paragraph",
+          "A fair generator does not avoid streaks. Getting the same number twice, or three odd numbers in a row, is normal and does not mean the generator is broken. Each draw has no memory of the one before. Also, the generator on this page is meant for games, samples and everyday decisions. It is not a password tool, because passwords have extra rules about length and character sets. Use a dedicated password generator for that."
+        ],
+        [
+          "callout",
+          "If you need results that can be repeated, for example in a classroom demonstration, write the numbers down. A secure generator is deliberately unrepeatable: pressing Generate again gives a fresh set."
+        ]
+      ],
+      "checkedOn": "2026-11-09"
+    },
+    {
+      "title": "How to Solve a Triangle: Sides, Angles and Area",
+      "category": "How-To",
+      "excerpt": "How to find every side, angle, the perimeter and the area of a triangle from three sides, two sides and the angle between them, or two angles and a side.",
+      "tags": [
+        "triangle",
+        "geometry",
+        "maths"
+      ],
+      "sources": [
+        {
+          "title": "Solution of triangles, Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Solution_of_triangles"
+        },
+        {
+          "title": "Heron's Formula, Wolfram MathWorld",
+          "url": "https://mathworld.wolfram.com/HeronsFormula.html"
+        }
+      ],
+      "blocks": [
+        [
+          "paragraph",
+          "Every triangle has six measurements: three sides and three angles. Solving a triangle means finding all six, usually starting from three of them. Which method you use depends on what you know. The three cases covered by the Triangle Calculator on this site are three sides, two sides with the angle between them, and two angles with a side. This guide explains the formulas for each, with numbers you can check. By convention, side a is opposite angle A, side b is opposite angle B and side c is opposite angle C, and the three angles always add up to 180 degrees."
+        ],
+        [
+          "heading",
+          "Three sides known"
+        ],
+        [
+          "paragraph",
+          "When all three sides are known, use the law of cosines to find the angles. Wikipedia gives it as c² = a² + b² − 2ab cos C, and it can be rearranged for any angle. For angle A, cos A = (b² + c² − a²) ÷ (2bc). Take the triangle with sides 3, 4 and 5. Then cos A = (16 + 25 − 9) ÷ (2 × 4 × 5) = 32 ÷ 40 = 0.8, so A is about 36.87 degrees. In the same way cos B = (9 + 25 − 16) ÷ (2 × 3 × 5) = 0.6, so B is about 53.13 degrees, and C = 180 − 36.87 − 53.13 = 90 degrees. It is a right triangle."
+        ],
+        [
+          "paragraph",
+          "The three sides must be able to meet. Each side has to be shorter than the other two added together, which is called the triangle inequality. Sides of 1, 2 and 5 cannot form a triangle because 1 + 2 is less than 5, and the calculator reports that instead of an answer."
+        ],
+        [
+          "heading",
+          "Two sides and the angle between them"
+        ],
+        [
+          "paragraph",
+          "When you know two sides and the angle between them, the law of cosines gives the third side first. Suppose a = 7, b = 9 and the angle between them, C, is 40 degrees. Then c² = 49 + 81 − 2 × 7 × 9 × cos 40° = 130 − 126 × 0.7660 = 33.48, so c is about 5.786. With all three sides known, find an angle with the law of cosines again: A is about 51.05 degrees, and B = 180 − 51.05 − 40 = 88.95 degrees."
+        ],
+        [
+          "heading",
+          "Two angles and a side"
+        ],
+        [
+          "paragraph",
+          "If two angles are known, the third follows at once from C = 180° − A − B. A known side then gives the other two sides through the law of sines: a ÷ sin A = b ÷ sin B = c ÷ sin C. Take A = 40 degrees, B = 65 degrees and a = 10. Then C = 75 degrees, b = 10 × sin 65° ÷ sin 40° = 14.10, and c = 10 × sin 75° ÷ sin 40° = 15.03. The calculator asks for side a opposite angle A, but any triangle with two known angles and one known side can be relabelled to fit."
+        ],
+        [
+          "heading",
+          "Perimeter and area"
+        ],
+        [
+          "paragraph",
+          "The perimeter is simply a + b + c. For the area there are two useful formulas. When you know two sides and the angle between them, area = ½ × a × b × sin C. For the 7, 9 and 40 degrees example this is 0.5 × 7 × 9 × sin 40° = 20.25 square units. When you know all three sides, Heron's formula avoids angles altogether. Let s be half the perimeter; then area = √( s (s − a)(s − b)(s − c) ). MathWorld records this formula and credits it to Heron of Alexandria. For the 3, 4, 5 triangle, s = 6 and the area is √(6 × 3 × 2 × 1) = √36 = 6. For sides of 5, 7 and 8, s = 10 and the area is √(10 × 5 × 3 × 2) = √300 = 17.32."
+        ],
+        [
+          "heading",
+          "Naming the triangle"
+        ],
+        [
+          "list",
+          "Equilateral: all three sides equal, and every angle is 60 degrees\nIsosceles: at least two sides equal, so two angles are equal as well\nScalene: all sides different\nRight: one angle is exactly 90 degrees, and the sides then satisfy a² + b² = c²\nAcute: all angles are below 90 degrees; obtuse: one angle is above 90 degrees"
+        ],
+        [
+          "heading",
+          "Why two sides and an angle elsewhere is not covered"
+        ],
+        [
+          "paragraph",
+          "If you know two sides and an angle that is not between them, there can be one triangle, two triangles or none. This is often called the ambiguous case, and it needs extra information to settle. The calculator therefore sticks to the three cases that always give exactly one triangle, and lets you see every step of the working with your own numbers."
+        ],
+        [
+          "callout",
+          "Tip: for a quick sanity check, the longest side is always opposite the largest angle, and the shortest side opposite the smallest angle."
+        ]
+      ],
+      "checkedOn": "2026-11-09"
+    },
+    {
+      "title": "Standard Deviation Explained: Sample or Population",
+      "category": "How-To",
+      "excerpt": "What standard deviation measures, how to work it out step by step, why a sample divides by n minus 1, and a worked example you can check.",
+      "tags": [
+        "standard deviation",
+        "statistics",
+        "maths"
+      ],
+      "sources": [
+        {
+          "title": "Standard deviation, Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Standard_deviation"
+        },
+        {
+          "title": "Standard Deviation, Wolfram MathWorld",
+          "url": "https://mathworld.wolfram.com/StandardDeviation.html"
+        },
+        {
+          "title": "Bessel's correction, Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Bessel%27s_correction"
+        }
+      ],
+      "blocks": [
+        [
+          "paragraph",
+          "Standard deviation is a number that tells you how spread out a set of values is. If the numbers cluster tightly around their average, the standard deviation is small. If they are scattered widely, it is large. Two classes can have the same average mark and still be very different: in one every student scored close to the average, in the other some scored very high and some very low. Standard deviation captures that difference. This guide shows how it is calculated and how to choose between the two versions, using examples you can enter into the Standard Deviation Calculator."
+        ],
+        [
+          "heading",
+          "The steps"
+        ],
+        [
+          "paragraph",
+          "The calculation has the same few steps every time. First find the mean by adding all the values and dividing by how many there are. Then, for each value, find how far it is from the mean and square that distance, which makes every distance positive and gives larger gaps more weight. Add up those squares. Divide by the count, or by one less than the count for a sample, to get the variance. Finally take the square root of the variance to return to the original unit. Wikipedia describes the standard deviation as the square root of the variance, which is why the answer is in the same unit as your data."
+        ],
+        [
+          "heading",
+          "A worked example"
+        ],
+        [
+          "paragraph",
+          "Take the eight values 2, 4, 4, 4, 5, 5, 7 and 9. The sum is 40 and there are 8 values, so the mean is 5. The distances from the mean are −3, −1, −1, −1, 0, 0, 2 and 4, and their squares are 9, 1, 1, 1, 0, 0, 4 and 16. These add up to 32. If the eight values are the entire population, the variance is 32 ÷ 8 = 4, and the standard deviation is √4 = 2. If they are a sample, the variance is 32 ÷ 7 = 4.571 and the standard deviation is √4.571 = 2.138."
+        ],
+        [
+          "paragraph",
+          "A second example uses five test marks: 70, 75, 80, 85 and 90. The mean is 80. The distances are −10, −5, 0, 5 and 10, with squares 100, 25, 0, 25 and 100, a total of 250. As a population the variance is 250 ÷ 5 = 50 and the standard deviation is 7.071. As a sample it is 250 ÷ 4 = 62.5 and the standard deviation is 7.906."
+        ],
+        [
+          "heading",
+          "Sample or population?"
+        ],
+        [
+          "paragraph",
+          "Use the population version when your numbers are everything you care about, for example the marks of every student in one class when you only want to describe that class. Use the sample version when your numbers are a sample drawn from a larger group and you want to estimate the spread of that larger group, for example 50 customers surveyed out of thousands. The population formula divides by n. The sample formula divides by n − 1, which is known as Bessel's correction. A sample's values tend to sit closer to the sample's own mean than to the true mean of the whole group, so dividing by n would underestimate the spread, and dividing by n − 1 corrects for that on average. The difference matters most for small sets and fades as the count grows."
+        ],
+        [
+          "heading",
+          "Reading the result"
+        ],
+        [
+          "paragraph",
+          "For data that follows a bell-shaped normal distribution, about 68 per cent of values fall within one standard deviation of the mean, about 95 per cent within two, and about 99.7 per cent within three. Wikipedia describes this rule. In the marks example, a mean of 80 and a sample deviation of 7.9 would suggest most students scored between roughly 72 and 88. The rule is a guide for bell-shaped data and should not be applied to data that is heavily lopsided."
+        ],
+        [
+          "list",
+          "A standard deviation of 0 means every value is the same\nA bigger standard deviation means more spread, not larger values\nIt has the same unit as the data, so the standard deviation of heights in centimetres is in centimetres\nIt is sensitive to outliers, because the distances are squared\nThe variance is the standard deviation squared, and is not in the original unit"
+        ],
+        [
+          "heading",
+          "Common mistakes"
+        ],
+        [
+          "paragraph",
+          "The most common mistake is choosing the wrong version. If you are unsure and the numbers are a subset of something bigger, the sample version is the safer choice. Other mistakes are forgetting to take the square root at the end, which gives the variance instead, and rounding the mean too early. Keep the mean exact, or as many digits as you can, until the end. The calculator on this site keeps full precision throughout and shows the steps, including the squared distance of the first few values."
+        ],
+        [
+          "callout",
+          "Tip: you can paste a column from a spreadsheet straight into the calculator. Numbers separated by commas, spaces or new lines are all accepted."
+        ]
+      ],
+      "checkedOn": "2026-11-09"
+    },
+    {
+      "title": "How a Scientific Calculator Works Out an Expression",
+      "category": "How-To",
+      "excerpt": "How the order of operations, brackets, powers, functions and degrees or radians decide the answer to a typed expression, with examples to check.",
+      "tags": [
+        "scientific calculator",
+        "order of operations",
+        "maths"
+      ],
+      "sources": [
+        {
+          "title": "Order of operations, Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Order_of_operations"
+        },
+        {
+          "title": "Math, MDN Web Docs",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math"
+        },
+        {
+          "title": "Scientific calculator, Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Scientific_calculator"
+        }
+      ],
+      "blocks": [
+        [
+          "paragraph",
+          "Type 2 + 3 × 4 into a calculator and the answer is 14, not 20. That is because calculators follow an agreed order of operations. A scientific calculator adds functions such as sine, logarithms and square roots, and it has to apply the same rules to those. This guide explains the rules, with examples that you can type into the Scientific Calculator on this site, which lists every step of its working under the answer."
+        ],
+        [
+          "heading",
+          "The order of operations"
+        ],
+        [
+          "paragraph",
+          "Wikipedia sets out the standard convention. Work out anything in brackets first. Then handle exponents (powers) and roots. Then multiplication and division, from left to right. Finally addition and subtraction, also from left to right. For 2 + 3 × 4 the multiplication comes first: 3 × 4 = 12, then 2 + 12 = 14. With brackets, (2 + 3) × 4 gives 5 × 4 = 20. Operations of the same rank run from left to right, so 10 − 4 − 3 is (10 − 4) − 3 = 3, and 100 ÷ 4 ÷ 5 is 25 ÷ 5 = 5."
+        ],
+        [
+          "heading",
+          "Powers and minus signs"
+        ],
+        [
+          "paragraph",
+          "Powers have two features that surprise people. First, they group from the right: 2 ^ 3 ^ 2 means 2 ^ (3 ^ 2) = 2 ^ 9 = 512, not (2 ^ 3) ^ 2 = 64. Second, a minus sign in front of a number is applied after the power, so −2 ^ 2 is −(2 ^ 2) = −4. To square a negative number, put brackets around it: (−2) ^ 2 = 4. A negative exponent means a reciprocal, so 2 ^ −1 = 1 ÷ 2 = 0.5."
+        ],
+        [
+          "heading",
+          "Functions"
+        ],
+        [
+          "paragraph",
+          "A function takes a value in brackets and returns a result. For example sqrt(16) = 4, ln(e) = 1 (the natural logarithm, base e), log(1000) = 3 (the base-10 logarithm), and abs(−7.5) = 7.5. The brackets are important: they show where the value of the function begins and ends. The functions are computed before the operators around them, so 2 × sqrt(16) + 1 = 2 × 4 + 1 = 9. Two-value functions such as root(8, 3), which is the cube root of 8, take two numbers separated by a comma."
+        ],
+        [
+          "heading",
+          "Degrees or radians"
+        ],
+        [
+          "paragraph",
+          "Angles can be measured in degrees, where a full turn is 360, or in radians, where a full turn is 2π, about 6.2832. The sine of an angle depends on which one the calculator expects. In degrees, sin(30) = 0.5. In radians, sin(30) is about −0.988, because 30 radians is a very different angle. To convert, multiply degrees by π ÷ 180. If you want sin of 30 degrees while in radian mode, type sin(30 × pi ÷ 180). The inverse functions such as asin return an angle in the chosen unit, so asin(1) is 90 in degrees and about 1.5708 in radians."
+        ],
+        [
+          "heading",
+          "Factorials and percentages"
+        ],
+        [
+          "paragraph",
+          "The factorial of a whole number n, written n!, is the product of all whole numbers from 1 to n, so 5! = 5 × 4 × 3 × 2 × 1 = 120, and 0! is defined as 1. Factorials grow very quickly: 170! is the largest one that fits in the number format used by browsers, which is why the calculator stops there. A percentage sign divides by 100, so 50% = 0.5 and 200 × 10% = 20."
+        ],
+        [
+          "heading",
+          "Why 0.1 + 0.2 looks odd on some calculators"
+        ],
+        [
+          "paragraph",
+          "Computers store most decimals in binary floating-point format, and a number like 0.1 cannot be stored exactly. The addition 0.1 + 0.2 produces 0.30000000000000004 in many programming languages. MDN notes that the Math functions work on this same kind of number. To avoid showing such noise, this calculator rounds answers to 12 significant digits, so 0.1 + 0.2 appears as 0.3. The rounding is only for display; the working lines also use the rounded values."
+        ],
+        [
+          "list",
+          "Use brackets when in doubt: they never hurt and make the order obvious\nTwo things side by side are multiplied, so 2(3 + 4) is 14 and 3pi is about 9.4248\nCheck degree or radian mode before using sin, cos or tan\nSquare roots of negative numbers and division by zero are reported as errors, not as a made-up answer"
+        ],
+        [
+          "heading",
+          "Safe by design"
+        ],
+        [
+          "paragraph",
+          "The calculator reads what you type with its own small parser. It understands only numbers, the operators and the functions listed above, so it never runs the text as program code. Anything else is rejected with a plain message. That keeps the tool safe and means nothing you type leaves your device."
+        ],
+        [
+          "callout",
+          "Tip: if the answer is not what you expected, read the first line of the working, which shows how the expression was grouped, and look for the step where your own idea of the order differs."
+        ]
+      ],
+      "checkedOn": "2026-11-09"
+    }
+  ]
+}

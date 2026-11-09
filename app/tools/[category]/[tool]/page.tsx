@@ -4,7 +4,8 @@ import { notFound } from "next/navigation";
 import Breadcrumbs from "../../../../components/Breadcrumbs";
 import { pageMetadata } from "../../../../lib/metadata";
 import { nonEmptyParams } from "../../../../lib/static";
-import { getToolComponent } from "../../../../components/tools/registry";
+import ToolHost from "../../../../components/tools/ToolHost";
+import { toolComponentKey } from "../../../../lib/tools/keys";
 import { Prose } from "../../../../components/Prose";
 import { PostCard, ToolCard } from "../../../../components/Cards";
 import { Container, PageBand } from "../../../../components/layout";
@@ -68,7 +69,7 @@ export default async function ToolPage({ params }: Props) {
   const content = getToolContent(tool.tool_id);
   const related = getRelatedTools(tool, content.related);
   const guides = getGuidesForTool(tool.tool_id);
-  const ToolComponent = getToolComponent(tool.component_key); // throws, failing the build, for an unregistered key
+  const componentKey = toolComponentKey(tool.component_key); // throws, failing the build, for an unregistered key
 
   return (
     <>
@@ -111,7 +112,7 @@ export default async function ToolPage({ params }: Props) {
             </p>
           </noscript>
           <ToolEvents tool={tool.slug}>
-            <ToolComponent />
+            <ToolHost componentKey={componentKey} />
           </ToolEvents>
         </section>
 

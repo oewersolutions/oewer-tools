@@ -20,6 +20,7 @@ import {
   Receipt,
   Repeat,
   Shrink,
+  Sigma,
   Type,
   Wrench,
   type LucideIcon,
@@ -46,15 +47,28 @@ const CATEGORY_ICONS: Record<string, LucideIcon> = {
   "developer-tools": Braces,
   utilities: Wrench,
   "health-fitness": HeartPulse,
+  "math-calculators": Sigma,
 };
 
 /** Icon for a tool, chosen by its component_key. Unknown keys get a generic icon. */
-export function ToolIcon({ componentKey, className }: { componentKey: string; className?: string }) {
+export function ToolIcon({
+  componentKey,
+  className,
+}: {
+  componentKey: string;
+  className?: string;
+}) {
   const Icon = TOOL_ICONS[componentKey] ?? Hash;
   return <Icon aria-hidden="true" className={className} />;
 }
 
-export function CategoryIcon({ slug, className }: { slug: string; className?: string }) {
+export function CategoryIcon({
+  slug,
+  className,
+}: {
+  slug: string;
+  className?: string;
+}) {
   const Icon = CATEGORY_ICONS[slug] ?? Wrench;
   return <Icon aria-hidden="true" className={className} />;
 }
@@ -68,7 +82,13 @@ const GAME_ICONS: Record<string, LucideIcon> = {
   snake: Gamepad2,
 };
 
-export function GameIcon({ gameType, className }: { gameType: string; className?: string }) {
+export function GameIcon({
+  gameType,
+  className,
+}: {
+  gameType: string;
+  className?: string;
+}) {
   const Icon = GAME_ICONS[gameType] ?? Gamepad2;
   return <Icon aria-hidden="true" className={className} />;
 }

@@ -45,31 +45,74 @@ export function toolExample(componentKey: string): ToolExample | null {
         value: `${rupees(calculateGst(1000, 18, "add").gstAmount)} GST`,
       };
     case "sip-calculator":
-      return { note: "₹5,000 a month at 12% for 10 years", value: rupees(calculateSip(5000, 12, 10).maturity) };
+      return {
+        note: "₹5,000 a month at 12% for 10 years",
+        value: rupees(calculateSip(5000, 12, 10).maturity),
+      };
     case "lumpsum-calculator":
-      return { note: "₹1,00,000 at 12% for 10 years", value: rupees(calculateLumpsum(100_000, 12, 10).maturity) };
+      return {
+        note: "₹1,00,000 at 12% for 10 years",
+        value: rupees(calculateLumpsum(100_000, 12, 10).maturity),
+      };
     case "compound-interest-calculator":
-      return { note: "₹1,00,000 at 8% for 10 years", value: rupees(calculateCompound(100_000, 8, 10, 1).amount) };
+      return {
+        note: "₹1,00,000 at 8% for 10 years",
+        value: rupees(calculateCompound(100_000, 8, 10, 1).amount),
+      };
     case "simple-interest-calculator":
-      return { note: "₹1,00,000 at 8% for 3 years", value: `${rupees(calculateSimple(100_000, 8, 3, "years").interest)} interest` };
+      return {
+        note: "₹1,00,000 at 8% for 3 years",
+        value: `${rupees(calculateSimple(100_000, 8, 3, "years").interest)} interest`,
+      };
     case "rd-calculator":
-      return { note: "₹5,000 a month at 6.5% for 5 years", value: rupees(calculateRd(5000, 6.5, 60).maturity) };
+      return {
+        note: "₹5,000 a month at 6.5% for 5 years",
+        value: rupees(calculateRd(5000, 6.5, 60).maturity),
+      };
     case "discount-calculator":
-      return { note: "₹2,000 with 20% then 10% off", value: rupees(calculateDiscount(2000, 20, 10).finalPrice) };
+      return {
+        note: "₹2,000 with 20% then 10% off",
+        value: rupees(calculateDiscount(2000, 20, 10).finalPrice),
+      };
     case "age-calculator":
       return { note: "Years, months and days", value: "Exact age" };
     case "days-between-dates":
       return { note: "With or without the end date", value: "Count days" };
     case "speed-distance-time": {
-      const r = evaluateMotion({ solve: "speed", distance: "150", distanceUnit: "km", speed: "", speedUnit: "kmh", hours: "2", minutes: "30", seconds: "" }).result!;
-      return { note: "150 km in 2 h 30 min", value: `${formatQuantity(r.mps * 3.6)} km/h` };
+      const r = evaluateMotion({
+        solve: "speed",
+        distance: "150",
+        distanceUnit: "km",
+        speed: "",
+        speedUnit: "kmh",
+        hours: "2",
+        minutes: "30",
+        seconds: "",
+      }).result!;
+      return {
+        note: "150 km in 2 h 30 min",
+        value: `${formatQuantity(r.mps * 3.6)} km/h`,
+      };
     }
+    case "fraction-calculator":
+      return { note: "Add, subtract, multiply, divide", value: "1/2 + 1/3" };
+    case "random-number-generator":
+      return { note: "Whole numbers or decimals", value: "Pick numbers" };
+    case "triangle-calculator":
+      return { note: "Sides 3, 4, 5", value: "Area 6" };
+    case "standard-deviation-calculator":
+      return { note: "Sample or population", value: "Spread" };
+    case "scientific-calculator":
+      return { note: "2 + 3 × 4", value: "14" };
     case "bmi-calculator":
       return { note: "70 kg at 175 cm", value: "BMI 22.9" };
     case "bmr-calculator":
       return { note: "Calories your body uses at rest", value: "Your BMR" };
     case "calorie-calculator":
-      return { note: "From your BMR and activity level", value: "Daily calories" };
+      return {
+        note: "From your BMR and activity level",
+        value: "Daily calories",
+      };
     case "body-fat-calculator":
       return { note: "From tape measurements", value: "Body fat %" };
     case "ideal-weight-calculator":
@@ -79,35 +122,74 @@ export function toolExample(componentKey: string): ToolExample | null {
     case "pregnancy-calculator":
       return { note: "Weeks, days and trimester", value: "Weeks and days" };
     case "conception-calculator":
-      return { note: "From a due date or the last period", value: "Conception date" };
+      return {
+        note: "From a due date or the last period",
+        value: "Conception date",
+      };
     case "salary-calculator":
-      return { note: "₹6,00,000 a year, 40 hours a week", value: `${rupees(600_000 / 52 / 40)} an hour` };
+      return {
+        note: "₹6,00,000 a year, 40 hours a week",
+        value: `${rupees(600_000 / 52 / 40)} an hour`,
+      };
     case "sales-tax-calculator":
       return { note: "₹1,000 plus 18% tax", value: rupees(1180) };
     case "income-tax-calculator":
-      return { note: "Slabs you enter, with deductions and cess", value: "Tax by slab" };
+      return {
+        note: "Slabs you enter, with deductions and cess",
+        value: "Tax by slab",
+      };
     case "investment-calculator":
-      return { note: "₹1,00,000 and ₹5,000 a month at 12% for 10 years", value: rupees(futureValue(100_000, 5000, 0.01, 120)) };
+      return {
+        note: "₹1,00,000 and ₹5,000 a month at 12% for 10 years",
+        value: rupees(futureValue(100_000, 5000, 0.01, 120)),
+      };
     case "retirement-calculator":
       return { note: "Will your savings last?", value: "Check your plan" };
     case "inflation-calculator":
-      return { note: "₹1,00,000 today at 6% for 10 years", value: `${rupees(100_000 * 1.06 ** 10)} later` };
+      return {
+        note: "₹1,00,000 today at 6% for 10 years",
+        value: `${rupees(100_000 * 1.06 ** 10)} later`,
+      };
     case "finance-calculator":
-      return { note: "Final amount, start, deposit, rate or time", value: "Solve any one" };
+      return {
+        note: "Final amount, start, deposit, rate or time",
+        value: "Solve any one",
+      };
     case "interest-calculator":
-      return { note: "Simple against compound interest", value: "Side by side" };
+      return {
+        note: "Simple against compound interest",
+        value: "Side by side",
+      };
     case "loan-calculator":
-      return { note: "₹10,00,000 at 9% for 5 years", value: `${rupees(monthlyPayment(1_000_000, 9, 60))} a month` };
+      return {
+        note: "₹10,00,000 at 9% for 5 years",
+        value: `${rupees(monthlyPayment(1_000_000, 9, 60))} a month`,
+      };
     case "auto-loan-calculator":
-      return { note: "₹8,00,000 loan at 9% for 5 years", value: `${rupees(monthlyPayment(800_000, 9, 60))} a month` };
+      return {
+        note: "₹8,00,000 loan at 9% for 5 years",
+        value: `${rupees(monthlyPayment(800_000, 9, 60))} a month`,
+      };
     case "mortgage-calculator":
-      return { note: "₹40,00,000 at 8.5% for 20 years", value: `${rupees(monthlyPayment(4_000_000, 8.5, 240))} a month` };
+      return {
+        note: "₹40,00,000 at 8.5% for 20 years",
+        value: `${rupees(monthlyPayment(4_000_000, 8.5, 240))} a month`,
+      };
     case "payment-calculator":
-      return { note: "Payment, loan size or payoff time", value: "Find any one" };
+      return {
+        note: "Payment, loan size or payoff time",
+        value: "Find any one",
+      };
     case "amortization-calculator":
-      return { note: "Interest and principal of every EMI", value: "Full schedule" };
+      return {
+        note: "Interest and principal of every EMI",
+        value: "Full schedule",
+      };
     case "interest-rate-calculator":
-      return { note: "From the loan, the EMI and the tenure", value: "Find the rate" };
+      return {
+        note: "From the loan, the EMI and the tenure",
+        value: "Find the rate",
+      };
     case "pace-calculator":
       return { note: "10 km in 55 minutes", value: "5:30 per km" };
     case "time-calculator":
@@ -117,9 +199,15 @@ export function toolExample(componentKey: string): ToolExample | null {
     case "date-calculator":
       return { note: "9 Nov 2026 plus 15 days", value: "24 Nov 2026" };
     case "unit-converter":
-      return { note: "Length, weight, temperature and more", value: "Every unit" };
+      return {
+        note: "Length, weight, temperature and more",
+        value: "Every unit",
+      };
     case "password-generator":
-      return { note: "Random, made in your browser", value: "Strong passwords" };
+      return {
+        note: "Random, made in your browser",
+        value: "Strong passwords",
+      };
     case "base64-encoder-decoder":
       return { note: "Text to Base64 and back", value: "aGVsbG8=" };
     case "url-encoder-decoder":

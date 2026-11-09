@@ -10,8 +10,10 @@ const published = new Set(builtPaths());
 
 // Ads load for every visitor, so Google's ad hosts are expected to be asked for plain GET requests. Anything else, and
 // any ad request that carries what the visitor typed, still fails the tests below.
-const AD_HOST = /^(pagead2\.googlesyndication\.com|googleads\.g\.doubleclick\.net|tpc\.googlesyndication\.com|[a-z0-9]+\.adtrafficquality\.google|www\.google\.com)$/;
-const isAdRequest = (url: string, method: string) => AD_HOST.test(new URL(url).hostname) && ["GET", "HEAD"].includes(method);
+const AD_HOST =
+  /^(pagead2\.googlesyndication\.com|googleads\.g\.doubleclick\.net|tpc\.googlesyndication\.com|[a-z0-9]+\.adtrafficquality\.google|www\.google\.com)$/;
+const isAdRequest = (url: string, method: string) =>
+  AD_HOST.test(new URL(url).hostname) && ["GET", "HEAD"].includes(method);
 
 /**
  * Run `action`, and return the requests that could carry the visitor's data out of the page: anything to another
@@ -19,10 +21,18 @@ const isAdRequest = (url: string, method: string) => AD_HOST.test(new URL(url).h
  * without the secret are ignored: those are the framework prefetching other pages of this site (Safari does it
  * on its own as links come into view), and they carry nothing from the tool.
  */
-async function requestsDuring(page: Page, action: () => Promise<void>, secret = ""): Promise<string[]> {
+async function requestsDuring(
+  page: Page,
+  action: () => Promise<void>,
+  secret = "",
+): Promise<string[]> {
   const origin = new URL(page.url()).origin;
   const seen: string[] = [];
-  const listener = (r: { url(): string; method(): string; postData(): string | null }) => {
+  const listener = (r: {
+    url(): string;
+    method(): string;
+    postData(): string | null;
+  }) => {
     if (!/^https?:/.test(r.url())) return;
     const sameSite = new URL(r.url()).origin === origin;
     const quiet = ["GET", "HEAD"].includes(r.method()) && !r.postData();
@@ -42,29 +52,69 @@ async function open(page: Page, path: string) {
   await page.waitForLoadState("networkidle");
 }
 
-const IMAGE_TOOLS = ["/tools/image-tools/image-compressor/", "/tools/image-tools/image-resizer/", "/tools/image-tools/image-converter/"];
+const IMAGE_TOOLS = [
+  "/tools/image-tools/image-compressor/",
+  "/tools/image-tools/image-resizer/",
+  "/tools/image-tools/image-converter/",
+];
 for (const path of IMAGE_TOOLS) {
-  test(`choosing and processing an image sends nothing: ${path}`, async ({ page }) => {
+  test(`choosing and processing an image sends nothing: ${path}`, async ({
+    page,
+  }) => {
     test.skip(!published.has(path), "tool is not published");
     await open(page, path);
     const requests = await requestsDuring(page, async () => {
       await upload(page);
-      await expect(page.getByRole("link", { name: "Download image" })).toBeVisible();
+      await expect(
+        page.getByRole("link", { name: "Download image" }),
+      ).toBeVisible();
     });
     expect(requests).toEqual([]);
   });
 }
 
 const TEXT_TOOLS: [path: string, label: string, text: string][] = [
-  ["/tools/developer-tools/json-formatter/", "Your JSON", '{"secret":"do not send me"}'],
-  ["/tools/utilities/word-counter/", "Type or paste your text", "private words that stay here"],
-  ["/tools/developer-tools/base64-encoder-decoder/", "Your text", "private base64 secret 9911"],
-  ["/tools/developer-tools/url-encoder-decoder/", "Your text or URL", "https://private.example/?token=zz9911"],
-  ["/tools/developer-tools/hash-generator/", "Your text", "private hash input 9911"],
-  ["/tools/developer-tools/regex-tester/", "Text to test", "private regex subject 7733"],
-  ["/tools/developer-tools/jwt-decoder/", "Your token", "eyJzZWNyZXQiOiI3NzMzIn0.eyJzZWNyZXQiOiI3NzMzIn0.c2VjcmV0"],
+  [
+    "/tools/developer-tools/json-formatter/",
+    "Your JSON",
+    '{"secret":"do not send me"}',
+  ],
+  [
+    "/tools/utilities/word-counter/",
+    "Type or paste your text",
+    "private words that stay here",
+  ],
+  [
+    "/tools/developer-tools/base64-encoder-decoder/",
+    "Your text",
+    "private base64 secret 9911",
+  ],
+  [
+    "/tools/developer-tools/url-encoder-decoder/",
+    "Your text or URL",
+    "https://private.example/?token=zz9911",
+  ],
+  [
+    "/tools/developer-tools/hash-generator/",
+    "Your text",
+    "private hash input 9911",
+  ],
+  [
+    "/tools/developer-tools/regex-tester/",
+    "Text to test",
+    "private regex subject 7733",
+  ],
+  [
+    "/tools/developer-tools/jwt-decoder/",
+    "Your token",
+    "eyJzZWNyZXQiOiI3NzMzIn0.eyJzZWNyZXQiOiI3NzMzIn0.c2VjcmV0",
+  ],
   ["/tools/developer-tools/colour-converter/", "Type a colour", "#7733aa"],
-  ["/tools/utilities/qr-code-generator/", "Text or link", "https://private.example/token=abc123"],
+  [
+    "/tools/utilities/qr-code-generator/",
+    "Text or link",
+    "https://private.example/token=abc123",
+  ],
 ];
 for (const [path, label, text] of TEXT_TOOLS) {
   test(`typing text sends nothing: ${path}`, async ({ page }) => {
@@ -81,7 +131,9 @@ for (const [path, label, text] of TEXT_TOOLS) {
   });
 }
 
-test("the date calculators send nothing while you use them", async ({ page }) => {
+test("the date calculators send nothing while you use them", async ({
+  page,
+}) => {
   const dates: [string, string][] = [
     ["/tools/utilities/age-calculator/", "Date of birth"],
     ["/tools/utilities/days-between-dates/", "Start date"],
@@ -100,7 +152,9 @@ test("the date calculators send nothing while you use them", async ({ page }) =>
   }
 });
 
-test("the speed, distance and time calculator sends nothing while you type", async ({ page }) => {
+test("the speed, distance and time calculator sends nothing while you type", async ({
+  page,
+}) => {
   const path = "/tools/utilities/speed-distance-time-calculator/";
   test.skip(!published.has(path), "tool is not published");
   await open(page, path);
@@ -114,7 +168,9 @@ test("the speed, distance and time calculator sends nothing while you type", asy
   expect(requests).toEqual([]);
 });
 
-test("the pace, time, hours and date calculators send nothing while you type", async ({ page }) => {
+test("the pace, time, hours and date calculators send nothing while you type", async ({
+  page,
+}) => {
   for (const [path, label] of [
     ["/tools/utilities/pace-calculator/", "Distance"],
     ["/tools/utilities/time-calculator/", "Hours"],
@@ -134,7 +190,9 @@ test("the pace, time, hours and date calculators send nothing while you type", a
   }
 });
 
-test("the health and pregnancy calculators send nothing while you type", async ({ page }) => {
+test("the health and pregnancy calculators send nothing while you type", async ({
+  page,
+}) => {
   for (const [path, label] of [
     ["/tools/health-fitness/bmi-calculator/", "Weight (kg)"],
     ["/tools/health-fitness/bmr-calculator/", "Weight (kg)"],
@@ -143,14 +201,19 @@ test("the health and pregnancy calculators send nothing while you type", async (
     ["/tools/health-fitness/ideal-weight-calculator/", "Height (cm)"],
     ["/tools/health-fitness/due-date-calculator/", "Cycle length (days)"],
     ["/tools/health-fitness/pregnancy-calculator/", "Cycle length (days)"],
-    ["/tools/health-fitness/pregnancy-conception-calculator/", "Estimated due date"],
+    [
+      "/tools/health-fitness/pregnancy-conception-calculator/",
+      "Estimated due date",
+    ],
   ] as const) {
     test.skip(!published.has(path), "tool is not published");
     await open(page, path);
     const requests = await requestsDuring(
       page,
       async () => {
-        await page.getByLabel(label, { exact: true }).fill(label.startsWith("Estimated") ? "2026-10-08" : "4242");
+        await page
+          .getByLabel(label, { exact: true })
+          .fill(label.startsWith("Estimated") ? "2026-10-08" : "4242");
       },
       label.startsWith("Estimated") ? "2026-10-08" : "4242",
     );
@@ -158,10 +221,42 @@ test("the health and pregnancy calculators send nothing while you type", async (
   }
 });
 
-test("the salary, sales tax and income tax calculators send nothing while you type", async ({ page }) => {
+test("the maths calculators send nothing while you type", async ({ page }) => {
+  for (const [path, label] of [
+    ["/tools/math-calculators/fraction-calculator/", "Top"],
+    ["/tools/math-calculators/random-number-generator/", "Highest number"],
+    ["/tools/math-calculators/triangle-calculator/", "Side a"],
+    ["/tools/math-calculators/standard-deviation-calculator/", "Numbers"],
+    ["/tools/math-calculators/scientific-calculator/", "Expression"],
+  ] as const) {
+    test.skip(!published.has(path), "tool is not published");
+    await open(page, path);
+    const typed =
+      label === "Numbers"
+        ? "4242, 4243"
+        : label === "Expression"
+          ? "4242+4243"
+          : "4242";
+    const requests = await requestsDuring(
+      page,
+      async () => {
+        await page.getByLabel(label, { exact: true }).first().fill(typed);
+      },
+      "4242",
+    );
+    expect(requests).toEqual([]);
+  }
+});
+
+test("the salary, sales tax and income tax calculators send nothing while you type", async ({
+  page,
+}) => {
   for (const [path, label] of [
     ["/tools/finance-calculators/salary-calculator/", "Pay (₹)"],
-    ["/tools/finance-calculators/sales-tax-calculator/", "Price of one item (₹)"],
+    [
+      "/tools/finance-calculators/sales-tax-calculator/",
+      "Price of one item (₹)",
+    ],
     ["/tools/finance-calculators/income-tax-calculator/", "Yearly income (₹)"],
   ] as const) {
     test.skip(!published.has(path), "tool is not published");
@@ -177,10 +272,18 @@ test("the salary, sales tax and income tax calculators send nothing while you ty
   }
 });
 
-test("the investment, retirement, inflation, finance and interest calculators send nothing while you type", async ({ page }) => {
+test("the investment, retirement, inflation, finance and interest calculators send nothing while you type", async ({
+  page,
+}) => {
   for (const [path, label] of [
-    ["/tools/finance-calculators/investment-calculator/", "Starting amount (₹)"],
-    ["/tools/finance-calculators/retirement-calculator/", "Current savings (₹)"],
+    [
+      "/tools/finance-calculators/investment-calculator/",
+      "Starting amount (₹)",
+    ],
+    [
+      "/tools/finance-calculators/retirement-calculator/",
+      "Current savings (₹)",
+    ],
     ["/tools/finance-calculators/inflation-calculator/", "Cost today (₹)"],
     ["/tools/finance-calculators/finance-calculator/", "Starting amount (₹)"],
     ["/tools/finance-calculators/interest-calculator/", "Principal (₹)"],
@@ -234,11 +337,14 @@ test("the unit converter sends nothing while you type", async ({ page }) => {
   expect(requests).toEqual([]);
 });
 
-test("the password generator sends nothing, and never puts the password in the address", async ({ page }) => {
+test("the password generator sends nothing, and never puts the password in the address", async ({
+  page,
+}) => {
   const path = "/tools/utilities/password-generator/";
   test.skip(!published.has(path), "tool is not published");
   await open(page, path);
-  const password = (await page.getByTestId("generated-password").textContent()) ?? "";
+  const password =
+    (await page.getByTestId("generated-password").textContent()) ?? "";
   expect(password).toHaveLength(16);
   const requests = await requestsDuring(
     page,
@@ -259,17 +365,48 @@ test("cropping and turning an image sends nothing", async ({ page }) => {
   const requests = await requestsDuring(page, async () => {
     await upload(page);
     await page.getByRole("button", { name: "Rotate right" }).click();
-    await expect(page.getByRole("link", { name: "Download image" })).toBeVisible();
+    await expect(
+      page.getByRole("link", { name: "Download image" }),
+    ).toBeVisible();
   });
   expect(requests).toEqual([]);
 });
 
-test("the PDF and EXIF tools send nothing while files are chosen and processed", async ({ page }) => {
-  const cases: [string, string, () => Promise<{ name: string; mimeType: string; buffer: Buffer }[]>, string][] = [
-    ["/tools/pdf-tools/pdf-merge/", "Choose PDF files", async () => [await pdfFile("a.pdf", 1), await pdfFile("b.pdf", 1)], "Merge into one PDF"],
-    ["/tools/pdf-tools/pdf-split/", "Choose a PDF file", async () => [await pdfFile("a.pdf", 3)], ""],
-    ["/tools/pdf-tools/images-to-pdf/", "Choose pictures (JPG, PNG or WebP)", async () => [{ name: "a.png", mimeType: "image/png", buffer: PNG_1X1 }], "Make the PDF"],
-    ["/tools/image-tools/exif-remover/", "Choose pictures (JPG, PNG or WebP)", async () => [{ name: "a.jpg", mimeType: "image/jpeg", buffer: jpegWithHiddenData() }], ""],
+test("the PDF and EXIF tools send nothing while files are chosen and processed", async ({
+  page,
+}) => {
+  const cases: [
+    string,
+    string,
+    () => Promise<{ name: string; mimeType: string; buffer: Buffer }[]>,
+    string,
+  ][] = [
+    [
+      "/tools/pdf-tools/pdf-merge/",
+      "Choose PDF files",
+      async () => [await pdfFile("a.pdf", 1), await pdfFile("b.pdf", 1)],
+      "Merge into one PDF",
+    ],
+    [
+      "/tools/pdf-tools/pdf-split/",
+      "Choose a PDF file",
+      async () => [await pdfFile("a.pdf", 3)],
+      "",
+    ],
+    [
+      "/tools/pdf-tools/images-to-pdf/",
+      "Choose pictures (JPG, PNG or WebP)",
+      async () => [{ name: "a.png", mimeType: "image/png", buffer: PNG_1X1 }],
+      "Make the PDF",
+    ],
+    [
+      "/tools/image-tools/exif-remover/",
+      "Choose pictures (JPG, PNG or WebP)",
+      async () => [
+        { name: "a.jpg", mimeType: "image/jpeg", buffer: jpegWithHiddenData() },
+      ],
+      "",
+    ],
   ];
   for (const [path, label, files, button] of cases) {
     if (!published.has(path)) continue;
@@ -282,16 +419,29 @@ test("the PDF and EXIF tools send nothing while files are chosen and processed",
         await page.getByRole("button", { name: "Make the files" }).click();
       }
       if (button) await page.getByRole("button", { name: button }).click();
-      await page.getByRole("link", { name: /Download|clean/ }).first().waitFor();
+      await page
+        .getByRole("link", { name: /Download|clean/ })
+        .first()
+        .waitFor();
     });
     expect(requests, path).toEqual([]);
   }
 });
 
-test("the RD and discount calculators send nothing while you type", async ({ page }) => {
+test("the RD and discount calculators send nothing while you type", async ({
+  page,
+}) => {
   const typing: [string, string, string][] = [
-    ["/tools/finance-calculators/rd-calculator/", "Monthly deposit (₹)", "7500"],
-    ["/tools/finance-calculators/discount-calculator/", "Original price (₹)", "4999"],
+    [
+      "/tools/finance-calculators/rd-calculator/",
+      "Monthly deposit (₹)",
+      "7500",
+    ],
+    [
+      "/tools/finance-calculators/discount-calculator/",
+      "Original price (₹)",
+      "4999",
+    ],
   ];
   for (const [path, label, text] of typing) {
     test.skip(!published.has(path), "tool is not published");
@@ -307,8 +457,13 @@ test("the RD and discount calculators send nothing while you type", async ({ pag
   }
 });
 
-test("the interest calculators send nothing while you type", async ({ page }) => {
-  for (const path of ["/tools/finance-calculators/compound-interest-calculator/", "/tools/finance-calculators/simple-interest-calculator/"]) {
+test("the interest calculators send nothing while you type", async ({
+  page,
+}) => {
+  for (const path of [
+    "/tools/finance-calculators/compound-interest-calculator/",
+    "/tools/finance-calculators/simple-interest-calculator/",
+  ]) {
     test.skip(!published.has(path), "tool is not published");
     await open(page, path);
     const requests = await requestsDuring(
@@ -323,8 +478,13 @@ test("the interest calculators send nothing while you type", async ({ page }) =>
   }
 });
 
-test("the SIP and lumpsum calculators send nothing while you type", async ({ page }) => {
-  for (const path of ["/tools/finance-calculators/sip-calculator/", "/tools/finance-calculators/lumpsum-calculator/"]) {
+test("the SIP and lumpsum calculators send nothing while you type", async ({
+  page,
+}) => {
+  for (const path of [
+    "/tools/finance-calculators/sip-calculator/",
+    "/tools/finance-calculators/lumpsum-calculator/",
+  ]) {
     test.skip(!published.has(path), "tool is not published");
     await open(page, path);
     const requests = await requestsDuring(
@@ -354,13 +514,22 @@ test("calculators send nothing while you type", async ({ page }) => {
   expect(requests).toEqual([]);
 });
 
-test("every page loads only from its own site, with no uploads", async ({ page, baseURL }) => {
-  test.setTimeout(360_000); // it visits every page in one test
+test("every page loads only from its own site, with no uploads", async ({
+  page,
+  baseURL,
+}) => {
+  test.setTimeout(900_000); // it visits every page in one test
   const origin = new URL(baseURL!).origin;
   for (const path of builtPaths()) {
     const bad: string[] = [];
     const listener = (r: { url(): string; method(): string }) => {
-      if (/^https?:/.test(r.url()) && (new URL(r.url()).origin !== origin || !["GET", "HEAD"].includes(r.method())) && !AD_HOST.test(new URL(r.url()).hostname)) bad.push(`${r.method()} ${r.url()}`);
+      if (
+        /^https?:/.test(r.url()) &&
+        (new URL(r.url()).origin !== origin ||
+          !["GET", "HEAD"].includes(r.method())) &&
+        !AD_HOST.test(new URL(r.url()).hostname)
+      )
+        bad.push(`${r.method()} ${r.url()}`);
     };
     page.on("request", listener);
     await page.goto(path);
@@ -373,23 +542,52 @@ test("every page loads only from its own site, with no uploads", async ({ page, 
 
 // Analytics never runs on its own. Without a stored "accept" nothing may be requested from Google, whether or not the
 // workbook has a Measurement ID. With no ID at all, even a stored "accept" must request nothing.
-test("analytics requests nothing before a visitor accepts (and nothing at all without an ID)", async ({ page }) => {
+test("analytics requests nothing before a visitor accepts (and nothing at all without an ID)", async ({
+  page,
+}) => {
   const external: string[] = [];
   page.on("request", (r) => {
-    if (/^https?:/.test(r.url()) && new URL(r.url()).origin !== new URL(page.url() === "about:blank" ? "http://localhost" : page.url()).origin) external.push(r.url());
+    if (
+      /^https?:/.test(r.url()) &&
+      new URL(r.url()).origin !==
+        new URL(page.url() === "about:blank" ? "http://localhost" : page.url())
+          .origin
+    )
+      external.push(r.url());
   });
-  const path = ["/tools/finance-calculators/emi-calculator/"].find((p) => published.has(p));
+  const path = ["/tools/finance-calculators/emi-calculator/"].find((p) =>
+    published.has(p),
+  );
   test.skip(!path, "tool is not published");
   await open(page, path!);
   await page.getByLabel("Loan amount (₹)").fill("500000");
   await page.waitForTimeout(500);
-  expect(external.filter((u) => /gtag|googletagmanager|google-analytics|analytics/i.test(u)), "before any choice").toEqual([]);
-  expect(await page.evaluate(() => typeof (window as unknown as { gtag?: unknown }).gtag)).toBe("undefined");
+  expect(
+    external.filter((u) =>
+      /gtag|googletagmanager|google-analytics|analytics/i.test(u),
+    ),
+    "before any choice",
+  ).toEqual([]);
+  expect(
+    await page.evaluate(
+      () => typeof (window as unknown as { gtag?: unknown }).gtag,
+    ),
+  ).toBe("undefined");
 
-  const hasId = (await page.getByRole("region", { name: "Analytics choice" }).count()) > 0 || (await page.getByRole("region", { name: "Privacy choices" }).count()) > 0;
+  const hasId =
+    (await page.getByRole("region", { name: "Analytics choice" }).count()) >
+      0 ||
+    (await page.getByRole("region", { name: "Privacy choices" }).count()) > 0;
   if (hasId) return; // the accepted case needs a stub for Google's script; consent.spec.ts covers it
-  await page.evaluate(() => localStorage.setItem("oewer-consent", JSON.stringify({ analytics: true })));
+  await page.evaluate(() =>
+    localStorage.setItem("oewer-consent", JSON.stringify({ analytics: true })),
+  );
   await open(page, path!);
   await page.waitForTimeout(500);
-  expect(external.filter((u) => /gtag|googletagmanager|google-analytics|analytics/i.test(u)), "accepted, but no Measurement ID").toEqual([]);
+  expect(
+    external.filter((u) =>
+      /gtag|googletagmanager|google-analytics|analytics/i.test(u),
+    ),
+    "accepted, but no Measurement ID",
+  ).toEqual([]);
 });

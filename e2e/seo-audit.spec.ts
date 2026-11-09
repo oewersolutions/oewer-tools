@@ -28,8 +28,11 @@ interface Facts {
 
 async function facts(page: import("@playwright/test").Page): Promise<Facts> {
   return page.evaluate(() => {
-    const meta = (selector: string) => document.querySelector<HTMLMetaElement>(selector)?.content ?? null;
-    const jsonLd = Array.from(document.querySelectorAll('script[type="application/ld+json"]'));
+    const meta = (selector: string) =>
+      document.querySelector<HTMLMetaElement>(selector)?.content ?? null;
+    const jsonLd = Array.from(
+      document.querySelectorAll('script[type="application/ld+json"]'),
+    );
     let bad = 0;
     for (const s of jsonLd) {
       try {
@@ -38,23 +41,35 @@ async function facts(page: import("@playwright/test").Page): Promise<Facts> {
         bad++;
       }
     }
-    const links = Array.from(document.querySelectorAll<HTMLAnchorElement>("a[href]"));
+    const links = Array.from(
+      document.querySelectorAll<HTMLAnchorElement>("a[href]"),
+    );
     return {
       title: document.title,
       description: meta('meta[name="description"]'),
-      canonical: document.querySelector<HTMLLinkElement>('link[rel="canonical"]')?.href ?? null,
+      canonical:
+        document.querySelector<HTMLLinkElement>('link[rel="canonical"]')
+          ?.href ?? null,
       h1: document.querySelectorAll("h1").length,
-      headings: Array.from(document.querySelectorAll("h1,h2,h3,h4,h5,h6")).map((h) => Number(h.tagName[1])),
+      headings: Array.from(document.querySelectorAll("h1,h2,h3,h4,h5,h6")).map(
+        (h) => Number(h.tagName[1]),
+      ),
       lang: document.documentElement.getAttribute("lang"),
       viewport: !!document.querySelector('meta[name="viewport"]'),
       robots: meta('meta[name="robots"]'),
       ogTitle: meta('meta[property="og:title"]'),
       ogDescription: meta('meta[property="og:description"]'),
       imagesWithoutAlt: document.querySelectorAll("img:not([alt])").length,
-      insecure: Array.from(document.querySelectorAll("[src],[href]")).map((e) => e.getAttribute("src") ?? e.getAttribute("href") ?? "").filter((u) => u.startsWith("http://")),
-      unsafeBlank: links.filter((a) => a.target === "_blank" && !/noopener/.test(a.rel)).map((a) => a.href),
+      insecure: Array.from(document.querySelectorAll("[src],[href]"))
+        .map((e) => e.getAttribute("src") ?? e.getAttribute("href") ?? "")
+        .filter((u) => u.startsWith("http://")),
+      unsafeBlank: links
+        .filter((a) => a.target === "_blank" && !/noopener/.test(a.rel))
+        .map((a) => a.href),
       badJsonLd: bad,
-      internalLinks: links.map((a) => a.getAttribute("href")!).filter((h) => h.startsWith("/") && !h.startsWith("//")),
+      internalLinks: links
+        .map((a) => a.getAttribute("href")!)
+        .filter((h) => h.startsWith("/") && !h.startsWith("//")),
     };
   });
 }
@@ -69,17 +84,29 @@ for (const path of paths) {
     const is404 = path === "/404.html";
 
     expect(f.title.length, "title").toBeGreaterThan(9);
-    expect(f.title.length, "title is short enough to show in search results").toBeLessThanOrEqual(75);
-    expect(titles.get(f.title) ?? path, `title "${f.title}" is also used by ${titles.get(f.title)}`).toBe(path);
+    expect(
+      f.title.length,
+      "title is short enough to show in search results",
+    ).toBeLessThanOrEqual(75);
+    expect(
+      titles.get(f.title) ?? path,
+      `title "${f.title}" is also used by ${titles.get(f.title)}`,
+    ).toBe(path);
     titles.set(f.title, path);
 
     expect(f.lang, "html lang").toBeTruthy();
     expect(f.viewport, "viewport meta").toBe(true);
     expect(f.h1, "exactly one h1").toBe(1);
-    for (let i = 1; i < f.headings.length; i++) expect(f.headings[i]! - f.headings[i - 1]!, `heading levels skip (${f.headings.join(",")})`).toBeLessThanOrEqual(1);
+    for (let i = 1; i < f.headings.length; i++)
+      expect(
+        f.headings[i]! - f.headings[i - 1]!,
+        `heading levels skip (${f.headings.join(",")})`,
+      ).toBeLessThanOrEqual(1);
     expect(f.imagesWithoutAlt, "images without alt").toBe(0);
     expect(f.insecure, "http:// resources").toEqual([]);
-    expect(f.unsafeBlank, "target=_blank links without rel=noopener").toEqual([]);
+    expect(f.unsafeBlank, "target=_blank links without rel=noopener").toEqual(
+      [],
+    );
     expect(f.badJsonLd, "invalid JSON-LD").toBe(0);
 
     if (is404) {
@@ -87,29 +114,52 @@ for (const path of paths) {
       return;
     }
     expect(f.description, "meta description").toBeTruthy();
-    expect(f.description!.length, "description length").toBeGreaterThanOrEqual(50);
-    expect(f.description!.length, "description length").toBeLessThanOrEqual(175);
-    expect(descriptions.get(f.description!) ?? path, `description is also used by ${descriptions.get(f.description!)}`).toBe(path);
+    expect(f.description!.length, "description length").toBeGreaterThanOrEqual(
+      50,
+    );
+    expect(f.description!.length, "description length").toBeLessThanOrEqual(
+      175,
+    );
+    expect(
+      descriptions.get(f.description!) ?? path,
+      `description is also used by ${descriptions.get(f.description!)}`,
+    ).toBe(path);
     descriptions.set(f.description!, path);
     expect(f.canonical, "canonical").toMatch(/^https:\/\//);
-    expect(new URL(f.canonical!).pathname.replace(/\/$/, ""), "canonical points at this page").toBe(`${BASE}${path}`.replace(/\/$/, ""));
+    expect(
+      new URL(f.canonical!).pathname.replace(/\/$/, ""),
+      "canonical points at this page",
+    ).toBe(`${BASE}${path}`.replace(/\/$/, ""));
     expect(f.ogTitle, "og:title").toBeTruthy();
     expect(f.ogDescription, "og:description").toBeTruthy();
-    expect(f.robots ?? "", "a page in the sitemap is not noindex").not.toMatch(/noindex/);
+    expect(f.robots ?? "", "a page in the sitemap is not noindex").not.toMatch(
+      /noindex/,
+    );
   });
 }
 
-test("every internal link on every page leads to a page that exists", async ({ page }) => {
-  test.setTimeout(360_000); // it visits every page in one test, and pages with ads wait for Google's script
+test("every internal link on every page leads to a page that exists", async ({
+  page,
+}) => {
+  test.setTimeout(900_000); // it visits every page in one test, and pages with ads wait for Google's script
   const known = new Set(paths.map((p) => p.replace(/\/$/, "")));
   const broken: string[] = [];
   for (const path of paths) {
     await page.goto(path);
     for (const href of (await facts(page)).internalLinks) {
-      const clean = href.split("#")[0]!.split("?")[0]!.replace(BASE, "").replace(/\/$/, "");
+      const clean = href
+        .split("#")[0]!
+        .split("?")[0]!
+        .replace(BASE, "")
+        .replace(/\/$/, "");
       if (clean === "" || known.has(clean)) continue;
       const file = resolve("out", `.${clean}`);
-      if (existsSync(file) || existsSync(`${file}/index.html`) || existsSync(`${file}.html`)) continue; // feed, sitemap, assets, the admin
+      if (
+        existsSync(file) ||
+        existsSync(`${file}/index.html`) ||
+        existsSync(`${file}.html`)
+      )
+        continue; // feed, sitemap, assets, the admin
       broken.push(`${path} -> ${href}`);
     }
   }
@@ -124,7 +174,10 @@ test("sitemap, robots and feed are consistent", async () => {
   for (const loc of locs) {
     expect(loc).toMatch(/^https:\/\//);
     expect(loc).not.toContain("/admin");
-    expect(loc.endsWith("/"), `${loc} ends with a slash like the real address`).toBe(true);
+    expect(
+      loc.endsWith("/"),
+      `${loc} ends with a slash like the real address`,
+    ).toBe(true);
   }
   const robots = readFileSync(resolve("out/robots.txt"), "utf-8");
   expect(robots).toMatch(/^Sitemap: https:\/\/.+\/sitemap\.xml$/m);
@@ -134,10 +187,17 @@ test("sitemap, robots and feed are consistent", async () => {
   expect(feed).toMatch(/<item>/);
 });
 
-test("the admin page is out of search and strictly locked down", async ({ page }) => {
+test("the admin page is out of search and strictly locked down", async ({
+  page,
+}) => {
   await page.goto("/admin/");
-  await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex/);
-  const csp = await page.locator('meta[http-equiv="Content-Security-Policy"]').getAttribute("content");
+  await expect(page.locator('meta[name="robots"]')).toHaveAttribute(
+    "content",
+    /noindex/,
+  );
+  const csp = await page
+    .locator('meta[http-equiv="Content-Security-Policy"]')
+    .getAttribute("content");
   expect(csp).toContain("default-src 'none'");
   expect(csp).toContain("connect-src 'self' https://api.github.com");
   expect(csp).not.toMatch(/unsafe-inline|unsafe-eval/);

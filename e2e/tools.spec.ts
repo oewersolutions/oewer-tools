@@ -43,6 +43,11 @@ const IDEAL = "/tools/health-fitness/ideal-weight-calculator/";
 const DUEDATE = "/tools/health-fitness/due-date-calculator/";
 const PREGNANCY = "/tools/health-fitness/pregnancy-calculator/";
 const CONCEPTION = "/tools/health-fitness/pregnancy-conception-calculator/";
+const FRACTION = "/tools/math-calculators/fraction-calculator/";
+const RANDOM = "/tools/math-calculators/random-number-generator/";
+const TRIANGLE = "/tools/math-calculators/triangle-calculator/";
+const STDDEV = "/tools/math-calculators/standard-deviation-calculator/";
+const SCIENTIFIC = "/tools/math-calculators/scientific-calculator/";
 const PASSWORD = "/tools/utilities/password-generator/";
 const BASE64 = "/tools/developer-tools/base64-encoder-decoder/";
 const URLTOOL = "/tools/developer-tools/url-encoder-decoder/";
@@ -52,7 +57,8 @@ const COLOUR = "/tools/developer-tools/colour-converter/";
 const TIMESTAMP = "/tools/developer-tools/timestamp-converter/";
 const REGEX = "/tools/developer-tools/regex-tester/";
 const JWT = "/tools/developer-tools/jwt-decoder/";
-const SAMPLE_JWT = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c";
+const SAMPLE_JWT =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c";
 const PDF_MERGE = "/tools/pdf-tools/pdf-merge/";
 const PDF_SPLIT = "/tools/pdf-tools/pdf-split/";
 const IMAGES_PDF = "/tools/pdf-tools/images-to-pdf/";
@@ -62,7 +68,9 @@ const RESIZER = "/tools/image-tools/image-resizer/";
 const CONVERTER = "/tools/image-tools/image-converter/";
 const CROP = "/tools/image-tools/image-crop-rotate/";
 
-test("EMI calculator shows the monthly EMI and rejects bad input", async ({ page }) => {
+test("EMI calculator shows the monthly EMI and rejects bad input", async ({
+  page,
+}) => {
   test.skip(!published.has(EMI), "EMI calculator is not published");
   await page.goto(EMI);
   await page.getByLabel("Loan amount (₹)").fill("1000000");
@@ -73,7 +81,9 @@ test("EMI calculator shows the monthly EMI and rejects bad input", async ({ page
   await expect(page.getByText("Interest rate must be a number.")).toBeVisible();
 });
 
-test("SIP calculator shows the estimated value and rejects bad input", async ({ page }) => {
+test("SIP calculator shows the estimated value and rejects bad input", async ({
+  page,
+}) => {
   test.skip(!published.has(SIP), "SIP calculator is not published");
   await page.goto(SIP);
   await page.getByLabel("Monthly investment (₹)").fill("5000");
@@ -87,7 +97,9 @@ test("SIP calculator shows the estimated value and rejects bad input", async ({ 
   await expect(page.getByText("Time period must be a number.")).toBeVisible();
 });
 
-test("lumpsum calculator shows the estimated value and rejects bad input", async ({ page }) => {
+test("lumpsum calculator shows the estimated value and rejects bad input", async ({
+  page,
+}) => {
   test.skip(!published.has(LUMPSUM), "Lumpsum calculator is not published");
   await page.goto(LUMPSUM);
   await page.getByLabel("Investment amount (₹)").fill("100000");
@@ -95,25 +107,41 @@ test("lumpsum calculator shows the estimated value and rejects bad input", async
   await page.getByLabel("Time period (years)").fill("10");
   await expect(page.getByRole("status")).toContainText("3,10,584.82");
   await page.getByLabel("Investment amount (₹)").fill("-5");
-  await expect(page.getByText("Investment amount cannot be less than 0.")).toBeVisible();
+  await expect(
+    page.getByText("Investment amount cannot be less than 0."),
+  ).toBeVisible();
 });
 
-test("compound interest calculator shows the amount and a year-by-year table", async ({ page }) => {
-  test.skip(!published.has(COMPOUND), "Compound interest calculator is not published");
+test("compound interest calculator shows the amount and a year-by-year table", async ({
+  page,
+}) => {
+  test.skip(
+    !published.has(COMPOUND),
+    "Compound interest calculator is not published",
+  );
   await page.goto(COMPOUND);
   await page.getByLabel("Principal (₹)").fill("100000");
   await page.getByLabel("Interest rate (% per year)").fill("8");
   await page.getByLabel("Time period (years)").fill("10");
   await expect(page.getByRole("status")).toContainText("2,15,892");
-  await expect(page.getByRole("region", { name: "Year by year" }).getByRole("row")).toHaveCount(11); // header + 10 years
+  await expect(
+    page.getByRole("region", { name: "Year by year" }).getByRole("row"),
+  ).toHaveCount(11); // header + 10 years
   await page.getByLabel("Interest added").selectOption("12");
   await expect(page.getByRole("status")).toContainText("2,21,964");
   await page.getByLabel("Time period (years)").fill("51");
-  await expect(page.getByText("Time period cannot be more than 50.")).toBeVisible();
+  await expect(
+    page.getByText("Time period cannot be more than 50."),
+  ).toBeVisible();
 });
 
-test("simple interest calculator handles years, months and days", async ({ page }) => {
-  test.skip(!published.has(SIMPLE), "Simple interest calculator is not published");
+test("simple interest calculator handles years, months and days", async ({
+  page,
+}) => {
+  test.skip(
+    !published.has(SIMPLE),
+    "Simple interest calculator is not published",
+  );
   await page.goto(SIMPLE);
   await page.getByLabel("Principal (₹)").fill("100000");
   await page.getByLabel("Interest rate (% per year)").fill("8");
@@ -126,7 +154,9 @@ test("simple interest calculator handles years, months and days", async ({ page 
   await expect(page.getByText("Time period must be a number.")).toBeVisible();
 });
 
-test("RD calculator shows the maturity amount and rejects bad input", async ({ page }) => {
+test("RD calculator shows the maturity amount and rejects bad input", async ({
+  page,
+}) => {
   test.skip(!published.has(RD), "RD calculator is not published");
   await page.goto(RD);
   await page.getByLabel("Monthly deposit (₹)").fill("2000");
@@ -150,25 +180,39 @@ test("discount calculator combines two discounts", async ({ page }) => {
   await page.getByLabel(/Second discount/).fill("");
   await expect(page.getByRole("status")).toContainText("800");
   await page.getByLabel("Discount (%)", { exact: true }).fill("101");
-  await expect(page.getByText("Discount cannot be more than 100.")).toBeVisible();
+  await expect(
+    page.getByText("Discount cannot be more than 100."),
+  ).toBeVisible();
 });
 
-test("age calculator gives years, months and days, and the next birthday", async ({ page }) => {
+test("age calculator gives years, months and days, and the next birthday", async ({
+  page,
+}) => {
   test.skip(!published.has(AGE), "Age calculator is not published");
   await page.goto(AGE);
   await page.getByLabel("Date of birth").fill("1990-05-15");
   await page.getByLabel("Age on").fill("2026-10-31");
-  await expect(page.getByRole("status")).toContainText("36 years, 5 months, 16 days");
+  await expect(page.getByRole("status")).toContainText(
+    "36 years, 5 months, 16 days",
+  );
   await expect(page.getByRole("status")).toContainText("13,318");
   await expect(page.getByRole("status")).toContainText("15 May 2027");
   await page.getByLabel("Date of birth").fill("2000-02-29");
   await page.getByLabel("Age on").fill("2025-02-28");
-  await expect(page.getByRole("status")).toContainText("25 years, 0 months, 0 days");
+  await expect(page.getByRole("status")).toContainText(
+    "25 years, 0 months, 0 days",
+  );
   await page.getByLabel("Date of birth").fill("2030-01-01");
-  await expect(page.getByText("The date of birth cannot be after the date you are measuring to.")).toBeVisible();
+  await expect(
+    page.getByText(
+      "The date of birth cannot be after the date you are measuring to.",
+    ),
+  ).toBeVisible();
 });
 
-test("days between dates counts the gap and, on request, the end date", async ({ page }) => {
+test("days between dates counts the gap and, on request, the end date", async ({
+  page,
+}) => {
   test.skip(!published.has(DAYS), "Days between dates is not published");
   await page.goto(DAYS);
   await page.getByLabel("Start date").fill("2026-01-01");
@@ -176,7 +220,9 @@ test("days between dates counts the gap and, on request, the end date", async ({
   await expect(page.getByRole("status")).toContainText("9");
   await expect(page.getByRole("status")).toContainText("Days between");
   await page.getByLabel(/Count the end date too/).check();
-  await expect(page.getByRole("status")).toContainText("Days, including the end date");
+  await expect(page.getByRole("status")).toContainText(
+    "Days, including the end date",
+  );
   await expect(page.getByRole("status")).toContainText("10");
   await page.getByLabel("Start date").fill("2026-12-31");
   await expect(page.getByRole("status")).toContainText("Counted from");
@@ -185,12 +231,20 @@ test("days between dates counts the gap and, on request, the end date", async ({
 // Every calculator shows its equation and the steps with the visitor's own numbers.
 const WORKINGS: [path: string, formula: string, step: string][] = [
   [EMI, "EMI = P × i × (1 + i)^n", "Monthly rate i = 9 ÷ 12 ÷ 100 = 0.0075"],
-  [SIP, "Future value = P × ((1 + i)^n − 1)", "Number of months n = 10 years × 12 = 120"],
+  [
+    SIP,
+    "Future value = P × ((1 + i)^n − 1)",
+    "Number of months n = 10 years × 12 = 120",
+  ],
   [LUMPSUM, "Future value = P × (1 + r)^t", "Rate r = 12 ÷ 100 = 0.12"],
   [COMPOUND, "A = P × (1 + r ÷ k)^(k × t)", "Rate r = 8 ÷ 100 = 0.08"],
   [SIMPLE, "Interest = P × R × T ÷ 100", "Time T = 3 years"],
   [RD, "Maturity = R × ((1 + i)^N − 1)", "Quarterly rate i = 6.5 ÷ 400"],
-  [DISCOUNT, "Final price = Price × (1 − first ÷ 100) × (1 − second ÷ 100)", "After the first discount"],
+  [
+    DISCOUNT,
+    "Final price = Price × (1 − first ÷ 100) × (1 − second ÷ 100)",
+    "After the first discount",
+  ],
   [UNITS, "Result = Value × (size of the From unit", "1 m = 1 m"],
 ];
 for (const [path, formula, step] of WORKINGS) {
@@ -199,32 +253,45 @@ for (const [path, formula, step] of WORKINGS) {
     await page.goto(path);
     if (path === UNITS) await page.getByLabel("Value").fill("1");
     const workings = page.locator("[data-workings]");
-    await expect(workings.getByRole("heading", { name: "How this is calculated" })).toBeVisible();
+    await expect(
+      workings.getByRole("heading", { name: "How this is calculated" }),
+    ).toBeVisible();
     await expect(workings).toContainText(formula);
     await expect(workings).toContainText(step);
   });
 }
 
 test("age and days between show their working", async ({ page }) => {
-  test.skip(!published.has(AGE) || !published.has(DAYS), "tools are not published");
+  test.skip(
+    !published.has(AGE) || !published.has(DAYS),
+    "tools are not published",
+  );
   await page.goto(AGE);
   await page.getByLabel("Date of birth").fill("1990-05-14");
   await page.getByLabel("Age on").fill("2026-11-09");
-  await expect(page.locator("[data-workings]")).toContainText("Whole years: 36");
+  await expect(page.locator("[data-workings]")).toContainText(
+    "Whole years: 36",
+  );
   await page.goto(DAYS);
   await page.getByLabel("Start date").fill("2026-01-01");
   await page.getByLabel("End date", { exact: true }).fill("2026-01-31");
-  await expect(page.locator("[data-workings]")).toContainText("Days between = ");
+  await expect(page.locator("[data-workings]")).toContainText(
+    "Days between = ",
+  );
 });
 
-test("BMI calculator gives the BMI, the category and the weight range, in both units", async ({ page }) => {
+test("BMI calculator gives the BMI, the category and the weight range, in both units", async ({
+  page,
+}) => {
   test.skip(!published.has(BMI), "BMI calculator is not published");
   await page.goto(BMI);
   const result = page.getByRole("status");
   await expect(result).toContainText("22.9");
   await expect(result).toContainText("Normal weight");
   await expect(result).toContainText("56.7 kg to 76.3 kg");
-  await expect(page.locator("[data-workings]")).toContainText("BMI = weight (kg) ÷ height (m)²");
+  await expect(page.locator("[data-workings]")).toContainText(
+    "BMI = weight (kg) ÷ height (m)²",
+  );
   await expect(result).toContainText("not medical advice");
   await page.getByLabel("Weight (kg)").fill("85");
   await expect(result).toContainText("Overweight");
@@ -237,10 +304,14 @@ test("BMI calculator gives the BMI, the category and the weight range, in both u
   await page.getByLabel("Weight (lb)").fill("154");
   await expect(result).toContainText("22.7");
   await page.getByLabel("Age (years)").fill("12");
-  await expect(page.locator("[data-workings]")).toContainText("do not apply under 18");
+  await expect(page.locator("[data-workings]")).toContainText(
+    "do not apply under 18",
+  );
 });
 
-test("BMR calculator uses either equation and shows kilojoules", async ({ page }) => {
+test("BMR calculator uses either equation and shows kilojoules", async ({
+  page,
+}) => {
   test.skip(!published.has(BMR), "BMR calculator is not published");
   await page.goto(BMR);
   const result = page.getByRole("status");
@@ -256,7 +327,9 @@ test("BMR calculator uses either equation and shows kilojoules", async ({ page }
   await expect(result).toContainText("Enter your age");
 });
 
-test("calorie calculator gives maintenance, a target and a warning below the BMR", async ({ page }) => {
+test("calorie calculator gives maintenance, a target and a warning below the BMR", async ({
+  page,
+}) => {
   test.skip(!published.has(CALORIES), "Calorie calculator is not published");
   await page.goto(CALORIES);
   const result = page.getByRole("status");
@@ -264,7 +337,9 @@ test("calorie calculator gives maintenance, a target and a warning below the BMR
   await page.getByLabel("Change from maintenance").selectOption("-500");
   await expect(result).toContainText("2,056 kcal a day");
   await expect(result).toContainText("0.45 kg a week lost");
-  await expect(page.locator("[data-workings]")).toContainText("7,700 kcal per kg");
+  await expect(page.locator("[data-workings]")).toContainText(
+    "7,700 kcal per kg",
+  );
   await page.getByLabel("Activity level").selectOption("vigorous");
   await expect(result).toContainText("3,627 kcal"); // 1,649 × 2.2 = 3,627 maintenance
   await page.getByLabel("Activity level").selectOption("sedentary");
@@ -273,23 +348,33 @@ test("calorie calculator gives maintenance, a target and a warning below the BMR
   await expect(result).not.toContainText("Below your BMR");
 });
 
-test("body fat calculator estimates with the Navy method and asks women for the hip", async ({ page }) => {
+test("body fat calculator estimates with the Navy method and asks women for the hip", async ({
+  page,
+}) => {
   test.skip(!published.has(BODYFAT), "Body fat calculator is not published");
   await page.goto(BODYFAT);
   const result = page.getByRole("status");
   await expect(page.getByLabel("Hip (cm)")).toHaveCount(0);
   await expect(result).toContainText("19.8%");
   await expect(result).toContainText("15.8 kg");
-  await expect(page.locator("[data-workings]")).toContainText("Waist − neck = 52 cm");
+  await expect(page.locator("[data-workings]")).toContainText(
+    "Waist − neck = 52 cm",
+  );
   await page.getByLabel("Neck (cm)").fill("95"); // bigger than the waist
-  await expect(page.getByText(/Waist must be more than the neck/)).toBeVisible();
+  await expect(
+    page.getByText(/Waist must be more than the neck/),
+  ).toBeVisible();
   await page.getByLabel("Neck (cm)").fill("38");
   await page.getByLabel("Sex").selectOption("female");
   await page.getByLabel("Hip (cm)").fill("95");
-  await expect(page.locator("[data-workings]")).toContainText("Waist + hip − neck");
+  await expect(page.locator("[data-workings]")).toContainText(
+    "Waist + hip − neck",
+  );
 });
 
-test("ideal weight calculator shows the Devine, Hamwi and BMI range figures", async ({ page }) => {
+test("ideal weight calculator shows the Devine, Hamwi and BMI range figures", async ({
+  page,
+}) => {
   test.skip(!published.has(IDEAL), "Ideal weight calculator is not published");
   await page.goto(IDEAL);
   const result = page.getByRole("status");
@@ -302,7 +387,9 @@ test("ideal weight calculator shows the Devine, Hamwi and BMI range figures", as
   await expect(page.locator("[data-workings]")).toContainText("Hamwi: 45.4 kg");
 });
 
-test("due date calculator works from the last period, the cycle length and conception", async ({ page }) => {
+test("due date calculator works from the last period, the cycle length and conception", async ({
+  page,
+}) => {
   test.skip(!published.has(DUEDATE), "Due date calculator is not published");
   await page.goto(DUEDATE);
   const result = page.getByRole("status");
@@ -318,10 +405,14 @@ test("due date calculator works from the last period, the cycle length and conce
   await expect(result).toContainText("8 October 2026");
   await page.getByLabel("Work it out from").selectOption("lmp");
   await page.getByLabel("Cycle length (days)").fill("10");
-  await expect(page.getByText("Cycle length must be at least 20 days.")).toBeVisible();
+  await expect(
+    page.getByText("Cycle length must be at least 20 days."),
+  ).toBeVisible();
 });
 
-test("pregnancy calculator gives the weeks, the trimester and the days to go", async ({ page }) => {
+test("pregnancy calculator gives the weeks, the trimester and the days to go", async ({
+  page,
+}) => {
   test.skip(!published.has(PREGNANCY), "Pregnancy calculator is not published");
   await page.goto(PREGNANCY);
   const result = page.getByRole("status");
@@ -331,15 +422,22 @@ test("pregnancy calculator gives the weeks, the trimester and the days to go", a
   await expect(result).toContainText("first trimester");
   await expect(result).toContainText("210");
   await expect(result).toContainText("25% of 40 weeks");
-  await expect(page.locator("[data-workings]")).toContainText("10 weeks and 0 days");
+  await expect(page.locator("[data-workings]")).toContainText(
+    "10 weeks and 0 days",
+  );
   await page.getByLabel("How far along on").fill("2026-10-12");
   await expect(result).toContainText("Days past the due date");
   await page.getByLabel("How far along on").fill("2025-12-01");
   await expect(page.getByText(/before the pregnancy started/)).toBeVisible();
 });
 
-test("pregnancy conception calculator works back from a due date and from the last period", async ({ page }) => {
-  test.skip(!published.has(CONCEPTION), "Pregnancy conception calculator is not published");
+test("pregnancy conception calculator works back from a due date and from the last period", async ({
+  page,
+}) => {
+  test.skip(
+    !published.has(CONCEPTION),
+    "Pregnancy conception calculator is not published",
+  );
   await page.goto(CONCEPTION);
   const result = page.getByRole("status");
   await page.getByLabel("Estimated due date").fill("2026-10-08");
@@ -352,24 +450,32 @@ test("pregnancy conception calculator works back from a due date and from the la
   await expect(page.locator("[data-workings]")).toContainText("(35 − 14)");
 });
 
-test("salary calculator converts pay between every period", async ({ page }) => {
+test("salary calculator converts pay between every period", async ({
+  page,
+}) => {
   test.skip(!published.has(SALARY), "Salary calculator is not published");
   await page.goto(SALARY);
   const result = page.getByRole("status");
   await expect(result).toContainText("₹6,00,000.00");
   await expect(result).toContainText("₹50,000.00");
   await expect(result).toContainText("₹288.46");
-  await expect(page.locator("[data-workings]")).toContainText("Hourly = Weekly ÷ hours per week");
+  await expect(page.locator("[data-workings]")).toContainText(
+    "Hourly = Weekly ÷ hours per week",
+  );
   await page.getByLabel("Pay is").selectOption("hourly");
   await page.getByLabel("Pay (₹)").fill("300");
   await expect(result).toContainText("₹6,24,000.00");
   await page.getByLabel("Weeks a year").fill("48");
   await expect(result).toContainText("₹5,76,000.00");
   await page.getByLabel("Hours a week").fill("200");
-  await expect(page.getByText("Hours per week cannot be more than 168.")).toBeVisible();
+  await expect(
+    page.getByText("Hours per week cannot be more than 168."),
+  ).toBeVisible();
 });
 
-test("sales tax calculator adds tax, applies a discount and removes tax", async ({ page }) => {
+test("sales tax calculator adds tax, applies a discount and removes tax", async ({
+  page,
+}) => {
   test.skip(!published.has(SALESTAX), "Sales tax calculator is not published");
   await page.goto(SALESTAX);
   const result = page.getByRole("status");
@@ -385,14 +491,23 @@ test("sales tax calculator adds tax, applies a discount and removes tax", async 
   await expect(page.locator("[data-workings]")).toContainText("18% + 2% = 20%");
 });
 
-test("income tax calculator applies the slabs you enter and explains bad slabs", async ({ page }) => {
-  test.skip(!published.has(INCOMETAX), "Income tax calculator is not published");
+test("income tax calculator applies the slabs you enter and explains bad slabs", async ({
+  page,
+}) => {
+  test.skip(
+    !published.has(INCOMETAX),
+    "Income tax calculator is not published",
+  );
   await page.goto(INCOMETAX);
   const result = page.getByRole("status");
   await expect(result).toContainText("₹71,500.00");
   await expect(result).toContainText("5.96%");
-  await expect(page.getByRole("region", { name: "Tax by slab" }).getByRole("row")).toHaveCount(7); // header and six slabs
-  await expect(page.locator("[data-workings]")).toContainText("₹1,25,000.00 × 15 ÷ 100 = ₹18,750.00");
+  await expect(
+    page.getByRole("region", { name: "Tax by slab" }).getByRole("row"),
+  ).toHaveCount(7); // header and six slabs
+  await expect(page.locator("[data-workings]")).toContainText(
+    "₹1,25,000.00 × 15 ÷ 100 = ₹18,750.00",
+  );
   await page.getByLabel("Slab 2 rate (%)").fill("10");
   await expect(result).toContainText("₹92,300.00"); // 20,000 more tax before cess (₹88,750), plus 4% cess
   await page.getByLabel("Slab 3 starts at (₹)").fill("200000");
@@ -402,22 +517,32 @@ test("income tax calculator applies the slabs you enter and explains bad slabs",
   await expect(result).toContainText("Enter your income and the tax slabs");
 });
 
-test("investment calculator shows the balance, the returns and a year-by-year table", async ({ page }) => {
+test("investment calculator shows the balance, the returns and a year-by-year table", async ({
+  page,
+}) => {
   test.skip(!published.has(INVEST), "Investment calculator is not published");
   await page.goto(INVEST);
   const result = page.getByRole("status");
   await expect(result).toContainText("₹14,80,232.14");
   await expect(result).toContainText("₹7,00,000.00");
-  await expect(page.getByRole("region", { name: "Year by year" }).getByRole("row")).toHaveCount(11); // header and ten years
-  await expect(page.locator("[data-workings]")).toContainText("Balance = P × (1 + i)^n");
+  await expect(
+    page.getByRole("region", { name: "Year by year" }).getByRole("row"),
+  ).toHaveCount(11); // header and ten years
+  await expect(page.locator("[data-workings]")).toContainText(
+    "Balance = P × (1 + i)^n",
+  );
   await page.getByLabel("Monthly additions are made").selectOption("start");
   await expect(result).toContainText("₹14,91,734.07");
   await page.getByLabel("Starting amount (₹)").fill("");
   await page.getByLabel("Monthly addition (₹)").fill("");
-  await expect(result).toContainText("Enter a starting amount or a monthly addition");
+  await expect(result).toContainText(
+    "Enter a starting amount or a monthly addition",
+  );
 });
 
-test("retirement calculator shows a shortfall, the extra saving, and checks the ages", async ({ page }) => {
+test("retirement calculator shows a shortfall, the extra saving, and checks the ages", async ({
+  page,
+}) => {
   test.skip(!published.has(RETIRE), "Retirement calculator is not published");
   await page.goto(RETIRE);
   const result = page.getByRole("status");
@@ -428,10 +553,14 @@ test("retirement calculator shows a shortfall, the extra saving, and checks the 
   await page.getByLabel("Monthly saving (₹)").fill("200000");
   await expect(result).toContainText("Estimated surplus at retirement");
   await page.getByLabel("Retire at").fill("25");
-  await expect(page.getByText("Retirement age must be after your current age.")).toBeVisible();
+  await expect(
+    page.getByText("Retirement age must be after your current age."),
+  ).toBeVisible();
 });
 
-test("inflation calculator finds the future cost, today's worth and the average rate", async ({ page }) => {
+test("inflation calculator finds the future cost, today's worth and the average rate", async ({
+  page,
+}) => {
   test.skip(!published.has(INFLATION), "Inflation calculator is not published");
   await page.goto(INFLATION);
   const result = page.getByRole("status");
@@ -446,7 +575,9 @@ test("inflation calculator finds the future cost, today's worth and the average 
   await expect(page.locator("[data-workings]")).toContainText("Yearly rate");
 });
 
-test("finance calculator solves for each value and explains impossible cases", async ({ page }) => {
+test("finance calculator solves for each value and explains impossible cases", async ({
+  page,
+}) => {
   test.skip(!published.has(FINANCE), "Finance calculator is not published");
   await page.goto(FINANCE);
   const result = page.getByRole("status");
@@ -468,7 +599,9 @@ test("finance calculator solves for each value and explains impossible cases", a
   await expect(page.getByText(/less than the money put in/)).toBeVisible();
 });
 
-test("interest calculator compares simple and compound interest", async ({ page }) => {
+test("interest calculator compares simple and compound interest", async ({
+  page,
+}) => {
   test.skip(!published.has(INTEREST), "Interest calculator is not published");
   await page.goto(INTEREST);
   const result = page.getByRole("status");
@@ -477,16 +610,22 @@ test("interest calculator compares simple and compound interest", async ({ page 
   await expect(result).toContainText("₹1,15,892.50");
   await page.getByLabel("Compound interest is added").selectOption("12");
   await expect(result).toContainText("₹1,21,9");
-  await expect(page.locator("[data-workings]")).toContainText("Compounding earns");
+  await expect(page.locator("[data-workings]")).toContainText(
+    "Compounding earns",
+  );
 });
 
-test("loan calculator gives the EMI and shows what an extra payment saves", async ({ page }) => {
+test("loan calculator gives the EMI and shows what an extra payment saves", async ({
+  page,
+}) => {
   test.skip(!published.has(LOAN), "Loan calculator is not published");
   await page.goto(LOAN);
   const result = page.getByRole("status");
   await expect(result).toContainText("₹20,758.36");
   await expect(result).toContainText("₹2,45,501.31");
-  await expect(page.locator("[data-workings]")).toContainText("EMI = P × i × (1 + i)^n");
+  await expect(page.locator("[data-workings]")).toContainText(
+    "EMI = P × i × (1 + i)^n",
+  );
   await page.getByLabel("Extra payment each month (₹, optional)").fill("5000");
   await expect(result).toContainText("Interest saved");
   await expect(result).toContainText("1 year 1 month"); // 13 months sooner
@@ -495,19 +634,27 @@ test("loan calculator gives the EMI and shows what an extra payment saves", asyn
   await expect(result).toContainText("Enter the loan amount");
 });
 
-test("auto loan calculator adds up the total cost of the vehicle", async ({ page }) => {
+test("auto loan calculator adds up the total cost of the vehicle", async ({
+  page,
+}) => {
   test.skip(!published.has(AUTOLOAN), "Auto loan calculator is not published");
   await page.goto(AUTOLOAN);
   const result = page.getByRole("status");
   await expect(result).toContainText("₹16,606.68");
   await page.getByLabel("Processing fee (% of the loan, optional)").fill("1");
   await expect(result).toContainText("₹12,04,401.05");
-  await expect(page.locator("[data-workings]")).toContainText("Total cost of the vehicle");
+  await expect(page.locator("[data-workings]")).toContainText(
+    "Total cost of the vehicle",
+  );
   await page.getByLabel("Down payment (₹)").fill("1000000");
-  await expect(page.getByText("The down payment must be less than the vehicle price.")).toBeVisible();
+  await expect(
+    page.getByText("The down payment must be less than the vehicle price."),
+  ).toBeVisible();
 });
 
-test("mortgage calculator shows the loan-to-value and the total cost", async ({ page }) => {
+test("mortgage calculator shows the loan-to-value and the total cost", async ({
+  page,
+}) => {
   test.skip(!published.has(MORTGAGE), "Mortgage calculator is not published");
   await page.goto(MORTGAGE);
   const result = page.getByRole("status");
@@ -517,7 +664,9 @@ test("mortgage calculator shows the loan-to-value and the total cost", async ({ 
   await expect(page.locator("[data-workings]")).toContainText("Loan-to-value");
 });
 
-test("payment calculator finds the payment, the loan a payment carries and the payoff time", async ({ page }) => {
+test("payment calculator finds the payment, the loan a payment carries and the payoff time", async ({
+  page,
+}) => {
   test.skip(!published.has(PAYMENT), "Payment calculator is not published");
   await page.goto(PAYMENT);
   const result = page.getByRole("status");
@@ -531,10 +680,14 @@ test("payment calculator finds the payment, the loan a payment carries and the p
   await page.getByLabel("Monthly payment (₹)").fill("25000");
   await expect(result).toContainText("4 years");
   await page.getByLabel("Monthly payment (₹)").fill("5000");
-  await expect(page.getByText(/more than the interest charged in the first month/)).toBeVisible();
+  await expect(
+    page.getByText(/more than the interest charged in the first month/),
+  ).toBeVisible();
 });
 
-test("amortization calculator shows a year-by-year and a month-by-month schedule", async ({ page }) => {
+test("amortization calculator shows a year-by-year and a month-by-month schedule", async ({
+  page,
+}) => {
   test.skip(!published.has(AMORT), "Amortization calculator is not published");
   await page.goto(AMORT);
   const yearly = page.getByRole("region", { name: "Year by year" });
@@ -544,10 +697,14 @@ test("amortization calculator shows a year-by-year and a month-by-month schedule
   const monthly = page.getByRole("region", { name: "Month by month" });
   await expect(monthly.getByRole("row")).toHaveCount(61);
   await expect(monthly.getByRole("row").nth(1)).toContainText("₹7,500.00");
-  await expect(page.locator("[data-workings]")).toContainText("Month 1 interest");
+  await expect(page.locator("[data-workings]")).toContainText(
+    "Month 1 interest",
+  );
 });
 
-test("interest rate calculator finds the rate and explains an impossible payment", async ({ page }) => {
+test("interest rate calculator finds the rate and explains an impossible payment", async ({
+  page,
+}) => {
   test.skip(!published.has(RATE), "Interest rate calculator is not published");
   await page.goto(RATE);
   const result = page.getByRole("status");
@@ -560,14 +717,18 @@ test("interest rate calculator finds the rate and explains an impossible payment
   await expect(page.getByText(/which is less than the loan/)).toBeVisible();
 });
 
-test("pace calculator finds pace, finish time and distance, with the working", async ({ page }) => {
+test("pace calculator finds pace, finish time and distance, with the working", async ({
+  page,
+}) => {
   test.skip(!published.has(PACE), "Pace calculator is not published");
   await page.goto(PACE);
   const result = page.getByRole("status");
   await expect(result).toContainText("5:30"); // the default: 10 km in 55 minutes
   await expect(result).toContainText("8:51");
   await expect(result).toContainText("Marathon at this pace");
-  await expect(page.locator("[data-workings]")).toContainText("Pace = Time ÷ Distance");
+  await expect(page.locator("[data-workings]")).toContainText(
+    "Pace = Time ÷ Distance",
+  );
   await page.getByLabel("Find").selectOption("time");
   await page.getByLabel("Distance", { exact: true }).fill("42.195");
   await page.getByLabel("Pace minutes").fill("5");
@@ -584,12 +745,16 @@ test("pace calculator finds pace, finish time and distance, with the working", a
   await expect(page.getByText("Pace must be greater than 0.")).toBeVisible();
 });
 
-test("time calculator adds and subtracts, and shows a negative result", async ({ page }) => {
+test("time calculator adds and subtracts, and shows a negative result", async ({
+  page,
+}) => {
   test.skip(!published.has(TIMECALC), "Time calculator is not published");
   await page.goto(TIMECALC);
   const result = page.getByRole("status");
   await expect(result).toContainText("4 h 16 min 20 s"); // the default sum
-  await expect(page.locator("[data-workings]")).toContainText("Total = First time + Second time");
+  await expect(page.locator("[data-workings]")).toContainText(
+    "Total = First time + Second time",
+  );
   await page.getByLabel("Operation").selectOption("subtract");
   await expect(result).toContainText("1 h 14 min 40 s");
   await page.getByLabel("Hours").first().fill("0");
@@ -599,7 +764,9 @@ test("time calculator adds and subtracts, and shows a negative result", async ({
   await expect(page.locator("[data-workings]")).toContainText("negative");
 });
 
-test("hours calculator finds hours worked, an overnight shift and pay", async ({ page }) => {
+test("hours calculator finds hours worked, an overnight shift and pay", async ({
+  page,
+}) => {
   test.skip(!published.has(HOURS), "Hours calculator is not published");
   await page.goto(HOURS);
   const result = page.getByRole("status");
@@ -616,7 +783,9 @@ test("hours calculator finds hours worked, an overnight shift and pay", async ({
   await expect(page.getByText(/same as the start time/)).toBeVisible();
 });
 
-test("date calculator adds and subtracts and handles month ends and leap years", async ({ page }) => {
+test("date calculator adds and subtracts and handles month ends and leap years", async ({
+  page,
+}) => {
   test.skip(!published.has(DATECALC), "Date calculator is not published");
   await page.goto(DATECALC);
   await page.getByLabel("Start date").fill("2026-11-09");
@@ -640,8 +809,13 @@ test("date calculator adds and subtracts and handles month ends and leap years",
   await expect(result).toContainText("28 February 2024");
 });
 
-test("speed, distance and time finds each value and shows the equation with the working", async ({ page }) => {
-  test.skip(!published.has(MOTION), "Speed, distance and time calculator is not published");
+test("speed, distance and time finds each value and shows the equation with the working", async ({
+  page,
+}) => {
+  test.skip(
+    !published.has(MOTION),
+    "Speed, distance and time calculator is not published",
+  );
   await page.goto(MOTION);
   await page.getByLabel("Distance", { exact: true }).fill("150");
   await page.getByLabel("Hours").fill("2");
@@ -649,7 +823,9 @@ test("speed, distance and time finds each value and shows the equation with the 
   const result = page.getByRole("status");
   await expect(result).toContainText("60 km/h");
   const workings = page.locator("[data-workings]");
-  await expect(workings.getByRole("heading", { name: "How this is calculated" })).toBeVisible();
+  await expect(
+    workings.getByRole("heading", { name: "How this is calculated" }),
+  ).toBeVisible();
   await expect(workings).toContainText("Speed = Distance ÷ Time");
   await expect(workings).toContainText("1,50,000 m");
   await page.getByLabel("Find").selectOption("distance");
@@ -662,10 +838,14 @@ test("speed, distance and time finds each value and shows the equation with the 
   await expect(workings).toContainText("Distance = Speed × Time");
   await page.getByLabel("Find").selectOption("time");
   await page.getByLabel("Distance", { exact: true }).fill("0");
-  await expect(page.getByText("Distance must be greater than 0.")).toBeVisible();
+  await expect(
+    page.getByText("Distance must be greater than 0."),
+  ).toBeVisible();
 });
 
-test("unit converter shows a value in every unit of the chosen measure", async ({ page }) => {
+test("unit converter shows a value in every unit of the chosen measure", async ({
+  page,
+}) => {
   test.skip(!published.has(UNITS), "Unit converter is not published");
   await page.goto(UNITS);
   await page.getByLabel("Value").fill("1");
@@ -688,7 +868,9 @@ test("unit converter shows a value in every unit of the chosen measure", async (
   await expect(page.getByRole("status")).toContainText("43,560 ft²");
 });
 
-test("password generator follows the length and the kinds of character chosen", async ({ page }) => {
+test("password generator follows the length and the kinds of character chosen", async ({
+  page,
+}) => {
   test.skip(!published.has(PASSWORD), "Password generator is not published");
   await page.goto(PASSWORD);
   const shown = page.getByTestId("generated-password");
@@ -704,7 +886,9 @@ test("password generator follows the length and the kinds of character chosen", 
   await page.getByRole("button", { name: "Generate another" }).click();
   await expect(shown).not.toHaveText(before ?? "");
   await page.getByLabel("Lowercase letters (a–z)").uncheck();
-  await expect(page.getByText("Choose at least one kind of character.")).toBeVisible();
+  await expect(
+    page.getByText("Choose at least one kind of character."),
+  ).toBeVisible();
   await page.getByLabel("Lowercase letters (a–z)").check();
   await page.getByLabel("Numbers (0–9)").check();
   await page.getByLabel(/Avoid look-alike characters/).check();
@@ -713,14 +897,20 @@ test("password generator follows the length and the kinds of character chosen", 
   await expect(page.getByText("Length cannot be less than 8.")).toBeVisible();
 });
 
-test("Base64 tool encodes, decodes and explains bad input", async ({ page }) => {
+test("Base64 tool encodes, decodes and explains bad input", async ({
+  page,
+}) => {
   test.skip(!published.has(BASE64), "Base64 tool is not published");
   await page.goto(BASE64);
   await page.getByLabel("Your text").fill("hello नमस्ते");
-  await expect(page.getByLabel("Base64", { exact: true })).toHaveValue("aGVsbG8g4KSo4KSu4KS44KWN4KSk4KWH");
+  await expect(page.getByLabel("Base64", { exact: true })).toHaveValue(
+    "aGVsbG8g4KSo4KSu4KS44KWN4KSk4KWH",
+  );
   await page.getByLabel("Alphabet").selectOption("url-unpadded");
   await page.getByLabel("Your text").fill("??>>");
-  await expect(page.getByLabel("Base64", { exact: true })).toHaveValue("Pz8-Pg");
+  await expect(page.getByLabel("Base64", { exact: true })).toHaveValue(
+    "Pz8-Pg",
+  );
   await page.getByLabel("Action").selectOption("decode");
   await page.getByLabel("Your Base64").fill("Zm9vYmFy");
   await expect(page.getByLabel("Decoded text")).toHaveValue("foobar");
@@ -730,50 +920,81 @@ test("Base64 tool encodes, decodes and explains bad input", async ({ page }) => 
   await expect(page.getByText("does not decode to text")).toBeVisible();
 });
 
-test("URL tool encodes parts, whole addresses and form data, and decodes", async ({ page }) => {
+test("URL tool encodes parts, whole addresses and form data, and decodes", async ({
+  page,
+}) => {
   test.skip(!published.has(URLTOOL), "URL tool is not published");
   await page.goto(URLTOOL);
   await page.getByLabel("Your text or URL").fill("a=1&b=Jack & Jill");
-  await expect(page.getByLabel("Encoded")).toHaveValue("a%3D1%26b%3DJack%20%26%20Jill");
+  await expect(page.getByLabel("Encoded")).toHaveValue(
+    "a%3D1%26b%3DJack%20%26%20Jill",
+  );
   await page.getByLabel("What is it?").selectOption("form");
   await page.getByLabel("Your text or URL").fill("a b+c");
   await expect(page.getByLabel("Encoded")).toHaveValue("a+b%2Bc");
   await page.getByLabel("What is it?").selectOption("url");
   await page.getByLabel("Your text or URL").fill("https://example.com/a b?q=é");
-  await expect(page.getByLabel("Encoded")).toHaveValue("https://example.com/a%20b?q=%C3%A9");
+  await expect(page.getByLabel("Encoded")).toHaveValue(
+    "https://example.com/a%20b?q=%C3%A9",
+  );
   await page.getByLabel("Action").selectOption("decode");
   await page.getByLabel("Your encoded text").fill("100%");
-  await expect(page.getByText("This is not valid percent-encoding.")).toBeVisible();
+  await expect(
+    page.getByText("This is not valid percent-encoding."),
+  ).toBeVisible();
 });
 
-test("UUID tool makes the number asked for in the style chosen", async ({ page }) => {
+test("UUID tool makes the number asked for in the style chosen", async ({
+  page,
+}) => {
   test.skip(!published.has(UUID), "UUID tool is not published");
   await page.goto(UUID);
   const box = page.getByLabel("Your UUIDs");
-  await expect(box).toHaveValue(/^(?:[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}\n?){5}$/);
+  await expect(box).toHaveValue(
+    /^(?:[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}\n?){5}$/,
+  );
   await page.getByLabel("How many").fill("2");
   await page.getByLabel("Hyphens").uncheck();
   await page.getByLabel("Uppercase").check();
   await expect(box).toHaveValue(/^[0-9A-F]{32}\n[0-9A-F]{32}$/);
   await page.getByLabel("Version").selectOption("7");
-  await expect(box).toHaveValue(/^[0-9A-F]{12}7[0-9A-F]{3}[89AB][0-9A-F]{15}\n/);
+  await expect(box).toHaveValue(
+    /^[0-9A-F]{12}7[0-9A-F]{3}[89AB][0-9A-F]{15}\n/,
+  );
   await page.getByLabel("How many").fill("101");
   await expect(page.getByText("Count cannot be more than 100.")).toBeVisible();
 });
 
-test("hash tool gives the known SHA values and checks a pasted hash", async ({ page }) => {
+test("hash tool gives the known SHA values and checks a pasted hash", async ({
+  page,
+}) => {
   test.skip(!published.has(HASH), "Hash tool is not published");
   await page.goto(HASH);
   await page.getByLabel("Your text").fill("abc");
-  await expect(page.locator("dd", { hasText: "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad" })).toBeVisible();
-  await expect(page.locator("dd", { hasText: "a9993e364706816aba3e25717850c26c9cd0d89d" })).toBeVisible();
-  await page.getByLabel(/Compare with a hash/).fill("BA7816BF 8F01CFEA414140DE5DAE2223B00361A396177A9CB410FF61F20015AD");
-  await expect(page.getByText("Matches the SHA-256 hash of your text.")).toBeVisible();
+  await expect(
+    page.locator("dd", {
+      hasText:
+        "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",
+    }),
+  ).toBeVisible();
+  await expect(
+    page.locator("dd", { hasText: "a9993e364706816aba3e25717850c26c9cd0d89d" }),
+  ).toBeVisible();
+  await page
+    .getByLabel(/Compare with a hash/)
+    .fill("BA7816BF 8F01CFEA414140DE5DAE2223B00361A396177A9CB410FF61F20015AD");
+  await expect(
+    page.getByText("Matches the SHA-256 hash of your text."),
+  ).toBeVisible();
   await page.getByLabel(/Compare with a hash/).fill("deadbeef");
-  await expect(page.getByText("Does not match any of the hashes above.")).toBeVisible();
+  await expect(
+    page.getByText("Does not match any of the hashes above."),
+  ).toBeVisible();
 });
 
-test("colour converter converts between formats and reports contrast", async ({ page }) => {
+test("colour converter converts between formats and reports contrast", async ({
+  page,
+}) => {
   test.skip(!published.has(COLOUR), "Colour converter is not published");
   await page.goto(COLOUR);
   const status = page.getByRole("status");
@@ -784,10 +1005,14 @@ test("colour converter converts between formats and reports contrast", async ({ 
   await page.getByLabel("Type a colour").fill("#767676");
   await expect(status).toContainText("4.54:1");
   await page.getByLabel("Type a colour").fill("nonsense");
-  await expect(page.getByText("That is not a colour I can read.")).toBeVisible();
+  await expect(
+    page.getByText("That is not a colour I can read."),
+  ).toBeVisible();
 });
 
-test("timestamp converter reads seconds and milliseconds and builds a timestamp", async ({ page }) => {
+test("timestamp converter reads seconds and milliseconds and builds a timestamp", async ({
+  page,
+}) => {
   test.skip(!published.has(TIMESTAMP), "Timestamp converter is not published");
   await page.goto(TIMESTAMP);
   await page.getByLabel("Unix timestamp", { exact: true }).fill("1700000000");
@@ -795,27 +1020,40 @@ test("timestamp converter reads seconds and milliseconds and builds a timestamp"
   await expect(status).toContainText("22:13:20");
   await expect(status).toContainText("03:43:20");
   await expect(status).toContainText("2023-11-14T22:13:20.000Z");
-  await page.getByLabel("Unix timestamp", { exact: true }).fill("1700000000000");
+  await page
+    .getByLabel("Unix timestamp", { exact: true })
+    .fill("1700000000000");
   await expect(status).toContainText("2023-11-14T22:13:20.000Z");
   await page.getByLabel("Unix timestamp", { exact: true }).fill("abc");
   await expect(page.getByText("Enter a timestamp as a number")).toBeVisible();
-  await page.getByLabel("Convert", { exact: true }).selectOption("to-timestamp");
-  await page.getByLabel("Date and time", { exact: true }).fill("2023-11-14T22:13:20");
+  await page
+    .getByLabel("Convert", { exact: true })
+    .selectOption("to-timestamp");
+  await page
+    .getByLabel("Date and time", { exact: true })
+    .fill("2023-11-14T22:13:20");
   await expect(status).toContainText("1700000000");
 });
 
-test("regex tester shows matches and groups, explains errors, and stops a runaway pattern", async ({ page, browserName }) => {
+test("regex tester shows matches and groups, explains errors, and stops a runaway pattern", async ({
+  page,
+  browserName,
+}) => {
   test.skip(!published.has(REGEX), "Regex tester is not published");
   await page.goto(REGEX);
   await expect(page.getByText("2 matches")).toBeVisible();
-  await expect(page.getByRole("region", { name: "Match details" })).toContainText("2026-03-14");
+  await expect(
+    page.getByRole("region", { name: "Match details" }),
+  ).toContainText("2026-03-14");
   await page.getByLabel("Regular expression").fill("(");
   await expect(page.getByText("Not a valid expression")).toBeVisible();
   // Safari's engine runs this classic slow pattern quickly, so the stop-after-a-timeout step is only checked where the pattern really is slow.
   if (browserName === "chromium") {
     await page.getByLabel("Regular expression").fill("(a+)+$");
     await page.getByLabel("Text to test").fill("a".repeat(60) + "!");
-    await expect(page.getByText("took too long and was stopped")).toBeVisible({ timeout: 10_000 });
+    await expect(page.getByText("took too long and was stopped")).toBeVisible({
+      timeout: 10_000,
+    });
   }
   await page.getByLabel("Regular expression").fill("a");
   await page.getByLabel("Text to test").fill("banana");
@@ -823,15 +1061,29 @@ test("regex tester shows matches and groups, explains errors, and stops a runawa
   await expect(page.getByText("1 match")).toBeVisible();
 });
 
-test("JWT decoder shows the parts and the times, and warns about unsigned tokens", async ({ page }) => {
+test("JWT decoder shows the parts and the times, and warns about unsigned tokens", async ({
+  page,
+}) => {
   test.skip(!published.has(JWT), "JWT decoder is not published");
   await page.goto(JWT);
   await page.getByLabel("Your token").fill(SAMPLE_JWT);
-  await expect(page.getByText("Decoded. The signature has not been checked.")).toBeVisible();
-  await expect(page.getByRole("region", { name: "Payload" })).toContainText("John Doe");
-  await expect(page.getByRole("region", { name: "Header" })).toContainText("HS256");
-  await expect(page.getByRole("region", { name: "Times in the token" })).toContainText("18 Jan 2018");
-  const none = Buffer.from('{"alg":"none"}').toString("base64url") + "." + Buffer.from('{"exp":1}').toString("base64url") + ".";
+  await expect(
+    page.getByText("Decoded. The signature has not been checked."),
+  ).toBeVisible();
+  await expect(page.getByRole("region", { name: "Payload" })).toContainText(
+    "John Doe",
+  );
+  await expect(page.getByRole("region", { name: "Header" })).toContainText(
+    "HS256",
+  );
+  await expect(
+    page.getByRole("region", { name: "Times in the token" }),
+  ).toContainText("18 Jan 2018");
+  const none =
+    Buffer.from('{"alg":"none"}').toString("base64url") +
+    "." +
+    Buffer.from('{"exp":1}').toString("base64url") +
+    ".";
   await page.getByLabel("Your token").fill(none);
   await expect(page.getByText("this token is not signed")).toBeVisible();
   await expect(page.getByText("Expired")).toBeVisible();
@@ -839,47 +1091,83 @@ test("JWT decoder shows the parts and the times, and warns about unsigned tokens
   await expect(page.getByText("three parts separated by dots")).toBeVisible();
 });
 
-const pageCountOf = async (download: import("@playwright/test").Download) => (await PDFDocument.load(readDownload((await download.path())!))).getPageCount();
+const pageCountOf = async (download: import("@playwright/test").Download) =>
+  (
+    await PDFDocument.load(readDownload((await download.path())!))
+  ).getPageCount();
 
-test("PDF merge puts the files in the order chosen and downloads one PDF", async ({ page }) => {
+test("PDF merge puts the files in the order chosen and downloads one PDF", async ({
+  page,
+}) => {
   test.skip(!published.has(PDF_MERGE), "PDF merge is not published");
   await page.goto(PDF_MERGE);
-  await page.getByLabel("Choose PDF files").setInputFiles([await pdfFile("first.pdf", 2), await pdfFile("second.pdf", 3)]);
-  await expect(page.getByRole("list", { name: "Chosen files" })).toContainText("second.pdf");
-  await expect(page.getByRole("list", { name: "Chosen files" })).toContainText("3 pages");
+  await page
+    .getByLabel("Choose PDF files")
+    .setInputFiles([
+      await pdfFile("first.pdf", 2),
+      await pdfFile("second.pdf", 3),
+    ]);
+  await expect(page.getByRole("list", { name: "Chosen files" })).toContainText(
+    "second.pdf",
+  );
+  await expect(page.getByRole("list", { name: "Chosen files" })).toContainText(
+    "3 pages",
+  );
   await page.getByRole("button", { name: "Move second.pdf up" }).click();
   await page.getByRole("button", { name: "Merge into one PDF" }).click();
   await expect(page.getByText("Done: 5 pages")).toBeVisible();
-  const [download] = await Promise.all([page.waitForEvent("download"), page.getByRole("link", { name: /Download/ }).click()]);
+  const [download] = await Promise.all([
+    page.waitForEvent("download"),
+    page.getByRole("link", { name: /Download/ }).click(),
+  ]);
   const merged = await PDFDocument.load(readDownload((await download.path())!));
   expect(merged.getPageCount()).toBe(5);
   expect(merged.getPage(0).getWidth()).toBe(200); // second.pdf now comes first and its first page is 200 wide
   expect(merged.getPage(3).getWidth()).toBe(200); // then first.pdf
   await page.getByRole("button", { name: "Remove first.pdf" }).click();
-  await expect(page.getByRole("button", { name: "Merge into one PDF" })).toBeDisabled();
+  await expect(
+    page.getByRole("button", { name: "Merge into one PDF" }),
+  ).toBeDisabled();
 });
 
 test("PDF merge says when a file is not a PDF", async ({ page }) => {
   test.skip(!published.has(PDF_MERGE), "PDF merge is not published");
   await page.goto(PDF_MERGE);
-  await page.getByLabel("Choose PDF files").setInputFiles([{ name: "notes.pdf", mimeType: "application/pdf", buffer: Buffer.from("this is not a pdf") }]);
-  await expect(page.getByRole("alert").filter({ hasText: "notes.pdf" })).toBeVisible();
+  await page.getByLabel("Choose PDF files").setInputFiles([
+    {
+      name: "notes.pdf",
+      mimeType: "application/pdf",
+      buffer: Buffer.from("this is not a pdf"),
+    },
+  ]);
+  await expect(
+    page.getByRole("alert").filter({ hasText: "notes.pdf" }),
+  ).toBeVisible();
 });
 
-test("PDF split makes one file per line and explains a bad range", async ({ page }) => {
+test("PDF split makes one file per line and explains a bad range", async ({
+  page,
+}) => {
   test.skip(!published.has(PDF_SPLIT), "PDF split is not published");
   await page.goto(PDF_SPLIT);
-  await page.getByLabel("Choose a PDF file").setInputFiles(await pdfFile("report.pdf", 5));
+  await page
+    .getByLabel("Choose a PDF file")
+    .setInputFiles(await pdfFile("report.pdf", 5));
   await expect(page.getByText("has 5 pages.")).toBeVisible();
   await page.getByLabel(/Pages for each new file/).fill("1-2\n4-");
   await page.getByRole("button", { name: "Make the files" }).click();
   await expect(page.getByText("Pages 1-2: 2 pages")).toBeVisible();
   await expect(page.getByText("Pages 4-: 2 pages")).toBeVisible();
-  const [download] = await Promise.all([page.waitForEvent("download"), page.getByRole("link", { name: /pages-4/ }).click()]);
+  const [download] = await Promise.all([
+    page.waitForEvent("download"),
+    page.getByRole("link", { name: /pages-4/ }).click(),
+  ]);
   expect(await pageCountOf(download)).toBe(2);
   await page.getByLabel(/Pages for each new file/).fill("9");
   await page.getByRole("button", { name: "Make the files" }).click();
-  await expect(page.getByRole("alert").filter({ hasText: "5 pages" })).toBeVisible();
+  await expect(
+    page.getByRole("alert").filter({ hasText: "5 pages" }),
+  ).toBeVisible();
 });
 
 test("images to PDF makes one page per picture", async ({ page }) => {
@@ -889,46 +1177,81 @@ test("images to PDF makes one page per picture", async ({ page }) => {
     { name: "a.png", mimeType: "image/png", buffer: PNG_1X1 },
     { name: "b.png", mimeType: "image/png", buffer: PNG_1X1 },
   ]);
-  await expect(page.getByRole("list", { name: "Chosen files" })).toContainText("b.png");
+  await expect(page.getByRole("list", { name: "Chosen files" })).toContainText(
+    "b.png",
+  );
   await page.getByRole("button", { name: "Make the PDF" }).click();
   await expect(page.getByText("Done: 2 pages")).toBeVisible();
-  const [download] = await Promise.all([page.waitForEvent("download"), page.getByRole("link", { name: /Download/ }).click()]);
+  const [download] = await Promise.all([
+    page.waitForEvent("download"),
+    page.getByRole("link", { name: /Download/ }).click(),
+  ]);
   const doc = await PDFDocument.load(readDownload((await download.path())!));
   expect(doc.getPageCount()).toBe(2);
   expect(doc.getPage(0).getWidth()).toBeCloseTo(595.28, 1);
 });
 
-test("EXIF remover shows what is hidden in a photo and gives back a clean copy", async ({ page }) => {
+test("EXIF remover shows what is hidden in a photo and gives back a clean copy", async ({
+  page,
+}) => {
   test.skip(!published.has(EXIF), "EXIF remover is not published");
   await page.goto(EXIF);
-  await page.getByLabel(/Choose pictures/).setInputFiles({ name: "holiday.jpg", mimeType: "image/jpeg", buffer: jpegWithHiddenData() });
+  await page.getByLabel(/Choose pictures/).setInputFiles({
+    name: "holiday.jpg",
+    mimeType: "image/jpeg",
+    buffer: jpegWithHiddenData(),
+  });
   const result = page.getByRole("status");
   await expect(result).toContainText("Acme Phone 9");
   await expect(result).toContainText("GPS location");
   await expect(result).toContainText("XMP data");
   await expect(result).toContainText("A comment");
-  const [download] = await Promise.all([page.waitForEvent("download"), page.getByRole("link", { name: /holiday-clean\.jpg/ }).click()]);
+  const [download] = await Promise.all([
+    page.waitForEvent("download"),
+    page.getByRole("link", { name: /holiday-clean\.jpg/ }).click(),
+  ]);
   expect(download.suggestedFilename()).toBe("holiday-clean.jpg");
   const text = readDownload((await download.path())!).toString("latin1");
-  for (const gone of ["Acme", "Exif", "xmpmeta", "secret comment"]) expect(text).not.toContain(gone);
+  for (const gone of ["Acme", "Exif", "xmpmeta", "secret comment"])
+    expect(text).not.toContain(gone);
   expect(text).toContain("JFIF");
-  await page.getByLabel("Choose pictures (JPG, PNG or WebP)").setInputFiles({ name: "plain.png", mimeType: "image/png", buffer: PNG_1X1 });
+  await page.getByLabel("Choose pictures (JPG, PNG or WebP)").setInputFiles({
+    name: "plain.png",
+    mimeType: "image/png",
+    buffer: PNG_1X1,
+  });
   await expect(result).toContainText("No hidden data found");
-  await page.getByLabel("Choose pictures (JPG, PNG or WebP)").setInputFiles({ name: "fake.jpg", mimeType: "image/jpeg", buffer: Buffer.from("not an image at all") });
-  await expect(page.getByRole("alert").filter({ hasText: "fake.jpg" })).toBeVisible();
+  await page.getByLabel("Choose pictures (JPG, PNG or WebP)").setInputFiles({
+    name: "fake.jpg",
+    mimeType: "image/jpeg",
+    buffer: Buffer.from("not an image at all"),
+  });
+  await expect(
+    page.getByRole("alert").filter({ hasText: "fake.jpg" }),
+  ).toBeVisible();
 });
 
-test("image compressor makes a WebP and offers a download", async ({ page, browserName }) => {
+test("image compressor makes a WebP and offers a download", async ({
+  page,
+  browserName,
+}) => {
   test.skip(!published.has(COMPRESSOR), "Image compressor is not published");
-  test.skip(browserName === "webkit", "Safari cannot create WebP files; the tool shows a message instead");
+  test.skip(
+    browserName === "webkit",
+    "Safari cannot create WebP files; the tool shows a message instead",
+  );
   await page.goto(COMPRESSOR);
   await upload(page);
   await page.getByLabel("Output format").selectOption("image/webp");
-  await expect(page.getByRole("link", { name: "Download image" })).toHaveAttribute("download", "sample-compressed.webp");
+  await expect(
+    page.getByRole("link", { name: "Download image" }),
+  ).toHaveAttribute("download", "sample-compressed.webp");
   await expect(page.getByText("New file")).toBeVisible();
 });
 
-test("image resizer keeps proportions and applies the new size", async ({ page }) => {
+test("image resizer keeps proportions and applies the new size", async ({
+  page,
+}) => {
   test.skip(!published.has(RESIZER), "Image resizer is not published");
   await page.goto(RESIZER);
   await upload(page);
@@ -938,12 +1261,16 @@ test("image resizer keeps proportions and applies the new size", async ({ page }
   await expect(page.getByText("100 × 50")).toBeVisible();
 });
 
-test("image crop and rotate crops by numbers, by shape, by keyboard and by dragging, and turns the picture", async ({ page }) => {
+test("image crop and rotate crops by numbers, by shape, by keyboard and by dragging, and turns the picture", async ({
+  page,
+}) => {
   test.skip(!published.has(CROP), "Image crop and rotate is not published");
   await page.goto(CROP);
   await upload(page); // 200 x 100
   await expect(page.getByLabel("Width (px)")).toHaveValue("200");
-  await expect(page.getByText("Turn, flip or crop the picture to get a new file.")).toBeVisible();
+  await expect(
+    page.getByText("Turn, flip or crop the picture to get a new file."),
+  ).toBeVisible();
   await page.getByLabel("Width (px)").fill("100");
   await expect(page.getByText("100 × 100")).toBeVisible();
   await page.getByRole("button", { name: "Rotate right" }).click();
@@ -963,13 +1290,22 @@ test("image crop and rotate crops by numbers, by shape, by keyboard and by dragg
   // dragging the box moves it too
   await box.evaluate((el) => el.scrollIntoView({ block: "center" })); // keep the box clear of the consent banner at the bottom of the window
   const before = await box.boundingBox();
-  await page.mouse.move(before!.x + before!.width / 2, before!.y + before!.height / 2);
+  await page.mouse.move(
+    before!.x + before!.width / 2,
+    before!.y + before!.height / 2,
+  );
   await page.mouse.down();
-  await page.mouse.move(before!.x + before!.width / 2, before!.y + before!.height / 2 - 20, { steps: 4 });
+  await page.mouse.move(
+    before!.x + before!.width / 2,
+    before!.y + before!.height / 2 - 20,
+    { steps: 4 },
+  );
   await page.mouse.up();
   const after = await box.boundingBox();
   expect(after!.y).toBeLessThan(before!.y);
-  await expect(page.getByRole("link", { name: "Download image" })).toHaveAttribute("download", "sample-edited.png");
+  await expect(
+    page.getByRole("link", { name: "Download image" }),
+  ).toHaveAttribute("download", "sample-edited.png");
   await page.getByRole("button", { name: "Reset crop" }).click();
   await expect(page.getByLabel("Top (px)")).toHaveValue("50");
 });
@@ -979,48 +1315,220 @@ test("image converter converts PNG to JPG", async ({ page }) => {
   await page.goto(CONVERTER);
   await upload(page);
   await page.getByLabel("Convert to").selectOption("image/jpeg");
-  await expect(page.getByRole("link", { name: "Download image" })).toHaveAttribute("download", "sample-converted.jpg");
+  await expect(
+    page.getByRole("link", { name: "Download image" }),
+  ).toHaveAttribute("download", "sample-converted.jpg");
 });
 
-test("a file that is not an image is rejected with a message", async ({ page }) => {
+test("a file that is not an image is rejected with a message", async ({
+  page,
+}) => {
   test.skip(!published.has(COMPRESSOR), "Image compressor is not published");
   await page.goto(COMPRESSOR);
-  await page.getByLabel(/choose an image/i).setInputFiles({ name: "notes.pdf", mimeType: "application/pdf", buffer: Buffer.from("%PDF-1.4") });
-  await expect(page.getByText("Please choose a JPG, PNG or WebP image.")).toBeVisible();
+  await page.getByLabel(/choose an image/i).setInputFiles({
+    name: "notes.pdf",
+    mimeType: "application/pdf",
+    buffer: Buffer.from("%PDF-1.4"),
+  });
+  await expect(
+    page.getByText("Please choose a JPG, PNG or WebP image."),
+  ).toBeVisible();
 });
 
 const JSON_TOOL = "/tools/developer-tools/json-formatter/";
 const QR = "/tools/utilities/qr-code-generator/";
 const WORDS = "/tools/utilities/word-counter/";
 
-test("JSON formatter formats, minifies and reports errors with a location", async ({ page }) => {
+test("JSON formatter formats, minifies and reports errors with a location", async ({
+  page,
+}) => {
   test.skip(!published.has(JSON_TOOL), "JSON formatter is not published");
   await page.goto(JSON_TOOL);
   await page.getByLabel("Your JSON").fill('{"b":1,"a":[1,2]}');
   await expect(page.getByText("Valid JSON", { exact: true })).toBeVisible();
-  await expect(page.getByLabel("Formatted JSON")).toHaveValue('{\n  "b": 1,\n  "a": [\n    1,\n    2\n  ]\n}');
+  await expect(page.getByLabel("Formatted JSON")).toHaveValue(
+    '{\n  "b": 1,\n  "a": [\n    1,\n    2\n  ]\n}',
+  );
   await page.getByLabel("Sort keys A to Z").check();
   await page.getByLabel("Action").selectOption("minify");
-  await expect(page.getByLabel("Minified JSON")).toHaveValue('{"a":[1,2],"b":1}');
+  await expect(page.getByLabel("Minified JSON")).toHaveValue(
+    '{"a":[1,2],"b":1}',
+  );
   await page.getByLabel("Your JSON").fill('{"a": }');
   await expect(page.getByText(/Invalid JSON/)).toBeVisible();
+});
+
+test("fraction calculator adds, multiplies mixed numbers, divides and refuses to divide by zero", async ({
+  page,
+}) => {
+  test.skip(!published.has(FRACTION), "Fraction calculator is not published");
+  await page.goto(FRACTION);
+  const result = page.getByRole("status");
+  const first = page.getByRole("group", { name: "First fraction" });
+  const second = page.getByRole("group", { name: "Second fraction" });
+  await expect(result).toContainText("5/6");
+  await expect(result).toContainText("0.8333333333");
+  await expect(page.locator("[data-workings]")).toContainText(
+    "Lowest common denominator of 2 and 3 is 6",
+  );
+  await page.getByLabel("Operation").selectOption("multiply");
+  await first.getByLabel("Whole").fill("2");
+  await second.getByLabel("Whole").fill("1");
+  await expect(result).toContainText("3 1/3");
+  await expect(page.locator("[data-workings]")).toContainText(
+    "improper fraction",
+  );
+  await page.getByLabel("Operation").selectOption("divide");
+  await second.getByLabel("Whole").fill("");
+  await second.getByLabel("Top").fill("0");
+  await expect(page.getByText("You cannot divide by zero.")).toBeVisible();
+});
+
+test("random number generator makes numbers inside the range and explains how", async ({
+  page,
+}) => {
+  test.skip(!published.has(RANDOM), "Random number generator is not published");
+  await page.goto(RANDOM);
+  const result = page.getByRole("status");
+  await expect(result).toContainText("Your 5 numbers");
+  const numbers = (await page.getByLabel("All the numbers drawn").innerText())
+    .split(", ")
+    .map(Number);
+  expect(numbers).toHaveLength(5);
+  for (const n of numbers) {
+    expect(n).toBeGreaterThanOrEqual(1);
+    expect(n).toBeLessThanOrEqual(100);
+  }
+  await expect(page.locator("[data-workings]")).toContainText(
+    "random whole number",
+  );
+  await page.getByLabel("Lowest number").fill("7");
+  await page.getByLabel("Highest number").fill("7");
+  await page.getByLabel("How many").fill("1");
+  await expect(result).toContainText("Your number");
+  await expect(result).toContainText("7");
+  await page.getByLabel("How many").fill("3");
+  await page.getByLabel("Repeats").selectOption("yes");
+  await expect(page.getByText(/only 1 different values/)).toBeVisible();
+  await page.getByLabel("Highest number").fill("9");
+  await expect(page.getByLabel("All the numbers drawn")).toBeVisible();
+  const unique = (
+    await page.getByLabel("All the numbers drawn").innerText()
+  ).split(", ");
+  expect(new Set(unique).size).toBe(3);
+});
+
+test("triangle calculator solves from sides, from two sides and an angle, and from two angles", async ({
+  page,
+}) => {
+  test.skip(!published.has(TRIANGLE), "Triangle calculator is not published");
+  await page.goto(TRIANGLE);
+  const result = page.getByRole("status");
+  await expect(result).toContainText("Scalene, right");
+  await expect(result).toContainText("36.8699");
+  await expect(result).toContainText("90°");
+  await expect(page.locator("[data-workings]")).toContainText("Heron");
+  await page.getByLabel("Side c").fill("9");
+  await expect(
+    page.getByText(/These sides cannot make a triangle/),
+  ).toBeVisible();
+  await page.getByLabel("What you know").selectOption("sas");
+  await page.getByLabel("Side a").fill("7");
+  await page.getByLabel("Side b").fill("9");
+  await page.getByLabel("Angle C (degrees)").fill("40");
+  await expect(result).toContainText("5.786");
+  await expect(result).toContainText("20.2478");
+  await page.getByLabel("What you know").selectOption("aas");
+  await page.getByLabel("Angle A (degrees)").fill("40");
+  await page.getByLabel("Angle B (degrees)").fill("65");
+  await page.getByLabel("Side a").fill("10");
+  await expect(result).toContainText("75°");
+  await expect(result).toContainText("14.0996");
+});
+
+test("standard deviation calculator handles sample and population and bad input", async ({
+  page,
+}) => {
+  test.skip(
+    !published.has(STDDEV),
+    "Standard deviation calculator is not published",
+  );
+  await page.goto(STDDEV);
+  const result = page.getByRole("status");
+  await expect(result).toContainText("2.138");
+  await expect(result).toContainText("Mean");
+  await page.getByLabel("These numbers are").selectOption("population");
+  await expect(result).toContainText("Population standard deviation");
+  await expect(page.locator("[data-workings]")).toContainText(
+    "Divide by n = 8",
+  );
+  await page.getByLabel("Numbers", { exact: true }).fill("1, two, 3");
+  await expect(page.getByText(/“two” is not a number/)).toBeVisible();
+  await page.getByLabel("Numbers", { exact: true }).fill("5");
+  await page.getByLabel("These numbers are").selectOption("sample");
+  await expect(page.getByText(/at least two numbers/)).toBeVisible();
+});
+
+test("scientific calculator follows the order of operations, shows its steps and takes keypad input", async ({
+  page,
+}) => {
+  test.skip(
+    !published.has(SCIENTIFIC),
+    "Scientific calculator is not published",
+  );
+  await page.goto(SCIENTIFIC);
+  const result = page.getByRole("status");
+  await expect(result).toContainText("14");
+  await expect(page.locator("[data-workings]")).toContainText("3 × 4 = 12");
+  await page.getByLabel("Expression").fill("sin(30)");
+  await expect(result).toContainText("0.5");
+  await page.getByLabel("Angles").selectOption("rad");
+  await expect(result).toContainText("-0.988");
+  await page.getByRole("button", { name: "Clear all" }).click();
+  await page.getByRole("button", { name: "7", exact: true }).click();
+  await page.getByRole("button", { name: "multiply" }).click();
+  await page.getByRole("button", { name: "6", exact: true }).click();
+  await expect(result).toContainText("42");
+  await page.getByRole("button", { name: "Backspace" }).click();
+  await page.getByRole("button", { name: "square root" }).click();
+  await page.getByRole("button", { name: "9", exact: true }).click();
+  await page.getByRole("button", { name: "close bracket" }).click();
+  await expect(result).toContainText("21");
+  await page.getByLabel("Expression").fill("1 / 0");
+  await expect(page.getByText("You cannot divide by zero.")).toBeVisible();
+  await page.getByLabel("Expression").fill("alert(1)");
+  await expect(
+    page.getByText(/not a function|cannot be used|Unexpected/).first(),
+  ).toBeVisible();
 });
 
 test("word counter counts as you type", async ({ page }) => {
   test.skip(!published.has(WORDS), "Word counter is not published");
   await page.goto(WORDS);
-  await page.getByLabel("Type or paste your text").fill("Hello world. This is a test.");
+  await page
+    .getByLabel("Type or paste your text")
+    .fill("Hello world. This is a test.");
   await expect(page.locator("#word-stats")).toContainText("Words");
-  await expect(page.locator("#word-stats div", { hasText: /^Words/ })).toContainText("6");
-  await expect(page.locator("#word-stats div", { hasText: /^Sentences/ })).toContainText("2");
+  await expect(
+    page.locator("#word-stats div", { hasText: /^Words/ }),
+  ).toContainText("6");
+  await expect(
+    page.locator("#word-stats div", { hasText: /^Sentences/ }),
+  ).toContainText("2");
 });
 
-test("QR generator shows a code and rejects text that is too long", async ({ page }) => {
+test("QR generator shows a code and rejects text that is too long", async ({
+  page,
+}) => {
   test.skip(!published.has(QR), "QR code generator is not published");
   await page.goto(QR);
   await page.getByLabel("Text or link").fill("https://oewer.example/tools");
-  await expect(page.getByRole("img", { name: "QR code for your text" })).toBeVisible();
-  await expect(page.getByRole("button", { name: "Download PNG" })).toBeVisible();
+  await expect(
+    page.getByRole("img", { name: "QR code for your text" }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("button", { name: "Download PNG" }),
+  ).toBeVisible();
   await page.getByLabel("Text or link").fill("x".repeat(1001));
   await expect(page.getByText(/too long for a QR code/)).toBeVisible();
 });
@@ -1028,9 +1536,19 @@ test("QR generator shows a code and rejects text that is too long", async ({ pag
 test("tool pages show help, FAQ and related tools", async ({ page }) => {
   test.skip(!published.has(EMI), "EMI calculator is not published");
   await page.goto(EMI);
-  await expect(page.getByRole("heading", { name: /^How to use/, level: 2 })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "Frequently asked questions" })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "Related tools" })).toBeVisible();
-  await expect(page.getByRole("link", { name: /FD Interest Calculator/ })).toBeVisible();
-  expect(await page.locator('script[type="application/ld+json"]').count()).toBeGreaterThanOrEqual(2); // breadcrumbs + FAQ
+  await expect(
+    page.getByRole("heading", { name: /^How to use/, level: 2 }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: "Frequently asked questions" }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: "Related tools" }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("link", { name: /FD Interest Calculator/ }),
+  ).toBeVisible();
+  expect(
+    await page.locator('script[type="application/ld+json"]').count(),
+  ).toBeGreaterThanOrEqual(2); // breadcrumbs + FAQ
 });

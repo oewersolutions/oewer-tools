@@ -1,136 +1,84 @@
+"use client";
+
+import dynamic from "next/dynamic";
 import type { ComponentType } from "react";
-import ExifRemover from "./ExifRemover";
-import ImageCropRotate from "./ImageCropRotate";
-import ImagesToPdf from "./ImagesToPdf";
-import PdfMerge from "./PdfMerge";
-import PdfSplit from "./PdfSplit";
-import ColourConverter from "./ColourConverter";
-import JwtDecoder from "./JwtDecoder";
-import RegexTester from "./RegexTester";
-import TimestampConverter from "./TimestampConverter";
-import Base64Tool from "./Base64Tool";
-import HashGenerator from "./HashGenerator";
-import UrlEncoderTool from "./UrlEncoderTool";
-import UuidGenerator from "./UuidGenerator";
-import AgeCalculator from "./AgeCalculator";
-import CompoundInterestCalculator from "./CompoundInterestCalculator";
-import DaysBetweenCalculator from "./DaysBetweenCalculator";
-import DiscountCalculator from "./DiscountCalculator";
-import EmiCalculator from "./EmiCalculator";
-import FdCalculator from "./FdCalculator";
-import GstCalculator from "./GstCalculator";
-import ImageCompressor from "./ImageCompressor";
-import ImageConverter from "./ImageConverter";
-import ImageResizer from "./ImageResizer";
-import JsonFormatter from "./JsonFormatter";
-import PasswordGenerator from "./PasswordGenerator";
-import PercentageCalculator from "./PercentageCalculator";
-import LumpsumCalculator from "./LumpsumCalculator";
-import QrCodeGenerator from "./QrCodeGenerator";
-import RdCalculator from "./RdCalculator";
-import SimpleInterestCalculator from "./SimpleInterestCalculator";
-import SipCalculator from "./SipCalculator";
-import UnitConverter from "./UnitConverter";
-import WordCounter from "./WordCounter";
-import SpeedDistanceTimeCalculator from "./SpeedDistanceTimeCalculator";
-import PaceCalculator from "./PaceCalculator";
-import TimeCalculator from "./TimeCalculator";
-import HoursCalculator from "./HoursCalculator";
-import DateCalculator from "./DateCalculator";
-import LoanCalculator from "./LoanCalculator";
-import AutoLoanCalculator from "./AutoLoanCalculator";
-import MortgageCalculator from "./MortgageCalculator";
-import PaymentCalculator from "./PaymentCalculator";
-import AmortizationCalculator from "./AmortizationCalculator";
-import InterestRateCalculator from "./InterestRateCalculator";
-import InvestmentCalculator from "./InvestmentCalculator";
-import RetirementCalculator from "./RetirementCalculator";
-import InflationCalculator from "./InflationCalculator";
-import FinanceCalculator from "./FinanceCalculator";
-import InterestCalculator from "./InterestCalculator";
-import SalaryCalculator from "./SalaryCalculator";
-import SalesTaxCalculator from "./SalesTaxCalculator";
-import IncomeTaxCalculator from "./IncomeTaxCalculator";
-import BmiCalculator from "./BmiCalculator";
-import BmrCalculator from "./BmrCalculator";
-import CalorieCalculator from "./CalorieCalculator";
-import BodyFatCalculator from "./BodyFatCalculator";
-import IdealWeightCalculator from "./IdealWeightCalculator";
-import DueDateCalculator from "./DueDateCalculator";
-import PregnancyCalculator from "./PregnancyCalculator";
-import ConceptionCalculator from "./ConceptionCalculator";
 import type { ToolComponentKey } from "../../lib/tools/keys";
 
 /**
  * Approved tool components, keyed by the `component_key` column of the `tools` sheet.
  * The workbook can only choose from this list; it never supplies code. Each component is a client component
- * that works entirely in the visitor's browser.
+ * that works entirely in the visitor's browser. They are loaded on demand (and rendered into the page's HTML), so a tool page downloads only its own tool's code.
  */
 export const toolComponents: { [K in ToolComponentKey]: ComponentType } = {
-  "emi-calculator": EmiCalculator,
-  "fd-calculator": FdCalculator,
-  "gst-calculator": GstCalculator,
-  "sip-calculator": SipCalculator,
-  "lumpsum-calculator": LumpsumCalculator,
-  "compound-interest-calculator": CompoundInterestCalculator,
-  "simple-interest-calculator": SimpleInterestCalculator,
-  "rd-calculator": RdCalculator,
-  "discount-calculator": DiscountCalculator,
-  "age-calculator": AgeCalculator,
-  "days-between-dates": DaysBetweenCalculator,
-  "unit-converter": UnitConverter,
-  "password-generator": PasswordGenerator,
-  "base64-encoder-decoder": Base64Tool,
-  "url-encoder-decoder": UrlEncoderTool,
-  "uuid-generator": UuidGenerator,
-  "hash-generator": HashGenerator,
-  "colour-converter": ColourConverter,
-  "timestamp-converter": TimestampConverter,
-  "regex-tester": RegexTester,
-  "jwt-decoder": JwtDecoder,
-  "pdf-merge": PdfMerge,
-  "pdf-split": PdfSplit,
-  "images-to-pdf": ImagesToPdf,
-  "exif-remover": ExifRemover,
-  "image-crop-rotate": ImageCropRotate,
-  "percentage-calculator": PercentageCalculator,
-  "image-compressor": ImageCompressor,
-  "image-resizer": ImageResizer,
-  "image-converter": ImageConverter,
-  "json-formatter": JsonFormatter,
-  "qr-code-generator": QrCodeGenerator,
-  "word-counter": WordCounter,
-  "speed-distance-time": SpeedDistanceTimeCalculator,
-  "pace-calculator": PaceCalculator,
-  "time-calculator": TimeCalculator,
-  "hours-calculator": HoursCalculator,
-  "date-calculator": DateCalculator,
-  "loan-calculator": LoanCalculator,
-  "auto-loan-calculator": AutoLoanCalculator,
-  "mortgage-calculator": MortgageCalculator,
-  "payment-calculator": PaymentCalculator,
-  "amortization-calculator": AmortizationCalculator,
-  "interest-rate-calculator": InterestRateCalculator,
-  "investment-calculator": InvestmentCalculator,
-  "retirement-calculator": RetirementCalculator,
-  "inflation-calculator": InflationCalculator,
-  "finance-calculator": FinanceCalculator,
-  "interest-calculator": InterestCalculator,
-  "salary-calculator": SalaryCalculator,
-  "sales-tax-calculator": SalesTaxCalculator,
-  "income-tax-calculator": IncomeTaxCalculator,
-  "bmi-calculator": BmiCalculator,
-  "bmr-calculator": BmrCalculator,
-  "calorie-calculator": CalorieCalculator,
-  "body-fat-calculator": BodyFatCalculator,
-  "ideal-weight-calculator": IdealWeightCalculator,
-  "due-date-calculator": DueDateCalculator,
-  "pregnancy-calculator": PregnancyCalculator,
-  "conception-calculator": ConceptionCalculator,
+  "emi-calculator": dynamic(() => import("./EmiCalculator")),
+  "fd-calculator": dynamic(() => import("./FdCalculator")),
+  "gst-calculator": dynamic(() => import("./GstCalculator")),
+  "sip-calculator": dynamic(() => import("./SipCalculator")),
+  "lumpsum-calculator": dynamic(() => import("./LumpsumCalculator")),
+  "compound-interest-calculator": dynamic(
+    () => import("./CompoundInterestCalculator"),
+  ),
+  "simple-interest-calculator": dynamic(
+    () => import("./SimpleInterestCalculator"),
+  ),
+  "rd-calculator": dynamic(() => import("./RdCalculator")),
+  "discount-calculator": dynamic(() => import("./DiscountCalculator")),
+  "age-calculator": dynamic(() => import("./AgeCalculator")),
+  "days-between-dates": dynamic(() => import("./DaysBetweenCalculator")),
+  "unit-converter": dynamic(() => import("./UnitConverter")),
+  "password-generator": dynamic(() => import("./PasswordGenerator")),
+  "base64-encoder-decoder": dynamic(() => import("./Base64Tool")),
+  "url-encoder-decoder": dynamic(() => import("./UrlEncoderTool")),
+  "uuid-generator": dynamic(() => import("./UuidGenerator")),
+  "hash-generator": dynamic(() => import("./HashGenerator")),
+  "colour-converter": dynamic(() => import("./ColourConverter")),
+  "timestamp-converter": dynamic(() => import("./TimestampConverter")),
+  "regex-tester": dynamic(() => import("./RegexTester")),
+  "jwt-decoder": dynamic(() => import("./JwtDecoder")),
+  "pdf-merge": dynamic(() => import("./PdfMerge")),
+  "pdf-split": dynamic(() => import("./PdfSplit")),
+  "images-to-pdf": dynamic(() => import("./ImagesToPdf")),
+  "exif-remover": dynamic(() => import("./ExifRemover")),
+  "image-crop-rotate": dynamic(() => import("./ImageCropRotate")),
+  "percentage-calculator": dynamic(() => import("./PercentageCalculator")),
+  "image-compressor": dynamic(() => import("./ImageCompressor")),
+  "image-resizer": dynamic(() => import("./ImageResizer")),
+  "image-converter": dynamic(() => import("./ImageConverter")),
+  "json-formatter": dynamic(() => import("./JsonFormatter")),
+  "qr-code-generator": dynamic(() => import("./QrCodeGenerator")),
+  "word-counter": dynamic(() => import("./WordCounter")),
+  "speed-distance-time": dynamic(() => import("./SpeedDistanceTimeCalculator")),
+  "pace-calculator": dynamic(() => import("./PaceCalculator")),
+  "time-calculator": dynamic(() => import("./TimeCalculator")),
+  "hours-calculator": dynamic(() => import("./HoursCalculator")),
+  "date-calculator": dynamic(() => import("./DateCalculator")),
+  "loan-calculator": dynamic(() => import("./LoanCalculator")),
+  "auto-loan-calculator": dynamic(() => import("./AutoLoanCalculator")),
+  "mortgage-calculator": dynamic(() => import("./MortgageCalculator")),
+  "payment-calculator": dynamic(() => import("./PaymentCalculator")),
+  "amortization-calculator": dynamic(() => import("./AmortizationCalculator")),
+  "interest-rate-calculator": dynamic(() => import("./InterestRateCalculator")),
+  "investment-calculator": dynamic(() => import("./InvestmentCalculator")),
+  "retirement-calculator": dynamic(() => import("./RetirementCalculator")),
+  "inflation-calculator": dynamic(() => import("./InflationCalculator")),
+  "finance-calculator": dynamic(() => import("./FinanceCalculator")),
+  "interest-calculator": dynamic(() => import("./InterestCalculator")),
+  "salary-calculator": dynamic(() => import("./SalaryCalculator")),
+  "sales-tax-calculator": dynamic(() => import("./SalesTaxCalculator")),
+  "income-tax-calculator": dynamic(() => import("./IncomeTaxCalculator")),
+  "bmi-calculator": dynamic(() => import("./BmiCalculator")),
+  "fraction-calculator": dynamic(() => import("./FractionCalculator")),
+  "random-number-generator": dynamic(() => import("./RandomNumberGenerator")),
+  "scientific-calculator": dynamic(() => import("./ScientificCalculator")),
+  "standard-deviation-calculator": dynamic(
+    () => import("./StandardDeviationCalculator"),
+  ),
+  "triangle-calculator": dynamic(() => import("./TriangleCalculator")),
+  "bmr-calculator": dynamic(() => import("./BmrCalculator")),
+  "calorie-calculator": dynamic(() => import("./CalorieCalculator")),
+  "body-fat-calculator": dynamic(() => import("./BodyFatCalculator")),
+  "ideal-weight-calculator": dynamic(() => import("./IdealWeightCalculator")),
+  "due-date-calculator": dynamic(() => import("./DueDateCalculator")),
+  "pregnancy-calculator": dynamic(() => import("./PregnancyCalculator")),
+  "conception-calculator": dynamic(() => import("./ConceptionCalculator")),
 };
-
-export function getToolComponent(key: string): ComponentType {
-  const component = (toolComponents as Record<string, ComponentType | undefined>)[key];
-  if (!component) throw new Error(`Unknown tool component_key '${key}'. Register it in components/tools/registry.ts.`);
-  return component;
-}
