@@ -1,0 +1,36 @@
+{
+  "date": "2026-11-09",
+  "articles": [
+    {
+      "title": "Cabinet Approves Rs 4,371 Crore VISTAR Statistics Scheme",
+      "category": "News and Launches",
+      "categoryDescription": "Recent news and new launches: vehicles, gadgets, AI and aviation, explained from official sources.",
+      "excerpt": "On 4 November 2026 the Union Cabinet approved VISTAR, a Rs 4,371.10 crore scheme to modernise official statistics from 2026-27 to 2030-31. Here is what it covers.",
+      "tags": ["news", "politics", "india", "statistics"],
+      "blocks": [
+        ["paragraph", "On 4 November 2026 the Union Cabinet, chaired by Prime Minister Narendra Modi, approved the Viksit Bharat Initiative for Statistical Transformation, Analytics & Research, known as VISTAR. According to the reports published that day, it is a central sector scheme with an outlay of Rs 4,371.10 crore for the five years from 2026-27 to 2030-31. It covers all statistical and data management work of the Ministry of Statistics and Programme Implementation (MoSPI). This article is information as of 9 November 2026 and describes the decision as reported; it takes no side."],
+        ["heading", "What was decided"],
+        ["paragraph", "News On AIR, the public broadcaster's news service, reported that the scheme is meant to build a dynamic, real-time and future-ready official statistical system, with better timeliness, more detailed data, interoperability and datasets that are ready for use with AI tools. It also reported that the scheme lets resources be allocated flexibly, depending on immediate policy needs."],
+        ["list", "Approved by: the Union Cabinet, on 4 November 2026\nScheme: VISTAR, a central sector scheme\nPeriod: 2026-27 to 2030-31\nOutlay: Rs 4,371.10 crore (reports round this to Rs 4,371 crore)\nCovers: all statistical and data management activities of MoSPI"],
+        ["heading", "The three components"],
+        ["paragraph", "A report by the news agency IANS, published in the Free Press Journal, describes three parts to the scheme."],
+        ["paragraph", "**Statistical operations and ecosystem.** The report says MoSPI plans 59 surveys during the 16th Finance Commission cycle, compared with 43 major surveys before. It lists end-to-end digitalisation, the use of artificial intelligence and machine learning in processing and checking data, and new measures such as the Headline Index of Services Production and the Index of Unincorporated Sector Enterprises. It also mentions alternative data sources such as mobile phones, scanners and e-commerce data, data-sharing protocols with privacy built in, an internship scheme for students and research proposals from academic institutions."],
+        ["paragraph", "**Support for Statistical Strengthening.** Funds for state and Union Territory governments, through a redesigned framework in which money is linked to deliverables, called SSS 2.0 in the report."],
+        ["paragraph", "**Economic Census.** The 8th Economic Census, to be carried out with states and Union Territories. The report says it will cover non-farm establishments and workers down to Gram Panchayat and ward level, create a baseline for a National Statistical Business Register, and help estimate the contribution of the unorganised sector to GDP."],
+        ["heading", "What it changes for ordinary readers"],
+        ["paragraph", "Official statistics such as price indices, employment surveys and national accounts are produced by MoSPI. The scheme funds the survey work and the systems behind them. Based on the reports, readers can expect more surveys and new index series over the coming years; the sources do not give dates for individual surveys or the Economic Census, and the details of when each will be published are not stated in the material reviewed."],
+        ["paragraph", "For context, the reports describe the Economic Census as the way to count establishments outside agriculture, including small and unregistered businesses that other records may miss. The register planned from it would give statisticians a common list of businesses to draw survey samples from. These are descriptions of intended purposes as reported, not results; the scheme has only just been approved and its outcomes will depend on how it is carried out."],
+        ["heading", "Also approved the same day"],
+        ["paragraph", "News On AIR reported that the same Cabinet meeting approved a Capex Support Scheme to Promote Critical Mineral Processing, with an outlay of Rs 2,814 crore over five years. It said the scheme targets processing capacity because processing of critical minerals is concentrated in a few places worldwide."],
+        ["heading", "What is not yet known"],
+        ["callout", "The Press Information Bureau release and the full Cabinet note could not be opened for this article, so figures come from the two news reports named in the sources. Where they differ in wording, the rounded outlay and component details here follow those reports. Check the official release for the final text."],
+        ["paragraph", "No opposition or other party responses were found in the sources reviewed, and none are included. This article is not updated after publication; later developments are not reflected."]
+      ],
+      "sources": [
+        { "title": "Cabinet approves over Rs 4,371-crore VISTAR scheme to modernise India's statistical system, News On AIR", "url": "https://newsonair.gov.in/cabinet-approves-over-rs-4371-crore-vistar-scheme-to-modernise-indias-statistical-system/" },
+        { "title": "Cabinet Clears Rs 4,371 Crore VISTAR Scheme To Overhaul India's Statistical System, Free Press Journal", "url": "https://www.freepressjournal.in/business/cabinet-clears-4371-crore-vistar-scheme-to-overhaul-indias-statistical-system" }
+      ],
+      "checkedOn": "2026-11-09"
+    }
+  ]
+}
