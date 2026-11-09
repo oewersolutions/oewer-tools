@@ -134,6 +134,28 @@ test("the pace, time, hours and date calculators send nothing while you type", a
   }
 });
 
+test("the loan calculators send nothing while you type", async ({ page }) => {
+  for (const [path, label] of [
+    ["/tools/finance-calculators/loan-calculator/", "Loan amount (₹)"],
+    ["/tools/finance-calculators/auto-loan-calculator/", "Vehicle price (₹)"],
+    ["/tools/finance-calculators/mortgage-calculator/", "Home price (₹)"],
+    ["/tools/finance-calculators/payment-calculator/", "Loan amount (₹)"],
+    ["/tools/finance-calculators/amortization-calculator/", "Loan amount (₹)"],
+    ["/tools/finance-calculators/interest-rate-calculator/", "Loan amount (₹)"],
+  ] as const) {
+    test.skip(!published.has(path), "tool is not published");
+    await open(page, path);
+    const requests = await requestsDuring(
+      page,
+      async () => {
+        await page.getByLabel(label, { exact: true }).fill("4242424");
+      },
+      "4242424",
+    );
+    expect(requests).toEqual([]);
+  }
+});
+
 test("the unit converter sends nothing while you type", async ({ page }) => {
   const path = "/tools/utilities/unit-converter/";
   test.skip(!published.has(path), "tool is not published");

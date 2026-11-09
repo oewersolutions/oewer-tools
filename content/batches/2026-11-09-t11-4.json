@@ -1,0 +1,464 @@
+{
+  "date": "2026-11-09",
+  "articles": [
+    {
+      "title": "How a Loan EMI Works and What Extra Payments Save",
+      "category": "Money Guides",
+      "excerpt": "How a monthly loan instalment is worked out on a reducing balance, a full worked example, and how paying a little extra each month shortens the loan and saves interest.",
+      "tags": [
+        "loan",
+        "emi",
+        "prepayment"
+      ],
+      "blocks": [
+        [
+          "paragraph",
+          "A loan EMI, short for equated monthly instalment, is the fixed amount a borrower pays the lender every month until the loan is cleared. Part of each payment covers the interest and the rest reduces the amount owed, so after the last instalment the whole loan and its interest have been repaid. This guide explains how the instalment is worked out, goes through a full example, and shows what happens when you pay a little extra each month. The Loan Calculator does the sums and writes out every step."
+        ],
+        [
+          "heading",
+          "The formula"
+        ],
+        [
+          "paragraph",
+          "The standard formula for an EMI is EMI = P × i × (1 + i)^n ÷ ((1 + i)^n − 1), where P is the amount borrowed, i is the monthly interest rate (the yearly rate divided by 12 and by 100) and n is the number of monthly instalments. This guide uses interest charged on the reducing balance, the usual way a loan is modelled: each month's interest is worked out on what you still owe, not on the original loan."
+        ],
+        [
+          "heading",
+          "A worked example"
+        ],
+        [
+          "paragraph",
+          "Take a loan of ₹10,00,000 at 9% a year for 5 years. The monthly rate is 9 ÷ 12 ÷ 100 = 0.0075, and the number of months is 5 × 12 = 60. The growth factor (1.0075)^60 is about 1.5657. So the EMI is 10,00,000 × 0.0075 × 1.5657 ÷ (1.5657 − 1) = ₹20,758.36. Over 60 months the payments add up to ₹12,45,501.31, which means the interest cost is ₹2,45,501.31."
+        ],
+        [
+          "heading",
+          "What happens inside each instalment"
+        ],
+        [
+          "paragraph",
+          "In the first month the interest is 10,00,000 × 0.0075 = ₹7,500, so the other ₹13,258.36 of the EMI repays the loan. The balance falls to ₹9,86,741.64, so next month's interest is a little lower and a little more of the EMI goes to the loan. This shifts steadily: early instalments are mostly interest, and late ones are mostly principal."
+        ],
+        [
+          "heading",
+          "What an extra payment does"
+        ],
+        [
+          "paragraph",
+          "If you add ₹5,000 to every EMI, the payment becomes ₹25,758.36. The extra goes straight against the balance, so the interest in every later month is lower, and the loan is cleared sooner. For the same loan, the extra ₹5,000 clears it in 47 months instead of 60, which is 13 months sooner, and the interest falls by about ₹59,151.64. The calculator shows both numbers when you fill in the extra payment box."
+        ],
+        [
+          "callout",
+          "Before prepaying, check your loan agreement. Some lenders charge a fee for paying a loan off early or for part-prepayment, and rules can differ between fixed and floating-rate loans. A fee can cancel out some of the saving."
+        ],
+        [
+          "heading",
+          "Choosing between a shorter tenure and a lower EMI"
+        ],
+        [
+          "paragraph",
+          "A longer tenure makes the monthly EMI smaller but increases the total interest, because the balance stays higher for longer. The same ₹10,00,000 at 9% for 10 years has a lower EMI, about ₹12,667, but costs about ₹5,20,000 in interest, more than twice as much. A shorter tenure does the opposite. The right balance depends on what monthly amount you can pay comfortably."
+        ],
+        [
+          "heading",
+          "Common mistakes"
+        ],
+        [
+          "list",
+          "Comparing loans by the EMI alone, without looking at the total interest\nForgetting that the lender may add a processing fee or insurance, which the EMI formula does not include\nUsing the yearly rate as if it were monthly, instead of dividing by 12\nAssuming an extra payment is free: check for prepayment charges"
+        ],
+        [
+          "paragraph",
+          "In the calculator, enter the loan amount, the yearly interest rate and the tenure in years or months. Add an extra monthly payment if you want to see the saving. The How this is calculated panel shows the monthly rate, the growth factor, the EMI and each total, with your own numbers. A lender's own figure can differ by a few rupees because of rounding and the date of the first instalment."
+        ]
+      ],
+      "sources": [
+        {
+          "title": "Equated monthly installment, Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Equated_monthly_installment"
+        },
+        {
+          "title": "Home Loan EMI Calculator and formula, BankBazaar",
+          "url": "https://www.bankbazaar.com/home-loan/emi-calculator.html"
+        },
+        {
+          "title": "Loan, Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Loan"
+        }
+      ],
+      "checkedOn": "2026-11-09"
+    },
+    {
+      "title": "How to Work Out a Car Loan: EMI and Total Cost",
+      "category": "Money Guides",
+      "excerpt": "How a car loan is worked out from the price, down payment, interest rate and tenure, with a full example of the EMI, the interest paid and the real total cost.",
+      "tags": [
+        "car loan",
+        "auto loan",
+        "emi"
+      ],
+      "blocks": [
+        [
+          "paragraph",
+          "A car loan covers the part of a vehicle's price that you do not pay upfront. You pay a down payment, borrow the rest, and repay it in monthly instalments with interest. This guide shows how the loan amount and the EMI are worked out, adds up the real total cost of the vehicle, and explains why a bigger down payment or shorter tenure changes the result. The Auto Loan Calculator does the sums and shows each step."
+        ],
+        [
+          "heading",
+          "Step 1: the loan amount"
+        ],
+        [
+          "paragraph",
+          "The loan is the price less the down payment. For a vehicle priced at ₹10,00,000 with a down payment of ₹2,00,000, the loan is ₹8,00,000. Use the full amount you actually pay the seller, for example the on-road price, so that the loan matches what you really borrow."
+        ],
+        [
+          "heading",
+          "Step 2: the EMI"
+        ],
+        [
+          "paragraph",
+          "The EMI formula is EMI = P × i × (1 + i)^n ÷ ((1 + i)^n − 1), where P is the loan, i is the monthly interest rate and n is the number of months. The formula is the same one banks and lenders use for an equated monthly instalment, with interest charged on the reducing balance. For ₹8,00,000 at 9% a year over 5 years, i = 0.0075 and n = 60, so the EMI is ₹16,606.68."
+        ],
+        [
+          "heading",
+          "Step 3: the interest and the total cost"
+        ],
+        [
+          "paragraph",
+          "Over 60 months the instalments add up to 16,606.68 × 60 = ₹9,96,401.05, so the interest is ₹1,96,401.05. If the lender charges a processing fee of 1% of the loan, that is ₹8,000. The real cost of the vehicle is the down payment plus all the instalments plus the fee: 2,00,000 + 9,96,401.05 + 8,000 = ₹12,04,401.05. That is about ₹2,04,401 more than the sticker price, and it is the number that is worth comparing between offers."
+        ],
+        [
+          "heading",
+          "What changes the cost most"
+        ],
+        [
+          "list",
+          "A bigger down payment: borrowing less reduces both the EMI and the interest\nA shorter tenure: each month's balance falls faster, so interest falls, though the EMI rises\nThe interest rate: a lower rate on the same loan can save tens of thousands of rupees\nFees: processing fees, documentation charges and insurance bundled into the loan are paid back with interest"
+        ],
+        [
+          "paragraph",
+          "For example, the same ₹8,00,000 over 3 years instead of 5 at 9% has an EMI of about ₹25,440 but costs about ₹1,15,832 in interest instead of ₹1,96,401."
+        ],
+        [
+          "heading",
+          "Comparing two offers"
+        ],
+        [
+          "paragraph",
+          "The real total cost lets you compare offers that look different. Offer A is ₹8,00,000 at 9% for 5 years with a 1% processing fee: the EMI is ₹16,606.68 and the instalments plus fee come to ₹10,04,401.05. Offer B is the same loan at 8.5% with a 1.5% fee of ₹12,000: the EMI is ₹16,413.23, and the instalments plus fee come to ₹9,96,793.50. Offer B costs ₹7,607.55 less in total, even though its fee is higher, because the lower rate runs for 60 months. Always add the fees to the instalments before deciding."
+        ],
+        [
+          "heading",
+          "A word on the vehicle itself"
+        ],
+        [
+          "paragraph",
+          "The loan calculation covers the borrowing only. A vehicle also costs insurance, fuel, servicing and tax, and it usually loses value over time, so the loan may be larger than what the vehicle could be sold for in the first years. Think about the monthly outgoings as a whole, not the EMI alone."
+        ],
+        [
+          "heading",
+          "Common mistakes"
+        ],
+        [
+          "list",
+          "Looking only at the EMI and not at the tenure and total interest\nForgetting the processing fee and other charges\nEntering the showroom price when the on-road price is what is actually paid\nStretching the tenure to make the EMI look small"
+        ],
+        [
+          "paragraph",
+          "Enter the vehicle price, your down payment, the yearly interest rate, the tenure and any processing fee in the calculator. It shows the EMI, the loan amount, the total interest and the total cost of the vehicle, and the How this is calculated panel writes out each step. Lenders may round differently or add charges, so confirm the final figures with the lender before you sign."
+        ]
+      ],
+      "sources": [
+        {
+          "title": "Equated monthly installment, Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Equated_monthly_installment"
+        },
+        {
+          "title": "Home Loan EMI Calculator and formula, BankBazaar",
+          "url": "https://www.bankbazaar.com/home-loan/emi-calculator.html"
+        },
+        {
+          "title": "Loan, Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Loan"
+        }
+      ],
+      "checkedOn": "2026-11-09"
+    },
+    {
+      "title": "How a Home Loan EMI and Down Payment Are Worked Out",
+      "category": "Money Guides",
+      "excerpt": "How a home loan EMI is calculated from the price, down payment, rate and tenure, what loan-to-value means, and how much a home really costs once interest is added.",
+      "tags": [
+        "home loan",
+        "mortgage",
+        "emi"
+      ],
+      "blocks": [
+        [
+          "paragraph",
+          "A home loan, also called a mortgage, lets you buy a property by paying part of the price upfront and borrowing the rest. The loan is secured on the property, which means the lender can take possession of it if the loan is not repaid. This guide works through the down payment, the loan amount, the loan-to-value ratio and the monthly EMI, using a full example. The Mortgage Calculator does the same sums and shows the steps."
+        ],
+        [
+          "heading",
+          "The down payment and the loan amount"
+        ],
+        [
+          "paragraph",
+          "Lenders usually require the borrower to pay part of the price themselves, which is called a down payment. The rest is the loan. For a home priced at ₹50,00,000 with a 20% down payment, the down payment is 50,00,000 × 20 ÷ 100 = ₹10,00,000 and the loan is ₹40,00,000."
+        ],
+        [
+          "heading",
+          "Loan-to-value"
+        ],
+        [
+          "paragraph",
+          "The loan-to-value ratio, or LTV, compares the size of the loan with the value of the property that secures it. Here it is 40,00,000 ÷ 50,00,000 × 100 = 80%. A higher LTV means the borrower puts in less of their own money, which lenders generally treat as higher risk, so the maximum LTV a lender allows is one of the conditions to check."
+        ],
+        [
+          "heading",
+          "The EMI"
+        ],
+        [
+          "paragraph",
+          "The EMI formula is EMI = P × i × (1 + i)^n ÷ ((1 + i)^n − 1). For ₹40,00,000 at 8.5% a year over 20 years, i = 8.5 ÷ 12 ÷ 100 = 0.0070833 and n = 240, so the EMI is ₹34,712.93. The same formula is used for car loans and personal loans: only the amounts and the tenure change."
+        ],
+        [
+          "heading",
+          "What the home really costs"
+        ],
+        [
+          "paragraph",
+          "Over 240 months the instalments add up to 34,712.93 × 240 = ₹83,31,103.04. The interest is ₹43,31,103.04, which is more than the loan itself. Add the ₹10,00,000 down payment and the total paid is ₹93,31,103.04 for a home priced at ₹50,00,000. Long tenures make the EMI manageable, but they mean a large part of what you pay is interest."
+        ],
+        [
+          "heading",
+          "What an extra payment does to a home loan"
+        ],
+        [
+          "paragraph",
+          "On a long loan, small regular prepayments make a large difference. For the ₹40,00,000 loan at 8.5% over 20 years, an extra ₹5,000 added to every EMI clears the loan in 178 months instead of 240, which is 62 months or just over 5 years sooner, and the interest falls by about ₹12,98,954. Check first whether the lender charges for part-prepayment, since the rules vary between lenders and loan types."
+        ],
+        [
+          "heading",
+          "Tenure and down payment"
+        ],
+        [
+          "list",
+          "Raising the down payment lowers the loan, the EMI and the interest\nShortening the tenure raises the EMI but cuts the interest sharply\nA lower interest rate matters more over a long loan: half a percentage point on a 20-year loan changes the total by lakhs of rupees"
+        ],
+        [
+          "heading",
+          "Costs the loan calculation does not include"
+        ],
+        [
+          "paragraph",
+          "The calculator works out the loan only. Buying a home also involves stamp duty, registration charges, insurance, maintenance, society charges and sometimes processing fees and legal charges. Banks may also have different rules for floating-rate loans, where the rate changes over time, so the EMI or tenure can change. The calculator assumes one fixed rate for the whole loan."
+        ],
+        [
+          "heading",
+          "Common mistakes"
+        ],
+        [
+          "list",
+          "Forgetting that the down payment and the other buying costs must come from your own money\nLooking only at the EMI and not the total paid\nAssuming the rate stays the same on a floating-rate loan\nStretching the tenure to the maximum without checking the total interest"
+        ],
+        [
+          "paragraph",
+          "Enter the home price, the down payment as a percentage, the yearly interest rate and the tenure. The calculator shows the down payment, the loan amount, the loan-to-value, the EMI, the interest and the total paid, with the steps in the How this is calculated panel. Confirm the exact figures with the lender, because rounding and the date of the first instalment can change them slightly."
+        ]
+      ],
+      "sources": [
+        {
+          "title": "Mortgage loan, Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Mortgage_loan"
+        },
+        {
+          "title": "Loan-to-value ratio, Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Loan-to-value_ratio"
+        },
+        {
+          "title": "Home Loan EMI Calculator and formula, BankBazaar",
+          "url": "https://www.bankbazaar.com/home-loan/emi-calculator.html"
+        }
+      ],
+      "checkedOn": "2026-11-09"
+    },
+    {
+      "title": "Loan Payment, Affordable Loan and Payoff Time Explained",
+      "category": "Money Guides",
+      "excerpt": "Three questions about a loan answered with one formula: what the monthly payment is, how large a loan a payment can carry, and how long a payment takes to clear a loan.",
+      "tags": [
+        "loan",
+        "payment",
+        "emi"
+      ],
+      "blocks": [
+        [
+          "paragraph",
+          "The same loan formula answers three different questions. If you know the loan, the rate and the tenure, you can find the monthly payment. If you know the payment you can afford, you can find how large a loan it carries. And if you know the loan and a payment, you can find how long it takes to pay off. This guide shows all three with worked examples. The Payment Calculator lets you choose which one to find and shows the steps."
+        ],
+        [
+          "heading",
+          "1. The monthly payment"
+        ],
+        [
+          "paragraph",
+          "The monthly payment on a loan with equal instalments is EMI = P × i × (1 + i)^n ÷ ((1 + i)^n − 1), where P is the loan, i is the monthly rate (yearly rate ÷ 12 ÷ 100) and n is the number of months. For ₹10,00,000 at 9% over 5 years, i = 0.0075 and n = 60, so the payment is ₹20,758.36."
+        ],
+        [
+          "heading",
+          "2. The loan a payment can carry"
+        ],
+        [
+          "paragraph",
+          "Turning the formula round gives the loan for a given payment: P = A × (1 − (1 + i)^−n) ÷ i, where A is the monthly payment. If you can pay ₹20,000 a month for 5 years at 9%, the loan is 20,000 × (1 − 1.0075^−60) ÷ 0.0075 = ₹9,63,467.47. This is a good way to set a budget: decide the payment you can afford, then see what it buys. Doubling the payment doubles the loan, and a lower rate or longer tenure raises it."
+        ],
+        [
+          "heading",
+          "3. The time to pay off"
+        ],
+        [
+          "paragraph",
+          "If you know the loan and the payment, the number of months is n = −ln(1 − P × i ÷ A) ÷ ln(1 + i), where ln is the natural logarithm. For ₹10,00,000 at 9% with a payment of ₹25,000 a month, n = 47.73 months. Payments are whole, so it takes 48 months, which is 4 years, and the last payment is smaller than the others. The interest in total is ₹1,93,387.56."
+        ],
+        [
+          "callout",
+          "The payment must be larger than the interest for the first month, which is the loan multiplied by the monthly rate. Here that is ₹7,500. If the payment is smaller, the balance never falls and the loan cannot be cleared. The calculator tells you when that happens."
+        ],
+        [
+          "heading",
+          "Three payments compared"
+        ],
+        [
+          "paragraph",
+          "At 9% over 5 years, a payment of ₹15,000 a month carries a loan of ₹7,22,600.60, while ₹20,000 carries ₹9,63,467.47 and ₹25,000 carries ₹12,04,334.34. The loan grows in step with the payment, so a budget of ₹5,000 more a month adds roughly ₹2.4 lakh of borrowing power. That is a reminder that a bigger loan comes with a bigger monthly commitment for the whole tenure, not just the first month."
+        ],
+        [
+          "heading",
+          "How the three fit together"
+        ],
+        [
+          "paragraph",
+          "They are the same relationship between four numbers: the loan, the rate, the number of months and the payment. Fix three and you can find the fourth. When the rate is 0, the formulas become simple: the payment is the loan divided by the months, the loan is the payment times the months, and the time is the loan divided by the payment."
+        ],
+        [
+          "heading",
+          "Practical uses"
+        ],
+        [
+          "list",
+          "Setting a borrowing limit from a monthly budget\nSeeing how a larger payment shortens a loan, such as ₹25,000 instead of ₹20,758 clearing the loan about a year earlier\nComparing a long loan with a short one at the same payment"
+        ],
+        [
+          "heading",
+          "Common mistakes"
+        ],
+        [
+          "list",
+          "Entering the yearly rate where the monthly rate is needed\nIgnoring that the last payment is smaller when the time is not a whole number of months\nBudgeting only for the EMI and not for fees, insurance and other costs"
+        ],
+        [
+          "paragraph",
+          "In the calculator, choose the value to find, fill in the others, and read the answer with the totals. The How this is calculated panel shows the formula and each step with your numbers. The figures use the usual convention of interest charged each month on a reducing balance, so a lender's own figures can differ slightly."
+        ]
+      ],
+      "sources": [
+        {
+          "title": "Equated monthly installment, Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Equated_monthly_installment"
+        },
+        {
+          "title": "Amortization calculator, Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Amortization_calculator"
+        },
+        {
+          "title": "Home Loan EMI Calculator and formula, BankBazaar",
+          "url": "https://www.bankbazaar.com/home-loan/emi-calculator.html"
+        }
+      ],
+      "checkedOn": "2026-11-09"
+    },
+    {
+      "title": "How to Find the Interest Rate on a Loan From Its EMI",
+      "category": "Money Guides",
+      "excerpt": "How to work out the yearly interest rate hidden in an EMI when you know the loan, the instalment and the tenure, why there is no direct formula, and how to check the answer.",
+      "tags": [
+        "interest rate",
+        "emi",
+        "loan"
+      ],
+      "blocks": [
+        [
+          "paragraph",
+          "Sometimes a lender quotes a monthly instalment but not the interest rate, or a loan offer shows the instalment and the tenure only. You can work the rate out from three numbers: the amount borrowed, the monthly payment and the number of months. This guide explains how, why a computer is needed for the exact answer, and how to check a result. The Interest Rate Calculator finds the rate and shows its working."
+        ],
+        [
+          "heading",
+          "Why there is no simple formula"
+        ],
+        [
+          "paragraph",
+          "The EMI formula is EMI = P × i × (1 + i)^n ÷ ((1 + i)^n − 1), where i is the monthly rate. It gives the payment when you know the rate, but it cannot be rearranged to give i directly, because i appears in several places, including as a power. So the rate is found by trial: try a rate, work out the EMI, and compare it with the real one. If the trial EMI is too high, try a lower rate, and if it is too low, try a higher one. Halving the range each time homes in on the answer very quickly."
+        ],
+        [
+          "heading",
+          "A worked example"
+        ],
+        [
+          "paragraph",
+          "Suppose a loan of ₹5,00,000 is repaid with ₹11,000 a month for 60 months. The payments add up to ₹6,60,000, so the interest paid is ₹1,60,000. Trying rates gives a monthly rate of about 0.009596, which is a yearly rate of about 11.51%. As a check, a loan of ₹5,00,000 at 11.51% over 60 months has an EMI of ₹11,000.00, which matches the payment."
+        ],
+        [
+          "heading",
+          "A quick way to check the answer"
+        ],
+        [
+          "paragraph",
+          "The total of the payments minus the loan is the interest. If the payments add up to less than the loan, there is no valid rate, and if they add up to exactly the loan, the rate is 0%. For a rough idea, the interest per year as a share of the original loan gives a rate that is too low, because the balance falls over time: in the example, ₹1,60,000 over 5 years on ₹5,00,000 is 6.4% a year, while the real rate is 11.51%."
+        ],
+        [
+          "heading",
+          "A second example"
+        ],
+        [
+          "paragraph",
+          "A loan of ₹3,00,000 repaid with ₹14,000 a month for 24 months has payments of ₹3,36,000, so ₹36,000 of interest. The same trial method gives a yearly rate of about 11.1%, and you can confirm it by entering the numbers. It is a useful way to compare the offer with a bank's quoted rate: a figure far above the quoted rate suggests that fees or insurance are included in the payment."
+        ],
+        [
+          "heading",
+          "What the rate does and does not include"
+        ],
+        [
+          "paragraph",
+          "The rate found this way is the nominal yearly rate with monthly charging, which is how Indian lenders usually quote loans. If the lender adds processing fees, insurance or other charges, the true cost of the loan is higher than this rate suggests, so the rate from the instalment only reflects the interest built into it. Flat-rate offers, where interest is charged on the full original loan for the whole tenure, look low but have a much higher reducing-balance rate. Working out the rate from the instalment is a good way to compare such offers."
+        ],
+        [
+          "heading",
+          "Common mistakes"
+        ],
+        [
+          "list",
+          "Dividing the total interest by the loan and the years to get a rate: this understates a reducing-balance rate\nEntering the tenure in years where months are needed\nIgnoring that the payment may include fees or insurance, which makes the rate look higher than the lender's quoted interest"
+        ],
+        [
+          "paragraph",
+          "Enter the loan amount, the monthly payment and the tenure. The calculator shows the yearly interest rate, the total interest and the total of the payments, and the How this is calculated panel shows the trial method with a check that the rate reproduces your EMI. If the payment is too low to repay the loan, or the rate comes out unrealistic, the calculator tells you to check the numbers."
+        ]
+      ],
+      "sources": [
+        {
+          "title": "Equated monthly installment, Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Equated_monthly_installment"
+        },
+        {
+          "title": "Home Loan EMI Calculator and formula, BankBazaar",
+          "url": "https://www.bankbazaar.com/home-loan/emi-calculator.html"
+        },
+        {
+          "title": "Loan, Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Loan"
+        }
+      ],
+      "checkedOn": "2026-11-09"
+    }
+  ]
+}

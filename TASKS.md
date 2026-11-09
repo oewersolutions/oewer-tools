@@ -115,7 +115,7 @@ T1.3b → T1.3a → T1.4 → T1.5 → T2.1/T2.2 → T3.1 + first calculator → 
 - [x] **T11.1** Shared "How this is calculated" panel (equation plus steps with the visitor's numbers) and the **Speed, Distance and Time** calculator
 - [x] **T11.2** Show the equation and workings on the existing calculators (EMI, FD, GST, SIP, lumpsum, compound, simple, RD, discount, percentage, age, days between)
 - [x] **T11.3** Batch A: Pace, Time, Hours and Date calculators
-- [ ] **T11.4** Batch B: Loan, Auto loan, Mortgage, Payment, Amortization, Interest rate
+- [x] **T11.4** Batch B: Loan, Auto loan, Mortgage, Payment, Amortization, Interest rate
 - [ ] **T11.5** Batch C: Investment, Retirement, Inflation, Finance, Interest
 - [ ] **T11.6** Batch D: Salary, Sales tax, Income tax (decision needed on yearly updates)
 - [ ] **T11.7** Batch E: BMI, BMR, Calorie, Body fat, Ideal weight, Pregnancy, Conception

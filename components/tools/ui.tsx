@@ -122,14 +122,35 @@ export function DateField({
 }
 
 /** A time of day (HH:MM), with the browser's own time picker. */
-export function TimeField({ label, value, onChange, error }: { label: string; value: string; onChange: (value: string) => void; error?: string }) {
+export function TimeField({
+  label,
+  value,
+  onChange,
+  error,
+}: {
+  label: string;
+  value: string;
+  onChange: (value: string) => void;
+  error?: string;
+}) {
   const id = useId();
   return (
     <div>
-      <label htmlFor={id} className="block text-sm font-semibold text-slate-800">
+      <label
+        htmlFor={id}
+        className="block text-sm font-semibold text-slate-800"
+      >
         {label}
       </label>
-      <input id={id} type="time" value={value} onChange={(e) => onChange(e.target.value)} aria-invalid={error ? true : undefined} aria-describedby={error ? `${id}-error` : undefined} className={control} />
+      <input
+        id={id}
+        type="time"
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        aria-invalid={error ? true : undefined}
+        aria-describedby={error ? `${id}-error` : undefined}
+        className={control}
+      />
       {error && (
         <p id={`${id}-error`} className="mt-1 text-sm text-red-800">
           {error}
@@ -297,6 +318,59 @@ export function Results({
         </div>
       ))}
     </dl>
+  );
+}
+
+/** A scrolling table for the dark result panel (a schedule, a year-by-year list). */
+export function DataTable({
+  caption,
+  label,
+  columns,
+  rows,
+}: {
+  caption: string;
+  label: string;
+  columns: string[];
+  rows: (string | number)[][];
+}) {
+  return (
+    <div
+      className="mt-6 max-h-72 overflow-auto rounded-xl border border-white/15"
+      tabIndex={0}
+      role="region"
+      aria-label={label}
+    >
+      <table className="w-full text-left text-sm text-white">
+        <caption className="sr-only">{caption}</caption>
+        <thead className="sticky top-0 bg-black/40 text-xs uppercase tracking-wide text-white/75">
+          <tr>
+            {columns.map((c, i) => (
+              <th
+                key={c}
+                scope="col"
+                className={`px-3 py-2 font-medium ${i === 0 ? "" : "text-right"}`}
+              >
+                {c}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((r) => (
+            <tr key={String(r[0])} className="border-t border-white/10">
+              {r.map((cell, i) => (
+                <td
+                  key={i}
+                  className={`px-3 py-2 ${i === 0 ? "" : "text-right"}`}
+                >
+                  {cell}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }
 

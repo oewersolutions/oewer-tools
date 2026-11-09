@@ -21,6 +21,12 @@ const PACE = "/tools/utilities/pace-calculator/";
 const TIMECALC = "/tools/utilities/time-calculator/";
 const HOURS = "/tools/utilities/hours-calculator/";
 const DATECALC = "/tools/utilities/date-calculator/";
+const LOAN = "/tools/finance-calculators/loan-calculator/";
+const AUTOLOAN = "/tools/finance-calculators/auto-loan-calculator/";
+const MORTGAGE = "/tools/finance-calculators/mortgage-calculator/";
+const PAYMENT = "/tools/finance-calculators/payment-calculator/";
+const AMORT = "/tools/finance-calculators/amortization-calculator/";
+const RATE = "/tools/finance-calculators/interest-rate-calculator/";
 const PASSWORD = "/tools/utilities/password-generator/";
 const BASE64 = "/tools/developer-tools/base64-encoder-decoder/";
 const URLTOOL = "/tools/developer-tools/url-encoder-decoder/";
@@ -193,6 +199,86 @@ test("age and days between show their working", async ({ page }) => {
   await page.getByLabel("Start date").fill("2026-01-01");
   await page.getByLabel("End date", { exact: true }).fill("2026-01-31");
   await expect(page.locator("[data-workings]")).toContainText("Days between = ");
+});
+
+test("loan calculator gives the EMI and shows what an extra payment saves", async ({ page }) => {
+  test.skip(!published.has(LOAN), "Loan calculator is not published");
+  await page.goto(LOAN);
+  const result = page.getByRole("status");
+  await expect(result).toContainText("₹20,758.36");
+  await expect(result).toContainText("₹2,45,501.31");
+  await expect(page.locator("[data-workings]")).toContainText("EMI = P × i × (1 + i)^n");
+  await page.getByLabel("Extra payment each month (₹, optional)").fill("5000");
+  await expect(result).toContainText("Interest saved");
+  await expect(result).toContainText("1 year 1 month"); // 13 months sooner
+  await expect(page.locator("[data-workings]")).toContainText("sooner");
+  await page.getByLabel("Loan amount (₹)").fill("");
+  await expect(result).toContainText("Enter the loan amount");
+});
+
+test("auto loan calculator adds up the total cost of the vehicle", async ({ page }) => {
+  test.skip(!published.has(AUTOLOAN), "Auto loan calculator is not published");
+  await page.goto(AUTOLOAN);
+  const result = page.getByRole("status");
+  await expect(result).toContainText("₹16,606.68");
+  await page.getByLabel("Processing fee (% of the loan, optional)").fill("1");
+  await expect(result).toContainText("₹12,04,401.05");
+  await expect(page.locator("[data-workings]")).toContainText("Total cost of the vehicle");
+  await page.getByLabel("Down payment (₹)").fill("1000000");
+  await expect(page.getByText("The down payment must be less than the vehicle price.")).toBeVisible();
+});
+
+test("mortgage calculator shows the loan-to-value and the total cost", async ({ page }) => {
+  test.skip(!published.has(MORTGAGE), "Mortgage calculator is not published");
+  await page.goto(MORTGAGE);
+  const result = page.getByRole("status");
+  await expect(result).toContainText("₹34,712.93");
+  await expect(result).toContainText("80%");
+  await expect(result).toContainText("₹93,31,103.04");
+  await expect(page.locator("[data-workings]")).toContainText("Loan-to-value");
+});
+
+test("payment calculator finds the payment, the loan a payment carries and the payoff time", async ({ page }) => {
+  test.skip(!published.has(PAYMENT), "Payment calculator is not published");
+  await page.goto(PAYMENT);
+  const result = page.getByRole("status");
+  await page.getByLabel("Loan amount (₹)").fill("1000000");
+  await expect(result).toContainText("₹20,758.36");
+  await page.getByLabel("Find").selectOption("amount");
+  await page.getByLabel("Monthly payment (₹)").fill("20000");
+  await expect(result).toContainText("₹9,63,467.47");
+  await page.getByLabel("Find").selectOption("term");
+  await page.getByLabel("Loan amount (₹)").fill("1000000");
+  await page.getByLabel("Monthly payment (₹)").fill("25000");
+  await expect(result).toContainText("4 years");
+  await page.getByLabel("Monthly payment (₹)").fill("5000");
+  await expect(page.getByText(/more than the interest charged in the first month/)).toBeVisible();
+});
+
+test("amortization calculator shows a year-by-year and a month-by-month schedule", async ({ page }) => {
+  test.skip(!published.has(AMORT), "Amortization calculator is not published");
+  await page.goto(AMORT);
+  const yearly = page.getByRole("region", { name: "Year by year" });
+  await expect(yearly.getByRole("row")).toHaveCount(6); // header and five years
+  await expect(yearly).toContainText("₹83,270.24");
+  await page.getByLabel("Schedule").selectOption("monthly");
+  const monthly = page.getByRole("region", { name: "Month by month" });
+  await expect(monthly.getByRole("row")).toHaveCount(61);
+  await expect(monthly.getByRole("row").nth(1)).toContainText("₹7,500.00");
+  await expect(page.locator("[data-workings]")).toContainText("Month 1 interest");
+});
+
+test("interest rate calculator finds the rate and explains an impossible payment", async ({ page }) => {
+  test.skip(!published.has(RATE), "Interest rate calculator is not published");
+  await page.goto(RATE);
+  const result = page.getByRole("status");
+  await expect(result).toContainText("9% per year");
+  await expect(page.locator("[data-workings]")).toContainText("Check:");
+  await page.getByLabel("Monthly payment, EMI (₹)").fill("11000");
+  await page.getByLabel("Loan amount (₹)").fill("500000");
+  await expect(result).toContainText("11.5147% per year");
+  await page.getByLabel("Monthly payment, EMI (₹)").fill("5000");
+  await expect(page.getByText(/which is less than the loan/)).toBeVisible();
 });
 
 test("pace calculator finds pace, finish time and distance, with the working", async ({ page }) => {

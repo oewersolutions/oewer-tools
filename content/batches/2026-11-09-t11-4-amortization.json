@@ -1,0 +1,108 @@
+{
+  "date": "2026-11-09",
+  "articles": [
+    {
+      "title": "What Is an Amortization Schedule? Splitting Each EMI",
+      "category": "Money Guides",
+      "excerpt": "What an amortization schedule is, how each EMI is split into interest and principal month by month, a worked first year, and how extra payments change the schedule.",
+      "tags": [
+        "amortization",
+        "emi",
+        "loan"
+      ],
+      "blocks": [
+        [
+          "paragraph",
+          "An amortization schedule is a table that lists every payment on a loan and shows how each one is split between interest and principal. It also shows the balance still owed after each payment. Amortization means paying off a debt over time through regular payments, with part of every payment going to interest and the rest reducing the balance. This guide shows how the table is built, with a worked first year, and what to look for in it. The Amortization Calculator builds the schedule and shows the steps."
+        ],
+        [
+          "heading",
+          "How each month is worked out"
+        ],
+        [
+          "paragraph",
+          "Three steps repeat every month. First, the interest for the month is the balance multiplied by the monthly rate. Second, the principal repaid is the payment minus that interest. Third, the new balance is the old balance minus the principal repaid. The payment stays the same, but the interest part falls each month because the balance is smaller."
+        ],
+        [
+          "heading",
+          "A worked example"
+        ],
+        [
+          "paragraph",
+          "Take a loan of ₹10,00,000 at 9% a year for 5 years. The monthly rate is 0.0075 and the EMI is ₹20,758.36. In month 1, the interest is 10,00,000 × 0.0075 = ₹7,500.00 and the principal repaid is 20,758.36 − 7,500 = ₹13,258.36, so the balance falls to ₹9,86,741.64. In month 2, the interest is 9,86,741.64 × 0.0075 = ₹7,400.56, a little less, so slightly more goes to principal."
+        ],
+        [
+          "heading",
+          "The shape of the schedule"
+        ],
+        [
+          "paragraph",
+          "In the first year the payments total ₹2,49,100.26: ₹83,270.24 of interest and ₹1,65,830.02 of principal, leaving a balance of ₹8,34,169.98. By year 5 the interest for the whole year is only ₹11,730.28, because the balance is small. Early on, most of the payment is interest; near the end, most is principal. This is why paying off a loan early saves most when it is done early."
+        ],
+        [
+          "heading",
+          "Balance and interest over time"
+        ],
+        [
+          "paragraph",
+          "The schedule also shows where the loan stands part-way. After 36 months of the ₹10,00,000 loan, the balance is ₹4,54,382.67, so a little over 54% of the loan has been repaid after 60% of the time. In the first 30 months the borrower pays ₹1,78,557 of interest, and in the last 30 months only ₹66,944. If you plan to close the loan early, the closing balance in the schedule is the starting point, but always ask the lender for the exact figure including any charges."
+        ],
+        [
+          "heading",
+          "Reading the table"
+        ],
+        [
+          "list",
+          "The year-by-year view is good for seeing the overall shape, for example how much of the loan is repaid after 3 years\nThe month-by-month view shows the exact split for any instalment, which helps when planning a part-payment\nThe closing balance column is what you would need to pay to close the loan at that point, before any charges"
+        ],
+        [
+          "heading",
+          "Extra payments"
+        ],
+        [
+          "paragraph",
+          "An extra payment each month goes entirely to principal, so every later month's interest is lower and the loan ends sooner. The schedule shows this: with ₹5,000 extra a month, the same loan ends in 47 months instead of 60, and the last payment is smaller than the rest. Check your agreement for charges on prepayment before relying on this."
+        ],
+        [
+          "heading",
+          "Why the early years matter"
+        ],
+        [
+          "paragraph",
+          "Because early payments are mostly interest, the first few years of a loan repay surprisingly little of it. After year 1 of the example, only about 16.6% of the loan has been repaid, although 20% of the time has passed. On a longer loan the effect is larger: on a 20-year loan, the balance falls slowly at first and quickly at the end. That is why a part-payment in the early years saves more interest than the same amount paid near the end, and why the schedule is the best way to see it."
+        ],
+        [
+          "heading",
+          "Common mistakes"
+        ],
+        [
+          "list",
+          "Assuming interest is the same every month: on a reducing-balance loan it falls as the balance falls\nUsing a schedule as a statement from the lender, since lenders round and may count days slightly differently\nOverlooking fees, which are separate from the schedule"
+        ],
+        [
+          "paragraph",
+          "In the calculator, enter the loan, the rate and the tenure, and optionally an extra payment. Choose the year-by-year or month-by-month view. The How this is calculated panel works through the first month with your numbers. For the exact balance on a real loan, use the lender's own statement."
+        ]
+      ],
+      "sources": [
+        {
+          "title": "Amortization schedule, Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Amortization_schedule"
+        },
+        {
+          "title": "Amortization calculator, Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Amortization_calculator"
+        },
+        {
+          "title": "Equated monthly installment, Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Equated_monthly_installment"
+        },
+        {
+          "title": "Home Loan EMI Calculator and formula, BankBazaar",
+          "url": "https://www.bankbazaar.com/home-loan/emi-calculator.html"
+        }
+      ],
+      "checkedOn": "2026-11-09"
+    }
+  ]
+}

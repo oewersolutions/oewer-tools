@@ -1,6 +1,7 @@
 import { calculateEmi, calculateFd, calculateGst } from "./tools/finance";
 import { calculateLumpsum, calculateSip } from "./tools/growth";
 import { calculateDiscount, calculateRd } from "./tools/deposits";
+import { monthlyPayment } from "./tools/loans";
 import { evaluateMotion } from "./tools/motion";
 import { formatQuantity } from "./tools/units";
 import { calculateCompound, calculateSimple } from "./tools/interest";
@@ -62,6 +63,18 @@ export function toolExample(componentKey: string): ToolExample | null {
       const r = evaluateMotion({ solve: "speed", distance: "150", distanceUnit: "km", speed: "", speedUnit: "kmh", hours: "2", minutes: "30", seconds: "" }).result!;
       return { note: "150 km in 2 h 30 min", value: `${formatQuantity(r.mps * 3.6)} km/h` };
     }
+    case "loan-calculator":
+      return { note: "₹10,00,000 at 9% for 5 years", value: `${rupees(monthlyPayment(1_000_000, 9, 60))} a month` };
+    case "auto-loan-calculator":
+      return { note: "₹8,00,000 loan at 9% for 5 years", value: `${rupees(monthlyPayment(800_000, 9, 60))} a month` };
+    case "mortgage-calculator":
+      return { note: "₹40,00,000 at 8.5% for 20 years", value: `${rupees(monthlyPayment(4_000_000, 8.5, 240))} a month` };
+    case "payment-calculator":
+      return { note: "Payment, loan size or payoff time", value: "Find any one" };
+    case "amortization-calculator":
+      return { note: "Interest and principal of every EMI", value: "Full schedule" };
+    case "interest-rate-calculator":
+      return { note: "From the loan, the EMI and the tenure", value: "Find the rate" };
     case "pace-calculator":
       return { note: "10 km in 55 minutes", value: "5:30 per km" };
     case "time-calculator":

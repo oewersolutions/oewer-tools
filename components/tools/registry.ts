@@ -37,6 +37,12 @@ import PaceCalculator from "./PaceCalculator";
 import TimeCalculator from "./TimeCalculator";
 import HoursCalculator from "./HoursCalculator";
 import DateCalculator from "./DateCalculator";
+import LoanCalculator from "./LoanCalculator";
+import AutoLoanCalculator from "./AutoLoanCalculator";
+import MortgageCalculator from "./MortgageCalculator";
+import PaymentCalculator from "./PaymentCalculator";
+import AmortizationCalculator from "./AmortizationCalculator";
+import InterestRateCalculator from "./InterestRateCalculator";
 import type { ToolComponentKey } from "../../lib/tools/keys";
 
 /**
@@ -83,6 +89,12 @@ export const toolComponents: { [K in ToolComponentKey]: ComponentType } = {
   "time-calculator": TimeCalculator,
   "hours-calculator": HoursCalculator,
   "date-calculator": DateCalculator,
+  "loan-calculator": LoanCalculator,
+  "auto-loan-calculator": AutoLoanCalculator,
+  "mortgage-calculator": MortgageCalculator,
+  "payment-calculator": PaymentCalculator,
+  "amortization-calculator": AmortizationCalculator,
+  "interest-rate-calculator": InterestRateCalculator,
 };
 
 export function getToolComponent(key: string): ComponentType {
