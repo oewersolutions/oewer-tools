@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { evaluateEmi, formatMoney, type EmiRaw } from "../../lib/tools/finance";
 import { NumberField, Results, SelectField, ToolLayout } from "./ui";
+import { emiWorkings } from "../../lib/tools/workings";
 
 export default function EmiCalculator() {
   const [raw, setRaw] = useState<EmiRaw>({ principal: "1000000", rate: "9", tenure: "5", tenureUnit: "years" });
@@ -12,6 +13,7 @@ export default function EmiCalculator() {
   return (
     <ToolLayout
       dark
+      workings={emiWorkings(raw)}
       inputs={
         <>
           <NumberField label="Loan amount (₹)" value={raw.principal} onChange={(v) => set("principal", v)} error={errors.principal} />

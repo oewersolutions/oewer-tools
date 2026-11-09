@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { evaluateGst, formatMoney, type GstRaw } from "../../lib/tools/finance";
 import { NumberField, Results, SelectField, ToolLayout } from "./ui";
+import { gstWorkings } from "../../lib/tools/workings";
 
 const COMMON_RATES = ["0", "5", "12", "18", "28"];
 
@@ -14,6 +15,7 @@ export default function GstCalculator() {
   return (
     <ToolLayout
       dark
+      workings={gstWorkings(raw)}
       inputs={
         <>
           <SelectField

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { formatMoney } from "../../lib/tools/finance";
 import { evaluateLumpsum, type LumpsumRaw } from "../../lib/tools/growth";
 import { NumberField, Results, ToolLayout } from "./ui";
+import { lumpsumWorkings } from "../../lib/tools/workings";
 
 export default function LumpsumCalculator() {
   const [raw, setRaw] = useState<LumpsumRaw>({ amount: "100000", rate: "12", years: "10" });
@@ -13,6 +14,7 @@ export default function LumpsumCalculator() {
   return (
     <ToolLayout
       dark
+      workings={lumpsumWorkings(raw)}
       inputs={
         <>
           <NumberField label="Investment amount (₹)" value={raw.amount} onChange={(v) => set("amount", v)} error={errors.amount} />

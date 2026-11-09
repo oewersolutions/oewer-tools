@@ -4,6 +4,7 @@ import { useState } from "react";
 import { formatMoney } from "../../lib/tools/finance";
 import { COMPOUNDING_CHOICES, evaluateCompound, type CompoundingPerYear, type CompoundRaw } from "../../lib/tools/interest";
 import { NumberField, Results, SelectField, ToolLayout } from "./ui";
+import { compoundWorkings } from "../../lib/tools/workings";
 
 export default function CompoundInterestCalculator() {
   const [raw, setRaw] = useState<CompoundRaw>({ principal: "100000", rate: "8", years: "10", compounding: "1" });
@@ -13,6 +14,7 @@ export default function CompoundInterestCalculator() {
   return (
     <ToolLayout
       dark
+      workings={compoundWorkings(raw)}
       inputs={
         <>
           <NumberField label="Principal (₹)" value={raw.principal} onChange={(v) => set("principal", v)} error={errors.principal} />

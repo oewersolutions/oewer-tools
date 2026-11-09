@@ -4,6 +4,7 @@ import { useState } from "react";
 import { formatMoney } from "../../lib/tools/finance";
 import { evaluateSip, type SipRaw } from "../../lib/tools/growth";
 import { NumberField, Results, ToolLayout } from "./ui";
+import { sipWorkings } from "../../lib/tools/workings";
 
 export default function SipCalculator() {
   const [raw, setRaw] = useState<SipRaw>({ monthly: "5000", rate: "12", years: "10" });
@@ -13,6 +14,7 @@ export default function SipCalculator() {
   return (
     <ToolLayout
       dark
+      workings={sipWorkings(raw)}
       inputs={
         <>
           <NumberField label="Monthly investment (₹)" value={raw.monthly} onChange={(v) => set("monthly", v)} error={errors.monthly} />

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { CATEGORIES, CATEGORY_LABELS, DEFAULT_UNITS, evaluateConverter, formatQuantity, unitsOf, type ConverterRaw, type UnitCategory } from "../../lib/tools/units";
 import { NumberField, Results, SelectField, ToolLayout } from "./ui";
+import { converterWorkings } from "../../lib/tools/workings";
 
 export default function UnitConverter() {
   const [category, setCategory] = useState<UnitCategory>("length");
@@ -25,6 +26,7 @@ export default function UnitConverter() {
   return (
     <ToolLayout
       dark
+      workings={converterWorkings(category, fromId, toId, raw)}
       inputs={
         <>
           <SelectField label="Measure" value={category} onChange={changeCategory} options={CATEGORIES.map((c) => ({ value: c, label: CATEGORY_LABELS[c] }))} />

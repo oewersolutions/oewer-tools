@@ -156,6 +156,41 @@ test("days between dates counts the gap and, on request, the end date", async ({
   await expect(page.getByRole("status")).toContainText("Counted from");
 });
 
+// Every calculator shows its equation and the steps with the visitor's own numbers.
+const WORKINGS: [path: string, formula: string, step: string][] = [
+  [EMI, "EMI = P × i × (1 + i)^n", "Monthly rate i = 9 ÷ 12 ÷ 100 = 0.0075"],
+  [SIP, "Future value = P × ((1 + i)^n − 1)", "Number of months n = 10 years × 12 = 120"],
+  [LUMPSUM, "Future value = P × (1 + r)^t", "Rate r = 12 ÷ 100 = 0.12"],
+  [COMPOUND, "A = P × (1 + r ÷ k)^(k × t)", "Rate r = 8 ÷ 100 = 0.08"],
+  [SIMPLE, "Interest = P × R × T ÷ 100", "Time T = 3 years"],
+  [RD, "Maturity = R × ((1 + i)^N − 1)", "Quarterly rate i = 6.5 ÷ 400"],
+  [DISCOUNT, "Final price = Price × (1 − first ÷ 100) × (1 − second ÷ 100)", "After the first discount"],
+  [UNITS, "Result = Value × (size of the From unit", "1 m = 1 m"],
+];
+for (const [path, formula, step] of WORKINGS) {
+  test(`${path.split("/")[3]} shows how it is calculated`, async ({ page }) => {
+    test.skip(!published.has(path), "tool is not published");
+    await page.goto(path);
+    if (path === UNITS) await page.getByLabel("Value").fill("1");
+    const workings = page.locator("[data-workings]");
+    await expect(workings.getByRole("heading", { name: "How this is calculated" })).toBeVisible();
+    await expect(workings).toContainText(formula);
+    await expect(workings).toContainText(step);
+  });
+}
+
+test("age and days between show their working", async ({ page }) => {
+  test.skip(!published.has(AGE) || !published.has(DAYS), "tools are not published");
+  await page.goto(AGE);
+  await page.getByLabel("Date of birth").fill("1990-05-14");
+  await page.getByLabel("Age on").fill("2026-11-09");
+  await expect(page.locator("[data-workings]")).toContainText("Whole years: 36");
+  await page.goto(DAYS);
+  await page.getByLabel("Start date").fill("2026-01-01");
+  await page.getByLabel("End date", { exact: true }).fill("2026-01-31");
+  await expect(page.locator("[data-workings]")).toContainText("Days between = ");
+});
+
 test("speed, distance and time finds each value and shows the equation with the working", async ({ page }) => {
   test.skip(!published.has(MOTION), "Speed, distance and time calculator is not published");
   await page.goto(MOTION);

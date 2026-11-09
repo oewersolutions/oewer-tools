@@ -4,6 +4,7 @@ import { useState } from "react";
 import { formatMoney } from "../../lib/tools/finance";
 import { evaluateSimple, TIME_UNITS, type SimpleRaw, type TimeUnit } from "../../lib/tools/interest";
 import { NumberField, Results, SelectField, ToolLayout } from "./ui";
+import { simpleWorkings } from "../../lib/tools/workings";
 
 export default function SimpleInterestCalculator() {
   const [raw, setRaw] = useState<SimpleRaw>({ principal: "100000", rate: "8", time: "3", unit: "years" });
@@ -13,6 +14,7 @@ export default function SimpleInterestCalculator() {
   return (
     <ToolLayout
       dark
+      workings={simpleWorkings(raw)}
       inputs={
         <>
           <NumberField label="Principal (₹)" value={raw.principal} onChange={(v) => set("principal", v)} error={errors.principal} />

@@ -2,6 +2,7 @@
 
 import { readNumber, type Evaluation } from "./finance";
 import { formatQuantity } from "./units";
+import type { Workings } from "./workings";
 
 export type Solve = "speed" | "distance" | "time";
 export type DistanceUnit = "km" | "m" | "mi";
@@ -33,12 +34,6 @@ export interface MotionRaw extends Record<string, string> {
   hours: string;
   minutes: string;
   seconds: string;
-}
-
-export interface Workings {
-  formula: string[];
-  steps: string[];
-  note?: string;
 }
 
 export interface MotionResult {

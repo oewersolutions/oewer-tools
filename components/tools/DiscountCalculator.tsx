@@ -4,6 +4,7 @@ import { useState } from "react";
 import { evaluateDiscount, type DiscountRaw } from "../../lib/tools/deposits";
 import { formatMoney } from "../../lib/tools/finance";
 import { NumberField, Results, ToolLayout } from "./ui";
+import { discountWorkings } from "../../lib/tools/workings";
 
 const percent = (n: number) => `${Number(n.toFixed(2))}%`;
 
@@ -15,6 +16,7 @@ export default function DiscountCalculator() {
   return (
     <ToolLayout
       dark
+      workings={discountWorkings(raw)}
       inputs={
         <>
           <NumberField label="Original price (₹)" value={raw.price} onChange={(v) => set("price", v)} error={errors.price} />

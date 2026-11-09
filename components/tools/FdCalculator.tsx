@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { COMPOUNDING_LABELS, evaluateFd, formatMoney, type Compounding, type FdRaw } from "../../lib/tools/finance";
 import { NumberField, Results, SelectField, ToolLayout } from "./ui";
+import { fdWorkings } from "../../lib/tools/workings";
 
 export default function FdCalculator() {
   const [raw, setRaw] = useState<FdRaw>({ principal: "100000", rate: "7", tenure: "3", tenureUnit: "years", compounding: "4" });
@@ -12,6 +13,7 @@ export default function FdCalculator() {
   return (
     <ToolLayout
       dark
+      workings={fdWorkings(raw)}
       inputs={
         <>
           <NumberField label="Deposit amount (₹)" value={raw.principal} onChange={(v) => set("principal", v)} error={errors.principal} />

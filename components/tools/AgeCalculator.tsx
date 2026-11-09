@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { describeSpan, evaluateAge, formatLong, todayIso, weekdayOf, type AgeRaw } from "../../lib/tools/dates";
 import { DateField, Results, ToolLayout } from "./ui";
+import { ageWorkings } from "../../lib/tools/workings";
 
 const n = (x: number) => x.toLocaleString("en-IN");
 
@@ -16,6 +17,7 @@ export default function AgeCalculator() {
   return (
     <ToolLayout
       dark
+      workings={ageWorkings(raw)}
       inputs={
         <>
           <DateField label="Date of birth" value={raw.born} onChange={(v) => set("born", v)} error={errors.born} />

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { describeSpan, evaluateDays, formatLong, type DaysRaw } from "../../lib/tools/dates";
 import { DateField, Results, ToolLayout } from "./ui";
+import { daysWorkings } from "../../lib/tools/workings";
 
 const n = (x: number) => x.toLocaleString("en-IN");
 
@@ -15,6 +16,7 @@ export default function DaysBetweenCalculator() {
   return (
     <ToolLayout
       dark
+      workings={daysWorkings(raw, includeEnd)}
       inputs={
         <>
           <DateField label="Start date" value={raw.start} onChange={(v) => set("start", v)} error={errors.start} />

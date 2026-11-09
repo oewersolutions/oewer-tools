@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { evaluatePercentage, formatNumber, formatPercent, PERCENTAGE_MODES, type PercentageMode, type PercentageRaw } from "../../lib/tools/finance";
 import { NumberField, Results, SelectField, ToolLayout } from "./ui";
+import { percentageWorkings } from "../../lib/tools/workings";
 
 export default function PercentageCalculator() {
   const [raw, setRaw] = useState<PercentageRaw>({ a: "20", b: "150", mode: "of" });
@@ -13,6 +14,7 @@ export default function PercentageCalculator() {
   return (
     <ToolLayout
       dark
+      workings={percentageWorkings(raw)}
       inputs={
         <>
           <SelectField

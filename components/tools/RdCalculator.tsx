@@ -4,6 +4,7 @@ import { useState } from "react";
 import { evaluateRd, type RdRaw } from "../../lib/tools/deposits";
 import { formatMoney } from "../../lib/tools/finance";
 import { NumberField, Results, SelectField, ToolLayout } from "./ui";
+import { rdWorkings } from "../../lib/tools/workings";
 
 export default function RdCalculator() {
   const [raw, setRaw] = useState<RdRaw>({ monthly: "5000", rate: "6.5", tenure: "5", tenureUnit: "years" });
@@ -13,6 +14,7 @@ export default function RdCalculator() {
   return (
     <ToolLayout
       dark
+      workings={rdWorkings(raw)}
       inputs={
         <>
           <NumberField label="Monthly deposit (₹)" value={raw.monthly} onChange={(v) => set("monthly", v)} error={errors.monthly} />
