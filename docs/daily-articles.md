@@ -1,25 +1,32 @@
 # Daily articles
 
-Every day the scheduled run researches and publishes **5 new articles** across many subjects. This file is the whole job description: the run starts with no memory, so everything it needs is here. (Decided 31 October 2026: automatic publishing, 5 a day. Change those numbers here and in the schedule if they change.)
+Every day the scheduled run researches and publishes **10 new news articles**, all written to a high standard. This file is the whole job description: the run starts with no memory, so everything it needs is here. (Changed 10 November 2026: the site moved from mixed evergreen and vehicle news to four news genres, 10 articles a day. Change the numbers here and in the schedule if they change.)
+
+The four genres, every day:
+
+- **Game launches and gaming news:** 3 articles.
+- **Latest news (world, India, technology, business and everyday life):** 3 articles.
+- **Politics and government:** 2 articles.
+- **Stock market and business news:** 2 articles.
 
 ## Why the rules are strict
 
-The site earns money from ads, and Google can refuse or remove ads on sites with large amounts of thin or unchecked content, whoever writes it. A wrong price or date also costs readers' trust. So volume is never an excuse for weak articles: **if five good articles cannot be written, publish fewer.** Zero is an acceptable day.
+The site earns money from ads, and Google refused ads on the site for "low value content" in November 2026 because of large amounts of quickly published, derivative news. So the bar is higher now: **each article must add something a reader cannot get by reading one other news site**: clear context, background, what is known and unknown, what happens next, and a careful explanation of what it means for an ordinary reader. **If ten good articles cannot be written, publish fewer.** Zero is an acceptable day. Never pad, never rewrite another outlet's article, never stretch an old story.
 
 ## Each day
 
 1. **Get the latest.** In the project folder: `git fetch` and make the working copy equal to `origin/main` plus any earlier local daily-article commits that have not been pushed yet (never rewrite or force anything). This run has no GitHub token and must not look for one.
-2. **See what exists.** `npm run articles:list`. Note every title and how many articles each category has.
-3. **Choose 5 subjects: news first.** Since 3 November 2026 the daily articles lead with **recent news**, and **at least 3 of the 5 are news** (see "News articles" below). The rest are evergreen explainers from the topic bank. Before choosing, run `npm run articles:list` and skip any story the site already covers. Where the news is thin that day, write fewer news articles rather than stretching an old story.
-4. **Research each one properly.** For news, start with a web search for the newest stories (add the month and year to the query), then **open and read** the pages. Prefer official and primary sources (a company's own page, a manufacturer, a standards body, a museum, a government site). Use at least **two sources on different websites**. Only list a source you actually opened and that supports the claims you used it for. Note any dates.
-5. **Write each article** (see "How to write" below), 700 to 1,100 words (news: 500 to 900).
+2. **See what exists.** `npm run articles:list`. Note every title so you do not repeat a story. A follow-up on a story is allowed only when there is a genuinely new development, and it must say what changed.
+3. **Choose 10 stories** in the split above. Search the web for the newest stories in each genre (add the month and year to the query). Prefer stories from the **last 3 days**, and never older than 7 days. Choose stories that matter to a reader and have enough verified material for a solid article.
+4. **Research each one properly.** **Open and read** the pages. Use primary and official sources first, plus at least **two more independent sources on different websites** where they exist (a minimum of two sources in total). Only list a source you actually opened and that supports the claims you used it for. Note every date.
+5. **Write each article** (see "How to write"), **700 to 1,000 words**. A story that only supports 600 words is probably too thin: drop it for a better one.
 6. **Save the day's batch** as `content/batches/YYYY-MM-DD.json` (format below) and run:
    `npx tsx scripts/add-articles.ts content/batches/YYYY-MM-DD.json --status published`
    Read what it says. For every article it rejects, fix the problems it lists and try that article again (up to twice). Do not weaken an article just to pass; if it cannot be made good, drop it.
-7. **Add a picture to every article, news first.** Every new article gets a real cover photo (a news article should never be left with only the generated cover if a suitable photo exists), and a second picture in the text where one fits. Follow "Pictures" below. Do this after step 6 so the article exists, and before the build check.
+7. **Add a picture to every article.** Follow "Pictures" below. Games and politics will often have no openly licensed photo: keep the generated cover then and say so in the report.
 8. **Check the whole site builds:** `npm run validate` then `npm run build`. If either fails, do not commit; undo the workbook change (`git checkout data/oewer_database.xlsx`), and report what failed.
-9. **Commit locally, do not push.** Commit with the message `Daily articles YYYY-MM-DD` plus a line per article. The owner pushes later in an interactive session; unpushed commits simply wait. If the workbook changed upstream meanwhile, that is handled at push time, not here.
-10. **Report** in the final message: how many were published, how many daily commits are waiting to be pushed, titles and categories, which pictures were added (and which articles kept the generated cover, and why), anything rejected or dropped and why, and anything the owner should look at.
+9. **Commit locally, do not push.** Commit with the message `Daily articles YYYY-MM-DD` plus a line per article. The owner pushes later in an interactive session; unpushed commits simply wait.
+10. **Report** in the final message: the commit id, how many were published, how many daily commits are waiting to be pushed, titles and categories, which pictures were added (and which articles kept the generated cover, and why), anything rejected or dropped and why, and anything the owner should look at.
 
 ## The batch file
 
@@ -50,36 +57,56 @@ The site earns money from ads, and Google can refuse or remove ads on sites with
 
 Block types: `paragraph`, `heading`, `list` (one item per line), `quote`, `callout`, `code`. Text supports `**bold**`, `*italic*` and `[link text](https://…)`. No HTML, no `#` marks, and no image blocks in the batch file (pictures are added in step 7). The tool adds the "Checked on" note and the **Sources** list at the end; do not write them yourself. New categories need `"categoryDescription"`; these exist already: News and Launches (once the first news article is published), AI, Technology, Cars and Bikes, Aviation, Vintage and History, Electronics, How It Works, Money Guides, How-To.
 
-## News articles
+## The four genres
 
-News is the main point of the site's blog now. Focus on what people in India and worldwide are searching for this week:
+All articles use `"category"` as below (new categories need the `categoryDescription` shown) and are tagged `news` plus the topic.
 
-- **New vehicle launches and unveilings:** cars, SUVs, motorcycles, scooters, electric vehicles, trucks and buses, with launch dates, variants, prices (ex-showroom for India, say so), battery and range figures, engines and features the maker announces. Also facelifts, price changes, recalls and safety ratings (Bharat NCAP, Global NCAP, Euro NCAP).
-- **Political and government news:** decisions, laws, budgets, policies, court rulings, elections and official announcements in India first, then major world politics. Written as a plain **explainer of what was decided and what it changes for ordinary people** (see the extra rules below).
-- **Recent news** in the site's other areas: new phones and gadgets, AI models and product announcements, aviation (new aircraft, routes, airline announcements), major technology and electronics launches, and changes to money-related rules or prices that affect everyday readers.
+| Genre | Category | categoryDescription |
+| --- | --- | --- |
+| Game launches and gaming news | `Gaming News` | Game launches, release dates, prices and platform news, explained from official sources. |
+| Latest news | `News and Launches` | Recent news and new launches: technology, business and everyday life, explained from official sources. |
+| Politics and government | `Politics` | Government decisions, laws and policies, reported neutrally from official sources. |
+| Stock market and business | `Markets` | Market and company news, reported from exchange and regulator filings. General information, not investment advice. |
 
-Rules for news:
+### Rules for all news
 
-1. **Fresh.** The story must be from the **last 7 days** (the last 3 days is better). Check the date on the source page. Put the event's date and the "as of" date in the text.
-2. **Primary source first.** The maker's or company's own press release or page, a regulator, an airline or airport, a standards body. A reputable news outlet is the second source. Open both. If only one source can be found, or the sources disagree on a figure, say so in the article; if the story rests on a single unofficial source, do not publish it.
-3. **Official facts only.** Report what the company or regulator has said. Rumours, leaks, spy shots and "expected" prices are never stated as fact; if you mention them at all, label them clearly and keep them to one short line.
-4. **Your own explanation.** Do not rewrite another outlet's article. Give the key facts in the first paragraph (what, who, when, price or figure), then explain what it means for a reader: who it competes with by facts, what changes from the previous model, what is still unknown. Use a list for specifications and a short table-like list for variants and prices.
-5. **No opinion, no verdict, no "best".** No test-drive voice; you did not drive it. Compare using the published numbers.
-6. **Prices and dates are exact and labelled** (currency, ex-showroom or on-road, launch or booking date). Never round a price up or down.
-7. **Category:** use `News and Launches` for these (new category; give it `"categoryDescription": "Recent news and new launches: vehicles, gadgets, AI and aviation, explained from official sources."`). Tag each with `news`, plus `launch` for a launch, and the maker or topic.
-8. **Titles** state the news plainly and carry the name and the month, for example "Tata Motors Launches the Sierra EV in India: Price and Range (Nov 2026)". Keep within the 20 to 60 character limit.
-9. News articles may be shorter: **500 to 900 words** is fine. Clean facts beat length.
-10. A news article stays accurate by being dated. It is never edited later by this job.
+1. **Fresh.** The story is from the **last 7 days** (3 days is better). Check the date on the source page and put both the event's date and the "as of" date in the text.
+2. **Primary source first.** The company, publisher, ministry, court, exchange or regulator's own page, then independent outlets. Open them all. If only one source exists, or sources disagree on a figure, say so; if the story rests on a single unofficial source, do not publish it.
+3. **Official facts only.** Rumours, leaks and "expected" figures are never stated as fact; label them in one short line or leave them out.
+4. **Your own explanation.** Do not rewrite another outlet's article. Give the key facts in the first paragraph, then add what makes the article worth reading: **background** (how we got here), **context** (how it compares by published numbers), **what is still unknown**, and **what happens next** with dates. Use a list only for real lists such as specifications, dates or figures.
+5. **No opinion, no verdict, no predictions, no "best".** You did not play, watch or attend anything. Compare using published facts.
+6. **Exact and labelled:** currency, dates, time zones, platforms, index levels with the time they were taken. Never round a price or figure up or down.
+7. **Titles** state the news plainly, 20 to 60 characters, with the name and month where it fits (for example "Hollow Knight Silksong DLC Date Set for Dec 2026").
+8. A news article stays accurate by being dated. This job never edits it later.
 
-Extra rules for political news (these protect readers, and the site's ad approval):
+### Game launches and gaming news (3 a day)
 
-1. **Report, never take sides.** Describe what a government, minister, party, court or commission officially said or decided, and attribute it every time ("the Finance Ministry said", "the court ruled"). No praise, blame, labels or loaded words, and no "good for" or "bad for" a party. Where parties or governments disagree, give each position in its own words, with the same weight.
-2. **Primary sources first:** the government or ministry notification (PIB, gazette, the ministry's own site), the court's order, the Election Commission, parliament records, the party's official statement. A reputable news outlet is the second source. Rumours, anonymous "sources say" claims, opinion columns, exit polls and predictions are not used.
-3. **Explain, do not campaign.** Lead with the decision, the date and what it changes (who is affected, from when, any amount or deadline). Add short background. No calls to vote, donate, protest or support anyone.
-4. **People:** name office-holders by role and name as the source does; never speculate about anyone's motives, health, family or private life; nothing about private individuals. Allegations are stated as allegations, attributed, with the person's or body's response if the source gives it. Court cases: report the order, never guilt or innocence.
-5. **Avoid on this site:** violence and graphic events, communal or religious conflict, hate speech, conspiracy claims, and live election results or seat predictions. If a political story is mostly about those, skip it.
-6. **Category:** `News and Launches`, tagged `news` and `politics`. At most **1 political article per run**, and not more than 2 political articles among the 5 news items in a day's total, so vehicles and technology stay the core of the news.
-7. **Titles** name the decision plainly with no judgement, for example "Union Budget 2027: Income Tax Slab Changes Explained".
+New game launches, release dates, delays, editions, price changes, platform and Game Pass or PlayStation Plus announcements, updates and patches, esports event results, and major studio news. Use the publisher or developer's own page, the store listing (Steam, PlayStation Store, Xbox, Nintendo eShop, Epic) and ratings boards. Give release date and time by region where the source does, platforms, price in rupees and dollars when listed, editions, system requirements when published, and what the publisher has not confirmed. No review voice: you did not play it. Skip leaks and rumours. Age ratings and violence are stated plainly and neutrally.
+
+### Latest news (3 a day)
+
+The biggest verified stories of the day in technology, business, science, transport and everyday money rules, India first, then world. Choose stories with real consequences for readers, not celebrity gossip, crime or disasters. Skip anything violent or graphic.
+
+### Politics and government (2 a day, India first)
+
+A plain **explainer of what was decided and what it changes for ordinary people**. Strictly neutral:
+
+1. **Report, never take sides.** Attribute every claim ("the Finance Ministry said", "the court ruled"). No praise, blame, labels or loaded words, and no "good for" or "bad for" a party. Where parties disagree, give each position in its own words with equal weight.
+2. **Primary sources first:** PIB, gazette notifications, the ministry's own site, the court's order, the Election Commission, parliament records, a party's official statement. Rumours, anonymous "sources say" claims, opinion columns, exit polls and predictions are not used.
+3. **Explain, do not campaign.** Lead with the decision, the date and what it changes (who, from when, any amount or deadline). No calls to vote, donate, protest or support anyone.
+4. **People:** name office-holders by role and name as the source does; no speculation about motives, health, family or private life; nothing about private individuals. Allegations are stated as allegations, attributed. Court cases: report the order, never guilt or innocence.
+5. **Avoid:** violence and graphic events, communal or religious conflict, hate speech, conspiracy claims, live election results and seat predictions.
+6. Tag `politics`. At most one of the two political articles may be about world politics outside India.
+
+### Stock market and business news (2 a day)
+
+Exchange and regulator facts: index closing levels (NSE Nifty 50, BSE Sensex) with the date, results announcements, IPO dates, price bands and listing facts, SEBI and RBI decisions, major company filings and deals. Sources: NSE, BSE, SEBI, RBI, company filings and press releases, then reputable business outlets. Rules:
+
+1. **No advice and no predictions.** Never say buy, sell, hold, target, "stocks to watch", "will rise", or "good time to invest". No forecast of any price, index or result.
+2. **Facts with a time stamp.** A level or price always carries the date and, for intraday figures, the time. Say where it came from.
+3. **Explain the mechanics.** What a result, rate decision or IPO term means, in plain words, with the published numbers.
+4. **End every article** with a short line that it is general information and not investment advice.
+5. Tag `stocks` or `markets`.
 
 ## Pictures
 
@@ -100,21 +127,22 @@ Rules for pictures:
 
 ## How to write
 
+Write like a careful human reporter, not a template.
+
 - **Titles are 20 to 60 characters**, so the page title still fits in search results once the site name is added.
+- **Lead with the news, then the reason it matters.** The first paragraph carries who, what, when and the key number. The second says why a reader should care.
+- **Vary the shape.** Do not give every article the same headings. Pick a structure that fits the story: a timeline, a question-and-answer, a "what changes" list, a before-and-after. Three to eight headings that say what is under them, no stock headings repeated day after day.
+- **Natural voice.** Mix short and longer sentences. Use everyday words and concrete numbers. Explain a term the first time it appears. Use "we" rarely and only as an editorial voice ("we have not found a confirmed date"). No exclamation marks, no hype, no rhetorical flourish, no formula such as "In conclusion" or "Let's dive in".
+- **Your own words.** Never copy sentences from a source. A quotation, if any, is a few words, in quotation marks, named.
+- **Say where the numbers come from** ("according to the company's page") and **when** ("as of 10 November 2026").
+- **Be honest about the unknown.** "The company has not said" is a fine sentence.
+- **No invented experience.** Never write as if you played, watched, tested, visited or attended something. Write from the sources.
+- **No advice.** Nothing on investing, health, legal or safety beyond what a source states plainly.
+- **Neutral about companies, people and parties.** No hype, no put-downs. Names belong to their owners.
+- **No filler.** The tool rejects stock phrases. Say the thing directly.
+- **Read it back.** Before saving, check each article answers: what happened, why it matters, what is unknown, what comes next. If it does not, improve it or drop it.
 
-- **Plain and specific.** Short sentences, everyday words, concrete numbers and examples. Explain a term the first time it appears. One idea per paragraph.
-- **Open with the answer.** The first paragraph says what the reader will learn and the main point.
-- **Structure.** Three to eight headings that say what is under them. Use a list when there really is a list, and a callout for one useful tip or caution. Avoid padding.
-- **Your own words.** Never copy sentences from a source. Facts are free; wording is not. A quotation, if any, is a few words, in quotation marks, named.
-- **Say where numbers come from** ("according to the company's pricing page") and **when** ("as of 1 November 2026") for anything that changes: prices, plans, features, rankings, sales figures, specifications.
-- **Be honest about the unknown.** Rumours and leaks are labelled as such; do not present them as fact. "The company has not said" is a fine sentence.
-- **No invented experience.** Never write as if you tested, drove, flew, owned, visited or used something. Write from the sources.
-- **No advice.** No financial, medical, legal or safety instructions beyond what a source states plainly. Say it is general information where relevant.
-- **Neutral about companies.** No hype, no put-downs, no "best". Compare using facts. Names belong to their owners.
-- **No filler.** The tool rejects stock phrases ("delve into", "game-changer", "in today's fast-paced world", and similar). Say the thing directly.
-- **History:** every date, name and figure from a source; where sources disagree, say so.
-
-## Topic bank (add to it freely)
+## Topic bank (not used while the daily run is news-only)
 
 **AI:** what the main chatbot plans cost and what each tier includes; free versus paid tiers; how AI chatbots are priced for developers (tokens explained); what a context window is; how image generators work; open versus closed models; what AI features phones and laptops now advertise; how AI is used in cars and cameras; what "training data" means; why AI makes things up; AI and copyright, in plain terms; energy use of AI data centres.
 
@@ -137,6 +165,6 @@ Scheduled runs have no token and never push. The owner pushes the waiting commit
 ## Safety stops
 
 - Never force-push, never rewrite history, never change files other than the workbook, the batch file, the generated summary and the pictures (`public/images/blog/`, `content/images/credits.json`, `content/images/text.json`); commit the pictures with the articles.
-- Never publish more than 12 articles in a run (the tool refuses).
+- Never publish more than 12 articles in a run (the tool refuses), and aim for 10.
 - If the build or the deploy fails, revert and report; do not try to patch the site code.
 - If the web research tools do not work, publish only evergreen articles you can write accurately from established knowledge **and** can support with at least two sources you have opened; if you cannot open sources, publish nothing that day.
