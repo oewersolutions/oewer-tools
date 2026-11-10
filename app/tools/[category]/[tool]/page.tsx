@@ -2,7 +2,8 @@ import AdSlot from "../../../../components/AdSlot";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Breadcrumbs from "../../../../components/Breadcrumbs";
-import { pageMetadata } from "../../../../lib/metadata";
+import { BASE_PATH, getSiteUrl, pageMetadata } from "../../../../lib/metadata";
+import { absoluteUrl } from "../../../../lib/seo";
 import { nonEmptyParams } from "../../../../lib/static";
 import ToolHost from "../../../../components/tools/ToolHost";
 import { toolComponentKey } from "../../../../lib/tools/keys";
@@ -61,6 +62,26 @@ function faqJsonLd(faq: { q: string; a: string }[]): string {
   return JSON.stringify(data).replace(/</g, "\\u003c");
 }
 
+function appJsonLd(
+  name: string,
+  description: string,
+  url: string,
+): string {
+  const data = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    name,
+    description,
+    url,
+    applicationCategory: "UtilitiesApplication",
+    operatingSystem: "Any (runs in the browser)",
+    browserRequirements: "Requires JavaScript",
+    isAccessibleForFree: true,
+    offers: { "@type": "Offer", price: "0", priceCurrency: "INR" },
+  };
+  return JSON.stringify(data).replace(/</g, "\\u003c");
+}
+
 export default async function ToolPage({ params }: Props) {
   const { category: categorySlug, tool: toolSlug } = await params;
   const found = getToolBySlug(categorySlug, toolSlug);
@@ -71,8 +92,38 @@ export default async function ToolPage({ params }: Props) {
   const guides = getGuidesForTool(tool.tool_id);
   const componentKey = toolComponentKey(tool.component_key); // throws, failing the build, for an unregistered key
 
+  const pageUrl = absoluteUrl(
+    getSiteUrl(),
+    BASE_PATH,
+    `/tools/${category.slug}/${tool.slug}/`,
+  );
+  const shareText = encodeURIComponent(
+    `${tool.name}: free and private, runs in your browser`,
+  );
+  const shareUrl = encodeURIComponent(pageUrl);
+  const shareLinks = [
+    {
+      label: "WhatsApp",
+      href: `https://wa.me/?text=${shareText}%20${shareUrl}`,
+    },
+    {
+      label: "Telegram",
+      href: `https://t.me/share/url?url=${shareUrl}&text=${shareText}`,
+    },
+    {
+      label: "X",
+      href: `https://x.com/intent/tweet?text=${shareText}&url=${shareUrl}`,
+    },
+  ];
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: appJsonLd(tool.name, tool.description, pageUrl),
+        }}
+      />
       <PageBand
         breadcrumbs={
           <Breadcrumbs
@@ -101,6 +152,21 @@ export default async function ToolPage({ params }: Props) {
             </li>
           ))}
         </ul>
+        <p className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-ink-2">
+          <span>Share this tool:</span>
+          {shareLinks.map((l) => (
+            <a
+              key={l.label}
+              href={l.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-brand underline underline-offset-2"
+            >
+              {l.label}
+              <span className="sr-only"> (opens in a new tab)</span>
+            </a>
+          ))}
+        </p>
       </PageBand>
 
       <Container className="space-y-20 py-12 sm:py-16 [overflow-wrap:anywhere]">
