@@ -1,0 +1,44 @@
+{
+  "date": "2026-11-10",
+  "articles": [
+    {
+      "title": "Football Manager 27 Launches 10 Nov 2026: Price, Specs",
+      "category": "Gaming News",
+      "categoryDescription": "Game launches, release dates, prices and platform news, explained from official sources.",
+      "excerpt": "Football Manager 27 is due on 10 November 2026. Here is what the official site and Steam list for price, PC and Mac requirements, and what is still unconfirmed.",
+      "tags": ["news", "football-manager", "pc-games"],
+      "blocks": [
+        ["paragraph", "Football Manager 27, the latest entry in the long-running club management series from Sports Interactive and publisher SEGA, is scheduled for full release on 10 November 2026, according to the official Football Manager website and the game's Steam page. This article is based on pages read on 10 November 2026, and some details differ between sources."],
+        ["paragraph", "The release date is the one point every source agrees on. Prices, platforms and the early-access arrangements are less consistent, so this piece separates what the publisher's own pages state from what only one outside outlet has reported."],
+        ["heading", "What the official pages confirm"],
+        ["paragraph", "The Football Manager homepage says players who pre-purchase get 10% off and access to a Launch Preview on PC and Mac until the full release on 10 November. The Steam listing names Sports Interactive as developer and SEGA as publisher, and lists the genres as simulation, sports and strategy."],
+        ["paragraph", "Steam shows no exact launch hour. It lists only the date, so the time the game unlocks in a given country is not stated in the pages we read."],
+        ["paragraph", "Steam also lists single-player, online player-versus-player and cross-platform multiplayer, plus cloud saves and achievements. The store page lists 20 languages, including English, French, Italian, German, Spanish, Arabic, Japanese, Korean, Polish, Portuguese and Turkish. Hindi is not on the list."],
+        ["heading", "Price: one figure in rupees, one in pounds"],
+        ["paragraph", "The Steam page we opened showed a normal price of Rs 4,499 and Rs 4,049 with the 10% pre-purchase discount. The page did not say which storefront region it was showing, so treat the rupee figures as the price displayed to that visit, not as a confirmed India-wide price."],
+        ["paragraph", "A separate report from the gaming site AltChar, published on 30 September 2026, gave a price of £49.99. The official homepage gives only the percentage discount and no base amount, so we have no publisher-confirmed price list for other currencies."],
+        ["heading", "Platforms: PC and Mac are certain, the rest rests on one report"],
+        ["paragraph", "Steam lists Windows and macOS. The official homepage also carries purchase links for Xbox and PlayStation consoles and mentions a console version and a mobile version in its feature links, and it names PC Game Pass among the ways to play."],
+        ["paragraph", "AltChar's report goes further. It says the game arrives on PC, Mac, Xbox, PlayStation 5 and mobile, with the mobile edition on Netflix, and that it will be on PC Game Pass and Xbox Game Pass Ultimate from the first day. The official homepage we read does not mention Netflix or Game Pass Ultimate, so those two claims remain unconfirmed by the publisher's pages."],
+        ["heading", "The Launch Preview wording does not match"],
+        ["paragraph", "The official site says the Launch Preview is free to play on PC and Mac until 3 November. The Steam page says players who pre-purchase can play early from 3 November. Those two statements describe different arrangements, and we could not tell from the pages which is current. Readers who care about early access should check the store they plan to buy from."],
+        ["heading", "System requirements on PC and Mac"],
+        ["paragraph", "Steam lists the following, as shown on the page:"],
+        ["list", "Windows minimum: Windows 10 or 11, Intel Core i3-530 or AMD FX-4100, 6 GB RAM, NVIDIA GeForce GTX 960 or AMD Radeon R9 380 or Intel HD 530, DirectX 11, 20 GB of storage\nWindows recommended: Windows 11 64-bit, Intel Core i5-9600 or AMD Ryzen 5 2600, 12 GB RAM, NVIDIA GeForce RTX 2060 or AMD Radeon RX 5600 XT, DirectX 11, 20 GB of storage\nmacOS minimum: macOS 13, 14, 15 or 26, Apple M1 or Intel Core M, 6 GB RAM, 20 GB of storage\nmacOS recommended: macOS 14, 15 or 26, Apple M1, 12 GB RAM, 20 GB of storage"],
+        ["paragraph", "The store page also states that the game uses third-party Denuvo anti-tamper software, allows five machine activations a day, and requires agreement to a third-party end-user licence agreement. Those are conditions of purchase on Steam that a buyer may want to know about before paying."],
+        ["heading", "What is new, in the publisher's words"],
+        ["paragraph", "Steam's description lists a new squad-building idea called Tactical Effectiveness, an option called Tactical Tweaks for exploiting gaps in the opposition defence, and more than 1,500 competition updates. The homepage links to feature pages on a clearer interface, a deeper world, match-day atmosphere, an enhanced match engine, training changes and a multiplayer mode called Shuffle Draft. These are the publisher's descriptions. We have not played the game, and nothing here is a review."],
+        ["paragraph", "One caution comes from the store page itself: it says the version contains information still under approval by rights holders and may not accurately reflect real-world data. That is a standard note for a football title, but it means club and player details can change before or after release."],
+        ["heading", "Still unknown and what to watch"],
+        ["list", "Whether the AltChar report of a Netflix mobile edition and Game Pass Ultimate availability is confirmed by Sports Interactive or SEGA\nA base price in dollars or euros from the publisher\nNamed editions, if any: none appeared on the pages we read\nAn age rating, which none of the pages displayed\nThe hour the game unlocks in each region"],
+        ["paragraph", "At the time of reading, Steam showed no user reviews, with 15 curators having reviewed the product. The full release date is today, 10 November 2026, so store pages, prices and platform lists may change after this article's check date."]
+      ],
+      "sources": [
+        { "title": "Football Manager, official homepage, Sports Interactive", "url": "https://www.footballmanager.com/" },
+        { "title": "Football Manager 27 on Steam, Valve", "url": "https://store.steampowered.com/app/4530370/Football_Manager_27/" },
+        { "title": "Football Manager 27 release date confirmed for November 10, AltChar", "url": "https://www.altchar.com/game-news/football-manager-27-release-date-confirmed-for-november-10-anuUq0Z67TYa" }
+      ],
+      "checkedOn": "2026-11-10"
+    }
+  ]
+}
