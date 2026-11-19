@@ -122,3 +122,14 @@ T1.3b → T1.3a → T1.4 → T1.5 → T2.1/T2.2 → T3.1 + first calculator → 
 - [x] **T11.8** Batch F: Fraction, Random number, Triangle, Standard deviation, Scientific (new "Math Calculators" category; safe expression parser, no eval)
 - [x] **T11.9** Batch G: GPA, Grade, Concrete, Subnet (in Utilities)
 
+## Phase 12 — Improvement month, 11 November to 10 December 2026 (plan: `docs/improvement-month-plan.md`)
+- [ ] **T12.0** Housekeeping: confirm the deploy is live, re-enable the daily puzzle task (puzzles end 22 November), fix the Hive Words and Mini Crossword heading levels, replace the broad token, set up the weekly traffic log, decide the Pace Calculator move
+- [ ] **T12.1** Deepen the most-searched tools: EMI (prepayment, step-up), income tax (old and new regime), SIP (step-up, goal), FD/RD/lumpsum, GST, Image Compressor (target size), Word Counter
+- [ ] **T12.2** New tools, batch 1: text tools (new Text Tools category) and image and PDF tools
+- [ ] **T12.3** New tools, batch 2: date and time, health and study, and India finance (gratuity, PPF, EPF, HRA, NPS)
+- [ ] **T12.4** Games: shared streaks and stats, "today's puzzles" progress, share result, puzzle archives, longer how-to text
+- [ ] **T12.5** New games: Daily Sudoku, Number Crunch, and one instant game; daily puzzle task extended to make them
+- [ ] **T12.6** Polish: thin tool pages, Firefox and Safari checks, internal links, author details, speed
+- [ ] **T12.7** Review gate: full audit, then the owner requests the AdSense review (earliest about 1 to 8 December)
+- No new blog articles this month; the daily article task stays off.
+
