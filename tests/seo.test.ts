@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { absoluteUrl, activeRedirects, buildRobotsTxt, buildSitemapEntries, fitDescription, redirectFile, redirectHtml, redirectTargetUrl, summarize } from "../lib/seo";
+import { MIN_POSTS_FOR_INDEXED_TAG } from "../lib/posts";
 import type { ContentExport } from "../lib/workbook/export";
 
 const content = {
@@ -66,6 +67,7 @@ describe("redirects", () => {
 });
 
 describe("sitemap: blog tags and authors", () => {
+  const published = Array.from({ length: MIN_POSTS_FOR_INDEXED_TAG }, (_, i) => `POST01${String(i).padStart(2, "0")}`);
   const blog = {
     ...content,
     sheets: {
@@ -75,8 +77,7 @@ describe("sitemap: blog tags and authors", () => {
         { author_id: "AUTH0002", display_name: "No Posts" },
       ],
       posts: [
-        { post_id: "POST0001", slug: "a", status: "published", category_id: "BCAT0001", author_id: "AUTH0001", updated_at: "" },
-        { post_id: "POST0002", slug: "b", status: "published", category_id: "BCAT0001", author_id: "AUTH0001", updated_at: "" },
+        ...published.map((id, i) => ({ post_id: id, slug: `p${i}`, status: "published", category_id: "BCAT0001", author_id: "AUTH0001", updated_at: "" })),
         { post_id: "POST0003", slug: "c", status: "draft", category_id: "BCAT0001", author_id: "AUTH0001", updated_at: "" },
       ],
       tags: [
@@ -85,9 +86,8 @@ describe("sitemap: blog tags and authors", () => {
         { tag_id: "TAG0003", slug: "draft-only" },
       ],
       post_tags: [
-        { post_id: "POST0001", tag_id: "TAG0001" },
-        { post_id: "POST0002", tag_id: "TAG0001" },
-        { post_id: "POST0001", tag_id: "TAG0002" },
+        ...published.map((id) => ({ post_id: id, tag_id: "TAG0001" })),
+        { post_id: published[0], tag_id: "TAG0002" },
         { post_id: "POST0003", tag_id: "TAG0003" },
         { post_id: "POST0003", tag_id: "TAG0001" },
       ],
@@ -95,7 +95,7 @@ describe("sitemap: blog tags and authors", () => {
   } as unknown as ContentExport;
   const paths = buildSitemapEntries(blog).map((e) => e.path);
 
-  it("lists tags with at least two published articles, not thin or draft-only ones", () => {
+  it("lists tags with enough published articles, not thin or draft-only ones", () => {
     expect(paths).toContain("/blog/tag/popular/");
     expect(paths).not.toContain("/blog/tag/thin/");
     expect(paths).not.toContain("/blog/tag/draft-only/");

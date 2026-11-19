@@ -62,7 +62,7 @@ export function statusNotice(
 }
 
 /** Tag pages with fewer articles than this are thin, so they are kept out of search engines and the sitemap. */
-export const MIN_POSTS_FOR_INDEXED_TAG = 2;
+export const MIN_POSTS_FOR_INDEXED_TAG = 5;
 
 export interface RelatablePost {
   post_id: string;
