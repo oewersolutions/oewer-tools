@@ -38,7 +38,7 @@ function isSafeHref(href: string): boolean {
   return (href.startsWith("/") && !href.startsWith("//")) || href.startsWith("https://") || /^mailto:[^\s@?&<>"']+@[^\s@?&<>"']+\.[^\s@?&<>"']+$/.test(href);
 }
 
-const INLINE = /(\*\*[^*]+\*\*|\*[^*\s][^*]*\*|`[^`]+`|\[[^\]]+\]\([^)\s]+\))/;
+const INLINE = /(\*\*[^*]+\*\*|\*[^*\s][^*]*\*|`[^`]+`|\[[^\]]+\]\((?:[^()\s]|\([^()\s]*\))+\))/;
 
 export function parseInline(text: string): Inline[] {
   return text
@@ -48,7 +48,7 @@ export function parseInline(text: string): Inline[] {
       if (part.startsWith("**") && part.endsWith("**") && part.length > 4) return { type: "strong", text: part.slice(2, -2) };
       if (part.startsWith("`") && part.endsWith("`") && part.length > 2) return { type: "code", text: part.slice(1, -1) };
       if (part.startsWith("*") && part.endsWith("*") && part.length > 2) return { type: "em", text: part.slice(1, -1) };
-      const link = /^\[([^\]]+)\]\(([^)\s]+)\)$/.exec(part);
+      const link = /^\[([^\]]+)\]\(((?:[^()\s]|\([^()\s]*\))+)\)$/.exec(part);
       if (link) return isSafeHref(link[2]!) ? { type: "link", text: link[1]!, href: link[2]! } : { type: "text", text: link[1]! };
       return { type: "text", text: part };
     });

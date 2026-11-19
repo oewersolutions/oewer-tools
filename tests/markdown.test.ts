@@ -39,8 +39,15 @@ describe("parseInline", () => {
     expect(parseInline("2 * 3 = 6 and (1 + r)^n")).toEqual([{ type: "text", text: "2 * 3 = 6 and (1 + r)^n" }]);
   });
 
+  it("keeps parentheses that belong to a link address", () => {
+    expect(parseInline("[Knot](https://en.wikipedia.org/wiki/Knot_(unit)) end")).toEqual([
+      { type: "link", text: "Knot", href: "https://en.wikipedia.org/wiki/Knot_(unit)" },
+      { type: "text", text: " end" },
+    ]);
+  });
+
   it("drops unsafe link targets but keeps the text", () => {
-    // Link targets cannot contain parentheses, so this renders as plain text, never as a link.
+    // A javascript: target is not safe, so this renders as plain text, never as a link.
     expect(parseInline("[x](javascript:alert(1))").some((part) => part.type === "link")).toBe(false);
     expect(parseInline("[x](javascript:void)")).toEqual([{ type: "text", text: "x" }]);
     expect(parseInline("[x](http://insecure.example)")).toEqual([{ type: "text", text: "x" }]);
